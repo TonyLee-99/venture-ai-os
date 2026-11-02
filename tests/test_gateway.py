@@ -14,6 +14,7 @@ from vaios.gateway.gateway import ROUTES, BudgetExceeded, Gateway, ReplayMiss, e
 def _live_mode(monkeypatch):
     # these tests exercise live-call logic against fakes; CI exports VAIOS_STRICT_REPLAY=1 globally
     monkeypatch.delenv("VAIOS_STRICT_REPLAY", raising=False)
+    monkeypatch.delenv("VAIOS_MAX_CALLS", raising=False)
 
 
 class Fake:
