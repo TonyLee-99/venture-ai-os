@@ -49,6 +49,13 @@ def headline_numbers() -> dict[str, str]:
         "cp_n": f"{h['n_changepoints']}",
         "cp_events": f"{h['n_events']}",
     }
+    ve = _j("receipts/verifier_eval.json")
+    n["ve_gold"], n["ve_corrupt"], n["ve_caught"] = f"{ve['gold_spans']}", f"{ve['corruptions']}", f"{ve['caught']}"
+    n["ve_rate"] = f"{ve['catch_rate']:.1%}"
+    briefs = sorted((RESULTS / "briefs").glob("*.json"))
+    if briefs:
+        br = json.loads(briefs[-1].read_text())["receipts"]
+        n["brief_raw"], n["brief_shipped"] = f"{br['raw_precision']:.1%}", f"{br['shipped']}"
     llm = RESULTS / "backtest" / "llm_judgment.json"
     if llm.exists():
         lj = json.loads(llm.read_text())

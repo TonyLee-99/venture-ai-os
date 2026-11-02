@@ -1,0 +1,17 @@
+{
+ "gold_spans": 266,
+ "false_rejects": 0,
+ "corruptions": 500,
+ "caught": 500,
+ "catch_rate": 1.0,
+ "by_kind": {
+  "fabricated_quote": 133,
+  "wrong_source": 131,
+  "unknown_doc": 133,
+  "inflated_number": 50,
+  "paraphrase": 51,
+  "metric_mismatch": 1,
+  "metric_unknown": 1
+ },
+ "missed_by_kind": {}
+}

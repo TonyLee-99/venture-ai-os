@@ -84,6 +84,11 @@ def check_claim(claim: dict, store: DocStore, facts: dict[str, float],
             score = fuzz.partial_ratio(q, d)
         if score < FUZZY_MIN:
             return ClaimCheck(cid, False, "quote_not_found", f"best match {score:.0f} < {FUZZY_MIN}", score)
+        if score < 100:  # fuzzy match tolerates typos, not different numbers or ids
+            doc_nums = numbers_in(doc)
+            if any(not any(_close(n, m, 1e-9) for m in doc_nums) for n in numbers_in(claim["quote"])):
+                return ClaimCheck(cid, False, "quote_not_found", "fuzzy match but a number in the quote is not "
+                                  "in the snapshot", score)
         quote_nums = numbers_in(claim["quote"])
     metric_value = None
     if claim.get("metric"):

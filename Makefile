@@ -5,7 +5,7 @@ UV ?= uv
 PY = $(UV) run python
 CLI = $(PY) -m vaios.cli
 
-.PHONY: init lint test check verify ingest warehouse freeze backtest llm-eval sourcing-run memos \
+.PHONY: init lint test check verify verifier-eval export-skills ingest warehouse freeze backtest llm-eval sourcing-run memos \
         monitor brief dashboard screenshots extracts replay reproduce clean
 
 init:           ## fresh clone -> ready (deps + headless browser for screenshots)
@@ -58,13 +58,19 @@ extracts:       ## Tableau-ready CSV extracts
 screenshots:    ## headless screenshot of the dashboard into docs/img
 	$(UV) run --group screenshot python scripts/screenshot.py
 
+verifier-eval:  ## test the receipts verifier on gold spans + programmatic corruptions
+	$(CLI) verifier-eval
+
+export-skills:  ## founder bundle: skills + output schemas -> dist/founder-skills-bundle
+	$(CLI) export-skills
+
 replay:         ## re-run every LLM job in strict replay (no model calls) and diff against committed outputs
 	VAIOS_STRICT_REPLAY=1 $(CLI) sourcing-run
 	VAIOS_STRICT_REPLAY=1 $(CLI) llm-eval
 	VAIOS_STRICT_REPLAY=1 $(CLI) brief
 	git diff --stat --exit-code -- results
 
-reproduce: ingest warehouse freeze backtest llm-eval sourcing-run monitor brief extracts dashboard screenshots verify
+reproduce: ingest warehouse freeze backtest llm-eval sourcing-run monitor brief verifier-eval extracts dashboard screenshots verify
 
 clean:          ## delete the rebuilt warehouse (NOT raw pulls, NOT cassettes)
 	rm -f data/warehouse.duckdb

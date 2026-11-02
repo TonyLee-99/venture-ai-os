@@ -7,3 +7,4 @@ __pycache__/
 .llm_sandbox/
 *.pyc
 .DS_Store
+dist/

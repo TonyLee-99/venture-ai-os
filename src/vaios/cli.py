@@ -19,6 +19,7 @@ COMMANDS = {
     "extracts": "vaios.dashboard.extracts:run",
     "manifest": "vaios.dakr.freeze:summarize_manifest",
     "export-skills": "vaios.agents.skills:export_bundle",
+    "verifier-eval": "vaios.receipts.evaluate:run",
 }
 
 
