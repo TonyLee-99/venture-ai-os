@@ -1,0 +1,9 @@
+# raw pulls and rebuilt warehouse (rebuilt by `make reproduce`)
+data/
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.llm_sandbox/
+*.pyc
+.DS_Store
