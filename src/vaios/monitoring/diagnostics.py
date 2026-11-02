@@ -135,9 +135,11 @@ def artifact_check() -> dict:
     out = {"daily_txs_by_chain_2026-08-31_to_09-27": {str(k.date()): {c: int(v) for c, v in r.items()} for k, r in daily.iterrows()},
            "top_facilitators_4w_before_vs_after_2026-09-14": {k: {c: int(v) for c, v in r.items()} for k, r in chg.iterrows()},
            "zero_txs_days_since_2025-06": zero_days}
-    commits = RAW / "github" / "x402scan_commits_2026-09.json"
-    if commits.exists():
-        out["x402scan_commits_2026-09-01_to_09-21"] = json.loads(commits.read_text())
+    raw_commits, kept = RAW / "github" / "x402scan_commits_2026-09.json", RESULTS / "monitoring" / "x402scan_commits_2026-09.json"
+    if raw_commits.exists():  # keep a committed copy so the check recomputes offline
+        kept.write_text(raw_commits.read_text())
+    if kept.exists():
+        out["x402scan_commits_2026-09-01_to_09-21"] = json.loads(kept.read_text())
     return out
 
 
