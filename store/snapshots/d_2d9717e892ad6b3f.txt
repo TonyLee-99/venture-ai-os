@@ -1,0 +1,334 @@
+Fetched 2026-11-02 from https://blog.cloudflare.com/x402/
+
+ment
+Smart Shield
+Snippets
+SOC as a Service
+South Africa
+South America
+Spain
+spdy
+Spectrum
+Speed
+Speed & Reliability
+Speed Brain
+Speed Week
+Spoofing
+Sports
+SQL
+SRE
+SSE
+SSH
+SSL
+Standards
+Startup Enterprise Plan
+Statistics
+StopTheHacker
+Storage
+Sumo Logic
+Super Bowl
+Supercloud
+Supply Chain Attacks
+Support
+Sustainability
+SWAG
+SWG
+Swift
+Switzerland
+SXSW
+SYN
+SYN Flood
+Syria
+TCP
+Team
+Teams Dashboard
+Tech Talks
+TechCrunch
+Technical Writing
+Terraform
+Testimonials
+Testing
+Texas
+Thanksgiving
+The Serverlist Newsletter
+Threat Data
+Threat Feeds
+Threat Intelligence
+Threat Operations
+Threat Report
+Threats
+Tiered Cache
+TikTok
+TLS
+TLS 1.3
+Tools
+Tor
+Tracing
+Traffic
+Transform Rules
+Transparency
+Trends
+Trust & Safety
+TTFB
+TTL
+TURN
+TURN Server
+Turnstile
+TypeScript
+UDP
+Ukraine
+United Kingdom
+Universal SSL
+URL Scanner
+USA
+User Research
+VDI
+Vectorize
+Vetflare
+Video
+Visibility
+Vite
+VoIP
+VPC
+VPN
+Vulnerabilities
+WAF
+WAF Attack Score
+WAF Rules
+Waiting Room
+WARP
+WARP Connector
+WASM
+Web Application Firewall
+Web Asset Discovery
+Web3
+WebAssembly
+Webinars
+WebMCP
+WebP
+WebRTC
+WebSockets
+Wildebeest
+Womenflare
+WordPress
+Workers AI
+Workers Launchpad
+Workers Logs
+Workers Observability
+Workers Sites
+Workers Unbound
+Workers VPC
+Workflows
+World IPv6 Day
+Wrangler
+x402
+Year in Review
+Z3
+Zaraz
+Zero Day Threats
+Zero Trust
+Zero Trust Week
+Zone Versioning
+Artificial Intelligence
+Workers
+Client-Side Security
+Architecture
+Multi-tenant Secuity
+Multi-tenant Security
+cf
+BEACON
+Crawlers
+x402
+Birthday Week
+Coinbase
+Partners
+x402
+September 23, 2025
+Launching the x402 Foundation with Coinbase, and support for x402 transactions
+Will Allen
+,
+Cam Whiteside
+,
+Rohin Lohe
+,
+and
+Steve James
+7 minute read
+COPY URL
+This post is also available in
+Deutsch
+,
+Español
+,
+Français
+,
+繁體中文
+,
+简体中文
+,
+and
+Nederlands
+.
+Cloudflare is partnering with Coinbase to create the x402 Foundation. This foundation’s mission will be to encourage the adoption of the
+x402 protocol
+, an updated framework that allows clients and services to exchange value on the web using a common language. In addition to today’s partnership, we are shipping a set of features to allow developers to use x402 in the
+Agents SDK
+and our
+MCP
+integrations, as well as proposing a new deferred payment scheme.
+Payments in the age of agents
+Payments on the web have historically been designed for humans. We browse a merchant’s website, show intent by adding items to a cart, and confirm our intent to purchase by inputting our credit card information and clicking “Pay.” But what if you want to enable direct transactions between digital services? We need protocols to allow machine-to-machine transactions.
+Every day, sites on Cloudflare send out over a billion HTTP 402 response codes to bots and crawlers trying to access their content and e-commerce stores. This response code comes with a simple message: “Payment Required.”
+Yet these 402 responses too often go unheard. One reason is a lack of standardization. Without a specification for how to format and respond to those response codes, content creators, publishers, and website operators lack adequate tools to convey their payment requests. x402 can give developers a clear, open protocol for websites and automated agents to negotiate payments across the globe.
+A Primer on x402
+Coinbase authored the x402 transaction flow, outlined below, to help machines pay directly for resources over HTTP:
+A client attempts to access a resource gated by x402.
+The server responds with the status code 402 Payment Required. The response body contains payment instructions including the payment amount and recipient.
+The client requests the x402-gated resource with the payment authorization header.
+The payment facilitator verifies the client’s payment payload and settles the transaction.
+The server responds with the requested resource in the response, along with the payment response header that confirms the payment outcome.
+This flow creates programmatic access to resources across the Internet. Clients and servers capable of interpreting the x402 protocol are able to transact without the need for accounts, subscriptions, or API keys.
+x402 can be used to monetize traditional use cases, but also enables monetization of a new class of use cases. For example:
+An assistant that is able to purchase accessories for your Halloween costume from multiple merchants.
+An AI agent that pays per browser rendering session, instead of committing to a monthly subscription fee.
+An autonomous stock trader that makes micropayments for a high quality real-time data feed to drive decisions.
+Future versions of x402 could be agnostic of the payment rails, accommodating credit cards and bank accounts in addition to stablecoins.
+Cloudflare’s pay per crawl: proposing the x402 deferred payment scheme
+Agents and crawlers often require two important functions that already exist in much of today's financial infrastructure: delayed settlement to account for disputes; and a single, aggregated payment to make their accounting simpler. For example, crawlers participating in our
+private beta of pay per crawl
+are able to crawl a vast number of pages easily, generate audit logs, and then be charged a single fee via a connected credit card or bank account at the end of each day.
+To account for these types of payment scenarios, we're proposing a new deferred payment scheme for the x402 protocol. This new scheme is specifically designed for agentic payments that don't need immediate settlement and can be handled either through traditional payment methods or stablecoins. By proposing this addition, we're helping to ensure that any compliant server can optionally decouple the cryptographic handshake from the payment settlement itself, giving agents and servers the ability to use pre-negotiated licensing agreements, batch settlements, or subscriptions.
+We will be bringing this new deferred payment scheme to pay per crawl as we expand and evolve the private beta.
+The Handshake Explained
+Here’s our initial proposal for the handshake that could be released in the next major version of x402:
+1. The Server’s Offer
+Today, an unauthenticated or unauthorized client attempts to access a resource and receives a
+402 Payment Required
+response. The server provides a payment commitment payload that the client can use to construct a re-request. This response is a machine-readable offer, and our proposal includes a new scheme of
+deferred
+.
+HTTP
+/
+1.1
+402
+Payment
+Required
+Content
+-
+Type
+:
+application
+/
+json
+{
+"accepts"
+:
+[
+{
+"scheme"
+:
+"deferred"
+,
+"network"
+:
+"example-network-provider"
+,
+"resource"
+:
+"https://example.com/page"
+,
+"..."
+:
+"..."
+,
+"extras"
+:
+{
+"id"
+:
+"abc123"
+,
+"termsUrl"
+:
+"https://example.com/terms"
+},
+}
+]
+}
+2. The Client's Signed Commitment
+Next, the client re-sends the request with a signed payload containing their payment commitment. The
+deferred
+scheme uses HTTP Message Signatures where a
+JWK-formatted public key
+is available in a hosted directory. The
+Signature-Input
+header clearly explains which parts of the request are included in the
+Signature
+to serve as cryptographic proof of the client's intent, verifiable by the service provider without an on-chain transaction.
+GET
+/
+path
+/
+to
+/
+resource
+HTTP
+/
+1.1
+Host
+:
+www
+.
+example
+.
+com
+User
+-
+Agent
+:
+Mozilla
+/
+5.0
+Chrome
+/
+113.0
+.
+0
+MyBotCrawler
+/
+1.1
+Payment
+:
+scheme
+=
+"deferred"
+,
+network
+=
+"example-network-provider"
+,
+id
+=
+"abc123"
+Signature
+-
+Agent
+:
+signer
+.
+example
+.
+com
+Signature
+-
+Input
+:
+sig
+=
+(
+"payment"
+"signature-agent"
+);
+created
+=
+17

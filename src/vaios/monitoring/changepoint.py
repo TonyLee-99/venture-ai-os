@@ -32,8 +32,8 @@ def pelt(y: np.ndarray, pen_mult: float = 1.0) -> list[int]:
 
 def zscore_detector(y: np.ndarray, window: int = 28, thresh: float = 3.0, refractory: int = 7) -> list[int]:
     d = pd.Series(np.diff(y, prepend=y[0]))
-    mu = d.rolling(window, min_periods=14).mean().shift(1)
-    sd = d.rolling(window, min_periods=14).std().shift(1)
+    mu = d.rolling(window, min_periods=window // 2).mean().shift(1)
+    sd = d.rolling(window, min_periods=window // 2).std().shift(1)
     z = ((d - mu) / sd).to_numpy()
     out, last = [], -10**9
     for i, v in enumerate(z):

@@ -1,0 +1,19 @@
+x402 Foundation announcement feed (https://x402.org/feed/), fetched 2026-11-02.
+Title: Linux Foundation Announces Operational Launch of x402 Foundation to Standardize Internet-Native Payments for AI Agents and Applications
+Published: Tue, 14 Jul 2026 14:38:14 +0000
+Link: https://x402.org/linux-foundation-announces-operational-launch-of-x402-foundation-to-standardize-internet-native-payments-for-ai-agents-and-applications/
+
+Announcements
+https://x402.org/?p=145
+Summary
+The Linux Foundation today announced the operational launch of the x402 Foundation, a new open-governance body formed to steward the x402 protocol – the open standard for internet-native payments over HTTP.
+The x402 protocol, contributed by Coinbase, embeds secure payment capabilities directly into web interactions so that AI agents, APIs, and applications can send and receive payments as seamlessly as they exchange data, with support for payment types ranging from traditional cards to stablecoins.
+Founding members spanning finance, cloud infrastructure, and payments have committed to collaboratively developing the protocol under vendor-neutral governance, ensuring the payment layer of the internet remains open, interoperable, and free from lock-in.
+SAN FRANCISCO, July 14, 2026
+–
+The Linux Foundation
+, the nonprofit organization enabling mass innovation through open source, today announced the operational launch of the
+x402 Foundation
+and the completed contribution of the x402 protocol by Coinbase. The Foundation is now fully active under formal, open governance to steward the x402 protocol – the universal standard that embeds secure payment capabilities directly into web interactions, allowing AI agents, APIs, and applications to process financial transactions as easily as they exchange data.
+“AI agents and automated systems are becoming active participants in the global economy, yet they have lacked a native, secure way to transact,” said Jim Zemlin, CEO of the Linux Foundation. “The operational launch of the x402 Foundation marks a vital milestone in establishing an open, community-governed standard for payments over HTTP. By bringing together leading companies across finance, technology and more, we’re ensuring that the payment layer of the internet remains neutral, highly interoperable and ready to support digital commerce.”
+Under the neutral governance of the Linux Foundation, the x402 Foundation will allow develop

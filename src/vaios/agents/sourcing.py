@@ -28,6 +28,15 @@ INCUMBENTS = {"coinbase", "stripe", "google", "google-agentic-commerce", "visa",
               "apify", "medusajs", "solana-foundation", "ethereum", "base", "circlefin", "x402-foundation",
               "agentic-commerce-protocol", "worldliberty", "moov-io", "thirdweb-dev", "alchemyplatform",
               "metamask", "consensys", "vercel", "supabase", "langchain-ai", "huggingface", "modelcontextprotocol"}
+SHARED_DOMAINS = {"github.com", "x.com", "twitter.com", "docs.google.com", "npmjs.com", "www.npmjs.com", "t.me",
+                  "docs.rs", "pypi.org", "medium.com", "linktr.ee", "discord.gg", "youtube.com", "x402.org",
+                  "vercel.app", "netlify.app", "gitbook.io", "notion.site", "huggingface.co", "crates.io"}
+# Company accounts of large firms: in the niche, but never a pre-seed/seed deal.
+BIG_COMPANY_TOKENS = ["nvidia", "microsoft", "google", "amazon", "aws", "ibm", "oracle", "salesforce", "meta-",
+                      "bnb-chain", "binance", "okx", "bitget", "bybit", "coinbase", "circle", "stripe", "visa",
+                      "paypal", "alibaba", "tencent", "cloudflare", "skalenetwork", "lightninglabs", "chainlink",
+                      "solana-labs", "near", "polygon", "avalanche", "ava-labs", "aptos", "sui-foundation",
+                      "mysten", "starknet", "base-org", "ethereum", "openai", "anthropic", "shopify"]
 STOP_SUFFIX = re.compile(r"(labs?|hq|inc|ai|protocol|network|finance|xyz|io|app|dev|org|official)$")
 
 
@@ -38,7 +47,7 @@ def norm_name(name: str) -> str:
 
 
 def domain(url: str | None) -> str:
-    if not url:
+    if not isinstance(url, str) or not url:
         return ""
     host = urlparse(url if "//" in url else f"https://{url}").netloc.lower()
     return host.removeprefix("www.")
@@ -109,10 +118,11 @@ def resolve(m: pd.DataFrame) -> pd.DataFrame:
 
     first_seen: dict[str, int] = {}
     for i, r in enumerate(m.itertuples()):
-        keys = [f"n:{norm_name(r.name)}"]
-        if r.github_owner:
-            keys.append(f"g:{str(r.github_owner).lower()}")
-        if r.domain and r.domain not in ("github.com", "x.com", "twitter.com", "docs.google.com", "npmjs.com"):
+        name_key = norm_name(r.name)
+        keys = [f"n:{name_key}"] if len(name_key) >= 3 else []
+        if isinstance(r.github_owner, str) and r.github_owner:  # NaN is truthy: check the type
+            keys.append(f"g:{r.github_owner.lower()}")
+        if r.domain and r.domain not in SHARED_DOMAINS:
             keys.append(f"d:{r.domain}")
         for k in keys:
             if k in first_seen:
@@ -145,6 +155,12 @@ def github_scores(con) -> pd.DataFrame:
     return now
 
 
+def is_incumbent(owners: list[str], name: str) -> bool:
+    if set(owners) & INCUMBENTS or norm_name(name) in {norm_name(x) for x in INCUMBENTS}:
+        return True
+    return any(tok in o for o in owners + [name.lower()] for tok in BIG_COMPANY_TOKENS)
+
+
 def owner_type(s, g: pd.DataFrame) -> str | None:
     if s is not None and isinstance(s["owner_type"], str):
         return s["owner_type"]
@@ -169,7 +185,7 @@ def run(con) -> pd.DataFrame:
             "sources": ",".join(sorted(set(g["source"]))), "n_sources": g["source"].nunique(),
             "relevance": relevance(text),
             "owner_type": owner_type(s, g),
-            "incumbent": bool(set(owners) & INCUMBENTS or norm_name(name) in {norm_name(x) for x in INCUMBENTS}),
+            "incumbent": is_incumbent(owners, name),
             "crm_stage": crm_keys.get(norm_name(name)),
             "screen_score": float(s["screen_score"]) if s is not None else np.nan,
             "commits_90d": int(s["commits_90d"]) if s is not None else None,
@@ -182,6 +198,13 @@ def run(con) -> pd.DataFrame:
         }
         ents.append(ent)
     df = pd.DataFrame(ents)
+    # second pass: a facilitator id that prefixes a GitHub owner (payAI -> payainetwork) is the same company
+    facs = [f for f in m.loc[m["source"] == "x402scan", "name"] if len(f) >= 5]
+    for i, r in df[df["facilitator"].isna() & df["github_owner"].notna()].iterrows():
+        hit = next((f for f in facs if r["github_owner"].startswith(f.lower())), None)
+        if hit:
+            df.loc[i, "facilitator"] = hit
+            df.loc[i, "sources"] = ",".join(sorted(set(r["sources"].split(",")) | {"x402scan"}))
     df["relevant"] = df["relevance"] >= 2
     df["investable"] = ~df["incumbent"] & (df["owner_type"].fillna("Organization") != "User")
     df["new_to_crm"] = df["crm_stage"].isna()
@@ -190,8 +213,13 @@ def run(con) -> pd.DataFrame:
     return df.reset_index(drop=True)
 
 
+CORE_RELEVANCE = 4  # at least two strong niche terms: the memo queue is for core agentic-payments companies
+
+
 def shortlist(df: pd.DataFrame, n: int = 8) -> pd.DataFrame:
-    ok = df[df["relevant"] & df["investable"] & df["screen_score"].notna() & df["top_repo"].notna()]
+    """Memo queue: core-niche, investable, NOT already in the CRM, scored, with a repo to read."""
+    ok = df[df["investable"] & df["new_to_crm"] & (df["relevance"] >= CORE_RELEVANCE)
+            & df["screen_score"].notna() & df["top_repo"].notna()]
     return ok.head(n)
 
 

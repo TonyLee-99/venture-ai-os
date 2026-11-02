@@ -1,0 +1,21 @@
+x402 Foundation announcement feed (https://x402.org/feed/), fetched 2026-11-02.
+Title: Linux Foundation Appoints Michael Hursta as Executive Director of the x402 Foundation
+Published: Thu, 01 Oct 2026 14:22:35 +0000
+Link: https://x402.org/linux-foundation-appoints-michael-hursta-as-executive-director-of-the-x402-foundation/
+
+Announcements
+https://x402.org/?p=318
+Payments industry veteran will lead the growing community of more than 50 organizations advancing an open standard for internet-native payments
+Summary
+The Linux Foundation appointed payments veteran Michael Hursta as Executive Director of the x402 Foundation.
+Hursta will lead 50+ member organizations advancing x402, an open standard for internet-native payments across AI agents, applications and APIs.
+With 20+ years of industry experience at Amazon, PwC, and First Data, Hursta brings extensive expertise in payment rails, digital assets and commercial scaling.
+SAN FRANCISCO, Oct. 1, 2026
+–
+The Linux Foundation
+, the nonprofit organization enabling mass innovation through open source, today announced the appointment of payments industry executive Michael Hursta as executive director of the
+x402 Foundation
+. Hursta will lead the foundation as it advances x402, the neutral open standard for internet-native payments, working with its more than 50 active members to build an open, interoperable payment layer for AI agents, applications and APIs.
+Hursta brings more than 20 years of payments industry experience spanning global commerce, payment technology, emerging payment rails, digital assets and industry partnerships. Most recently, he was a partner at Commerce Technology Partners, advising merchants, software companies, payment providers and fintechs on strategy, technology, and new business models. Previously, he led the enterprise payments advisory practice at PwC, where his work included digital assets, tokenization, cross-border payments and emerging payment rails.
+“Michael’s experience across payments, commerce and emerging financial technologies arrives at an important point in the growth of x402,” said Jim Zemlin, CEO of the Linux Foundation. “His leadership bringing new payment technologies from emerging concepts to commercial scale will be invaluable as this community moves that work forward.”
+Hursta also served as head of 

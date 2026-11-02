@@ -1,0 +1,7 @@
+Hacker News story (HN Algolia API, fetched 2026-11-02)
+Title: Monetization Gateway: Charge for any resource behind Cloudflare via x402
+Posted: 2026-07-01
+Points: 355
+Comments: 251
+Link: https://blog.cloudflare.com/monetization-gateway/
+Discussion: https://news.ycombinator.com/item?id=48746914

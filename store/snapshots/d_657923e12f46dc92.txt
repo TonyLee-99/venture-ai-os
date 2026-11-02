@@ -1,0 +1,7 @@
+Hacker News story (HN Algolia API, fetched 2026-11-02)
+Title: Show HN: X402 – an open standard for internet native payments
+Posted: 2025-05-06
+Points: 16
+Comments: 6
+Link: https://www.x402.org/
+Discussion: https://news.ycombinator.com/item?id=43908129

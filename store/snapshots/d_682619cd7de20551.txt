@@ -1,0 +1,7 @@
+Hacker News story (HN Algolia API, fetched 2026-11-02)
+Title: Instant Checkout and the Agentic Commerce Protocol
+Posted: 2025-09-29
+Points: 248
+Comments: 362
+Link: https://openai.com/index/buy-it-in-chatgpt/
+Discussion: https://news.ycombinator.com/item?id=45416080

@@ -1,0 +1,1036 @@
+{
+ "method": "PELT, L2 cost on log1p weekly series, pen = 2*sigma^2*ln(n) (ADR 0005); tolerance +/-7 days",
+ "n_events_total": 13,
+ "events": [
+  {
+   "date": "2025-05-06",
+   "titles": "Show HN: X402 \u2013 an open standard for internet native payments | x402: An open standard for internet-native payments",
+   "sources": "hn,x402_foundation_feed"
+  },
+  {
+   "date": "2025-08-05",
+   "titles": "Agentic commerce is here; add shopping to your agent",
+   "sources": "hn"
+  },
+  {
+   "date": "2025-08-28",
+   "titles": "The Trusted Agentic Commerce Protocol",
+   "sources": "hn"
+  },
+  {
+   "date": "2025-09-16",
+   "titles": "Google announces the Agent Payments Protocol (AP2) | Google's AI Agent Payments Protocol (AP2)",
+   "sources": "curated_verified,hn"
+  },
+  {
+   "date": "2025-09-23",
+   "titles": "Cloudflare and Coinbase announce the x402 Foundation | x402 \u2014 An open protocol for internet-native payments",
+   "sources": "curated_verified,hn"
+  },
+  {
+   "date": "2025-09-29",
+   "titles": "Instant Checkout and the Agentic Commerce Protocol | OpenAI and Stripe create Agentic Commerce Protocol",
+   "sources": "hn"
+  },
+  {
+   "date": "2025-12-11",
+   "titles": "Introducing x402 V2: Evolving the Standard for Internet-native Payments",
+   "sources": "x402_foundation_feed"
+  },
+  {
+   "date": "2026-05-11",
+   "titles": "Introducing x402 Batch Settlement: High-velocity Agentic Commerce",
+   "sources": "x402_foundation_feed"
+  },
+  {
+   "date": "2026-06-01",
+   "titles": "Visa invests in Replit to power agentic payments for developers",
+   "sources": "hn"
+  },
+  {
+   "date": "2026-07-01",
+   "titles": "Cloudflare Monetization Gateway: charge for any resource via x402 | Monetization Gateway: Charge for any resource behind Cloudflare via x402",
+   "sources": "curated_verified,hn"
+  },
+  {
+   "date": "2026-07-06",
+   "titles": "X402, a static blog monetization excercise",
+   "sources": "hn"
+  },
+  {
+   "date": "2026-07-14",
+   "titles": "Linux Foundation Announces Operational Launch of x402 Foundation to Standardize Internet-Native Payments for AI Agents and Applications",
+   "sources": "x402_foundation_feed"
+  },
+  {
+   "date": "2026-10-01",
+   "titles": "Linux Foundation Appoints Michael Hursta as Executive Director of the x402 Foundation",
+   "sources": "x402_foundation_feed"
+  }
+ ],
+ "headline_series": "x402_all_txs",
+ "headline": {
+  "n_events": 12,
+  "n_changepoints": 12,
+  "event_hit_rate": 0.4166666666666667,
+  "false_alarm_rate": 0.6666666666666666,
+  "null_mean_hit_rate": 0.3559,
+  "p_value": 0.4387,
+  "baseline_zscore": {
+   "n_events": 12,
+   "n_changepoints": 7,
+   "event_hit_rate": 0.4166666666666667,
+   "false_alarm_rate": 0.5714285714285714
+  }
+ },
+ "sensitivity_headline": {
+  "pen_x0.5": {
+   "n_changepoints": 14,
+   "event_hit_rate": 0.4166666666666667,
+   "false_alarm_rate": 0.7142857142857143,
+   "null_mean_hit_rate": 0.4103,
+   "p_value": 0.5867
+  },
+  "pen_x2.0": {
+   "n_changepoints": 9,
+   "event_hit_rate": 0.16666666666666666,
+   "false_alarm_rate": 0.7777777777777778,
+   "null_mean_hit_rate": 0.2789,
+   "p_value": 0.869
+  }
+ },
+ "market_series_mean": {
+  "event_hit_rate": 0.2167,
+  "false_alarm_rate": 0.7989,
+  "null_mean_hit_rate": 0.2823
+ },
+ "series": {
+  "x402_all_txs": {
+   "n_events": 12,
+   "n_changepoints": 12,
+   "event_hit_rate": 0.4166666666666667,
+   "false_alarm_rate": 0.6666666666666666,
+   "hit_events": [
+    "2025-08-28",
+    "2025-09-23",
+    "2025-09-29",
+    "2026-06-01",
+    "2026-07-14"
+   ],
+   "null_mean_hit_rate": 0.3559,
+   "p_value": 0.4387,
+   "baseline_zscore": {
+    "n_events": 12,
+    "n_changepoints": 7,
+    "event_hit_rate": 0.4166666666666667,
+    "false_alarm_rate": 0.5714285714285714
+   },
+   "segments": [
+    {
+     "date": "2025-07-21",
+     "median_before": 214.0,
+     "median_after": 2842.0,
+     "ratio": 13.28,
+     "direction": "up"
+    },
+    {
+     "date": "2025-09-01",
+     "median_before": 2842.0,
+     "median_after": 7093.5,
+     "ratio": 2.496,
+     "direction": "up"
+    },
+    {
+     "date": "2025-09-29",
+     "median_before": 7093.5,
+     "median_after": 20863.0,
+     "ratio": 2.941,
+     "direction": "up"
+    },
+    {
+     "date": "2025-10-20",
+     "median_before": 20863.0,
+     "median_after": 3767778.0,
+     "ratio": 180.596,
+     "direction": "up"
+    },
+    {
+     "date": "2025-11-03",
+     "median_before": 3767778.0,
+     "median_after": 15227726.0,
+     "ratio": 4.042,
+     "direction": "up"
+    },
+    {
+     "date": "2026-01-05",
+     "median_before": 15227726.0,
+     "median_after": 5210911.0,
+     "ratio": 0.342,
+     "direction": "down"
+    },
+    {
+     "date": "2026-01-26",
+     "median_before": 5210911.0,
+     "median_after": 1572963.0,
+     "ratio": 0.302,
+     "direction": "down"
+    },
+    {
+     "date": "2026-02-09",
+     "median_before": 1572963.0,
+     "median_after": 802401.0,
+     "ratio": 0.51,
+     "direction": "down"
+    },
+    {
+     "date": "2026-06-08",
+     "median_before": 802401.0,
+     "median_after": 3875761.0,
+     "ratio": 4.83,
+     "direction": "up"
+    },
+    {
+     "date": "2026-07-20",
+     "median_before": 3875761.0,
+     "median_after": 1716800.0,
+     "ratio": 0.443,
+     "direction": "down"
+    },
+    {
+     "date": "2026-08-17",
+     "median_before": 1716800.0,
+     "median_after": 7708357.5,
+     "ratio": 4.49,
+     "direction": "up"
+    },
+    {
+     "date": "2026-09-14",
+     "median_before": 7708357.5,
+     "median_after": 759455.0,
+     "ratio": 0.099,
+     "direction": "down"
+    }
+   ],
+   "weeks": 73
+  },
+  "x402_base_txs": {
+   "n_events": 12,
+   "n_changepoints": 9,
+   "event_hit_rate": 0.16666666666666666,
+   "false_alarm_rate": 0.7777777777777778,
+   "hit_events": [
+    "2025-08-28",
+    "2026-06-01"
+   ],
+   "null_mean_hit_rate": 0.2789,
+   "p_value": 0.869,
+   "baseline_zscore": {
+    "n_events": 12,
+    "n_changepoints": 7,
+    "event_hit_rate": 0.4166666666666667,
+    "false_alarm_rate": 0.5714285714285714
+   },
+   "segments": [
+    {
+     "date": "2025-07-21",
+     "median_before": 214.0,
+     "median_after": 2809.0,
+     "ratio": 13.126,
+     "direction": "up"
+    },
+    {
+     "date": "2025-09-01",
+     "median_before": 2809.0,
+     "median_after": 7486.0,
+     "ratio": 2.665,
+     "direction": "up"
+    },
+    {
+     "date": "2025-10-20",
+     "median_before": 7486.0,
+     "median_after": 3691683.0,
+     "ratio": 493.145,
+     "direction": "up"
+    },
+    {
+     "date": "2025-11-03",
+     "median_before": 3691683.0,
+     "median_after": 10079149.0,
+     "ratio": 2.73,
+     "direction": "up"
+    },
+    {
+     "date": "2026-01-05",
+     "median_before": 10079149.0,
+     "median_after": 3366827.0,
+     "ratio": 0.334,
+     "direction": "down"
+    },
+    {
+     "date": "2026-01-26",
+     "median_before": 3366827.0,
+     "median_after": 367030.0,
+     "ratio": 0.109,
+     "direction": "down"
+    },
+    {
+     "date": "2026-04-06",
+     "median_before": 367030.0,
+     "median_after": 680912.0,
+     "ratio": 1.855,
+     "direction": "up"
+    },
+    {
+     "date": "2026-06-08",
+     "median_before": 680912.0,
+     "median_after": 2412757.0,
+     "ratio": 3.543,
+     "direction": "up"
+    },
+    {
+     "date": "2026-08-24",
+     "median_before": 2412757.0,
+     "median_after": 522340.5,
+     "ratio": 0.216,
+     "direction": "down"
+    }
+   ],
+   "weeks": 73
+  },
+  "x402_solana_txs": {
+   "n_events": 9,
+   "n_changepoints": 7,
+   "event_hit_rate": 0.0,
+   "false_alarm_rate": 1.0,
+   "hit_events": [],
+   "null_mean_hit_rate": 0.2248,
+   "p_value": 1.0,
+   "baseline_zscore": {
+    "n_events": 9,
+    "n_changepoints": 4,
+    "event_hit_rate": 0.1111111111111111,
+    "false_alarm_rate": 0.75
+   },
+   "segments": [
+    {
+     "date": "2025-10-13",
+     "median_before": 1771.0,
+     "median_after": 3785.0,
+     "ratio": 2.137,
+     "direction": "up"
+    },
+    {
+     "date": "2025-10-27",
+     "median_before": 3785.0,
+     "median_after": 146172.0,
+     "ratio": 38.619,
+     "direction": "up"
+    },
+    {
+     "date": "2025-11-17",
+     "median_before": 146172.0,
+     "median_after": 2622436.0,
+     "ratio": 17.941,
+     "direction": "up"
+    },
+    {
+     "date": "2026-02-09",
+     "median_before": 2622436.0,
+     "median_after": 345981.0,
+     "ratio": 0.132,
+     "direction": "down"
+    },
+    {
+     "date": "2026-03-16",
+     "median_before": 345981.0,
+     "median_after": 116305.0,
+     "ratio": 0.336,
+     "direction": "down"
+    },
+    {
+     "date": "2026-08-17",
+     "median_before": 116305.0,
+     "median_after": 5324299.5,
+     "ratio": 45.779,
+     "direction": "up"
+    },
+    {
+     "date": "2026-09-14",
+     "median_before": 5324299.5,
+     "median_after": 130906.0,
+     "ratio": 0.025,
+     "direction": "down"
+    }
+   ],
+   "weeks": 57
+  },
+  "x402_all_volume_usd": {
+   "n_events": 12,
+   "n_changepoints": 10,
+   "event_hit_rate": 0.25,
+   "false_alarm_rate": 0.8,
+   "hit_events": [
+    "2025-08-05",
+    "2025-09-23",
+    "2025-09-29"
+   ],
+   "null_mean_hit_rate": 0.3047,
+   "p_value": 0.7399,
+   "baseline_zscore": {
+    "n_events": 12,
+    "n_changepoints": 6,
+    "event_hit_rate": 0.25,
+    "false_alarm_rate": 0.6666666666666666
+   },
+   "segments": [
+    {
+     "date": "2025-07-28",
+     "median_before": 36.77,
+     "median_after": 1003.77,
+     "ratio": 27.295,
+     "direction": "up"
+    },
+    {
+     "date": "2025-08-11",
+     "median_before": 1003.77,
+     "median_after": 225.31,
+     "ratio": 0.224,
+     "direction": "down"
+    },
+    {
+     "date": "2025-09-29",
+     "median_before": 225.31,
+     "median_after": 3705.32,
+     "ratio": 16.445,
+     "direction": "up"
+    },
+    {
+     "date": "2025-10-20",
+     "median_before": 3705.32,
+     "median_after": 3050955.77,
+     "ratio": 823.398,
+     "direction": "up"
+    },
+    {
+     "date": "2025-11-03",
+     "median_before": 3050955.77,
+     "median_after": 9102036.71,
+     "ratio": 2.983,
+     "direction": "up"
+    },
+    {
+     "date": "2025-11-24",
+     "median_before": 9102036.71,
+     "median_after": 2419795.31,
+     "ratio": 0.266,
+     "direction": "down"
+    },
+    {
+     "date": "2025-12-22",
+     "median_before": 2419795.31,
+     "median_after": 540094.16,
+     "ratio": 0.223,
+     "direction": "down"
+    },
+    {
+     "date": "2026-03-23",
+     "median_before": 540094.16,
+     "median_after": 133562.39,
+     "ratio": 0.247,
+     "direction": "down"
+    },
+    {
+     "date": "2026-04-06",
+     "median_before": 133562.39,
+     "median_after": 544883.87,
+     "ratio": 4.08,
+     "direction": "up"
+    },
+    {
+     "date": "2026-04-27",
+     "median_before": 544883.87,
+     "median_after": 236419.38,
+     "ratio": 0.434,
+     "direction": "down"
+    }
+   ],
+   "weeks": 73
+  },
+  "x402_all_peak_daily_buyers": {
+   "n_events": 12,
+   "n_changepoints": 8,
+   "event_hit_rate": 0.25,
+   "false_alarm_rate": 0.75,
+   "hit_events": [
+    "2025-09-29",
+    "2026-07-01",
+    "2026-07-06"
+   ],
+   "null_mean_hit_rate": 0.247,
+   "p_value": 0.5915,
+   "baseline_zscore": {
+    "n_events": 12,
+    "n_changepoints": 5,
+    "event_hit_rate": 0.0,
+    "false_alarm_rate": 1.0
+   },
+   "segments": [
+    {
+     "date": "2025-07-21",
+     "median_before": 12.5,
+     "median_after": 34.0,
+     "ratio": 2.72,
+     "direction": "up"
+    },
+    {
+     "date": "2025-10-06",
+     "median_before": 34.0,
+     "median_after": 354.0,
+     "ratio": 10.412,
+     "direction": "up"
+    },
+    {
+     "date": "2025-10-20",
+     "median_before": 354.0,
+     "median_after": 41875.5,
+     "ratio": 118.292,
+     "direction": "up"
+    },
+    {
+     "date": "2025-11-17",
+     "median_before": 41875.5,
+     "median_after": 21042.0,
+     "ratio": 0.502,
+     "direction": "down"
+    },
+    {
+     "date": "2026-01-05",
+     "median_before": 21042.0,
+     "median_after": 5229.0,
+     "ratio": 0.249,
+     "direction": "down"
+    },
+    {
+     "date": "2026-03-23",
+     "median_before": 5229.0,
+     "median_after": 1550.0,
+     "ratio": 0.296,
+     "direction": "down"
+    },
+    {
+     "date": "2026-04-13",
+     "median_before": 1550.0,
+     "median_after": 10854.0,
+     "ratio": 7.003,
+     "direction": "up"
+    },
+    {
+     "date": "2026-06-29",
+     "median_before": 10854.0,
+     "median_after": 3791.0,
+     "ratio": 0.349,
+     "direction": "down"
+    }
+   ],
+   "weeks": 73
+  },
+  "facilitator_coinbase_txs": {
+   "n_events": 12,
+   "n_changepoints": 10,
+   "event_hit_rate": 0.16666666666666666,
+   "false_alarm_rate": 0.8,
+   "hit_events": [
+    "2025-08-28",
+    "2026-06-01"
+   ],
+   "null_mean_hit_rate": 0.2908,
+   "p_value": 0.8812,
+   "baseline_zscore": {
+    "n_events": 12,
+    "n_changepoints": 6,
+    "event_hit_rate": 0.25,
+    "false_alarm_rate": 0.6666666666666666
+   },
+   "segments": [
+    {
+     "date": "2025-07-21",
+     "median_before": 196.5,
+     "median_after": 2609.0,
+     "ratio": 13.277,
+     "direction": "up"
+    },
+    {
+     "date": "2025-09-01",
+     "median_before": 2609.0,
+     "median_after": 6785.0,
+     "ratio": 2.601,
+     "direction": "up"
+    },
+    {
+     "date": "2025-10-20",
+     "median_before": 6785.0,
+     "median_after": 2765114.5,
+     "ratio": 407.533,
+     "direction": "up"
+    },
+    {
+     "date": "2025-11-03",
+     "median_before": 2765114.5,
+     "median_after": 6987057.0,
+     "ratio": 2.527,
+     "direction": "up"
+    },
+    {
+     "date": "2026-01-05",
+     "median_before": 6987057.0,
+     "median_after": 686412.0,
+     "ratio": 0.098,
+     "direction": "down"
+    },
+    {
+     "date": "2026-01-19",
+     "median_before": 686412.0,
+     "median_after": 65722.0,
+     "ratio": 0.096,
+     "direction": "down"
+    },
+    {
+     "date": "2026-02-09",
+     "median_before": 65722.0,
+     "median_after": 210484.0,
+     "ratio": 3.203,
+     "direction": "up"
+    },
+    {
+     "date": "2026-04-06",
+     "median_before": 210484.0,
+     "median_after": 627013.0,
+     "ratio": 2.979,
+     "direction": "up"
+    },
+    {
+     "date": "2026-06-08",
+     "median_before": 627013.0,
+     "median_after": 2304730.0,
+     "ratio": 3.676,
+     "direction": "up"
+    },
+    {
+     "date": "2026-08-24",
+     "median_before": 2304730.0,
+     "median_after": 480568.5,
+     "ratio": 0.209,
+     "direction": "down"
+    }
+   ],
+   "weeks": 77
+  },
+  "facilitator_daydreams_txs": {
+   "n_events": 7,
+   "n_changepoints": 7,
+   "event_hit_rate": 0.2857142857142857,
+   "false_alarm_rate": 0.7142857142857143,
+   "hit_events": [
+    "2025-12-11",
+    "2026-06-01"
+   ],
+   "null_mean_hit_rate": 0.2975,
+   "p_value": 0.6523,
+   "baseline_zscore": {
+    "n_events": 7,
+    "n_changepoints": 2,
+    "event_hit_rate": 0.14285714285714285,
+    "false_alarm_rate": 0.5
+   },
+   "segments": [
+    {
+     "date": "2025-10-27",
+     "median_before": 575.0,
+     "median_after": 1836129.0,
+     "ratio": 3193.268,
+     "direction": "up"
+    },
+    {
+     "date": "2025-12-01",
+     "median_before": 1836129.0,
+     "median_after": 249292.5,
+     "ratio": 0.136,
+     "direction": "down"
+    },
+    {
+     "date": "2025-12-15",
+     "median_before": 249292.5,
+     "median_after": 806350.5,
+     "ratio": 3.235,
+     "direction": "up"
+    },
+    {
+     "date": "2025-12-29",
+     "median_before": 806350.5,
+     "median_after": 28.0,
+     "ratio": 0.0,
+     "direction": "down"
+    },
+    {
+     "date": "2026-02-02",
+     "median_before": 28.0,
+     "median_after": 726.5,
+     "ratio": 25.946,
+     "direction": "up"
+    },
+    {
+     "date": "2026-03-30",
+     "median_before": 726.5,
+     "median_after": 7.0,
+     "ratio": 0.01,
+     "direction": "down"
+    },
+    {
+     "date": "2026-06-01",
+     "median_before": 7.0,
+     "median_after": 149.0,
+     "ratio": 21.286,
+     "direction": "up"
+    }
+   ],
+   "weeks": 55
+  },
+  "facilitator_dexter_txs": {
+   "n_events": 7,
+   "n_changepoints": 8,
+   "event_hit_rate": 0.42857142857142855,
+   "false_alarm_rate": 0.75,
+   "hit_events": [
+    "2026-06-01",
+    "2026-07-06",
+    "2026-07-14"
+   ],
+   "null_mean_hit_rate": 0.3512,
+   "p_value": 0.4771,
+   "baseline_zscore": {
+    "n_events": 7,
+    "n_changepoints": 2,
+    "event_hit_rate": 0.0,
+    "false_alarm_rate": 1.0
+   },
+   "segments": [
+    {
+     "date": "2025-11-17",
+     "median_before": 23680.0,
+     "median_after": 1955198.0,
+     "ratio": 82.567,
+     "direction": "up"
+    },
+    {
+     "date": "2026-02-02",
+     "median_before": 1955198.0,
+     "median_after": 311703.5,
+     "ratio": 0.159,
+     "direction": "down"
+    },
+    {
+     "date": "2026-03-16",
+     "median_before": 311703.5,
+     "median_after": 63847.0,
+     "ratio": 0.205,
+     "direction": "down"
+    },
+    {
+     "date": "2026-06-01",
+     "median_before": 63847.0,
+     "median_after": 1741.0,
+     "ratio": 0.027,
+     "direction": "down"
+    },
+    {
+     "date": "2026-06-15",
+     "median_before": 1741.0,
+     "median_after": 10359.0,
+     "ratio": 5.95,
+     "direction": "up"
+    },
+    {
+     "date": "2026-07-13",
+     "median_before": 10359.0,
+     "median_after": 108399.0,
+     "ratio": 10.464,
+     "direction": "up"
+    },
+    {
+     "date": "2026-08-03",
+     "median_before": 108399.0,
+     "median_after": 26664.0,
+     "ratio": 0.246,
+     "direction": "down"
+    },
+    {
+     "date": "2026-08-24",
+     "median_before": 26664.0,
+     "median_after": 5177.5,
+     "ratio": 0.194,
+     "direction": "down"
+    }
+   ],
+   "weeks": 53
+  },
+  "facilitator_figment-facilitator_txs": {
+   "n_events": 4,
+   "n_changepoints": 5,
+   "event_hit_rate": 0.5,
+   "false_alarm_rate": 0.8,
+   "hit_events": [
+    "2026-07-06",
+    "2026-07-14"
+   ],
+   "null_mean_hit_rate": 0.3679,
+   "p_value": 0.4607,
+   "baseline_zscore": {
+    "n_events": 4,
+    "n_changepoints": 2,
+    "event_hit_rate": 0.0,
+    "false_alarm_rate": 1.0
+   },
+   "segments": [
+    {
+     "date": "2026-07-13",
+     "median_before": 38.0,
+     "median_after": 1.0,
+     "ratio": 0.026,
+     "direction": "down"
+    },
+    {
+     "date": "2026-08-10",
+     "median_before": 1.0,
+     "median_after": 4862.0,
+     "ratio": 4862.0,
+     "direction": "up"
+    },
+    {
+     "date": "2026-08-24",
+     "median_before": 4862.0,
+     "median_after": 1473925.0,
+     "ratio": 303.152,
+     "direction": "up"
+    },
+    {
+     "date": "2026-09-14",
+     "median_before": 1473925.0,
+     "median_after": 28503.0,
+     "ratio": 0.019,
+     "direction": "down"
+    },
+    {
+     "date": "2026-10-19",
+     "median_before": 28503.0,
+     "median_after": 0.0,
+     "ratio": 0.0,
+     "direction": "down"
+    }
+   ],
+   "weeks": 18
+  },
+  "facilitator_heurist_txs": {
+   "n_events": 7,
+   "n_changepoints": 7,
+   "event_hit_rate": 0.0,
+   "false_alarm_rate": 1.0,
+   "hit_events": [],
+   "null_mean_hit_rate": 0.3151,
+   "p_value": 1.0,
+   "baseline_zscore": {
+    "n_events": 7,
+    "n_changepoints": 4,
+    "event_hit_rate": 0.14285714285714285,
+    "false_alarm_rate": 0.75
+   },
+   "segments": [
+    {
+     "date": "2025-11-17",
+     "median_before": 19187.5,
+     "median_after": 1154431.0,
+     "ratio": 60.166,
+     "direction": "up"
+    },
+    {
+     "date": "2025-12-29",
+     "median_before": 1154431.0,
+     "median_after": 121755.0,
+     "ratio": 0.105,
+     "direction": "down"
+    },
+    {
+     "date": "2026-01-19",
+     "median_before": 121755.0,
+     "median_after": 9498.0,
+     "ratio": 0.078,
+     "direction": "down"
+    },
+    {
+     "date": "2026-02-02",
+     "median_before": 9498.0,
+     "median_after": 102.0,
+     "ratio": 0.011,
+     "direction": "down"
+    },
+    {
+     "date": "2026-06-15",
+     "median_before": 102.0,
+     "median_after": 504.0,
+     "ratio": 4.941,
+     "direction": "up"
+    },
+    {
+     "date": "2026-08-03",
+     "median_before": 504.0,
+     "median_after": 6.0,
+     "ratio": 0.012,
+     "direction": "down"
+    },
+    {
+     "date": "2026-10-19",
+     "median_before": 6.0,
+     "median_after": 0.0,
+     "ratio": 0.0,
+     "direction": "down"
+    }
+   ],
+   "weeks": 52
+  },
+  "facilitator_payAI_txs": {
+   "n_events": 12,
+   "n_changepoints": 16,
+   "event_hit_rate": 0.4166666666666667,
+   "false_alarm_rate": 0.75,
+   "hit_events": [
+    "2025-08-05",
+    "2025-09-29",
+    "2026-06-01",
+    "2026-07-01",
+    "2026-07-06"
+   ],
+   "null_mean_hit_rate": 0.4383,
+   "p_value": 0.6523,
+   "baseline_zscore": {
+    "n_events": 12,
+    "n_changepoints": 5,
+    "event_hit_rate": 0.08333333333333333,
+    "false_alarm_rate": 0.8
+   },
+   "segments": [
+    {
+     "date": "2025-06-02",
+     "median_before": 11.0,
+     "median_after": 0.0,
+     "ratio": 0.0,
+     "direction": "down"
+    },
+    {
+     "date": "2025-06-30",
+     "median_before": 0.0,
+     "median_after": 5.0,
+     "ratio": null,
+     "direction": "up"
+    },
+    {
+     "date": "2025-08-04",
+     "median_before": 5.0,
+     "median_after": 0.5,
+     "ratio": 0.1,
+     "direction": "down"
+    },
+    {
+     "date": "2025-08-18",
+     "median_before": 0.5,
+     "median_after": 8.0,
+     "ratio": 16.0,
+     "direction": "up"
+    },
+    {
+     "date": "2025-09-08",
+     "median_before": 8.0,
+     "median_after": 33.5,
+     "ratio": 4.188,
+     "direction": "up"
+    },
+    {
+     "date": "2025-10-06",
+     "median_before": 33.5,
+     "median_after": 178.0,
+     "ratio": 5.313,
+     "direction": "up"
+    },
+    {
+     "date": "2025-10-20",
+     "median_before": 178.0,
+     "median_after": 474236.0,
+     "ratio": 2664.247,
+     "direction": "up"
+    },
+    {
+     "date": "2025-11-10",
+     "median_before": 474236.0,
+     "median_after": 2988322.0,
+     "ratio": 6.301,
+     "direction": "up"
+    },
+    {
+     "date": "2026-01-26",
+     "median_before": 2988322.0,
+     "median_after": 577641.5,
+     "ratio": 0.193,
+     "direction": "down"
+    },
+    {
+     "date": "2026-02-09",
+     "median_before": 577641.5,
+     "median_after": 110156.0,
+     "ratio": 0.191,
+     "direction": "down"
+    },
+    {
+     "date": "2026-03-16",
+     "median_before": 110156.0,
+     "median_after": 50937.0,
+     "ratio": 0.462,
+     "direction": "down"
+    },
+    {
+     "date": "2026-06-01",
+     "median_before": 50937.0,
+     "median_after": 127431.5,
+     "ratio": 2.502,
+     "direction": "up"
+    },
+    {
+     "date": "2026-06-29",
+     "median_before": 127431.5,
+     "median_after": 54528.0,
+     "ratio": 0.428,
+     "direction": "down"
+    },
+    {
+     "date": "2026-08-17",
+     "median_before": 54528.0,
+     "median_after": 4485090.0,
+     "ratio": 82.253,
+     "direction": "up"
+    },
+    {
+     "date": "2026-09-14",
+     "median_before": 4485090.0,
+     "median_after": 49368.5,
+     "ratio": 0.011,
+     "direction": "down"
+    },
+    {
+     "date": "2026-10-12",
+     "median_before": 49368.5,
+     "median_after": 126720.0,
+     "ratio": 2.567,
+     "direction": "up"
+    }
+   ],
+   "weeks": 76
+  }
+ }
+}

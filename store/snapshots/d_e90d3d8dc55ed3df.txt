@@ -1,0 +1,7 @@
+Hacker News story (HN Algolia API, fetched 2026-11-02)
+Title: x402 — An open protocol for internet-native payments
+Posted: 2025-09-23
+Points: 228
+Comments: 147
+Link: https://www.x402.org/
+Discussion: https://news.ycombinator.com/item?id=45347335

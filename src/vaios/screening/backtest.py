@@ -117,7 +117,7 @@ def run(n_boot: int = 1000) -> dict:
         "scores": scores, "paired_vs_best_baseline": paired, "per_t0": per_t0,
         "coefficients_all_t0": coefs,
         "top20_last_test_t0": [{"name": r.name, "category": r.category, "score": round(r.s_logit_full, 4),
-                                "raised_within_12m": bool(r.raised), "leads": r.leads}
+                                "raised_within_12m": bool(r.raised), "leads": r.leads if isinstance(r.leads, str) else None}
                                for r in last.itertuples()],
     }
     (OUT / "backtest.json").write_text(json.dumps(result, indent=2) + "\n")

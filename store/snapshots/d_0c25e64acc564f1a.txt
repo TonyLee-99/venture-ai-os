@@ -1,0 +1,20 @@
+x402 Foundation announcement feed (https://x402.org/feed/), fetched 2026-11-02.
+Title: Introducing x402 V2: Evolving the Standard for Internet-native Payments
+Published: Thu, 11 Dec 2025 09:00:10 +0000
+Link: https://x402.org/x402-v2-launch/
+
+blog
+https://x402.org/?p=23
+By: Erik Reppel, Carson Roscoe, Josh Nickerson TL;DR: Building on six months of real-world use, x402 V2 expands the protocol beyond single-call, exact payments. It adds wallet-based identity (skip repaying...
+By: Erik Reppel, Carson Roscoe, Josh Nickerson
+TL;DR: Building on six months of real-world use, x402 V2 expands the protocol beyond single-call, exact payments. It adds wallet-based identity (skip repaying on every call), automatic API discovery, dynamic payment recipients, support for more chains and fiat via CAIP standards, and a fully modular SDK for custom networks and schemes. All aimed at making x402 cleaner, more extensible, and future-proof, enabling unified payment models and wallet-based access for agents and humans alike.
+Note: This update comes after a 2 week community feedback period on the proposed V2 spec. Huge thanks to the builders, researchers, and teams across ecosystems who reviewed early drafts and shared feedback. x402 is stronger because of you. We’re excited to share more updates on the protocol and the launch of the independent
+x402 Foundation
+soon. x402’s reference SDKs are fully backward-compatible with V1.
+Why x402 needed a V2
+x402 launched in May 2025 with a simple idea: embed payments directly into HTTP using the long-dormant 402 status code. In just a few months, it has processed over 100M payments across APIs, apps, and AI agents, powering everything from paid API calls to autonomous agents buying compute and data on-demand.
+V2 evolves the specification based on learnings from 6 months of x402 performing real-world payments:
+Clearer separation between clients, servers, facilitators, and the x402 reference SDK
+Tweaks to the data type declarations to increase clarity, reduce redundancy, and make x402 easier to implement on new chains
+Formalizing the concept of “Extensions” to make it easier to experiment and extend x402 without the need to fork
+Moving all payment data to headers for the HTTP transport, f

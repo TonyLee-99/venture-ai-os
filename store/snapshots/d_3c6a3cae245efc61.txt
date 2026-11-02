@@ -1,0 +1,7 @@
+Hacker News story (HN Algolia API, fetched 2026-11-02)
+Title: Google's AI Agent Payments Protocol (AP2)
+Posted: 2025-09-16
+Points: 29
+Comments: 5
+Link: https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol
+Discussion: https://news.ycombinator.com/item?id=45262858

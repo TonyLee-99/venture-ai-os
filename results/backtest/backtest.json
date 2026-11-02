@@ -21,79 +21,79 @@
   "n_positives_test": 80,
   "n_protocols_test": 1180,
   "base_rate_test": 0.0172,
-  "n_bootstrap": 30,
+  "n_bootstrap": 1000,
   "bootstrap": "clustered by protocol",
   "scores": {
     "s_logit_full": {
       "label": "Logistic, all point-in-time features (walk-forward)",
       "leakage_exposed": false,
-      "auc": 0.8158,
+      "auc": 0.8097,
       "auc_ci95": [
-        0.7425,
-        0.8701
+        0.7246,
+        0.8859
       ],
-      "p@20": 0.22,
+      "p@20": 0.18,
       "p@20_ci95": [
-        0.1472,
-        0.3227
+        0.09,
+        0.26
       ],
       "p@50": 0.148,
       "p@50_ci95": [
-        0.1149,
-        0.2073
+        0.092,
+        0.216
       ],
-      "lift@50": 8.7802,
+      "lift@50": 8.96,
       "lift@50_ci95": [
-        7.2513,
-        11.0247
+        6.3924,
+        11.908
       ]
     },
     "s_logit_github": {
       "label": "Logistic, GitHub-only features (walk-forward; live niche score)",
       "leakage_exposed": false,
-      "auc": 0.6191,
+      "auc": 0.7364,
       "auc_ci95": [
-        0.5946,
-        0.663
+        0.6563,
+        0.8071
       ],
-      "p@20": 0.06,
+      "p@20": 0.04,
       "p@20_ci95": [
-        0.0273,
-        0.111
+        0.01,
+        0.12
       ],
       "p@50": 0.056,
       "p@50_ci95": [
-        0.036,
-        0.092
+        0.02,
+        0.096
       ],
-      "lift@50": 3.136,
+      "lift@50": 2.8358,
       "lift@50_ci95": [
-        2.0019,
-        5.1007
+        1.022,
+        4.6256
       ]
     },
     "s_heuristic": {
       "label": "Pre-registered heuristic (no fitting)",
       "leakage_exposed": false,
-      "auc": 0.775,
+      "auc": 0.7893,
       "auc_ci95": [
-        0.7104,
-        0.8276
+        0.7114,
+        0.8628
       ],
-      "p@20": 0.14,
+      "p@20": 0.13,
       "p@20_ci95": [
-        0.0545,
-        0.1927
+        0.07,
+        0.22
       ],
-      "p@50": 0.104,
+      "p@50": 0.116,
       "p@50_ci95": [
-        0.0665,
-        0.1422
+        0.0719,
+        0.168
       ],
-      "lift@50": 5.6145,
+      "lift@50": 6.2019,
       "lift@50_ci95": [
-        3.7612,
-        7.8245
+        4.2567,
+        8.3933
       ]
     },
     "b_random": {
@@ -101,13 +101,13 @@
       "leakage_exposed": false,
       "auc": 0.468,
       "auc_ci95": [
-        0.4323,
-        0.5061
+        0.4048,
+        0.5298
       ],
       "p@20": 0.01,
       "p@20_ci95": [
         0.0,
-        0.0327
+        0.03
       ],
       "p@50": 0.012,
       "p@50_ci95": [
@@ -117,7 +117,7 @@
       "lift@50": 0.5617,
       "lift@50_ci95": [
         0.0,
-        1.1796
+        1.3129
       ]
     },
     "b_tvl": {
@@ -125,47 +125,47 @@
       "leakage_exposed": false,
       "auc": 0.7377,
       "auc_ci95": [
-        0.6516,
-        0.7992
+        0.6418,
+        0.8222
       ],
       "p@20": 0.09,
       "p@20_ci95": [
-        0.0173,
-        0.1637
+        0.0398,
+        0.18
       ],
       "p@50": 0.076,
       "p@50_ci95": [
-        0.0418,
-        0.1211
+        0.036,
+        0.12
       ],
       "lift@50": 4.5097,
       "lift@50_ci95": [
-        2.454,
-        6.2375
+        2.2021,
+        6.7063
       ]
     },
     "b_commits": {
       "label": "Baseline: commits in last 90 days",
       "leakage_exposed": false,
-      "auc": 0.4962,
+      "auc": 0.7363,
       "auc_ci95": [
-        0.4657,
-        0.5654
+        0.6499,
+        0.8155
       ],
-      "p@20": 0.05,
+      "p@20": 0.03,
       "p@20_ci95": [
-        0.02,
-        0.1282
+        0.0,
+        0.09
       ],
-      "p@50": 0.044,
+      "p@50": 0.072,
       "p@50_ci95": [
-        0.0269,
-        0.0891
+        0.032,
+        0.124
       ],
-      "lift@50": 2.2528,
+      "lift@50": 3.6963,
       "lift@50_ci95": [
-        1.6492,
-        4.4218
+        1.7242,
+        6.0999
       ]
     },
     "b_newest": {
@@ -173,8 +173,8 @@
       "leakage_exposed": false,
       "auc": 0.7156,
       "auc_ci95": [
-        0.665,
-        0.7571
+        0.639,
+        0.7865
       ],
       "p@20": 0.08,
       "p@20_ci95": [
@@ -183,13 +183,13 @@
       ],
       "p@50": 0.048,
       "p@50_ci95": [
-        0.0229,
-        0.072
+        0.0279,
+        0.076
       ],
       "lift@50": 2.4615,
       "lift@50_ci95": [
-        1.0856,
-        3.6887
+        1.3267,
+        4.1809
       ]
     },
     "b_prior_funding": {
@@ -197,73 +197,73 @@
       "leakage_exposed": false,
       "auc": 0.7735,
       "auc_ci95": [
-        0.7086,
+        0.6898,
         0.8482
       ],
       "p@20": 0.17,
       "p@20_ci95": [
-        0.0973,
-        0.2127
+        0.08,
+        0.25
       ],
       "p@50": 0.14,
       "p@50_ci95": [
-        0.1007,
-        0.1906
+        0.088,
+        0.204
       ],
       "lift@50": 8.5815,
       "lift@50_ci95": [
-        6.7182,
-        10.3213
+        5.7167,
+        11.4224
       ]
     },
     "leaky_stars_now": {
       "label": "Reference: today's GitHub stars (LEAKAGE-EXPOSED, not a fair baseline)",
       "leakage_exposed": true,
-      "auc": 0.5196,
+      "auc": 0.7257,
       "auc_ci95": [
-        0.4891,
-        0.5909
+        0.6491,
+        0.7896
       ],
-      "p@20": 0.05,
+      "p@20": 0.06,
       "p@20_ci95": [
-        0.0073,
-        0.0927
+        0.0,
+        0.14
       ],
       "p@50": 0.04,
       "p@50_ci95": [
-        0.0178,
-        0.0702
+        0.008,
+        0.088
       ],
-      "lift@50": 2.0526,
+      "lift@50": 1.8253,
       "lift@50_ci95": [
-        0.8582,
-        3.6653
+        0.2931,
+        4.1487
       ]
     }
   },
   "paired_vs_best_baseline": {
     "s_logit_full": {
       "best_baseline": "b_prior_funding",
-      "auc_diff": 0.0423,
+      "auc_diff": 0.0363,
       "ci95": [
-        -0.0103,
-        0.0936
+        -0.0221,
+        0.1001
       ]
     },
     "s_logit_github": {
       "best_baseline": "b_prior_funding",
-      "auc_diff": -0.1544,
+      "auc_diff": -0.0371,
       "ci95": [
-        -0.2246,
-        -0.0832
+        -0.1217,
+        0.0475
       ]
     },
     "s_heuristic": {
       "best_baseline": "b_prior_funding",
-      "auc_diff": 0.0015,
+      "auc_diff": 0.0159,
       "ci95": [
-        -0.061,
-        0.0638
+        -0.0691,
+        0.1068
       ]
     }
   },
@@ -274,19 +274,19 @@
         "n": 645,
         "positives": 19,
         "base_rate": 0.0295,
-        "auc": 0.7915,
-        "spearman": 0.1707,
-        "p@20": 0.2,
-        "p@50": 0.14,
-        "lift@50": 4.7526
+        "auc": 0.7558,
+        "spearman": 0.1499,
+        "p@20": 0.15,
+        "p@50": 0.1,
+        "lift@50": 3.3947
       },
       {
         "t0": "2024-01-01",
         "n": 801,
         "positives": 16,
         "base_rate": 0.02,
-        "auc": 0.7967,
-        "spearman": 0.1438,
+        "auc": 0.804,
+        "spearman": 0.1473,
         "p@20": 0.2,
         "p@50": 0.14,
         "lift@50": 7.0088
@@ -296,9 +296,9 @@
         "n": 957,
         "positives": 13,
         "base_rate": 0.0136,
-        "auc": 0.7625,
-        "spearman": 0.1052,
-        "p@20": 0.3,
+        "auc": 0.7524,
+        "spearman": 0.1012,
+        "p@20": 0.2,
         "p@50": 0.16,
         "lift@50": 11.7785
       },
@@ -307,19 +307,19 @@
         "n": 1072,
         "positives": 19,
         "base_rate": 0.0177,
-        "auc": 0.8663,
-        "spearman": 0.1674,
-        "p@20": 0.25,
-        "p@50": 0.2,
-        "lift@50": 11.2842
+        "auc": 0.8703,
+        "spearman": 0.1693,
+        "p@20": 0.2,
+        "p@50": 0.24,
+        "lift@50": 13.5411
       },
       {
         "t0": "2025-07-01",
         "n": 1180,
         "positives": 13,
         "base_rate": 0.011,
-        "auc": 0.8619,
-        "spearman": 0.1309,
+        "auc": 0.866,
+        "spearman": 0.1323,
         "p@20": 0.15,
         "p@50": 0.1,
         "lift@50": 9.0769
@@ -331,8 +331,8 @@
         "n": 645,
         "positives": 19,
         "base_rate": 0.0295,
-        "auc": 0.6291,
-        "spearman": 0.1024,
+        "auc": 0.6349,
+        "spearman": 0.079,
         "p@20": 0.1,
         "p@50": 0.08,
         "lift@50": 2.7158
@@ -342,19 +342,19 @@
         "n": 801,
         "positives": 16,
         "base_rate": 0.02,
-        "auc": 0.611,
-        "spearman": 0.0738,
+        "auc": 0.7431,
+        "spearman": 0.1179,
         "p@20": 0.05,
-        "p@50": 0.06,
-        "lift@50": 3.0037
+        "p@50": 0.08,
+        "lift@50": 4.005
       },
       {
         "t0": "2024-07-01",
         "n": 957,
         "positives": 13,
         "base_rate": 0.0136,
-        "auc": 0.6093,
-        "spearman": 0.0599,
+        "auc": 0.7013,
+        "spearman": 0.0808,
         "p@20": 0.0,
         "p@50": 0.04,
         "lift@50": 2.9446
@@ -364,22 +364,22 @@
         "n": 1072,
         "positives": 19,
         "base_rate": 0.0177,
-        "auc": 0.6139,
-        "spearman": 0.0715,
+        "auc": 0.8116,
+        "spearman": 0.1425,
         "p@20": 0.05,
-        "p@50": 0.06,
-        "lift@50": 3.3853
+        "p@50": 0.08,
+        "lift@50": 4.5137
       },
       {
         "t0": "2025-07-01",
         "n": 1180,
         "positives": 13,
         "base_rate": 0.011,
-        "auc": 0.632,
-        "spearman": 0.0655,
-        "p@20": 0.1,
-        "p@50": 0.04,
-        "lift@50": 3.6308
+        "auc": 0.7911,
+        "spearman": 0.1053,
+        "p@20": 0.0,
+        "p@50": 0.0,
+        "lift@50": 0.0
       }
     ],
     "s_heuristic": [
@@ -388,20 +388,20 @@
         "n": 645,
         "positives": 19,
         "base_rate": 0.0295,
-        "auc": 0.7812,
-        "spearman": 0.1647,
-        "p@20": 0.25,
-        "p@50": 0.16,
-        "lift@50": 5.4316
+        "auc": 0.813,
+        "spearman": 0.1833,
+        "p@20": 0.2,
+        "p@50": 0.18,
+        "lift@50": 6.1105
       },
       {
         "t0": "2024-01-01",
         "n": 801,
         "positives": 16,
         "base_rate": 0.02,
-        "auc": 0.6988,
-        "spearman": 0.0963,
-        "p@20": 0.2,
+        "auc": 0.73,
+        "spearman": 0.1115,
+        "p@20": 0.15,
         "p@50": 0.12,
         "lift@50": 6.0075
       },
@@ -410,33 +410,33 @@
         "n": 957,
         "positives": 13,
         "base_rate": 0.0136,
-        "auc": 0.7596,
-        "spearman": 0.1041,
-        "p@20": 0.0,
-        "p@50": 0.06,
-        "lift@50": 4.4169
+        "auc": 0.7578,
+        "spearman": 0.1034,
+        "p@20": 0.15,
+        "p@50": 0.1,
+        "lift@50": 7.3615
       },
       {
         "t0": "2025-01-01",
         "n": 1072,
         "positives": 19,
         "base_rate": 0.0177,
-        "auc": 0.819,
-        "spearman": 0.1458,
+        "auc": 0.821,
+        "spearman": 0.1467,
         "p@20": 0.15,
-        "p@50": 0.12,
-        "lift@50": 6.7705
+        "p@50": 0.14,
+        "lift@50": 7.8989
       },
       {
         "t0": "2025-07-01",
         "n": 1180,
         "positives": 13,
         "base_rate": 0.011,
-        "auc": 0.8162,
-        "spearman": 0.1143,
-        "p@20": 0.1,
-        "p@50": 0.06,
-        "lift@50": 5.4462
+        "auc": 0.8249,
+        "spearman": 0.1175,
+        "p@20": 0.0,
+        "p@50": 0.04,
+        "lift@50": 3.6308
       }
     ],
     "b_random": [
@@ -559,55 +559,55 @@
         "n": 645,
         "positives": 19,
         "base_rate": 0.0295,
-        "auc": 0.5332,
-        "spearman": 0.0263,
+        "auc": 0.7379,
+        "spearman": 0.1394,
         "p@20": 0.1,
-        "p@50": 0.08,
-        "lift@50": 2.7158
+        "p@50": 0.12,
+        "lift@50": 4.0737
       },
       {
         "t0": "2024-01-01",
         "n": 801,
         "positives": 16,
         "base_rate": 0.02,
-        "auc": 0.4985,
-        "spearman": -0.001,
-        "p@20": 0.1,
-        "p@50": 0.06,
-        "lift@50": 3.0037
+        "auc": 0.7898,
+        "spearman": 0.1406,
+        "p@20": 0.05,
+        "p@50": 0.08,
+        "lift@50": 4.005
       },
       {
         "t0": "2024-07-01",
         "n": 957,
         "positives": 13,
         "base_rate": 0.0136,
-        "auc": 0.4728,
-        "spearman": -0.015,
+        "auc": 0.7535,
+        "spearman": 0.1017,
         "p@20": 0.0,
-        "p@50": 0.02,
-        "lift@50": 1.4723
+        "p@50": 0.08,
+        "lift@50": 5.8892
       },
       {
         "t0": "2025-01-01",
         "n": 1072,
         "positives": 19,
         "base_rate": 0.0177,
-        "auc": 0.5011,
-        "spearman": 0.0007,
-        "p@20": 0.05,
-        "p@50": 0.04,
-        "lift@50": 2.2568
+        "auc": 0.7822,
+        "spearman": 0.1291,
+        "p@20": 0.0,
+        "p@50": 0.08,
+        "lift@50": 4.5137
       },
       {
         "t0": "2025-07-01",
         "n": 1180,
         "positives": 13,
         "base_rate": 0.011,
-        "auc": 0.4756,
-        "spearman": -0.0121,
+        "auc": 0.6183,
+        "spearman": 0.0428,
         "p@20": 0.0,
-        "p@50": 0.02,
-        "lift@50": 1.8154
+        "p@50": 0.0,
+        "lift@50": 0.0
       }
     ],
     "b_newest": [
@@ -730,19 +730,19 @@
         "n": 645,
         "positives": 19,
         "base_rate": 0.0295,
-        "auc": 0.5439,
-        "spearman": 0.0363,
-        "p@20": 0.1,
-        "p@50": 0.08,
-        "lift@50": 2.7158
+        "auc": 0.7414,
+        "spearman": 0.1418,
+        "p@20": 0.15,
+        "p@50": 0.1,
+        "lift@50": 3.3947
       },
       {
         "t0": "2024-01-01",
         "n": 801,
         "positives": 16,
         "base_rate": 0.02,
-        "auc": 0.5086,
-        "spearman": 0.0061,
+        "auc": 0.7794,
+        "spearman": 0.1361,
         "p@20": 0.05,
         "p@50": 0.04,
         "lift@50": 2.0025
@@ -752,9 +752,9 @@
         "n": 957,
         "positives": 13,
         "base_rate": 0.0136,
-        "auc": 0.4877,
-        "spearman": -0.0072,
-        "p@20": 0.0,
+        "auc": 0.7849,
+        "spearman": 0.1151,
+        "p@20": 0.05,
         "p@50": 0.02,
         "lift@50": 1.4723
       },
@@ -763,8 +763,8 @@
         "n": 1072,
         "positives": 19,
         "base_rate": 0.0177,
-        "auc": 0.5228,
-        "spearman": 0.0154,
+        "auc": 0.7001,
+        "spearman": 0.0923,
         "p@20": 0.05,
         "p@50": 0.04,
         "lift@50": 2.2568
@@ -774,175 +774,175 @@
         "n": 1180,
         "positives": 13,
         "base_rate": 0.011,
-        "auc": 0.5353,
-        "spearman": 0.0189,
-        "p@20": 0.05,
-        "p@50": 0.02,
-        "lift@50": 1.8154
+        "auc": 0.6227,
+        "spearman": 0.0448,
+        "p@20": 0.0,
+        "p@50": 0.0,
+        "lift@50": 0.0
       }
     ]
   },
   "coefficients_all_t0": {
     "logit_full": {
-      "log_commits_90d": 0.675,
-      "commit_growth": -0.333,
-      "log_commits_before": -0.95,
-      "log_n_repos": 0.378,
-      "log_gh_age": -0.233,
-      "log_tvl": 0.675,
-      "tvl_growth_90d": -0.007,
-      "log_listing_age": -0.511,
-      "has_prior_raise": 0.602,
-      "log_days_since_raise": -0.124
+      "log_commits_90d": 0.544,
+      "commit_growth": -0.183,
+      "log_commits_before": -0.34,
+      "log_n_repos": 0.223,
+      "log_gh_age": -0.164,
+      "log_tvl": 0.544,
+      "tvl_growth_90d": 0.004,
+      "log_listing_age": -0.444,
+      "has_prior_raise": 0.571,
+      "log_days_since_raise": -0.111
     },
     "logit_github": {
-      "log_commits_90d": 0.881,
-      "commit_growth": -0.374,
-      "log_commits_before": -1.052,
-      "log_n_repos": 0.44,
-      "log_gh_age": -0.378
+      "log_commits_90d": 0.92,
+      "commit_growth": -0.21,
+      "log_commits_before": -0.38,
+      "log_n_repos": 0.259,
+      "log_gh_age": -0.312
     }
   },
   "top20_last_test_t0": [
     {
-      "name": "BurrBear",
-      "category": "Dexs",
-      "score": 0.3696,
-      "raised_within_12m": false,
-      "leads": NaN
-    },
-    {
-      "name": "infiniFi",
-      "category": "Yield",
-      "score": 0.2617,
-      "raised_within_12m": false,
-      "leads": NaN
-    },
-    {
-      "name": "Turtle Club",
-      "category": "Onchain Capital Allocator",
-      "score": 0.2556,
-      "raised_within_12m": true,
-      "leads": NaN
-    },
-    {
-      "name": "Yala",
-      "category": "CDP",
-      "score": 0.2462,
-      "raised_within_12m": false,
-      "leads": NaN
-    },
-    {
-      "name": "Ostium",
-      "category": "Derivatives",
-      "score": 0.2216,
-      "raised_within_12m": true,
-      "leads": "General Catalyst, Jump Trading"
-    },
-    {
       "name": "Veda",
       "category": "Onchain Capital Allocator",
-      "score": 0.1968,
+      "score": 0.2738,
       "raised_within_12m": false,
-      "leads": NaN
-    },
-    {
-      "name": "Aztec Connect",
-      "category": "Privacy",
-      "score": 0.1848,
-      "raised_within_12m": false,
-      "leads": NaN
+      "leads": null
     },
     {
       "name": "Infrared Finance",
       "category": "Liquid Staking",
-      "score": 0.1691,
+      "score": 0.2598,
       "raised_within_12m": false,
-      "leads": NaN
+      "leads": null
     },
     {
-      "name": "Ambient",
-      "category": "Dexs",
-      "score": 0.1681,
+      "name": "Yala",
+      "category": "CDP",
+      "score": 0.2478,
       "raised_within_12m": false,
-      "leads": NaN
-    },
-    {
-      "name": "Intuition",
-      "category": "Developer Tools",
-      "score": 0.1613,
-      "raised_within_12m": true,
-      "leads": NaN
-    },
-    {
-      "name": "SatLayer",
-      "category": "Anchor BTC",
-      "score": 0.152,
-      "raised_within_12m": false,
-      "leads": NaN
-    },
-    {
-      "name": "Mirage Protocol",
-      "category": "Derivatives",
-      "score": 0.1295,
-      "raised_within_12m": false,
-      "leads": NaN
-    },
-    {
-      "name": "Symbiotic",
-      "category": "Collateral Markets",
-      "score": 0.1202,
-      "raised_within_12m": false,
-      "leads": NaN
-    },
-    {
-      "name": "Sonex",
-      "category": "Dexs",
-      "score": 0.1184,
-      "raised_within_12m": false,
-      "leads": NaN
-    },
-    {
-      "name": "PumpBTC",
-      "category": "Bridge",
-      "score": 0.1125,
-      "raised_within_12m": false,
-      "leads": NaN
-    },
-    {
-      "name": "Veranta",
-      "category": "Derivatives",
-      "score": 0.1109,
-      "raised_within_12m": false,
-      "leads": NaN
+      "leads": null
     },
     {
       "name": "EigenCloud",
       "category": "Restaking",
-      "score": 0.109,
+      "score": 0.2351,
       "raised_within_12m": false,
-      "leads": NaN
+      "leads": null
     },
     {
-      "name": "Neutral Trade",
-      "category": "Onchain Capital Allocator",
-      "score": 0.1044,
+      "name": "Lido",
+      "category": "Liquid Staking",
+      "score": 0.2317,
       "raised_within_12m": false,
-      "leads": NaN
+      "leads": null
     },
     {
-      "name": "Renzo",
-      "category": "Liquid Restaking",
-      "score": 0.1034,
+      "name": "BurrBear",
+      "category": "Dexs",
+      "score": 0.2194,
       "raised_within_12m": false,
-      "leads": NaN
+      "leads": null
+    },
+    {
+      "name": "SatLayer",
+      "category": "Anchor BTC",
+      "score": 0.2003,
+      "raised_within_12m": false,
+      "leads": null
     },
     {
       "name": "YieldNest",
       "category": "Onchain Capital Allocator",
-      "score": 0.1003,
+      "score": 0.1869,
       "raised_within_12m": false,
-      "leads": NaN
+      "leads": null
+    },
+    {
+      "name": "Turtle Club",
+      "category": "Onchain Capital Allocator",
+      "score": 0.1719,
+      "raised_within_12m": true,
+      "leads": null
+    },
+    {
+      "name": "infiniFi",
+      "category": "Yield",
+      "score": 0.1719,
+      "raised_within_12m": false,
+      "leads": null
+    },
+    {
+      "name": "Symbiotic",
+      "category": "Collateral Markets",
+      "score": 0.1524,
+      "raised_within_12m": false,
+      "leads": null
+    },
+    {
+      "name": "TermMax",
+      "category": "Lending",
+      "score": 0.1499,
+      "raised_within_12m": false,
+      "leads": null
+    },
+    {
+      "name": "Portal",
+      "category": "Bridge",
+      "score": 0.1431,
+      "raised_within_12m": false,
+      "leads": null
+    },
+    {
+      "name": "Mirage Protocol",
+      "category": "Derivatives",
+      "score": 0.1413,
+      "raised_within_12m": false,
+      "leads": null
+    },
+    {
+      "name": "Neutral Trade",
+      "category": "Onchain Capital Allocator",
+      "score": 0.1373,
+      "raised_within_12m": false,
+      "leads": null
+    },
+    {
+      "name": "Plaza Finance",
+      "category": "Derivatives",
+      "score": 0.1333,
+      "raised_within_12m": false,
+      "leads": null
+    },
+    {
+      "name": "Superform",
+      "category": "Yield Aggregator",
+      "score": 0.1324,
+      "raised_within_12m": true,
+      "leads": null
+    },
+    {
+      "name": "Rocket Pool",
+      "category": "Liquid Staking",
+      "score": 0.1318,
+      "raised_within_12m": false,
+      "leads": null
+    },
+    {
+      "name": "Mitosis",
+      "category": "Onchain Capital Allocator",
+      "score": 0.1314,
+      "raised_within_12m": false,
+      "leads": null
+    },
+    {
+      "name": "Ostium",
+      "category": "Derivatives",
+      "score": 0.1245,
+      "raised_within_12m": true,
+      "leads": "General Catalyst, Jump Trading"
     }
   ]
 }

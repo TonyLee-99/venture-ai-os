@@ -1,0 +1,109 @@
+Fetched 2026-11-02 from https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol
+
+Announcing Agent Payments Protocol (AP2) | Google Cloud Blog
+Jump to Content
+Cloud
+Blog
+Contact sales
+Get started for free
+Cloud
+Blog
+Solutions & technology
+AI & Machine Learning
+API Management
+Application Development
+Application Modernization
+Chrome Enterprise
+Compute
+Containers & Kubernetes
+Data Analytics
+Databases
+DevOps & SRE
+Maps & Geospatial
+Security
+Security & Identity
+Threat Intelligence
+Infrastructure
+Infrastructure Modernization
+Networking
+Productivity & Collaboration
+SAP on Google Cloud
+Storage & Data Transfer
+Sustainability
+Ecosystem
+IT Leaders
+Industries
+Financial Services
+Healthcare & Life Sciences
+Manufacturing
+Media & Entertainment
+Public Sector
+Retail
+Supply Chain
+Telecommunications
+Partners
+Startups & SMB
+Training & Certifications
+Inside Google Cloud
+Google Cloud Next & Events
+Google Cloud Consulting
+Google Maps Platform
+Google Workspace
+Developers & Practitioners
+Transform with Google Cloud
+Contact sales
+Get started for free
+AI & Machine Learning
+Powering AI commerce with the new Agent Payments Protocol (AP2)
+September 16, 2025
+Stavan Parikh
+VP/GM, Payments, Google
+Rao Surapaneni
+VP/GM, Business Applications Platform, Google Cloud
+Try Gemini today
+The front door to AI in the workplace
+Try now
+Today, Google announced the
+Agent Payments Protocol
+(AP2), an open protocol developed with leading payments and technology companies to securely initiate and transact agent-led payments across platforms. The protocol can be used as an extension of the
+Agent2Agent (A2A) protocol
+and Model Context Protocol (MCP). In concert with industry rules and standards, it establishes a payment-agnostic framework for users, merchants, and payments providers to transact with confidence across all types of payment methods.
+We’re collaborating with a diverse group of more than 60 organizations to help shape the future of agentic payments, including Adyen, American Express, Ant International, Coinbase, Etsy, Forter, Intuit, JCB, Mastercard, Mysten Labs, Paypal, Revolut, Salesforce, ServiceNow, UnionPay International, Worldpay, and more.
+Why is a protocol needed?
+AI agents are capable of transacting on behalf of users, which creates a need to establish a common foundation to securely authenticate, validate, and convey an agent’s authority to transact. While
+today’s payment systems generally assume a human is directly clicking "buy" on a trusted surface, the rise of autonomous agents and their ability to initiate a payment breaks this fundamental assumption and raises critical questions that AP2 helps to address, including:
+Authorization
+: Proving that a user gave an agent the specific authority to make a particular purchase.
+Authenticity
+: Enabling a merchant to be sure that an agent's request accurately reflects the user's true intent.
+Accountability
+: Determining accountability if a fraudulent or incorrect transaction occurs.
+AP2 is an open, shared protocol that provides a common language for secure, compliant transactions between agents and merchants, helping to prevent a fragmented ecosystem. It also supports different payment types–from credit and debit cards to stablecoins and real-time bank transfers. This helps ensure a consistent, secure, and scalable experience for users and merchants, while also providing financial institutions with the clarity they need to effectively manage risk.
+How it works: Establishing trust via mandates and verifiable credentials
+AP2 builds trust by using Mandates—tamper-proof, cryptographically-signed digital contracts that serve as verifiable proof of a user's instructions. These mandates are signed by verifiable credentials (VCs) and act as the foundational evidence for every transaction.
+Mandates address the two primary ways a user will shop with an agent:
+Real-time purchases (human present
+): When you ask an agent, “Find me new white running shoes,” your request is captured in an initial
+Intent Mandate
+. This provides the auditable context for the entire interaction in a transaction process. After the agent presents a cart with the shoes you want, your approval signs a
+Cart Mandate
+. This is a critical step that creates a secure, unchangeable record of the exact items and price, ensuring what you see is what you pay for.
+Delegated tasks (human not present)
+: When you delegate a task like, “Buy concert tickets the moment they go on sale,” you sign a detailed
+Intent Mandate
+upfront. This mandate specifies the rules of engagement—price limits, timing, and other conditions. It serves as verifiable, pre-authorized proof that can allow the agent to automatically generate a
+Cart Mandate
+on your behalf once your precise conditions are met.
+In both scenarios, this chain of evidence culminates in securely linking your payment method to the verified contents of the Cart Mandate. This complete sequence—from intent, to cart, to payment—creates a non-repudiable audit trail that answers the critical questions of authorization and authenticity, providing a clear foundation for accountability.
+Unlocking new commerce experiences
+AP2’s flexible design provides a foundation to support both simple and entirely new commercial models. Let’s consider a few examples below, which all assume Intent Mandates have been signed on behalf of a user:
+Smarter shopping
+: A customer discovers a winter jacket they want is unavailable in a specific color, so they tell their agent: "I really want this jacket in green, and I'm willing to pay up to 20% more for it." The agent then monitors prices and availability and automatically executes a secure purchase the moment that specific variant is found, capturing a high-intent sale that would have otherwise been lost.
+Personalized offers
+: A shopper tells their agent they want a new bicycle for an upcoming trip from a specific merchant. Their agent communicates this information—which includes the trip's date—to the merchant, whose own agent can respond by creating a custom, time-sensitive bundle offer that includes the bike, a helmet, and a travel rack at a 15% discount, turning a simple query into a more valuable sale.
+Coordinated tasks
+: A user is planning a weekend trip and tells their agent: "Book me a round-trip flight and a hotel in Palm Springs for the first weekend of November, with a total budget of $700." The agent can then interact with both airline and hotel agents, as well as online travel agencies and booking platforms, and once it finds a combination that fits the budget, it can execute both cryptographically-signed bookings simultaneously.
+Support for emerging payments systems
+AP2 is designed as a universal protocol, providing security and trust for a variety of payments like stablecoins and cryptocurrencies. To accelerate support for the web3 ecosystem, in collaboration with Coinbase, Ethereum Foundation, MetaMask and other leading organizations, we have extended the core constructs of AP2 and launched the
+A2A x402 extension
+, a production-ready solution for agent-based crypto payments. Extensions like these will help shape the evolution of cryptocurrency integ

@@ -1,0 +1,20 @@
+x402 Foundation announcement feed (https://x402.org/feed/), fetched 2026-11-02.
+Title: Introducing x402 Batch Settlement: High-velocity Agentic Commerce
+Published: Mon, 11 May 2026 09:00:45 +0000
+Link: https://x402.org/x402-batch-settlement/
+
+blog
+https://x402.org/?p=30
+By: Cam Whiteside (Cloudflare), Carson Roscoe (Coinbase), Conner Swenberg (Coinbase), Josh Nickerson (Coinbase), Philippe d’Argent (Coinbase) TL;DR: The x402 protocol is introducing batch settlement, enabling agents to transact at extremely...
+By: Cam Whiteside (Cloudflare), Carson Roscoe (Coinbase), Conner Swenberg (Coinbase), Josh Nickerson (Coinbase), Philippe d’Argent (Coinbase)
+TL;DR:
+The x402 protocol is introducing batch settlement, enabling agents to transact at extremely low latency and fractions of a cent. Agents provide cryptographic vouchers that enable sellers to settle in bulk, reducing overhead. Batch settlement lets agents perform thousands of granular interactions while maintaining the economic efficiency of a single transaction. It brings the speed of HTTP to x402 payments, creating a scalable foundation for the agentic economy.
+The Evolution: Beyond One-to-One Settlement
+x402 was built to make HTTP-native payments a standard: pay for an API using the 402 Payment Required status code and a structured envelope. It’s the ideal architecture for autonomous agents: no UIs, no silos, just machine-to-machine value transfer.
+However, as we move toward high-frequency interactions per tool call, per token, or per kilobyte, the unit economics require a more sophisticated approach. While blockchains charge per transaction, the internet thrives on per-request agility. To bridge this gap, x402 is introducing batch settlement.
+Efficiency by Design: Decoupling Authorization from Settlement
+Batch settlement separates the intent to pay from the onchain finality:
+At request time: The buyer provides a proof of authorization that is near-instant to verify.
+At scale: Value moves onchain only when it is economically optimal, amortized across hundreds or thousands of interactions.
+This is a core protocol scheme, not a vendor-specific feature. It brings the efficiency of payment channels directly into the x402 envelope.
+How Batch Settlement Work

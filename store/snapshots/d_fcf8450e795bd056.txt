@@ -1,0 +1,7 @@
+Hacker News story (HN Algolia API, fetched 2026-11-02)
+Title: OpenAI and Stripe create Agentic Commerce Protocol
+Posted: 2025-09-29
+Points: 20
+Comments: 2
+Link: https://www.agenticcommerce.dev/
+Discussion: https://news.ycombinator.com/item?id=45416150
