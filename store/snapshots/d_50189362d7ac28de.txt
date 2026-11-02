@@ -1,0 +1,15 @@
+GitHub owner: payainetwork
+Source: GitHub REST/GraphQL API, fetched 2026-11-02.
+Account type: Organization. Account created: 2025-05-03. Public non-fork repositories: 29.0.
+
+Repository PayAINetwork/x402-solana
+Description: 
+Stars: 36. Forks: 15. Language: TypeScript.
+Created: 2025-10-03. Last push: 2026-10-01.
+Topics: 
+
+Repository PayAINetwork/agentic-payments
+Description: Protocol-agnostic agentic payments SDK — accept x402 and MPP payments through a single integration
+Stars: 4. Forks: 2. Language: TypeScript.
+Created: 2026-03-23. Last push: 2026-10-23.
+Topics: 

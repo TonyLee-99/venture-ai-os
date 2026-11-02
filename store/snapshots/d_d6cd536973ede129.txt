@@ -1,0 +1,6 @@
+Hacker News story (HN Algolia API, fetched 2026-11-02)
+Title: Show HN: Cogram Studio – CAD and BIM workspace for humans and agents
+Posted: 2026-08-30
+Points: 6
+Link: https://studio.cogram.com/
+Discussion: https://news.ycombinator.com/item?id=49501620

@@ -1,0 +1,268 @@
+# x402-solana
+
+A reusable, framework-agnostic implementation of the x402 payment protocol v2 for Solana clients (browsers) and servers.
+
+## Features
+
+✅ **x402 Protocol v2** - Full support for the latest x402 v2 specification  
+✅ **CAIP-2 Networks** - Uses standardized chain identifiers (`solana:chainId`)  
+✅ **Client-side** - Automatic 402 payment handling with any wallet provider  
+✅ **Server-side** - Payment verification and settlement with facilitator  
+✅ **Framework agnostic** - Works with any wallet provider (Privy, Phantom, etc.)  
+✅ **HTTP framework agnostic** - Works with Next.js, Express, Fastify, etc.  
+✅ **TypeScript** - Full type safety with Zod validation  
+✅ **Web3.js** - Built on @solana/web3.js and @solana/spl-token
+
+## Installation
+
+```bash
+pnpm add x402-solana
+```
+
+Or with npm:
+
+```bash
+npm install x402-solana
+```
+
+Or with yarn:
+
+```bash
+yarn add x402-solana
+```
+
+## x402 Protocol v2
+
+This package implements x402 protocol v2. Key features:
+
+| Feature               | v2 Specification                                  |
+| --------------------- | ------------------------------------------------- |
+| **Network Format**    | CAIP-2 (`solana:chainId`)                         |
+| **Payment Header**    | `PAYMENT-SIGNATURE`                               |
+| **Amount Field**      | `amount`                                          |
+| **Payload Structure** | Includes `resource` and `accepted` fields         |
+| **Response Body**     | `PaymentRequired` with `x402Version: 2`           |
+
+## Usage
+
+### Client Side (React/Frontend)
+
+The x402-solana client works with any wallet provider that implements the `WalletAdapter` interface. Below are examples using both Solana Wallet Adapter and Privy.
+
+#### Option 1: Using Solana Wallet Adapter (Recommended)
+
+First, install the required packages:
+
+```bash
+npm install @solana/wallet-adapter-react @solana/wallet-adapter-react-ui @solana/wallet-adapter-wallets @solana/wallet-adapter-base
+```
+
+Setup your wallet provider in your app root (e.g., `_app.tsx` or `layout.tsx`):
+
+```typescript
+import { useMemo } from 'react';
+import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
+import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
+import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
+import {
+  PhantomWalletAdapter,
+  SolflareWalletAdapter,
+  BackpackWalletAdapter,
+} from '@solana/wallet-adapter-wallets';
+
+// Import styles
+import '@solana/wallet-adapter-react-ui/styles.css';
+
+export default function App({ Component, pageProps }) {
+  const network = WalletAdapterNetwork.Devnet; // or Mainnet
+  const endpoint = useMemo(() => 'https://api.devnet.solana.com', []);
+
+  const wallets = useMemo(
+    () => [
+      new PhantomWalletAdapter(),
+      new SolflareWalletAdapter(),
+      new BackpackWalletAdapter(),
+    ],
+    []
+  );
+
+  return (
+    <ConnectionProvider endpoint={endpoint}>
+      <WalletProvider wallets={wallets} autoConnect>
+        <WalletModalProvider>
+          <Component {...pageProps} />
+        </WalletModalProvider>
+      </WalletProvider>
+    </ConnectionProvider>
+  );
+}
+```
+
+Use in your component:
+
+```typescript
+import { createX402Client } from 'x402-solana/client';
+import { useWallet } from '@solana/wallet-adapter-react';
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+
+function MyComponent() {
+  const wallet = useWallet();
+
+  const handlePaidRequest = async () => {
+    if (!wallet.connected || !wallet.publicKey) {
+      console.error('Wallet not connected');
+      return;
+    }
+
+    // Create x402 client (v2)
+    const client = createX402Client({
+      wallet: {
+        address: wallet.publicKey.toString(),
+        signTransaction: async (tx) => {
+          if (!wallet.signTransaction) throw new Error('Wallet does not support signing');
+          return await wallet.signTransaction(tx);
+        },
+      },
+      network: 'solana-devnet', // Simple format - automatically converted to CAIP-2
+      amount: BigInt(10_000_000), // Optional: max 10 USDC safety limit
+    });
+
+    // Make a paid request - automatically handles 402 payments
+    const response = await client.fetch('/api/paid-endpoint', {
+      method: 'POST',
+      body: JSON.stringify({ data: 'your request' }),
+    });
+
+    const result = await response.json();
+    console.log('Result:', result);
+  };
+
+  return (
+    <div>
+      <WalletMultiButton />
+      <button onClick={handlePaidRequest} disabled={!wallet.connected}>
+        Make Paid Request
+      </button>
+    </div>
+  );
+}
+```
+
+#### Option 2: Using Privy
+
+```typescript
+import { createX402Client } from 'x402-solana/client';
+import { useSolanaWallets } from '@privy-io/react-auth/solana';
+
+function MyComponent() {
+  const { wallets } = useSolanaWallets();
+  const wallet = wallets[0];
+
+  // Create x402 client (v2)
+  const client = createX402Client({
+    wallet,
+    network: 'solana-devnet',
+    amount: BigInt(10_000_000), // Optional: max 10 USDC
+  });
+
+  // Make a paid request - automatically handles 402 payments
+  const response = await client.fetch('/api/paid-endpoint', {
+    method: 'POST',
+    body: JSON.stringify({ data: 'your request' }),
+  });
+
+  const result = await response.json();
+}
+```
+
+#### Pre-payment policy hook (beforePayment)
+
+The client accepts an optional `beforePayment` hook that runs after a 402
+response is parsed and a payment requirement is selected, but **before the
+payment transaction is built and signed**. Return `{ abort: true, reason }`
+to refuse the payment - the wallet's `signTransaction` is never called and
+`client.fetch` throws.
+
+Use it for spend rules, allow/deny lists, velocity caps, or a reputation
+preflight on the seller wallet. The hook is a plain function - no dependency
+required:
+
+```typescript
+import { createX402Client } from 'x402-solana/client';
+
+const MAX_AMOUNT_BASE_UNITS = 1_000_000n; // 1 USDC (6 decimals)
+const ALLOWED = new Set(['MerchantWa11et...']);
+const USDC_MAINNET = 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v';
+const SOLANA_MAINNET = new Set([
+  'solana',
+  'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp',
+]);
+
+const client = createX402Client({
+  wallet,
+  network: 'solana',
+  beforePayment: (requirements) => {
+    if (!ALLOWED.has(requirements.payTo)) {
+      return { abort: true, reason: `seller_not_allowlisted:${requirements.payTo}` };
+    }
+    if (requirements.asset !== USDC_MAINNET) {
+      return { abort: true, reason: 'unsupported_asset' };
+    }
+    if (!SOLANA_MAINNET.has(requirements.network)) {
+      return { abort: true, reason: 'unsupported_network' };
+    }
+    if (BigInt(requirements.amount) > MAX_AMOUNT_BASE_UNITS) {
+      return { abort: true, reason: 'amount_above_cap' };
+    }
+    // return nothing (or { abort: false }) to proceed to signing
+  },
+});
+
+// Refused payments throw BEFORE the wallet signs:
+// "Payment aborted by beforePayment hook: seller_not_allowlisted:..."
+```
+
+The hook may be async, so it can call an external policy or reputation service
+before deciding. It receives a detached snapshot of the selected requirements;
+mutating the snapshot does not change what the client builds, signs, or sends.
+The client validates the selected amount first: it must be a positive
+base-10 integer string in atomic units that fits in a u64, otherwise the
+payment is refused before the hook runs or anything is signed. The hook's
+`requirements.amount` is always that validated value. The configured `amount`
+limit is enforced next, so over-limit requirements are also rejected without
+invoking the hook. For requirements that
+pass that limit, the hook is the last deterministic checkpoint at which a
+payment can be refused without a signature.
+
+Failure semantics: an unhandled throw inside the hook aborts the payment
+(fail-closed) rather than falling through to a signature. Returning `undefined`
+or `{ abort: false }` proceeds; returning `{ abort: true }` refuses.
+
+A runnable zero-funds demo (local 402 merchant + a signer spy asserting the
+wallet is never invoked on refusal) lives in
+[`examples/before-payment-guard.mjs`](./examples/before-payment-guard.mjs):
+
+```bash
+npm run example:before-payment-guard
+```
+
+#### Using with a Proxy Server (CORS Bypass)
+
+If you're making requests from a browser to external APIs and encountering CORS issues, you can provide a custom fetch function that routes requests through your proxy server:
+
+```typescript
+import { createX402Client } from 'x402-solana/client';
+import { useWallet } from '@solana/wallet-adapter-react';
+
+function MyComponent() {
+  const wallet = useWallet();
+
+  // Create a custom fetch function that uses your proxy
+  const createProxyFetch = () => {
+    const proxyUrl = process.env.NEXT_PUBLIC_PROXY_URL || 'http://localhost:3001/api/proxy';
+
+    return async (url: string | RequestInfo, init?: RequestInit): Promise<Response> => {
+      // Send request through proxy server
+      const response = await fetch(proxyUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/j

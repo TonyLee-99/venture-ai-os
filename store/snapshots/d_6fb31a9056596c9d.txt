@@ -1,0 +1,27 @@
+GitHub owner: merit-systems
+Source: GitHub REST/GraphQL API, fetched 2026-11-02.
+Account type: Organization. Account created: 2024-07-09. Public non-fork repositories: 27.0.
+
+Repository Merit-Systems/x402scan
+Description: x402 Ecosystem Explorer
+Stars: 402. Forks: 299. Language: TypeScript.
+Created: 2025-09-23. Last push: 2026-10-27.
+Topics: api,blockchain,blockchain-technology,decentralization,payments,stablecoin,x402
+
+Repository Merit-Systems/awesome-agentic-commerce
+Description: Curated resources for the agentic commerce ecosystem
+Stars: 151. Forks: 673. Language: None.
+Created: 2025-09-22. Last push: 2026-07-29.
+Topics: 
+
+Repository Merit-Systems/agentcash-router
+Description: Opinionated server framework for building x402/MPP-compatible APIs
+Stars: 31. Forks: 4. Language: TypeScript.
+Created: 2026-02-14. Last push: 2026-07-20.
+Topics: agentcash,hono,mpp,nextjs,x402
+
+Repository Merit-Systems/agentcash-gtm-agent
+Description: AgentCash GTM agent template — sales prospecting, lead enrichment, and outreach powered by pay-per-call APIs
+Stars: 4. Forks: 1. Language: None.
+Created: 2026-04-09. Last push: 2026-04-09.
+Topics: 

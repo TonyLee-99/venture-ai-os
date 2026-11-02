@@ -1,0 +1,6 @@
+Hacker News story (HN Algolia API, fetched 2026-11-02)
+Title: Launch HN: Skillsync (YC W26) – AI chat sessions made portable across agents
+Posted: 2026-09-17
+Points: 68
+Link: nan
+Discussion: https://news.ycombinator.com/item?id=49743049

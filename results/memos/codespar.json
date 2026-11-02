@@ -1,0 +1,245 @@
+{
+ "entity": "codespar",
+ "name": "codespar",
+ "as_of": "2026-11-01",
+ "memo": {
+  "company": "codespar",
+  "one_liner": "CodeSpar sells a governed payment layer for AI agents, delivered as a hosted MCP server and SDK. Agents pay and get paid (Pix, boleto, card, USDC) under signed spend mandates, with approvals and signed receipts, aimed at Latin American businesses. It also maintains open-source MCP servers that wrap LATAM commerce APIs.",
+  "thesis_fit": "Strong topical fit with AI agents x payments: mandates, approvals and audit trails for agent spend, plus standards work on x402, AP2 and ACP, anchored in a LATAM wedge (Pix, boleto, NF-e). Evidence of paying customers is absent, and the product demos are labeled sandbox data.",
+  "claims": [
+   {
+    "id": "c1",
+    "section": "market",
+    "text": "CodeSpar positions its product as one account where agents pay and get paid.",
+    "doc_id": "d_14a53ac7a2c7cac2",
+    "quote": "One account where agents pay and get paid.",
+    "metric": null,
+    "value": null
+   },
+   {
+    "id": "c2",
+    "section": "narrative",
+    "text": "The site says CodeSpar picks the payment method per call from Pix, boleto, card or USDC.",
+    "doc_id": "d_14a53ac7a2c7cac2",
+    "quote": "One call. CodeSpar picks the payment method that fits: Pix, boleto, card or USDC.",
+    "metric": null,
+    "value": null
+   },
+   {
+    "id": "c3",
+    "section": "narrative",
+    "text": "The mandate is described as a signed spend authority with cap, scope and expiry that the model cannot rewrite.",
+    "doc_id": "d_14a53ac7a2c7cac2",
+    "quote": "A signed spend authority: cap, scope, expiry. The model can't rewrite it.",
+    "metric": null,
+    "value": null
+   },
+   {
+    "id": "c4",
+    "section": "pmf",
+    "text": "The open-source mcp-dev-latam repo has 277 stars and 52 forks, which shows developer interest.",
+    "doc_id": "d_0d1fe91274ca5559",
+    "quote": "Stars: 277. Forks: 52. Language: TypeScript.",
+    "metric": null,
+    "value": null
+   },
+   {
+    "id": "c5",
+    "section": "pmf",
+    "text": "Stars across the owner's repos total 313 today (current snapshot, not point-in-time).",
+    "doc_id": null,
+    "quote": null,
+    "metric": "gh.stars_total_now",
+    "value": 313.0
+   },
+   {
+    "id": "c6",
+    "section": "pmf",
+    "text": "The site's transaction feeds and receipt counters are labeled sandbox demo data, not customer volume.",
+    "doc_id": "d_14a53ac7a2c7cac2",
+    "quote": "Sandbox run · demo data",
+    "metric": null,
+    "value": null
+   },
+   {
+    "id": "c7",
+    "section": "execution",
+    "text": "Commits on the default branches of the owner's top 5 repos reached 380 in the last 90 days.",
+    "doc_id": null,
+    "quote": null,
+    "metric": "gh.commits_90d",
+    "value": 380.0
+   },
+   {
+    "id": "c8",
+    "section": "execution",
+    "text": "The prior 90-day period had 142 commits, so shipping velocity rose substantially.",
+    "doc_id": null,
+    "quote": null,
+    "metric": "gh.commits_prev_90d",
+    "value": 142.0
+   },
+   {
+    "id": "c9",
+    "section": "execution",
+    "text": "The GitHub org was created in 2026, so the whole body of work is under a year old.",
+    "doc_id": "d_0d1fe91274ca5559",
+    "quote": "Account created: 2026-03-18.",
+    "metric": null,
+    "value": null
+   },
+   {
+    "id": "c10",
+    "section": "execution",
+    "text": "The company publishes contributions to agentic payment standards (KYA mandates, Pix push-rail for ACP, an OAC proposal, AP2 mapping).",
+    "doc_id": "d_0d1fe91274ca5559",
+    "quote": "Open CodeSpar contributions to agentic payment standards: KYA verifiable agent mandates, Pix push-rail for ACP, OAC proposal (Agentic Commerce Consortium), AP2 mapping.",
+    "metric": null,
+    "value": null
+   },
+   {
+    "id": "c11",
+    "section": "risk",
+    "text": "The company's own README states that its UCP, AP2 and x402 servers are deprecated because no live endpoint exists.",
+    "doc_id": "d_67cfafef4570ce46",
+    "quote": "UCP, AP2 and x402 are deprecated: no live endpoint.",
+    "metric": null,
+    "value": null
+   },
+   {
+    "id": "c12",
+    "section": "risk",
+    "text": "The README says only Stripe ACP reaches a live service among its agentic protocol servers.",
+    "doc_id": "d_67cfafef4570ce46",
+    "quote": "Only Stripe ACP reaches a live service today; the other three are deprecated",
+    "metric": null,
+    "value": null
+   },
+   {
+    "id": "c13",
+    "section": "pmf",
+    "text": "The x402 monetization examples repo has only 3 stars, so the x402 side shows little outside traction.",
+    "doc_id": "d_0d1fe91274ca5559",
+    "quote": "Stars: 3. Forks: 1. Language: JavaScript.",
+    "metric": null,
+    "value": null
+   },
+   {
+    "id": "c14",
+    "section": "market",
+    "text": "The product connects through hosted MCP or an SDK and works with common coding-agent clients.",
+    "doc_id": "d_14a53ac7a2c7cac2",
+    "quote": "Hosted MCP or SDK. Works with Claude Code, Cursor, Codex CLI and any client that speaks MCP.",
+    "metric": null,
+    "value": null
+   }
+  ],
+  "scores": {
+   "pmf": {
+    "score": 3,
+    "rationale": "Real developer adoption of the open-source MCP servers (277 stars, 52 forks) [c4][c5], but no evidence of paying or transacting users. Site volumes are explicitly sandbox demo data [c6], and the x402 examples repo has little traction [c13]."
+   },
+   "narrative": {
+    "score": 4,
+    "rationale": "Clear wedge: governed agent spend (mandates, approvals, signed receipts) [c1][c3] on LATAM rails like Pix and boleto, with a multi-rail pitch [c2] and standards participation [c10]. The path from open-source tool layer to hosted platform is plausible [c14]. Docked because several protocol servers are deprecated [c11], so the bet is ahead of live usage."
+   },
+   "execution": {
+    "score": 4,
+    "rationale": "Sustained, accelerating shipping: 380 commits in 90 days versus 142 in the prior 90 [c7][c8], plus standards contributions [c10]. The org is under a year old [c9], and team size and contributor count are unknown, so not a 5."
+   }
+  },
+  "risks": [
+   "No evidence of paying or transacting customers: all payment feeds and counters on the site are labeled sandbox demo data, so PMF rests on GitHub stars and forks only [c6][c4].",
+   "Protocol bet risk: three of the four agentic-protocol MCP servers are deprecated with no live endpoint, and the x402 examples repo has little traction, so the wedge may be ahead of real usage [c11][c12][c13].",
+   "Regulatory and partner dependence: moving BRL via Pix and boleto for agents relies on licensed providers and bank integrations, and the sources do not show who holds licences or custody.",
+   "Breadth versus depth: a large catalog of MCP servers plus a hosted platform and standards work from a young org may spread a small team thin, and several servers are already deprecated [c9][c11]."
+  ],
+  "open_questions": [
+   "Are there any live, paying customers or real (non-sandbox) payment volume through the hosted platform? What is the monthly settled amount?",
+   "Who is the licensed party for moving money (Celcoin appears in the demo)? What are the custody, KYC and compliance arrangements, and what are the take rates?",
+   "How many people are on the team, and who writes the commits? Is it one maintainer with AI assistance?",
+   "Who is actually using mcp-dev-latam (npm downloads, registry installs), and does that usage convert to the hosted product?",
+   "Given three protocol servers were deprecated, what is the plan for x402 and AP2, and how do you choose which standards to support?",
+   "What is the pricing model, and what is the funding history so far?"
+  ],
+  "recommendation": "advance"
+ },
+ "unverified": [],
+ "critique": {
+  "scores": {
+   "pmf": {
+    "score": 3,
+    "rationale": "Forks provide a developer-interest signal [c4], sufficient for a provisional developer-adoption score, but independent usage and conversion to the hosted payment product remain unverified. Demo transactions establish no customer demand or payment activity [c6]."
+   },
+   "narrative": {
+    "score": 4,
+    "rationale": "Governed agent spending on LATAM payment rails is a clear wedge, with a plausible expansion into collections and payment records [c1][c2][c3]. However, platform functionality is primarily self-described, and the deprecated protocol implementations weaken the claimed standards advantage [c11][c12][d_67cfafef4570ce46]."
+   },
+   "execution": {
+    "score": 3,
+    "rationale": "Commit activity increased across the measured windows [c7][c8], but aggregate counts do not establish sustained production shipping, multiple contributors or reliable integrations. The README's admission that deprecated adapters targeted inappropriate endpoints is a material implementation-quality concern [d_67cfafef4570ce46]."
+   }
+  },
+  "recommendation": "watch",
+  "unsupported_claims": [
+   {
+    "claim_id": "c8",
+    "reason": "The receipt establishes prior-period commit count; comparison with c7 supports increased commit activity, not necessarily increased shipping velocity. Releases, deployment history and functional changes are unverified."
+   },
+   {
+    "claim_id": "c9",
+    "reason": "Organization creation dates the account, not the whole body of work. Code or projects could predate the organization or have been transferred into it."
+   },
+   {
+    "claim_id": "c13",
+    "reason": "Low stars on an examples repository establish limited attention to that repository, not limited outside traction across the company's x402 activity or hosted product."
+   },
+   {
+    "claim_id": "c14",
+    "reason": "The quote establishes advertised connectivity and compatibility. The claim presents those capabilities as verified functionality without independent integration or runtime evidence."
+   }
+  ],
+  "missing_risks": [
+   "Integration design and validation risk: the README explains that deprecated adapters assumed centrally hosted APIs for specifications or decentralized payment flows. This raises a technical diligence issue beyond early market timing [d_67cfafef4570ce46].",
+   "Catalog reliability risk extends beyond agentic protocols: the README also identifies deprecated regional-provider adapters with unresolved default hosts. Working coverage and end-to-end provider testing remain unknown [d_67cfafef4570ce46].",
+   "Security assurances remain unverified: signed mandates and receipts do not establish resistance to compromised credentials, approval bypass, replay, duplicate payments or incorrect beneficiaries. Independent security testing and production incident history are unknown [c3][d_14a53ac7a2c7cac2].",
+   "Differentiation and monetization remain uncertain: open-source wrappers may attract developers without creating willingness to pay for the hosted governance layer. Competitive advantage, retention and conversion need direct customer evidence [c4][c14].",
+   "Aggregate commit windows obscure recent cadence and concentration: contributor distribution, release quality and current maintenance responsiveness remain unknown [c7][c8][d_0d1fe91274ca5559]."
+  ],
+  "strongest_counterargument": "Against advancing, the strongest objection is that developer interest and commit activity do not yet validate demand for the hosted payment product, whose displayed transactions are explicitly demonstrations [c4][c6][c7]. The disclosed endpoint-design mistakes also make technical reliability a prerequisite for advancement, so I recommend watch pending independently verified customer usage and successful production payment flows [d_67cfafef4570ce46]."
+ },
+ "disagreements": [
+  "recommendation: drafter 'advance' vs critic 'watch'",
+  "critic flags 4 claim(s) as unsupported by their quote"
+ ],
+ "doc_ids": [
+  "d_0d1fe91274ca5559",
+  "d_14a53ac7a2c7cac2",
+  "d_67cfafef4570ce46"
+ ],
+ "facts": {
+  "gh.commits_90d": 380,
+  "gh.commits_prev_90d": 142,
+  "gh.commits_total": 1096,
+  "gh.public_repos": 7,
+  "gh.stars_total_now": 313,
+  "gh.first_repo_year": 2026,
+  "screen.score": 0.0629,
+  "screen.rank": 17,
+  "screen.n_candidates": 1398,
+  "hn.stories": 0,
+  "hn.points_total": 0
+ },
+ "receipts": {
+  "claims_drafted": 14,
+  "raw_precision": 1.0,
+  "post_repair_precision": 1.0,
+  "shipped": 14,
+  "withheld": 0,
+  "dropped_in_repair": 0
+ },
+ "models": {
+  "drafter": "claude_cli:claude-sonnet-5-5",
+  "critic": "codex_cli:gpt-6.1-sol"
+ }
+}

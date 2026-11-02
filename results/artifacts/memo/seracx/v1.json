@@ -1,0 +1,266 @@
+{
+ "kind": "memo",
+ "entity": "seracx",
+ "version": 1,
+ "parent_version": null,
+ "as_of": "2026-11-01",
+ "content_sha256": "9ae3fb4b77f61730905c0e12f4e85a499b2cc41d9288ba2ec83e90d6f3920aad",
+ "provenance": {
+  "run_id": "81a74a006fb2d993",
+  "job": "diligence_memo",
+  "doc_ids": [
+   "d_3d48a837c89cc67a",
+   "d_4a064986e41fcdc9"
+  ],
+  "cache_keys": [
+   "9e61d510b96d394b600ad91849e15ba6161a7f651e17e9a0ff9db2e732b003ee",
+   "f7acb8ffab19cc5e00302f59dca5457abfde14577a49250ea3a4b6a0022a846a",
+   "a19ef8a210e7572789a92aff1c93b9ebb888a09369c78515303aa9a46d795bff"
+  ],
+  "metrics": [
+   "gh.commits_90d",
+   "gh.commits_prev_90d",
+   "gh.commits_total",
+   "gh.first_repo_year",
+   "gh.public_repos",
+   "gh.stars_total_now",
+   "hn.points_total",
+   "hn.stories",
+   "screen.n_candidates",
+   "screen.rank",
+   "screen.score"
+  ]
+ },
+ "content": {
+  "entity": "seracx",
+  "name": "sera-cx",
+  "as_of": "2026-11-01",
+  "memo": {
+   "company": "sera-cx",
+   "one_liner": "Open-source MCP server (TypeScript) that lets AI agents discover currencies, quote, route and execute stablecoin FX swaps on Sera Protocol, aimed at agent builders and ops engineers.",
+   "thesis_fit": "Direct fit with agents x payments: a standard tool layer for multi-currency stablecoin settlement, with x402 services mentioned in the companion repo. The sources show no evidence yet of paying or transacting usage.",
+   "claims": [
+    {
+     "id": "c1",
+     "section": "market",
+     "text": "The product exposes Sera Protocol's stablecoin FX settlement to agents as one standard tool layer.",
+     "doc_id": "d_3d48a837c89cc67a",
+     "quote": "Turns any agent into a multi-currency agent by exposing [Sera Protocol](https://docs.sera.cx) — stablecoin FX settlement — as one standard tool layer.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c2",
+     "section": "execution",
+     "text": "The README states the server ships 56 tools across 11 categories, covering discovery, pricing, quoting, treasury, execution and maker order tools.",
+     "doc_id": "d_3d48a837c89cc67a",
+     "quote": "56 tools across 11 categories",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c3",
+     "section": "risk",
+     "text": "The GitHub repo description lists 32 tools for sera-mcp.",
+     "doc_id": "d_4a064986e41fcdc9",
+     "quote": "Multi-currency settlement MCP for AI agents. 32 tools over Sera Protocol's stablecoin FX rails.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c4",
+     "section": "pmf",
+     "text": "The sera-mcp repo has 22 stars and 34 forks, a sign of some developer interest but not of payment or transaction usage.",
+     "doc_id": "d_4a064986e41fcdc9",
+     "quote": "Stars: 22. Forks: 34. Language: TypeScript.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c5",
+     "section": "execution",
+     "text": "The owner's top repos had 94 commits on default branches in the most recent quarter.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.commits_90d",
+     "value": 94.0
+    },
+    {
+     "id": "c6",
+     "section": "execution",
+     "text": "In the preceding quarter the same repos had 126 commits, so commit velocity has fallen.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.commits_prev_90d",
+     "value": 126.0
+    },
+    {
+     "id": "c7",
+     "section": "execution",
+     "text": "sera-mcp was created 2026-05-13 and last pushed 2026-09-01.",
+     "doc_id": "d_4a064986e41fcdc9",
+     "quote": "Created: 2026-05-13. Last push: 2026-09-01.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c8",
+     "section": "narrative",
+     "text": "The README advertises compatibility with several agent hosts (Claude Code, Claude Desktop, Cursor, OpenAI Agents SDK, OpenClaw, Hermes, NanoClaw).",
+     "doc_id": "d_3d48a837c89cc67a",
+     "quote": "Works with Claude Code, Claude Desktop, Cursor, OpenAI Agents SDK, **OpenClaw**, **Hermes**, **NanoClaw**, and any other MCP-compatible host.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c9",
+     "section": "narrative",
+     "text": "A companion repo is described as holding templates, examples, x402 services and host integrations built on the MCP, pointing toward an agent-commerce platform path.",
+     "doc_id": "d_3d48a837c89cc67a",
+     "quote": "templates, examples, x402 services, and host integrations built on top of this MCP",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c10",
+     "section": "market",
+     "text": "The recommended 'standard' policy preset covers USDC, USDT, XSGD, JPYC, MYRT, TGBP and EURC, with a $5,000 per-transaction cap, a $50,000 daily cap and 10 bps slippage, which indicates a non-USD, Asia-heavy stablecoin focus.",
+     "doc_id": "d_3d48a837c89cc67a",
+     "quote": "| `standard` (recommended) | USDC, USDT, XSGD, JPYC, MYRT, TGBP, EURC | $5,000 | $50,000 | 10 bps |",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c11",
+     "section": "risk",
+     "text": "The streamable HTTP transport has no built-in authentication, so any party that can reach the port can call every registered tool, including execution tools if enabled.",
+     "doc_id": "d_3d48a837c89cc67a",
+     "quote": "Anyone who can reach the bound port can call every registered Sera tool.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c12",
+     "section": "execution",
+     "text": "The GitHub organization was created 2025-12-15, so the team is young.",
+     "doc_id": "d_4a064986e41fcdc9",
+     "quote": "Account created: 2025-12-15.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c13",
+     "section": "inflection",
+     "text": "The GitHub-only screening model ranks sera-cx 20 among all sourced candidates.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "screen.rank",
+     "value": 20.0
+    }
+   ],
+   "scores": {
+    "pmf": {
+     "score": 2,
+     "rationale": "There is some developer interest (22 stars and 34 forks, [c4]) and a broad host-compatibility list [c8]. Nothing in the sources shows payments, volume, customers or named outside users. The forks may be mostly installs by people trying the tool, since contributor identity is unknown. There is no on-chain or revenue evidence."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "The wedge is clear: give agents multi-currency stablecoin FX through MCP [c1], with x402 services as an expansion path [c9] and a differentiated non-USD currency set [c10]. It depends heavily on Sera Protocol, and the relationship between sera-cx and the protocol is not stated. Demand for agent FX is asserted, not evidenced."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "The team shipped a large tool surface [c2] and made 94 commits in the latest quarter [c5], but that is down from 126 in the prior quarter [c6]. The last push was 2026-09-01 [c7]. The README and repo description disagree on tool count [c3]. The sources do not show how many people are shipping."
+    }
+   },
+   "risks": [
+    "Dependence on Sera Protocol liquidity and a single settlement venue: the sources give no evidence of FX volume or depth, and the stablecoin FX niche may stay small.",
+    "No evidence of paying or transacting users; stars and forks [c4] may reflect curiosity rather than usage.",
+    "Commit velocity is declining [c5][c6] and the last push was two months before the fetch [c7], with possible bus-factor risk.",
+    "Security posture for agent-controlled funds: no built-in auth on HTTP transport [c11], plus a local-signer mode that holds private keys. A single incident could damage trust.",
+    "Documentation inconsistency (32 vs 56 tools) [c3] suggests fast, loosely maintained releases."
+   ],
+   "open_questions": [
+    "What is the relationship between sera-cx and Sera Protocol (same team, a partner, or a third-party wrapper), and who captures the revenue?",
+    "Is there any real transaction volume via the MCP or x402 services today? Who are the first users, and are any of them outside the team?",
+    "Who are the 34 forkers and any outside contributors, and what are they building?",
+    "What is the business model (fees on swaps, SaaS, protocol incentives), and what is the path from the MCP wedge to a platform?",
+    "Why did commit velocity drop, and how many engineers work on this full-time?",
+    "How deep is liquidity in the non-USD pairs (XSGD, JPYC, MYRT, TGBP, EURC) for realistic agent-sized trades?"
+   ],
+   "recommendation": "advance"
+  },
+  "unverified": [],
+  "critique": {
+   "scores": {
+    "pmf": {
+     "score": 2,
+     "rationale": "Forks provide a weak developer-interest signal [c4], but their independence and actual use are unknown. Advertised host compatibility [c8] is not evidence of adoption, and the supplied sources establish no paying customers or transaction activity."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "Agent-accessible stablecoin FX is a clear thesis-aligned wedge [c1]. Companion services [c9] describe possible expansion, but neither demand urgency nor a defensible platform advantage is established; supported currencies alone do not establish differentiation [c10]."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "Owner-level commit activity [c5, c6] and the documented tool surface [c2] support evidence of shipping. However, owner-level activity cannot establish continued development of this particular product, whose last push is separately reported [c7]; contributor breadth, release quality and responsiveness to standards changes remain unknown."
+    }
+   },
+   "recommendation": "watch",
+   "unsupported_claims": [
+    {
+     "claim_id": "c9",
+     "reason": "The quote supports the companion repository's advertised contents. It does not establish a credible platform path, adoption of those services or commercial expansion."
+    },
+    {
+     "claim_id": "c10",
+     "reason": "The preset supports the listed currencies and limits. It does not establish an Asia-heavy commercial focus, customer geography or actual corridor usage; that interpretation should be separated from the factual claim."
+    },
+    {
+     "claim_id": "c12",
+     "reason": "The organization account's creation date does not establish the team's age, experience or operating history."
+    }
+   ],
+   "missing_risks": [
+    "Commercial defensibility remains untested: why would users choose this interface over alternative settlement integrations, and what prevents replication of the tool layer?",
+    "Regulatory and operational responsibilities are unknown, including responsibility for sanctions screening, custody and cross-border settlement compliance.",
+    "The security controls described in d_3d48a837c89cc67a are self-reported; independent audits, incident history and verification that transaction limits hold under failures or concurrency are unknown.",
+    "Execution reliability is unestablished: the sources provide no evidence about failed transactions, recovery procedures, reconciliation or production service availability.",
+    "Stablecoin issuer, depeg and underlying settlement risks require diligence; the supplied sources do not establish how these exposures are managed.",
+    "Commit counts and tool breadth may overstate product maturity: independent contributor participation, production testing and completed external integrations remain unknown."
+   ],
+   "strongest_counterargument": "I recommend watch until independent usage and transaction evidence substantiate demand. The strongest counterargument to advancing is that the memo establishes a relevant product surface and development activity [c1, c2, c5], while leaving customer pull, commercial capture and production reliability unresolved."
+  },
+  "disagreements": [
+   "recommendation: drafter 'advance' vs critic 'watch'",
+   "critic flags 3 claim(s) as unsupported by their quote"
+  ],
+  "doc_ids": [
+   "d_3d48a837c89cc67a",
+   "d_4a064986e41fcdc9"
+  ],
+  "facts": {
+   "gh.commits_90d": 94,
+   "gh.commits_prev_90d": 126,
+   "gh.commits_total": 264,
+   "gh.public_repos": 9,
+   "gh.stars_total_now": 131,
+   "gh.first_repo_year": 2026,
+   "screen.score": 0.0555,
+   "screen.rank": 20,
+   "screen.n_candidates": 1398,
+   "hn.stories": 0,
+   "hn.points_total": 0
+  },
+  "receipts": {
+   "claims_drafted": 13,
+   "raw_precision": 0.8462,
+   "post_repair_precision": 1.0,
+   "shipped": 13,
+   "withheld": 0
+  },
+  "models": {
+   "drafter": "claude_cli:claude-sonnet-5-5",
+   "critic": "codex_cli:gpt-6.1-sol"
+  }
+ }
+}

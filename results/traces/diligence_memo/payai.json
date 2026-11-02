@@ -1,0 +1,77 @@
+{
+ "job": "diligence_memo",
+ "agent": "AI DD (analyst)",
+ "entity": "payai",
+ "run_id": "5a3a01af9c248f55",
+ "as_of": "2026-11-01",
+ "status": "ok",
+ "inputs": {
+  "doc_ids": [
+   "d_50189362d7ac28de",
+   "d_e25335e7a14a4218",
+   "d_f07008e5d5f69b82"
+  ],
+  "facts_sha": "{\"gh.commits_90d\": 29, \"gh.commits_prev_90d\": 56, \"gh.commits_total\": 600, \"gh.first_repo_year\": 2025, \"gh.public_repos\": 29, \"gh.stars_total_now\": 99, \"hn.points_total\": 0, \"hn.stories\": 0, \"screen.n_candidates\": 1398, \"screen.rank\": 26, \"screen.score\": 0.0363, \"x402.peak_daily_buyers_30d\": 136, \"x402.txs_30d\": 462019, \"x402.volume_usd_30d\": 16088.59}"
+ },
+ "steps": [
+  {
+   "step": "draft_memo",
+   "kind": "llm",
+   "backend": "claude_cli",
+   "model": "claude-sonnet-5-5",
+   "cache_key": "8f5fe7ffa9fb31e49ccf1cff1256899cc2d7feb2989cd86a12e3eaf771f95c4b",
+   "prompt_sha256": "e3c5adab716068840e8ebcb81987f0d494deb1b0880df8f3828a66d1816d39d7",
+   "doc_ids": [
+    "d_50189362d7ac28de",
+    "d_e25335e7a14a4218",
+    "d_f07008e5d5f69b82"
+   ],
+   "output_sha256": "1beaa591594d50d60f154a992b4ce1549efecf5d9abc14d491db9ac99fa40570"
+  },
+  {
+   "step": "verify_receipts",
+   "n_claims": 14,
+   "verified": 14,
+   "failures": {}
+  },
+  {
+   "step": "gate",
+   "raw_precision": 1.0,
+   "post_repair_precision": 1.0,
+   "shipped": 14,
+   "withheld": 0
+  },
+  {
+   "step": "critique",
+   "kind": "llm",
+   "backend": "codex_cli",
+   "model": "gpt-6.1-sol",
+   "cache_key": "c4cf27b2c00edca5192b43836cdbc8ba828a05068f9bcaf71bb43518f8d4ffa0",
+   "prompt_sha256": "9a206338a6d232db4e2fb6d6d6a91a766382476f3476652bb1138cb03873fc01",
+   "doc_ids": [
+    "d_50189362d7ac28de",
+    "d_e25335e7a14a4218",
+    "d_f07008e5d5f69b82"
+   ],
+   "output_sha256": "bc33e777f0d100ec6d908e7dd01fb4e3eb37e5492520a1deea273c9c5a55b838"
+  },
+  {
+   "step": "disagreement",
+   "reasons": [
+    "recommendation: drafter 'advance' vs critic 'watch'",
+    "critic flags 5 claim(s) as unsupported by their quote"
+   ],
+   "families": [
+    "anthropic",
+    "openai"
+   ]
+  }
+ ],
+ "outputs": {
+  "memo": "results/memos/payai.md",
+  "artifact_version": 2,
+  "decision_card": true
+ },
+ "error": null,
+ "sla_violations": []
+}

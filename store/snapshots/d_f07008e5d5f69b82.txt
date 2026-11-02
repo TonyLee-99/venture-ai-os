@@ -1,0 +1,3 @@
+x402scan public statistics for facilitator 'payAI' (fetched 2026-11-02).
+First day with transactions: 2025-05-19. Last day: 2026-11-02.
+Total x402 transactions settled: 53,090,708. Total volume: 6,762,431 USD.

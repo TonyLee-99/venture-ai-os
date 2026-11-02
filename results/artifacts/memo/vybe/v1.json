@@ -1,0 +1,260 @@
+{
+ "kind": "memo",
+ "entity": "vybe",
+ "version": 1,
+ "parent_version": null,
+ "as_of": "2026-11-01",
+ "content_sha256": "dd610a58cf92f12685d8549343e45d35f21fd1a0b97cc505e18291c156906af4",
+ "provenance": {
+  "run_id": "ef595fb848949c40",
+  "job": "diligence_memo",
+  "doc_ids": [
+   "d_26e65d0b8d435a48",
+   "d_d2e39ad11bd7a4d2"
+  ],
+  "cache_keys": [
+   "14ad3fd424a04b5e1308a822a8cdef4c98b2e67f73e23af14cea725fd5d9b27b",
+   "d2f0f9308bb410468fbe45cfc42b5c9214db7825420afa1b41af27b64819ed4f",
+   "de650916d5d266e8ecfd93bddd57177fc1465c21b26c0e85fc6cd6125ddf5fa7"
+  ],
+  "metrics": [
+   "gh.commits_90d",
+   "gh.commits_prev_90d",
+   "gh.commits_total",
+   "gh.first_repo_year",
+   "gh.public_repos",
+   "gh.stars_total_now",
+   "hn.points_total",
+   "hn.stories",
+   "screen.n_candidates",
+   "screen.rank",
+   "screen.score"
+  ]
+ },
+ "content": {
+  "entity": "vybe",
+  "name": "vybenetwork",
+  "as_of": "2026-11-01",
+  "memo": {
+   "company": "vybenetwork",
+   "one_liner": "Vybe Network sells a Solana analytics API (token, wallet, holder data and WebSocket streams) to developers and AI agents, now also payable per call in USDC over x402 with no API keys, via an open-source TypeScript client SDK.",
+   "thesis_fit": "Direct fit: an established Solana data provider has added an x402 pay-per-call channel explicitly aimed at AI agents. It is a data vendor adding agent payments, not a payments-native startup, so the question is whether agent-paid revenue becomes material.",
+   "claims": [
+    {
+     "id": "c1",
+     "section": "market",
+     "text": "The x402 client SDK is built for AI agents and offers pay-per-call USDC over HTTP plus prepaid-credit WebSocket streaming for Vybe's Solana analytics API.",
+     "doc_id": "d_26e65d0b8d435a48",
+     "quote": "Pay-per-call USDC over HTTP and prepaid-credit WebSocket streaming for Vybe's Solana analytics API. Built for AI agents.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c2",
+     "section": "pmf",
+     "text": "The SDK repo has 160 stars, a lightweight signal of developer interest.",
+     "doc_id": "d_26e65d0b8d435a48",
+     "quote": "Stars: 160. Forks: 64. Language: TypeScript.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c3",
+     "section": "pmf",
+     "text": "The SDK has 64 forks, which is high relative to its stars, but the sources show no paid-call volume or customer counts.",
+     "doc_id": "d_26e65d0b8d435a48",
+     "quote": "Stars: 160. Forks: 64. Language: TypeScript.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c4",
+     "section": "narrative",
+     "text": "The pitch is no signup and no API keys: a funded Solana wallet is all an agent needs.",
+     "doc_id": "d_d2e39ad11bd7a4d2",
+     "quote": "**No signup, no keys.** A funded Solana wallet is all you need.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c5",
+     "section": "narrative",
+     "text": "The beta pricing has a default of $0.001 per call, with $0.003, $0.005, $0.008 and $0.010 on heavier endpoints.",
+     "doc_id": "d_d2e39ad11bd7a4d2",
+     "quote": "$0.001 default, $0.003 / $0.005 / $0.008 / $0.010 on heavier endpoints",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c6",
+     "section": "narrative",
+     "text": "A traditional flat-fee subscription alternative exists, so x402 is one of two monetization channels.",
+     "doc_id": "d_d2e39ad11bd7a4d2",
+     "quote": "If you'd rather a traditional flat-fee subscription instead of pay-per-call",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c7",
+     "section": "execution",
+     "text": "Commits on the top repos' default branches in the latest quarter-length window totaled 89.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.commits_90d",
+     "value": 89.0
+    },
+    {
+     "id": "c8",
+     "section": "execution",
+     "text": "The x402 client repo was created 2026-05-11 and last pushed 2026-05-13, so the repo shows no pushes in roughly five and a half months before the fetch date.",
+     "doc_id": "d_26e65d0b8d435a48",
+     "quote": "Created: 2026-05-11. Last push: 2026-05-13.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c9",
+     "section": "execution",
+     "text": "The organization has existed since 2022 and has 18 public non-fork repositories.",
+     "doc_id": "d_26e65d0b8d435a48",
+     "quote": "Account created: 2022-01-25. Public non-fork repositories: 18.0.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c10",
+     "section": "risk",
+     "text": "The SDK is pre-release and the service is in beta, so the API, pricing and protocol may change.",
+     "doc_id": "d_d2e39ad11bd7a4d2",
+     "quote": "**The SDK is pre-release (0.1.x)** — the public API may change before 1.0.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c11",
+     "section": "risk",
+     "text": "Each wallet is limited to 600 paid HTTP requests per minute.",
+     "doc_id": "d_d2e39ad11bd7a4d2",
+     "quote": "600 paid HTTP requests per minute per wallet (sliding window).",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c12",
+     "section": "market",
+     "text": "The org has 6298 stars across its repos in total, indicating an established developer presence beyond the x402 SDK.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.stars_total_now",
+     "value": 6298.0
+    },
+    {
+     "id": "c13",
+     "section": "market",
+     "text": "Hacker News shows zero stories with the company name in the title.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "hn.stories",
+     "value": 0.0
+    }
+   ],
+   "scores": {
+    "pmf": {
+     "score": 3,
+     "rationale": "Real developer interest: 160 stars and 64 forks on the SDK [c2][c3] and a large org-wide star count [c12]. However, there is no evidence of paid x402 calls, wallet counts or revenue, so it does not reach the transacting-usage bar."
+    },
+    "narrative": {
+     "score": 4,
+     "rationale": "Clear wedge: agents pay per call for Solana data with no keys [c1][c4]. It is tied to the x402 shift, with a subscription fallback [c6]. Pricing is a temporary beta discount [c5], and the path from a data API to an agent-commerce platform is not stated."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "The team shipped an SDK and has a multi-year, multi-repo track record [c9], but commits dropped from 609 to 89 quarter over quarter [c7] and the SDK repo shows only two days of pushes in its history [c8]. Recent velocity is unclear and the product is still beta [c10]."
+    }
+   },
+   "risks": [
+    "Agent-paid x402 revenue may be negligible next to the existing subscription business; there is no usage or revenue evidence in the sources.",
+    "Shipping velocity fell sharply (89 commits in 90 days vs 609 previously) and the SDK repo has no pushes after May 2026, which may signal deprioritization or work moving to private repos.",
+    "Beta discount pricing ($0.001 default) will rise at GA, so current demand may not reflect willingness to pay at real prices.",
+    "Commodity data risk: Solana analytics has many competitors, and the sources name none and state no moat beyond keyless payment."
+   ],
+   "open_questions": [
+    "How many distinct wallets have paid for x402 calls, how many calls per day, and what is the monthly USDC volume, and how is it trending?",
+    "What share of API revenue comes from subscriptions versus x402, and what is the expected mix in 12 months?",
+    "Why did commit activity drop from 609 to 89 over the last two quarters, and is development happening in private repos?",
+    "What are the target GA prices and what retention do you expect from early integrators once the beta discount ends?",
+    "Who are the main competitors for agent-paid Solana data, and what is Vybe's defensible edge?",
+    "Are any named AI agent frameworks or companies integrated or using the SDK in production?"
+   ],
+   "recommendation": "advance"
+  },
+  "unverified": [],
+  "critique": {
+   "scores": {
+    "pmf": {
+     "score": 3,
+     "rationale": "Forks provide a developer-adoption signal [c3], but their independence and production use are unknown. Stars [c2][c12] do not establish paying customers, retained usage or demand specifically from agents."
+    },
+    "narrative": {
+     "score": 4,
+     "rationale": "Agent-accessible Solana analytics with per-call USDC payments is a clear thesis-aligned wedge [c1][c4]. The sources do not establish a defensible advantage or a credible expansion path into a broader platform."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "Recent organization-level activity supports ongoing development [c7], but sustained shipping on the agent-payment product is unproven [c8]. Creation and last-push dates do not establish that pushes occurred only on those dates; repository age and count [c9] also do not establish multiple active contributors."
+    }
+   },
+   "recommendation": "watch",
+   "unsupported_claims": [
+    {
+     "claim_id": "c6",
+     "reason": "The quote supports a subscription alternative, but does not establish that these are the company's only monetization channels."
+    },
+    {
+     "claim_id": "c10",
+     "reason": "The attached quote establishes SDK pre-release status and possible public API changes. Service beta status and possible pricing or protocol changes require the separate service-beta passage in d_d2e39ad11bd7a4d2."
+    }
+   ],
+   "missing_risks": [
+    "Wallet security and agent spending controls require diligence: the README says the signing keypair resides in process memory and recommends a dedicated wallet; the adequacy of safeguards against unintended spending is unknown [d_d2e39ad11bd7a4d2].",
+    "External RPC dependence may add onboarding friction, cost and reliability constraints; the README recommends a paid RPC service [d_d2e39ad11bd7a4d2].",
+    "Billing user-error responses may create unexpected charges for agents that generate invalid requests, weakening the apparent simplicity of usage-based pricing [d_d2e39ad11bd7a4d2].",
+    "Payment processing and API delivery economics remain unknown; the README says Vybe covers transaction fees, so contribution margins need verification [d_d2e39ad11bd7a4d2].",
+    "Data accuracy, freshness and service reliability are unverified; payment integration alone does not establish that the underlying analytics meet production agent requirements [c1]."
+   ],
+   "strongest_counterargument": "The strongest case against advancing is that repository interest and a documented payment mechanism do not establish repeat agent demand or willingness to pay [c1][c2][c3]. Organization-level development does not resolve the lack of recent SDK pushes, so advancing would depend on commercial and product-priority assumptions that remain unverified [c7][c8]."
+  },
+  "disagreements": [
+   "recommendation: drafter 'advance' vs critic 'watch'",
+   "critic flags 2 claim(s) as unsupported by their quote"
+  ],
+  "doc_ids": [
+   "d_26e65d0b8d435a48",
+   "d_d2e39ad11bd7a4d2"
+  ],
+  "facts": {
+   "gh.commits_90d": 89,
+   "gh.commits_prev_90d": 609,
+   "gh.commits_total": 711,
+   "gh.public_repos": 18,
+   "gh.stars_total_now": 6298,
+   "gh.first_repo_year": 2022,
+   "screen.score": 0.0571,
+   "screen.rank": 18,
+   "screen.n_candidates": 1398,
+   "hn.stories": 0,
+   "hn.points_total": 0
+  },
+  "receipts": {
+   "claims_drafted": 13,
+   "raw_precision": 0.8462,
+   "post_repair_precision": 1.0,
+   "shipped": 13,
+   "withheld": 0
+  },
+  "models": {
+   "drafter": "claude_cli:claude-sonnet-5-5",
+   "critic": "codex_cli:gpt-6.1-sol"
+  }
+ }
+}

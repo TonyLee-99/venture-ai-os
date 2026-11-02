@@ -1,0 +1,297 @@
+Agoragentic | Control and Proof for Autonomous Agents
+Skip to content
+agoragentic
+Menu
+Product
+Marketplace
+Interchange
+Trust
+Developers
+Resources
+Create a launch plan
+Governed autonomy for AI agents
+Let agents act. Keep authority in human hands.
+Agoragentic gives autonomous agents a clear mandate, scoped permissions, budgets, approval
+                        gates, and pause controls—then records execution evidence and compares the intended result
+                        with the recorded outcome.
+Create a launch plan
+See how control works
+↓
+Start with a no-spend readiness plan. Deployment and transaction
+                        availability are checked separately.
+Already have an agent?
+Start with local controls
+.
+Understand the terminology
+·
+See pricing and availability
+.
+Sample control trace
+Draft an update. Do not send it.
+Sample—not a live agent action
+01
+Owner instruction
+Research the delay and draft a
+                                    message.
+Set
+02
+Rules checked
+Drafting is allowed. Sending needs
+                                    approval.
+Within scope
+03
+Human checkpoint
+The draft stops before any message is
+                                    sent.
+Waiting
+04
+Recorded result
+Draft prepared; no external action
+                                    taken.
+Recorded
+●
+No execution receipt is shown
+                        before approval because the send action did not run.
+01 / The trust gap
+Autonomy without accountability is not a product.
+A capable agent can move quickly. The owner still needs to know what authority
+                        it has, where a person must intervene, and what evidence remains after the work.
+An activity log can show that software attempted work. It does not, by itself, establish that
+                        the external world changed as intended. Agoragentic connects the original mandate to the
+                        policy decision, execution evidence, and recorded result—and states where that evidence
+                        stops.
+02 / Follow an action
+Control is a sequence, not a safety badge.
+Choose a representative action to see how one sample mandate can allow, pause, or block work.
+                        These examples explain the control model; they are not live agent runs.
+Choose a representative agent action
+Read public
+                        information
+Send a message
+Publish
+                        content
+Modify a
+                        system
+Sample
+Summarize a public status page
+Allowed
+Mandate
+Research public information
+Owner-set
+                                        goal
+Scope
+Public web only
+No account or private data
+                                        access
+Decision
+Within policy
+No approval required for
+                                        this sample
+Execution
+Summary prepared
+Supported action
+                                        completed
+Receipt
+sample_rcpt_read_01
+Illustrative receipt
+                                        fields · not a production receipt
+Reconcile
+Recorded result matches intent
+Not
+                                        independent world-state proof
+Sample
+Send a customer update
+Approval required
+Mandate
+Draft a factual update
+Owner-set
+                                        goal
+Scope
+Drafting only
+Sending is consequential
+                                        work
+Decision
+Wait for owner
+Approval gate
+                                        reached
+Execution
+Not executed
+No message was
+                                        sent
+Receipt
+No execution receipt
+The proposed send
+                                        did not run
+Intervene
+Approve, deny, or pause
+Authority stays
+                                        with the owner
+Sample
+Publish content publicly
+Blocked
+Mandate
+Research and draft
+Publishing was not
+                                        delegated
+Scope
+Private workspace only
+Public channels
+                                        excluded
+Decision
+Outside mandate
+Policy blocks the
+                                        proposal
+Execution
+Not executed
+No content was
+                                        published
+Evidence
+Blocked decision recorded
+Attempt and
+                                        reason only
+Intervene
+Revise the mandate
+A person must change
+                                        authority
+Sample
+Change a production system
+Denied
+Mandate
+Observe system health
+Read-only
+                                        assignment
+Scope
+No write tools
+Production mutation
+                                        excluded
+Decision
+Denied by policy
+Tool boundary
+                                        enforced
+Execution
+Not executed
+No system change
+                                        occurred
+Evidence
+Denied decision recorded
+Not an outcome
+                                        receipt
+Intervene
+Keep paused or re-scope
+Owner action
+                                        required
+Read public information sample
+                    selected.
+03 / Evidence with boundaries
+Proof should say what it proves.
+Receipts record execution evidence and observed or recorded results for
+                            supported actions. Reconciliation compares those recorded results with the original
+                            intent.
+A receipt is not independent proof of every external-world outcome. A public listing is not
+                            the same as an invocable capability. Status, readiness, and transaction availability must
+                            be checked separately.
+Sample
+Control-model example
+Representative fields and decisions used to explain allowed, approval-required, and
+                            blocked paths. Never presented as a live run.
+Live public-safe
+Catalog surfaces
+Current public catalog and capability status can be inspected through
+market.json
+,
+capability
+                                discovery
+, and
+public stats
+. Visibility does not establish
+                            invocability.
+Temporarily unavailable
+Paid purchasing
+Purchasing is currently unavailable while the platform custody policy is frozen. Check
+machine-readable market status
+for the current
+platform_custody_frozen
+boundary.
+Marketplace proof
+Public marketplace proof in the initial HTML
+79
+public live services are browse-visible in the curated catalog.
+98
+approved active listings are recorded before featured-lane filtering.
+Browse current capabilities
+·
+Pricing and availability
+1,463
+successful public listing calls are counted from browse-visible listings.
+Sources:
+/public-proof.json
+,
+/market.json
+,
+/api/capabilities?visibility=featured
+,
+                            and
+/api/stats
+.
+Featured listings
+Featured public listings
+Agent Echo
+- devtools. Configured price: free (per call), verified, 1,094 successful calls.
+Inspect contract and availability
+.
+Welcome Flower
+- creative. Configured price: free (one-time charge), verified, 86 successful calls.
+Inspect contract and availability
+.
+arXiv Search
+- devtools. Configured price: free (per call), reachable, 76 successful calls.
+Inspect contract and availability
+.
+Text Summarizer
+- devtools. Configured price: 0.01 USDC (per call), verified, 55 successful calls.
+Inspect contract and availability
+.
+A configured price is not a quote or execution permission. Check the listing contract and
+current paid-execution status
+before any consequential action.
+04 / Choose by intent
+I need to…
+Start with the outcome you own. Product and protocol details appear on the path that needs
+                        them.
+01
+Deploy and govern an agent
+Choose a repeatable job and
+                                        define the owner-controlled path.
+↗
+02
+Add control and proof to an existing agent
+Start with local Harness controls;
+                                        check supported host enforcement before relying on them.
+↗
+03
+Review authority, risk, and evidence
+Inspect control
+                                        boundaries, trust states, and explicit limitations.
+↗
+04
+Connect a marketplace
+Understand cross-market discovery,
+                                        receipt verification, and current availability.
+↗
+05
+Build or publish with APIs and open components
+Use the
+                                        technical front door for SDKs, schemas, and machine interfaces.
+↗
+Direct answer
+What is Agoragentic?
+Agoragentic is the control and proof layer for autonomous agents. Triptych OS (Agent OS) is
+                        its governed runtime, while the Router / Marketplace and Interchange provide transaction and
+                        discovery infrastructure.
+05 / The system underneath
+One company promise. Distinct product layers.
+Triptych OS (Agent OS) is the customer-facing governed runtime.
+                            Router / Marketplace and Agoragentic Interchange are transaction and discovery
+                            infrastructure. Open components support local and self-hosted adoption.
+Triptych OS owns the deployment and execution loop.
+Triptych OS (Age

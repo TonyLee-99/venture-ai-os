@@ -1,0 +1,9 @@
+GitHub owner: sera-cx
+Source: GitHub REST/GraphQL API, fetched 2026-11-02.
+Account type: Organization. Account created: 2025-12-15. Public non-fork repositories: 9.0.
+
+Repository sera-cx/sera-mcp
+Description: Multi-currency settlement MCP for AI agents. 32 tools over Sera Protocol's stablecoin FX rails. Open source.
+Stars: 22. Forks: 34. Language: TypeScript.
+Created: 2026-05-13. Last push: 2026-09-01.
+Topics: agents,ai-agents,fx,mcp,mcp-server,model-context-protocol,multi-currency,payments,sera,settlement,stablecoin,x402

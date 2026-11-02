@@ -1,0 +1,82 @@
+{
+ "t0": "2026-06-30",
+ "outcome_window_end": "2026-11-01",
+ "assumed_model_cutoff": "2026-06-30",
+ "all_outcomes_after_cutoff": true,
+ "n_items": 120,
+ "n_positives": 8,
+ "positives_with_funding_words_in_current_description": 4,
+ "results": {
+  "deterministic|logit_full": {
+   "auc": 0.9129,
+   "auc_ci95": [
+    0.8205,
+    0.9843
+   ],
+   "p@10": 0.4,
+   "missing": 0,
+   "leakage_exposed": false
+  },
+  "deterministic|logit_github": {
+   "auc": 0.7478,
+   "auc_ci95": [
+    0.5585,
+    0.9159
+   ],
+   "p@10": 0.2,
+   "missing": 0,
+   "leakage_exposed": false
+  },
+  "deterministic|prior_funding": {
+   "auc": 0.8504,
+   "auc_ci95": [
+    0.6626,
+    0.9948
+   ],
+   "p@10": 0.5,
+   "missing": 0,
+   "leakage_exposed": false
+  },
+  "anonymized|claude-sonnet-5-5": {
+   "auc": 0.8097,
+   "auc_ci95": [
+    0.6348,
+    0.9394
+   ],
+   "p@10": 0.2,
+   "missing": 0,
+   "leakage_exposed": false
+  },
+  "anonymized|gpt-6.1-sol": {
+   "auc": 0.7991,
+   "auc_ci95": [
+    0.5926,
+    0.9612
+   ],
+   "p@10": 0.4,
+   "missing": 0,
+   "leakage_exposed": false
+  },
+  "named|claude-sonnet-5-5": {
+   "auc": 0.9113,
+   "auc_ci95": [
+    0.8267,
+    0.971
+   ],
+   "p@10": 0.4,
+   "missing": 0,
+   "leakage_exposed": true
+  },
+  "named|gpt-6.1-sol": {
+   "auc": 0.8655,
+   "auc_ci95": [
+    0.712,
+    0.9649
+   ],
+   "p@10": 0.2,
+   "missing": 0,
+   "leakage_exposed": true
+  }
+ },
+ "note": "Tiny positive count: CIs are wide; read as a sanity check of the harness, not a verdict."
+}

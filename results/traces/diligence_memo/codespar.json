@@ -1,0 +1,77 @@
+{
+ "job": "diligence_memo",
+ "agent": "AI DD (analyst)",
+ "entity": "codespar",
+ "run_id": "dcbd42bcd2022da2",
+ "as_of": "2026-11-01",
+ "status": "ok",
+ "inputs": {
+  "doc_ids": [
+   "d_0d1fe91274ca5559",
+   "d_14a53ac7a2c7cac2",
+   "d_67cfafef4570ce46"
+  ],
+  "facts_sha": "{\"gh.commits_90d\": 380, \"gh.commits_prev_90d\": 142, \"gh.commits_total\": 1096, \"gh.first_repo_year\": 2026, \"gh.public_repos\": 7, \"gh.stars_total_now\": 313, \"hn.points_total\": 0, \"hn.stories\": 0, \"screen.n_candidates\": 1398, \"screen.rank\": 17, \"screen.score\": 0.0629}"
+ },
+ "steps": [
+  {
+   "step": "draft_memo",
+   "kind": "llm",
+   "backend": "claude_cli",
+   "model": "claude-sonnet-5-5",
+   "cache_key": "5258609204fac313e2716eda11d7919180883d916db114b948f142e8ef77e953",
+   "prompt_sha256": "011096661dde68a94b4041d3bea94166f79b623e1065f3597021faa37734d22f",
+   "doc_ids": [
+    "d_0d1fe91274ca5559",
+    "d_14a53ac7a2c7cac2",
+    "d_67cfafef4570ce46"
+   ],
+   "output_sha256": "a3ae80ec06b849ad0ea3d26ae72f3cac0010fccb51c61ced2dbad35b2bba7f52"
+  },
+  {
+   "step": "verify_receipts",
+   "n_claims": 14,
+   "verified": 14,
+   "failures": {}
+  },
+  {
+   "step": "gate",
+   "raw_precision": 1.0,
+   "post_repair_precision": 1.0,
+   "shipped": 14,
+   "withheld": 0
+  },
+  {
+   "step": "critique",
+   "kind": "llm",
+   "backend": "codex_cli",
+   "model": "gpt-6.1-sol",
+   "cache_key": "aa3077e9932fd23697e97b6b8aad9e6f7caf6cb6fa341a68fb448407c04be1c8",
+   "prompt_sha256": "604d13cc1b3398d0a2cbd82fcdcd0799d1b2f0c479dc1c68a08a023576085c83",
+   "doc_ids": [
+    "d_0d1fe91274ca5559",
+    "d_14a53ac7a2c7cac2",
+    "d_67cfafef4570ce46"
+   ],
+   "output_sha256": "4d1212ca1cfd43fd83c195904d19e6b4d5d464a349e03dbd0820c5a0ad69b9b2"
+  },
+  {
+   "step": "disagreement",
+   "reasons": [
+    "recommendation: drafter 'advance' vs critic 'watch'",
+    "critic flags 4 claim(s) as unsupported by their quote"
+   ],
+   "families": [
+    "anthropic",
+    "openai"
+   ]
+  }
+ ],
+ "outputs": {
+  "memo": "results/memos/codespar.md",
+  "artifact_version": 2,
+  "decision_card": true
+ },
+ "error": null,
+ "sla_violations": []
+}

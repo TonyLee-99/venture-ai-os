@@ -10,6 +10,7 @@ steps are skipped and the committed shortlist, snapshots and facts are used; LLM
 from __future__ import annotations
 
 import json
+import math
 
 from vaios.agents import diligence, evidence, sourcing
 from vaios.agents.runner import Trace
@@ -40,6 +41,7 @@ def _refresh_candidates(store: DocStore) -> list[dict]:
                already_in_crm=int(cands["crm_stage"].notna().sum()), shortlisted=list(short["entity"]))
     rows = []
     for cand in short.to_dict("records"):
+        cand = {k: (None if isinstance(v, float) and math.isnan(v) else v) for k, v in cand.items()}  # NaN -> None
         doc_ids = evidence.gather(con, store, cand)
         evidence.save_facts(evidence.facts_sheet(con, cand, len(cands)))
         rows.append({k: cand[k] for k in ("entity", "name", "github_owner", "top_repo", "domain", "facilitator",
@@ -89,6 +91,8 @@ def summarize(results: list[dict], failures: list[dict]) -> dict:
         "raw_citation_precision": round(raw_ok / drafted, 4) if drafted else None,
         "post_repair_citation_precision": round(shipped / (shipped + withheld), 4) if shipped + withheld else None,
         "claims_shipped": shipped, "claims_withheld": withheld,
+        "shipped_over_drafted": round(shipped / drafted, 4) if drafted else None,
+        "claims_dropped_in_repair": sum(r["receipts"]["dropped_in_repair"] for r in results),
         "critic_unsupported_flags": flagged,
         "critic_support_rate": round(1 - flagged / shipped, 4) if shipped else None,
         "memos_with_disagreement": sum(bool(r["disagreements"]) for r in results),

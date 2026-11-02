@@ -9,6 +9,8 @@ from __future__ import annotations
 import json
 from collections import defaultdict
 
+import pandas as pd
+
 from vaios.config import FROZEN, RAW, RESULTS
 from vaios.dakr.warehouse import connect
 
@@ -60,5 +62,8 @@ def summarize_manifest() -> None:
         if len(a["example_urls"]) < 3:
             a["example_urls"].append(r["url"])
     out = {"n_sources": len(agg), "n_files": len(latest), "sources": dict(sorted(agg.items()))}
+    files = pd.DataFrame(sorted(latest.values(), key=lambda r: r["path"]))
+    files[["source", "url", "fetched_at", "sha256", "bytes", "path", "n_records"]].to_csv(
+        RESULTS / "data_manifest_files.csv.gz", index=False, compression={"method": "gzip", "mtime": 0})
     (RESULTS / "data_manifest.json").write_text(json.dumps(out, indent=2) + "\n")
     print(f"  results/data_manifest.json  {len(agg)} sources, {len(latest)} files")

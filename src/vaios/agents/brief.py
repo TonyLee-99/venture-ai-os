@@ -80,8 +80,24 @@ def run(gw: Gateway, store: DocStore) -> dict:
     trace.llm("draft_brief", res, prompt, doc_ids)
     brief = res.parsed
     all_claims = [c for n in brief["inflections"] for c in n["claims"]]
+    n_drafted = len(all_claims)
     checks = {c.claim_id: c for c in check_all(all_claims, store, facts)}
     raw = precision(list(checks.values()))
+    failing = [c for c in all_claims if not checks[c["id"]].ok]
+    if failing:  # same repair round as memos: fix the receipt or drop the claim
+        items = [{"claim": c, "verifier": f"{checks[c['id']].status}: {checks[c['id']].detail}"} for c in failing]
+        rp = (f"{prompt}\n\nThe receipts verifier rejected these claims of your brief:\n"
+              f"{json.dumps(items, ensure_ascii=False, indent=1)}\n\nFor each, either fix the receipt (copy the quote "
+              f"exactly, or cite the exact metric value) or drop it. Return JSON: "
+              f"{skills.schema_hint(schemas.ClaimRepair)}")
+        rr = gw.complete("draft", skills.system_prompt("receipts"), rp, tag=f"brief-repair:{week}",
+                         schema=schemas.ClaimRepair)
+        trace.llm("repair_claims", rr, rp, doc_ids)
+        fixed = {c["id"]: c for c in rr.parsed["fixed"]}
+        for note in brief["inflections"]:
+            note["claims"] = [fixed.get(c["id"], c) for c in note["claims"] if c["id"] not in rr.parsed["dropped"]]
+        all_claims = [c for n in brief["inflections"] for c in n["claims"]]
+        checks = {c.claim_id: c for c in check_all(all_claims, store, facts)}
     for note in brief["inflections"]:
         kept = [c for c in note["claims"] if checks[c["id"]].ok]
         note["withheld"] = [{"id": c["id"], "status": checks[c["id"]].status} for c in note["claims"]
@@ -89,8 +105,9 @@ def run(gw: Gateway, store: DocStore) -> dict:
         note["claims"] = kept
         note["needs_human"] = not kept or note["confidence"] == "low"
     shipped = sum(len(n["claims"]) for n in brief["inflections"])
-    receipts = {"claims_drafted": len(all_claims), "raw_precision": round(raw, 4), "shipped": shipped,
-                "withheld": len(all_claims) - shipped}
+    receipts = {"claims_drafted": n_drafted, "raw_precision": round(raw, 4),
+                "post_repair_precision": round(shipped / len(all_claims), 4) if all_claims else None,
+                "shipped": shipped, "withheld": len(all_claims) - shipped, "dropped": n_drafted - len(all_claims)}
     trace.step("verify_receipts", **receipts)
     out = {"week_of": week, "brief": brief, "receipts": receipts, "facts": facts, "doc_ids": doc_ids,
            "model": f"{res.backend}:{res.model}"}

@@ -69,7 +69,7 @@ def run_one(gw: Gateway, store: DocStore, cand: dict, doc_ids: list[str]) -> dic
         trace.llm("draft_memo", res, prompt, doc_ids)
         memo = res.parsed
         n_drafted = len(memo["claims"])
-        checks = check_all(memo["claims"], store, facts)
+        checks = check_all(memo["claims"], store, facts, sheet["descriptions"])
         raw_precision = precision(checks)
         trace.step("verify_receipts", n_claims=len(checks), verified=sum(c.ok for c in checks),
                    failures={c.claim_id: c.status for c in checks if not c.ok})
@@ -89,7 +89,7 @@ def run_one(gw: Gateway, store: DocStore, cand: dict, doc_ids: list[str]) -> dic
             trace.llm("repair_claims", rr, rp, doc_ids)
             fixed = {c["id"]: c for c in rr.parsed["fixed"]}
             memo["claims"] = [fixed.get(c["id"], c) for c in memo["claims"] if c["id"] not in rr.parsed["dropped"]]
-            checks = check_all(memo["claims"], store, facts)
+            checks = check_all(memo["claims"], store, facts, sheet["descriptions"])
         post_precision = precision(checks)
         shipped = [c for c, chk in zip(memo["claims"], checks, strict=True) if chk.ok]
         unverified = [{"claim": c, "status": chk.status, "detail": chk.detail}
@@ -113,7 +113,8 @@ def run_one(gw: Gateway, store: DocStore, cand: dict, doc_ids: list[str]) -> dic
                "critique": crit, "disagreements": reasons, "doc_ids": doc_ids, "facts": facts,
                "receipts": {"claims_drafted": n_drafted,
                             "raw_precision": round(raw_precision, 4), "post_repair_precision": round(post_precision, 4),
-                            "shipped": len(shipped), "withheld": len(unverified)},
+                            "shipped": len(shipped), "withheld": len(unverified),
+                            "dropped_in_repair": n_drafted - len(memo["claims"])},
                "models": {"drafter": f"{res.backend}:{res.model}", "critic": f"{cr.backend}:{cr.model}"}}
         write_outputs(out, store, sheet)
         v = artifacts.save("memo", entity, out, as_of=sheet["as_of"],

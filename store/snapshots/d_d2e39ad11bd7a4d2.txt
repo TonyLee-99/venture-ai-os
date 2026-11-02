@@ -1,0 +1,132 @@
+# @vybenetwork/x402-client
+
+[![npm](https://img.shields.io/npm/v/@vybenetwork/x402-client.svg)](https://www.npmjs.com/package/@vybenetwork/x402-client)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+Client SDK for [Vybe's Solana analytics API](https://docs.vybenetwork.com/). Pay per call in USDC via the [x402 protocol](https://x402.org) — no API keys, no subscriptions, just bring a Solana wallet.
+
+> ### Beta status
+>
+> - **The SDK is pre-release (0.1.x)** — the public API may change before 1.0.
+> - **The service is in beta.** The x402 API endpoint, request/response shapes, error semantics, WS protocol, and per-route pricing can all change. Pin your dependency, watch the changelog.
+> - **Beta runs on Solana mainnet.** Payments settle in real mainnet USDC. Check `GET /` on the API URL to confirm the live network at any time — that endpoint is authoritative.
+> - **Pricing is currently a beta discount.** $0.001 default, $0.003 / $0.005 / $0.008 / $0.010 on heavier endpoints, $0.01 per WS session of 1000 credits. Hit `GET /` on the API URL for the live price table. These rates will go up at general availability — they exist to make beta usage cheap for early integrators. If you'd rather a traditional flat-fee subscription instead of pay-per-call, see [vybe.fyi/api-pricing](https://vybe.fyi/api-pricing).
+> - **Rate limits.** 600 paid HTTP requests per minute per wallet (sliding window). High-traffic clients should batch where possible or run multiple wallets.
+> - **You bring your own Solana RPC.** The SDK signs payments client-side, which calls Solana RPC twice per request (fetch USDC mint metadata + recent blockhash). Without `rpcUrl` set, it falls back to the public mainnet RPC, which rate-limits at ~5 RPS. Use a paid tier (Helius, Triton, QuickNode, etc.) — see [Configuration reference](#configuration-reference) below.
+
+## Why
+
+- **No signup, no keys.** A funded Solana wallet is all you need.
+- **Pay-per-call HTTP.** Each request settles a USDC micropayment ($0.001 and up). 4xx user-error responses still bill (you got a real response); 5xx API failures refund automatically (no work delivered).
+- **Prepaid WebSocket sessions.** One $0.01 payment buys 1000 credits (≈995 events after the 5-credit connection charge). Auto-topup before you run out.
+- **Drop-in for AI agents.** Wire any Vybe endpoint into your model's tool-calling loop with `client.get()` / `client.request()` — no special AI helpers, full Vybe surface.
+- **Budget caps.** Set `maxUsd` and the SDK rejects calls before signing.
+
+## Install
+
+```bash
+npm install @vybenetwork/x402-client
+```
+
+## Setup (first run)
+
+You need a **dedicated** Solana keypair with mainnet USDC. The API covers Solana transaction fees on every transfer, so **the wallet only needs USDC — no SOL required for gas.**
+
+> **Use a dedicated wallet.** Don't point the SDK at a wallet you also use for trading, custody, or anything else. The keypair is held in process memory and signs USDC transfers per call (or per session); mixing API spend with other activity makes bookkeeping fragile and risks unintended charges if a balance check elsewhere assumes a USDC float that the SDK is quietly draining.
+
+**1. Get a keypair.** Two paths — pick whichever is closer to where your USDC already lives:
+
+- **A. Create one in your existing wallet** (Phantom, Solflare, Backpack, …) — most wallets let you add a new account in one click, then "Export Private Key" gives you a base58 string. This is the path most users take: your main wallet stays untouched, the new sub-account is the one the SDK signs with.
+- **B. Generate fresh from the CLI** — useful for servers, CI, or anything headless. Requires the [Solana CLI](https://docs.solanalabs.com/cli/install):
+  ```bash
+  solana-keygen new --no-bip39-passphrase --outfile client.json
+  node -e "console.log(Buffer.from(JSON.parse(require('fs').readFileSync('client.json'))).toString('base64'))"
+  solana-keygen pubkey client.json   # the address to fund
+  ```
+
+`loadKeypair` auto-detects both formats — paste the base58 from option A directly, or the base64 from option B.
+
+**2. Fund it with USDC** (mainnet, mint `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`). In order of how most people do it:
+
+1. **Transfer from a wallet you already have** — open Phantom/Solflare/Backpack on your main account, send USDC to the new address. Quickest path if you're already on Solana.
+2. **Bridge from another chain** if your USDC lives on Ethereum/Base/Arbitrum — use [Wormhole](https://portalbridge.com/), [deBridge](https://app.debridge.finance/), or Phantom's built-in bridge.
+3. **Withdraw from a CEX** (Coinbase, Kraken, Binance, …) — slower but works from fiat. Pick "Solana network" and paste the address.
+
+A few dollars goes a long way given default pricing of $0.001 per call.
+
+**3. Wire it up.** Set the encoded keypair string as `CLIENT_PRIVATE_KEY` in your environment (or pass directly to `loadKeypair`). Treat it like any other secret — it's the full keypair, not just the pubkey. See [`.env.example`](./.env.example) for the full list of env vars the examples read.
+
+## Quickstart
+
+```ts
+import { VybeClient, loadKeypair, ApiError, NetworkError } from "@vybenetwork/x402-client";
+
+const client = new VybeClient({
+  wallet: await loadKeypair(process.env.CLIENT_PRIVATE_KEY!),
+  rpcUrl: process.env.SOLANA_RPC_URL,        // strongly recommended (see Beta status)
+  budget: { maxUsd: 1.00, onExceed: "reject" }, // optional safety cap
+});
+
+const BONK_MINT = "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263";
+
+try {
+  // HTTP — auto-pays the $0.001 fee on first 402 challenge
+  const token = await client.get(`/v4/tokens/${BONK_MINT}`);
+  console.log(token);
+} catch (err) {
+  if (err instanceof ApiError) console.error(`API ${err.status}: ${err.message}`);
+  else if (err instanceof NetworkError) console.error(`Transport: ${err.message}`);
+  else throw err;
+}
+```
+
+The endpoint, network, USDC mint, and pay-to address are inferred from the API's discovery endpoint (`GET /`) — you only bring your wallet. See [Errors](#errors) for the full type hierarchy.
+
+## HTTP (pay-per-call)
+
+The SDK is a thin pay-on-success wrapper over the [Vybe REST API](https://docs.vybenetwork.com/reference). Paths, query strings, request bodies, and response shapes are all unchanged — anything documented for Vybe works through `client.get()` / `client.request()`. The only thing the SDK adds on top is the x402 payment dance on the way in and a typed receipt on the way back.
+
+> **Different base URL.** The SDK targets the pay-per-call x402 API at `https://x402-api.vybenetwork.xyz`, not the subscription API at `https://api.vybenetwork.xyz`. The SDK handles this for you — but if you're tailing logs, configuring egress rules, or sharing API calls with someone on the subscription side, you'll see the different host.
+
+```ts
+// Note: Vybe endpoints take SPL mint addresses, NOT ticker symbols.
+// "BONK" is not valid input — use the actual mint address.
+const BONK_MINT = "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263";
+
+// GET — returns the parsed body on 2xx, throws a typed error on non-2xx
+const holders = await client.get(`/v4/tokens/${BONK_MINT}/top-holders?limit=10`);
+
+// Other methods — `request()` returns the parsed body plus payment receipt and
+// status. It still throws the same typed errors as `get()` on non-2xx, so
+// wrap in try/catch (or let it propagate) when error handling matters.
+const { data, receipt, status } = await client.request("/v4/wallets/batch/token-balances", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  // Vybe's batch endpoints take `ownerAddresses` (an array of wallet
+  // addresses, max 10), not `wallets`. See:
+  // https://docs.vybenetwork.com/reference/post_wallet_tokens_many_v4
+  body: JSON.stringify({ ownerAddresses: ["7EK976zyBWhYikjXGASSfN5KoNEekSLqx7wEkUJ8YkHv"] }),
+});
+console.log(`paid $${receipt?.amount} via ${receipt?.txHash}`);
+```
+
+Both `get()` and `request()` accept paths like `/v4/...` (joined with the configured API URL) or absolute URLs on the same origin. See the [Vybe API Reference](https://docs.vybenetwork.com/reference) for each endpoint's required fields.
+
+## WebSocket streaming
+
+```ts
+// Vybe's WS filter keys are `trades`, `transfers`, `oraclePrices`,
+// `priceCandles`, and `newToken` (all confirmed live through the x402 API;
+// `newMarket` and `ageBucket` are accepted by the protocol but
+// emit no events at the moment). Each takes an array of filter objects
+// with optional `tokenMintAddress`, `marketId`, or `programId`. Empty
+// array = "all events of that type".
+// See: https://docs.vybenetwork.com/docs/filter-configuration
+const BONK_MINT = "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263";
+const stream = await client.stream({
+  filters: { trades: [{ tokenMintAddress: BONK_MINT }] },
+});
+
+for await (const event of stream) {
+  console.log(event.data, "balance:", event.balance);
+  if (event.warning === "LOW_BALANCE") cons

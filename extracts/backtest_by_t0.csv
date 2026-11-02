@@ -1,0 +1,46 @@
+scorer,label,leakage_exposed,t0,n,positives,base_rate,auc,spearman,p@20,p@50,lift@50
+s_logit_full,"Logistic, all point-in-time features (walk-forward)",False,2023-07-01,645,19,0.0295,0.7558,0.1499,0.15,0.1,3.3947
+s_logit_full,"Logistic, all point-in-time features (walk-forward)",False,2024-01-01,801,16,0.02,0.804,0.1473,0.2,0.14,7.0088
+s_logit_full,"Logistic, all point-in-time features (walk-forward)",False,2024-07-01,957,13,0.0136,0.7524,0.1012,0.2,0.16,11.7785
+s_logit_full,"Logistic, all point-in-time features (walk-forward)",False,2025-01-01,1072,19,0.0177,0.8703,0.1693,0.2,0.24,13.5411
+s_logit_full,"Logistic, all point-in-time features (walk-forward)",False,2025-07-01,1180,13,0.011,0.866,0.1323,0.15,0.1,9.0769
+s_logit_github,"Logistic, GitHub-only features (walk-forward; live niche score)",False,2023-07-01,645,19,0.0295,0.6349,0.079,0.1,0.08,2.7158
+s_logit_github,"Logistic, GitHub-only features (walk-forward; live niche score)",False,2024-01-01,801,16,0.02,0.7431,0.1179,0.05,0.08,4.005
+s_logit_github,"Logistic, GitHub-only features (walk-forward; live niche score)",False,2024-07-01,957,13,0.0136,0.7013,0.0808,0.0,0.04,2.9446
+s_logit_github,"Logistic, GitHub-only features (walk-forward; live niche score)",False,2025-01-01,1072,19,0.0177,0.8116,0.1425,0.05,0.08,4.5137
+s_logit_github,"Logistic, GitHub-only features (walk-forward; live niche score)",False,2025-07-01,1180,13,0.011,0.7911,0.1053,0.0,0.0,0.0
+s_heuristic,Pre-registered heuristic (no fitting),False,2023-07-01,645,19,0.0295,0.813,0.1833,0.2,0.18,6.1105
+s_heuristic,Pre-registered heuristic (no fitting),False,2024-01-01,801,16,0.02,0.73,0.1115,0.15,0.12,6.0075
+s_heuristic,Pre-registered heuristic (no fitting),False,2024-07-01,957,13,0.0136,0.7578,0.1034,0.15,0.1,7.3615
+s_heuristic,Pre-registered heuristic (no fitting),False,2025-01-01,1072,19,0.0177,0.821,0.1467,0.15,0.14,7.8989
+s_heuristic,Pre-registered heuristic (no fitting),False,2025-07-01,1180,13,0.011,0.8249,0.1175,0.0,0.04,3.6308
+b_random,Baseline: random,False,2023-07-01,645,19,0.0295,0.5652,0.0382,0.0,0.02,0.6789
+b_random,Baseline: random,False,2024-01-01,801,16,0.02,0.3779,-0.0592,0.0,0.02,1.0012
+b_random,Baseline: random,False,2024-07-01,957,13,0.0136,0.4098,-0.0362,0.0,0.0,0.0
+b_random,Baseline: random,False,2025-01-01,1072,19,0.0177,0.4187,-0.0372,0.05,0.02,1.1284
+b_random,Baseline: random,False,2025-07-01,1180,13,0.011,0.5684,0.0247,0.0,0.0,0.0
+b_tvl,Baseline: TVL size,False,2023-07-01,645,19,0.0295,0.7089,0.1226,0.1,0.06,2.0368
+b_tvl,Baseline: TVL size,False,2024-01-01,801,16,0.02,0.6904,0.0925,0.05,0.1,5.0063
+b_tvl,Baseline: TVL size,False,2024-07-01,957,13,0.0136,0.6906,0.0766,0.1,0.06,4.4169
+b_tvl,Baseline: TVL size,False,2025-01-01,1072,19,0.0177,0.7951,0.1352,0.15,0.1,5.6421
+b_tvl,Baseline: TVL size,False,2025-07-01,1180,13,0.011,0.8035,0.1101,0.05,0.06,5.4462
+b_commits,Baseline: commits in last 90 days,False,2023-07-01,645,19,0.0295,0.7379,0.1394,0.1,0.12,4.0737
+b_commits,Baseline: commits in last 90 days,False,2024-01-01,801,16,0.02,0.7898,0.1406,0.05,0.08,4.005
+b_commits,Baseline: commits in last 90 days,False,2024-07-01,957,13,0.0136,0.7535,0.1017,0.0,0.08,5.8892
+b_commits,Baseline: commits in last 90 days,False,2025-01-01,1072,19,0.0177,0.7822,0.1291,0.0,0.08,4.5137
+b_commits,Baseline: commits in last 90 days,False,2025-07-01,1180,13,0.011,0.6183,0.0428,0.0,0.0,0.0
+b_newest,Baseline: newest listing first,False,2023-07-01,645,19,0.0295,0.7145,0.1286,0.2,0.12,4.0737
+b_newest,Baseline: newest listing first,False,2024-01-01,801,16,0.02,0.6265,0.0621,0.05,0.04,2.0025
+b_newest,Baseline: newest listing first,False,2024-07-01,957,13,0.0136,0.7152,0.0869,0.05,0.02,1.4723
+b_newest,Baseline: newest listing first,False,2025-01-01,1072,19,0.0177,0.748,0.1139,0.05,0.02,1.1284
+b_newest,Baseline: newest listing first,False,2025-07-01,1180,13,0.011,0.7736,0.0993,0.05,0.04,3.6308
+b_prior_funding,Baseline: raised before (most recent first),False,2023-07-01,645,19,0.0295,0.746,0.2183,0.1,0.12,4.0737
+b_prior_funding,Baseline: raised before (most recent first),False,2024-01-01,801,16,0.02,0.756,0.1951,0.2,0.12,6.0075
+b_prior_funding,Baseline: raised before (most recent first),False,2024-07-01,957,13,0.0136,0.842,0.2144,0.15,0.16,11.7785
+b_prior_funding,Baseline: raised before (most recent first),False,2025-01-01,1072,19,0.0177,0.7992,0.2125,0.2,0.18,10.1558
+b_prior_funding,Baseline: raised before (most recent first),False,2025-07-01,1180,13,0.011,0.7241,0.1275,0.2,0.12,10.8923
+leaky_stars_now,"Reference: today's GitHub stars (LEAKAGE-EXPOSED, not a fair baseline)",True,2023-07-01,645,19,0.0295,0.7414,0.1418,0.15,0.1,3.3947
+leaky_stars_now,"Reference: today's GitHub stars (LEAKAGE-EXPOSED, not a fair baseline)",True,2024-01-01,801,16,0.02,0.7794,0.1361,0.05,0.04,2.0025
+leaky_stars_now,"Reference: today's GitHub stars (LEAKAGE-EXPOSED, not a fair baseline)",True,2024-07-01,957,13,0.0136,0.7849,0.1151,0.05,0.02,1.4723
+leaky_stars_now,"Reference: today's GitHub stars (LEAKAGE-EXPOSED, not a fair baseline)",True,2025-01-01,1072,19,0.0177,0.7001,0.0923,0.05,0.04,2.2568
+leaky_stars_now,"Reference: today's GitHub stars (LEAKAGE-EXPOSED, not a fair baseline)",True,2025-07-01,1180,13,0.011,0.6227,0.0448,0.0,0.0,0.0

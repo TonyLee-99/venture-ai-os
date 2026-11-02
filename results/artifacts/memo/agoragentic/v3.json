@@ -1,0 +1,296 @@
+{
+ "kind": "memo",
+ "entity": "agoragentic",
+ "version": 3,
+ "parent_version": 2,
+ "as_of": "2026-11-01",
+ "content_sha256": "3c460aceb24e4e429f26a86549fd5ce776e7ae2f83af3c2eecf386cbd5e2d0c4",
+ "provenance": {
+  "run_id": "496b73adaa2e9c6c",
+  "job": "diligence_memo",
+  "doc_ids": [
+   "d_56dbcafcb8f38ffa",
+   "d_58548c9e5cdbdfd3",
+   "d_5a4cd6a19a1a9d5f"
+  ],
+  "cache_keys": [
+   "d6bc525ce208cb1f0db7a6faa904a3033e210ffb74ff68b760da9a13cbc98f64",
+   "c154424882104a56d534cd0ec908087db927cbe01a55e1e8fbda4a687bb0aabc",
+   "4bfc61382168caf56d60fff33f458d7d9aeffde06660077f1a6a1b1261cd5a0d"
+  ],
+  "metrics": [
+   "gh.commits_90d",
+   "gh.commits_prev_90d",
+   "gh.commits_total",
+   "gh.first_repo_year",
+   "gh.public_repos",
+   "gh.stars_total_now",
+   "hn.points_total",
+   "hn.stories",
+   "screen.n_candidates",
+   "screen.rank",
+   "screen.score"
+  ]
+ },
+ "content": {
+  "entity": "agoragentic",
+  "name": "agoragentic",
+  "as_of": "2026-11-01",
+  "memo": {
+   "company": "agoragentic",
+   "one_liner": "Agoragentic sells Triptych OS (Agent OS), a governance and evidence layer for deployed AI agents (policy, approvals, budgets, receipts), with open-source local controls for existing frameworks plus an optional hosted Router/Marketplace and Interchange for agent commerce.",
+   "thesis_fit": "Adjacent to AI agents x payments: the receipts, mandates and budgets layer is relevant to agent commerce, and the repo is tagged x402/USDC. But the stated core is governance, and paid purchasing is currently frozen, so the payments wedge is not live.",
+   "claims": [
+    {
+     "id": "c1",
+     "section": "market",
+     "text": "The product is positioned as a control-and-proof layer for autonomous agents, not an orchestration framework requiring a rewrite.",
+     "doc_id": "d_56dbcafcb8f38ffa",
+     "quote": "Agoragentic is not another orchestration framework that requires a rewrite.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c2",
+     "section": "narrative",
+     "text": "The company describes Agent OS as a runtime with mandates, budgets, approvals and stop controls, which ties to agent spending authority.",
+     "doc_id": "d_56dbcafcb8f38ffa",
+     "quote": "Mandates, budgets, approvals, stop controls, runtime state, receipts, and reconciliation",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c3",
+     "section": "pmf",
+     "text": "The largest featured listing, Agent Echo, is priced free per call and has 1,094 successful calls.",
+     "doc_id": "d_58548c9e5cdbdfd3",
+     "quote": "Configured price: free (per call), verified, 1,094 successful calls.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c4",
+     "section": "pmf",
+     "text": "Only one featured listing shows a non-zero price (Text Summarizer, 0.01 USDC per call, 55 successful calls), so paid usage evidence is thin.",
+     "doc_id": "d_58548c9e5cdbdfd3",
+     "quote": "Text Summarizer\n- devtools. Configured price: 0.01 USDC (per call), verified, 55 successful calls.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c5",
+     "section": "risk",
+     "text": "Paid purchasing is currently unavailable because the platform custody policy is frozen.",
+     "doc_id": "d_58548c9e5cdbdfd3",
+     "quote": "Purchasing is currently unavailable while the platform custody policy is frozen.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c6",
+     "section": "market",
+     "text": "The marketplace has 79 public live services browse-visible in the curated catalog.",
+     "doc_id": "d_58548c9e5cdbdfd3",
+     "quote": "79\npublic live services are browse-visible in the curated catalog.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c7",
+     "section": "execution",
+     "text": "Commits on the owner's top repos totaled 766 in the last 90 days before 2026-11-01.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.commits_90d",
+     "value": 766.0
+    },
+    {
+     "id": "c8",
+     "section": "execution",
+     "text": "The prior-90-day commit count was 279, so recent activity is roughly 2.7x higher.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.commits_prev_90d",
+     "value": 279.0
+    },
+    {
+     "id": "c9",
+     "section": "execution",
+     "text": "The integrations repo has 41 stars and 10 forks, which is modest outside interest.",
+     "doc_id": "d_5a4cd6a19a1a9d5f",
+     "quote": "Stars: 41. Forks: 10.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c10",
+     "section": "execution",
+     "text": "Live in-path enforcement exists only for Claude Code (a PreToolUse hook); OpenCode is experimental and other frameworks are mapping examples only.",
+     "doc_id": "d_56dbcafcb8f38ffa",
+     "quote": "Mapping or example support is not the same as in-path enforcement.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c11",
+     "section": "execution",
+     "text": "The integration catalog lists 112 surfaces, but the README warns a catalog entry does not imply live enforcement or payment readiness.",
+     "doc_id": "d_56dbcafcb8f38ffa",
+     "quote": "contains **112** surfaces.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c12",
+     "section": "risk",
+     "text": "The GitHub organization was created on 2026-10-23, with only 2 public non-fork repositories.",
+     "doc_id": "d_5a4cd6a19a1a9d5f",
+     "quote": "Account created: 2026-10-23. Public non-fork repositories: 2.0.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c13",
+     "section": "narrative",
+     "text": "The company separates the hosted Router/Marketplace and Interchange from the governed runtime, giving a stated path from local governance to commerce.",
+     "doc_id": "d_58548c9e5cdbdfd3",
+     "quote": "Router / Marketplace and Agoragentic Interchange are transaction and discovery",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c14",
+     "section": "risk",
+     "text": "The company has no Hacker News presence (0 stories), so there is no external community validation from that channel.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "hn.stories",
+     "value": 0.0
+    }
+   ],
+   "scores": {
+    "pmf": {
+     "score": 2,
+     "rationale": "There is some outside developer interest (41 stars, 10 forks [c9]) and 1,463 marketplace calls [c3], but most of the volume is a free listing, paid evidence is thin [c4], and paid purchasing is frozen [c5]. No customer or revenue proof."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "The governance, receipts and mandates framing is timely for agent spending [c2] and has a stated path to commerce [c13]. But the story is broad: many product layers, a 112-surface catalog [c11], and a frozen payments leg [c5] dilute the wedge."
+    },
+    "execution": {
+     "score": 4,
+     "rationale": "Commit velocity is strong and accelerating [c7][c8], with SDKs, a hook for Claude Code and a large catalog. Held back by enforcement being real for only one host [c10], an unclear team size, and commit counts that may include automated or generated work."
+    }
+   },
+   "risks": [
+    "Payments leg is frozen: paid purchasing is unavailable under a platform custody freeze, so the agent-commerce thesis is unproven in production [c5].",
+    "Marketplace traffic is dominated by a free listing (Agent Echo), so the usage numbers may reflect self-generated or test traffic rather than real buyers [c3][c4].",
+    "Scope sprawl: Agent OS, Router, Interchange, Harness, ECF, Risk Fork and 112 catalog surfaces for what looks like a small team; the README itself repeatedly disclaims enforcement and readiness [c10][c11].",
+    "Governance layers are likely to be absorbed by agent framework vendors and platform hosts, and real enforcement exists for only one host today [c10].",
+    "Very young public footprint (org created 2026-10-23) and no external press or community signals [c12][c14]; the high commit count may include bulk or generated commits."
+   ],
+   "open_questions": [
+    "Who is on the team, and who authors the commits? How much of the 766 recent commits is human versus agent-generated?",
+    "Why is the custody policy frozen, what is the timeline to unfreeze paid purchasing, and is the custody model non-custodial in the future?",
+    "How much of the 1,463 marketplace calls come from outside buyers versus the team's own tests? Is there any revenue or paying customer today?",
+    "Which design partners or teams run Harness Core or Agent OS in production, and which host integrations do they use?",
+    "Is the wedge governance for coding agents, or agent commerce via x402/USDC? Which one is the first product to focus on?",
+    "What is the funding history, and what does the org created in 2026-10-23 mean for earlier repos or prior entities (the repo itself dates from 2026-02-27)?"
+   ],
+   "recommendation": "watch"
+  },
+  "unverified": [],
+  "critique": {
+   "scores": {
+    "pmf": {
+     "score": 2,
+     "rationale": "Forks suggest some developer interest [c9], but outside production adoption, repeat usage and willingness to pay remain unknown. Listing calls do not establish independent customers or settled payments, and purchasing is unavailable [c3–c5; d_58548c9e5cdbdfd3]."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "Mandates, budgets and receipts provide a clear connection to agent spending authority [c2]. However, the governance-to-commerce path remains a product thesis rather than demonstrated customer progression, with differentiation and the initial buyer still unclear [c5; d_56dbcafcb8f38ffa; d_58548c9e5cdbdfd3]."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "Recent commit activity supports active development [c7; gh.commits_prev_90d], and the README describes a packaged Claude Code enforcement hook [d_56dbcafcb8f38ffa]. Multiple active maintainers, release quality and responsiveness to standards changes are unverified; commit volume alone does not establish the strongest execution tier."
+    }
+   },
+   "recommendation": "watch",
+   "unsupported_claims": [
+    {
+     "claim_id": "c1",
+     "reason": "The attached quote supports avoiding an orchestration rewrite, but does not establish the affirmative control-and-proof positioning. That positioning needs its own supporting span."
+    },
+    {
+     "claim_id": "c3",
+     "reason": "The quote omits the listing name and provides no comparison supporting 'largest.' The source associates these calls with Agent Echo, but the attached receipt does not establish the full claim."
+    },
+    {
+     "claim_id": "c4",
+     "reason": "The quote establishes a configured price and call count for Text Summarizer, not that it is the only featured listing with a nonzero price. Neither configured pricing nor successful calls establishes that payment occurred."
+    },
+    {
+     "claim_id": "c8",
+     "reason": "The cited metric supports the prior-period count but not the derived growth multiple. The comparison requires both period metrics, and the derived number does not satisfy the supplied receipt rule."
+    },
+    {
+     "claim_id": "c10",
+     "reason": "The quote supports a distinction between examples and enforcement, but does not identify Claude Code, establish its hook capability, or describe OpenCode. The exclusivity claim also exceeds the quoted evidence."
+    },
+    {
+     "claim_id": "c11",
+     "reason": "The quote supports the catalog count only; it does not support the attached warning about enforcement or payment readiness."
+    },
+    {
+     "claim_id": "c13",
+     "reason": "The quote identifies transaction and discovery infrastructure but omits the runtime comparison and does not establish a path from local adoption to commerce."
+    },
+    {
+     "claim_id": "c14",
+     "reason": "The metric measures stories with the company name in the title, not all Hacker News mentions, comments or community validation. 'No Hacker News presence' is broader than the measurement."
+    }
+   ],
+   "missing_risks": [
+    "Evidence integrity: the PMF rationale attributes aggregate marketplace calls to c3, which supports an individual listing; this weakens the memo's traction assessment.",
+    "Receipt dependence: the website explicitly distinguishes recorded outcomes from independent external-world proof; diligence should test verification failures and customer reliance on those receipts [d_58548c9e5cdbdfd3].",
+    "Host-boundary dependence: governance effectiveness may depend on whether consequential actions pass through supported hooks; bypass coverage and downstream side effects need validation [d_56dbcafcb8f38ffa].",
+    "Commercial capture remains unknown: free local controls may attract developers without creating demand for paid hosted operation or marketplace transactions.",
+    "Marketplace liquidity remains unproven: browse-visible listings do not establish invocable supply, independent providers, repeat buyer demand or reliable fulfillment [d_58548c9e5cdbdfd3]."
+   ],
+   "strongest_counterargument": "I recommend watch until independent production adoption and willingness to pay are verified. The strongest counterargument to the drafter's watch recommendation favors pass: an unclear commercial wedge and unavailable paid purchasing may make this too peripheral to the fund's agent-payments thesis despite active development."
+  },
+  "disagreements": [
+   "critic flags 8 claim(s) as unsupported by their quote"
+  ],
+  "doc_ids": [
+   "d_56dbcafcb8f38ffa",
+   "d_58548c9e5cdbdfd3",
+   "d_5a4cd6a19a1a9d5f"
+  ],
+  "facts": {
+   "gh.commits_90d": 766,
+   "gh.commits_prev_90d": 279,
+   "gh.commits_total": 1176,
+   "gh.public_repos": 2,
+   "gh.stars_total_now": 41,
+   "gh.first_repo_year": 2026,
+   "screen.score": 0.0664,
+   "screen.rank": 16,
+   "screen.n_candidates": 1398,
+   "hn.stories": 0,
+   "hn.points_total": 0
+  },
+  "receipts": {
+   "claims_drafted": 14,
+   "raw_precision": 0.8571,
+   "post_repair_precision": 1.0,
+   "shipped": 14,
+   "withheld": 0,
+   "dropped_in_repair": 0
+  },
+  "models": {
+   "drafter": "claude_cli:claude-sonnet-5-5",
+   "critic": "codex_cli:gpt-6.1-sol"
+  }
+ }
+}

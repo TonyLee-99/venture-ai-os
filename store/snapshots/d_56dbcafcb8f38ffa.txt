@@ -1,0 +1,169 @@
+# Agoragentic
+
+![Agoragentic: govern agent actions, preserve evidence, keep receipts](./assets/agoragentic-integrations-social.png)
+
+## Keep your framework. Add control and proof.
+
+**Agoragentic is Triptych OS (Agent OS) for deployed agents and swarms. This repository is its open integration, governance, and evidence front door.** It helps developers bound what an agent may do, preserve inspectable evidence of what it did, and connect that agent to hosted operation or agent commerce only when those capabilities are needed.
+
+Use it with an agent, MCP server, coding workflow, or tool-calling application you already have. Agoragentic is not another orchestration framework that requires a rewrite.
+
+[![Harness Core](https://img.shields.io/npm/v/agoragentic-harness-core?label=Harness%20Core&color=cb3837)](https://www.npmjs.com/package/agoragentic-harness-core)
+[![Node SDK](https://img.shields.io/npm/v/agoragentic?label=Node%20SDK&color=cb3837)](https://www.npmjs.com/package/agoragentic)
+[![Python SDK](https://img.shields.io/pypi/v/agoragentic?label=Python%20SDK&color=3775A9)](https://pypi.org/project/agoragentic/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+```text
+your agent or tool
+        ↓
+Agoragentic policy and approval boundary
+        ↓
+your existing runtime
+        ↓
+lifecycle evidence + receipt
+        ↓
+optional Agent OS, Router / Marketplace, or Interchange
+```
+
+## Who it is for
+
+Agoragentic is for developers and platform teams that already have an AI agent or agent-powered product and need to answer:
+
+- What was the agent authorized to do?
+- Which policy applied before a consequential action?
+- Did an owner need to approve it?
+- What evidence supports the recorded outcome?
+- What remains blocked or unknown?
+- Can the same governed agent later be operated, paid, or connected to another network?
+
+## Featured Integration Paths
+
+These are the shortest supported entry paths into the Agoragentic stack.
+
+| Need | Start with | Result |
+|---|---|---|
+| Govern actions locally | [Harness Core](https://github.com/rhein1/agoragentic-harness-core) | Policy decisions, approval records, lifecycle events, local proof, and clearly labeled local receipts |
+| Govern project context | [Micro ECF](https://github.com/rhein1/agoragentic-micro-ecf) or [ECF Core](https://github.com/rhein1/agoragentic-ecf-core) | Allowed and blocked source boundaries, provenance, context artifacts, and local MCP |
+| Run evidence-first Codex workflows | [Fable-5](https://github.com/rhein1/fable5-codex) | Audits, reviews, fact checks, architecture analysis, bounded subagents, and truthful Workflow Traces |
+| Operate a deployed agent | [Agent OS](https://agoragentic.com/agent-os/) | Mandates, budgets, approvals, stop controls, runtime state, receipts, and reconciliation |
+| Route or buy agent work | [Node SDK](./sdk/node/) or [Python SDK](./sdk/python/) | Task matching, bounded execution, current provider metadata, and hosted receipts |
+| Inspect the MCP / Agent Client Protocol boundary | [MCP source](./mcp/) and [ACP metadata](./acp/) | Unpublished protocol/reference source with owned local metadata; remote discovery and calls fail closed without a separately qualified host boundary |
+| Inspect ARD discovery metadata offline | [ARD v0.91 source profile](./ard/) | Pinned schemas and contexts, a deterministic compatibility generator, and a fail-closed normalizer; no deployed well-known endpoint, network dereference, execution, payment, trust, or publication authority |
+| Review fork-before-risk contracts | [Risk Fork](./risk-fork/) | Experimental source-only classification, lifecycle, taint, E2B, and PostgreSQL authority contracts; no live containment, hosted interception, deployment, or production-readiness claim |
+| Demonstrate fork-before-risk locally | [Risk Fork hackathon demo](./risk-fork/hackathon/) | Named synthetic fixtures, deterministic classification, lifecycle replay, cleanup evidence, and local receipts; explicitly not isolation or live protection |
+| Connect a marketplace or network | [Interchange](https://agoragentic.com/interchange/) | Cross-market discovery, mandate enforcement, receipt verification, and reconciliation |
+
+## Start locally in five minutes
+
+This path requires no Agoragentic account, wallet, payment, hosted runtime, or external model provider.
+The canonical source, schemas, examples, and releases live in the standalone
+[Harness Core repository](https://github.com/rhein1/agoragentic-harness-core); the legacy
+[`harness-core/`](./harness-core/) path is a durable migration pointer.
+
+```bash
+npx agoragentic-harness-core@latest init
+npx agoragentic-harness-core@latest validate
+npx agoragentic-harness-core@latest run \
+  --profile local_no_spend \
+  --task "Create an evidence-backed readiness summary"
+```
+
+Inspect the local artifacts:
+
+```text
+agent.yaml
+policy.yaml
+.agoragentic/
+├── local-proof.json
+├── local-receipt.json
+└── runs/<run_id>/
+    ├── state.json
+    ├── events.jsonl
+    ├── local-proof.json
+    ├── local-receipt.json
+    ├── agent-os-harness.json
+    └── summary.md
+```
+
+The generic Harness `run` path validates configuration and policy and records a no-spend proof boundary. **The task string labels the run; it is not evidence that a host executed the task.** Live enforcement requires a supported host hook or a host integration around Harness middleware.
+
+### Live enforcement available today
+
+| Host | Current capability | Claim limit |
+|---|---|---|
+| Claude Code | Packaged `PreToolUse` allow / ask / deny hook | Enforces the pre-tool policy decision; it does not prove every downstream side effect completed correctly |
+| OpenCode | Experimental before / after hook adapter pinned to an exact host contract fixture | Source candidate with bounded local evidence; not a general end-to-end compatibility claim |
+| LangGraph, CrewAI, Codex, MCP, Hermes, Rust reference runtime, and others | Mapping examples and adapter contracts | Mapping or example support is not the same as in-path enforcement |
+
+Read [Integration capability levels](./docs/INTEGRATION_CAPABILITY_LEVELS.md) before interpreting an integration status. The [generated capability status](./docs/INTEGRATION_CAPABILITY_STATUS.md) shows the selected records and their evidence boundaries directly from `integrations.json`.
+
+## Choose one path
+
+### Add governance to an existing agent
+
+Keep the existing framework or runtime. Start with [Harness Core](https://github.com/rhein1/agoragentic-harness-core) for policy decisions, approvals, lifecycle evidence, and local receipts around actions.
+
+```text
+LangGraph       ─┐
+CrewAI          ─┤
+OpenAI Agents   ─┤
+Codex           ─┤
+Claude Code     ─┤──→ Harness Core ─→ policy + evidence + receipt
+MCP             ─┤
+custom Python   ─┤
+custom Node.js  ─┘
+```
+
+Browse the machine-readable catalog in [`integrations.json`](./integrations.json). A catalog entry does not automatically mean live enforcement, deployed compatibility, or payment readiness.
+
+At this revision, the canonical `integrations.json` manifest contains **112** surfaces. `ecosystem.json` is the count holder; generated public copy should read from the machine inventory rather than maintain an independent number.
+
+### Govern what the agent may know
+
+Start with Micro ECF:
+
+```bash
+npx agoragentic-micro-ecf@latest plan --dir .
+# Review the proposed local writes.
+npx agoragentic-micro-ecf@latest install --dir . --yes
+```
+
+Move to ECF Core when you need richer source compilation, code indexes, evidence units, context routing, grounding evaluation, or a self-hosted local MCP server.
+
+## 5-Minute Buyer Quickstart
+
+Use this optional hosted path when the agent needs current capability matching or Router execution.
+
+```bash
+npm install agoragentic
+```
+
+```javascript
+const agoragentic = require("agoragentic");
+const client = agoragentic(process.env.AGORAGENTIC_API_KEY);
+
+const match = await client.match("summarize", { max_cost: 0.10 });
+const result = await client.execute(
+  "summarize",
+  { text: "Governed agents need explicit authority and inspectable outcomes." },
+  { max_cost: 0.10 }
+);
+
+console.log(match.providers?.[0]);
+console.log(result.output);
+console.log(result.receipt_id || result.invocation_id);
+```
+
+Create a free buyer identity only when you are ready to use the hosted Router:
+
+```bash
+curl -X POST https://agoragentic.com/api/quickstart \
+  -H "Content-Type: application/json" \
+  -d '{"name":"my-agent","intent":"buyer"}'
+```
+
+A match is a preview. Read current availability, pricing, payment requirements, retry guidance, and receipt state from the live response. Keep wallet credentials, maximum spend, payment authorization, and retry authority outside model-controlled arguments.
+
+### Deploy, operate, buy, or sell
+
+Use [Agent OS](./agent-os/) for no-spend readiness, deployment previews, procurement checks, approvals, receipt inspection, and reconciliation. Use the Router / Marketplace for current capability matching and execution. Use the Interchange

@@ -1,0 +1,57 @@
+{
+ "job": "sourcing",
+ "agent": "AI Sourcing",
+ "entity": "all",
+ "run_id": "8c63f9a9a9bce204",
+ "as_of": "2026-11-01",
+ "status": "ok",
+ "inputs": {
+  "as_of": "2026-11-01"
+ },
+ "steps": [
+  {
+   "step": "source_and_resolve",
+   "entities": 1398,
+   "by_source": {
+    "coingecko": 99,
+    "defillama": 408,
+    "github_search": 807,
+    "hn": 63,
+    "x402scan": 30,
+    "yc_directory": 23
+   },
+   "multi_source": 28
+  },
+  {
+   "step": "screen",
+   "relevant": 711,
+   "relevant_investable": 372,
+   "already_in_crm": 2,
+   "shortlisted": [
+    "faremeter",
+    "meritsystems",
+    "agoragentic",
+    "codespar",
+    "vybe",
+    "seracx",
+    "aibtc",
+    "payai"
+   ]
+  }
+ ],
+ "outputs": {
+  "candidates": "results/sourcing/candidates.csv",
+  "shortlist": [
+   "faremeter",
+   "meritsystems",
+   "agoragentic",
+   "codespar",
+   "vybe",
+   "seracx",
+   "aibtc",
+   "payai"
+  ]
+ },
+ "error": null,
+ "sla_violations": []
+}

@@ -1,0 +1,280 @@
+{
+ "kind": "memo",
+ "entity": "meritsystems",
+ "version": 2,
+ "parent_version": 1,
+ "as_of": "2026-11-01",
+ "content_sha256": "79d8cc429d918fe477e2a9149d75053fe126083cc2aa1f1284b6ca9ba51d6cf8",
+ "provenance": {
+  "run_id": "a81d11608af78f6c",
+  "job": "diligence_memo",
+  "doc_ids": [
+   "d_6fb31a9056596c9d",
+   "d_dcd4dbd8e9e6ee95"
+  ],
+  "cache_keys": [
+   "b716be3753848f623b501b0eac7833258bb50605cad64cd29e54c2f024b4a775",
+   "918f06258a09e51ff4366f56c82e2edd963658f77223ff0b4a8b970137e2c344"
+  ],
+  "metrics": [
+   "gh.commits_90d",
+   "gh.commits_prev_90d",
+   "gh.commits_total",
+   "gh.first_repo_year",
+   "gh.public_repos",
+   "gh.stars_total_now",
+   "hn.points_total",
+   "hn.stories",
+   "screen.n_candidates",
+   "screen.rank",
+   "screen.score"
+  ]
+ },
+ "content": {
+  "entity": "meritsystems",
+  "name": "merit-systems",
+  "as_of": "2026-11-01",
+  "memo": {
+   "company": "merit-systems",
+   "one_liner": "Merit Systems builds open-source infrastructure for agentic commerce on x402: x402scan, an ecosystem explorer for x402 servers, transaction volumes and resources, plus AgentCash tooling (a server framework for x402/MPP-compatible APIs and a pay-per-call GTM agent template) aimed at developers building and consuming paid APIs for agents.",
+   "thesis_fit": "Direct fit: the company sits in the x402 / agent-commerce layer, with an explorer that indexes the ecosystem and tooling for pay-per-call APIs. Whether it captures value beyond a public-good explorer is unproven from the sources.",
+   "claims": [
+    {
+     "id": "c1",
+     "section": "market",
+     "text": "x402scan is an ecosystem explorer for x402, which it describes as a new standard for digital payments.",
+     "doc_id": "d_dcd4dbd8e9e6ee95",
+     "quote": "is an ecosystem explorer for [x402](https://www.x402.org/), a new standard for digital payments.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c2",
+     "section": "pmf",
+     "text": "x402scan lets users explore x402 servers, see their transaction volumes and access their resources through an embedded wallet.",
+     "doc_id": "d_dcd4dbd8e9e6ee95",
+     "quote": "lets you explore the ecosystem of x402 servers, see their transaction volumes and directly access their resources through an embedded wallet.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c3",
+     "section": "pmf",
+     "text": "The x402scan repo has 299 forks, a sign of developer interest (stars are 402).",
+     "doc_id": "d_6fb31a9056596c9d",
+     "quote": "Stars: 402. Forks: 299. Language: TypeScript.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c4",
+     "section": "pmf",
+     "text": "Across the owner's repos there are 1716 stars in total (current snapshot).",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.stars_total_now",
+     "value": 1716.0
+    },
+    {
+     "id": "c5",
+     "section": "narrative",
+     "text": "The README describes the x402 vision as an internet without ads or centralized intermediaries, with API resources purchasable just-in-time using stablecoins.",
+     "doc_id": "d_dcd4dbd8e9e6ee95",
+     "quote": "x402 is vision for an internet without ads or centralized intermediaries.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c6",
+     "section": "narrative",
+     "text": "The agentcash-router repo is an opinionated server framework for building x402/MPP-compatible APIs.",
+     "doc_id": "d_6fb31a9056596c9d",
+     "quote": "Opinionated server framework for building x402/MPP-compatible APIs",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c7",
+     "section": "narrative",
+     "text": "The company published an AgentCash GTM agent template for sales prospecting, lead enrichment and outreach using pay-per-call APIs.",
+     "doc_id": "d_6fb31a9056596c9d",
+     "quote": "AgentCash GTM agent template — sales prospecting, lead enrichment, and outreach powered by pay-per-call APIs",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c8",
+     "section": "execution",
+     "text": "There were 556 commits on default branches of the top 5 repos in the 90 days before 2026-11-01.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.commits_90d",
+     "value": 556.0
+    },
+    {
+     "id": "c9",
+     "section": "execution",
+     "text": "Commit volume in the prior 90-day window was 790, so recent velocity is lower (556 vs 790) but still high.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.commits_prev_90d",
+     "value": 790.0
+    },
+    {
+     "id": "c10",
+     "section": "execution",
+     "text": "The x402scan repo was last pushed on 2026-10-27, within a week of the fetch date.",
+     "doc_id": "d_6fb31a9056596c9d",
+     "quote": "Created: 2025-09-23. Last push: 2026-10-27.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c11",
+     "section": "execution",
+     "text": "The README lists a monorepo with a Next.js web app, a Trigger.dev sync service and shared facilitator configuration, and invites outside contributors to add resources and facilitators.",
+     "doc_id": "d_dcd4dbd8e9e6ee95",
+     "quote": "We're actively seeking contributors to help build x402scan.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c12",
+     "section": "risk",
+     "text": "The README notes that local setup is not yet easy.",
+     "doc_id": "d_dcd4dbd8e9e6ee95",
+     "quote": "We're working on making this easier to spin-up.",
+     "metric": null,
+     "value": null
+    },
+    {
+     "id": "c13",
+     "section": "risk",
+     "text": "Hacker News shows no stories with the company name in the title (0 stories).",
+     "doc_id": null,
+     "quote": null,
+     "metric": "hn.stories",
+     "value": 0.0
+    },
+    {
+     "id": "c14",
+     "section": "market",
+     "text": "The GitHub-only screening model ranks merit-systems 7th among 1398 sourced candidates.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "screen.rank",
+     "value": 7.0
+    }
+   ],
+   "scores": {
+    "pmf": {
+     "score": 3,
+     "rationale": "Real developer adoption signals: 299 forks on x402scan [c3] and 1716 total stars [c4], and the product shows x402 transaction volumes [c2]. But there is no evidence of paying customers or revenue to Merit itself, and the traffic and usage of x402scan.com is not in the sources. Capped at 3."
+    },
+    "narrative": {
+     "score": 4,
+     "rationale": "Clear wedge tied to a live shift: an explorer/index for x402 [c1][c2], extending into server tooling [c6] and agent templates using pay-per-call APIs [c7]. The path from free explorer to a monetizable platform is not stated in the sources, so not 5."
+    },
+    "execution": {
+     "score": 4,
+     "rationale": "High commit volume of 556 in 90 days [c8], though down from 790 in the prior window [c9]; recent push [c10]; contributor-oriented structure [c11]. Contributor count and release cadence are not in the sources, and some repos (GTM template) look one-off."
+    }
+   },
+   "risks": [
+    "Monetization is unclear: an open-source Apache-licensed explorer and framework may be a public good without a revenue model.",
+    "Dependence on x402 (and MPP) standards adoption; a larger player or the standards body or facilitators could ship competing explorers or tooling.",
+    "Commit velocity fell about 30% quarter over quarter (556 vs 790), and some repos show little activity (the GTM template had a single push), which may indicate focus shifts.",
+    "Fork counts may overstate real usage: awesome-agentic-commerce has 673 forks against 151 stars, suggesting forks may be inflated by non-organic or incentive-driven behavior."
+   ],
+   "open_questions": [
+    "What is the business model: how does Merit make money from x402scan, AgentCash and the router (fees, hosted service, facilitator, data)?",
+    "What are real usage numbers for x402scan.com and AgentCash (MAU, transacting agents, volume routed, paying customers)?",
+    "Why did commits decline from 790 to 556, and how many full-time engineers are on the team? Who are the founders and their backgrounds?",
+    "How is the high fork count on x402scan and awesome-agentic-commerce explained? Are forks tied to contributors, hackathons or incentives?",
+    "What is the relationship with the x402 standard maintainers and facilitators, and how defensible is the position if they build their own explorer?",
+    "What funding has been raised so far and what is the planned use of a new round?"
+   ],
+   "recommendation": "advance"
+  },
+  "unverified": [],
+  "critique": {
+   "scores": {
+    "pmf": {
+     "score": 3,
+     "rationale": "Forks provide a provisional developer-interest signal [c3], but active downstream use and independent contributors are unverified. Displaying ecosystem transaction volumes [c2] does not establish transactions through Merit, customer retention or willingness to pay; aggregate stars [c4] do not resolve those gaps."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "The explorer, API framework and agent template form a coherent agent-commerce story [c1, c2, c6, c7]. However, the sources do not establish a differentiated commercial edge, validated demand for the broader suite or a credible path from discovery to a defensible platform."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "Commit activity and the recent explorer push support active development [c8, c9, c10]. Contributor breadth, release quality and responsiveness to standards changes remain unknown; an invitation to contribute [c11] does not establish contributions from multiple people."
+    }
+   },
+   "recommendation": "watch",
+   "unsupported_claims": [
+    {
+     "claim_id": "c5",
+     "reason": "The quote supports the stated vision but omits the stablecoin and just-in-time purchasing assertion. That assertion appears elsewhere in the supplied document, but requires a receipt covering that passage."
+    },
+    {
+     "claim_id": "c8",
+     "reason": "The metric supports the commit count, and FACTS supplies its scope, but the claim includes additional numbers for repository count, window length and cutoff date that do not equal the cited metric value. The receipt fails the stated numeric rule."
+    },
+    {
+     "claim_id": "c9",
+     "reason": "The cited metric supports the prior-window count only. The recent count requires its own metric receipt; referencing it in this claim violates the stated numeric rule."
+    },
+    {
+     "claim_id": "c11",
+     "reason": "The quote establishes recruitment of contributors only. It does not substantiate the monorepo components or the specific resource and facilitator contribution workflows, although those appear elsewhere in the document."
+    },
+    {
+     "claim_id": "c14",
+     "reason": "The receipt supports rank only. The candidate-pool size requires a separate receipt using screen.n_candidates; screening rank also does not independently validate market demand."
+    }
+   ],
+   "missing_risks": [
+    "External maintainer participation and ownership concentration are unknown, leaving key-person risk unresolved.",
+    "The memo should distinguish economically meaningful, recurring agent purchases from experimental, subsidized or automated ecosystem activity; displayed transaction volume alone cannot settle this.",
+    "Explorer coverage and attribution may depend on which facilitators and resources are registered, creating potential completeness and measurement risks [d_dcd4dbd8e9e6ee95].",
+    "Embedded-wallet access raises security and transaction-authorization diligence questions; the sources do not establish custody arrangements, audits or controls [c2].",
+    "Developer interest may attach primarily to ecosystem discovery rather than the commercial API tooling, so conversion between products remains unproven [c3, c6, c7]."
+   ],
+   "strongest_counterargument": "The strongest case against advancing is that repository activity and ecosystem visibility have not yet demonstrated a specific customer repeatedly using or paying for Merit's products. Without verified adoption quality and a credible value-capture mechanism, the evidence supports continued monitoring more strongly than investment progression."
+  },
+  "disagreements": [
+   "recommendation: drafter 'advance' vs critic 'watch'",
+   "critic flags 5 claim(s) as unsupported by their quote"
+  ],
+  "doc_ids": [
+   "d_6fb31a9056596c9d",
+   "d_dcd4dbd8e9e6ee95"
+  ],
+  "facts": {
+   "gh.commits_90d": 556,
+   "gh.commits_prev_90d": 790,
+   "gh.commits_total": 7521,
+   "gh.public_repos": 27,
+   "gh.stars_total_now": 1716,
+   "gh.first_repo_year": 2024,
+   "screen.score": 0.0814,
+   "screen.rank": 7,
+   "screen.n_candidates": 1398,
+   "hn.stories": 0,
+   "hn.points_total": 0
+  },
+  "receipts": {
+   "claims_drafted": 14,
+   "raw_precision": 1.0,
+   "post_repair_precision": 1.0,
+   "shipped": 14,
+   "withheld": 0
+  },
+  "models": {
+   "drafter": "claude_cli:claude-sonnet-5-5",
+   "critic": "codex_cli:gpt-6.1-sol"
+  }
+ }
+}

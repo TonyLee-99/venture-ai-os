@@ -87,3 +87,15 @@ class JudgedItem(BaseModel):
 
 class JudgmentBatch(BaseModel):
     items: list[JudgedItem]
+
+
+class HumanDecision(BaseModel):
+    """One row of ledger/human_feedback.jsonl: the human verdict on a decision card (the RLEN reward signal)."""
+    date: str
+    entity: str
+    memo_version: int
+    decision: Literal["advance", "watch", "pass"]
+    agreed_with: Literal["drafter", "critic", "both", "neither"]
+    reviewer: str
+    reason: str
+    example: bool = False  # True = illustrative seed row, not a real decision

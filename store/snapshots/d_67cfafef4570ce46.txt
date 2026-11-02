@@ -1,0 +1,185 @@
+<p align="center">
+  <h1 align="center">MCP Dev LATAM 🌎</h1>
+  <p align="center">
+    <strong>Every commerce API your AI agent needs to run a business in Latin America.</strong><br>
+    <em>Brazil 🇧🇷 · Mexico 🇲🇽 · Argentina 🇦🇷 · Colombia 🇨🇴 · Chile 🇨🇱 · Peru 🇵🇪 · plus 4 agentic payment protocols.</em>
+  </p>
+  <p align="center">
+    MCP servers for LATAM commerce · live in the official MCP Registry · MIT License
+  </p>
+  <p align="center">
+    <em>Machine-readable catalog: <a href="https://codespar.dev/api/servers">codespar.dev/api/servers</a></em>
+  </p>
+  <p align="center">
+    <a href="https://codespar.dev/servers">Catalog</a> ·
+    <a href="#quick-start">Quick Start</a> ·
+    <a href="#agentic-payment-protocols">Agentic Protocols</a> ·
+    <a href="#all-servers">All Servers</a> ·
+    <a href="docs/CONTRIBUTING.md">Contribute</a>
+  </p>
+  <p align="center">
+    <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
+    <img src="https://img.shields.io/badge/MCP_Registry-live-green" alt="Live in the official MCP Registry">
+    <img src="https://img.shields.io/badge/countries-6-blue" alt="6 countries">
+    <img src="https://img.shields.io/badge/MCP-compatible-purple" alt="MCP compatible">
+  </p>
+</p>
+
+---
+
+## The Problem
+
+AI agents can write code, analyze data, and chat. But they can't **operate a business** — collect payments, issue invoices, ship products, or notify customers. Especially not in Latin America, where every service has its own API, auth pattern, and quirks (mTLS for BACEN Pix v2, JWT-RSA for STP-SPEI, AFIP web services, contract-gated developer portals, and on).
+
+Meanwhile, four agentic payment protocols are shipping in parallel — checkout protocols (Stripe ACP, Google UCP), authorization layers (AP2), and micropayment rails (x402) — and **none of them compose cleanly** with each other or with the regional rails businesses actually run on.
+
+**MCP Dev LATAM bridges both gaps.** Traditional LATAM services + the new agentic payment protocols, all accessible through a single MCP interface.
+
+## The Solution
+
+Each MCP server in this repo wraps a real provider — payments, fiscal, logistics, messaging, banking, ERP, identity, fraud, crypto, and the agentic protocols — so your agent can operate a complete business workflow.
+
+```
+🛒 Customer places order
+  → 💳 Agent charges via Pix (Asaas / Mercado Pago / Zoop)
+  → 📄 Agent issues NFe (Nuvem Fiscal / Focus NFe / NFe.io)
+  → 📦 Agent generates shipping label (Melhor Envio / Skydropx)
+  → 📱 Agent sends tracking via WhatsApp (Z-API / WhatsApp Cloud)
+  → 📊 Agent records in ERP (Omie / Bling / Tiny)
+  → 🏦 Agent reconciles balance (Stark Bank / Itaú / BTG)
+```
+
+**Six systems. Zero human intervention. One agent.**
+
+---
+
+## Agentic Payment Protocols
+
+Four servers for the emerging agentic payment stack. Only Stripe ACP reaches a live service today; the other three are deprecated (see the note under the table):
+
+| Protocol | Server | Tools | What it does |
+|----------|--------|-------|-------------|
+| **[Google UCP](packages/payments/ucp)** <sub>deprecated: no live endpoint</sub> | `@codespar/mcp-ucp` | 20 | Universal Commerce Protocol — agentic shopping, cart, checkout, orders, delivery, identity. |
+| **[Stripe ACP](packages/payments/stripe-acp)** | `@codespar/mcp-stripe-acp` | 24 | Agentic Commerce Protocol — AI agent checkout, payment delegation, products, invoices. |
+| **[x402](packages/crypto/x402)** <sub>deprecated: no live endpoint</sub> | `@codespar/mcp-x402` | 10 | HTTP-native micropayments by Coinbase — when an agent hits a 402, it pays USDC on Base/Solana and retries. Pure HTTP, no checkout UI. |
+| **[AP2](packages/payments/ap2)** <sub>deprecated: no live endpoint</sub> | `@codespar/mcp-ap2` <sub>alpha</sub> | 22 | Google's Agent-to-Agent Payment Protocol — authorization, audit trails, scoped spend limits. |
+
+> **UCP, AP2 and x402 are deprecated: no live endpoint.** Measured on 2026-09-27:
+>
+> | Server | Default host | What that host answered |
+> |---|---|---|
+> | `@codespar/mcp-ucp` | `commerce.googleapis.com` (sandbox: `sandbox.commerce.googleapis.com`) | HTTP 404 with Google's generic `Error 404 (Not Found)` page; the sandbox host fails the TLS handshake (certificate is for `*.googleapis.com`) |
+> | `@codespar/mcp-ap2` | `ap2.googleapis.com` (sandbox: `sandbox.ap2.googleapis.com`) | the same generic 404 page; the sandbox host fails the TLS handshake the same way |
+> | `@codespar/mcp-x402` | `api.x402.org` | does not resolve in DNS (8.8.8.8 and 1.1.1.1) |
+>
+> A generic 404 by itself does not prove a name has no service behind it: `translate.googleapis.com/v1`, a registered service asked for a path it does not serve, answers the same page. What the claim rests on is that every path these servers call failed the same way. UCP and AP2 are open specifications, not APIs Google hosts, and x402 has no central API (each seller picks its own facilitator). The three packages are deprecated on npm and kept here for reference; they are out of the quick start and the decision tree below. Eight more servers are deprecated for the same reason (their default host does not resolve): C6, Dock, Matera, Legiti, Caf, Certta, Unico and Nubank.
+
+### The Autonomy Spectrum
+
+Each protocol sits at a different level of agent autonomy:
+
+```
+ Human-in-loop ◄──────────────────────────────► Fully autonomous
+
+  ┌─────────┐   ┌─────────┐   ┌─────────┐   ┌─────────┐
+  │   ACP   │   │   UCP   │   │   AP2   │   │   x402  │
+  │ Stripe  │   │ Google  │   │ Google  │   │Coinbase │
+  └─────────┘   └─────────┘   └─────────┘   └─────────┘
+  User confirms   Commerce     User sets      No user.
+  every purchase  lifecycle    rules, agent   Machine-to-
+  in-chat         managed      acts within    machine at
+                  by agent     budget/scope   HTTP layer
+```
+
+### The Convergence Stack
+
+```
+┌─────────────────────────────────────────────┐
+│  Application Layer        ACP / UCP         │  Chat UX, product discovery
+├─────────────────────────────────────────────┤
+│  Authorization Layer      AP2 / Mandates    │  Spend limits, audit trails
+├─────────────────────────────────────────────┤
+│  Tool Layer               MCP  ◄── WE ARE  │  Standardized agent tools
+├─────────────────────────────────────────────┤
+│  Settlement Layer         x402 / Pix / Card │  On-chain or traditional rails
+└─────────────────────────────────────────────┘
+```
+
+**MCP Dev LATAM sits at the Tool Layer** — the middleware that connects every application, authorization, and settlement protocol through one interface.
+
+### Why this matters
+
+```
+Agent needs to buy something
+  ├── Retail checkout?     → Stripe ACP (create_checkout → complete_checkout)
+  └── LATAM merchant?      → Asaas / Mercado Pago / Conekta / Wompi / etc.
+
+All via MCP. Same interface. One agent.
+```
+
+---
+
+## Quick Start
+
+### With Claude Desktop
+
+Add to `~/.config/claude/claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "stripe-acp": {
+      "command": "npx",
+      "args": ["-y", "@codespar/mcp-stripe-acp"],
+      "env": {
+        "STRIPE_API_KEY": "sk_test_..."
+      }
+    },
+    "asaas": {
+      "command": "npx",
+      "args": ["-y", "@codespar/mcp-asaas"],
+      "env": {
+        "ASAAS_API_KEY": "your-api-key",
+        "ASAAS_SANDBOX": "true"
+      }
+    }
+  }
+}
+```
+
+For alpha packages (contract-gated providers like Itaú, Bradesco, Santander, Caixa, BB, BTG, Sicoob), add `@alpha` to the install:
+
+```bash
+npx -y @codespar/mcp-itau@alpha
+```
+
+### With any MCP client
+
+```bash
+npx @codespar/mcp-stripe-acp        # Agentic Commerce Protocol
+
+npx @codespar/mcp-asaas              # BR billing + Pix
+npx @codespar/mcp-mercado-pago       # LATAM payments
+npx @codespar/mcp-nuvem-fiscal       # NFe / NFSe
+npx @codespar/mcp-melhor-envio       # Multi-carrier shipping
+npx @codespar/mcp-z-api              # WhatsApp messaging
+npx @codespar/mcp-omie               # ERP
+npx @codespar/mcp-stark-bank         # Banking
+npx @codespar/mcp-brasil-api         # CEP, CNPJ (no key needed!)
+```
+
+### Try it now (no API key)
+
+[BrasilAPI](packages/identity/brasil-api) and [BCRA](packages/argentina/bcra) are public — no key required. Try it in your terminal:
+
+```bash
+npx @codespar/mcp-brasil-api
+```
+
+Then ask your agent: _"What is the address for CEP 01001-000?"_ or _"Look up CNPJ 00.000.000/0001-91"_.
+
+### Pointing a server at another host
+
+Every server reads its provider host from an environment variable, so a proxy, a mock, or an endpoint the provider moved can be used without a new release. The primary API is `<PREFIX>_BASE_URL`, where `<PREFIX>` is the one the server's credentials already use (`CELCOIN_BASE_URL`, `STONE_BASE_URL`, `BB_BASE_URL`). A second host gets `<PREFIX>_<ROLE>_URL`, for example `STONE_AUTH_URL` for a token endpoint or `CIELO_QUERY_URL`. When the variable is unset the server uses its documented default.
+
+A weekly CI job ([`catalog-hosts.yml`](.github/workflows/catalog-hosts.yml)) resolves every d

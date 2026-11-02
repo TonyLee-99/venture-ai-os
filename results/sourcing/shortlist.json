@@ -1,0 +1,137 @@
+{
+ "as_of": "2026-11-01",
+ "n_candidates": 1398,
+ "by_source": {
+  "coingecko": 99,
+  "defillama": 408,
+  "github_search": 807,
+  "hn": 63,
+  "x402scan": 30,
+  "yc_directory": 23
+ },
+ "shortlist": [
+  {
+   "entity": "faremeter",
+   "name": "faremeter",
+   "github_owner": "faremeter",
+   "top_repo": "faremeter/faremeter",
+   "domain": "faremeter.xyz",
+   "facilitator": null,
+   "rank": 4,
+   "screen_score": 0.10854394369982702,
+   "sources": "github_search",
+   "doc_ids": [
+    "d_748e85e901fac822",
+    "d_d7f80babf38c9414"
+   ]
+  },
+  {
+   "entity": "meritsystems",
+   "name": "merit-systems",
+   "github_owner": "merit-systems",
+   "top_repo": "Merit-Systems/x402scan",
+   "domain": "x402scan.com",
+   "facilitator": null,
+   "rank": 7,
+   "screen_score": 0.08135700094923444,
+   "sources": "github_search",
+   "doc_ids": [
+    "d_6fb31a9056596c9d",
+    "d_dcd4dbd8e9e6ee95"
+   ]
+  },
+  {
+   "entity": "agoragentic",
+   "name": "agoragentic",
+   "github_owner": "agoragentic",
+   "top_repo": "Agoragentic/agoragentic-integrations",
+   "domain": "agoragentic.com",
+   "facilitator": null,
+   "rank": 16,
+   "screen_score": 0.06644020124977658,
+   "sources": "github_search",
+   "doc_ids": [
+    "d_56dbcafcb8f38ffa",
+    "d_58548c9e5cdbdfd3",
+    "d_5a4cd6a19a1a9d5f"
+   ]
+  },
+  {
+   "entity": "codespar",
+   "name": "codespar",
+   "github_owner": "codespar",
+   "top_repo": "codespar/mcp-dev-latam",
+   "domain": "codespar.dev",
+   "facilitator": null,
+   "rank": 17,
+   "screen_score": 0.06291166659742103,
+   "sources": "github_search",
+   "doc_ids": [
+    "d_0d1fe91274ca5559",
+    "d_14a53ac7a2c7cac2",
+    "d_67cfafef4570ce46"
+   ]
+  },
+  {
+   "entity": "vybe",
+   "name": "vybenetwork",
+   "github_owner": "vybenetwork",
+   "top_repo": "vybenetwork/x402-client",
+   "domain": "",
+   "facilitator": null,
+   "rank": 18,
+   "screen_score": 0.05709792322622885,
+   "sources": "github_search",
+   "doc_ids": [
+    "d_26e65d0b8d435a48",
+    "d_d2e39ad11bd7a4d2"
+   ]
+  },
+  {
+   "entity": "seracx",
+   "name": "sera-cx",
+   "github_owner": "sera-cx",
+   "top_repo": "sera-cx/sera-mcp",
+   "domain": "",
+   "facilitator": null,
+   "rank": 20,
+   "screen_score": 0.055517565949843306,
+   "sources": "github_search",
+   "doc_ids": [
+    "d_3d48a837c89cc67a",
+    "d_4a064986e41fcdc9"
+   ]
+  },
+  {
+   "entity": "aibtc",
+   "name": "aibtcdev",
+   "github_owner": "aibtcdev",
+   "top_repo": "aibtcdev/ai-agent-crew",
+   "domain": "aibtc.dev",
+   "facilitator": null,
+   "rank": 24,
+   "screen_score": 0.041232231520419736,
+   "sources": "github_search",
+   "doc_ids": [
+    "d_4198603fbe742f78",
+    "d_b8ac0b5cfb3102a8"
+   ]
+  },
+  {
+   "entity": "payai",
+   "name": "PayAI Network",
+   "github_owner": "payainetwork",
+   "top_repo": "PayAINetwork/x402-solana",
+   "domain": "",
+   "facilitator": "payAI",
+   "rank": 26,
+   "screen_score": 0.03625651734891599,
+   "sources": "coingecko,github_search,x402scan",
+   "doc_ids": [
+    "d_50189362d7ac28de",
+    "d_e25335e7a14a4218",
+    "d_f07008e5d5f69b82"
+   ]
+  }
+ ]
+}

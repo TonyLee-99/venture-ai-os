@@ -1,0 +1,15 @@
+GitHub owner: aibtcdev
+Source: GitHub REST/GraphQL API, fetched 2026-11-02.
+Account type: Organization. Account created: 2024-03-02. Public non-fork repositories: 40.0.
+
+Repository aibtcdev/ai-agent-crew
+Description: Langchain + CrewAI powered AI agents with Bitcoin wallets.
+Stars: 47. Forks: 17. Language: Python.
+Created: 2024-02-08. Last push: 2024-12-12.
+Topics: 
+
+Repository aibtcdev/aibtc-mcp-server
+Description: Bitcoin-native MCP server for AI agents: BTC/STX wallets, DeFi yield, sBTC peg, NFTs, and x402 payments.
+Stars: 12. Forks: 49. Language: TypeScript.
+Created: 2026-01-09. Last push: 2026-11-01.
+Topics: ai-agent,bitcoin,blockchain,claude,claude-code,defi,mcp,stacks,web3,x402

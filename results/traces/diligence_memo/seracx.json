@@ -1,0 +1,90 @@
+{
+ "job": "diligence_memo",
+ "agent": "AI DD (analyst)",
+ "entity": "seracx",
+ "run_id": "81a74a006fb2d993",
+ "as_of": "2026-11-01",
+ "status": "ok",
+ "inputs": {
+  "doc_ids": [
+   "d_3d48a837c89cc67a",
+   "d_4a064986e41fcdc9"
+  ],
+  "facts_sha": "{\"gh.commits_90d\": 94, \"gh.commits_prev_90d\": 126, \"gh.commits_total\": 264, \"gh.first_repo_year\": 2026, \"gh.public_repos\": 9, \"gh.stars_total_now\": 131, \"hn.points_total\": 0, \"hn.stories\": 0, \"screen.n_candidates\": 1398, \"screen.rank\": 20, \"screen.score\": 0.0555}"
+ },
+ "steps": [
+  {
+   "step": "draft_memo",
+   "kind": "llm",
+   "backend": "claude_cli",
+   "model": "claude-sonnet-5-5",
+   "cache_key": "9e61d510b96d394b600ad91849e15ba6161a7f651e17e9a0ff9db2e732b003ee",
+   "prompt_sha256": "44dfeba88e62a6a23c7fc551228ab4d1297d0c716001198192e6ed76be83183a",
+   "doc_ids": [
+    "d_3d48a837c89cc67a",
+    "d_4a064986e41fcdc9"
+   ],
+   "output_sha256": "b83903e8810417b5f7a0d7691e3c875ff995abd829ecff684000139cf5b644a9"
+  },
+  {
+   "step": "verify_receipts",
+   "n_claims": 13,
+   "verified": 11,
+   "failures": {
+    "c3": "number_unsupported",
+    "c7": "number_unsupported"
+   }
+  },
+  {
+   "step": "repair_claims",
+   "kind": "llm",
+   "backend": "claude_cli",
+   "model": "claude-sonnet-5-5",
+   "cache_key": "f7acb8ffab19cc5e00302f59dca5457abfde14577a49250ea3a4b6a0022a846a",
+   "prompt_sha256": "6c2ef02ae79816fcdefc34ab85b2ff8b4ab22d6ffa24815ad365da381a7da23a",
+   "doc_ids": [
+    "d_3d48a837c89cc67a",
+    "d_4a064986e41fcdc9"
+   ],
+   "output_sha256": "d4be63c5fe1fbc196dfca1c92fa92c9ed73ea430b5a36905c2a271f373c52396"
+  },
+  {
+   "step": "gate",
+   "raw_precision": 0.8461538461538461,
+   "post_repair_precision": 1.0,
+   "shipped": 13,
+   "withheld": 0
+  },
+  {
+   "step": "critique",
+   "kind": "llm",
+   "backend": "codex_cli",
+   "model": "gpt-6.1-sol",
+   "cache_key": "a19ef8a210e7572789a92aff1c93b9ebb888a09369c78515303aa9a46d795bff",
+   "prompt_sha256": "cd05c08767a9a931ae4bf1a87358fb7095ac695bd617464fd704d3fcb1624806",
+   "doc_ids": [
+    "d_3d48a837c89cc67a",
+    "d_4a064986e41fcdc9"
+   ],
+   "output_sha256": "237ea0b8f5d6755b9222d9c8be552926a74c0d23e64d9e339f99c4b9b3c079a4"
+  },
+  {
+   "step": "disagreement",
+   "reasons": [
+    "recommendation: drafter 'advance' vs critic 'watch'",
+    "critic flags 3 claim(s) as unsupported by their quote"
+   ],
+   "families": [
+    "anthropic",
+    "openai"
+   ]
+  }
+ ],
+ "outputs": {
+  "memo": "results/memos/seracx.md",
+  "artifact_version": 2,
+  "decision_card": true
+ },
+ "error": null,
+ "sla_violations": []
+}

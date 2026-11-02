@@ -1,0 +1,27 @@
+# Nightly sourcing run ("AI Sourcing" overnight leads). In this public repo it runs from the committed
+# cassettes and snapshots (safe offline). In production: drop VAIOS_STRICT_REPLAY, add `make ingest warehouse`
+# before it, and give the runner model credentials through the gateway.
+name: nightly-sourcing
+on:
+  schedule:
+    - cron: "0 7 * * *"   # 07:00 UTC = 01:00 / 02:00 Chicago
+  workflow_dispatch:
+jobs:
+  sourcing:
+    runs-on: ubuntu-latest
+    env:
+      VAIOS_STRICT_REPLAY: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv sync --locked
+      - run: make sourcing-run
+      - uses: actions/upload-artifact@v4
+        with:
+          name: memos-and-decision-cards
+          path: |
+            results/memos/
+            results/decision_cards/
+            results/sourcing/run_summary.json

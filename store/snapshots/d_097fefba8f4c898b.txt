@@ -1,0 +1,6 @@
+Hacker News story (HN Algolia API, fetched 2026-11-02)
+Title: Show HN: I built an M2M payment loop where AI Agents pay for data via x402
+Posted: 2026-08-18
+Points: 5
+Link: https://github.com/tianzizhiming-svg/agentbridge
+Discussion: https://news.ycombinator.com/item?id=49342345

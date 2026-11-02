@@ -1,0 +1,9 @@
+GitHub owner: faremeter
+Source: GitHub REST/GraphQL API, fetched 2026-11-02.
+Account type: Organization. Account created: 2025-05-26. Public non-fork repositories: 16.0.
+
+Repository faremeter/faremeter
+Description: A universal framework designed to allow agents and other utilities to transparently make machine payments using web infrastructure.
+Stars: 70. Forks: 25. Language: TypeScript.
+Created: 2025-06-11. Last push: 2026-07-06.
+Topics: machine-payments,mpp,x402

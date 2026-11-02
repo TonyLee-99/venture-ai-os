@@ -1,0 +1,254 @@
+{
+ "entity": "payai",
+ "name": "PayAI Network",
+ "as_of": "2026-11-01",
+ "memo": {
+  "company": "PayAI Network",
+  "one_liner": "PayAI Network is an x402 payment facilitator focused on Solana. It publishes open-source TypeScript SDKs (x402-solana and agentic-payments) that let developers and agents pay for and accept HTTP 402 payments, with a newer SDK covering both x402 and MPP.",
+  "thesis_fit": "Direct fit with AI agents x payments: it is live infrastructure for agents paying per request over x402, and the agentic-payments SDK extends the wedge toward a protocol-agnostic acceptance layer. The open question is whether the transaction volume is economically meaningful.",
+  "claims": [
+   {
+    "id": "c1",
+    "section": "narrative",
+    "text": "x402-solana is a framework-agnostic implementation of x402 protocol v2 for Solana clients and servers.",
+    "doc_id": "d_e25335e7a14a4218",
+    "quote": "A reusable, framework-agnostic implementation of the x402 payment protocol v2 for Solana clients (browsers) and servers.",
+    "metric": null,
+    "value": null
+   },
+   {
+    "id": "c2",
+    "section": "narrative",
+    "text": "A second SDK, agentic-payments, aims to accept x402 and MPP payments through a single integration, which points to a protocol-agnostic platform play.",
+    "doc_id": "d_50189362d7ac28de",
+    "quote": "Protocol-agnostic agentic payments SDK — accept x402 and MPP payments through a single integration",
+    "metric": null,
+    "value": null
+   },
+   {
+    "id": "c3",
+    "section": "pmf",
+    "text": "x402scan shows the payAI facilitator has settled 53,090,708 x402 transactions in total, with 6,762,431 USD total volume.",
+    "doc_id": "d_f07008e5d5f69b82",
+    "quote": "Total x402 transactions settled: 53,090,708. Total volume: 6,762,431 USD.",
+    "metric": null,
+    "value": null
+   },
+   {
+    "id": "c4",
+    "section": "pmf",
+    "text": "The facilitator settled 462019 x402 transactions in the 30 days to the as-of date.",
+    "doc_id": null,
+    "quote": null,
+    "metric": "x402.txs_30d",
+    "value": 462019.0
+   },
+   {
+    "id": "c5",
+    "section": "pmf",
+    "text": "30-day x402 settlement volume was 16088.59 USD.",
+    "doc_id": null,
+    "quote": null,
+    "metric": "x402.volume_usd_30d",
+    "value": 16088.59
+   },
+   {
+    "id": "c6",
+    "section": "pmf",
+    "text": "Peak daily buyers in the last 30 days was 136.",
+    "doc_id": null,
+    "quote": null,
+    "metric": "x402.peak_daily_buyers_30d",
+    "value": 136.0
+   },
+   {
+    "id": "c7",
+    "section": "execution",
+    "text": "The facilitator has been transacting since 2025-05-19, shortly after the GitHub org was created.",
+    "doc_id": "d_f07008e5d5f69b82",
+    "quote": "First day with transactions: 2025-05-19.",
+    "metric": null,
+    "value": null
+   },
+   {
+    "id": "c8",
+    "section": "execution",
+    "text": "Default-branch commits across the top 5 repos were 29 in the latest 90 days.",
+    "doc_id": null,
+    "quote": null,
+    "metric": "gh.commits_90d",
+    "value": 29.0
+   },
+   {
+    "id": "c9",
+    "section": "execution",
+    "text": "Commits in the prior 90-day window were 56, so recent commit velocity roughly halved.",
+    "doc_id": null,
+    "quote": null,
+    "metric": "gh.commits_prev_90d",
+    "value": 56.0
+   },
+   {
+    "id": "c10",
+    "section": "execution",
+    "text": "x402-solana has 36 stars and 15 forks, which is modest but real developer adoption.",
+    "doc_id": "d_50189362d7ac28de",
+    "quote": "Stars: 36. Forks: 15. Language: TypeScript.",
+    "metric": null,
+    "value": null
+   },
+   {
+    "id": "c11",
+    "section": "execution",
+    "text": "The SDK claims full support for the latest x402 v2 specification, which suggests it tracks standards changes.",
+    "doc_id": "d_e25335e7a14a4218",
+    "quote": "Full support for the latest x402 v2 specification",
+    "metric": null,
+    "value": null
+   },
+   {
+    "id": "c12",
+    "section": "narrative",
+    "text": "The client has a beforePayment policy hook for spend caps, allowlists and reputation checks, and it fails closed, which is relevant for agent safety.",
+    "doc_id": "d_e25335e7a14a4218",
+    "quote": "Failure semantics: an unhandled throw inside the hook aborts the payment",
+    "metric": null,
+    "value": null
+   },
+   {
+    "id": "c13",
+    "section": "market",
+    "text": "A GitHub-only screening model ranks the company 26 among all sourced candidates.",
+    "doc_id": null,
+    "quote": null,
+    "metric": "screen.rank",
+    "value": 26.0
+   },
+   {
+    "id": "c14",
+    "section": "risk",
+    "text": "The company has no Hacker News stories, so it has little public narrative presence there.",
+    "doc_id": null,
+    "quote": null,
+    "metric": "hn.stories",
+    "value": 0.0
+   }
+  ],
+  "scores": {
+   "pmf": {
+    "score": 3,
+    "rationale": "Non-team buyers are transacting on-chain: 136 peak daily buyers and 462019 transactions in 30 days [c4][c6], with 53,090,708 lifetime transactions [c3]. Value is small, at 16088.59 USD in 30 days [c5], and the 30-day count is a small fraction of the lifetime total [c3][c4], so growth is not shown. The rubric's 5 requires growing usage, which the sources do not demonstrate."
+   },
+   "narrative": {
+    "score": 4,
+    "rationale": "There is a crisp wedge: Solana x402 facilitation and client SDKs [c1], with agent-safety tooling [c12] and a stated path to a protocol-agnostic acceptance layer covering x402 and MPP [c2]. The edge versus other facilitators is not stated in the sources, and there is little public narrative footprint [c14]."
+   },
+   "execution": {
+    "score": 3,
+    "rationale": "They shipped x402 v2 support [c11], run multiple repos, and have been live since 2025-05-19 [c7]. Commits fell from 56 to 29 across the last two 90-day windows [c8][c9], and the sources do not show how many people contribute. Developer pull is modest [c10]."
+   }
+  },
+  "risks": [
+   "Low value per transaction: roughly 462k transactions for about 16k USD in 30 days suggests micro-payments, possibly including incentive-driven or automated traffic. Real revenue and take rate are unknown.",
+   "The 30-day transaction count is a small fraction of the lifetime total of 53M [c3][c4], which hints at a sharp drop from a peak. This is an inference and needs confirming.",
+   "Commit velocity roughly halved quarter over quarter [c8][c9], and team size and contributor concentration are unverified.",
+   "Facilitation is a commoditizable layer and the sources name no competitors or moat. The company's focus on Solana ties it to one chain's x402 share.",
+   "Monetization is unclear: the sources do not say whether the facilitator charges fees."
+  ],
+  "open_questions": [
+   "What is the fee or revenue model, and what has PayAI Network earned in the last 90 days?",
+   "What share of the 462k monthly transactions comes from organic buyers versus automated, incentive-driven or team-controlled wallets?",
+   "What drove the apparent decline from 53M lifetime transactions to 462k in the last 30 days, and what is the trend?",
+   "Who is on the team, how many people commit regularly, and why did commits drop in the last 90 days?",
+   "How does PayAI Network differentiate from other x402 facilitators, and what is its stance on multi-chain and MPP?",
+   "Who are the top 10 sellers or API providers by volume, and are any paying customers or design partners?"
+  ],
+  "recommendation": "advance"
+ },
+ "unverified": [],
+ "critique": {
+  "scores": {
+   "pmf": {
+    "score": 3,
+    "rationale": "Settlement activity supports usage beyond a landing page [c3][c4][c5], but independent customers, repeat demand and growth remain unverified. Buyer counts do not establish that wallets belong to non-team users [c6], and forks do not establish active production adoption [c10]."
+   },
+   "narrative": {
+    "score": 4,
+    "rationale": "Solana payment tooling provides a clear agent-commerce wedge [c1], and protocol-agnostic acceptance offers a plausible expansion direction [c2]. Differentiation and the commercial path from SDK distribution to a defensible platform remain unproven."
+   },
+   "execution": {
+    "score": 3,
+    "rationale": "Recent repository pushes [d_50189362d7ac28de] and default-branch activity [c8][c9] support ongoing development, albeit at a slower observed pace. Documentation describes protocol support [c1][c11], but contributor breadth, release quality and response speed to standards changes are unknown."
+   }
+  },
+  "recommendation": "watch",
+  "unsupported_claims": [
+   {
+    "claim_id": "c7",
+    "reason": "The receipt establishes the first observed transaction date, but does not establish the GitHub organization's creation date. The comparison requires an additional receipt from the provided profile; the first transaction also does not establish uninterrupted operation."
+   },
+   {
+    "claim_id": "c10",
+    "reason": "The receipt supports the repository counts, but calling them real developer adoption overstates the evidence. Forks may be inactive or team-controlled, and stars do not establish integration or use."
+   },
+   {
+    "claim_id": "c11",
+    "reason": "The README supports an attributed statement about advertised compatibility. It does not establish tested conformance or when support shipped relative to a standards change, so standards-tracking execution remains unverified."
+   },
+   {
+    "claim_id": "c12",
+    "reason": "The selected quote supports aborting on an unhandled hook exception, but does not substantiate the hook's name or the listed policy capabilities. Other supplied README passages describe those capabilities as configurable hooks, rather than built-in reputation checks."
+   },
+   {
+    "claim_id": "c14",
+    "reason": "The warehouse metric covers stories with the company name in the title. It cannot establish the absence of other Hacker News coverage, discussions or product mentions, making the broader narrative-presence inference weak."
+   }
+  ],
+  "missing_risks": [
+   "Buyer independence remains unverified: settlement and wallet counts cannot establish non-team customers, despite the PMF rationale asserting that they do.",
+   "Demand concentration and retention are unknown. Aggregate activity could depend on a small set of merchants or wallets without durable repeat demand.",
+   "The comparison between lifetime transactions and a recent window cannot establish a sharp decline. Comparable historical windows are needed before treating deterioration as an investment signal.",
+   "Payment correctness and operational reliability remain unverified. Documentation alone does not establish independent security review, protection against duplicate settlement, or safe recovery from settlement failures.",
+   "Dependence on wallet providers, Solana infrastructure and evolving payment standards could create maintenance costs and service disruption; resilience is unknown.",
+   "Facilitator activity does not establish adoption of either SDK or demand specifically from autonomous agents, leaving the link between observed transactions and the proposed distribution strategy unverified."
+  ],
+  "strongest_counterargument": "The strongest case against advancing is that settlement activity has not been connected to independent, retained customers or demonstrated growth, so apparent traction may not establish durable demand [c3][c4][c5][c6]. With monetization, differentiation and contributor breadth unresolved, the evidence supports watching until commercial validation improves."
+ },
+ "disagreements": [
+  "recommendation: drafter 'advance' vs critic 'watch'",
+  "critic flags 5 claim(s) as unsupported by their quote"
+ ],
+ "doc_ids": [
+  "d_50189362d7ac28de",
+  "d_e25335e7a14a4218",
+  "d_f07008e5d5f69b82"
+ ],
+ "facts": {
+  "gh.commits_90d": 29,
+  "gh.commits_prev_90d": 56,
+  "gh.commits_total": 600,
+  "gh.public_repos": 29,
+  "gh.stars_total_now": 99,
+  "gh.first_repo_year": 2025,
+  "screen.score": 0.0363,
+  "screen.rank": 26,
+  "screen.n_candidates": 1398,
+  "x402.txs_30d": 462019,
+  "x402.volume_usd_30d": 16088.59,
+  "x402.peak_daily_buyers_30d": 136,
+  "hn.stories": 0,
+  "hn.points_total": 0
+ },
+ "receipts": {
+  "claims_drafted": 14,
+  "raw_precision": 1.0,
+  "post_repair_precision": 1.0,
+  "shipped": 14,
+  "withheld": 0,
+  "dropped_in_repair": 0
+ },
+ "models": {
+  "drafter": "claude_cli:claude-sonnet-5-5",
+  "critic": "codex_cli:gpt-6.1-sol"
+ }
+}

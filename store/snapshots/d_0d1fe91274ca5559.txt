@@ -1,0 +1,21 @@
+GitHub owner: codespar
+Source: GitHub REST/GraphQL API, fetched 2026-11-02.
+Account type: Organization. Account created: 2026-03-18. Public non-fork repositories: 7.0.
+
+Repository codespar/mcp-dev-latam
+Description: Open-source MCP servers for Latin American commerce — Pix, NF-e, banking, fiscal, logistics, and messaging across Brazil, Mexico, Argentina, Colombia, Chile, and Peru. MIT, on npm.
+Stars: 277. Forks: 52. Language: TypeScript.
+Created: 2026-03-30. Last push: 2026-09-27.
+Topics: agentic-commerce,ai-agents,brazil,claude,fintech,latin-america,llm-tools,mcp,model-context-protocol,nfe,open-finance,payments,pix
+
+Repository codespar/x402-monetization-examples
+Description: Charge an AI agent to use your API, MCP server, or a payment link, settled in USDC over x402 (plus a Pix leg for LATAM).
+Stars: 3. Forks: 1. Language: JavaScript.
+Created: 2026-07-16. Last push: 2026-09-14.
+Topics: 
+
+Repository codespar/agentic-payments-standards
+Description: Open CodeSpar contributions to agentic payment standards: KYA verifiable agent mandates, Pix push-rail for ACP, OAC proposal (Agentic Commerce Consortium), AP2 mapping.
+Stars: 0. Forks: 1. Language: JavaScript.
+Created: 2026-07-09. Last push: 2026-09-14.
+Topics: 

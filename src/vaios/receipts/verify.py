@@ -5,7 +5,8 @@ Checks per claim
 2. span: the quote occurs in that snapshot (exact after normalisation, or fuzzy partial match >= 92 for
    quotes of 15+ chars, which tolerates markdown/whitespace/quote-style differences but not invented text);
 3. numbers: a cited warehouse metric matches the facts sheet within 1%; every number written in the claim
-   text must appear in the quote or equal the cited metric value (catches "the README says 1,200" when it
+   text must appear in the quote, equal the cited metric value, or equal a sibling fact of the same
+   measurement (same key prefix) (catches "the README says 1,200" when it
    says 120).
 It does NOT judge whether the quote logically supports the claim; the cross-model critic does that.
 """
@@ -46,10 +47,11 @@ def _close(a: float, b: float, rel: float = 0.01) -> bool:
     return abs(a - b) <= rel * max(abs(a), abs(b), 1e-9)
 
 
-def _number_covered(n: float, quote_nums: list[float], metric_value: float | None) -> bool:
+def _number_covered(n: float, quote_nums: list[float], metric_value: float | None,
+                    context_nums: list[float]) -> bool:
     if n < 10 and float(n).is_integer():
         return True  # small counts ("3 risks", "Series 2") are not worth a receipt
-    candidates = quote_nums + ([metric_value] if metric_value is not None else [])
+    candidates = quote_nums + context_nums + ([metric_value] if metric_value is not None else [])
     # the claim may round (56.58M -> "56.6 million", 2.4% -> "2%"), so allow 5% when matching text to text
     return any(_close(n, c, 0.05) for c in candidates)
 
@@ -63,7 +65,9 @@ class ClaimCheck:
     match_score: float = 0.0
 
 
-def check_claim(claim: dict, store: DocStore, facts: dict[str, float]) -> ClaimCheck:
+def check_claim(claim: dict, store: DocStore, facts: dict[str, float],
+                descriptions: dict[str, str] | None = None) -> ClaimCheck:
+    """`descriptions` (metric key -> definition) lets a metric claim restate its window ("in 90 days")."""
     cid = claim["id"]
     quote_nums: list[float] = []
     score = 0.0
@@ -89,14 +93,25 @@ def check_claim(claim: dict, store: DocStore, facts: dict[str, float]) -> ClaimC
         if claim.get("value") is None or not _close(float(claim["value"]), metric_value):
             return ClaimCheck(cid, False, "metric_mismatch",
                               f"claimed {claim.get('value')} vs warehouse {metric_value}", score)
+    context: list[float] = []
+    if claim.get("metric"):
+        # numbers in the metric's own name/definition ("commits_90d", "as of 2026-11-01") ...
+        context = [float(x) for x in re.findall(r"\d+(?:\.\d+)?", claim["metric"])]
+        context += numbers_in((descriptions or {}).get(claim["metric"], ""))
+        # ... and sibling facts of the same measurement ("fell from <median_before> to <median_after>")
+        # (only for keys with sub-fields, series.date.field; "gh.commits_90d" vs "gh.stars" are different things)
+        if claim["metric"].count(".") >= 2:
+            family = claim["metric"].rsplit(".", 1)[0] + "."
+            context += [float(v) for k, v in facts.items() if k.startswith(family)]
     for n in numbers_in(claim["text"]):
-        if not _number_covered(n, quote_nums, metric_value):
+        if not _number_covered(n, quote_nums, metric_value, context):
             return ClaimCheck(cid, False, "number_unsupported", f"{n:g} not in quote or metric", score)
     return ClaimCheck(cid, True, "verified", "", score or 100.0)
 
 
-def check_all(claims: list[dict], store: DocStore, facts: dict[str, float]) -> list[ClaimCheck]:
-    return [check_claim(c, store, facts) for c in claims]
+def check_all(claims: list[dict], store: DocStore, facts: dict[str, float],
+              descriptions: dict[str, str] | None = None) -> list[ClaimCheck]:
+    return [check_claim(c, store, facts, descriptions) for c in claims]
 
 
 def precision(checks: list[ClaimCheck]) -> float:

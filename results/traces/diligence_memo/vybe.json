@@ -1,0 +1,90 @@
+{
+ "job": "diligence_memo",
+ "agent": "AI DD (analyst)",
+ "entity": "vybe",
+ "run_id": "ef595fb848949c40",
+ "as_of": "2026-11-01",
+ "status": "ok",
+ "inputs": {
+  "doc_ids": [
+   "d_26e65d0b8d435a48",
+   "d_d2e39ad11bd7a4d2"
+  ],
+  "facts_sha": "{\"gh.commits_90d\": 89, \"gh.commits_prev_90d\": 609, \"gh.commits_total\": 711, \"gh.first_repo_year\": 2022, \"gh.public_repos\": 18, \"gh.stars_total_now\": 6298, \"hn.points_total\": 0, \"hn.stories\": 0, \"screen.n_candidates\": 1398, \"screen.rank\": 18, \"screen.score\": 0.0571}"
+ },
+ "steps": [
+  {
+   "step": "draft_memo",
+   "kind": "llm",
+   "backend": "claude_cli",
+   "model": "claude-sonnet-5-5",
+   "cache_key": "14ad3fd424a04b5e1308a822a8cdef4c98b2e67f73e23af14cea725fd5d9b27b",
+   "prompt_sha256": "f7950cce423d583e7c55c5e19e937792d58931f1e4383b6efa2964af99dd7b0b",
+   "doc_ids": [
+    "d_26e65d0b8d435a48",
+    "d_d2e39ad11bd7a4d2"
+   ],
+   "output_sha256": "38cc9a065a41ed1e65c2980699b1e497befe521182819e529a22a11d59781781"
+  },
+  {
+   "step": "verify_receipts",
+   "n_claims": 13,
+   "verified": 11,
+   "failures": {
+    "c5": "number_unsupported",
+    "c7": "number_unsupported"
+   }
+  },
+  {
+   "step": "repair_claims",
+   "kind": "llm",
+   "backend": "claude_cli",
+   "model": "claude-sonnet-5-5",
+   "cache_key": "d2f0f9308bb410468fbe45cfc42b5c9214db7825420afa1b41af27b64819ed4f",
+   "prompt_sha256": "3cb61656124e80fa9d719dd486b4834dc5fcf4dc9f3017f030cf8f593ee8661e",
+   "doc_ids": [
+    "d_26e65d0b8d435a48",
+    "d_d2e39ad11bd7a4d2"
+   ],
+   "output_sha256": "338b1dfea8ef2e8c18bab50cb3cc1a598d917a720c2b976f11afa8ffc865b63f"
+  },
+  {
+   "step": "gate",
+   "raw_precision": 0.8461538461538461,
+   "post_repair_precision": 1.0,
+   "shipped": 13,
+   "withheld": 0
+  },
+  {
+   "step": "critique",
+   "kind": "llm",
+   "backend": "codex_cli",
+   "model": "gpt-6.1-sol",
+   "cache_key": "de650916d5d266e8ecfd93bddd57177fc1465c21b26c0e85fc6cd6125ddf5fa7",
+   "prompt_sha256": "bafbc51c97d8b4356950ca3c0b090c0fe8f790b8806267a11c4a73887c1419d7",
+   "doc_ids": [
+    "d_26e65d0b8d435a48",
+    "d_d2e39ad11bd7a4d2"
+   ],
+   "output_sha256": "6fc876ca63d7e40a1d01e7706dabeb69122bbe3d842069c9950766936e352681"
+  },
+  {
+   "step": "disagreement",
+   "reasons": [
+    "recommendation: drafter 'advance' vs critic 'watch'",
+    "critic flags 2 claim(s) as unsupported by their quote"
+   ],
+   "families": [
+    "anthropic",
+    "openai"
+   ]
+  }
+ ],
+ "outputs": {
+  "memo": "results/memos/vybe.md",
+  "artifact_version": 3,
+  "decision_card": true
+ },
+ "error": null,
+ "sla_violations": []
+}

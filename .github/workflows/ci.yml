@@ -1,0 +1,18 @@
+# Offline gate: lint + tests + feature regression check, replaying recorded LLM calls (no keys, no network LLM).
+name: ci
+on:
+  push:
+  pull_request:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      VAIOS_STRICT_REPLAY: "1"   # any LLM request not in cassettes/ fails the build
+      VAIOS_MAX_CALLS: "0"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv sync --locked
+      - run: make check

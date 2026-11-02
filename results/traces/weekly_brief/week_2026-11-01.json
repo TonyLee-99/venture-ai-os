@@ -1,0 +1,140 @@
+{
+ "job": "weekly_brief",
+ "agent": "AI Portfolio Monitor (writer)",
+ "entity": "week_2026-11-01",
+ "run_id": "30e7fb2cf97c877a",
+ "as_of": "2026-11-01",
+ "status": "ok",
+ "inputs": {
+  "inflections": [
+   {
+    "series": "facilitator_coinbase_txs",
+    "date": "2026-08-24",
+    "median_before": 2304730.0,
+    "median_after": 480568.5,
+    "ratio": 0.209,
+    "direction": "down"
+   },
+   {
+    "series": "facilitator_dexter_txs",
+    "date": "2026-08-24",
+    "median_before": 26664.0,
+    "median_after": 5177.5,
+    "ratio": 0.194,
+    "direction": "down"
+   },
+   {
+    "series": "facilitator_figment-facilitator_txs",
+    "date": "2026-08-24",
+    "median_before": 4862.0,
+    "median_after": 1473925.0,
+    "ratio": 303.152,
+    "direction": "up"
+   },
+   {
+    "series": "x402_base_txs",
+    "date": "2026-08-24",
+    "median_before": 2412757.0,
+    "median_after": 522340.5,
+    "ratio": 0.216,
+    "direction": "down"
+   },
+   {
+    "series": "facilitator_figment-facilitator_txs",
+    "date": "2026-09-14",
+    "median_before": 1473925.0,
+    "median_after": 28503.0,
+    "ratio": 0.019,
+    "direction": "down"
+   },
+   {
+    "series": "facilitator_payAI_txs",
+    "date": "2026-09-14",
+    "median_before": 4485090.0,
+    "median_after": 49368.5,
+    "ratio": 0.011,
+    "direction": "down"
+   },
+   {
+    "series": "x402_all_txs",
+    "date": "2026-09-14",
+    "median_before": 7708357.5,
+    "median_after": 759455.0,
+    "ratio": 0.099,
+    "direction": "down"
+   },
+   {
+    "series": "x402_solana_txs",
+    "date": "2026-09-14",
+    "median_before": 5324299.5,
+    "median_after": 130906.0,
+    "ratio": 0.025,
+    "direction": "down"
+   }
+  ],
+  "doc_ids": [
+   "d_097fefba8f4c898b",
+   "d_290b061c2b79dee7",
+   "d_93a6b4278913aa8c",
+   "d_b3765a6c28d9dc22",
+   "d_d136558b512e3575",
+   "d_d6cd536973ede129",
+   "d_e655c077722d931d",
+   "d_e978af6b776284b8"
+  ]
+ },
+ "steps": [
+  {
+   "step": "draft_brief",
+   "kind": "llm",
+   "backend": "claude_cli",
+   "model": "claude-sonnet-5-5",
+   "cache_key": "acae3b7b20096cc90176917214f2da8f5f36663acaa22b36701da18c6a822ece",
+   "prompt_sha256": "c4ae2ab79b4083b6c609eec460127512bbc434def0516f84055e4fa8eb972b95",
+   "doc_ids": [
+    "d_097fefba8f4c898b",
+    "d_290b061c2b79dee7",
+    "d_93a6b4278913aa8c",
+    "d_b3765a6c28d9dc22",
+    "d_d136558b512e3575",
+    "d_d6cd536973ede129",
+    "d_e655c077722d931d",
+    "d_e978af6b776284b8"
+   ],
+   "output_sha256": "7dde031fef18ff34b5033b1c7dd37b45d88b54b826af913ceb999e11dd6bccaf"
+  },
+  {
+   "step": "repair_claims",
+   "kind": "llm",
+   "backend": "claude_cli",
+   "model": "claude-sonnet-5-5",
+   "cache_key": "05a648fc7d222b3e2079061149bf0d9e37c8b832dc76809275ed5f3e792c6359",
+   "prompt_sha256": "8141e3b0b86d7346add16e104774a81f7f891f5cc52b4c069281a0d3d25fb2ad",
+   "doc_ids": [
+    "d_097fefba8f4c898b",
+    "d_290b061c2b79dee7",
+    "d_93a6b4278913aa8c",
+    "d_b3765a6c28d9dc22",
+    "d_d136558b512e3575",
+    "d_d6cd536973ede129",
+    "d_e655c077722d931d",
+    "d_e978af6b776284b8"
+   ],
+   "output_sha256": "2b939795a9ee4135c2065a4ed4943e924b1fce9f850b82ab7c6a9b6c16272cab"
+  },
+  {
+   "step": "verify_receipts",
+   "claims_drafted": 16,
+   "raw_precision": 0.8125,
+   "post_repair_precision": 1.0,
+   "shipped": 16,
+   "withheld": 0,
+   "dropped": 0
+  }
+ ],
+ "outputs": {
+  "brief": "results/briefs/2026-11-01.md"
+ },
+ "error": null,
+ "sla_violations": []
+}

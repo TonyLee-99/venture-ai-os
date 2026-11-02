@@ -1,0 +1,93 @@
+{
+ "job": "diligence_memo",
+ "agent": "AI DD (analyst)",
+ "entity": "agoragentic",
+ "run_id": "496b73adaa2e9c6c",
+ "as_of": "2026-11-01",
+ "status": "ok",
+ "inputs": {
+  "doc_ids": [
+   "d_56dbcafcb8f38ffa",
+   "d_58548c9e5cdbdfd3",
+   "d_5a4cd6a19a1a9d5f"
+  ],
+  "facts_sha": "{\"gh.commits_90d\": 766, \"gh.commits_prev_90d\": 279, \"gh.commits_total\": 1176, \"gh.first_repo_year\": 2026, \"gh.public_repos\": 2, \"gh.stars_total_now\": 41, \"hn.points_total\": 0, \"hn.stories\": 0, \"screen.n_candidates\": 1398, \"screen.rank\": 16, \"screen.score\": 0.0664}"
+ },
+ "steps": [
+  {
+   "step": "draft_memo",
+   "kind": "llm",
+   "backend": "claude_cli",
+   "model": "claude-sonnet-5-5",
+   "cache_key": "d6bc525ce208cb1f0db7a6faa904a3033e210ffb74ff68b760da9a13cbc98f64",
+   "prompt_sha256": "fd814118eec265aaf849506052e6e79e5ac68c060ad5c9830e7dda444d43a6be",
+   "doc_ids": [
+    "d_56dbcafcb8f38ffa",
+    "d_58548c9e5cdbdfd3",
+    "d_5a4cd6a19a1a9d5f"
+   ],
+   "output_sha256": "97ba3f071b69f4821a41af55df1007ab152f2986156c84517e6bdca20d45237a"
+  },
+  {
+   "step": "verify_receipts",
+   "n_claims": 14,
+   "verified": 12,
+   "failures": {
+    "c3": "number_unsupported",
+    "c7": "number_unsupported"
+   }
+  },
+  {
+   "step": "repair_claims",
+   "kind": "llm",
+   "backend": "claude_cli",
+   "model": "claude-sonnet-5-5",
+   "cache_key": "c154424882104a56d534cd0ec908087db927cbe01a55e1e8fbda4a687bb0aabc",
+   "prompt_sha256": "6d30ed544373de68af0ce8c8b487648268a2fd76d0c7c5e0ea2e2ed2ad589430",
+   "doc_ids": [
+    "d_56dbcafcb8f38ffa",
+    "d_58548c9e5cdbdfd3",
+    "d_5a4cd6a19a1a9d5f"
+   ],
+   "output_sha256": "959c81179532ec795bb8c9f13ad874e9c487baea8f152972a2368596e54fe4b0"
+  },
+  {
+   "step": "gate",
+   "raw_precision": 0.8571428571428571,
+   "post_repair_precision": 1.0,
+   "shipped": 14,
+   "withheld": 0
+  },
+  {
+   "step": "critique",
+   "kind": "llm",
+   "backend": "codex_cli",
+   "model": "gpt-6.1-sol",
+   "cache_key": "4bfc61382168caf56d60fff33f458d7d9aeffde06660077f1a6a1b1261cd5a0d",
+   "prompt_sha256": "86deebdc7653fd0336414473dfa0c9c26e5c48238268b91bfbdb2d6e5f829397",
+   "doc_ids": [
+    "d_56dbcafcb8f38ffa",
+    "d_58548c9e5cdbdfd3",
+    "d_5a4cd6a19a1a9d5f"
+   ],
+   "output_sha256": "fbb079444af4d42222db7757fa2e5368597954791fcc0d4d1fd7ef907637ca67"
+  },
+  {
+   "step": "disagreement",
+   "reasons": [
+    "critic flags 8 claim(s) as unsupported by their quote"
+   ],
+   "families": [
+    "anthropic",
+    "openai"
+   ]
+  }
+ ],
+ "outputs": {
+  "memo": "results/memos/agoragentic.md",
+  "artifact_version": 3,
+  "decision_card": true
+ },
+ "error": null,
+ "sla_violations": []
+}

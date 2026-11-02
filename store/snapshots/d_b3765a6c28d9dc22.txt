@@ -1,0 +1,6 @@
+Hacker News story (HN Algolia API, fetched 2026-11-02)
+Title: Show HN: Orthogonal – One integration for agents to discover and pay for APIs
+Posted: 2026-09-01
+Points: 12
+Link: https://www.orthogonal.com/
+Discussion: https://news.ycombinator.com/item?id=49523765

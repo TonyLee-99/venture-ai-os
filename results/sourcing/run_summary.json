@@ -1,0 +1,226 @@
+{
+ "as_of": "2026-11-01",
+ "n_memos": 8,
+ "failed": [],
+ "claims_drafted": 106,
+ "claims_verified_first_pass": 94,
+ "raw_citation_precision": 0.8868,
+ "post_repair_citation_precision": 1.0,
+ "claims_shipped": 106,
+ "claims_withheld": 0,
+ "shipped_over_drafted": 1.0,
+ "claims_dropped_in_repair": 0,
+ "critic_unsupported_flags": 32,
+ "critic_support_rate": 0.6981,
+ "memos_with_disagreement": 8,
+ "recommendation_agreement": 1,
+ "memos": [
+  {
+   "entity": "faremeter",
+   "name": "faremeter",
+   "drafter": "advance",
+   "critic": "watch",
+   "claims_drafted": 12,
+   "raw_precision": 0.9167,
+   "post_repair_precision": 1.0,
+   "shipped": 12,
+   "withheld": 0,
+   "dropped_in_repair": 0,
+   "scores_drafter": {
+    "pmf": 3,
+    "narrative": 4,
+    "execution": 4
+   },
+   "scores_critic": {
+    "pmf": 2,
+    "narrative": 4,
+    "execution": 3
+   },
+   "disagreements": [
+    "recommendation: drafter 'advance' vs critic 'watch'",
+    "critic flags 5 claim(s) as unsupported by their quote"
+   ]
+  },
+  {
+   "entity": "meritsystems",
+   "name": "merit-systems",
+   "drafter": "advance",
+   "critic": "watch",
+   "claims_drafted": 14,
+   "raw_precision": 0.8571,
+   "post_repair_precision": 1.0,
+   "shipped": 14,
+   "withheld": 0,
+   "dropped_in_repair": 0,
+   "scores_drafter": {
+    "pmf": 3,
+    "narrative": 4,
+    "execution": 4
+   },
+   "scores_critic": {
+    "pmf": 3,
+    "narrative": 3,
+    "execution": 4
+   },
+   "disagreements": [
+    "recommendation: drafter 'advance' vs critic 'watch'",
+    "critic flags 2 claim(s) as unsupported by their quote"
+   ]
+  },
+  {
+   "entity": "agoragentic",
+   "name": "agoragentic",
+   "drafter": "watch",
+   "critic": "watch",
+   "claims_drafted": 14,
+   "raw_precision": 0.8571,
+   "post_repair_precision": 1.0,
+   "shipped": 14,
+   "withheld": 0,
+   "dropped_in_repair": 0,
+   "scores_drafter": {
+    "pmf": 2,
+    "narrative": 3,
+    "execution": 4
+   },
+   "scores_critic": {
+    "pmf": 2,
+    "narrative": 3,
+    "execution": 3
+   },
+   "disagreements": [
+    "critic flags 8 claim(s) as unsupported by their quote"
+   ]
+  },
+  {
+   "entity": "codespar",
+   "name": "codespar",
+   "drafter": "advance",
+   "critic": "watch",
+   "claims_drafted": 14,
+   "raw_precision": 1.0,
+   "post_repair_precision": 1.0,
+   "shipped": 14,
+   "withheld": 0,
+   "dropped_in_repair": 0,
+   "scores_drafter": {
+    "pmf": 3,
+    "narrative": 4,
+    "execution": 4
+   },
+   "scores_critic": {
+    "pmf": 3,
+    "narrative": 4,
+    "execution": 3
+   },
+   "disagreements": [
+    "recommendation: drafter 'advance' vs critic 'watch'",
+    "critic flags 4 claim(s) as unsupported by their quote"
+   ]
+  },
+  {
+   "entity": "vybe",
+   "name": "vybenetwork",
+   "drafter": "advance",
+   "critic": "watch",
+   "claims_drafted": 13,
+   "raw_precision": 0.8462,
+   "post_repair_precision": 1.0,
+   "shipped": 13,
+   "withheld": 0,
+   "dropped_in_repair": 0,
+   "scores_drafter": {
+    "pmf": 3,
+    "narrative": 4,
+    "execution": 3
+   },
+   "scores_critic": {
+    "pmf": 3,
+    "narrative": 4,
+    "execution": 3
+   },
+   "disagreements": [
+    "recommendation: drafter 'advance' vs critic 'watch'",
+    "critic flags 2 claim(s) as unsupported by their quote"
+   ]
+  },
+  {
+   "entity": "seracx",
+   "name": "sera-cx",
+   "drafter": "advance",
+   "critic": "watch",
+   "claims_drafted": 13,
+   "raw_precision": 0.8462,
+   "post_repair_precision": 1.0,
+   "shipped": 13,
+   "withheld": 0,
+   "dropped_in_repair": 0,
+   "scores_drafter": {
+    "pmf": 2,
+    "narrative": 3,
+    "execution": 3
+   },
+   "scores_critic": {
+    "pmf": 2,
+    "narrative": 3,
+    "execution": 3
+   },
+   "disagreements": [
+    "recommendation: drafter 'advance' vs critic 'watch'",
+    "critic flags 3 claim(s) as unsupported by their quote"
+   ]
+  },
+  {
+   "entity": "aibtc",
+   "name": "aibtcdev",
+   "drafter": "advance",
+   "critic": "watch",
+   "claims_drafted": 12,
+   "raw_precision": 0.75,
+   "post_repair_precision": 1.0,
+   "shipped": 12,
+   "withheld": 0,
+   "dropped_in_repair": 0,
+   "scores_drafter": {
+    "pmf": 3,
+    "narrative": 4,
+    "execution": 4
+   },
+   "scores_critic": {
+    "pmf": 2,
+    "narrative": 3,
+    "execution": 3
+   },
+   "disagreements": [
+    "recommendation: drafter 'advance' vs critic 'watch'",
+    "critic flags 3 claim(s) as unsupported by their quote"
+   ]
+  },
+  {
+   "entity": "payai",
+   "name": "PayAI Network",
+   "drafter": "advance",
+   "critic": "watch",
+   "claims_drafted": 14,
+   "raw_precision": 1.0,
+   "post_repair_precision": 1.0,
+   "shipped": 14,
+   "withheld": 0,
+   "dropped_in_repair": 0,
+   "scores_drafter": {
+    "pmf": 3,
+    "narrative": 4,
+    "execution": 3
+   },
+   "scores_critic": {
+    "pmf": 3,
+    "narrative": 4,
+    "execution": 3
+   },
+   "disagreements": [
+    "recommendation: drafter 'advance' vs critic 'watch'",
+    "critic flags 5 claim(s) as unsupported by their quote"
+   ]
+  }
+ ]
+}

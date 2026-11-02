@@ -1,0 +1,9 @@
+GitHub owner: agoragentic
+Source: GitHub REST/GraphQL API, fetched 2026-11-02.
+Account type: Organization. Account created: 2026-10-23. Public non-fork repositories: 2.0.
+
+Repository Agoragentic/agoragentic-integrations
+Description: Public adapters and discovery catalog for Triptych OS (Agent OS): agent frameworks, MCP/A2A/x402 protocols, workflows, wallets, SDKs, and examples for execute-first routing, governed handoffs, and receipt-aware agent commerce.
+Stars: 41. Forks: 10. Language: JavaScript.
+Created: 2026-02-27. Last push: 2026-10-28.
+Topics: a2a,agent-commerce,agent-framework,agent-os,agentic-ai,ai-agents,autogen,base,claude-code-plugin,crewai,cursor-plugin,gemini-cli-extension,langchain,mcp,mcp-server,model-context-protocol,openai-agents,riskfork,usdc,x402

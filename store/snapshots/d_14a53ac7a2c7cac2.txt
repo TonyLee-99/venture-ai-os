@@ -1,0 +1,402 @@
+Skip to main content
+code
+<spar>
+Platform
+Use cases
+Developers
+Pricing
+EN
+Talk to us
+Start building
+Your agent is ready to do business. Your money isn't.
+One account where agents pay and get paid. Mandates you set. Payments that settle. An audit trail for every payment.
+Start building
+Talk to us
+→
+Test keys are free.
+run · agt_22sh
+demo
+sandbox · prp_77f1
+14:03:00
+Intent
+await session.send(
+"Renew the Nimbus Cloud GPU nodes, R$ 4,200"
+)
+drafted
++0.4 s
+Mandate
+prp_77f1 · mnd_22sh_v2 · boleto above the R$ 3,000 limit
+awaiting approval
++38 s
+Approval
+prp_77f1 · ops@aurora.store · 1 tap in the Dashboard
+approved
++39 s
+Rail
+prp_77f1 · boleto · Nimbus Cloud Ltda
+−R$ 4,200.00
+settled
++39 s
+Record
+prp_77f1 → rec_951c · ed25519:9f2c…7ab1
+signed
+Every step carries the same ID, from the sentence to the signature:
+prp_77f1
+Sandbox run · demo data
+Day one
+Three things it does on day one.
+Sell on WhatsApp, pay a supplier, receive a Pix. Nobody types a card number.
+WhatsApp assistant
+A customer asks on WhatsApp. The agent closes the sale in the chat, with a Pix.
+The Pix code arrives in the thread and is paid before the conversation ends.
+Aurora Store
+WhatsApp · agent
+demo
+I need 40 boxes of item 4471 by Friday. Can you close it?
+Done. 40 boxes · item 4471 · R$ 1,180.00, delivery Thursday. Pay here:
+Invoice NF 1208 · ACME Distribuidora
+Pay with Pix
+R$ 1,180.00
+pay.codespar.dev/aurora/nf-1208
+✓
+Pix received · 14:03 · rec_1208
+WhatsApp assistant
+→
+Supplier payments
+The agent pays a supplier's boleto inside the mandate.
+Payments run within your mandate. Requests matching your approval rules wait for review; requests outside hard limits are blocked.
+Shop assistant
+agt_22sh · payables
+demo
+● Proposal
+prp_31c8
+Boleto · Caixa Forte Embalagens
+due Oct 6 · listed supplier
+R$ 1,180.00
+✓
+Valid boleto · payee matches
+✓
+Supplier on the allowed list
+✓
+Within the R$ 3,000 per-transaction limit
+No one had to step in · rec_3f09
+paid
+Supplier payments
+→
+Collections
+The Pix lands on the same account as the spend.
+Money in and money out share one payment history.
+BRL · Pix and TED
+demo
+R$ 16,785.20
+R$ 3,612.00 on hold · 2 approvals pending
+Pix received · ACME Distribuidora · invoice 1208
++ R$ 1,180.00
+Sep 25 14:03
+FUND
+Compute · Nimbus Cloud · September credits
+− R$ 286.40
+Sep 25 13:40
+DEBIT
+Pix received · Livraria Norte · invoice 1201
++ R$ 640.00
+Sep 24 09:12
+FUND
+Collections
+→
+Sandbox run · demo data
+How it works
+How a payment moves.
+CodeSpar is not the model. The model prepares the intent; mandates, limits, review and records live in CodeSpar.
+Docs
+→
+Hosted MCP
+→
+SDK & CLI
+→
+Hosted endpoint
+Local stdio
+Test mode · free
+# add CodeSpar to your coding agent - test mode, free
+claude mcp add --transport http codespar \
+https://connect.codespar.dev/mcp
+\
+--header
+"Authorization: Bearer csk_test_..."
+# then ask, in plain language
+"pay the Nimbus Cloud invoice under my test mandate"
+# stdio, local process
+claude mcp add codespar --env CODESPAR_API_KEY=csk_test_... \
+-- npx -y @codespar/mcp serve
+# then ask, in plain language
+"pay the Nimbus Cloud invoice under my test mandate"
+prp_77f1
+held_for_review
+rec_951c
+signed
+demo
+01
+Connect
+Hosted MCP or SDK. Works with Claude Code, Cursor, Codex CLI and any client that speaks MCP.
+02
+Mandate
+A signed spend authority: cap, scope, expiry. The model can't rewrite it.
+03
+Payment method
+One call. CodeSpar picks the payment method that fits: Pix, boleto, card or USDC.
+04
+Record
+Every governed action is recorded in a hash-chained audit trail. Every settled spend gets a signed receipt.
+The problem
+Money is the last thing agents can't move.
+Money out, stuck
+The agent compares four offers, picks the best one, and stops. Someone copies a boleto line into a bank app and loses the afternoon. The supplier waits. The deal waits.
+Money in, lost
+A customer's agent is ready to buy and your checkout asks for a human. A calling agent would pay for your API and you give it away or turn it down.
+Your queue · this week
+demo
+Nothing here moved by itself
+queued
+Nimbus Cloud invoice · agent picked, human paying
+Waiting since Tuesday · R$ 4,200.00
+2 days
+lost
+WhatsApp cart, 3 items · buyer's agent left at checkout
+No way to take the payment
+gone
+free
+API calls every day · no price, no record
+Machines consume, nobody charges
+unbilled
+Govern and prove
+Budgets, rate limits and approvals, checked before the call runs.
+Agentic payment history · live
+demo
+Every line signed, inside the rules or after you
+fund
+x402 · get_quote paid by a research agent
+rec_95e2
++US$ 0.02
+signed
+debit
+Compute · Nimbus Cloud September credits
+rec_7c1a
+−R$ 286.40
+signed
+fund
+Pix from a customer on WhatsApp · order 1301
+rec_1301
++R$ 1,180.00
+signed
+debit
+Boleto · Nimbus Cloud · 4× H100, September
+rec_951c · mnd_22sh_v2 · R$ 3,000 per-transaction limit
+−R$ 4,200.00
+needs you · boleto above the limit
+approved · signed
+debit
+Pix to a new recipient · not on the allowed list
+prp_9b02 · nothing sent
+−R$ 349.00
+blocked
+fund
+x402 · aurora-mcp tool call
+rec_82d0
++US$ 0.005
+signed
+debit
+Pix to a supplier · packaging
+rec_3f09
+−R$ 38.90
+signed
+1,276
+receipts signed ·
+R$ 4,585.84
+settled today
+1,279
+receipts signed ·
+R$ 4,586.24
+settled today
+1,280
+receipts signed ·
+R$ 4,998.14
+settled today
+1,284
+receipts signed ·
+R$ 4,998.14
+settled today
+Sandbox run · demo data
+01
+Spending rules
+Payments run within your mandate. Requests matching your approval rules wait for review; requests outside hard limits are blocked.
+mnd_22sh_v2 · you set the values
+demo
+limit per transaction
+R$ 3,000
+hard budget
+R$ 20,000
+per month
+outside hard limits
+blocked
+Payment cap
+Period budget
+Allowed recipients
+Rate limit
+02
+Approvals
+Requests matching your approval rules wait for review. A person decides before money moves.
+prp_77f1 · R$ 4,200.00
+demo
+Routed to ops@aurora.store in the Dashboard
+awaiting approval
+approved
+Approval rules
+Expiry
+Status and history
+Verified approver
+rolling out
+03
+Payment records
+Every settled spend gets a signed receipt anyone can verify. The audit trail records every governed action.
+rec_951c
+demo
+mandate mnd_22sh_v2
+→
+quote
+→
+payment
+→
+delivery
+ed25519:9f2c…7ab1 · verified
+Signed receipt
+Audit trail export
+CSV export
+rolling out
+Reconciliation
+rolling out
+See the platform
+→
+One flow, end to end
+The agent finds the invoice, checks your rules, pays, returns the receipt.
+D1 · Accounts payable
+D2 · WhatsApp commerce
+D3 · Metered API
+demo
+01
+02
+03
+04
+Replay
+Step 04 of 04 · The boleto settles. The signed receipt lands in the ledger.
+Renew the GPU nodes with the cloud hosting provider, R$ 4,200, due Oct 2. It's above my per-transaction limit, so route it to me first.
+you · 14:01:08
+Found the cloud hosting provider’s boleto. Amount matches the quote. It is above the R$ 3,000 per-transaction limit, so it needs your approval in the Dashboard. Nothing leaves the Wallet until you decide.
+agt_22sh · 14:01:31
+Approved · one tap
+apv_77f1 · expires in 24h
+Cloud hosting provider · 4× H100 · September
+Boleto · due Oct 2, 2026
+R$ 4,200.00
+34191.79001 01043.510047 91020.150008 1 15870000420000
+✓
+Beneficiary and amount confirmed at the bank
+✓
+Under mandate mnd_22sh_v2
+!
+Per-transaction limit: R$ 3,000 · boletos above it need approval in the Dashboard
+ops@aurora.store approved in the Dashboard · 14:02:57
+Approved. Paid by boleto - receipt
+rcpt_9Qf2Lx7m…
+in the ledger.
+agt_22sh · 14:03:24
+Mandate · mnd_22sh_v2
+active
+Agent
+agt_22sh
+· your agent
+Purpose
+Supplier payments
+Per transaction
+R$ 10,000.00
+Per month
+R$ 1,820.00
+of
+R$ 10,000.00
+Above the limit
+Boletos need approval in the Dashboard
+Expires
+Dec 31, 2026 · revocable
+Obligation · boleto
+Celcoin consult
+Beneficiary
+Cloud hosting provider
+CNPJ
+••.345.678/0001-••
+Due
+Oct 2, 2026
+Amount
+R$ 4,200.00
+Match
+Amount and beneficiary as registered
+Ledger · mnd_22sh_v2
+Wallet · Aurora Store
+hold
+Reserved when the approved payment runs
+apv_77f1 · 14:02:58
+−R$ 4,200.00
+held
+rel
+Hold committed on settlement
+apv_77f1 · 14:03:22
++R$ 4,200.00
+released
+debit
+Boleto settled · Cloud hosting provider
+rcpt_9Qf2Lx7m… · 14:03:22
+−R$ 4,200.00
+paid
+Paid
+rcpt_9Qf2Lx7m… · Control Record
+Approval
+apv_77f1
+Approved by
+ops@aurora.store · 14:02:57
+Rail
+Boleto · settled 14:03:22
+Provider tx
+Celcoin · 8812047731
+Audit chain
+#48213 · prev 7c1e…09ad
+Signature
+Ed25519 · did:web:id.codespar.dev
+Audit
+View in the ledger
+Sandbox run · demo data
+Machine to machine
+Agents pay per call and get paid per tool.
+The same wallet buys compute for your agent and charges other agents for yours. Every line carries the mandate that allowed it.
+Money out
+The agent buys September compute from Nimbus Cloud, under its mandate.
+Spend · agt_22sh
+demo
+September · same payment history
+today 14:03
+2 licences · Workspace Pro · Pix
+R$ 248.00
+Proposal
+Paid
+yesterday
+Compute · Nimbus Cloud · September credits · virtual card
+R$ 286.40
+Paid
+Sep 22
+Orbital Data · dataset refresh · Pix
+R$ 189.70
+Paid
+Sep 5
+Notion Plus · 10 seats · virtual card
+R$ 262.50
+Paid
+Month
+R$ 738.60 of R$ 3,000
+− R$ 286.40 · virtual card · inside mnd_22s

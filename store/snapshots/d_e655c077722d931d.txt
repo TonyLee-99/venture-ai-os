@@ -1,0 +1,6 @@
+Hacker News story (HN Algolia API, fetched 2026-11-02)
+Title: Show HN: Decispher – persistent engineering context and memory for coding agents
+Posted: 2026-08-31
+Points: 5
+Link: nan
+Discussion: https://news.ycombinator.com/item?id=49509142

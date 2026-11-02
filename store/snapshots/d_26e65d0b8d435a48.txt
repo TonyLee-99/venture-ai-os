@@ -1,0 +1,9 @@
+GitHub owner: vybenetwork
+Source: GitHub REST/GraphQL API, fetched 2026-11-02.
+Account type: Organization. Account created: 2022-01-25. Public non-fork repositories: 18.0.
+
+Repository vybenetwork/x402-client
+Description: Client SDK for the Vybe x402 API. Pay-per-call USDC over HTTP and prepaid-credit WebSocket streaming for Vybe's Solana analytics API. Built for AI agents.
+Stars: 160. Forks: 64. Language: TypeScript.
+Created: 2026-05-11. Last push: 2026-05-13.
+Topics: ai-agents,micropayments,pay-per-call,sdk,solana,stablecoin,typescript,usdc,vybe,x402
