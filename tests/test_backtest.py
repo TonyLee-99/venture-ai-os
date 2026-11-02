@@ -67,3 +67,22 @@ def test_auc_matches_sklearn():
     s = pd.Series([0.1, 0.9, 0.3, 0.3, 0.8, 0.2, 0.5]).to_numpy()
     assert abs(auc(y, s) - roc_auc_score(y, s)) < 1e-12
     assert precision_at_k(y, s, 2) == 1.0
+
+
+def test_seed_relevant_population_is_reported_first():
+    pops = BT["populations"]
+    nr = pops["never_raised"]
+    assert nr["n_positive_rows"] < BT["n_positives_test"] and nr["n_positive_protocols"] <= nr["n_positive_rows"]
+    assert BT["scores"] == pops["all"]["scores"]
+    for key in ("all_owner_clustered", "never_raised_owner_clustered", "all_gh_found_only", "never_raised_gh_found_only"):
+        assert key in pops
+    assert "b_prior_funding" in nr["scores"] and nr["scores"]["b_prior_funding"]["auc"] == 0.5  # constant there
+
+
+def test_round_mix_lead_time_and_selection_reported():
+    rm = BT["round_mix_all"]
+    assert rm["distinct_protocols"] == BT["n_positive_protocols_test"] and rm["distinct_raises"] >= rm["distinct_protocols"]
+    assert sum(rm["by_round"].values()) == rm["distinct_raises"]
+    lt = BT["lead_time"]
+    assert {"github_first_repo", "defillama_listing", "earliest_public_signal"} <= set(lt)
+    assert 0 <= BT["selection"]["gh_found_rate_positives"] <= 1

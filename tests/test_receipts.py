@@ -50,7 +50,16 @@ def test_run_summary_matches_memos():
     outs = [json.loads(p.read_text()) for p in MEMOS]
     assert s["n_memos"] == len(outs)
     assert s["claims_shipped"] == sum(len(o["memo"]["claims"]) for o in outs)
-    assert s["claims_withheld"] == sum(len(o["unverified"]) for o in outs)
+    assert s["claims_withheld_by_critic"] == sum(len(o["withheld_by_critic"]) for o in outs)
+    assert s["critic_labels"]["entails"] == sum(c.get("support") == "entails" for o in outs for c in o["memo"]["claims"])
+
+
+def test_claim_eval_reports_recall_by_type():
+    ce = json.loads((RESULTS / "receipts" / "claim_eval.json").read_text())
+    assert ce["n_original_pairs"] >= 30
+    for k, v in ce["recall_by_perturbation"].items():
+        assert v["either_recall"] >= max(v["verifier_recall"], v["critic_recall"]), k
+    assert ce["precision"].startswith("pending human labels")
 
 
 def test_snapshot_integrity():

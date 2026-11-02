@@ -1,0 +1,1738 @@
+{
+ "n_original_pairs": 60,
+ "n_perturbed_pairs": 109,
+ "recall_by_perturbation": {
+  "added_qualifier": {
+   "n": 60,
+   "expected": "partial",
+   "verifier_recall": 0.0,
+   "critic_recall": 1.0,
+   "either_recall": 1.0
+  },
+  "swapped_number": {
+   "n": 38,
+   "expected": "contradicts",
+   "verifier_recall": 1.0,
+   "critic_recall": 1.0,
+   "either_recall": 1.0
+  },
+  "wrong_date": {
+   "n": 7,
+   "expected": "contradicts",
+   "verifier_recall": 1.0,
+   "critic_recall": 1.0,
+   "either_recall": 1.0
+  },
+  "wrong_entity": {
+   "n": 4,
+   "expected": "contradicts",
+   "verifier_recall": 0.0,
+   "critic_recall": 1.0,
+   "either_recall": 1.0
+  }
+ },
+ "originals": {
+  "verifier_pass_rate": 1.0,
+  "critic_flag_rate_upper_bound_on_false_positives": 0.8167,
+  "critic_labels": {
+   "entails": 11,
+   "partial": 48,
+   "contradicts": 0,
+   "unsupported": 1,
+   "missing": 0
+  }
+ },
+ "precision": "pending human labels (results/adjudication/flag_sample.csv)",
+ "pairs": [
+  {
+   "pair_id": "q000",
+   "entity": "vybe",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "No named founders or team members appear in the sources; the GitHub org has existed since 2022 with 18 public non-fork repos. Team size is unknown.",
+   "quote": "Account created: 2022-01-25. Public non-fork repositories: 18.0."
+  },
+  {
+   "pair_id": "q001",
+   "entity": "aibtc",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The aibtc-mcp-server has 49 forks against 12 stars, a fork-heavy ratio that suggests developer experimentation (or copying for agent setups) rather than broad interest.",
+   "quote": "Stars: 12. Forks: 49. Language: TypeScript."
+  },
+  {
+   "pair_id": "q002",
+   "entity": "devlabgroup",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "unsupported",
+   "text": "No funding, round or token evidence was found for the company.",
+   "quote": "Send a project brief"
+  },
+  {
+   "pair_id": "q003",
+   "entity": "faremeter",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Development is concentrated in one engineer: alexanderguy has 550 commits, far ahead of the other listed contributors.",
+   "quote": "alexanderguy (User): 550 commits"
+  },
+  {
+   "pair_id": "q004",
+   "entity": "vybe",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "In the x402 facilitator market over the trailing window, Coinbase holds 69.7% of payments. Vybe does not appear in the list of facilitators; it is a seller/API, so this is context rather than direct competition.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)"
+  },
+  {
+   "pair_id": "q005",
+   "entity": "faremeter",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "x402 facilitator volume is dominated by Coinbase, which has 69.7% of payments. Faremeter does not appear by name among the listed facilitators, so its own facilitator share is unknown or negligible.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)"
+  },
+  {
+   "pair_id": "q006",
+   "entity": "payai",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "entails",
+   "text": "In the week of 2026-09-14 the weekly median transactions fell from 4,485,090 to 49,368 (ratio 0.011).",
+   "quote": "Week of 2026-09-14: weekly median transactions 4,485,090 -> 49,368 (down, ratio 0.011)"
+  },
+  {
+   "pair_id": "q007",
+   "entity": "aibtc",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The x402 facilitator market is concentrated: Coinbase handles 69.7% of payments, and AIBTC does not appear among the listed facilitators.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments)"
+  },
+  {
+   "pair_id": "q008",
+   "entity": "seracx",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "sera-mcp has 22 stars and 34 forks; forks exceeding stars suggests some hands-on developer experimentation, though no payment or customer usage is evidenced.",
+   "quote": "Stars: 22. Forks: 34. Language: TypeScript."
+  },
+  {
+   "pair_id": "q009",
+   "entity": "vybe",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The x402 API charges per call in USDC with no API keys, starting at $0.001 per call, and is described as a beta discount that will rise at general availability.",
+   "quote": "Pricing is currently a beta discount.** $0.001 default"
+  },
+  {
+   "pair_id": "q010",
+   "entity": "seracx",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Outside contributors appear, e.g. mashharuki with 5 commits, suggesting some non-team code contributions. Founder identities and backgrounds are not in the sources.",
+   "quote": "mashharuki (User): 5 commits"
+  },
+  {
+   "pair_id": "q011",
+   "entity": "payai",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "entails",
+   "text": "PayAI publishes a protocol-agnostic agentic payments SDK to accept x402 and MPP payments through a single integration.",
+   "quote": "Protocol-agnostic agentic payments SDK — accept x402 and MPP payments through a single integration"
+  },
+  {
+   "pair_id": "q012",
+   "entity": "faremeter",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The README lists broad network coverage for EVM payments, including Base, Polygon, Monad and Skale.",
+   "quote": "network coverage including Base, Polygon, Monad, and Skale (mainnet and testnets)"
+  },
+  {
+   "pair_id": "q013",
+   "entity": "faremeter",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The README says it supports both v1 and v2 of Coinbase's x402, negotiated automatically, so it has tracked the standard's upgrade.",
+   "quote": "both v1 and v2 of the protocol, negotiated automatically."
+  },
+  {
+   "pair_id": "q014",
+   "entity": "aibtc",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The aibtc-mcp-server repo was created 2026-01-09 and last pushed 2026-11-01, indicating active recent work on the x402-capable product.",
+   "quote": "Created: 2026-01-09. Last push: 2026-11-01."
+  },
+  {
+   "pair_id": "q015",
+   "entity": "codespar",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The open-source repo mcp-dev-latam has 277 stars and 52 forks, which is developer interest but not payment evidence.",
+   "quote": "Stars: 277. Forks: 52. Language: TypeScript."
+  },
+  {
+   "pair_id": "q016",
+   "entity": "devlabgroup",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The website names Dmitry Sergeev as the direct contact, consistent with the contributor SergeevDmitry; other team members are not named in the sources.",
+   "quote": "Dmitry Sergeev"
+  },
+  {
+   "pair_id": "q017",
+   "entity": "seracx",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "entails",
+   "text": "The x402 facilitator market is concentrated: Coinbase has 69.7% of payments.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)"
+  },
+  {
+   "pair_id": "q018",
+   "entity": "devlabgroup",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Only x402 is marked supported; MPP, A2A, ACP and AP2 are labelled experimental in the README.",
+   "quote": "<img alt=\"MPP\" src=\"https://img.shields.io/badge/MPP-experimental-f0a30a\">"
+  },
+  {
+   "pair_id": "q019",
+   "entity": "payai",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "PayAI Network, LLC is registered in Delaware and the team works remotely. No founders are named in the sources, and no funding evidence was found.",
+   "quote": "PayAI Network, LLC is registered in Delaware, United States. The team works remotely."
+  },
+  {
+   "pair_id": "q020",
+   "entity": "agoragentic",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The site reports 1,463 successful public listing calls across browse-visible listings.",
+   "quote": "1,463"
+  },
+  {
+   "pair_id": "q021",
+   "entity": "agoragentic",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "entails",
+   "text": "The GitHub organization was created on 2026-10-23 and has 2 public non-fork repos.",
+   "quote": "Account created: 2026-10-23. Public non-fork repositories: 2.0."
+  },
+  {
+   "pair_id": "q022",
+   "entity": "devlabgroup",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The agent-commerce repo was created on 2026-08-20 and last pushed on 2026-10-29, so it is about 10 weeks old and still actively maintained.",
+   "quote": "Created: 2026-08-20. Last push: 2026-10-29."
+  },
+  {
+   "pair_id": "q023",
+   "entity": "agoragentic",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Positioning is broad and shifting across several layers: a governance harness, Agent OS runtime, Router/Marketplace and Interchange. The README says live enforcement is available only for hosts like Claude Code, with others at mapping-example level.",
+   "quote": "Mapping or example support is not the same as in-path enforcement."
+  },
+  {
+   "pair_id": "q024",
+   "entity": "agoragentic",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "entails",
+   "text": "Paid purchasing is currently unavailable on the platform because the custody policy is frozen.",
+   "quote": "Purchasing is currently unavailable while the platform custody policy is frozen."
+  },
+  {
+   "pair_id": "q025",
+   "entity": "devlabgroup",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The gateway targets the emerging multi-protocol agent-commerce stack (MCP, x402, plus experimental MPP, A2A, ACP and AP2) behind one backend.",
+   "quote": "One backend. Multiple agent-commerce protocols. Self-hosted and non-custodial."
+  },
+  {
+   "pair_id": "q026",
+   "entity": "seracx",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The README describes a product exposing 56 tools across 11 categories for stablecoin FX settlement to MCP-compatible agent hosts.",
+   "quote": "**56 tools across 11 categories**"
+  },
+  {
+   "pair_id": "q027",
+   "entity": "devlabgroup",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The only payment evidence is a local demo using MockUSDC marked as local development only; no production payments or customers are shown.",
+   "quote": "signed x402 payment proof (LOCAL DEVELOPMENT ONLY - DO NOT FUND)"
+  },
+  {
+   "pair_id": "q028",
+   "entity": "vybe",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The x402-client repo has 160 stars and 64 forks, suggesting developer interest, though forks are high relative to stars and there is no payment-volume evidence.",
+   "quote": "Stars: 160. Forks: 64. Language: TypeScript."
+  },
+  {
+   "pair_id": "q029",
+   "entity": "agoragentic",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The x402 facilitator market is concentrated: Coinbase holds 69.7% of payments, and Agoragentic does not appear among the listed facilitators.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments)"
+  },
+  {
+   "pair_id": "q030",
+   "entity": "devlabgroup",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Revinand is the top contributor to the agent-commerce repo with 137 commits.",
+   "quote": "Revinand (User): 137 commits"
+  },
+  {
+   "pair_id": "q031",
+   "entity": "payai",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "entails",
+   "text": "Users start with 1,000 free credits, after which $1 buys 1,000 credits.",
+   "quote": "You start with 1,000 free credits. After that, $1 buys 1,000 credits."
+  },
+  {
+   "pair_id": "q032",
+   "entity": "seracx",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Coinbase's x402 facilitator processed 2,610,865 payments in the latest reported window, showing agent-payment rails are live.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)"
+  },
+  {
+   "pair_id": "q033",
+   "entity": "vybe",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The core product is a Solana wallet tracker and portfolio analytics app, with API access offered alongside it.",
+   "quote": "The Ultimate Solana Wallet Tracker and Portfolio Analytics App"
+  },
+  {
+   "pair_id": "q034",
+   "entity": "agoragentic",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "In the main integrations repo, the account rhein1 has 967 commits, the largest share of contributions.",
+   "quote": "rhein1 (User): 967 commits"
+  },
+  {
+   "pair_id": "q035",
+   "entity": "vybe",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "entails",
+   "text": "The x402 SDK is positioned for AI agents: pay-per-call USDC over HTTP plus prepaid-credit WebSocket streaming for Solana analytics.",
+   "quote": "Pay-per-call USDC over HTTP and prepaid-credit WebSocket streaming for Vybe's Solana analytics API. Built for AI agents."
+  },
+  {
+   "pair_id": "q036",
+   "entity": "devlabgroup",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Outside adoption signals are small: the agent-commerce repo has 69 stars and 4 forks.",
+   "quote": "Stars: 69. Forks: 4."
+  },
+  {
+   "pair_id": "q037",
+   "entity": "vybe",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "entails",
+   "text": "The website claims 10,000+ traders use the product (self-reported, unverified).",
+   "quote": "Trusted by 10,000+ Traders"
+  },
+  {
+   "pair_id": "q038",
+   "entity": "codespar",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The about page says the company is built in New York and Rio de Janeiro by the team behind Zoop. Individual founders other than the top committer are not named in the sources.",
+   "quote": "Built in New York and Rio de Janeiro by the team behind Zoop"
+  },
+  {
+   "pair_id": "q039",
+   "entity": "faremeter",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Fluxa carries 56.2% of x402 dollar volume on only 9.4% of payments, which shows value is concentrated in a few facilitators.",
+   "quote": "fluxa: 353,469 payments (9.4% of payments), 846,830 USD (56.2% of volume)"
+  },
+  {
+   "pair_id": "q040",
+   "entity": "devlabgroup",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "entails",
+   "text": "The product claims funds go directly to the merchant wallet and the gateway needs no private keys, a non-custodial positioning.",
+   "quote": "Funds\ngo directly to the merchant wallet, and the gateway needs neither the buyer's\nnor the merchant's private key."
+  },
+  {
+   "pair_id": "q041",
+   "entity": "seracx",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Josh-sera is the top contributor to sera-mcp with 11 commits.",
+   "quote": "Josh-sera (User): 11 commits"
+  },
+  {
+   "pair_id": "q042",
+   "entity": "codespar",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "One person does nearly all the work in the main repo: fabianocruz has 244 commits.",
+   "quote": "fabianocruz (User): 244 commits"
+  },
+  {
+   "pair_id": "q043",
+   "entity": "codespar",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The x402 examples repo, the company's direct x402 monetization work, has 3 stars and 1 fork, which is minimal adoption.",
+   "quote": "Stars: 3. Forks: 1. Language: JavaScript."
+  },
+  {
+   "pair_id": "q044",
+   "entity": "codespar",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The website's transaction feeds, receipt counters and settled-today figures are labeled sandbox and demo data, so they are not evidence of customers or volume.",
+   "quote": "Sandbox run · demo data"
+  },
+  {
+   "pair_id": "q045",
+   "entity": "payai",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "entails",
+   "text": "In the week of 2026-01-26 the weekly median transactions fell from 2,988,322 to 577,642.",
+   "quote": "Week of 2026-01-26: weekly median transactions 2,988,322 -> 577,642 (down, ratio 0.193)"
+  },
+  {
+   "pair_id": "q046",
+   "entity": "aibtc",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "human058382928 is the second-listed contributor to ai-agent-crew, with 30 commits.",
+   "quote": "human058382928 (User): 30 commits"
+  },
+  {
+   "pair_id": "q047",
+   "entity": "aibtc",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The original ai-agent-crew product is deprecated in favor of a new frontend and backend, so the company has pivoted at least once.",
+   "quote": "This repo is now deprecated in favor of:"
+  },
+  {
+   "pair_id": "q048",
+   "entity": "payai",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Fluxa captures 56.2% of volume on 9.4% of payments, which shows that value-weighted share sits with other facilitators.",
+   "quote": "fluxa: 353,469 payments (9.4% of payments), 846,830 USD (56.2% of volume)"
+  },
+  {
+   "pair_id": "q049",
+   "entity": "aibtc",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Agents can send paid messages to any other agent for 100 sats via x402, but no payment volume or transaction counts are given in the sources.",
+   "quote": "Send messages to any agent for 100 sats via x402"
+  },
+  {
+   "pair_id": "q050",
+   "entity": "faremeter",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Faremeter is sponsored and built by the engineers at ABK Labs, plus open-source contributors. The founders are not named in the sources.",
+   "quote": "Faremeter is sponsored and built by the engineers at [ABK Labs](https://abklabs.com) along with other open-source contributors."
+  },
+  {
+   "pair_id": "q051",
+   "entity": "faremeter",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The GitHub profile shows the main repo's last push as 2026-07-06, about four months before the fetch date. That sits oddly with the recent commit counts, which may come from other repos or default branches.",
+   "quote": "Created: 2025-06-11. Last push: 2026-07-06."
+  },
+  {
+   "pair_id": "q052",
+   "entity": "aibtc",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "whoabuddy is the top contributor to the legacy ai-agent-crew repo, with 262 commits.",
+   "quote": "whoabuddy (User): 262 commits"
+  },
+  {
+   "pair_id": "q053",
+   "entity": "payai",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "entails",
+   "text": "PayAI settled 462,019 payments (12.3% of payments) but only 16,089 USD (1.1% of volume).",
+   "quote": "payAI: 462,019 payments (12.3% of payments), 16,089 USD (1.1% of volume)"
+  },
+  {
+   "pair_id": "q054",
+   "entity": "devlabgroup",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The devlab.group website advertises protocol and infrastructure engineering for clients, and cites 20+ projects.",
+   "quote": "20+ PROJECTS"
+  },
+  {
+   "pair_id": "q055",
+   "entity": "vybe",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The SDK README states the service is in beta, and the API, shapes and pricing can change.",
+   "quote": "**The service is in beta.**"
+  },
+  {
+   "pair_id": "q056",
+   "entity": "codespar",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Some governance features are still unshipped: audit trail CSV export, reconciliation and verified approver are marked as rolling out on the product page.",
+   "quote": "Audit trail export\nCSV export\nrolling out\nReconciliation\nrolling out"
+  },
+  {
+   "pair_id": "q057",
+   "entity": "seracx",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The README ties the product to a companion repo of templates, examples and x402 services, which points to an intended path from tool layer to agent-commerce platform.",
+   "quote": "templates, examples, x402 services, and host integrations built on top of this MCP"
+  },
+  {
+   "pair_id": "q058",
+   "entity": "faremeter",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The main repo has 70 stars and 25 forks. This is real but modest developer interest, and it is not proof of payments.",
+   "quote": "Stars: 70. Forks: 25. Language: TypeScript."
+  },
+  {
+   "pair_id": "q059",
+   "entity": "agoragentic",
+   "kind": "original",
+   "expected": null,
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The product supports MCP, A2A, x402 and REST, positioned for agents that transact autonomously.",
+   "quote": "Connect via MCP, A2A, x402, or direct REST API."
+  },
+  {
+   "pair_id": "q060",
+   "entity": "vybe",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "No named founders or team members appear in the sources; the GitHub org has existed since 6,073 with 18 public non-fork repos. Team size is unknown.",
+   "quote": "Account created: 2022-01-25. Public non-fork repositories: 18.0."
+  },
+  {
+   "pair_id": "q061",
+   "entity": "vybe",
+   "kind": "wrong_date",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "No named founders or team members appear in the sources; the GitHub org has existed since 2020 with 18 public non-fork repos. Team size is unknown.",
+   "quote": "Account created: 2022-01-25. Public non-fork repositories: 18.0."
+  },
+  {
+   "pair_id": "q062",
+   "entity": "vybe",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "No named founders or team members appear in the sources; the GitHub org has existed since 2022 with 18 public non-fork repos. Team size is unknown, making it the clear market leader with proven paying customers.",
+   "quote": "Account created: 2022-01-25. Public non-fork repositories: 18.0."
+  },
+  {
+   "pair_id": "q063",
+   "entity": "aibtc",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The aibtc-mcp-server has 154 forks against 12 stars, a fork-heavy ratio that suggests developer experimentation (or copying for agent setups) rather than broad interest.",
+   "quote": "Stars: 12. Forks: 49. Language: TypeScript."
+  },
+  {
+   "pair_id": "q064",
+   "entity": "aibtc",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The aibtc-mcp-server has 49 forks against 12 stars, a fork-heavy ratio that suggests developer experimentation (or copying for agent setups) rather than broad interest, making it the clear market leader with proven paying customers.",
+   "quote": "Stars: 12. Forks: 49. Language: TypeScript."
+  },
+  {
+   "pair_id": "q065",
+   "entity": "devlabgroup",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "unsupported",
+   "text": "No funding, round or token evidence was found for the company, making it the clear market leader with proven paying customers.",
+   "quote": "Send a project brief"
+  },
+  {
+   "pair_id": "q066",
+   "entity": "faremeter",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "Development is concentrated in one engineer: alexanderguy has 1,657 commits, far ahead of the other listed contributors.",
+   "quote": "alexanderguy (User): 550 commits"
+  },
+  {
+   "pair_id": "q067",
+   "entity": "faremeter",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Development is concentrated in one engineer: alexanderguy has 550 commits, far ahead of the other listed contributors, making it the clear market leader with proven paying customers.",
+   "quote": "alexanderguy (User): 550 commits"
+  },
+  {
+   "pair_id": "q068",
+   "entity": "vybe",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "In the x402 facilitator market over the trailing window, Coinbase holds 216% of payments. Vybe does not appear in the list of facilitators; it is a seller/API, so this is context rather than direct competition.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)"
+  },
+  {
+   "pair_id": "q069",
+   "entity": "vybe",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "In the x402 facilitator market over the trailing window, Coinbase holds 69.7% of payments. Vybe does not appear in the list of facilitators; it is a seller/API, so this is context rather than direct competition, making it the clear market leader with proven paying customers.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)"
+  },
+  {
+   "pair_id": "q070",
+   "entity": "faremeter",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "x402 facilitator volume is dominated by Coinbase, which has 216% of payments. Faremeter does not appear by name among the listed facilitators, so its own facilitator share is unknown or negligible.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)"
+  },
+  {
+   "pair_id": "q071",
+   "entity": "faremeter",
+   "kind": "wrong_entity",
+   "expected": "contradicts",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "x402 facilitator volume is dominated by Coinbase, which has 69.7% of payments. agoragentic does not appear by name among the listed facilitators, so its own facilitator share is unknown or negligible.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)"
+  },
+  {
+   "pair_id": "q072",
+   "entity": "faremeter",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "x402 facilitator volume is dominated by Coinbase, which has 69.7% of payments. Faremeter does not appear by name among the listed facilitators, so its own facilitator share is unknown or negligible, making it the clear market leader with proven paying customers.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)"
+  },
+  {
+   "pair_id": "q073",
+   "entity": "payai",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "In the week of 6,085-09-14 the weekly median transactions fell from 4,485,090 to 49,368 (ratio 0.011).",
+   "quote": "Week of 2026-09-14: weekly median transactions 4,485,090 -> 49,368 (down, ratio 0.011)"
+  },
+  {
+   "pair_id": "q074",
+   "entity": "payai",
+   "kind": "wrong_date",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "In the week of 2024-09-14 the weekly median transactions fell from 4,485,090 to 49,368 (ratio 0.011).",
+   "quote": "Week of 2026-09-14: weekly median transactions 4,485,090 -> 49,368 (down, ratio 0.011)"
+  },
+  {
+   "pair_id": "q075",
+   "entity": "payai",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "In the week of 2026-09-14 the weekly median transactions fell from 4,485,090 to 49,368 (ratio 0.011), making it the clear market leader with proven paying customers.",
+   "quote": "Week of 2026-09-14: weekly median transactions 4,485,090 -> 49,368 (down, ratio 0.011)"
+  },
+  {
+   "pair_id": "q076",
+   "entity": "aibtc",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The x402 facilitator market is concentrated: Coinbase handles 216% of payments, and AIBTC does not appear among the listed facilitators.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments)"
+  },
+  {
+   "pair_id": "q077",
+   "entity": "aibtc",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The x402 facilitator market is concentrated: Coinbase handles 69.7% of payments, and AIBTC does not appear among the listed facilitators, making it the clear market leader with proven paying customers.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments)"
+  },
+  {
+   "pair_id": "q078",
+   "entity": "seracx",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "sera-mcp has 73 stars and 34 forks; forks exceeding stars suggests some hands-on developer experimentation, though no payment or customer usage is evidenced.",
+   "quote": "Stars: 22. Forks: 34. Language: TypeScript."
+  },
+  {
+   "pair_id": "q079",
+   "entity": "seracx",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "sera-mcp has 22 stars and 34 forks; forks exceeding stars suggests some hands-on developer experimentation, though no payment or customer usage is evidenced, making it the clear market leader with proven paying customers.",
+   "quote": "Stars: 22. Forks: 34. Language: TypeScript."
+  },
+  {
+   "pair_id": "q080",
+   "entity": "vybe",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The x402 API charges per call in USDC with no API keys, starting at $7 per call, and is described as a beta discount that will rise at general availability.",
+   "quote": "Pricing is currently a beta discount.** $0.001 default"
+  },
+  {
+   "pair_id": "q081",
+   "entity": "vybe",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The x402 API charges per call in USDC with no API keys, starting at $0.001 per call, and is described as a beta discount that will rise at general availability, making it the clear market leader with proven paying customers.",
+   "quote": "Pricing is currently a beta discount.** $0.001 default"
+  },
+  {
+   "pair_id": "q082",
+   "entity": "seracx",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "Outside contributors appear, e.g. mashharuki with 22 commits, suggesting some non-team code contributions. Founder identities and backgrounds are not in the sources.",
+   "quote": "mashharuki (User): 5 commits"
+  },
+  {
+   "pair_id": "q083",
+   "entity": "seracx",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Outside contributors appear, e.g. mashharuki with 5 commits, suggesting some non-team code contributions. Founder identities and backgrounds are not in the sources, making it the clear market leader with proven paying customers.",
+   "quote": "mashharuki (User): 5 commits"
+  },
+  {
+   "pair_id": "q084",
+   "entity": "payai",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "PayAI publishes a protocol-agnostic agentic payments SDK to accept x402 and MPP payments through a single integration, making it the clear market leader with proven paying customers.",
+   "quote": "Protocol-agnostic agentic payments SDK — accept x402 and MPP payments through a single integration"
+  },
+  {
+   "pair_id": "q085",
+   "entity": "faremeter",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The README lists broad network coverage for EVM payments, including Base, Polygon, Monad and Skale, making it the clear market leader with proven paying customers.",
+   "quote": "network coverage including Base, Polygon, Monad, and Skale (mainnet and testnets)"
+  },
+  {
+   "pair_id": "q086",
+   "entity": "faremeter",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The README says it supports both v1 and v2 of Coinbase's x402, negotiated automatically, so it has tracked the standard's upgrade, making it the clear market leader with proven paying customers.",
+   "quote": "both v1 and v2 of the protocol, negotiated automatically."
+  },
+  {
+   "pair_id": "q087",
+   "entity": "aibtc",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The aibtc-mcp-server repo was created 6,085-01-09 and last pushed 2026-11-01, indicating active recent work on the x402-capable product.",
+   "quote": "Created: 2026-01-09. Last push: 2026-11-01."
+  },
+  {
+   "pair_id": "q088",
+   "entity": "aibtc",
+   "kind": "wrong_date",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The aibtc-mcp-server repo was created 2024-01-09 and last pushed 2026-11-01, indicating active recent work on the x402-capable product.",
+   "quote": "Created: 2026-01-09. Last push: 2026-11-01."
+  },
+  {
+   "pair_id": "q089",
+   "entity": "aibtc",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The aibtc-mcp-server repo was created 2026-01-09 and last pushed 2026-11-01, indicating active recent work on the x402-capable product, making it the clear market leader with proven paying customers.",
+   "quote": "Created: 2026-01-09. Last push: 2026-11-01."
+  },
+  {
+   "pair_id": "q090",
+   "entity": "codespar",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The open-source repo mcp-dev-latam has 838 stars and 52 forks, which is developer interest but not payment evidence.",
+   "quote": "Stars: 277. Forks: 52. Language: TypeScript."
+  },
+  {
+   "pair_id": "q091",
+   "entity": "codespar",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The open-source repo mcp-dev-latam has 277 stars and 52 forks, which is developer interest but not payment evidence, making it the clear market leader with proven paying customers.",
+   "quote": "Stars: 277. Forks: 52. Language: TypeScript."
+  },
+  {
+   "pair_id": "q092",
+   "entity": "devlabgroup",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The website names Dmitry Sergeev as the direct contact, consistent with the contributor SergeevDmitry; other team members are not named in the sources, making it the clear market leader with proven paying customers.",
+   "quote": "Dmitry Sergeev"
+  },
+  {
+   "pair_id": "q093",
+   "entity": "seracx",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The x402 facilitator market is concentrated: Coinbase has 216% of payments.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)"
+  },
+  {
+   "pair_id": "q094",
+   "entity": "seracx",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The x402 facilitator market is concentrated: Coinbase has 69.7% of payments, making it the clear market leader with proven paying customers.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)"
+  },
+  {
+   "pair_id": "q095",
+   "entity": "devlabgroup",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Only x402 is marked supported; MPP, A2A, ACP and AP2 are labelled experimental in the README, making it the clear market leader with proven paying customers.",
+   "quote": "<img alt=\"MPP\" src=\"https://img.shields.io/badge/MPP-experimental-f0a30a\">"
+  },
+  {
+   "pair_id": "q096",
+   "entity": "payai",
+   "kind": "wrong_entity",
+   "expected": "contradicts",
+   "verifier_ok": true,
+   "critic_label": "contradicts",
+   "text": "agoragentic, LLC is registered in Delaware and the team works remotely. No founders are named in the sources, and no funding evidence was found.",
+   "quote": "PayAI Network, LLC is registered in Delaware, United States. The team works remotely."
+  },
+  {
+   "pair_id": "q097",
+   "entity": "payai",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "PayAI Network, LLC is registered in Delaware and the team works remotely. No founders are named in the sources, and no funding evidence was found, making it the clear market leader with proven paying customers.",
+   "quote": "PayAI Network, LLC is registered in Delaware, United States. The team works remotely."
+  },
+  {
+   "pair_id": "q098",
+   "entity": "agoragentic",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The site reports 4,396 successful public listing calls across browse-visible listings.",
+   "quote": "1,463"
+  },
+  {
+   "pair_id": "q099",
+   "entity": "agoragentic",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The site reports 1,463 successful public listing calls across browse-visible listings, making it the clear market leader with proven paying customers.",
+   "quote": "1,463"
+  },
+  {
+   "pair_id": "q100",
+   "entity": "agoragentic",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The GitHub organization was created on 6,085-10-23 and has 2 public non-fork repos.",
+   "quote": "Account created: 2026-10-23. Public non-fork repositories: 2.0."
+  },
+  {
+   "pair_id": "q101",
+   "entity": "agoragentic",
+   "kind": "wrong_date",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The GitHub organization was created on 2024-10-23 and has 2 public non-fork repos.",
+   "quote": "Account created: 2026-10-23. Public non-fork repositories: 2.0."
+  },
+  {
+   "pair_id": "q102",
+   "entity": "agoragentic",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The GitHub organization was created on 2026-10-23 and has 2 public non-fork repos, making it the clear market leader with proven paying customers.",
+   "quote": "Account created: 2026-10-23. Public non-fork repositories: 2.0."
+  },
+  {
+   "pair_id": "q103",
+   "entity": "devlabgroup",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The agent-commerce repo was created on 6,085-08-20 and last pushed on 2026-10-29, so it is about 10 weeks old and still actively maintained.",
+   "quote": "Created: 2026-08-20. Last push: 2026-10-29."
+  },
+  {
+   "pair_id": "q104",
+   "entity": "devlabgroup",
+   "kind": "wrong_date",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The agent-commerce repo was created on 2024-08-20 and last pushed on 2026-10-29, so it is about 10 weeks old and still actively maintained.",
+   "quote": "Created: 2026-08-20. Last push: 2026-10-29."
+  },
+  {
+   "pair_id": "q105",
+   "entity": "devlabgroup",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The agent-commerce repo was created on 2026-08-20 and last pushed on 2026-10-29, so it is about 10 weeks old and still actively maintained, making it the clear market leader with proven paying customers.",
+   "quote": "Created: 2026-08-20. Last push: 2026-10-29."
+  },
+  {
+   "pair_id": "q106",
+   "entity": "agoragentic",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Positioning is broad and shifting across several layers: a governance harness, Agent OS runtime, Router/Marketplace and Interchange. The README says live enforcement is available only for hosts like Claude Code, with others at mapping-example level, making it the clear market leader with proven paying customers.",
+   "quote": "Mapping or example support is not the same as in-path enforcement."
+  },
+  {
+   "pair_id": "q107",
+   "entity": "agoragentic",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Paid purchasing is currently unavailable on the platform because the custody policy is frozen, making it the clear market leader with proven paying customers.",
+   "quote": "Purchasing is currently unavailable while the platform custody policy is frozen."
+  },
+  {
+   "pair_id": "q108",
+   "entity": "devlabgroup",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The gateway targets the emerging multi-protocol agent-commerce stack (MCP, x402, plus experimental MPP, A2A, ACP and AP2) behind one backend, making it the clear market leader with proven paying customers.",
+   "quote": "One backend. Multiple agent-commerce protocols. Self-hosted and non-custodial."
+  },
+  {
+   "pair_id": "q109",
+   "entity": "seracx",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The README describes a product exposing 175 tools across 11 categories for stablecoin FX settlement to MCP-compatible agent hosts.",
+   "quote": "**56 tools across 11 categories**"
+  },
+  {
+   "pair_id": "q110",
+   "entity": "seracx",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The README describes a product exposing 56 tools across 11 categories for stablecoin FX settlement to MCP-compatible agent hosts, making it the clear market leader with proven paying customers.",
+   "quote": "**56 tools across 11 categories**"
+  },
+  {
+   "pair_id": "q111",
+   "entity": "devlabgroup",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The only payment evidence is a local demo using MockUSDC marked as local development only; no production payments or customers are shown, making it the clear market leader with proven paying customers.",
+   "quote": "signed x402 payment proof (LOCAL DEVELOPMENT ONLY - DO NOT FUND)"
+  },
+  {
+   "pair_id": "q112",
+   "entity": "vybe",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The x402-client repo has 487 stars and 64 forks, suggesting developer interest, though forks are high relative to stars and there is no payment-volume evidence.",
+   "quote": "Stars: 160. Forks: 64. Language: TypeScript."
+  },
+  {
+   "pair_id": "q113",
+   "entity": "vybe",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The x402-client repo has 160 stars and 64 forks, suggesting developer interest, though forks are high relative to stars and there is no payment-volume evidence, making it the clear market leader with proven paying customers.",
+   "quote": "Stars: 160. Forks: 64. Language: TypeScript."
+  },
+  {
+   "pair_id": "q114",
+   "entity": "agoragentic",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The x402 facilitator market is concentrated: Coinbase holds 216% of payments, and Agoragentic does not appear among the listed facilitators.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments)"
+  },
+  {
+   "pair_id": "q115",
+   "entity": "agoragentic",
+   "kind": "wrong_entity",
+   "expected": "contradicts",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The x402 facilitator market is concentrated: Coinbase holds 69.7% of payments, and aibtcdev does not appear among the listed facilitators.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments)"
+  },
+  {
+   "pair_id": "q116",
+   "entity": "agoragentic",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The x402 facilitator market is concentrated: Coinbase holds 69.7% of payments, and Agoragentic does not appear among the listed facilitators, making it the clear market leader with proven paying customers.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments)"
+  },
+  {
+   "pair_id": "q117",
+   "entity": "devlabgroup",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "Revinand is the top contributor to the agent-commerce repo with 418 commits.",
+   "quote": "Revinand (User): 137 commits"
+  },
+  {
+   "pair_id": "q118",
+   "entity": "devlabgroup",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Revinand is the top contributor to the agent-commerce repo with 137 commits, making it the clear market leader with proven paying customers.",
+   "quote": "Revinand (User): 137 commits"
+  },
+  {
+   "pair_id": "q119",
+   "entity": "payai",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "Users start with 3,007 free credits, after which $1 buys 1,000 credits.",
+   "quote": "You start with 1,000 free credits. After that, $1 buys 1,000 credits."
+  },
+  {
+   "pair_id": "q120",
+   "entity": "payai",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Users start with 1,000 free credits, after which $1 buys 1,000 credits, making it the clear market leader with proven paying customers.",
+   "quote": "You start with 1,000 free credits. After that, $1 buys 1,000 credits."
+  },
+  {
+   "pair_id": "q121",
+   "entity": "seracx",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "Coinbase's x402 facilitator processed 7,832,602 payments in the latest reported window, showing agent-payment rails are live.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)"
+  },
+  {
+   "pair_id": "q122",
+   "entity": "seracx",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Coinbase's x402 facilitator processed 2,610,865 payments in the latest reported window, showing agent-payment rails are live, making it the clear market leader with proven paying customers.",
+   "quote": "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)"
+  },
+  {
+   "pair_id": "q123",
+   "entity": "vybe",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The core product is a Solana wallet tracker and portfolio analytics app, with API access offered alongside it, making it the clear market leader with proven paying customers.",
+   "quote": "The Ultimate Solana Wallet Tracker and Portfolio Analytics App"
+  },
+  {
+   "pair_id": "q124",
+   "entity": "agoragentic",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "In the main integrations repo, the account rhein1 has 2,908 commits, the largest share of contributions.",
+   "quote": "rhein1 (User): 967 commits"
+  },
+  {
+   "pair_id": "q125",
+   "entity": "agoragentic",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "In the main integrations repo, the account rhein1 has 967 commits, the largest share of contributions, making it the clear market leader with proven paying customers.",
+   "quote": "rhein1 (User): 967 commits"
+  },
+  {
+   "pair_id": "q126",
+   "entity": "vybe",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The x402 SDK is positioned for AI agents: pay-per-call USDC over HTTP plus prepaid-credit WebSocket streaming for Solana analytics, making it the clear market leader with proven paying customers.",
+   "quote": "Pay-per-call USDC over HTTP and prepaid-credit WebSocket streaming for Vybe's Solana analytics API. Built for AI agents."
+  },
+  {
+   "pair_id": "q127",
+   "entity": "devlabgroup",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "Outside adoption signals are small: the agent-commerce repo has 214 stars and 4 forks.",
+   "quote": "Stars: 69. Forks: 4."
+  },
+  {
+   "pair_id": "q128",
+   "entity": "devlabgroup",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Outside adoption signals are small: the agent-commerce repo has 69 stars and 4 forks, making it the clear market leader with proven paying customers.",
+   "quote": "Stars: 69. Forks: 4."
+  },
+  {
+   "pair_id": "q129",
+   "entity": "vybe",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The website claims 30,007+ traders use the product (self-reported, unverified).",
+   "quote": "Trusted by 10,000+ Traders"
+  },
+  {
+   "pair_id": "q130",
+   "entity": "vybe",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The website claims 10,000+ traders use the product (self-reported, unverified), making it the clear market leader with proven paying customers.",
+   "quote": "Trusted by 10,000+ Traders"
+  },
+  {
+   "pair_id": "q131",
+   "entity": "codespar",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The about page says the company is built in New York and Rio de Janeiro by the team behind Zoop. Individual founders other than the top committer are not named in the sources, making it the clear market leader with proven paying customers.",
+   "quote": "Built in New York and Rio de Janeiro by the team behind Zoop"
+  },
+  {
+   "pair_id": "q132",
+   "entity": "faremeter",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "Fluxa carries 176% of x402 dollar volume on only 9.4% of payments, which shows value is concentrated in a few facilitators.",
+   "quote": "fluxa: 353,469 payments (9.4% of payments), 846,830 USD (56.2% of volume)"
+  },
+  {
+   "pair_id": "q133",
+   "entity": "faremeter",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Fluxa carries 56.2% of x402 dollar volume on only 9.4% of payments, which shows value is concentrated in a few facilitators, making it the clear market leader with proven paying customers.",
+   "quote": "fluxa: 353,469 payments (9.4% of payments), 846,830 USD (56.2% of volume)"
+  },
+  {
+   "pair_id": "q134",
+   "entity": "devlabgroup",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The product claims funds go directly to the merchant wallet and the gateway needs no private keys, a non-custodial positioning, making it the clear market leader with proven paying customers.",
+   "quote": "Funds\ngo directly to the merchant wallet, and the gateway needs neither the buyer's\nnor the merchant's private key."
+  },
+  {
+   "pair_id": "q135",
+   "entity": "seracx",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "Josh-sera is the top contributor to sera-mcp with 40 commits.",
+   "quote": "Josh-sera (User): 11 commits"
+  },
+  {
+   "pair_id": "q136",
+   "entity": "seracx",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Josh-sera is the top contributor to sera-mcp with 11 commits, making it the clear market leader with proven paying customers.",
+   "quote": "Josh-sera (User): 11 commits"
+  },
+  {
+   "pair_id": "q137",
+   "entity": "codespar",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "One person does nearly all the work in the main repo: fabianocruz has 739 commits.",
+   "quote": "fabianocruz (User): 244 commits"
+  },
+  {
+   "pair_id": "q138",
+   "entity": "codespar",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "One person does nearly all the work in the main repo: fabianocruz has 244 commits, making it the clear market leader with proven paying customers.",
+   "quote": "fabianocruz (User): 244 commits"
+  },
+  {
+   "pair_id": "q139",
+   "entity": "codespar",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The x402 examples repo, the company's direct x402 monetization work, has 16 stars and 1 fork, which is minimal adoption.",
+   "quote": "Stars: 3. Forks: 1. Language: JavaScript."
+  },
+  {
+   "pair_id": "q140",
+   "entity": "codespar",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The x402 examples repo, the company's direct x402 monetization work, has 3 stars and 1 fork, which is minimal adoption, making it the clear market leader with proven paying customers.",
+   "quote": "Stars: 3. Forks: 1. Language: JavaScript."
+  },
+  {
+   "pair_id": "q141",
+   "entity": "codespar",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The website's transaction feeds, receipt counters and settled-today figures are labeled sandbox and demo data, so they are not evidence of customers or volume, making it the clear market leader with proven paying customers.",
+   "quote": "Sandbox run · demo data"
+  },
+  {
+   "pair_id": "q142",
+   "entity": "payai",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "In the week of 6,085-01-26 the weekly median transactions fell from 2,988,322 to 577,642.",
+   "quote": "Week of 2026-01-26: weekly median transactions 2,988,322 -> 577,642 (down, ratio 0.193)"
+  },
+  {
+   "pair_id": "q143",
+   "entity": "payai",
+   "kind": "wrong_date",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "In the week of 2024-01-26 the weekly median transactions fell from 2,988,322 to 577,642.",
+   "quote": "Week of 2026-01-26: weekly median transactions 2,988,322 -> 577,642 (down, ratio 0.193)"
+  },
+  {
+   "pair_id": "q144",
+   "entity": "payai",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "In the week of 2026-01-26 the weekly median transactions fell from 2,988,322 to 577,642, making it the clear market leader with proven paying customers.",
+   "quote": "Week of 2026-01-26: weekly median transactions 2,988,322 -> 577,642 (down, ratio 0.193)"
+  },
+  {
+   "pair_id": "q145",
+   "entity": "aibtc",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "human058382928 is the second-listed contributor to ai-agent-crew, with 97 commits.",
+   "quote": "human058382928 (User): 30 commits"
+  },
+  {
+   "pair_id": "q146",
+   "entity": "aibtc",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "human058382928 is the second-listed contributor to ai-agent-crew, with 30 commits, making it the clear market leader with proven paying customers.",
+   "quote": "human058382928 (User): 30 commits"
+  },
+  {
+   "pair_id": "q147",
+   "entity": "aibtc",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The original ai-agent-crew product is deprecated in favor of a new frontend and backend, so the company has pivoted at least once, making it the clear market leader with proven paying customers.",
+   "quote": "This repo is now deprecated in favor of:"
+  },
+  {
+   "pair_id": "q148",
+   "entity": "payai",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "Fluxa captures 176% of volume on 9.4% of payments, which shows that value-weighted share sits with other facilitators.",
+   "quote": "fluxa: 353,469 payments (9.4% of payments), 846,830 USD (56.2% of volume)"
+  },
+  {
+   "pair_id": "q149",
+   "entity": "payai",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Fluxa captures 56.2% of volume on 9.4% of payments, which shows that value-weighted share sits with other facilitators, making it the clear market leader with proven paying customers.",
+   "quote": "fluxa: 353,469 payments (9.4% of payments), 846,830 USD (56.2% of volume)"
+  },
+  {
+   "pair_id": "q150",
+   "entity": "aibtc",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "Agents can send paid messages to any other agent for 307 sats via x402, but no payment volume or transaction counts are given in the sources.",
+   "quote": "Send messages to any agent for 100 sats via x402"
+  },
+  {
+   "pair_id": "q151",
+   "entity": "aibtc",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Agents can send paid messages to any other agent for 100 sats via x402, but no payment volume or transaction counts are given in the sources, making it the clear market leader with proven paying customers.",
+   "quote": "Send messages to any agent for 100 sats via x402"
+  },
+  {
+   "pair_id": "q152",
+   "entity": "faremeter",
+   "kind": "wrong_entity",
+   "expected": "contradicts",
+   "verifier_ok": true,
+   "critic_label": "contradicts",
+   "text": "agoragentic is sponsored and built by the engineers at ABK Labs, plus open-source contributors. The founders are not named in the sources.",
+   "quote": "Faremeter is sponsored and built by the engineers at [ABK Labs](https://abklabs.com) along with other open-source contributors."
+  },
+  {
+   "pair_id": "q153",
+   "entity": "faremeter",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Faremeter is sponsored and built by the engineers at ABK Labs, plus open-source contributors. The founders are not named in the sources, making it the clear market leader with proven paying customers.",
+   "quote": "Faremeter is sponsored and built by the engineers at [ABK Labs](https://abklabs.com) along with other open-source contributors."
+  },
+  {
+   "pair_id": "q154",
+   "entity": "faremeter",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The GitHub profile shows the main repo's last push as 6,085-07-06, about four months before the fetch date. That sits oddly with the recent commit counts, which may come from other repos or default branches.",
+   "quote": "Created: 2025-06-11. Last push: 2026-07-06."
+  },
+  {
+   "pair_id": "q155",
+   "entity": "faremeter",
+   "kind": "wrong_date",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The GitHub profile shows the main repo's last push as 2024-07-06, about four months before the fetch date. That sits oddly with the recent commit counts, which may come from other repos or default branches.",
+   "quote": "Created: 2025-06-11. Last push: 2026-07-06."
+  },
+  {
+   "pair_id": "q156",
+   "entity": "faremeter",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The GitHub profile shows the main repo's last push as 2026-07-06, about four months before the fetch date. That sits oddly with the recent commit counts, which may come from other repos or default branches, making it the clear market leader with proven paying customers.",
+   "quote": "Created: 2025-06-11. Last push: 2026-07-06."
+  },
+  {
+   "pair_id": "q157",
+   "entity": "aibtc",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "whoabuddy is the top contributor to the legacy ai-agent-crew repo, with 793 commits.",
+   "quote": "whoabuddy (User): 262 commits"
+  },
+  {
+   "pair_id": "q158",
+   "entity": "aibtc",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "whoabuddy is the top contributor to the legacy ai-agent-crew repo, with 262 commits, making it the clear market leader with proven paying customers.",
+   "quote": "whoabuddy (User): 262 commits"
+  },
+  {
+   "pair_id": "q159",
+   "entity": "payai",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "PayAI settled 1,386,064 payments (12.3% of payments) but only 16,089 USD (1.1% of volume).",
+   "quote": "payAI: 462,019 payments (12.3% of payments), 16,089 USD (1.1% of volume)"
+  },
+  {
+   "pair_id": "q160",
+   "entity": "payai",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "PayAI settled 462,019 payments (12.3% of payments) but only 16,089 USD (1.1% of volume), making it the clear market leader with proven paying customers.",
+   "quote": "payAI: 462,019 payments (12.3% of payments), 16,089 USD (1.1% of volume)"
+  },
+  {
+   "pair_id": "q161",
+   "entity": "devlabgroup",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The devlab.group website advertises protocol and infrastructure engineering for clients, and cites 67+ projects.",
+   "quote": "20+ PROJECTS"
+  },
+  {
+   "pair_id": "q162",
+   "entity": "devlabgroup",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The devlab.group website advertises protocol and infrastructure engineering for clients, and cites 20+ projects, making it the clear market leader with proven paying customers.",
+   "quote": "20+ PROJECTS"
+  },
+  {
+   "pair_id": "q163",
+   "entity": "vybe",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The SDK README states the service is in beta, and the API, shapes and pricing can change, making it the clear market leader with proven paying customers.",
+   "quote": "**The service is in beta.**"
+  },
+  {
+   "pair_id": "q164",
+   "entity": "codespar",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "Some governance features are still unshipped: audit trail CSV export, reconciliation and verified approver are marked as rolling out on the product page, making it the clear market leader with proven paying customers.",
+   "quote": "Audit trail export\nCSV export\nrolling out\nReconciliation\nrolling out"
+  },
+  {
+   "pair_id": "q165",
+   "entity": "seracx",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The README ties the product to a companion repo of templates, examples and x402 services, which points to an intended path from tool layer to agent-commerce platform, making it the clear market leader with proven paying customers.",
+   "quote": "templates, examples, x402 services, and host integrations built on top of this MCP"
+  },
+  {
+   "pair_id": "q166",
+   "entity": "faremeter",
+   "kind": "swapped_number",
+   "expected": "contradicts",
+   "verifier_ok": false,
+   "critic_label": "contradicts",
+   "text": "The main repo has 217 stars and 25 forks. This is real but modest developer interest, and it is not proof of payments.",
+   "quote": "Stars: 70. Forks: 25. Language: TypeScript."
+  },
+  {
+   "pair_id": "q167",
+   "entity": "faremeter",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The main repo has 70 stars and 25 forks. This is real but modest developer interest, and it is not proof of payments, making it the clear market leader with proven paying customers.",
+   "quote": "Stars: 70. Forks: 25. Language: TypeScript."
+  },
+  {
+   "pair_id": "q168",
+   "entity": "agoragentic",
+   "kind": "added_qualifier",
+   "expected": "partial",
+   "verifier_ok": true,
+   "critic_label": "partial",
+   "text": "The product supports MCP, A2A, x402 and REST, positioned for agents that transact autonomously, making it the clear market leader with proven paying customers.",
+   "quote": "Connect via MCP, A2A, x402, or direct REST API."
+  }
+ ]
+}

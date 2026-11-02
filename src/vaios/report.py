@@ -15,57 +15,102 @@ def _j(path: str) -> dict:
 
 def headline_numbers() -> dict[str, str]:
     bt, cp, rs = _j("backtest/backtest.json"), _j("monitoring/changepoints.json"), _j("sourcing/run_summary.json")
-    full, gh, heur = bt["scores"]["s_logit_full"], bt["scores"]["s_logit_github"], bt["scores"]["s_heuristic"]
-    pair = bt["paired_vs_best_baseline"]["s_logit_full"]
-    base = bt["scores"][pair["best_baseline"]]
+    allp, nr = bt["populations"]["all"], bt["populations"]["never_raised"]
+    pair, pair_nr = allp["paired_vs_best_baseline"]["s_logit_full"], nr["paired_vs_best_baseline"]
+    base, base_nr = allp["scores"][pair["best_baseline"]], nr["scores"][pair_nr["s_heuristic"]["best_baseline"]]
+    s, snr = allp["scores"], nr["scores"]
     h = cp["headline"]
+    rm, lt = bt["round_mix_all"], bt["lead_time"]
     n = {
-        "bt_rows": f"{bt['n_rows_test']:,}",
-        "bt_pos": f"{bt['n_positives_test']}",
-        "bt_protocols": f"{bt['n_protocols_test']:,}",
+        # screening, seed-relevant population first
+        "nr_rows": f"{nr['n_rows']:,}", "nr_pos": f"{nr['n_positive_rows']}", "nr_pos_protocols": f"{nr['n_positive_protocols']}",
+        "nr_raises": f"{bt['round_mix_never_raised']['distinct_raises']}",
+        "nr_seed": f"{bt['round_mix_never_raised']['seed_preseed_angel']}",
+        "auc_nr_full": f"{snr['s_logit_full']['auc']:.3f}",
+        "auc_nr_full_ci": f"{snr['s_logit_full']['auc_ci95'][0]:.2f}-{snr['s_logit_full']['auc_ci95'][1]:.2f}",
+        "auc_nr_github": f"{snr['s_logit_github']['auc']:.3f}",
+        "auc_nr_heuristic": f"{snr['s_heuristic']['auc']:.3f}",
+        "auc_nr_heuristic_ci": f"{snr['s_heuristic']['auc_ci95'][0]:.2f}-{snr['s_heuristic']['auc_ci95'][1]:.2f}",
+        "auc_nr_commits": f"{snr['b_commits']['auc']:.3f}", "auc_nr_random": f"{snr['b_random']['auc']:.3f}",
+        "auc_nr_best_base": f"{base_nr['auc']:.3f}",
+        "auc_nr_heur_diff_ci": f"{pair_nr['s_heuristic']['ci95'][0]:+.3f} to {pair_nr['s_heuristic']['ci95'][1]:+.3f}",
+        # full population
+        "bt_rows": f"{bt['n_rows_test']:,}", "bt_pos": f"{bt['n_positives_test']}",
+        "bt_pos_protocols": f"{bt['n_positive_protocols_test']}", "bt_protocols": f"{bt['n_protocols_test']:,}",
+        "bt_raises": f"{rm['distinct_raises']}", "bt_seed": f"{rm['seed_preseed_angel']}",
         "bt_base_rate": f"{bt['base_rate_test']:.1%}",
-        "auc_full": f"{full['auc']:.3f}",
-        "auc_full_ci": f"{full['auc_ci95'][0]:.3f}-{full['auc_ci95'][1]:.3f}",
-        "auc_github": f"{gh['auc']:.3f}",
-        "auc_heuristic": f"{heur['auc']:.3f}",
-        "auc_best_base": f"{base['auc']:.3f}",
-        "auc_diff": f"{pair['auc_diff']:+.3f}",
+        "auc_full": f"{s['s_logit_full']['auc']:.3f}",
+        "auc_full_ci": f"{s['s_logit_full']['auc_ci95'][0]:.3f}-{s['s_logit_full']['auc_ci95'][1]:.3f}",
+        "auc_full_pooled": f"{s['s_logit_full']['pooled_auc']:.3f}",
+        "auc_best_base": f"{base['auc']:.3f}", "auc_diff": f"{pair['auc_diff']:+.3f}",
         "auc_diff_ci": f"{pair['ci95'][0]:+.3f} to {pair['ci95'][1]:+.3f}",
-        "auc_leaky": f"{bt['scores']['leaky_stars_now']['auc']:.3f}",
-        "lift50_full": f"{full['lift@50']:.1f}x",
-        "lift50_base": f"{base['lift@50']:.1f}x",
-        "p50_full": f"{full['p@50']:.3f}",
-        "memos": f"{rs['n_memos']}",
-        "claims_drafted": f"{rs['claims_drafted']}",
+        "lift50_full": f"{s['s_logit_full']['lift@50']:.1f}x", "lift50_base": f"{base['lift@50']:.1f}x",
+        "p50_full": f"{s['s_logit_full']['p@50']:.3f}",
+        "lead_gh_median": f"{lt['github_first_repo']['median_months']:.1f}",
+        "lead_gh_share": f"{lt['github_first_repo']['share_signal_before_raise']:.0%}",
+        "lead_dl_median": f"{lt['defillama_listing']['median_months']:.1f}",
+        "lead_dl_share": f"{lt['defillama_listing']['share_signal_before_raise']:.0%}",
+        # sourcing + memos
+        "n_entities": f"{_j('sourcing/shortlist.json')['n_candidates']:,}",
+        "memos": f"{rs['n_memos']}", "claims_drafted": f"{rs['claims_drafted']}",
         "raw_precision": f"{rs['raw_citation_precision']:.1%}",
-        "post_precision": f"{rs['post_repair_citation_precision']:.1%}",
-        "claims_shipped": f"{rs['claims_shipped']}",
-        "critic_flags": f"{rs['critic_unsupported_flags']}",
-        "disagreements": f"{rs['memos_with_disagreement']}",
-        "cp_hit": f"{h['event_hit_rate']:.0%}",
-        "cp_null": f"{h['null_mean_hit_rate']:.0%}",
-        "cp_p": f"{h['p_value']:.2f}",
-        "cp_fa": f"{h['false_alarm_rate']:.0%}",
-        "cp_fa_z": f"{h['baseline_zscore']['false_alarm_rate']:.0%}",
-        "cp_n": f"{h['n_changepoints']}",
-        "cp_events": f"{h['n_events']}",
+        "critic_entailed": f"{rs['critic_entailed_over_verified']:.1%}",
+        "claims_partial": f"{rs['claims_shipped_partial_tagged']}", "claims_withheld_critic": f"{rs['claims_withheld_by_critic']}",
+        "recs": f"{rs['recommendations']['advance']} advance / {rs['recommendations']['watch']} watch / {rs['recommendations']['pass']} pass",
+        "rec_agreement": f"{rs['recommendation_agreement']} of {rs['n_memos']}",
+        "cards": f"{rs['memos_with_decision_card']}",
+        # monitoring
+        "cp_hit": f"{h['event_hit_rate']:.0%}", "cp_null": f"{h['null_mean_hit_rate']:.0%}", "cp_p": f"{h['p_value']:.2f}",
+        "cp_fa": f"{h['false_alarm_rate']:.0%}", "cp_n": f"{h['n_changepoints']}", "cp_events": f"{h['n_events']}",
+        "cp_oct_ratio": f"~{round(next(g['ratio'] for g in cp['series'][cp['headline_series']]['segments'] if g['date'] == '2025-10-20')):,}x",
     }
-    ve = _j("receipts/verifier_eval.json")
-    n["ve_gold"], n["ve_corrupt"], n["ve_caught"] = f"{ve['gold_spans']}", f"{ve['corruptions']}", f"{ve['caught']}"
-    n["ve_rate"] = f"{ve['catch_rate']:.1%}"
-    briefs = sorted((RESULTS / "briefs").glob("*.json"))
-    if briefs:
-        br = json.loads(briefs[-1].read_text())["receipts"]
-        n["brief_raw"], n["brief_shipped"] = f"{br['raw_precision']:.1%}", f"{br['shipped']}"
-    llm = RESULTS / "backtest" / "llm_judgment.json"
-    if llm.exists():
-        lj = json.loads(llm.read_text())
-        n["llm_n"], n["llm_pos"] = f"{lj['n_items']}", f"{lj['n_positives']}"
-        for k, v in lj["results"].items():
-            n[f"llm_auc|{k}"] = f"{v['auc']:.2f}"
+    stage_checks = _j_list("sourcing/stage_checks.json")
+    n["stage_checked"] = f"{len(stage_checks)}"
+    n["stage_excluded"] = f"{sum(not c['seed_eligible'] for c in stage_checks)}"
+    ce = RESULTS / "receipts" / "claim_eval.json"
+    if ce.exists():
+        c = json.loads(ce.read_text())
+        n["ce_orig"], n["ce_pert"] = f"{c['n_original_pairs']}", f"{c['n_perturbed_pairs']}"
+        n["ce_critic_flag_orig"] = f"{c['originals']['critic_flag_rate_upper_bound_on_false_positives']:.0%}"
+        for k, v in c["recall_by_perturbation"].items():
+            n[f"ce_ver|{k}"], n[f"ce_cri|{k}"] = f"{v['verifier_recall']:.0%}", f"{v['critic_recall']:.0%}"
+    lj = RESULTS / "backtest" / "llm_judgment.json"
+    if lj.exists():
+        d = json.loads(lj.read_text())
+        wf, pc = d["walk_forward_anonymized"], d["post_cutoff"]
+        n["wf_items"], n["wf_pos"] = f"{wf['n_items']}", f"{wf['n_positives']}"
+        for k, v in wf["all"].items():
+            n[f"wf_auc|{k}"] = f"{v['auc']:.2f}"
+        for k, v in wf["never_raised"].items():
+            if isinstance(v, dict):
+                n[f"wf_nr_auc|{k}"] = f"{v['auc']:.2f}"
+        n["pc_items"], n["pc_pos"] = f"{pc['n_items']}", f"{pc['n_positives']}"
+        m = pc["raise_mentions_in_current_description"]
+        n["pc_mention_pos"], n["pc_mention_neg"] = f"{m['positives']} of {m['positives_total']}", f"{m['negatives']} of {m['negatives_total']}"
+        for k, v in pc["results"].items():
+            n[f"pc_auc|{k}"] = f"{v['auc']:.2f}"
+        probe = _j("backtest/cutoff_probe.json")["models"]
+        for k, v in probe.items():
+            n[f"probe|{k}"] = v["latest_correct_event"] or "none"
+    dg = RESULTS / "monitoring" / "diagnostics.json"
+    if dg.exists():
+        g = json.loads(dg.read_text())
+        n["pw_needed"] = f"{g['power_preregistered_test']['hits_needed_for_p_lt_0.05']}"
+        n["pw_07"] = f"{g['power_preregistered_test']['power_at_true_hit_rate']['0.7']:.0%}"
+        rt = g["realtime_replay_headline_series"]
+        n["rt_delay"] = f"{rt['median_detection_delay_weeks']:g}"
+        n["rt_dropped"] = f"{rt['real_time_alarms_later_dropped']}"
+        v2 = g["event_list_v2_with_token_launches"]
+        n["v2_events"], n["v2_hit"], n["v2_null"], n["v2_p"] = (f"{v2['n_events']}", f"{v2['hit_rate']:.0%}",
+                                                               f"{v2['null_mean']:.0%}", f"{v2['p_value']:.2f}")
+        mc = g["matched_count_vs_zscore"]
+        n["mc_k"], n["mc_pelt_fa"], n["mc_z_fa"] = (f"{mc['k']}", f"{mc['pelt']['false_alarm_rate']:.0%}",
+                                                    f"{mc['zscore_top_k']['false_alarm_rate']:.0%}")
     return n
 
 
+def _j_list(path: str) -> list:
+    return json.loads((RESULTS / path).read_text())
 
 
 # ---------- anchored README numbers ----------
