@@ -1,5 +1,5 @@
 {
- "method": "Each model gets the titles (no dates) of dated public events from results/monitoring/events.csv, which all have",
+ "method": "Probe each model's knowledge cutoff instead of assuming it. Each model gets the titles (no dates) of dated public events from results/monitoring/events.csv, which all have stored source snapshots, and must give the year-month or \"unknown\". The latest correctly dated event is only a LOWER bound on the cutoff: both models also missed some 2025 events, and answering \"unknown\" to niche 2026 events does not prove they are after the cutoff. So the post-cutoff window is ASSUMED, with supporting evidence from this probe, not proven. Guessing from a title is possible; the full answer table is reported.",
  "n_events": 18,
  "models": {
   "claude-sonnet-5-5": {

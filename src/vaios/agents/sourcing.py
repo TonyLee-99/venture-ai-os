@@ -135,7 +135,8 @@ def resolve(m: pd.DataFrame) -> pd.DataFrame:
 
 
 def github_scores(con) -> pd.DataFrame:
-    """Apply the GitHub-only model, trained on every backtest T0, to features as of today."""
+    """Triage order for today's owners: commits in the last 90 days (ADR 0010); the GitHub-only logit and the
+    GitHub-signal heuristic are kept as reference columns."""
     table = pd.read_parquet(FROZEN / "backtest_table.parquet")
     train = table[table["t0"].dt.date.isin(BACKTEST_T0S)]
     model = sc.fit_logit(train.assign(raised=train["raised"].astype(int)), sc.GITHUB_FEATURES)
@@ -151,7 +152,11 @@ def github_scores(con) -> pd.DataFrame:
                       [str(AS_OF), str(AS_OF)]).df()
     for col in ("tvl_t0", "tvl_growth_90d", "listing_age_days", "prior_raises", "days_since_last_raise"):
         now[col] = 0  # not used by the GitHub-only model; model_matrix needs the columns to exist
-    now["screen_score"] = sc.predict(model, now, sc.GITHUB_FEATURES)
+    now["logit_github_score"] = sc.predict(model, now, sc.GITHUB_FEATURES)  # reference only (AUC 0.584 never-raised)
+    now["heuristic_github_score"] = sc.heuristic_github(now, group=None)  # reference only (AUC 0.551 never-raised)
+    # live triage order (ADR 0010): commits in the last 90 days (tie-break: total commits), the best of the
+    # scorers a GitHub-only candidate can be given on never-raised protocols in the backtest (AUC 0.653)
+    now["screen_score"] = now["commits_90d"] + 1e-6 * now["commits_before"]
     return now
 
 
@@ -188,6 +193,8 @@ def run(con) -> pd.DataFrame:
             "incumbent": is_incumbent(owners, name),
             "crm_stage": crm_keys.get(norm_name(name)),
             "screen_score": float(s["screen_score"]) if s is not None else np.nan,
+            "logit_github_score": float(s["logit_github_score"]) if s is not None else np.nan,
+            "heuristic_github_score": float(s["heuristic_github_score"]) if s is not None else np.nan,
             "commits_90d": int(s["commits_90d"]) if s is not None else None,
             "commit_growth": round(float(s["commit_growth"]), 3) if s is not None else None,
             "evidence": " ".join(g["evidence"].dropna().unique()[:3]),

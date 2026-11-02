@@ -6,16 +6,17 @@ monitoring-to-brief) in one niche, **agentic payments / agent commerce** (x402, 
 monetisation). Public data only, pulled 2026-11-02.
 
 **What it is good for, and what it is not.**
-- **Triage, not prediction.** On protocols that had never raised (the seed case), the screening scores
-  are close to chance. The best one, a pre-specified heuristic, reaches AUC <!--n:auc_nr_heuristic-->0.688<!--/n--> (95% CI <!--n:auc_nr_heuristic_ci-->0.57-0.83<!--/n-->).
-  The logistic model gets <!--n:auc_nr_full-->0.605<!--/n-->, and the naive "newest listing first" baseline gets <!--n:auc_nr_best_base-->0.697<!--/n-->.
-  This rests on <!--n:nr_pos-->28<!--/n--> positive rows from <!--n:nr_pos_protocols-->18<!--/n--> protocols, behind <!--n:nr_raises-->22<!--/n--> distinct raises, of which <!--n:nr_seed-->5<!--/n--> were
+- **Triage, not prediction.** On protocols that had never raised (the seed case), no score beats the naive
+  "newest listing first" baseline (AUC <!--n:auc_nr_best_base-->0.697<!--/n-->). The pre-specified heuristic gets <!--n:auc_nr_heuristic-->0.688<!--/n--> (95% CI <!--n:auc_nr_heuristic_ci-->0.57-0.83<!--/n-->),
+  commits in the last 90 days <!--n:auc_nr_commits-->0.653<!--/n-->, the logistic model <!--n:auc_nr_full-->0.605<!--/n-->, and the GitHub-only logistic model <!--n:auc_nr_github-->0.584<!--/n-->.
+  The live queue is ordered by commits in the last 90 days, the best option for GitHub-only candidates (ADR 0010).
+  This rests on <!--n:nr_pos-->28<!--/n--> positive rows from <!--n:nr_pos_protocols-->18<!--/n--> protocols, behind <!--n:nr_raises-->22<!--/n--> distinct recorded raises (any type, including token sales; not filtered to first institutional rounds), of which <!--n:nr_seed-->5<!--/n--> were
   seed, pre-seed or angel rounds. Across all protocols the model reaches <!--n:auc_full-->0.810<!--/n-->, but "raised before" alone gets
   <!--n:auc_best_base-->0.773<!--/n-->. So the score orders a long list for a human; it is not evidence and memos never cite it.
-- **Receipts that a second model can attack.** Of <!--n:claims_drafted-->103<!--/n--> memo claims, <!--n:raw_precision-->57.3%<!--/n--> passed the deterministic
+- **Receipts that a second model can attack.** Of <!--n:claims_drafted-->102<!--/n--> memo claims, <!--n:raw_precision-->60.8%<!--/n--> passed the deterministic
   verifier on the first draft and all passed after one repair. A blind critic from another model family then
-  rated only <!--n:critic_entailed-->31.1%<!--/n--> as fully entailed by their quote. It tagged <!--n:claims_partial-->68<!--/n--> as partial (shown tagged in
-  the memo) and withheld <!--n:claims_withheld_critic-->3<!--/n-->. Whether the critic is right is a **human** call, and that call is pending (see "What the owner must do").
+  rated only <!--n:critic_entailed-->30.0%<!--/n--> as fully entailed by their quote. It tagged <!--n:claims_partial-->68<!--/n--> as partial (shown tagged in
+  the memo) and withheld <!--n:claims_withheld_critic-->2<!--/n-->. Whether the critic is right is a **human** call, and that call is pending (see "What the owner must do").
 - **Monitoring that admits what it cannot explain.** Detected inflections in x402 traction match dated events
   no better than chance: <!--n:cp_hit-->42%<!--/n--> vs <!--n:cp_null-->36%<!--/n--> (p = <!--n:cp_p-->0.44<!--/n-->). The test only had power to detect strong effects:
   <!--n:pw_needed-->8<!--/n--> of 12 events would have had to match. The largest break (October 2025, <!--n:cp_oct_ratio-->~181x<!--/n--> in weekly
@@ -28,7 +29,7 @@ monetisation). Public data only, pulled 2026-11-02.
 | Problem | What I built | Key results (all from `results/`) |
 |---|---|---|
 | Overnight sourcing in a fast niche, with no time to read every repo | 6 sources -> entity resolution -> CRM dedupe (SYNTHETIC CRM) -> stage check from sourced evidence -> memo queue of seed-eligible companies | <!--n:n_entities-->1,398<!--/n--> entities; <!--n:stage_checked-->40<!--/n--> stage-checked, <!--n:stage_excluded-->4<!--/n--> excluded as past entry stage (Tempo: incubated by Stripe and Paradigm; Merit Systems: $10M seed led by a16z; Kite: tier-1 backers on homepage) |
-| LLM memos invent or overstate facts | Claude drafts with receipts -> deterministic verifier -> blind GPT critic labels every claim -> withheld / tagged -> drafter re-scores -> committee with an advance budget -> decision cards | <!--n:memos-->8<!--/n--> memos: <!--n:recs-->0 advance / 6 watch / 2 pass<!--/n-->; model agreement <!--n:rec_agreement-->5 of 8<!--/n-->; <!--n:cards-->3<!--/n--> decision cards; human verdicts pending |
+| LLM memos invent or overstate facts | Claude drafts with receipts -> deterministic verifier -> blind GPT critic labels every claim -> withheld / tagged -> drafter re-scores -> committee with an advance budget -> decision cards | <!--n:memos-->8<!--/n--> memos: <!--n:recs-->0 advance / 7 watch / 1 pass<!--/n--> (calls follow the score policy); model agreement <!--n:rec_agreement-->8 of 8<!--/n--> (by construction: both calls come from scores via one policy, so only a score band can disagree); <!--n:cards-->0<!--/n--> decision cards; human verdicts pending on all memos |
 | Does a public-data score anticipate VC decisions? | Walk-forward point-in-time backtest vs revealed raises (DefiLlama), naive baselines, clustered bootstrap, lead-time analysis | Never-raised: near chance (above). Lead time: the first public GitHub repo predates the first raise in <!--n:lead_gh_share-->73%<!--/n--> of cases (median <!--n:lead_gh_median-->5.0<!--/n--> months), but DefiLlama listing does so in only <!--n:lead_dl_share-->24%<!--/n--> |
 
 ---
@@ -56,7 +57,10 @@ flowchart LR
 Each agent owns a job with a spec in `jobs/*.yaml` (inputs, output schema, SLA, eval, failure policy) and
 writes a replayable trace in `results/traces/`. Reruns are idempotent: artifacts get a new version only when
 their content changes. The two jobs share knowledge: the memo for a facilitator cites what the monitor measured.
-For example, the PayAI memo reports the September 2026 drop of about 99% in weekly payments, and its USD value per payment (inorganic-traffic risk).
+The mechanism is tested, but in this run no shortlisted company is an x402 facilitator, so no memo cites monitor findings.
+With the round-2 triage order (commits in the last 90 days), PayAI (29 commits in 90 days) no longer makes the queue.
+Its corrected 30-day window, [Oct 2, Nov 1), has <!--n:payai_fixed-->441,602<!--/n--> payments. The round-1 window had no end date, so it also counted
+Nov 1-2 (<!--n:payai_old-->462,019<!--/n-->). `tests/test_windows.py` now pins the window boundaries.
 
 ## Results
 
@@ -67,7 +71,7 @@ decision. Test T0s run every six months from 2023-07-01 to 2025-07-01, and model
 Metrics are the mean of per-T0 values, with 95% CIs from 1,000 resamples clustered by protocol. Owner-clustered and "unresolved owners dropped" versions are in the JSON.
 The scores, baselines and metrics were committed (ADR 0004) before the first backtest run, after the data had been pulled.
 
-| Population | Rows / positive rows / protocols | Logistic (all features) | Pre-specified heuristic | GitHub-only (live score) | Best naive baseline |
+| Population | Rows / positive rows / protocols | Logistic (all features) | Pre-specified heuristic | GitHub-only logistic | Best naive baseline |
 |---|---|---|---|---|---|
 | Never raised before T0 (seed case) | <!--n:nr_rows-->3,900<!--/n--> / <!--n:nr_pos-->28<!--/n--> / <!--n:nr_pos_protocols-->18<!--/n--> | <!--n:auc_nr_full-->0.605<!--/n--> (<!--n:auc_nr_full_ci-->0.47-0.75<!--/n-->) | <!--n:auc_nr_heuristic-->0.688<!--/n--> | <!--n:auc_nr_github-->0.584<!--/n--> | newest listing <!--n:auc_nr_best_base-->0.697<!--/n--> |
 | All protocols | <!--n:bt_rows-->4,655<!--/n--> / <!--n:bt_pos-->80<!--/n--> / <!--n:bt_pos_protocols-->44<!--/n--> | <!--n:auc_full-->0.810<!--/n--> (<!--n:auc_full_ci-->0.725-0.886<!--/n-->); pooled <!--n:auc_full_pooled-->0.821<!--/n--> | <!--n:auc_heuristic-->0.789<!--/n--> | <!--n:auc_github-->0.736<!--/n--> | raised before <!--n:auc_best_base-->0.773<!--/n--> |
@@ -76,10 +80,16 @@ All protocols: the <!--n:bt_pos-->80<!--/n--> positive rows come from <!--n:bt_p
 pre-seed or angel rounds; the rest are strategic rounds, token sales and later rounds, because the 12-month windows overlap on a 6-month grid.
 Logistic minus best baseline: <!--n:auc_diff-->+0.036<!--/n--> (CI <!--n:auc_diff_ci-->-0.022 to +0.100<!--/n-->). The precision@50 lift of <!--n:lift50_full-->9.0x<!--/n--> is the mean of per-T0 lifts, the same
 size as the baseline's <!--n:lift50_base-->8.6x<!--/n-->, and precision@50 is <!--n:p50_full-->0.148<!--/n-->. Never-raised, heuristic minus best baseline: CI <!--n:auc_nr_heur_diff_ci-->-0.072 to +0.058<!--/n-->.
-For comparison, a random score gets <!--n:auc_nr_random-->0.497<!--/n--> and commits in the last 90 days get <!--n:auc_nr_commits-->0.653<!--/n-->.
-**Lead time:** for protocols with a recorded first raise, the first public GitHub repo came before the raise in
-<!--n:lead_gh_share-->73%<!--/n--> of cases (median lead <!--n:lead_gh_median-->5.0<!--/n--> months). The DefiLlama listing came before the raise in only <!--n:lead_dl_share-->24%<!--/n--> (median
-<!--n:lead_dl_median-->-5.6<!--/n--> months). Sourcing for seed deals has to watch GitHub and launches; a TVL list sees companies after they raise.
+For comparison, on never-raised protocols a random score gets <!--n:auc_nr_random-->0.497<!--/n-->, commits in the last 90 days (the live triage order) get <!--n:auc_nr_commits-->0.653<!--/n-->,
+and a post-hoc GitHub-signal version of the heuristic gets <!--n:auc_nr_heur_gh-->0.551<!--/n-->.
+**Outcome definition:** "raised" means any raise DefiLlama records (seed, strategic, token sale...). It is not
+filtered to a first institutional round; for never-raised protocols, it is their first *recorded* raise.
+**Lead time (retrospective):** for protocols with a recorded raise, a public GitHub signal existed before the first raise in
+<!--n:lead_gh_share-->73%<!--/n--> of cases (signal = creation date of the oldest repo the owner has today; median <!--n:lead_gh_median-->5.0<!--/n--> months). A DefiLlama
+listing existed before the raise in only <!--n:lead_dl_share-->24%<!--/n--> (median <!--n:lead_dl_median-->-5.6<!--/n--> months). Caveats: repo creation is neither when a repo
+went public nor when a system would have surfaced the company; deleted repos are invisible; <!--n:lead_after_share-->57%<!--/n--> of today's top-5
+repos were created after the first raise; <!--n:lead_2020_22-->47%<!--/n--> of these first raises are from 2020-22, mostly DeFi. Read it as: a TVL list
+sees most companies only after they raise.
 
 ### 2. LLM screening judgment where the model cannot know the answer (`make llm-eval`, ADR 0007)
 - **Walk-forward set, anonymized** (opaque ids plus point-in-time features only, so no memorisation channel): <!--n:wf_items-->400<!--/n--> items, all
@@ -87,27 +97,38 @@ For comparison, a random score gets <!--n:auc_nr_random-->0.497<!--/n--> and com
   the deterministic logistic model on the same items gets <!--n:wf_auc|deterministic|s_logit_full-->0.81<!--/n-->. On never-raised items: Claude <!--n:wf_nr_auc|anonymized|claude-sonnet-5-5-->0.62<!--/n-->, GPT
   <!--n:wf_nr_auc|anonymized|gpt-6.1-sol-->0.61<!--/n-->, heuristic <!--n:wf_nr_auc|deterministic|s_heuristic-->0.70<!--/n-->.
 - **Post-cutoff set**: features as of 2026-06-30, raises up to 2026-11-01 (4 months, right-censored), <!--n:pc_items-->120<!--/n--> items with <!--n:pc_pos-->8<!--/n--> raises.
-  Cutoffs were **probed**, not assumed: the latest event each model dated correctly was <!--n:probe|claude-sonnet-5-5-->2025-12-11<!--/n--> for Claude and
-  <!--n:probe|gpt-6.1-sol-->2025-09-29<!--/n--> for GPT; neither knew any 2026 event. Anonymized AUC: Claude <!--n:pc_auc|anonymized|claude-sonnet-5-5-->0.78<!--/n-->,
+  That the window is after both cutoffs is **assumed, with supporting evidence**. The latest event each model dated correctly
+  (<!--n:probe|claude-sonnet-5-5-->2025-12-11<!--/n--> Claude, <!--n:probe|gpt-6.1-sol-->2025-09-29<!--/n--> GPT) is only a lower bound. Both models also missed some 2025 events, and
+  "unknown" on niche 2026 events proves nothing. Missing predictions are reported per scorer; there were 0. Anonymized AUC: Claude <!--n:pc_auc|anonymized|claude-sonnet-5-5-->0.78<!--/n-->,
   GPT <!--n:pc_auc|anonymized|gpt-6.1-sol-->0.89<!--/n-->; deterministic <!--n:pc_auc|deterministic|logit_full-->0.91<!--/n-->. Named (leakage-exposed) arm: Claude <!--n:pc_auc|named|claude-sonnet-5-5-->0.87<!--/n-->, GPT <!--n:pc_auc|named|gpt-6.1-sol-->0.89<!--/n-->.
-  An explicit rule finds a raise mentioned in today's description for <!--n:pc_mention_pos-->1 of 8<!--/n--> positives and <!--n:pc_mention_neg-->2 of 112<!--/n--> negatives,
-  and the matched texts are printed for review. With so few positives, read this as a harness check.
+  Counting only the 300 description characters the named arm actually saw, an explicit raise rule matches
+  <!--n:pc_mention_pos-->0 of 8<!--/n--> positives and <!--n:pc_mention_neg-->0 of 112<!--/n--> negatives. Effective description leakage is about zero. The one real investor
+  phrase in a positive's description sits beyond character 300, and earlier versions of the rule matched "fund" and
+  "backed by" false positives. With so few positives, read this as a harness check.
 
 ### 3. Receipts (`results/sourcing/run_summary.json`, `make claim-eval`, ADR 0006)
-Memos: <!--n:claims_drafted-->103<!--/n--> claims; <!--n:raw_precision-->57.3%<!--/n--> passed the verifier on the first draft, and all passed after one repair.
+Memos: <!--n:claims_drafted-->102<!--/n--> claims; <!--n:raw_precision-->60.8%<!--/n--> passed the verifier on the first draft, and all passed after one repair.
 That "after repair" figure is close to tautological, because failing claims are fixed or dropped. The meaningful number is the critic's:
-<!--n:critic_entailed-->31.1%<!--/n--> of claims fully entailed, <!--n:claims_partial-->68<!--/n--> tagged partial, <!--n:claims_withheld_critic-->3<!--/n--> withheld.
-Claim-level eval on <!--n:ce_orig-->60<!--/n--> real memo claims and <!--n:ce_pert-->109<!--/n--> labelled perturbations (recall, verifier / critic):
+<!--n:critic_entailed-->30.0%<!--/n--> of claims fully entailed, <!--n:claims_partial-->68<!--/n--> tagged partial, <!--n:claims_withheld_critic-->2<!--/n--> withheld (a claim the critic leaves
+unlabelled is withheld too: fail closed). The entailed share partly measures quote scope: a claim that bundles
+several facts behind one quote is rarely fully entailed. Splitting claims into one fact each is the next step and
+is not done here. Free text (risks, founder questions, rationales, thesis, one-liner) may only state numbers that a shipped
+claim or the facts sheet supports; anything else is removed. Recommendations follow the scores under the written policy
+(total >= 11 and every dimension >= 3 -> advance; total <= 7 or any 1 -> pass; else watch). Under 25% entailed claims marks the memo
+"evidence insufficient" and blocks advance.
+Claim-level eval on <!--n:ce_orig-->60<!--/n--> real memo claims and <!--n:ce_pert-->100<!--/n--> labelled perturbations. Critic recall is shown two ways: lenient
+counts any label other than "entails"; strict counts only labels that withhold the claim:
 
-| Perturbation | Verifier | Critic |
-|---|---|---|
-| swapped number | <!--n:ce_ver|swapped_number-->100%<!--/n--> | <!--n:ce_cri|swapped_number-->100%<!--/n--> |
-| wrong date | <!--n:ce_ver|wrong_date-->100%<!--/n--> | <!--n:ce_cri|wrong_date-->100%<!--/n--> |
-| wrong entity | <!--n:ce_ver|wrong_entity-->0%<!--/n--> | <!--n:ce_cri|wrong_entity-->100%<!--/n--> |
-| unsupported qualifier | <!--n:ce_ver|added_qualifier-->0%<!--/n--> | <!--n:ce_cri|added_qualifier-->100%<!--/n--> |
+| Perturbation | Verifier | Critic, lenient | Critic, strict | Critic, lenient, original entailed (n) |
+|---|---|---|---|---|
+| swapped number | <!--n:ce_ver|swapped_number-->100%<!--/n--> | <!--n:ce_cri|swapped_number-->100%<!--/n--> | <!--n:ce_cri_strict|swapped_number-->100%<!--/n--> | <!--n:ce_cri_cond|swapped_number-->100%<!--/n--> (<!--n:ce_cond_n|swapped_number-->7<!--/n-->) |
+| wrong date | <!--n:ce_ver|wrong_date-->100%<!--/n--> | <!--n:ce_cri|wrong_date-->100%<!--/n--> | <!--n:ce_cri_strict|wrong_date-->100%<!--/n--> | <!--n:ce_cri_cond|wrong_date-->100%<!--/n--> (<!--n:ce_cond_n|wrong_date-->2<!--/n-->) |
+| wrong entity | <!--n:ce_ver|wrong_entity-->0%<!--/n--> | <!--n:ce_cri|wrong_entity-->100%<!--/n--> | <!--n:ce_cri_strict|wrong_entity-->0%<!--/n--> | <!--n:ce_cri_cond|wrong_entity-->n/a<!--/n--> (<!--n:ce_cond_n|wrong_entity-->0<!--/n-->) |
+| unsupported qualifier | <!--n:ce_ver|added_qualifier-->0%<!--/n--> | <!--n:ce_cri|added_qualifier-->100%<!--/n--> | <!--n:ce_cri_strict|added_qualifier-->2%<!--/n--> | <!--n:ce_cri_cond|added_qualifier-->100%<!--/n--> (<!--n:ce_cond_n|added_qualifier-->10<!--/n-->) |
 
-The verifier is blind to entity swaps and embellishment by design (it checks spans and numbers). The critic
-catches every perturbation, but it also flags <!--n:ce_critic_flag_orig-->82%<!--/n--> of the unperturbed claims as not fully entailed. That rate is an upper
+The verifier is blind to entity swaps and embellishment by design (it checks spans and numbers). A perturbation the
+critic labels "partial" still ships, with a tag; that is why strict recall matters. No inter-rater agreement is
+reported, because the critic was not re-run on the same pairs. The critic also flags <!--n:ce_critic_flag_orig-->83%<!--/n--> of the unperturbed claims as not fully entailed. That rate is an upper
 bound on its false positives. Its precision is unknown until the owner labels `results/adjudication/flag_sample.csv`.
 
 ### 4. Inflection points (`make monitor`, `make monitor-diagnostics`, ADR 0005 / 0009)
@@ -127,7 +148,7 @@ Exploratory diagnostics, all added after the miss:
 - **Portfolio-style KPI brief for one named comparable,** Daydreams: `results/briefs/company_daydreams.md`.
 
 ## What the owner must do (not automated, not pre-filled)
-1. Read the decision cards in `results/decision_cards/` and record a verdict and reason for each:
+1. Read each memo in `results/memos/` (and any decision card in `results/decision_cards/`) and record a verdict and reason:
    `uv run python -m vaios.decide record <entity> --verdict advance|watch|pass --reason "..." --reviewer <name>`.
 2. Label the critic-flag sample: open `results/adjudication/flag_sample.csv`, or run `uv run python -m vaios.decide label <entity>:<claim> --label entails|partial|contradicts --reviewer <name>`.
 3. `uv run python -m vaios.decide status` then reports agreement between the human and each agent. Until then, human agreement is **pending**.
@@ -178,13 +199,17 @@ The small point-in-time tables that every number is computed from are committed 
 ```bash
 make init          # uv sync --locked + headless chromium
 make check         # offline: ruff + tests + feature regression check
-make verify        # every feature verification; exits non-zero if any feature is open without an approved block
+make verify        # every feature verification; exits non-zero if any feature is open without an approved block;
+                   # evidence SHAs are written only when a state changes, so a clean HEAD stays clean
 make replay        # every LLM job with VAIOS_STRICT_REPLAY=1: zero model calls, identical outputs
-make live-run      # LOCAL live mode: fresh pulls -> new shortlist -> memos with budgeted, cached LLM calls
+make live-run      # LOCAL: pulls only what is missing, rebuilds warehouse + shortlist, budgeted cached LLM calls
 make reproduce     # everything from live pulls (LLM calls are cached)
 ```
 CI (`ci.yml`) and the scheduled workflow (`nightly.yml`) run **strict replay from cassettes**. They prove that
-the jobs still run end to end with zero calls; they do not source anything new. Live sourcing is `make live-run`.
+the jobs still run end to end with zero calls; they do not source anything new. `make live-run` is closer to live,
+but not fully: ingest is idempotent, so existing raw files (GitHub activity, DefiLlama protocol details, token data)
+are reused rather than re-pulled. The as-of dates in `config.py` are fixed (AS_OF = 2026-11-01). A true nightly
+run would clear `data/raw` and advance AS_OF.
 Docker: `docker build -t venture-ai-os . && docker run --rm venture-ai-os`. Tableau: `extracts/*.csv` + `docs/tableau.md`.
 
 ## How this maps to an AI-native fund's workflow

@@ -85,13 +85,26 @@ def run() -> dict:
         p["critic_label"] = labels.get(p["pair_id"], "missing")
         p["critic_flags"] = p["critic_label"] != "entails"
     kinds = sorted({p["kind"] for p in pairs if p["kind"] != "original"})
+    orig_label = {(p["entity"], p["claim"]["id"]): p["critic_label"] for p in pairs if p["kind"] == "original"}
+    hard = ("contradicts", "unsupported")
     recall = {}
     for k in kinds:
         g = [p for p in pairs if p["kind"] == k]
+        # conditional: only perturbations of claims whose ORIGINAL the critic called "entails" -- otherwise a
+        # "partial" on the perturbed copy may just repeat the critic's view of the original
+        cond = [p for p in g if orig_label.get((p["entity"], p["claim"]["id"].split("~")[0])) == "entails"]
         recall[k] = {"n": len(g), "expected": g[0]["expected"],
                      "verifier_recall": round(sum(not p["verifier_ok"] for p in g) / len(g), 4),
-                     "critic_recall": round(sum(p["critic_flags"] for p in g) / len(g), 4),
-                     "either_recall": round(sum((not p["verifier_ok"]) or p["critic_flags"] for p in g) / len(g), 4)}
+                     # lenient: any label other than "entails" counts as caught (partial ships, tagged)
+                     "critic_recall_lenient": round(sum(p["critic_flags"] for p in g) / len(g), 4),
+                     # strict: only labels that WITHHOLD the claim (contradicts / unsupported)
+                     "critic_recall_strict": round(sum(p["critic_label"] in hard for p in g) / len(g), 4),
+                     "n_conditional_on_original_entails": len(cond),
+                     "critic_recall_lenient_conditional": round(sum(p["critic_flags"] for p in cond) / len(cond), 4) if cond else None,
+                     "critic_recall_strict_conditional": round(sum(p["critic_label"] in hard for p in cond) / len(cond), 4) if cond else None,
+                     "either_recall": round(sum((not p["verifier_ok"]) or p["critic_flags"] for p in g) / len(g), 4),
+                     "labelled_partial_so_shipped_tagged": sum(p["critic_label"] == "partial" for p in g)}
+        recall[k]["critic_recall"] = recall[k]["critic_recall_lenient"]
     og = [p for p in pairs if p["kind"] == "original"]
     out = {"n_original_pairs": len(og), "n_perturbed_pairs": len(pairs) - len(og), "recall_by_perturbation": recall,
            "originals": {"verifier_pass_rate": round(sum(p["verifier_ok"] for p in og) / len(og), 4),
@@ -99,6 +112,12 @@ def run() -> dict:
                          "critic_labels": {lab: sum(p["critic_label"] == lab for p in og)
                                            for lab in ("entails", "partial", "contradicts", "unsupported", "missing")}},
            "precision": "pending human labels (results/adjudication/flag_sample.csv)",
+           "notes": ["'partial' ships with a visible tag, so a perturbation labelled partial (e.g. some wrong-entity "
+                     "swaps) still ships; strict recall counts only labels that withhold the claim",
+                     "the entailed share partly measures quote scope: a claim bundling several facts behind one quote "
+                     "is rarely fully entailed; splitting claims into one fact each before verification is the "
+                     "next step (not done: it needs new drafter calls)",
+                     "no inter-rater agreement (kappa) is reported: the critic was not re-run on the same pairs"],
            "pairs": [{k: p[k] for k in ("pair_id", "entity", "kind", "expected", "verifier_ok", "critic_label")}
                      | {"text": p["claim"]["text"], "quote": p["claim"]["quote"]} for p in pairs]}
     OUT.parent.mkdir(parents=True, exist_ok=True)

@@ -64,3 +64,11 @@ def test_claim_eval_reports_recall_by_type():
 
 def test_snapshot_integrity():
     assert STORE.integrity_errors() == []
+
+
+def test_claim_eval_reports_strict_and_conditional_recall():
+    ce = json.loads((RESULTS / "receipts" / "claim_eval.json").read_text())
+    for v in ce["recall_by_perturbation"].values():
+        assert v["critic_recall_strict"] <= v["critic_recall_lenient"]
+        assert "critic_recall_lenient_conditional" in v and "labelled_partial_so_shipped_tagged" in v
+    assert any("kappa" in n for n in ce["notes"])

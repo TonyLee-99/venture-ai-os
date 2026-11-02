@@ -9,7 +9,7 @@ from vaios.report import headline_numbers
 def test_dashboard_shows_committed_numbers():
     page = (ROOT / "dashboard" / "index.html").read_text()
     n = headline_numbers()
-    assert f"AUC {float(n['auc_nr_heuristic']):.2f}" in page and f"AUC {float(n['auc_full']):.2f}" in page
+    assert f"heuristic {float(n['auc_nr_heuristic']):.2f}" in page and f"AUC {float(n['auc_full']):.2f}" in page
     assert f"{n['cp_n']} changepoints, {n['cp_events']} events" in page
     assert "SYNTHETIC" in page and "pending" in page
 

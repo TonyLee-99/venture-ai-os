@@ -1,9 +1,10 @@
 """Probe each model's knowledge cutoff instead of assuming it.
 
 Each model gets the titles (no dates) of dated public events from results/monitoring/events.csv, which all have
-stored source snapshots, and must give the year-month or "unknown". A correct month (+/-1) on an event means
-the model very likely saw it in training; the latest correctly dated event is a lower bound on its cutoff.
-Guessing from the title is possible, so a single late hit is weak evidence; the full table is reported.
+stored source snapshots, and must give the year-month or "unknown". The latest correctly dated event is only a
+LOWER bound on the cutoff: both models also missed some 2025 events, and answering "unknown" to niche 2026
+events does not prove they are after the cutoff. So the post-cutoff window is ASSUMED, with supporting evidence
+from this probe, not proven. Guessing from a title is possible; the full answer table is reported.
 """
 
 from __future__ import annotations
@@ -65,7 +66,7 @@ def run(gw: Gateway) -> dict:
         models[gw.routes[route][1]] = {"latest_correct_event": latest,
                                        "n_correct": sum(x["correct"] for x in rows),
                                        "n_unknown": sum(x["answer"] == "unknown" for x in rows), "answers": rows}
-    out = {"method": __doc__.strip().splitlines()[2], "n_events": int(len(ev)), "models": models}
+    out = {"method": " ".join(__doc__.split()), "n_events": int(len(ev)), "models": models}
     OUT.write_text(json.dumps(out, indent=1) + "\n")
     for m, v in models.items():
         print(f"  {m}: latest correctly dated event {v['latest_correct_event']}, correct {v['n_correct']}/{len(ev)}")

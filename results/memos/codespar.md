@@ -2,88 +2,87 @@
 
 | Stage | Last known round | Token | YC batch | Triage rank |
 |---|---|---|---|---|
-| unknown (no funding evidence found) | unknown | none found | none | 17 (triage only, not evidence) |
+| unknown (no funding evidence found) | unknown | none found | none | 14 (triage only, not evidence) |
 
-**CodeSpar sells an account for AI agents to pay and get paid in Latin America: signed spending mandates, approval rules and signed receipts across Pix, boleto, card and USDC, delivered via hosted MCP/SDK, plus an open-source library of LATAM commerce MCP servers.**
+**CodeSpar sells a hosted MCP/SDK account for AI agents to pay and get paid in Latin America, with spending mandates, human approval rules and signed receipts across Pix, boleto, card and USDC, plus an open-source catalog of LATAM commerce MCP servers.**
 
-Thesis fit: Strong topical fit with agent commerce: governance (mandates, approvals, audit) for agents spending on local rails like Pix and boleto, with x402 as one leg. But x402 is a side feature, the product demos are sandbox data, and there is no evidence yet of real paying usage.
+Thesis fit: Strong thematic fit: agent commerce with a governance layer (mandates, approvals, audit trail) on LATAM rails, with x402/USDC as one of several rails. Paying usage is not evidenced, and the x402 leg looks secondary and partly deprecated.
 
-Recommendation after critique and committee: **watch** (first draft: watch; critic: pass)  
-Receipts: 13 claims drafted, 69% passed the verifier on the first pass, 13 verified after one repair; the critic labelled 5 as entailed, 8 as partial (tagged below) and withheld 0.
+Recommendation (score policy + committee): **watch**; evidence status: **sufficient** (first draft: watch; critic by policy: watch, critic stated: watch)  
+Receipts: 13 claims drafted, 46% passed the verifier on the first pass, 13 verified after one repair; the critic labelled 5 as entailed, 7 as partial (tagged below) and withheld 1.
 
 | Dimension | Drafter (final) | Drafter (first draft) | Critic |
 |---|---|---|---|
 | PMF | 2 | 2 | 3 |
-| NARRATIVE | 4 | 4 | 3 |
-| EXECUTION | 3 | 3 | 3 |
+| NARRATIVE | 4 | 4 | 4 |
+| EXECUTION | 4 | 4 | 3 |
 
 ## Team
-- One person does nearly all the work in the main repo: fabianocruz has 244 commits. [^c1] _(partial support: The quote establishes fabianocruz's commit count but provides neither a comparison with other contributors nor evidence that commits represent nearly all work.)_
-- The about page says the company is built in New York and Rio de Janeiro by the team behind Zoop. Individual founders other than the top committer are not named in the sources. [^c2] _(partial support: The quote supports the stated locations and Zoop affiliation but cannot establish whether individual founders are named elsewhere in the sources.)_
+- One person dominates the main repo: fabianocruz has 244 commits. [^c1] _(partial support: The quote establishes fabianocruz's commit count but provides no comparison supporting dominance of the repository.)_
+- The about page says the company was built in New York and Rio de Janeiro by the team behind Zoop (a prior LATAM payments company); individual founders are not named in the sources. [^c2] _(partial support: The quote supports the stated locations and Zoop affiliation, but not Zoop's business description or the absence of named founders throughout the sources.)_
 
 ## Why Now
-- The README argues that four agentic payment protocols are shipping in parallel and do not compose cleanly with each other or with regional rails. [^c3] _(partial support: The quote supports the README's interoperability argument but does not establish the number of protocols or that they are shipping in parallel.)_
+- The repo README argues four agentic payment protocols (Stripe ACP, Google UCP, AP2, x402) are shipping in parallel and do not compose cleanly with each other or with regional rails. [^c3] _(partial support: The quote supports parallel protocol shipping but does not identify the protocols or establish the claimed interoperability problems.)_
 
 ## Competition
-- In x402 facilitator share, Coinbase holds 69.7% of payments. [^c4]
+- In the x402 market, Coinbase's facilitator handles 68.2% of payments; no CodeSpar facilitator appears in the list, so CodeSpar is not a visible x402 facilitator. [^c9] _(partial support: The quote supports Coinbase's payment share but contains no evidence about CodeSpar's inclusion or visibility.)_
 
 ## PMF
-- The open-source repo mcp-dev-latam has 277 stars and 52 forks, which is developer interest but not payment evidence. [^c5]
-- The website's transaction feeds, receipt counters and settled-today figures are labeled sandbox and demo data, so they are not evidence of customers or volume. [^c6] _(partial support: The quote explicitly labels sandbox demo data but does not by itself establish that this label covers every feed, counter and settlement figure named.)_
-- The x402 examples repo, the company's direct x402 monetization work, has 3 stars and 1 fork, which is minimal adoption. [^c12] _(partial support: The quote establishes the star and fork counts but does not establish the repository's role or actual adoption beyond those interest indicators.)_
+- Developer interest in the open-source MCP catalog is real but modest: mcp-dev-latam has 277 stars and 52 forks, and the owner's repos total 313 stars. [^c4]
+- The website's payment history, mandate, receipt counters and settled-today figures are labeled sandbox/demo data, so no customer or payment volume is evidenced. [^c5] _(partial support: The quote identifies sandbox demonstration data but alone does not establish which displays it covers or the absence of customer and payment evidence.)_
 
 ## Narrative
-- The company states its thesis as control being the product: deciding whether an agent may move money, and proving what happened. [^c10]
+- The wedge is control over agent spend: the about page says moving money is solved and the work is deciding whether an agent may move it and proving what happened. [^c10]
 
 ## Execution
-- Commits on the owner's top repos were 380 in the latest three-month window. [^c7]
-- Total commits on the tracked branches are 1096. [^c8]
-- Some governance features are still unshipped: audit trail CSV export, reconciliation and verified approver are marked as rolling out on the product page. [^c11] _(partial support: The quote marks CSV export and reconciliation as rolling out but omits verified approver and does not clearly mark audit trail export itself as unshipped.)_
+- The team committed 380 times to the default branches of its top repos in the last 90 days. [^c6]
+- The top repos hold 1096 commits in total. [^c7]
+- The team measured its own catalog and deprecated the UCP, AP2 and x402 servers because they have no live endpoint. [^c8] _(partial support: The quote supports the packages' deprecation and stated endpoint issue but does not establish that the team measured its catalog.)_
+- The team publishes standards work: an agentic-payments-standards repo covers KYA verifiable agent mandates, a Pix push-rail for ACP, an OAC proposal and an AP2 mapping. [^c11]
 
 ## Risk
-- The company's own README says its x402 server, along with UCP and AP2, is deprecated because the default host has no live endpoint, and that eight more servers were deprecated for the same reason. This is a monitor-style measurement dated 2026-09-27 and shows breadth outrunning maintenance. [^c9] _(partial support: The quote supports the named protocol deprecations and measurement date but omits the additional server deprecations and does not establish that maintenance lag caused them.)_
-- No funding, stage, token or YC evidence was found, and Hacker News shows 0 stories mentioning the company. [^c13] _(partial support: The metric supports zero matching Hacker News stories under the defined title search but says nothing about funding, stage, token or YC evidence.)_
+- No funding, stage, or token evidence was found, and there is no Hacker News presence (0 stories). [^c13] _(partial support: The metric establishes no matching company-title Hacker News stories, but supports neither the funding assertions nor the broader absence of Hacker News presence.)_
 
 ## Scores (final, after the support review)
 
-- **PMF 2/5**: Developer interest is real but modest: 277 stars and 52 forks on mcp-dev-latam [c5], which the claim itself says is not payment evidence. The website's transaction feeds and settled figures are sandbox/demo data [c6], and the direct x402 examples repo has 3 stars and 1 fork [c12]. No paying customers or on-chain volume are evidenced, and no funding or outside validation was found [c13]. This is above the rubric's 1 (some outside developer adoption) but below 3 (the adoption is thin and the evidence is partial).
-- **NARRATIVE 4/5**: The thesis is clear and timely: control is the product, i.e. deciding whether an agent may move money and proving what happened [c10], against a backdrop of four agentic payment protocols shipping in parallel that do not compose with each other or regional rails [c3]. The Zoop-team pedigree and NY/Rio base [c2] give a plausible LATAM angle, though that claim is only partially supported and no founders besides the top committer are named. Held back from 5 because the product spans many surfaces and several protocol bets are deprecated [c9], and the path from wedge to platform is not yet evidenced.
-- **EXECUTION 3/5**: Velocity is high: 380 commits on the owner's top repos in the latest three-month window [c7] and 1096 total commits [c8]. However, work is heavily concentrated in one committer, fabianocruz with 244 commits [c1], the team is otherwise unnamed [c2], governance features such as CSV audit export, reconciliation and verified approver are still rolling out [c11], and the README says the x402, UCP and AP2 servers plus eight more were deprecated because the default host has no live endpoint [c9]. Strong output but single-maintainer concentration and breadth outrunning maintenance keep it at 3.
+- **PMF 2/5**: Outside developer interest in the free MCP catalog is real but modest (277 stars, 52 forks) [c4]. The only payment, mandate and receipt figures are labeled sandbox/demo, so no customer or payment volume is evidenced [c5]. Adoption of a free catalog is not adoption of the paid product, and there is no funding or traction signal elsewhere [c13].
+- **NARRATIVE 4/5**: The wedge is clear: control over agent spend, deciding whether an agent may move money and proving what happened [c10]. It is credibly backed by a team with prior LATAM payments experience, though the founders are not named in the sources [c2]. It is timely given fragmented agentic payment protocols [c3]. It is held back because the x402 leg is deprecated and CodeSpar is not a visible x402 facilitator [c8][c9], and because the paid product has no evidenced demand [c5].
+- **EXECUTION 4/5**: Shipping velocity is strong: 380 commits to default branches in the last 90 days across 1096 total [c6][c7]. The team publishes standards work covering KYA mandates, a Pix push-rail for ACP, an OAC proposal and an AP2 mapping [c11], and it audited its own catalog and deprecated servers with no live endpoint [c8]. Held back by commit concentration in one person, with fabianocruz at 244 commits [c1]. The claim about features still rolling out was withheld, so it no longer counts against this score.
 
-Re-score note: Scores unchanged from the first draft (PMF 2, Narrative 4, Execution 3; total 9). Partial claims were treated as weak evidence; none changed a score. PMF stays at 2 because demo-labeled transaction data [c6], minimal x402 adoption [c12], and no payment or funding evidence [c13] outweigh the developer interest [c5]. Execution stays at 3 given the single-committer concentration [c1] and deprecations [c9]. The total is below 11 and PMF is below 3, so the advance rule is not met; watch is kept, with a re-check once there is evidence of real paying usage or named co-founders.
+Re-score note: The rolling-out claim (c12) was withheld, so the rationale no longer relies on it for Execution; the score still holds on velocity, standards work and the self-audit. Partial claims (c1, c2, c3, c5, c8, c9, c13) are treated as weak evidence. PMF is the gap: no payment or customer evidence beyond sandbox data. Re-check when there is evidence of real transacting customers.
 
 ## Risks
 
-- No proof of real payments or customers: all product figures are sandbox demos, so demand for governed agent spend in LATAM is unvalidated.
-- Single-maintainer concentration (244 of roughly 260 commits in the main repo) and sprawling scope (dozens of provider servers) risk quality decay, as the deprecated servers already show.
-- x402 and USDC are a minor part of the offering, and the thin x402 repo adoption means limited exposure to the on-chain agent payments thesis.
-- Dependence on third-party rails and providers (e.g. Celcoin) and on LATAM regulatory and licensing requirements for holding or moving funds is not addressed in the sources.
+- No evidence of real paying customers or transaction volume; every payment figure on the site is labeled demo data.
+- Regulatory and partner dependency: moving BRL via Pix, boleto and card relies on licensed providers (e.g. Celcoin) and local compliance, with no evidence of how this is structured.
+- Platform-vs-catalog confusion: much of the traction is stars on a free open-source MCP catalog, many of whose servers are deprecated or contract-gated, which may not convert to revenue.
 
 ## Questions for the founder call
 
-- Are there any live production customers or real settled volume on the platform, and what share is Pix/boleto versus USDC/x402?
-- Who are the founders and the full team beyond the top committer, and what is the Zoop connection?
-- Who holds the regulatory licenses for the wallet and payment flows in Brazil, and is a partner bank or Celcoin the licensed party?
-- What drove deprecating twelve servers, and how will you decide which integrations to maintain?
-- Is the company funded, and what is the planned raise and use of funds?
-- What is the pricing model, and what is the wedge: open-source MCP servers, hosted MCP, or the governed wallet?
+- Who are the founders, and what is the Zoop connection (roles, exit, relationships with LATAM payment providers)?
+- Are there any live (non-sandbox) customers or paid volume today? What is the pricing model?
+- Who holds the licenses and custody for BRL flows: CodeSpar, Celcoin, or another partner?
+- How much of the 380 recent commits is product versus catalog maintenance, and who besides fabianocruz ships?
+- Is x402/USDC strategic or incidental, given the deprecated x402 server and no facilitator presence?
+- How is the company funded today, and what is the planned raise?
+
+_4 free-text item(s) removed because they stated a number that no shipped claim or warehouse fact supports._
+
+## Withheld: real quote, but the critic says it does not support the claim
+
+- ~~Some product features are not yet shipped: the website marks verified approver, audit trail CSV export and reconciliation as rolling out.~~ (unsupported: The feature label alone establishes neither rollout status nor the shipping status of any listed capability.)
 
 ## Receipts
 
 [^c1]: "fabianocruz (User): 244 commits" (github_contributors, https://github.com/codespar/mcp-dev-latam/graphs/contributors, snapshot `d_08316a3bcaac9992`, fetched 2026-11-02)
 [^c2]: "Built in New York and Rio de Janeiro by the team behind Zoop" (website_about, https://codespar.dev/about, snapshot `d_d9bf981ecb401c3d`, fetched 2026-11-02)
-[^c3]: "none of them compose cleanly** with each other or with the regional rails businesses actually run on." (github_readme, https://github.com/codespar/mcp-dev-latam, snapshot `d_67cfafef4570ce46`, fetched 2026-11-02)
-[^c4]: "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)" (market_structure, https://www.x402scan.com/facilitators, snapshot `d_d654ae3bd333bd8e`, fetched 2026-11-02)
-[^c5]: "Stars: 277. Forks: 52. Language: TypeScript." (github_profile, https://github.com/codespar, snapshot `d_0d1fe91274ca5559`, fetched 2026-11-02)
-[^c6]: "Sandbox run · demo data" (website, https://codespar.dev, snapshot `d_14a53ac7a2c7cac2`, fetched 2026-11-02)
-[^c7]: warehouse metric `gh.commits_90d` = 380.0 (as of 2026-11-01)
-[^c8]: warehouse metric `gh.commits_total` = 1096.0 (as of 2026-11-01)
-[^c9]: "UCP, AP2 and x402 are deprecated: no live endpoint.** Measured on 2026-09-27:" (github_readme, https://github.com/codespar/mcp-dev-latam, snapshot `d_67cfafef4570ce46`, fetched 2026-11-02)
+[^c3]: "four agentic payment protocols are shipping in parallel" (github_readme, https://github.com/codespar/mcp-dev-latam, snapshot `d_67cfafef4570ce46`, fetched 2026-11-02)
+[^c4]: "Stars: 277. Forks: 52. Language: TypeScript." (github_profile, https://github.com/codespar, snapshot `d_0d1fe91274ca5559`, fetched 2026-11-02)
+[^c5]: "Sandbox run · demo data" (website, https://codespar.dev, snapshot `d_14a53ac7a2c7cac2`, fetched 2026-11-02)
+[^c6]: warehouse metric `gh.commits_90d` = 380.0 (as of 2026-11-01)
+[^c7]: warehouse metric `gh.commits_total` = 1096.0 (as of 2026-11-01)
+[^c8]: "UCP, AP2 and x402 are deprecated: no live endpoint." (github_readme, https://github.com/codespar/mcp-dev-latam, snapshot `d_67cfafef4570ce46`, fetched 2026-11-02)
+[^c9]: "coinbase: 2,342,973 payments (68.2% of payments), 525,020 USD (35.2% of volume)" (market_structure, https://www.x402scan.com/facilitators, snapshot `d_b3e61427fd0e0e8c`, fetched 2026-11-02)
 [^c10]: "Moving money is solved. Deciding whether an agent may move it, and proving what happened, is the work." (website_about, https://codespar.dev/about, snapshot `d_d9bf981ecb401c3d`, fetched 2026-11-02)
-[^c11]: "Audit trail export
-CSV export
-rolling out
-Reconciliation
-rolling out" (website, https://codespar.dev, snapshot `d_14a53ac7a2c7cac2`, fetched 2026-11-02)
-[^c12]: "Stars: 3. Forks: 1. Language: JavaScript." (github_profile, https://github.com/codespar, snapshot `d_0d1fe91274ca5559`, fetched 2026-11-02)
+[^c11]: "Open CodeSpar contributions to agentic payment standards: KYA verifiable agent mandates, Pix push-rail for ACP, OAC proposal (Agentic Commerce Consortium), AP2 mapping." (github_profile, https://github.com/codespar, snapshot `d_0d1fe91274ca5559`, fetched 2026-11-02)
 [^c13]: warehouse metric `hn.stories` = 0.0 (as of 2026-11-01)

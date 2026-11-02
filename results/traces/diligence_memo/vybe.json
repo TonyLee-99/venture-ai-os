@@ -2,15 +2,15 @@
  "job": "diligence_memo",
  "agent": "AI DD (analyst)",
  "entity": "vybe",
- "run_id": "6f5e48f515c48b53",
+ "run_id": "e9bbfe6990ee41d4",
  "as_of": "2026-11-01",
  "status": "ok",
  "inputs": {
   "doc_ids": [
    "d_26e65d0b8d435a48",
    "d_79209d156af52c70",
-   "d_d2e39ad11bd7a4d2",
-   "d_d654ae3bd333bd8e"
+   "d_b3e61427fd0e0e8c",
+   "d_d2e39ad11bd7a4d2"
   ],
   "facts_sha": "{\"gh.commits_90d\": 89, \"gh.commits_prev_90d\": 609, \"gh.commits_total\": 711, \"gh.first_repo_year\": 2022, \"gh.public_repos\": 18, \"gh.stars_total_now\": 6298, \"hn.points_total\": 0, \"hn.stories\": 0}",
   "stage": {
@@ -30,26 +30,23 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "2ac56f07abc80ed1cd8e273acc5c3aa161d3e127cc6d9dadb3a0b551f56f5d6e",
-   "prompt_sha256": "04449a36458447e560672478de903b76af033c0537c383f04a9da11fc6e4c2b4",
+   "cache_key": "e36518334d279e58d58e2557d958750fff6a56bfcc4af20fbd3a2f0c2193bd86",
+   "prompt_sha256": "ff409c4059e347095dc056af3a95fd366f96c9f834aa39ca8b30a1ceea6eeffd",
    "doc_ids": [
     "d_26e65d0b8d435a48",
     "d_79209d156af52c70",
-    "d_d2e39ad11bd7a4d2",
-    "d_d654ae3bd333bd8e"
+    "d_b3e61427fd0e0e8c",
+    "d_d2e39ad11bd7a4d2"
    ],
-   "output_sha256": "2d47de4cd2f0d4e602991d3628f56a9bcfeac074752d6ff5d5e12bb4d9f6be1a"
+   "output_sha256": "3d92172e3640602c7c7bc71d343c811905507296fbf15066953646e0399157ee"
   },
   {
    "step": "verify_receipts",
    "n_claims": 13,
-   "verified": 8,
+   "verified": 11,
    "failures": {
-    "c1": "number_unsupported",
     "c6": "number_unsupported",
-    "c7": "number_unsupported",
-    "c10": "number_unsupported",
-    "c13": "metric_not_stated"
+    "c7": "number_unsupported"
    }
   },
   {
@@ -57,43 +54,43 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "7010829e38a2562c76f2508a63c79ba1297f9168495f2b15576e8444a59051c0",
-   "prompt_sha256": "d1188904e781fb1a206d997507e01eeb95e4bb960e43283bec481230ca95f15f",
+   "cache_key": "31175f9d668f56c8eb8a03bc4936a267d7b95bd698a1b187ba0db5b7047943ca",
+   "prompt_sha256": "4b4d1b3f8b1771b3c365801b80ee94b725f5826f265c49e3f90af4c79e895252",
    "doc_ids": [
     "d_26e65d0b8d435a48",
     "d_79209d156af52c70",
-    "d_d2e39ad11bd7a4d2",
-    "d_d654ae3bd333bd8e"
+    "d_b3e61427fd0e0e8c",
+    "d_d2e39ad11bd7a4d2"
    ],
-   "output_sha256": "a5b0b3242d1e13e739fc79234b49d5c13ad6ae9eaf3b7b4496d0b49c4712a018"
+   "output_sha256": "1d5d5150fc634ba52859f05b2cb02d5ebdda0f1dad7aa66afc327fe9e5f338e6"
   },
   {
    "step": "verifier_gate",
-   "raw_precision": 0.6153846153846154,
-   "verified": 13,
-   "withheld": 0
+   "raw_precision": 0.8461538461538461,
+   "verified": 11,
+   "withheld": 2
   },
   {
    "step": "critique",
    "kind": "llm",
    "backend": "codex_cli",
    "model": "gpt-6.1-sol",
-   "cache_key": "a30bfae0a45f101bfc7156a64f4899be12e03400d59ee9a956eb7f53bb98c11e",
-   "prompt_sha256": "8eab172b094f3446060c5a25aa1c1f7d76981344d590f3d8dcf1f5a656217a93",
+   "cache_key": "f0501efa17d33bfef7791199169de7d2df1d7199099a3c6029d91c7860dfc429",
+   "prompt_sha256": "1bde1e765e273396999155d299a7787110b8bc361b16ac09db6f901d3a5905d7",
    "doc_ids": [
     "d_26e65d0b8d435a48",
     "d_79209d156af52c70",
-    "d_d2e39ad11bd7a4d2",
-    "d_d654ae3bd333bd8e"
+    "d_b3e61427fd0e0e8c",
+    "d_d2e39ad11bd7a4d2"
    ],
-   "output_sha256": "cf6cdc54e564e91de4dfcebbc0057bf92356182b9d44e769e4ca55e3b2cc4c2d"
+   "output_sha256": "1600f941093ef855e74cbdf89da851e2e324f304e18b22fde3ddb2b93f338f64"
   },
   {
    "step": "reconcile",
    "entails": 3,
-   "partial": 9,
+   "partial": 8,
    "contradicts": 0,
-   "unsupported": 1,
+   "unsupported": 0,
    "unlabelled": 0
   },
   {
@@ -101,26 +98,26 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "15e8af8f3724f275d7e28453b3fe53607ee0d67094713a1b3750b1cd50492501",
-   "prompt_sha256": "7fdc74ece878f0443d4de194aede6053d14a282beafc6d26d2c93e21d466f299",
+   "cache_key": "5c6fe5fe1d90af4edf98de9e31b44439b8d0ce13e3db4ea9db1b789ed3d9d78b",
+   "prompt_sha256": "168d20206433bd66a51092cda5e453c6b8dd98d2600982f8ba44083de4cf3692",
    "doc_ids": [
     "d_26e65d0b8d435a48",
     "d_79209d156af52c70",
-    "d_d2e39ad11bd7a4d2",
-    "d_d654ae3bd333bd8e"
+    "d_b3e61427fd0e0e8c",
+    "d_d2e39ad11bd7a4d2"
    ],
-   "output_sha256": "13fe668f04b9c8e2efecc705641e2a0a7bd6aa24e9b7d698b1c343355afad358"
+   "output_sha256": "00d79e293fd490577823369954f0f82ac20c14a844c24149bc74ddc607ebf0ee"
   },
   {
    "step": "committee",
-   "rank": 1,
+   "rank": 4,
    "recommendation": "watch",
    "disagreements": []
   }
  ],
  "outputs": {
   "memo": "results/memos/vybe.md",
-  "artifact_version": 4,
+  "artifact_version": 5,
   "decision_card": false
  },
  "error": null,

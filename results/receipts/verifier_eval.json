@@ -1,17 +1,20 @@
 {
- "gold_spans": 706,
+ "gold_spans": 732,
  "false_rejects": 0,
- "corruptions": 1408,
- "caught": 1408,
- "catch_rate": 1.0,
+ "corruptions": 1448,
+ "caught": 1446,
+ "catch_rate": 0.9986,
  "by_kind": {
-  "fabricated_quote": 353,
-  "wrong_source": 348,
-  "unknown_doc": 353,
-  "paraphrase": 108,
-  "inflated_number": 244,
+  "fabricated_quote": 366,
+  "wrong_source": 362,
+  "unknown_doc": 366,
+  "paraphrase": 102,
+  "inflated_number": 250,
   "metric_mismatch": 1,
   "metric_unknown": 1
  },
- "missed_by_kind": {}
+ "missed_by_kind": {
+  "inflated_number": 1,
+  "wrong_source": 1
+ }
 }

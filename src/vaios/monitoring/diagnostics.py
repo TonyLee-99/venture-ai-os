@@ -143,6 +143,16 @@ def artifact_check() -> dict:
     return out
 
 
+def payai_window() -> dict:
+    """Round-2 bug check: 'the 30 days to 2026-11-01' is [2026-10-02, 2026-11-01); round 1 had no upper bound."""
+    f = pd.read_parquet(FROZEN / "x402_facilitator_daily.parquet")
+    p = f[f["facilitator"] == "payAI"]
+    fixed = p[(p["day"] >= "2026-10-02") & (p["day"] < "2026-11-01")]["txs"].sum()
+    old = p[p["day"] >= "2026-10-02"]["txs"].sum()
+    return {"fixed_window_txs": int(fixed), "round1_window_txs": int(old),
+            "round1_window_days": int(p[p["day"] >= "2026-10-02"]["day"].nunique())}
+
+
 def run() -> dict:
     store = DocStore()
     v1 = ev_mod.grouped(ev_mod.load())
@@ -176,6 +186,7 @@ def run() -> dict:
             "false_alarm_rate": round(false_alarm(cps, v2_dates, 7, 7), 4),
             "token_events": tok.to_dict("records")},
         "september_2026_drop_artifact_check": artifact_check(),
+        "payai_30d_window_fix": payai_window(),
     }
     OUT.write_text(json.dumps(out, indent=1, default=str) + "\n")
     print(json.dumps({k: v for k, v in out.items() if k not in ("september_2026_drop_artifact_check",)}, indent=1,

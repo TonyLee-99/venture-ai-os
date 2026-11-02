@@ -34,3 +34,13 @@ def test_strict_replay_reproduces(monkeypatch):
     monkeypatch.setattr("vaios.config.WAREHOUSE", RESULTS / "does-not-exist.duckdb")
     llm_judgment.run()
     assert OUT.read_text() == before
+
+
+def test_raise_rule_rejects_round2_false_matches():
+    from vaios.screening.llm_judgment import RAISE_RULE
+    assert not RAISE_RULE.search("Backed by the first DAO of its kind")
+    assert not RAISE_RULE.search("backed by institutional-grade security")
+    assert not RAISE_RULE.search("Earn yield on Money Market Funds")
+    assert RAISE_RULE.search("backed by Paradigm and Coinbase Ventures")
+    lj = json.loads(OUT.read_text())["post_cutoff"]["raise_mentions_in_current_description"]
+    assert lj["counted_within"].startswith("the first 300")

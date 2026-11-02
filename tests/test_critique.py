@@ -58,3 +58,35 @@ def test_human_ledgers_are_empty_until_the_owner_fills_them():
                 HumanDecision.model_validate(r)
     for r in (ROOT / "ledger" / "human_feedback.example.jsonl").read_text().splitlines():
         assert json.loads(r)["example"] is True
+
+
+@pytest.mark.skipif(not MEMOS, reason="no memos yet")
+def test_recommendations_follow_the_score_policy():
+    seen = {}
+    for m in MEMOS:
+        key = tuple(m["memo"]["scores"][d]["score"] for d in ("pmf", "narrative", "execution"))
+        rec = m["memo"]["recommendation"]
+        if not m["memo"].get("committee_note"):
+            assert rec == diligence.policy(m["memo"]["scores"]), m["entity"]
+            assert seen.setdefault(key, rec) == rec  # same scores, same call
+        assert m["critique"]["recommendation"] == diligence.policy(m["critique"]["scores"])
+        if m["receipts"]["critic_entailed_share"] < diligence.EVIDENCE_MIN_ENTAILED:
+            assert m["memo"]["evidence_status"] == "evidence insufficient" and rec != "advance"
+
+
+def test_unlabelled_claims_fail_closed():
+    shipped, withheld, counts = diligence.reconcile([{"id": "c1", "text": "x"}], [])
+    assert not shipped and withheld[0]["critic_label"] == "unlabelled"
+
+
+@pytest.mark.skipif(not MEMOS, reason="no memos yet")
+def test_free_text_numbers_are_supported():
+    from vaios.receipts.verify import _matches, numbers_in, written_numbers
+    for m in MEMOS:
+        allowed = [n for c in m["memo"]["claims"] for n in numbers_in(c["text"] + " " + (c.get("quote") or ""))]
+        allowed += [float(v) for v in m["facts"].values() if isinstance(v, int | float)]
+        texts = m["memo"]["risks"] + m["memo"]["open_questions"] + [m["memo"]["one_liner"], m["memo"]["thesis_fit"]]
+        texts += [m["memo"]["scores"][d]["rationale"] for d in ("pmf", "narrative", "execution")]
+        for t in texts:
+            for w in written_numbers(t):
+                assert any(_matches(w, a) for a in allowed), (m["entity"], t)

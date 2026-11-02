@@ -118,9 +118,10 @@ def run() -> None:
     nr = bt["populations"]["never_raised"]
     nrs = nr["scores"]
     kpis = [
-        kpi("Seed case: never-raised protocols", f"AUC {nrs['s_heuristic']['auc']:.2f}",
-            f"best of our scores (heuristic, CI {nrs['s_heuristic']['auc_ci95'][0]:.2f}-{nrs['s_heuristic']['auc_ci95'][1]:.2f}); "
-            f"logistic {nrs['s_logit_full']['auc']:.2f}; newest-listing baseline {nrs['b_newest']['auc']:.2f}; "
+        kpi("Seed case: never-raised protocols, AUC", f"{nrs['b_newest']['auc']:.2f} baseline",
+            f"newest-listing baseline {nrs['b_newest']['auc']:.2f} vs heuristic {nrs['s_heuristic']['auc']:.2f}, "
+            f"live order (commits) {nrs['b_commits']['auc']:.2f}, logistic {nrs['s_logit_full']['auc']:.2f}, "
+            f"GitHub logistic {nrs['s_logit_github']['auc']:.2f}; none beats the baseline; "
             f"{nr['n_positive_rows']} positive rows"),
         kpi("All protocols (incl. already funded)", f"AUC {full['auc']:.2f}",
             f"'raised before' baseline {base['auc']:.2f}: gain not significant"),

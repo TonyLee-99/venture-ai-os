@@ -2,14 +2,14 @@
  "job": "diligence_memo",
  "agent": "AI DD (analyst)",
  "entity": "faremeter",
- "run_id": "98ddd9e6f9c34a59",
+ "run_id": "e0a16e6fbcc7b694",
  "as_of": "2026-11-01",
  "status": "ok",
  "inputs": {
   "doc_ids": [
    "d_2bf293576b4555c8",
    "d_748e85e901fac822",
-   "d_d654ae3bd333bd8e",
+   "d_b3e61427fd0e0e8c",
    "d_d7f80babf38c9414"
   ],
   "facts_sha": "{\"gh.commits_90d\": 1180, \"gh.commits_prev_90d\": 1156, \"gh.commits_total\": 3635, \"gh.first_repo_year\": 2025, \"gh.public_repos\": 16, \"gh.stars_total_now\": 106, \"hn.points_total\": 0, \"hn.stories\": 0}",
@@ -30,24 +30,24 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "f648b7c96e31bc0032b3b6fe55274c618d649e3700307e1a9b52a5e8edba4a0d",
-   "prompt_sha256": "e9e8cd33b89b17136d509c9b1a9a569cf8027c3576a56befda43c4356ee6eed0",
+   "cache_key": "09d85a55107a0ac540762a5416f12f1b47bca107e39ff69cd99105f1a2aa189a",
+   "prompt_sha256": "1038c648b6875ab9894bf924aa6a6798d63484ef942a305b51f45cd78ec68b9d",
    "doc_ids": [
     "d_2bf293576b4555c8",
     "d_748e85e901fac822",
-    "d_d654ae3bd333bd8e",
+    "d_b3e61427fd0e0e8c",
     "d_d7f80babf38c9414"
    ],
-   "output_sha256": "e497ee81d79df6f4e0ffdc07b5f0bb4fc4adfdf24361dd92622d2290556a11c6"
+   "output_sha256": "dfe0734769090e338da73bd685d4be33150211976c0c49e9b8c07d4ee76b1289"
   },
   {
    "step": "verify_receipts",
-   "n_claims": 12,
-   "verified": 8,
+   "n_claims": 13,
+   "verified": 9,
    "failures": {
     "c1": "number_unsupported",
     "c5": "number_unsupported",
-    "c10": "number_unsupported",
+    "c11": "number_unsupported",
     "c12": "number_unsupported"
    }
   },
@@ -56,20 +56,20 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "b0233d03d660f8a3fce5b28dabbe4bcf4fe90e4be5e34ed34dc5f673e89a8da0",
-   "prompt_sha256": "71bbadedbe9b4f66469748f0acf5772e2c220bc2d0ad7cd24a811e89eea689be",
+   "cache_key": "9f45167a5026416aff4f3510570f1256525988595f1a207f84c54517ff4ec662",
+   "prompt_sha256": "1e4b078cb01198083104f0ba9c717a1439bf5ff4d9298a87423e4671adaa8fc0",
    "doc_ids": [
     "d_2bf293576b4555c8",
     "d_748e85e901fac822",
-    "d_d654ae3bd333bd8e",
+    "d_b3e61427fd0e0e8c",
     "d_d7f80babf38c9414"
    ],
-   "output_sha256": "76dfc9942647df46b77496c904feb4a52a04d0d1bc077c5bda8d7f772b9db9b3"
+   "output_sha256": "f4702864cc659a62555652219d23c4d27a406b10b3e5430491a9ec9998151639"
   },
   {
    "step": "verifier_gate",
-   "raw_precision": 0.6666666666666666,
-   "verified": 12,
+   "raw_precision": 0.6923076923076923,
+   "verified": 13,
    "withheld": 0
   },
   {
@@ -77,21 +77,21 @@
    "kind": "llm",
    "backend": "codex_cli",
    "model": "gpt-6.1-sol",
-   "cache_key": "2bd9e12f0c347671a294ce5b13e0d61b2def8e901122a765399bfaf69de3f1c6",
-   "prompt_sha256": "4233b1d65cfdd9299d5c06ba5efcf9a4bd05254387085c553c373347b73f61b2",
+   "cache_key": "ae846b4e181b89c59b0645952bd1d94f69c8518b9c6826bc3cf3c6afecadc995",
+   "prompt_sha256": "907443c5ace59e404247035527820973d500adf6ea8c30e35f5666b1498a6912",
    "doc_ids": [
     "d_2bf293576b4555c8",
     "d_748e85e901fac822",
-    "d_d654ae3bd333bd8e",
+    "d_b3e61427fd0e0e8c",
     "d_d7f80babf38c9414"
    ],
-   "output_sha256": "156ddfdac1701ec02c1adbf05b7974acd3d47e67bd045c4aa774bf909263927d"
+   "output_sha256": "cec41bec81c17242b755e121f66ecd387444a71ae0c4d0daaf0ec4fbe871d108"
   },
   {
    "step": "reconcile",
-   "entails": 5,
-   "partial": 6,
-   "contradicts": 1,
+   "entails": 4,
+   "partial": 9,
+   "contradicts": 0,
    "unsupported": 0,
    "unlabelled": 0
   },
@@ -100,26 +100,26 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "ce42f717db813da1bd14a1f0a321395b4788daee7caf411a9868b8a209d91021",
-   "prompt_sha256": "99f1488b6d7c08089f1df82d5df5b19d4d9d3fd018d17809d0d6fa309cf5ac2b",
+   "cache_key": "722c22b0e7e0b4640eba069ab864fc2fa8717b2ba2abae984404381c127956ff",
+   "prompt_sha256": "bec852744f23c9f5e751cb0db273fb0e1dc1514c9877edc7d0c719ba415f20db",
    "doc_ids": [
     "d_2bf293576b4555c8",
     "d_748e85e901fac822",
-    "d_d654ae3bd333bd8e",
+    "d_b3e61427fd0e0e8c",
     "d_d7f80babf38c9414"
    ],
-   "output_sha256": "0d48caadd7968ed3ea4296a2ecc281575e8b83bfac5f936e80243e6736bd6779"
+   "output_sha256": "070d7d759b320bb61fcbd097aa83fb8976af15fd70245fdd1695206280bd0288"
   },
   {
    "step": "committee",
-   "rank": 7,
+   "rank": 2,
    "recommendation": "watch",
    "disagreements": []
   }
  ],
  "outputs": {
   "memo": "results/memos/faremeter.md",
-  "artifact_version": 4,
+  "artifact_version": 5,
   "decision_card": false
  },
  "error": null,

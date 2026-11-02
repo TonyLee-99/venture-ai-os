@@ -1,0 +1,147 @@
+Pay-per-call APIs and MCP services for agents | Ausca
+Skip to content
+ausca
+Services
+SKILL.md
+Docs
+OpenAPI
+Browse services
+Agent infrastructure on demand
+Infra
+structure
+your agent can buy.
+Discover a service. Pay for the call. Get evidence you can verify.
+Agent? Start with
+SKILL.md
+No account
+Pay per call
+Receipt-backed
+One request, from discovery to verification
+01
+Request
+POST /v1/extract-text
+02
+Terms
+402 PAYMENT-REQUIRED
+03
+Authorize
+PAYMENT-SIGNATURE
+04
+Accepted
+202 invocation_id
+05
+Verified
+result + receipt
+01 / Catalog
+Live services
+Useful infrastructure with an exact contract and a clear path to invocation.
+Service
+Use for
+Price
+Execution
+Agent entry
+01
+Document OCR
+document.ocr
+Extract text and line confidence from scans and page images.
+$0.25
+fixed
+Bounded
+SKILL.md
+↗
+02
+Document Analysis
+document.analysis
+Extract forms, tables, signatures, and document layout.
+$0.30–$0.75
+Async
+SKILL.md
+↗
+03
+Media Transcription
+media.transcription
+Turn audio or video into text with timed speech segments.
+$0.40–$1.30
+Async
+SKILL.md
+↗
+04
+Browser Session
+browser.session
+Connect to a clean remote Chromium session over CDP.
+$0.05–$0.20
+Bounded
+SKILL.md
+↗
+05
+Agent Inbox
+inbox.receive + inbox.extend
+Receive verification mail and renew the same inbox when needed.
+$0.05–$1.00
+Bounded
+SKILL.md
+↗
+Browse the complete catalog
+02 / Agent entry
+Start with the skill.
+Each service ships with one readable, versioned entry point for agents and developer tools.
+Open OCR SKILL.md
+skill
+document-ocr
+reference
+ausca/document-ocr@0.3.1
+offer
+document.ocr
+version
+0.3.1
+contract
+/skills/document-ocr/SKILL.md
+evidence
+executed receipt
+03 / Access
+One service. Three entry points.
+A
+SKILL.md
+Give an agent the exact service instructions, inputs, price behavior, retry rules, and
+        evidence contract.
+Browse service skills
+B
+HTTP + x402
+Call Ausca from a compatible payment client. Binding terms come from the live challenge,
+        before work is admitted.
+Read the HTTP guide
+C
+MCP
+Discover, prepare, inspect, and cancel through generated tools. Paid invocation stays an
+        explicit host decision.
+Read the MCP guide
+Same Ausca offer. Same price authority. Same receipt-backed execution.
+Follow the quickest path to a correct call.
+04 / Proof
+A result you can account for.
+01
+Pinned terms
+Offer, schema, price, and execution bytes stay bound to the invocation.
+02
+Safe retry
+The same purchase identity replays instead of charging again.
+03
+Durable work
+Asynchronous jobs continue beyond an HTTP connection.
+04
+Sealed evidence
+Success is visible only with its receipt reference.
+ausca
+Start with the service, not an account.
+Services
+SKILL.md
+Docs
+OpenAPI
+Privacy
+Terms
+Support
+Analytics choice
+Allow Clarity to connect page views into one visit, or keep measurement at page level.
+Allow session analytics
+Keep page-level
+Details

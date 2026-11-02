@@ -37,10 +37,14 @@ BATCH = 30
 WF_BATCH = 40
 FEATURES = ["commits_90d", "commit_growth", "commits_before", "n_repos", "gh_age_days", "tvl_t0", "tvl_growth_90d",
             "listing_age_days", "prior_raises", "days_since_last_raise"]
-# A description "mentions a raise" only with explicit fundraising language; "fund" alone also matches
-# "money market funds" / "hedge fund" products, which is what the first version got wrong.
-RAISE_RULE = re.compile(r"\braised\b|\braises\b|\bfunding round\b|\b(pre-)?seed round\b|\bseries [a-d]\b|"
-                        r"\bbacked by\b|\bled by\b.*\b(ventures|capital|labs)\b|\bstrategic (round|investment)\b", re.I)
+# A description "mentions a raise" only with explicit fundraising language. Round 1 matched "fund" (money-market
+# funds); the round-1 fix still matched "backed by" alone ("backed by the first DAO", "backed by institutional-grade
+# security"). Now "backed by" counts only when an investor-type word follows within 40 characters.
+INVESTOR = r"(ventures|capital|labs|vc|investors|partners|a16z|paradigm|sequoia|polychain|pantera|multicoin)"
+RAISE_RULE = re.compile(r"\braised\s+\$|\braises\s+\$|\bfunding round\b|\b(pre-)?seed round\b|"
+                        r"\bseries [a-d] (round|funding)\b|\bbacked by\b[^.]{0,40}\b" + INVESTOR + r"\b|"
+                        r"\bled by\b[^.]{0,40}\b" + INVESTOR + r"\b|\bstrategic (round|investment)\b", re.I)
+DESC_CHARS_SHOWN = 300  # the named arm sees description[:300]; leakage is counted only inside that text
 
 
 def item_id(key: str) -> str:
@@ -161,13 +165,15 @@ def run_post_cutoff(gw: Gateway, trace: Trace, probe: dict) -> dict:
         for r in s.itertuples():
             d = {"item_id": r.item_id}
             if named:
-                d |= {"name": r.name, "category": r.category, "description": (desc.get(r.slug) or "")[:300]}
+                d |= {"name": r.name, "category": r.category, "description": (desc.get(r.slug) or "")[:DESC_CHARS_SHOWN]}
             items.append(d | features_of(r))
         for route in ("judge", "judge_alt"):
             probs = judge(gw, route, items, header, f"{arm}:{route}", trace, BATCH)
             scores[f"{arm}|{gw.routes[route][1]}"] = np.array([probs.get(i, np.nan) for i in s["item_id"]], float)
     y = s["raised"].to_numpy(int)
-    mention = s["slug"].map(lambda sl: bool(RAISE_RULE.search(desc.get(sl) or "")))
+    shown = s["slug"].map(lambda sl: (desc.get(sl) or "")[:DESC_CHARS_SHOWN])
+    mention = shown.map(lambda t: bool(RAISE_RULE.search(t)))
+    mention_full = s["slug"].map(lambda sl: bool(RAISE_RULE.search(desc.get(sl) or "")))
     window_start = str(LLM_EVAL_T0)
     after = {m: (v["latest_correct_event"] or "0000") < window_start for m, v in probe["models"].items()}
     return {
@@ -176,11 +182,17 @@ def run_post_cutoff(gw: Gateway, trace: Trace, probe: dict) -> dict:
         "n_items": int(len(s)), "n_positives": int(y.sum()),
         "sampling": "case-control: all positives + hash-seeded random negatives",
         "probed_knowledge_ends_before_window": after,
+        "post_cutoff_status": "assumed, with supporting evidence: the latest correctly dated event is a lower bound "
+                              "on each model's cutoff (cutoff_probe.json); not proven",
+        "missing_predictions_reported_per_scorer": True,
         "raise_mentions_in_current_description": {
             "rule": RAISE_RULE.pattern,
+            "counted_within": f"the first {DESC_CHARS_SHOWN} characters (what the named arm saw)",
             "positives": int(mention[s["raised"] == 1].sum()), "positives_total": int(y.sum()),
             "negatives": int(mention[s["raised"] == 0].sum()), "negatives_total": int((y == 0).sum()),
-            "matched_descriptions": {sl: (desc.get(sl) or "")[:240] for sl in s.loc[mention, "slug"]},
+            "positives_full_description": int(mention_full[s["raised"] == 1].sum()),
+            "negatives_full_description": int(mention_full[s["raised"] == 0].sum()),
+            "matched_descriptions": {sl: (desc.get(sl) or "")[:400] for sl in s.loc[mention_full, "slug"]},
         },
         "results": summarize(y, scores, {k for k in scores if k.startswith("named")}),
     }

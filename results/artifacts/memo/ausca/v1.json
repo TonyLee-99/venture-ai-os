@@ -1,0 +1,383 @@
+{
+ "kind": "memo",
+ "entity": "ausca",
+ "version": 1,
+ "parent_version": null,
+ "as_of": "2026-11-01",
+ "content_sha256": "466cf847ce8dcc1a376a16fff17c5f13ae9fe3b0e4eb5e06013efb60c126ba29",
+ "provenance": {
+  "run_id": "2156722b374c3fb6",
+  "job": "diligence_memo",
+  "doc_ids": [
+   "d_0c8cc36797b12828",
+   "d_1887cd9fe2e6615f",
+   "d_3af8c54623d0adf4",
+   "d_b0a251ae90d75dd1",
+   "d_b3e61427fd0e0e8c"
+  ],
+  "cache_keys": [
+   "a17de09452a642497dd277d3cf1c6696c3e13399df8247cb04d5e9d79443f9dc",
+   "a47a1c9d3d43ec2f1fb531524c98897b6649061f0f396cbdc7c908bca2494fbc",
+   "bd2cfb1b72f4669bbe74c904b806a79b0d9ec0bf9050b883bcd4522bb66ff012",
+   "563ab72ed8f6813a5cd4567c3f12f2f5ddb7b41e396561415a1f9a377fef8294"
+  ],
+  "metrics": [
+   "gh.commits_90d",
+   "gh.commits_prev_90d",
+   "gh.commits_total",
+   "gh.first_repo_year",
+   "gh.public_repos",
+   "gh.stars_total_now",
+   "hn.points_total",
+   "hn.stories"
+  ]
+ },
+ "content": {
+  "entity": "ausca",
+  "name": "auscahq",
+  "as_of": "2026-11-01",
+  "stage": {
+   "stage": "unknown (no funding evidence found)",
+   "seed_eligible": true,
+   "ineligible_reasons": [],
+   "yc_batch": null,
+   "token": null,
+   "prior_raises_defillama": [],
+   "round_evidence": [],
+   "doc_ids": []
+  },
+  "triage": {
+   "rank": 26,
+   "screen_score": 73.000073,
+   "note": "triage signal only, not evidence (near chance on never-raised protocols)"
+  },
+  "memo": {
+   "company": "auscahq",
+   "one_liner": "Pay-per-call APIs and MCP services for AI agents (document OCR, document analysis, media transcription, remote browser sessions, agent email inboxes), paid in USDC on Base over x402 with no account or API keys, plus buyer SDKs in many languages.",
+   "thesis_fit": "Direct fit: agents buying infrastructure per call via x402 with signed receipts is core agent commerce. But it is a seller of resold or commodity services with no visible paid usage, so the evidence is of product breadth, not demand.",
+   "claims": [
+    {
+     "id": "c1",
+     "section": "team",
+     "text": "The public repo has a single contributor, auscaster, with 61 commits; no other named people or team are disclosed in the sources.",
+     "doc_id": "d_1887cd9fe2e6615f",
+     "quote": "auscaster (User): 61 commits",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports auscaster's commit count but does not establish contributor exclusivity or the absence of other disclosed team members."
+    },
+    {
+     "id": "c2",
+     "section": "execution",
+     "text": "The auscahq GitHub organization was created on 2026-09-02, so the company is very young.",
+     "doc_id": "d_3af8c54623d0adf4",
+     "quote": "Account created: 2026-09-02.",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The receipt establishes the GitHub account creation date, which does not establish the company's age."
+    },
+    {
+     "id": "c3",
+     "section": "execution",
+     "text": "The org's top repos show 73 commits on default branches in the most recent window, which is also its entire commit history, consistent with a new project.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.commits_90d",
+     "value": 73.0,
+     "support": "partial",
+     "support_note": "The metric supports recent commit volume but does not establish that this equals the entire commit history."
+    },
+    {
+     "id": "c4",
+     "section": "execution",
+     "text": "The README lists client libraries for npm, PyPI, Go, Rust, Ruby, PHP, Swift, Dart, .NET, Java, plus Vercel AI SDK and LangChain tools, which is very broad surface area for one maintainer in two months.",
+     "doc_id": "d_0c8cc36797b12828",
+     "quote": "Vercel AI SDK tools for any x402 v2 resource",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports Vercel AI SDK tools but not the other libraries, maintainer count or development period."
+    },
+    {
+     "id": "c5",
+     "section": "pmf",
+     "text": "The repo has 39 stars and 0 forks, the only outside-interest signal in the sources; no customers, payment counts or on-chain volume are reported.",
+     "doc_id": "d_3af8c54623d0adf4",
+     "quote": "Stars: 39. Forks: 0.",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The receipt supports the star and fork counts but not the exhaustive assertions about outside interest or absent commercial evidence."
+    },
+    {
+     "id": "c6",
+     "section": "pmf",
+     "text": "There is no Hacker News traction for the company: 0 stories mention it.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "hn.stories",
+     "value": 0.0,
+     "support": "partial",
+     "support_note": "The metric establishes no company-name title matches, which is narrower than no mentions or Hacker News traction."
+    },
+    {
+     "id": "c7",
+     "section": "narrative",
+     "text": "The wedge is agents paying per call with a hard USD cap, with no account or API keys, and a signed receipt per completed invocation.",
+     "doc_id": "d_0c8cc36797b12828",
+     "quote": "No account, no API keys; USDC on Base per call, a signed receipt for every completed invocation.",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports accountless, keyless per-call payments and signed receipts but does not mention agents or a hard spending cap."
+    },
+    {
+     "id": "c8",
+     "section": "narrative",
+     "text": "Pricing is published and low-ticket: Document OCR is $0.25 per document.",
+     "doc_id": "d_0c8cc36797b12828",
+     "quote": "| Document OCR | Normalized text with line confidence from one committed document | $0.25 per document |",
+     "metric": null,
+     "value": null,
+     "support": "entails",
+     "support_note": "The published price row directly supports the stated per-document OCR price and its low-ticket characterization."
+    },
+    {
+     "id": "c9",
+     "section": "why_now",
+     "text": "Ausca builds on the x402 payment standard, where the Coinbase facilitator alone processed 2,342,973 payments in the latest reported window.",
+     "doc_id": "d_b3e61427fd0e0e8c",
+     "quote": "coinbase: 2,342,973 payments (68.2% of payments), 525,020 USD (35.2% of volume)",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The receipt supports Coinbase's payment count but does not establish Ausca's use of x402 or identify the reporting window."
+    },
+    {
+     "id": "c10",
+     "section": "competition",
+     "text": "The x402 facilitator market is uneven: fluxa has 56.7% of volume on only 9.7% of payments. The sources do not say which facilitator Ausca uses or name competing pay-per-call service vendors.",
+     "doc_id": "d_b3e61427fd0e0e8c",
+     "quote": "fluxa: 332,013 payments (9.7% of payments), 846,277 USD (56.7% of volume)",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports Fluxa's payment and volume shares but not the assertions about undisclosed facilitators or competitors."
+    },
+    {
+     "id": "c11",
+     "section": "risk",
+     "text": "The service runtime is closed source and not in the repository; only the buyer side is public, so the delivery backend cannot be verified from the sources.",
+     "doc_id": "d_0c8cc36797b12828",
+     "quote": "The service runtime is not in this repository; this is the complete public",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote establishes that the runtime is absent from this repository but does not establish that it is closed source or unverifiable elsewhere."
+    },
+    {
+     "id": "c12",
+     "section": "execution",
+     "text": "Distribution work is visible: an MCP registry listing, a Smithery listing and installable agent skills for each of five services.",
+     "doc_id": "d_0c8cc36797b12828",
+     "quote": "npx -y skills add auscahq/ausca --skill '*'",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The command supports a skills installation path but does not establish registry listings, service coverage or the number of skills."
+    }
+   ],
+   "scores": {
+    "pmf": {
+     "score": 1,
+     "rationale": "No evidence of paying or transacting usage from users outside the team. The only outside-interest signal is 39 stars and 0 forks, and no customers, payment counts or on-chain volume are reported [c5]. There is no Hacker News traction [c6]. The x402 usd_per_tx_30d metric was not provided, so the inorganic-traffic risk cannot be assessed. The Coinbase facilitator volume in [c9] is market-wide context, not Ausca usage."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "The wedge is clear: agents pay per call under a hard USD cap, with no account or API keys and a signed receipt per invocation [c7]. It is tied to a live x402 market [c9], and pricing is published and low-ticket [c8]. The review downgraded several supporting claims to partial. The sources do not say which facilitator Ausca uses or who it competes with, so the edge is unstated [c10]. The delivery backend is closed and unverifiable [c11]. The path from a bundle of unrelated services to a platform is unproven."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "Shipping is recent and fast, with 73 commits in the window, which is the org's entire history [c3]. SDK coverage is broad [c4], and distribution work is visible through registry and Smithery listings and agent skills [c12]. It is a single-contributor project (auscaster, 61 commits) about two months old [c1][c2], so there is no multi-person or sustained-velocity evidence. The closed backend limits verification [c11]."
+    }
+   },
+   "risks": [
+    "No evidence of any paying customer or on-chain volume; the 39 stars may reflect curiosity rather than demand.",
+    "Agents buying OCR, transcription or a browser per call is not yet a proven category; demand may sit with human developers using existing API-key vendors."
+   ],
+   "open_questions": [
+    "How many paid invocations and distinct paying wallets have you had, and how many are not yours or testers?",
+    "Which providers sit behind OCR, transcription and browser sessions, and what is the gross margin per call?",
+    "Who else is on the team, and what are your funding status and plans?",
+    "Why these five services, and which one has the strongest pull so far?",
+    "Which x402 facilitator do you settle through, and what is your average USD per payment?",
+    "What is your defensibility if existing API vendors add x402 support?"
+   ],
+   "recommendation": "pass",
+   "rescore_note": "A re-check in a quarter is reasonable if payment or customer evidence appears.",
+   "draft_scores": {
+    "pmf": {
+     "score": 1,
+     "rationale": "No paying or transacting usage evidence: only 39 stars, 0 forks and no HN presence [c5][c6]. The sources contain no customer, payment-count or on-chain figures for Ausca [c5]. The x402 usd_per_tx_30d metric was not provided, so inorganic-traffic risk cannot be assessed."
+    },
+    "narrative": {
+     "score": 4,
+     "rationale": "Crisp wedge: agents buy infrastructure per call via x402 with no keys and a receipt for each call [c7], timed to a live x402 market [c9]. Low-ticket pricing [c8] and a bundle of unrelated services leave the path from wedge to platform unproven, and the edge against competitors is unstated [c10]."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "Fast, recent shipping with 73 commits in 90 days [c3] and wide SDK and registry coverage [c4][c12]. It is a single-maintainer project about two months old [c1][c2], and the backend is closed [c11]."
+    }
+   },
+   "draft_recommendation": "pass",
+   "recommendation_stated_by_model": "pass",
+   "evidence_status": "evidence insufficient",
+   "free_text_removed": [
+    "Single visible maintainer (61 commits) with a very wide SDK surface (about 12 languages); maintenance burden and key-person risk are high.",
+    "The service runtime is closed, and the OCR, transcription and browser services may be thin wrappers over third-party providers, giving weak margins and defensibility at $0.05 to $1.30 per call.",
+    "PMF is unchanged at 1.",
+    "Narrative falls from 4 to 3 because the partial-support claims leave the competitive edge unstated [c10] and the closed backend unverifiable [c11], so the wedge is crisp but not yet differentiated.",
+    "Execution is unchanged at 3 (single maintainer, fast but young).",
+    "The total is 7, below the advance threshold of 11, and PMF is below 3, so the recommendation stays pass.",
+    "This is a crisp story with an unproven edge, so I lower it from 4 to 3.",
+    "That is steady but single-maintainer, which fits a 3."
+   ]
+  },
+  "unverified": [],
+  "withheld_by_critic": [],
+  "critique": {
+   "claim_labels": [
+    {
+     "claim_id": "c1",
+     "label": "partial",
+     "reason": "The quote supports auscaster's commit count but does not establish contributor exclusivity or the absence of other disclosed team members."
+    },
+    {
+     "claim_id": "c2",
+     "label": "partial",
+     "reason": "The receipt establishes the GitHub account creation date, which does not establish the company's age."
+    },
+    {
+     "claim_id": "c3",
+     "label": "partial",
+     "reason": "The metric supports recent commit volume but does not establish that this equals the entire commit history."
+    },
+    {
+     "claim_id": "c4",
+     "label": "partial",
+     "reason": "The quote supports Vercel AI SDK tools but not the other libraries, maintainer count or development period."
+    },
+    {
+     "claim_id": "c5",
+     "label": "partial",
+     "reason": "The receipt supports the star and fork counts but not the exhaustive assertions about outside interest or absent commercial evidence."
+    },
+    {
+     "claim_id": "c6",
+     "label": "partial",
+     "reason": "The metric establishes no company-name title matches, which is narrower than no mentions or Hacker News traction."
+    },
+    {
+     "claim_id": "c7",
+     "label": "partial",
+     "reason": "The quote supports accountless, keyless per-call payments and signed receipts but does not mention agents or a hard spending cap."
+    },
+    {
+     "claim_id": "c8",
+     "label": "entails",
+     "reason": "The published price row directly supports the stated per-document OCR price and its low-ticket characterization."
+    },
+    {
+     "claim_id": "c9",
+     "label": "partial",
+     "reason": "The receipt supports Coinbase's payment count but does not establish Ausca's use of x402 or identify the reporting window."
+    },
+    {
+     "claim_id": "c10",
+     "label": "partial",
+     "reason": "The quote supports Fluxa's payment and volume shares but not the assertions about undisclosed facilitators or competitors."
+    },
+    {
+     "claim_id": "c11",
+     "label": "partial",
+     "reason": "The quote establishes that the runtime is absent from this repository but does not establish that it is closed source or unverifiable elsewhere."
+    },
+    {
+     "claim_id": "c12",
+     "label": "partial",
+     "reason": "The command supports a skills installation path but does not establish registry listings, service coverage or the number of skills."
+    }
+   ],
+   "scores": {
+    "pmf": {
+     "score": 1,
+     "rationale": "The supported portion of c5 establishes stars without forks; c8 establishes an offer price, not purchases, retention or outside developer usage."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "The supported portions of c7 and c8 describe a concrete pay-per-call service proposition, while c9 provides ecosystem activity; differentiation and a credible path to a platform remain unproven."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "The supported portions of c1 and c3 establish implementation activity, with c4 and c12 showing tooling and installation work; they do not establish sustained shipping cadence, multiple active maintainers or reliable service delivery."
+    }
+   },
+   "recommendation": "pass",
+   "missing_risks": [
+    "Unknown whether unrelated customers repeatedly pay for completed services rather than merely testing them.",
+    "Unknown gross margins after upstream service costs, payment processing, failed jobs and support.",
+    "Unknown differentiation from existing infrastructure providers adding agent access and payment support.",
+    "Unknown service reliability, output quality and refund handling when payment succeeds but execution fails.",
+    "Unknown safeguards for wallet credentials, sensitive uploaded documents, browser sessions and inbox abuse.",
+    "Unknown whether buyers prefer maintaining funded crypto wallets over conventional API billing.",
+    "Unknown whether broad client coverage creates maintenance obligations that exceed the team's capacity."
+   ],
+   "strongest_counterargument": "The evidence establishes a product offering and implementation activity, but no demonstrated customer pull or defensible advantage that makes a founder call compelling. Ecosystem payment activity and published service prices do not establish demand for Ausca, repeat purchases or viable unit economics.",
+   "recommendation_stated_by_model": "pass",
+   "stated_vs_policy_conflict": false
+  },
+  "doc_ids": [
+   "d_0c8cc36797b12828",
+   "d_1887cd9fe2e6615f",
+   "d_3af8c54623d0adf4",
+   "d_b0a251ae90d75dd1",
+   "d_b3e61427fd0e0e8c"
+  ],
+  "facts": {
+   "gh.commits_90d": 73,
+   "gh.commits_prev_90d": 0,
+   "gh.commits_total": 73,
+   "gh.public_repos": 5,
+   "gh.stars_total_now": 39,
+   "gh.first_repo_year": 2026,
+   "hn.stories": 0,
+   "hn.points_total": 0
+  },
+  "receipts": {
+   "claims_drafted": 12,
+   "raw_precision": 0.5833,
+   "verified": 12,
+   "withheld_by_verifier": 0,
+   "dropped_in_repair": 0,
+   "critic_labels": {
+    "entails": 1,
+    "partial": 11,
+    "contradicts": 0,
+    "unsupported": 0,
+    "unlabelled": 0
+   },
+   "critic_entailed_share": 0.0833,
+   "shipped": 12,
+   "shipped_partial": 11,
+   "withheld_by_critic": 0
+  },
+  "models": {
+   "drafter": "claude_cli:claude-sonnet-5-5",
+   "critic": "codex_cli:gpt-6.1-sol"
+  },
+  "committee_rank": 8,
+  "disagreements": []
+ }
+}

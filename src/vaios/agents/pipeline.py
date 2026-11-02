@@ -31,7 +31,7 @@ def _refresh_candidates(store: DocStore) -> list[dict]:
     cands = sourcing.run(con)
     SRC.mkdir(parents=True, exist_ok=True)
     cols = ["rank", "entity", "name", "github_owner", "sources", "n_sources", "relevance", "relevant", "investable",
-            "incumbent", "crm_stage", "screen_score", "commits_90d", "commit_growth", "top_repo", "domain", "evidence"]
+            "incumbent", "crm_stage", "screen_score", "logit_github_score", "heuristic_github_score", "commits_90d", "commit_growth", "top_repo", "domain", "evidence"]
     cands[cols].to_csv(SRC / "candidates.csv", index=False)
     counts = sourcing.source_counts(cands)
     trace.step("source_and_resolve", entities=len(cands), by_source=counts,

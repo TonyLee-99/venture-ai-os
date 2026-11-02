@@ -100,6 +100,31 @@
         8.3933
       ]
     },
+    "s_heuristic_github": {
+      "label": "Heuristic, GitHub signals only (post-hoc variant, ADR 0010)",
+      "leakage_exposed": false,
+      "pooled_auc": 0.6846,
+      "auc": 0.6849,
+      "auc_ci95": [
+        0.5861,
+        0.7733
+      ],
+      "p@20": 0.09,
+      "p@20_ci95": [
+        0.03,
+        0.15
+      ],
+      "p@50": 0.084,
+      "p@50_ci95": [
+        0.0439,
+        0.116
+      ],
+      "lift@50": 4.9009,
+      "lift@50_ci95": [
+        2.5346,
+        6.5358
+      ]
+    },
     "b_random": {
       "label": "Baseline: random",
       "leakage_exposed": false,
@@ -151,7 +176,7 @@
       ]
     },
     "b_commits": {
-      "label": "Baseline: commits in last 90 days",
+      "label": "Baseline: commits in last 90 days (live triage order, ADR 0010)",
       "leakage_exposed": false,
       "pooled_auc": 0.746,
       "auc": 0.7363,
@@ -275,6 +300,14 @@
         -0.0691,
         0.1068
       ]
+    },
+    "s_heuristic_github": {
+      "best_baseline": "b_prior_funding",
+      "auc_diff": -0.0886,
+      "ci95": [
+        -0.193,
+        0.0126
+      ]
     }
   },
   "populations": {
@@ -361,6 +394,31 @@
             8.1522
           ]
         },
+        "s_heuristic_github": {
+          "label": "Heuristic, GitHub signals only (post-hoc variant, ADR 0010)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.5872,
+          "auc": 0.5513,
+          "auc_ci95": [
+            0.4392,
+            0.6926
+          ],
+          "p@20": 0.03,
+          "p@20_ci95": [
+            0.0,
+            0.09
+          ],
+          "p@50": 0.032,
+          "p@50_ci95": [
+            0.012,
+            0.06
+          ],
+          "lift@50": 4.2405,
+          "lift@50_ci95": [
+            1.7785,
+            7.2646
+          ]
+        },
         "b_random": {
           "label": "Baseline: random",
           "leakage_exposed": false,
@@ -412,7 +470,7 @@
           ]
         },
         "b_commits": {
-          "label": "Baseline: commits in last 90 days",
+          "label": "Baseline: commits in last 90 days (live triage order, ADR 0010)",
           "leakage_exposed": false,
           "pooled_auc": 0.6686,
           "auc": 0.6533,
@@ -536,6 +594,14 @@
             -0.0722,
             0.0579
           ]
+        },
+        "s_heuristic_github": {
+          "best_baseline": "b_newest",
+          "auc_diff": -0.146,
+          "ci95": [
+            -0.2499,
+            -0.0203
+          ]
         }
       }
     },
@@ -622,6 +688,31 @@
             8.3933
           ]
         },
+        "s_heuristic_github": {
+          "label": "Heuristic, GitHub signals only (post-hoc variant, ADR 0010)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.6846,
+          "auc": 0.6849,
+          "auc_ci95": [
+            0.5861,
+            0.7733
+          ],
+          "p@20": 0.09,
+          "p@20_ci95": [
+            0.03,
+            0.15
+          ],
+          "p@50": 0.084,
+          "p@50_ci95": [
+            0.0439,
+            0.116
+          ],
+          "lift@50": 4.9009,
+          "lift@50_ci95": [
+            2.5346,
+            6.5358
+          ]
+        },
         "b_random": {
           "label": "Baseline: random",
           "leakage_exposed": false,
@@ -673,7 +764,7 @@
           ]
         },
         "b_commits": {
-          "label": "Baseline: commits in last 90 days",
+          "label": "Baseline: commits in last 90 days (live triage order, ADR 0010)",
           "leakage_exposed": false,
           "pooled_auc": 0.746,
           "auc": 0.7363,
@@ -797,6 +888,14 @@
             -0.0691,
             0.1068
           ]
+        },
+        "s_heuristic_github": {
+          "best_baseline": "b_prior_funding",
+          "auc_diff": -0.0886,
+          "ci95": [
+            -0.193,
+            0.0126
+          ]
         }
       }
     },
@@ -883,6 +982,31 @@
             8.5018
           ]
         },
+        "s_heuristic_github": {
+          "label": "Heuristic, GitHub signals only (post-hoc variant, ADR 0010)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.6846,
+          "auc": 0.6849,
+          "auc_ci95": [
+            0.5843,
+            0.7753
+          ],
+          "p@20": 0.09,
+          "p@20_ci95": [
+            0.03,
+            0.15
+          ],
+          "p@50": 0.084,
+          "p@50_ci95": [
+            0.04,
+            0.12
+          ],
+          "lift@50": 4.9009,
+          "lift@50_ci95": [
+            2.5341,
+            6.5478
+          ]
+        },
         "b_random": {
           "label": "Baseline: random",
           "leakage_exposed": false,
@@ -934,7 +1058,7 @@
           ]
         },
         "b_commits": {
-          "label": "Baseline: commits in last 90 days",
+          "label": "Baseline: commits in last 90 days (live triage order, ADR 0010)",
           "leakage_exposed": false,
           "pooled_auc": 0.746,
           "auc": 0.7363,
@@ -1058,6 +1182,14 @@
             -0.0779,
             0.1043
           ]
+        },
+        "s_heuristic_github": {
+          "best_baseline": "b_prior_funding",
+          "auc_diff": -0.0886,
+          "ci95": [
+            -0.2029,
+            0.0081
+          ]
         }
       }
     },
@@ -1144,6 +1276,31 @@
             8.4157
           ]
         },
+        "s_heuristic_github": {
+          "label": "Heuristic, GitHub signals only (post-hoc variant, ADR 0010)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.5872,
+          "auc": 0.5513,
+          "auc_ci95": [
+            0.4431,
+            0.7115
+          ],
+          "p@20": 0.03,
+          "p@20_ci95": [
+            0.0,
+            0.09
+          ],
+          "p@50": 0.032,
+          "p@50_ci95": [
+            0.012,
+            0.06
+          ],
+          "lift@50": 4.2405,
+          "lift@50_ci95": [
+            1.5339,
+            7.363
+          ]
+        },
         "b_random": {
           "label": "Baseline: random",
           "leakage_exposed": false,
@@ -1195,7 +1352,7 @@
           ]
         },
         "b_commits": {
-          "label": "Baseline: commits in last 90 days",
+          "label": "Baseline: commits in last 90 days (live triage order, ADR 0010)",
           "leakage_exposed": false,
           "pooled_auc": 0.6686,
           "auc": 0.6533,
@@ -1319,6 +1476,14 @@
             -0.072,
             0.0585
           ]
+        },
+        "s_heuristic_github": {
+          "best_baseline": "b_newest",
+          "auc_diff": -0.146,
+          "ci95": [
+            -0.2599,
+            -0.0139
+          ]
         }
       }
     },
@@ -1405,6 +1570,31 @@
             7.8389
           ]
         },
+        "s_heuristic_github": {
+          "label": "Heuristic, GitHub signals only (post-hoc variant, ADR 0010)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.6952,
+          "auc": 0.6986,
+          "auc_ci95": [
+            0.5914,
+            0.7855
+          ],
+          "p@20": 0.09,
+          "p@20_ci95": [
+            0.03,
+            0.14
+          ],
+          "p@50": 0.084,
+          "p@50_ci95": [
+            0.04,
+            0.12
+          ],
+          "lift@50": 4.6098,
+          "lift@50_ci95": [
+            2.2196,
+            6.2291
+          ]
+        },
         "b_random": {
           "label": "Baseline: random",
           "leakage_exposed": false,
@@ -1456,7 +1646,7 @@
           ]
         },
         "b_commits": {
-          "label": "Baseline: commits in last 90 days",
+          "label": "Baseline: commits in last 90 days (live triage order, ADR 0010)",
           "leakage_exposed": false,
           "pooled_auc": 0.7504,
           "auc": 0.7383,
@@ -1580,6 +1770,14 @@
             -0.0776,
             0.1087
           ]
+        },
+        "s_heuristic_github": {
+          "best_baseline": "b_prior_funding",
+          "auc_diff": -0.0804,
+          "ci95": [
+            -0.2018,
+            0.0246
+          ]
         }
       }
     },
@@ -1666,6 +1864,31 @@
             8.324
           ]
         },
+        "s_heuristic_github": {
+          "label": "Heuristic, GitHub signals only (post-hoc variant, ADR 0010)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.5873,
+          "auc": 0.5713,
+          "auc_ci95": [
+            0.4515,
+            0.737
+          ],
+          "p@20": 0.03,
+          "p@20_ci95": [
+            0.0,
+            0.09
+          ],
+          "p@50": 0.032,
+          "p@50_ci95": [
+            0.012,
+            0.056
+          ],
+          "lift@50": 4.3829,
+          "lift@50_ci95": [
+            1.8277,
+            6.9631
+          ]
+        },
         "b_random": {
           "label": "Baseline: random",
           "leakage_exposed": false,
@@ -1717,7 +1940,7 @@
           ]
         },
         "b_commits": {
-          "label": "Baseline: commits in last 90 days",
+          "label": "Baseline: commits in last 90 days (live triage order, ADR 0010)",
           "leakage_exposed": false,
           "pooled_auc": 0.6885,
           "auc": 0.6721,
@@ -1841,6 +2064,14 @@
             -0.0896,
             0.0564
           ]
+        },
+        "s_heuristic_github": {
+          "best_baseline": "b_newest",
+          "auc_diff": -0.1481,
+          "ci95": [
+            -0.2617,
+            -0.0303
+          ]
         }
       }
     }
@@ -1895,7 +2126,9 @@
       "median_months": 4.4,
       "share_signal_before_raise": 0.712
     },
-    "note": "positive months = the signal came BEFORE the first raise (system could have surfaced it)"
+    "share_of_todays_top5_repos_created_after_first_raise": 0.57,
+    "share_first_raises_2020_2022": 0.474,
+    "note": "positive months = a public GitHub signal (today's repos) or listing existed BEFORE the first raise. Repo creation is not when a repo went public, nor when a system would have surfaced the company; deleted repos are invisible; about half of these first raises are 2020-22 DeFi."
   },
   "selection": {
     "note": "retrospective reconstruction: universe membership, GitHub owner and top-5 repos are TODAY's; owners that no longer resolve contribute zero commits (ADR 0003)",
@@ -2072,6 +2305,63 @@
         "p@20": 0.0,
         "p@50": 0.04,
         "lift@50": 3.6308
+      }
+    ],
+    "s_heuristic_github": [
+      {
+        "t0": "2023-07-01",
+        "n": 645,
+        "positives": 19,
+        "base_rate": 0.0295,
+        "auc": 0.6774,
+        "spearman": 0.104,
+        "p@20": 0.1,
+        "p@50": 0.1,
+        "lift@50": 3.3947
+      },
+      {
+        "t0": "2024-01-01",
+        "n": 801,
+        "positives": 16,
+        "base_rate": 0.02,
+        "auc": 0.6041,
+        "spearman": 0.0505,
+        "p@20": 0.05,
+        "p@50": 0.06,
+        "lift@50": 3.0037
+      },
+      {
+        "t0": "2024-07-01",
+        "n": 957,
+        "positives": 13,
+        "base_rate": 0.0136,
+        "auc": 0.657,
+        "spearman": 0.063,
+        "p@20": 0.1,
+        "p@50": 0.08,
+        "lift@50": 5.8892
+      },
+      {
+        "t0": "2025-01-01",
+        "n": 1072,
+        "positives": 19,
+        "base_rate": 0.0177,
+        "auc": 0.735,
+        "spearman": 0.1075,
+        "p@20": 0.15,
+        "p@50": 0.12,
+        "lift@50": 6.7705
+      },
+      {
+        "t0": "2025-07-01",
+        "n": 1180,
+        "positives": 13,
+        "base_rate": 0.011,
+        "auc": 0.7507,
+        "spearman": 0.0907,
+        "p@20": 0.05,
+        "p@50": 0.06,
+        "lift@50": 5.4462
       }
     ],
     "b_random": [

@@ -2,7 +2,7 @@
  "job": "diligence_memo",
  "agent": "AI DD (analyst)",
  "entity": "codespar",
- "run_id": "954ba3a4287b0457",
+ "run_id": "b4be7cfb8d5e67e1",
  "as_of": "2026-11-01",
  "status": "ok",
  "inputs": {
@@ -11,7 +11,7 @@
    "d_0d1fe91274ca5559",
    "d_14a53ac7a2c7cac2",
    "d_67cfafef4570ce46",
-   "d_d654ae3bd333bd8e",
+   "d_b3e61427fd0e0e8c",
    "d_d9bf981ecb401c3d"
   ],
   "facts_sha": "{\"gh.commits_90d\": 380, \"gh.commits_prev_90d\": 142, \"gh.commits_total\": 1096, \"gh.first_repo_year\": 2026, \"gh.public_repos\": 7, \"gh.stars_total_now\": 313, \"hn.points_total\": 0, \"hn.stories\": 0}",
@@ -32,27 +32,30 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "ae8ff0e6b0ff1ca41ab07be096f69368fb5a52ae1a8c8d6001acd703e6f42e24",
-   "prompt_sha256": "a1c51ed2187085dda954355ad49554751f001c2254e71b2c747f40810acb5c4c",
+   "cache_key": "68779208b8b17291a6fa0639be5e88d8f30db987ea05e0c5b9ffdff6e3b4766c",
+   "prompt_sha256": "c5f1b1e76928b2999afc4b06038f183c4516ecfea60f00a40ee424d251c8c0ce",
    "doc_ids": [
     "d_08316a3bcaac9992",
     "d_0d1fe91274ca5559",
     "d_14a53ac7a2c7cac2",
     "d_67cfafef4570ce46",
-    "d_d654ae3bd333bd8e",
+    "d_b3e61427fd0e0e8c",
     "d_d9bf981ecb401c3d"
    ],
-   "output_sha256": "4260fbbc27b266f580c14a8ea16ccd5d1fac707a3956f2161fc20b749e3a4f9d"
+   "output_sha256": "bd8f66f79d95ad3e953e23c4b65cb6d533d91529aa3eb0eb460a9763e5dd3666"
   },
   {
    "step": "verify_receipts",
    "n_claims": 13,
-   "verified": 9,
+   "verified": 6,
    "failures": {
     "c1": "number_unsupported",
     "c4": "number_unsupported",
+    "c6": "number_unsupported",
     "c7": "number_unsupported",
-    "c8": "number_unsupported"
+    "c8": "number_unsupported",
+    "c9": "number_unsupported",
+    "c11": "number_unsupported"
    }
   },
   {
@@ -60,21 +63,21 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "e632292d23257db0977b00ea79f3110e5fe97c8a13459e4a277d59e9ad26145e",
-   "prompt_sha256": "b9fd7feb04d3c86aa5e77c1a9257dfa479d9c9a77e2b71e825766cd1cfa20c4c",
+   "cache_key": "c60d02981ebd17e74ad885391d0a99695041a0893814e78d1d59d2eb4919d25d",
+   "prompt_sha256": "85a99c73c5a4fe13db2eced52deb3453140c88e1ea8261c468bf04b5a5f1b560",
    "doc_ids": [
     "d_08316a3bcaac9992",
     "d_0d1fe91274ca5559",
     "d_14a53ac7a2c7cac2",
     "d_67cfafef4570ce46",
-    "d_d654ae3bd333bd8e",
+    "d_b3e61427fd0e0e8c",
     "d_d9bf981ecb401c3d"
    ],
-   "output_sha256": "25cd5cafed7f66311c058e7561aec035d52447a311dc36d5af7b1306efde6c13"
+   "output_sha256": "e20a126e3f038e2f3eb40d5f0913d8464fc28a6e3ff27e19892f66972a78245e"
   },
   {
    "step": "verifier_gate",
-   "raw_precision": 0.6923076923076923,
+   "raw_precision": 0.46153846153846156,
    "verified": 13,
    "withheld": 0
   },
@@ -83,24 +86,24 @@
    "kind": "llm",
    "backend": "codex_cli",
    "model": "gpt-6.1-sol",
-   "cache_key": "0055f7a7bb0bec85d5e11152ad33ba292ec685f82859888308802f912c36ebc5",
-   "prompt_sha256": "a0bc760830b2f07250ec92755495610ddf19f68ef339356096fe348baf404485",
+   "cache_key": "cb18a3b4015c9b1af247f057755b6dc211157a8a383cae078c7d3720a505a29d",
+   "prompt_sha256": "ab8a70b61c4dc9f79e7bba043683cb54b78d7ad9adae900a9a3170e227810b13",
    "doc_ids": [
     "d_08316a3bcaac9992",
     "d_0d1fe91274ca5559",
     "d_14a53ac7a2c7cac2",
     "d_67cfafef4570ce46",
-    "d_d654ae3bd333bd8e",
+    "d_b3e61427fd0e0e8c",
     "d_d9bf981ecb401c3d"
    ],
-   "output_sha256": "2191f17c10cd8c708218cfca593009751273538656f56d87dd95285dd5588f99"
+   "output_sha256": "b1608663b9fdb7d41307ac94f6e7a0ac29e3fe02bf8548ca9ecba881a8c505c6"
   },
   {
    "step": "reconcile",
    "entails": 5,
-   "partial": 8,
+   "partial": 7,
    "contradicts": 0,
-   "unsupported": 0,
+   "unsupported": 1,
    "unlabelled": 0
   },
   {
@@ -108,31 +111,29 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "9cc2a88b648110935ee3cf0cf11daa10f1479f6e709c1587968bafb52ed59f36",
-   "prompt_sha256": "ed1be72de5e79e22204165c81e1970ec2bd1daff4039de49214da909258ce8fe",
+   "cache_key": "44d543fa109955c418253c7ed9fed07c22f009afa1937672d81a3a4f53154eec",
+   "prompt_sha256": "d023109c9444f778f9c80fa7f27fc0cd5d7a50b63f7751acf7909fe6a008663f",
    "doc_ids": [
     "d_08316a3bcaac9992",
     "d_0d1fe91274ca5559",
     "d_14a53ac7a2c7cac2",
     "d_67cfafef4570ce46",
-    "d_d654ae3bd333bd8e",
+    "d_b3e61427fd0e0e8c",
     "d_d9bf981ecb401c3d"
    ],
-   "output_sha256": "5366b274beaef586341c00e8a394068250584479eeaef7894ba9d86fda976a0a"
+   "output_sha256": "015da3afd584b176435b43f7c4c515ae4edd8e8dba3ebdb99191a66fb530e482"
   },
   {
    "step": "committee",
-   "rank": 4,
+   "rank": 1,
    "recommendation": "watch",
-   "disagreements": [
-    "recommendation: drafter 'watch' vs critic 'pass'"
-   ]
+   "disagreements": []
   }
  ],
  "outputs": {
   "memo": "results/memos/codespar.md",
-  "artifact_version": 3,
-  "decision_card": true
+  "artifact_version": 4,
+  "decision_card": false
  },
  "error": null,
  "sla_violations": []

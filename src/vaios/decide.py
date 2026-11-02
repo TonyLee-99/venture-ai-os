@@ -33,11 +33,14 @@ def memos() -> list[dict]:
 def status() -> dict:
     decided = {r["entity"]: r for r in _rows(LEDGER) if not r.get("example")}
     cards = [m for m in memos() if m["disagreements"]]
-    agree_drafter = sum(decided[m["entity"]]["decision"] == m["memo"]["recommendation"] for m in cards if m["entity"] in decided)
-    agree_critic = sum(decided[m["entity"]]["decision"] == m["critique"]["recommendation"] for m in cards if m["entity"] in decided)
+    # every memo, not only decision cards, gets a human verdict: agreement is measured on all of them
+    agree_drafter = sum(decided[m["entity"]]["decision"] == m["memo"]["recommendation"] for m in memos() if m["entity"] in decided)
+    agree_critic = sum(decided[m["entity"]]["decision"] == m["critique"]["recommendation"] for m in memos() if m["entity"] in decided)
     labelled = {r["claim"] for r in _rows(FLAG_LEDGER)}
     sample = list(csv.DictReader(SAMPLE.open())) if SAMPLE.exists() else []
-    out = {"decision_cards": len(cards), "human_decisions_recorded": sum(m["entity"] in decided for m in cards),
+    all_m = memos()
+    out = {"decision_cards": len(cards), "memos_awaiting_human_verdict": sum(m["entity"] not in decided for m in all_m),
+           "human_decisions_recorded": sum(m["entity"] in decided for m in all_m),
            "human_agrees_with_drafter": agree_drafter, "human_agrees_with_critic": agree_critic,
            "flag_sample_size": len(sample), "flag_sample_labelled": sum(f"{r['entity']}:{r['claim_id']}" in labelled for r in sample)}
     print(json.dumps(out, indent=1))

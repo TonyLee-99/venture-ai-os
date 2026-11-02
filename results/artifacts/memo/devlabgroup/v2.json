@@ -1,0 +1,399 @@
+{
+ "kind": "memo",
+ "entity": "devlabgroup",
+ "version": 2,
+ "parent_version": 1,
+ "as_of": "2026-11-01",
+ "content_sha256": "9a44c94a89508b4360ead9c6bbd0012a72d4b1d6dba214f2bed1c9b5ff6090da",
+ "provenance": {
+  "run_id": "2e6ade1c96380d4c",
+  "job": "diligence_memo",
+  "doc_ids": [
+   "d_05d72a18545d2c02",
+   "d_216e113b6b2b5219",
+   "d_5eb8ec42715ebc96",
+   "d_a8853fc947857823",
+   "d_b3e61427fd0e0e8c"
+  ],
+  "cache_keys": [
+   "134a35a0544ef4b003ca6d2ac19f7e55785969212e40d95eae4fd32f5f1330b5",
+   "06ba3f00365347bacafa05b6cab0c0f2e34a204d234d84fb762a89afe511f9e0",
+   "ed2757b8ef8d2040523cc2d311c3540286cb2418207d38736c74791b8727ed84",
+   "59caa47ce623784e6f519b3f28d3df8c465283ba5196706d0cc09fac18e61aa5"
+  ],
+  "metrics": [
+   "gh.commits_90d",
+   "gh.commits_prev_90d",
+   "gh.commits_total",
+   "gh.first_repo_year",
+   "gh.public_repos",
+   "gh.stars_total_now",
+   "hn.points_total",
+   "hn.stories"
+  ]
+ },
+ "content": {
+  "entity": "devlabgroup",
+  "name": "devlab-group",
+  "as_of": "2026-11-01",
+  "stage": {
+   "stage": "unknown (no funding evidence found)",
+   "seed_eligible": true,
+   "ineligible_reasons": [],
+   "yc_batch": null,
+   "token": null,
+   "prior_raises_defillama": [],
+   "round_evidence": [],
+   "doc_ids": []
+  },
+  "triage": {
+   "rank": 15,
+   "screen_score": 285.000295,
+   "note": "triage signal only, not evidence (near chance on never-raised protocols)"
+  },
+  "memo": {
+   "company": "devlab-group",
+   "one_liner": "",
+   "thesis_fit": "The product sits squarely in agent commerce (x402/MCP/AP2 wrapper for existing APIs), but it is an open-source side project of a services shop with no evidence of paying users and no venture-style company or funding signal yet.",
+   "claims": [
+    {
+     "id": "c1",
+     "section": "team",
+     "text": "Revinand is the top contributor to the gateway repo with 137 commits.",
+     "doc_id": "d_5eb8ec42715ebc96",
+     "quote": "Revinand (User): 137 commits",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The receipt establishes Revinand's 137 commits but does not establish contributor ranking."
+    },
+    {
+     "id": "c2",
+     "section": "team",
+     "text": "DevLab is a services business: it sells outsourced engineering for client projects, which suggests the gateway is a public-work showcase rather than a standalone venture.",
+     "doc_id": "d_a8853fc947857823",
+     "quote": "Founders and product teams bring us in",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports engagement by founders and product teams but does not establish the commercial arrangement or that the gateway is a showcase rather than a standalone venture."
+    },
+    {
+     "id": "c3",
+     "section": "team",
+     "text": "The consultancy's website advertises 20+ projects of protocol and infrastructure work.",
+     "doc_id": "d_a8853fc947857823",
+     "quote": "20+ PROJECTS",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The receipt supports the advertised project count but does not identify the projects as protocol and infrastructure work."
+    },
+    {
+     "id": "c4",
+     "section": "why_now",
+     "text": "The gateway targets a stack of emerging agent-commerce protocols at once, with x402 marked supported and MPP, A2A, ACP and AP2 marked experimental.",
+     "doc_id": "d_05d72a18545d2c02",
+     "quote": "Resources can be exposed over\nHTTP, MCP or experimental A2A",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports HTTP, MCP and experimental A2A exposure but does not establish the stated support status of the payment and other commerce protocols."
+    },
+    {
+     "id": "c5",
+     "section": "why_now",
+     "text": "The pitch is that existing API owners can become agent-payable without changing their backend, with funds going straight to the merchant wallet.",
+     "doc_id": "d_05d72a18545d2c02",
+     "quote": "Funds\ngo directly to the merchant wallet, and the gateway needs neither the buyer's\nnor the merchant's private key.",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The receipt supports direct merchant-wallet settlement without gateway access to private keys but not integration without backend changes."
+    },
+    {
+     "id": "c6",
+     "section": "competition",
+     "text": "The x402 facilitator market is concentrated: Coinbase handles 68.2% of payments.",
+     "doc_id": "d_b3e61427fd0e0e8c",
+     "quote": "coinbase: 2,342,973 payments (68.2% of payments)",
+     "metric": null,
+     "value": null,
+     "support": "entails",
+     "support_note": "Coinbase's quoted payment share supports the stated concentration of facilitator payments."
+    },
+    {
+     "id": "c7",
+     "section": "pmf",
+     "text": "Outside adoption signals are small: the main repo has 69 stars and 4 forks.",
+     "doc_id": "d_216e113b6b2b5219",
+     "quote": "Stars: 69. Forks: 4.",
+     "metric": null,
+     "value": null,
+     "support": "entails",
+     "support_note": "The receipt supplies both repository counts, which support the characterization of modest adoption signals without proving actual product usage."
+    },
+    {
+     "id": "c8",
+     "section": "pmf",
+     "text": "The only payment evidence in the sources is a local demo using MockUSDC with a development-only signer; there is no evidence of production payments or named customers.",
+     "doc_id": "d_05d72a18545d2c02",
+     "quote": "signed x402 payment proof (LOCAL DEVELOPMENT ONLY - DO NOT FUND)",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote establishes development-only payment signing but does not identify MockUSDC or establish the absence of production payments and named customers across the sources."
+    },
+    {
+     "id": "c9",
+     "section": "pmf",
+     "text": "Hacker News traction is zero: 0 stories mention the company.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "hn.stories",
+     "value": 0.0,
+     "support": "partial",
+     "support_note": "The metric establishes no company-name matches in story titles, not no mentions anywhere or an absence of all Hacker News traction."
+    },
+    {
+     "id": "c10",
+     "section": "execution",
+     "text": "Commit activity in the last 90 days totals 285 commits across the owner's top repos.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.commits_90d",
+     "value": 285.0,
+     "support": "entails",
+     "support_note": "The metric and its defined observation window support the stated commit count across the owner's top repositories."
+    },
+    {
+     "id": "c11",
+     "section": "execution",
+     "text": "The agent-commerce repo was created in August 2026 and last pushed 2026-10-29, so it is about 10 weeks old and actively maintained.",
+     "doc_id": "d_216e113b6b2b5219",
+     "quote": "Created: 2026-08-20. Last push: 2026-10-29.",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The receipt supports the creation and last-push dates, but approximate age is derived and a recent push alone does not establish ongoing active maintenance."
+    },
+    {
+     "id": "c12",
+     "section": "execution",
+     "text": "The repo ships a CLI, an Agent Skills integration for coding agents, Docker demo stack and a doctor/reconcile toolchain, indicating attention to developer onboarding.",
+     "doc_id": "d_05d72a18545d2c02",
+     "quote": "The package includes the `agent-commerce` CLI\n(`init`, `validate`, `start`, `doctor`, `reconcile`, `resolve`, `demo`,\n`import openapi`, `version`)",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote establishes the CLI and its doctor and reconcile commands but does not establish the Agent Skills integration or Docker demo stack."
+    }
+   ],
+   "scores": {
+    "pmf": {
+     "score": 2,
+     "rationale": "Outside adoption is small: 69 stars and 4 forks [c7]. The only payment evidence is a local MockUSDC demo with a development-only signer, with no production payments or named customers [c8], and Hacker News traction is zero [c9]. Unchanged."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "The wedge is reasonably clear: existing API owners become agent-payable without backend changes, with funds going straight to the merchant wallet [c5], and the gateway spans several agent-commerce protocols, though only x402 is marked supported and the rest are experimental [c4]. The x402 facilitator market is concentrated, with Coinbase at 68.2% [c6], so the space is crowded with no stated edge. The company is a services business, and the gateway looks more like a showcase than a standalone venture [c2], which weakens the path from wedge to platform. The newly withheld focus-split claim  is not used."
+    },
+    "execution": {
+     "score": 4,
+     "rationale": "Commit velocity is strong at 285 commits in 90 days across the owner's top repos [c10], and the repo is actively maintained [c11]. The repo ships a CLI, Agent Skills integration, Docker demo stack and doctor/reconcile tooling [c12]. Contribution is concentrated: Revinand has 137 commits [c1], which suggests a small team. Several supporting claims are only partial, and the repo is about 10 weeks old [c11], so the burst is not yet shown to be sustained. Score stays at 4, but with less certainty."
+    }
+   },
+   "risks": [
+    "No evidence of real usage: payments shown are local MockUSDC demos, no customers, and the star count is modest.",
+    "Protocol churn: most protocols (MPP, A2A, ACP, AP2) are marked experimental, and x402 facilitators are concentrated around Coinbase, so the wrapper layer could be commoditized or absorbed by facilitators.",
+    "Founder focus is split across many open-source projects and client work, and the velocity spike may reflect a one-off sprint."
+   ],
+   "open_questions": [
+    "Is the gateway meant to become a standalone company, and if so, who is the full-time team and would the consultancy be wound down or kept as funding?",
+    "Are any real merchants running it in production with mainnet x402 payments, and what is the payment volume and value per payment?",
+    "Why did the commit rate jump from 10 to 285 in 90 days, and how much of it is AI-assisted?",
+    "How do you differentiate from facilitators and SDKs (Coinbase, x402 middleware) adding the same wrapper features?"
+   ],
+   "recommendation": "watch",
+   "rescore_note": "No score changes. The withheld claim c13 (funding status and split focus) was not relied on in the first draft's rationales, so removing it changes nothing. Partial claims (c1, c2, c4, c5, c8, c9, c11, c12) are treated as weak evidence, so confidence is lower, but not enough to move any dimension. Recommendation stays watch: execution is strong, but there is no production payment evidence. Re-check in a quarter for real transacting usage or a clearer commitment to the product over consulting.",
+   "draft_scores": {
+    "pmf": {
+     "score": 2,
+     "rationale": "Some developer interest (69 stars, 4 forks [c7]) but no outside payment or customer evidence, only a local MockUSDC demo [c8], and no HN traction [c9]. Below the 3 bar for real adoption."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "Clear wedge: make existing APIs agent-payable without changing the backend, non-custodial [c5], and timely across multiple protocols [c4]. But it is crowded around concentrated x402 infrastructure [c6], and the company is a consultancy with a side product [c2]."
+    },
+    "execution": {
+     "score": 4,
+     "rationale": "Strong recent velocity (285 commits in 90 days [c10]) from two main contributors [c1], with a polished CLI and onboarding toolchain [c12]. Not 5 because the repo is only about 10 weeks old [c11] and the burst is not yet sustained over a long period."
+    }
+   },
+   "draft_recommendation": "watch",
+   "recommendation_stated_by_model": "watch",
+   "evidence_status": "evidence insufficient",
+   "free_text_removed": [
+    "Not a venture-style company: DevLab is a services consultancy and the gateway may be a lead-generation showcase, with no stated plan for monetizing open-source Apache-2.0 software.",
+    "What is the business model on top of an Apache-2.0 self-hosted gateway (hosted version, support, fees on payments)?",
+    "What is the status of ERC-8409 and are any standards bodies or partners adopting it?",
+    "DevLab is a protocol/infrastructure engineering consultancy (since 2018) that also publishes Agent Commerce Gateway, an open-source, self-hosted, non-custodial gateway that lets existing HTTP APIs be discovered, called and paid for by AI agents via MCP, x402 and other protocols.",
+    "PMF 2 + Narrative 3 + Execution 4 = 9, below the 11 threshold, and PMF is below 3, so advance is not allowed.",
+    "This is below the 3 bar for real developer adoption, and there is no transacting usage.",
+    "Score stays at 3."
+   ]
+  },
+  "unverified": [],
+  "withheld_by_critic": [
+   {
+    "claim": {
+     "id": "c13",
+     "section": "risk",
+     "text": "No funding, round, token or YC evidence was found, and the repo is listed alongside several other open-source projects (RWA platform, MCP scanner, Postflight), so focus is split.",
+     "doc_id": "d_a8853fc947857823",
+     "quote": "Agent Commerce\nGateway",
+     "metric": null,
+     "value": null
+    },
+    "critic_label": "unsupported",
+    "reason": "The quoted product name establishes neither funding status nor the other projects or any split in team focus."
+   }
+  ],
+  "critique": {
+   "claim_labels": [
+    {
+     "claim_id": "c1",
+     "label": "partial",
+     "reason": "The receipt establishes Revinand's 137 commits but does not establish contributor ranking."
+    },
+    {
+     "claim_id": "c2",
+     "label": "partial",
+     "reason": "The quote supports engagement by founders and product teams but does not establish the commercial arrangement or that the gateway is a showcase rather than a standalone venture."
+    },
+    {
+     "claim_id": "c3",
+     "label": "partial",
+     "reason": "The receipt supports the advertised project count but does not identify the projects as protocol and infrastructure work."
+    },
+    {
+     "claim_id": "c4",
+     "label": "partial",
+     "reason": "The quote supports HTTP, MCP and experimental A2A exposure but does not establish the stated support status of the payment and other commerce protocols."
+    },
+    {
+     "claim_id": "c5",
+     "label": "partial",
+     "reason": "The receipt supports direct merchant-wallet settlement without gateway access to private keys but not integration without backend changes."
+    },
+    {
+     "claim_id": "c6",
+     "label": "entails",
+     "reason": "Coinbase's quoted payment share supports the stated concentration of facilitator payments."
+    },
+    {
+     "claim_id": "c7",
+     "label": "entails",
+     "reason": "The receipt supplies both repository counts, which support the characterization of modest adoption signals without proving actual product usage."
+    },
+    {
+     "claim_id": "c8",
+     "label": "partial",
+     "reason": "The quote establishes development-only payment signing but does not identify MockUSDC or establish the absence of production payments and named customers across the sources."
+    },
+    {
+     "claim_id": "c9",
+     "label": "partial",
+     "reason": "The metric establishes no company-name matches in story titles, not no mentions anywhere or an absence of all Hacker News traction."
+    },
+    {
+     "claim_id": "c10",
+     "label": "entails",
+     "reason": "The metric and its defined observation window support the stated commit count across the owner's top repositories."
+    },
+    {
+     "claim_id": "c11",
+     "label": "partial",
+     "reason": "The receipt supports the creation and last-push dates, but approximate age is derived and a recent push alone does not establish ongoing active maintenance."
+    },
+    {
+     "claim_id": "c12",
+     "label": "partial",
+     "reason": "The quote establishes the CLI and its doctor and reconcile commands but does not establish the Agent Skills integration or Docker demo stack."
+    },
+    {
+     "claim_id": "c13",
+     "label": "unsupported",
+     "reason": "The quoted product name establishes neither funding status nor the other projects or any split in team focus."
+    }
+   ],
+   "scores": {
+    "pmf": {
+     "score": 2,
+     "rationale": "c7 establishes modest repository interest and forks, but does not establish independent integrations, retained users or paying usage; the supported portion of c8 concerns development-only signing."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "The supported portions of c4 and c5 place the gateway clearly within agent interfaces and direct merchant payments, but do not establish a differentiated commercial wedge or credible platform expansion."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "c10 establishes substantial recent owner-level activity, while supported portions of c1, c11 and c12 establish contributor activity, a recent repository push and CLI tooling; sustained gateway-specific shipping and rapid standards follow-up remain unproven."
+    }
+   },
+   "recommendation": "watch",
+   "missing_risks": [
+    "Who would pay, for which recurring problem, and through what monetization model is unknown.",
+    "Independent deployments, repeat usage, retention and production transaction activity are unverified.",
+    "Differentiation from direct protocol integration and competing gateways is unproven; facilitator concentration does not establish gateway competition.",
+    "Production security, authorization correctness, settlement recovery and independent audit coverage are unknown.",
+    "Compatibility maintenance across experimental protocols could create substantial support costs.",
+    "Gateway-specific ownership, commercialization commitment and allocation of engineering resources are unknown."
+   ],
+   "strongest_counterargument": "The evidence establishes an actively developed technical artifact and modest repository interest, but does not establish recurring demand or willingness to pay. A founder call has weak investment priority until independent production adoption and a credible commercial wedge are demonstrated.",
+   "recommendation_stated_by_model": "pass",
+   "stated_vs_policy_conflict": true
+  },
+  "doc_ids": [
+   "d_05d72a18545d2c02",
+   "d_216e113b6b2b5219",
+   "d_5eb8ec42715ebc96",
+   "d_a8853fc947857823",
+   "d_b3e61427fd0e0e8c"
+  ],
+  "facts": {
+   "gh.commits_90d": 285,
+   "gh.commits_prev_90d": 10,
+   "gh.commits_total": 295,
+   "gh.public_repos": 15,
+   "gh.stars_total_now": 169,
+   "gh.first_repo_year": 2017,
+   "hn.stories": 0,
+   "hn.points_total": 0
+  },
+  "receipts": {
+   "claims_drafted": 13,
+   "raw_precision": 0.6154,
+   "verified": 13,
+   "withheld_by_verifier": 0,
+   "dropped_in_repair": 0,
+   "critic_labels": {
+    "entails": 3,
+    "partial": 9,
+    "contradicts": 0,
+    "unsupported": 1,
+    "unlabelled": 0
+   },
+   "critic_entailed_share": 0.2308,
+   "shipped": 12,
+   "shipped_partial": 9,
+   "withheld_by_critic": 1
+  },
+  "models": {
+   "drafter": "claude_cli:claude-sonnet-5-5",
+   "critic": "codex_cli:gpt-6.1-sol"
+  },
+  "committee_rank": 7,
+  "disagreements": []
+ }
+}

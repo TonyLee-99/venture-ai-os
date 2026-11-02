@@ -13,307 +13,318 @@
   "doc_ids": []
  },
  "triage": {
-  "rank": 17,
-  "screen_score": 0.06291166659742103,
+  "rank": 14,
+  "screen_score": 380.001096,
   "note": "triage signal only, not evidence (near chance on never-raised protocols)"
  },
  "memo": {
   "company": "codespar",
-  "one_liner": "CodeSpar sells an account for AI agents to pay and get paid in Latin America: signed spending mandates, approval rules and signed receipts across Pix, boleto, card and USDC, delivered via hosted MCP/SDK, plus an open-source library of LATAM commerce MCP servers.",
-  "thesis_fit": "Strong topical fit with agent commerce: governance (mandates, approvals, audit) for agents spending on local rails like Pix and boleto, with x402 as one leg. But x402 is a side feature, the product demos are sandbox data, and there is no evidence yet of real paying usage.",
+  "one_liner": "CodeSpar sells a hosted MCP/SDK account for AI agents to pay and get paid in Latin America, with spending mandates, human approval rules and signed receipts across Pix, boleto, card and USDC, plus an open-source catalog of LATAM commerce MCP servers.",
+  "thesis_fit": "Strong thematic fit: agent commerce with a governance layer (mandates, approvals, audit trail) on LATAM rails, with x402/USDC as one of several rails. Paying usage is not evidenced, and the x402 leg looks secondary and partly deprecated.",
   "claims": [
    {
     "id": "c1",
     "section": "team",
-    "text": "One person does nearly all the work in the main repo: fabianocruz has 244 commits.",
+    "text": "One person dominates the main repo: fabianocruz has 244 commits.",
     "doc_id": "d_08316a3bcaac9992",
     "quote": "fabianocruz (User): 244 commits",
     "metric": null,
     "value": null,
     "support": "partial",
-    "support_note": "The quote establishes fabianocruz's commit count but provides neither a comparison with other contributors nor evidence that commits represent nearly all work."
+    "support_note": "The quote establishes fabianocruz's commit count but provides no comparison supporting dominance of the repository."
    },
    {
     "id": "c2",
     "section": "team",
-    "text": "The about page says the company is built in New York and Rio de Janeiro by the team behind Zoop. Individual founders other than the top committer are not named in the sources.",
+    "text": "The about page says the company was built in New York and Rio de Janeiro by the team behind Zoop (a prior LATAM payments company); individual founders are not named in the sources.",
     "doc_id": "d_d9bf981ecb401c3d",
     "quote": "Built in New York and Rio de Janeiro by the team behind Zoop",
     "metric": null,
     "value": null,
     "support": "partial",
-    "support_note": "The quote supports the stated locations and Zoop affiliation but cannot establish whether individual founders are named elsewhere in the sources."
+    "support_note": "The quote supports the stated locations and Zoop affiliation, but not Zoop's business description or the absence of named founders throughout the sources."
    },
    {
     "id": "c3",
     "section": "why_now",
-    "text": "The README argues that four agentic payment protocols are shipping in parallel and do not compose cleanly with each other or with regional rails.",
+    "text": "The repo README argues four agentic payment protocols (Stripe ACP, Google UCP, AP2, x402) are shipping in parallel and do not compose cleanly with each other or with regional rails.",
     "doc_id": "d_67cfafef4570ce46",
-    "quote": "none of them compose cleanly** with each other or with the regional rails businesses actually run on.",
+    "quote": "four agentic payment protocols are shipping in parallel",
     "metric": null,
     "value": null,
     "support": "partial",
-    "support_note": "The quote supports the README's interoperability argument but does not establish the number of protocols or that they are shipping in parallel."
+    "support_note": "The quote supports parallel protocol shipping but does not identify the protocols or establish the claimed interoperability problems."
    },
    {
     "id": "c4",
-    "section": "competition",
-    "text": "In x402 facilitator share, Coinbase holds 69.7% of payments.",
-    "doc_id": "d_d654ae3bd333bd8e",
-    "quote": "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)",
-    "metric": null,
-    "value": null,
+    "section": "pmf",
+    "text": "Developer interest in the open-source MCP catalog is real but modest: mcp-dev-latam has 277 stars and 52 forks, and the owner's repos total 313 stars.",
+    "doc_id": "d_0d1fe91274ca5559",
+    "quote": "Stars: 277. Forks: 52. Language: TypeScript.",
+    "metric": "gh.stars_total_now",
+    "value": 313.0,
     "support": "entails",
-    "support_note": "The receipt explicitly reports Coinbase's share as 69.7% of payments."
+    "support_note": "The quote and metric support all stated repository counts, while describing the interest as modest is an analytical judgment."
    },
    {
     "id": "c5",
     "section": "pmf",
-    "text": "The open-source repo mcp-dev-latam has 277 stars and 52 forks, which is developer interest but not payment evidence.",
-    "doc_id": "d_0d1fe91274ca5559",
-    "quote": "Stars: 277. Forks: 52. Language: TypeScript.",
-    "metric": null,
-    "value": null,
-    "support": "entails",
-    "support_note": "The receipt gives the stated star and fork counts, which indicate developer interest without establishing payment activity."
-   },
-   {
-    "id": "c6",
-    "section": "pmf",
-    "text": "The website's transaction feeds, receipt counters and settled-today figures are labeled sandbox and demo data, so they are not evidence of customers or volume.",
+    "text": "The website's payment history, mandate, receipt counters and settled-today figures are labeled sandbox/demo data, so no customer or payment volume is evidenced.",
     "doc_id": "d_14a53ac7a2c7cac2",
     "quote": "Sandbox run · demo data",
     "metric": null,
     "value": null,
     "support": "partial",
-    "support_note": "The quote explicitly labels sandbox demo data but does not by itself establish that this label covers every feed, counter and settlement figure named."
+    "support_note": "The quote identifies sandbox demonstration data but alone does not establish which displays it covers or the absence of customer and payment evidence."
    },
    {
-    "id": "c7",
+    "id": "c6",
     "section": "execution",
-    "text": "Commits on the owner's top repos were 380 in the latest three-month window.",
+    "text": "The team committed 380 times to the default branches of its top repos in the last 90 days.",
     "doc_id": null,
     "quote": null,
     "metric": "gh.commits_90d",
     "value": 380.0,
     "support": "entails",
-    "support_note": "The cited metric reports 380 commits across the tracked repositories in the latest defined ninety-day window."
+    "support_note": "The metric supports the stated commit count over the defined recent window and default-branch repository scope."
    },
    {
-    "id": "c8",
+    "id": "c7",
     "section": "execution",
-    "text": "Total commits on the tracked branches are 1096.",
+    "text": "The top repos hold 1096 commits in total.",
     "doc_id": null,
     "quote": null,
     "metric": "gh.commits_total",
     "value": 1096.0,
     "support": "entails",
-    "support_note": "The cited metric establishes 1096 total commits on the tracked branches before the warehouse cutoff."
+    "support_note": "The metric supports the total commit count within the defined top-repository scope."
    },
    {
-    "id": "c9",
-    "section": "risk",
-    "text": "The company's own README says its x402 server, along with UCP and AP2, is deprecated because the default host has no live endpoint, and that eight more servers were deprecated for the same reason. This is a monitor-style measurement dated 2026-09-27 and shows breadth outrunning maintenance.",
+    "id": "c8",
+    "section": "execution",
+    "text": "The team measured its own catalog and deprecated the UCP, AP2 and x402 servers because they have no live endpoint.",
     "doc_id": "d_67cfafef4570ce46",
-    "quote": "UCP, AP2 and x402 are deprecated: no live endpoint.** Measured on 2026-09-27:",
+    "quote": "UCP, AP2 and x402 are deprecated: no live endpoint.",
     "metric": null,
     "value": null,
     "support": "partial",
-    "support_note": "The quote supports the named protocol deprecations and measurement date but omits the additional server deprecations and does not establish that maintenance lag caused them."
+    "support_note": "The quote supports the packages' deprecation and stated endpoint issue but does not establish that the team measured its catalog."
+   },
+   {
+    "id": "c9",
+    "section": "competition",
+    "text": "In the x402 market, Coinbase's facilitator handles 68.2% of payments; no CodeSpar facilitator appears in the list, so CodeSpar is not a visible x402 facilitator.",
+    "doc_id": "d_b3e61427fd0e0e8c",
+    "quote": "coinbase: 2,342,973 payments (68.2% of payments), 525,020 USD (35.2% of volume)",
+    "metric": null,
+    "value": null,
+    "support": "partial",
+    "support_note": "The quote supports Coinbase's payment share but contains no evidence about CodeSpar's inclusion or visibility."
    },
    {
     "id": "c10",
     "section": "narrative",
-    "text": "The company states its thesis as control being the product: deciding whether an agent may move money, and proving what happened.",
+    "text": "The wedge is control over agent spend: the about page says moving money is solved and the work is deciding whether an agent may move it and proving what happened.",
     "doc_id": "d_d9bf981ecb401c3d",
     "quote": "Moving money is solved. Deciding whether an agent may move it, and proving what happened, is the work.",
     "metric": null,
     "value": null,
     "support": "entails",
-    "support_note": "The quote directly expresses the company's thesis that payment authorization and proof are the core work."
+    "support_note": "The quote directly supports the stated positioning around authorization and proof of agent payments."
    },
    {
     "id": "c11",
     "section": "execution",
-    "text": "Some governance features are still unshipped: audit trail CSV export, reconciliation and verified approver are marked as rolling out on the product page.",
-    "doc_id": "d_14a53ac7a2c7cac2",
-    "quote": "Audit trail export\nCSV export\nrolling out\nReconciliation\nrolling out",
-    "metric": null,
-    "value": null,
-    "support": "partial",
-    "support_note": "The quote marks CSV export and reconciliation as rolling out but omits verified approver and does not clearly mark audit trail export itself as unshipped."
-   },
-   {
-    "id": "c12",
-    "section": "pmf",
-    "text": "The x402 examples repo, the company's direct x402 monetization work, has 3 stars and 1 fork, which is minimal adoption.",
+    "text": "The team publishes standards work: an agentic-payments-standards repo covers KYA verifiable agent mandates, a Pix push-rail for ACP, an OAC proposal and an AP2 mapping.",
     "doc_id": "d_0d1fe91274ca5559",
-    "quote": "Stars: 3. Forks: 1. Language: JavaScript.",
+    "quote": "Open CodeSpar contributions to agentic payment standards: KYA verifiable agent mandates, Pix push-rail for ACP, OAC proposal (Agentic Commerce Consortium), AP2 mapping.",
     "metric": null,
     "value": null,
-    "support": "partial",
-    "support_note": "The quote establishes the star and fork counts but does not establish the repository's role or actual adoption beyond those interest indicators."
+    "support": "entails",
+    "support_note": "The quoted repository description explicitly identifies the standards contributions listed in the claim."
    },
    {
     "id": "c13",
     "section": "risk",
-    "text": "No funding, stage, token or YC evidence was found, and Hacker News shows 0 stories mentioning the company.",
+    "text": "No funding, stage, or token evidence was found, and there is no Hacker News presence (0 stories).",
     "doc_id": null,
     "quote": null,
     "metric": "hn.stories",
     "value": 0.0,
     "support": "partial",
-    "support_note": "The metric supports zero matching Hacker News stories under the defined title search but says nothing about funding, stage, token or YC evidence."
+    "support_note": "The metric establishes no matching company-title Hacker News stories, but supports neither the funding assertions nor the broader absence of Hacker News presence."
    }
   ],
   "scores": {
    "pmf": {
     "score": 2,
-    "rationale": "Developer interest is real but modest: 277 stars and 52 forks on mcp-dev-latam [c5], which the claim itself says is not payment evidence. The website's transaction feeds and settled figures are sandbox/demo data [c6], and the direct x402 examples repo has 3 stars and 1 fork [c12]. No paying customers or on-chain volume are evidenced, and no funding or outside validation was found [c13]. This is above the rubric's 1 (some outside developer adoption) but below 3 (the adoption is thin and the evidence is partial)."
+    "rationale": "Outside developer interest in the free MCP catalog is real but modest (277 stars, 52 forks) [c4]. The only payment, mandate and receipt figures are labeled sandbox/demo, so no customer or payment volume is evidenced [c5]. Adoption of a free catalog is not adoption of the paid product, and there is no funding or traction signal elsewhere [c13]."
    },
    "narrative": {
     "score": 4,
-    "rationale": "The thesis is clear and timely: control is the product, i.e. deciding whether an agent may move money and proving what happened [c10], against a backdrop of four agentic payment protocols shipping in parallel that do not compose with each other or regional rails [c3]. The Zoop-team pedigree and NY/Rio base [c2] give a plausible LATAM angle, though that claim is only partially supported and no founders besides the top committer are named. Held back from 5 because the product spans many surfaces and several protocol bets are deprecated [c9], and the path from wedge to platform is not yet evidenced."
+    "rationale": "The wedge is clear: control over agent spend, deciding whether an agent may move money and proving what happened [c10]. It is credibly backed by a team with prior LATAM payments experience, though the founders are not named in the sources [c2]. It is timely given fragmented agentic payment protocols [c3]. It is held back because the x402 leg is deprecated and CodeSpar is not a visible x402 facilitator [c8][c9], and because the paid product has no evidenced demand [c5]."
    },
    "execution": {
-    "score": 3,
-    "rationale": "Velocity is high: 380 commits on the owner's top repos in the latest three-month window [c7] and 1096 total commits [c8]. However, work is heavily concentrated in one committer, fabianocruz with 244 commits [c1], the team is otherwise unnamed [c2], governance features such as CSV audit export, reconciliation and verified approver are still rolling out [c11], and the README says the x402, UCP and AP2 servers plus eight more were deprecated because the default host has no live endpoint [c9]. Strong output but single-maintainer concentration and breadth outrunning maintenance keep it at 3."
+    "score": 4,
+    "rationale": "Shipping velocity is strong: 380 commits to default branches in the last 90 days across 1096 total [c6][c7]. The team publishes standards work covering KYA mandates, a Pix push-rail for ACP, an OAC proposal and an AP2 mapping [c11], and it audited its own catalog and deprecated servers with no live endpoint [c8]. Held back by commit concentration in one person, with fabianocruz at 244 commits [c1]. The claim about features still rolling out was withheld, so it no longer counts against this score."
    }
   },
   "risks": [
-   "No proof of real payments or customers: all product figures are sandbox demos, so demand for governed agent spend in LATAM is unvalidated.",
-   "Single-maintainer concentration (244 of roughly 260 commits in the main repo) and sprawling scope (dozens of provider servers) risk quality decay, as the deprecated servers already show.",
-   "x402 and USDC are a minor part of the offering, and the thin x402 repo adoption means limited exposure to the on-chain agent payments thesis.",
-   "Dependence on third-party rails and providers (e.g. Celcoin) and on LATAM regulatory and licensing requirements for holding or moving funds is not addressed in the sources."
+   "No evidence of real paying customers or transaction volume; every payment figure on the site is labeled demo data.",
+   "Regulatory and partner dependency: moving BRL via Pix, boleto and card relies on licensed providers (e.g. Celcoin) and local compliance, with no evidence of how this is structured.",
+   "Platform-vs-catalog confusion: much of the traction is stars on a free open-source MCP catalog, many of whose servers are deprecated or contract-gated, which may not convert to revenue."
   ],
   "open_questions": [
-   "Are there any live production customers or real settled volume on the platform, and what share is Pix/boleto versus USDC/x402?",
-   "Who are the founders and the full team beyond the top committer, and what is the Zoop connection?",
-   "Who holds the regulatory licenses for the wallet and payment flows in Brazil, and is a partner bank or Celcoin the licensed party?",
-   "What drove deprecating twelve servers, and how will you decide which integrations to maintain?",
-   "Is the company funded, and what is the planned raise and use of funds?",
-   "What is the pricing model, and what is the wedge: open-source MCP servers, hosted MCP, or the governed wallet?"
+   "Who are the founders, and what is the Zoop connection (roles, exit, relationships with LATAM payment providers)?",
+   "Are there any live (non-sandbox) customers or paid volume today? What is the pricing model?",
+   "Who holds the licenses and custody for BRL flows: CodeSpar, Celcoin, or another partner?",
+   "How much of the 380 recent commits is product versus catalog maintenance, and who besides fabianocruz ships?",
+   "Is x402/USDC strategic or incidental, given the deprecated x402 server and no facilitator presence?",
+   "How is the company funded today, and what is the planned raise?"
   ],
   "recommendation": "watch",
-  "rescore_note": "Scores unchanged from the first draft (PMF 2, Narrative 4, Execution 3; total 9). Partial claims were treated as weak evidence; none changed a score. PMF stays at 2 because demo-labeled transaction data [c6], minimal x402 adoption [c12], and no payment or funding evidence [c13] outweigh the developer interest [c5]. Execution stays at 3 given the single-committer concentration [c1] and deprecations [c9]. The total is below 11 and PMF is below 3, so the advance rule is not met; watch is kept, with a re-check once there is evidence of real paying usage or named co-founders.",
+  "rescore_note": "The rolling-out claim (c12) was withheld, so the rationale no longer relies on it for Execution; the score still holds on velocity, standards work and the self-audit. Partial claims (c1, c2, c3, c5, c8, c9, c13) are treated as weak evidence. PMF is the gap: no payment or customer evidence beyond sandbox data. Re-check when there is evidence of real transacting customers.",
   "draft_scores": {
    "pmf": {
     "score": 2,
-    "rationale": "There is real developer interest in the open-source repo [c5], but the x402 repo is nearly unused [c12] and all product transaction data is demo [c6]. There is no evidence of paying customers or volume. This sits between the rubric's 1 and 3."
+    "rationale": "Outside developer adoption exists (277 stars, 52 forks on the catalog) [c4], but all payment and receipt figures are sandbox demo data [c5] and there is no on-chain or customer evidence. Below the 3 rung because adoption is of a free catalog, not of the paid product."
    },
    "narrative": {
     "score": 4,
-    "rationale": "The story is crisp and timely: agent spend governance on Pix, boleto, card and USDC for LATAM [c10], tied to fragmented agent payment protocols [c3]. Credibility from a Zoop-pedigree team [c2] helps. It is held back from 5 because the wedge spans many products and several protocol bets are already deprecated [c9]."
+    "rationale": "Clear wedge: governed agent spend on the rails LATAM businesses already use, from a team with prior payments experience [c2][c10]. Timely given the fragmented protocol landscape [c3]. Held back by the x402 leg being deprecated and not visible in market data [c8][c9]."
    },
    "execution": {
-    "score": 3,
-    "rationale": "Shipping velocity is high and accelerating [c7], with 1,096 commits in under eight months [c8]. But it is concentrated in one committer [c1], several features are still rolling out [c11], and a dozen servers were deprecated [c9]."
+    "score": 4,
+    "rationale": "Commit pace is accelerating [c6] and the team ships standards contributions and honest self-audits of its catalog [c8][c11]. Held back by single-maintainer concentration [c1] and some features still rolling out [c12]."
    }
   },
   "draft_recommendation": "watch",
-  "recommendation_before_committee": "watch"
+  "recommendation_stated_by_model": "watch",
+  "evidence_status": "sufficient",
+  "free_text_removed": [
+   "Bus-factor risk: one contributor accounts for 244 of roughly 260 commits on the main repo, and founders are not named in the sources.",
+   "Scores are unchanged: PMF 2, Narrative 4, Execution 4, total 10.",
+   "The recommendation stays watch because the total is below 11 and PMF is below 3, so the advance rule is not met.",
+   "This stays below the 3 rung."
+  ]
  },
  "unverified": [],
- "withheld_by_critic": [],
+ "withheld_by_critic": [
+  {
+   "claim": {
+    "id": "c12",
+    "section": "risk",
+    "text": "Some product features are not yet shipped: the website marks verified approver, audit trail CSV export and reconciliation as rolling out.",
+    "doc_id": "d_14a53ac7a2c7cac2",
+    "quote": "Audit trail export",
+    "metric": null,
+    "value": null
+   },
+   "critic_label": "unsupported",
+   "reason": "The feature label alone establishes neither rollout status nor the shipping status of any listed capability."
+  }
+ ],
  "critique": {
   "claim_labels": [
    {
     "claim_id": "c1",
     "label": "partial",
-    "reason": "The quote establishes fabianocruz's commit count but provides neither a comparison with other contributors nor evidence that commits represent nearly all work."
+    "reason": "The quote establishes fabianocruz's commit count but provides no comparison supporting dominance of the repository."
    },
    {
     "claim_id": "c2",
     "label": "partial",
-    "reason": "The quote supports the stated locations and Zoop affiliation but cannot establish whether individual founders are named elsewhere in the sources."
+    "reason": "The quote supports the stated locations and Zoop affiliation, but not Zoop's business description or the absence of named founders throughout the sources."
    },
    {
     "claim_id": "c3",
     "label": "partial",
-    "reason": "The quote supports the README's interoperability argument but does not establish the number of protocols or that they are shipping in parallel."
+    "reason": "The quote supports parallel protocol shipping but does not identify the protocols or establish the claimed interoperability problems."
    },
    {
     "claim_id": "c4",
     "label": "entails",
-    "reason": "The receipt explicitly reports Coinbase's share as 69.7% of payments."
+    "reason": "The quote and metric support all stated repository counts, while describing the interest as modest is an analytical judgment."
    },
    {
     "claim_id": "c5",
-    "label": "entails",
-    "reason": "The receipt gives the stated star and fork counts, which indicate developer interest without establishing payment activity."
+    "label": "partial",
+    "reason": "The quote identifies sandbox demonstration data but alone does not establish which displays it covers or the absence of customer and payment evidence."
    },
    {
     "claim_id": "c6",
-    "label": "partial",
-    "reason": "The quote explicitly labels sandbox demo data but does not by itself establish that this label covers every feed, counter and settlement figure named."
+    "label": "entails",
+    "reason": "The metric supports the stated commit count over the defined recent window and default-branch repository scope."
    },
    {
     "claim_id": "c7",
     "label": "entails",
-    "reason": "The cited metric reports 380 commits across the tracked repositories in the latest defined ninety-day window."
+    "reason": "The metric supports the total commit count within the defined top-repository scope."
    },
    {
     "claim_id": "c8",
-    "label": "entails",
-    "reason": "The cited metric establishes 1096 total commits on the tracked branches before the warehouse cutoff."
+    "label": "partial",
+    "reason": "The quote supports the packages' deprecation and stated endpoint issue but does not establish that the team measured its catalog."
    },
    {
     "claim_id": "c9",
     "label": "partial",
-    "reason": "The quote supports the named protocol deprecations and measurement date but omits the additional server deprecations and does not establish that maintenance lag caused them."
+    "reason": "The quote supports Coinbase's payment share but contains no evidence about CodeSpar's inclusion or visibility."
    },
    {
     "claim_id": "c10",
     "label": "entails",
-    "reason": "The quote directly expresses the company's thesis that payment authorization and proof are the core work."
+    "reason": "The quote directly supports the stated positioning around authorization and proof of agent payments."
    },
    {
     "claim_id": "c11",
-    "label": "partial",
-    "reason": "The quote marks CSV export and reconciliation as rolling out but omits verified approver and does not clearly mark audit trail export itself as unshipped."
+    "label": "entails",
+    "reason": "The quoted repository description explicitly identifies the standards contributions listed in the claim."
    },
    {
     "claim_id": "c12",
-    "label": "partial",
-    "reason": "The quote establishes the star and fork counts but does not establish the repository's role or actual adoption beyond those interest indicators."
+    "label": "unsupported",
+    "reason": "The feature label alone establishes neither rollout status nor the shipping status of any listed capability."
    },
    {
     "claim_id": "c13",
     "label": "partial",
-    "reason": "The metric supports zero matching Hacker News stories under the defined title search but says nothing about funding, stage, token or YC evidence."
+    "reason": "The metric establishes no matching company-title Hacker News stories, but supports neither the funding assertions nor the broader absence of Hacker News presence."
    }
   ],
   "scores": {
    "pmf": {
     "score": 3,
-    "rationale": "The forks in c5 support a modest developer-adoption signal, sufficient for the rubric's developer tier, but neither forks nor stars establish active deployments, paying users or retention."
+    "rationale": "c4 provides a developer-adoption signal through repository forks, sufficient for the rubric's developer-interest tier; it does not establish active integrations, paying customers or recurring transactions."
    },
    "narrative": {
-    "score": 3,
-    "rationale": "The authorization-and-proof thesis in c10 is clear and relevant to agent payments, but the entailed evidence does not establish a defensible edge, urgent buyer demand or a credible wedge-to-platform expansion."
+    "score": 4,
+    "rationale": "c10 articulates a clear authorization-and-proof wedge for agent payments, and c11 connects it to payment standards and regional rails; demonstrated urgency and a credible commercial path from contributions to a platform remain unproven."
    },
    "execution": {
     "score": 3,
-    "rationale": "c7 and c8 establish substantial recent and cumulative code activity, but commit totals do not demonstrate sustained release quality, production reliability or broad team execution."
+    "rationale": "c6 and c7 establish substantial recent and cumulative code activity, while c11 establishes published standards work; commit counts alone do not demonstrate production reliability, sustained multi-person shipping or rapid standards follow-up."
    }
   },
-  "recommendation": "pass",
+  "recommendation": "watch",
   "missing_risks": [
-   "Production payment capability remains unverified: which rails actually settle customer funds, through which contracted providers, and under whose regulatory responsibility?",
-   "Security assurance is unknown: mandate enforcement, credential custody, approval authentication, replay protection and independent audits need verification.",
-   "Commercial viability is unknown: target buyer, willingness to pay, pricing, payment margins, acquisition costs and retention are not established.",
-   "The conversion from open-source developer interest to demand for the hosted account is unproven.",
-   "Defensibility against payment providers and competing agent infrastructure remains unclear.",
-   "Operational responsibility for failed payments, fraud, disputes and reconciliation errors is unspecified."
+   "Active external deployments, repeat usage, customer retention and willingness to pay remain unknown; repository forks may not translate into demand for the hosted account.",
+   "Payment-provider agreements, production access, custody arrangements and responsibility for compliance, fraud, disputes and losses remain unverified.",
+   "Independent validation of mandate enforcement, approval identity, key management and receipt integrity is absent.",
+   "The commercial model, transaction margins, distribution strategy and defensibility against payment providers or competing orchestration tools remain unclear.",
+   "The relationship between deprecated open-source protocol packages and the hosted product's advertised payment capabilities needs clarification.",
+   "Founder identities, prior operating responsibilities, full-time staffing and maintenance resilience remain insufficiently established."
   ],
-  "strongest_counterargument": "Developer interest and code activity do not yet establish that an outside customer needs this account enough to entrust it with real money. A founder call has limited priority until there is verifiable production usage and a clear explanation of payment-provider access, security responsibility and commercial differentiation."
+  "strongest_counterargument": "The entailed evidence establishes developer attention and code output, but does not establish that an external customer needs or pays for the hosted payment account. A founder call may be premature until CodeSpar can show a repeat production workflow and explain the operational responsibility and economics behind it.",
+  "recommendation_stated_by_model": "watch",
+  "stated_vs_policy_conflict": false
  },
  "doc_ids": [
   "d_08316a3bcaac9992",
   "d_0d1fe91274ca5559",
   "d_14a53ac7a2c7cac2",
   "d_67cfafef4570ce46",
-  "d_d654ae3bd333bd8e",
+  "d_b3e61427fd0e0e8c",
   "d_d9bf981ecb401c3d"
  ],
  "facts": {
@@ -328,28 +339,26 @@
  },
  "receipts": {
   "claims_drafted": 13,
-  "raw_precision": 0.6923,
+  "raw_precision": 0.4615,
   "verified": 13,
   "withheld_by_verifier": 0,
   "dropped_in_repair": 0,
   "critic_labels": {
    "entails": 5,
-   "partial": 8,
+   "partial": 7,
    "contradicts": 0,
-   "unsupported": 0,
+   "unsupported": 1,
    "unlabelled": 0
   },
   "critic_entailed_share": 0.3846,
-  "shipped": 13,
-  "shipped_partial": 8,
-  "withheld_by_critic": 0
+  "shipped": 12,
+  "shipped_partial": 7,
+  "withheld_by_critic": 1
  },
  "models": {
   "drafter": "claude_cli:claude-sonnet-5-5",
   "critic": "codex_cli:gpt-6.1-sol"
  },
- "committee_rank": 4,
- "disagreements": [
-  "recommendation: drafter 'watch' vs critic 'pass'"
- ]
+ "committee_rank": 1,
+ "disagreements": []
 }

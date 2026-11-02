@@ -1,0 +1,33 @@
+{
+ "kind": "candidates",
+ "entity": "agentic-payments",
+ "version": 3,
+ "parent_version": 2,
+ "as_of": "2026-11-01",
+ "content_sha256": "5827e96c3172c71f57c8cfe457feb82888cead78db2cb2c96ee0552f00138ebe",
+ "provenance": {
+  "run_id": "8c63f9a9a9bce204",
+  "job": "sourcing"
+ },
+ "content": {
+  "by_source": {
+   "coingecko": 99,
+   "defillama": 408,
+   "github_search": 807,
+   "hn": 63,
+   "x402scan": 30,
+   "yc_directory": 23
+  },
+  "shortlist": [
+   "faremeter",
+   "agoragentic",
+   "codespar",
+   "devlabgroup",
+   "aibtc",
+   "seracx",
+   "vybe",
+   "ausca"
+  ],
+  "n_candidates": 1398
+ }
+}

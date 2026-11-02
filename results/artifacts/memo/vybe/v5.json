@@ -1,0 +1,392 @@
+{
+ "kind": "memo",
+ "entity": "vybe",
+ "version": 5,
+ "parent_version": 4,
+ "as_of": "2026-11-01",
+ "content_sha256": "f945b5033ee73a89ab5d3e252f96ff82f586f4dbf060ac29ea00c68a309d47d2",
+ "provenance": {
+  "run_id": "e9bbfe6990ee41d4",
+  "job": "diligence_memo",
+  "doc_ids": [
+   "d_26e65d0b8d435a48",
+   "d_79209d156af52c70",
+   "d_b3e61427fd0e0e8c",
+   "d_d2e39ad11bd7a4d2"
+  ],
+  "cache_keys": [
+   "e36518334d279e58d58e2557d958750fff6a56bfcc4af20fbd3a2f0c2193bd86",
+   "31175f9d668f56c8eb8a03bc4936a267d7b95bd698a1b187ba0db5b7047943ca",
+   "f0501efa17d33bfef7791199169de7d2df1d7199099a3c6029d91c7860dfc429",
+   "5c6fe5fe1d90af4edf98de9e31b44439b8d0ce13e3db4ea9db1b789ed3d9d78b"
+  ],
+  "metrics": [
+   "gh.commits_90d",
+   "gh.commits_prev_90d",
+   "gh.commits_total",
+   "gh.first_repo_year",
+   "gh.public_repos",
+   "gh.stars_total_now",
+   "hn.points_total",
+   "hn.stories"
+  ]
+ },
+ "content": {
+  "entity": "vybe",
+  "name": "vybenetwork",
+  "as_of": "2026-11-01",
+  "stage": {
+   "stage": "unknown (no funding evidence found)",
+   "seed_eligible": true,
+   "ineligible_reasons": [],
+   "yc_batch": null,
+   "token": null,
+   "prior_raises_defillama": [],
+   "round_evidence": [],
+   "doc_ids": []
+  },
+  "triage": {
+   "rank": 25,
+   "screen_score": 89.000711,
+   "note": "triage signal only, not evidence (near chance on never-raised protocols)"
+  },
+  "memo": {
+   "company": "vybenetwork",
+   "one_liner": "Vybe Network sells Solana wallet and token analytics (portfolio tracker, smart-money signals, real-time and historical API) to traders and developers, and has added a pay-per-call USDC x402 API and SDK aimed at AI agents.",
+   "thesis_fit": "Partial fit. Vybe is an established Solana data provider whose x402 pay-per-call API and SDK for agents are a recent, beta-stage extension, not the core business. There is no sourced evidence yet of agent-driven x402 payment volume.",
+   "claims": [
+    {
+     "id": "c1",
+     "section": "team",
+     "text": "The Vybe GitHub org has 18 public non-fork repos. The sources name no founders or contributor counts, so team size and composition are unknown.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.public_repos",
+     "value": 18.0,
+     "support": "partial",
+     "support_note": "The metric supports the repository count but cannot establish whether the sources identify founders or contributors."
+    },
+    {
+     "id": "c2",
+     "section": "pmf",
+     "text": "The x402-client SDK repo has 160 stars and 64 forks, which is developer interest but not payment evidence.",
+     "doc_id": "d_26e65d0b8d435a48",
+     "quote": "Stars: 160. Forks: 64. Language: TypeScript.",
+     "metric": null,
+     "value": null,
+     "support": "entails",
+     "support_note": "The receipt confirms the star and fork counts, which support developer interest without establishing paid usage."
+    },
+    {
+     "id": "c3",
+     "section": "pmf",
+     "text": "The website self-reports 10,000+ traders as users. This is unaudited marketing copy and is not specific to x402.",
+     "doc_id": "d_79209d156af52c70",
+     "quote": "Trusted by 10,000+ Traders",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote reports trader trust but does not establish that those traders are users or specify their relationship to x402."
+    },
+    {
+     "id": "c4",
+     "section": "pmf",
+     "text": "A testimonial attributed to Superteam Canada says it used the Vybe API for historical wallet and token data. This is a named but unverified API user.",
+     "doc_id": "d_79209d156af52c70",
+     "quote": "Vybe gave us complete historical data for wallets and tokens we couldn't find anywhere else.",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports reported use of historical wallet and token data but contains no attribution to Superteam Canada."
+    },
+    {
+     "id": "c5",
+     "section": "execution",
+     "text": "The top 5 repos had 89 commits in the 90 days before 2026-11-01.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.commits_90d",
+     "value": 89.0,
+     "support": "entails",
+     "support_note": "The metric and its provided definition establish the commit count, repository scope and reporting window."
+    },
+    {
+     "id": "c8",
+     "section": "why_now",
+     "text": "The SDK lets an agent pay per request in USDC, starting at $0.001 per call, with no API keys or signup. This is the agent-commerce wedge.",
+     "doc_id": "d_d2e39ad11bd7a4d2",
+     "quote": "Each request settles a USDC micropayment ($0.001 and up).",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote establishes per-request USDC payments and starting pricing but does not establish agent integration or the absence of signup and API keys."
+    },
+    {
+     "id": "c9",
+     "section": "competition",
+     "text": "The x402 facilitator market is concentrated: Coinbase handles 68.2% of payments. Vybe does not appear in the facilitator table, so its x402 volume is not visible in this source.",
+     "doc_id": "d_b3e61427fd0e0e8c",
+     "quote": "coinbase: 2,342,973 payments (68.2% of payments), 525,020 USD (35.2% of volume)",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote establishes Coinbase's payment share but cannot establish Vybe's absence from the complete table or the visibility of its volume."
+    },
+    {
+     "id": "c10",
+     "section": "risk",
+     "text": "The SDK is pre-release, and the README says the endpoint, protocol and pricing may change.",
+     "doc_id": "d_d2e39ad11bd7a4d2",
+     "quote": "The SDK is pre-release (0.1.x)",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote establishes pre-release status but says nothing about changes to the endpoint, protocol or pricing."
+    },
+    {
+     "id": "c11",
+     "section": "risk",
+     "text": "Beta pricing is a discount that the README says will rise at general availability, so current per-call economics are not representative.",
+     "doc_id": "d_d2e39ad11bd7a4d2",
+     "quote": "These rates will go up at general availability",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote establishes a future price increase but does not establish a beta discount or how representative current unit economics are."
+    },
+    {
+     "id": "c12",
+     "section": "narrative",
+     "text": "The core public product is a Solana wallet tracker and portfolio analytics app. The agent x402 offering is secondary on the website.",
+     "doc_id": "d_79209d156af52c70",
+     "quote": "The Ultimate Solana Wallet Tracker and Portfolio Analytics App",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports the wallet-tracking and portfolio-analytics positioning but does not establish the relative prominence of the agent offering."
+    },
+    {
+     "id": "c13",
+     "section": "pmf",
+     "text": "The org's repos have 6298 stars in total today, a current snapshot rather than point-in-time growth.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.stars_total_now",
+     "value": 6298.0,
+     "support": "entails",
+     "support_note": "The metric explicitly represents the organization's aggregate stars in the current snapshot rather than historical growth."
+    }
+   ],
+   "scores": {
+    "pmf": {
+     "score": 3,
+     "rationale": "Developer adoption is real: the x402-client SDK has 160 stars and 64 forks [c2], and the org has 6298 total stars [c13], though that is a current snapshot and not growth. Usage evidence is weak and partial: the 10,000+ traders figure is unaudited marketing copy not specific to x402 [c3], and the Superteam Canada testimonial is a named but unverified API user [c4]. There is no payment evidence, and Vybe does not appear in the facilitator table [c9]."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "The agent pay-per-call wedge (USDC, from $0.001 per call, no API keys) is timely [c8], but it is secondary to a Solana wallet tracker and analytics app [c12]. The SDK is pre-release with endpoint, protocol and pricing subject to change [c10], and beta discount pricing will rise at GA, so current economics are not representative [c11]. The facilitator market is concentrated around Coinbase [c9], and no edge against it is stated. The story is in the right space but generic, with no clear path from wedge to platform."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "Commit volume is substantial: 89 commits across the top 5 repos in the 90 days before 2026-11-01 [c5], and the org has 18 public non-fork repos [c1]. Team size and composition are unknown [c1], so multi-person shipping cannot be confirmed. The earlier draft cited a sharp commit drop [c6] and no SDK pushes since May [c7]. Those claims did not survive review, so they are not used here."
+    }
+   },
+   "risks": [
+    "No evidence of actual x402 transaction volume or agent customers. The x402 line is a beta SDK, and the facilitator market data does not show Vybe.",
+    "Commit velocity is down sharply, and the x402-client repo has been idle since mid-May 2026, which may signal deprioritization of the agent product.",
+    "Beta discount pricing and pre-release SDK make any current usage a weak guide to future revenue.",
+    "Solana data and analytics is a crowded category, and the sources state no differentiated edge beyond the website's claims of data quality and latency.",
+    "The x402 usd_per_tx_30d metric was not provided, so inorganic-traffic risk cannot be assessed."
+   ],
+   "open_questions": [
+    "Who are the founders and how large is the engineering team? What is the funding history?",
+    "How many paid x402 calls and how much USDC volume have there been, and from how many distinct wallets? What share comes from AI agents rather than testing or the team?",
+    "Why has the x402-client repo had no pushes since May, and is the agent product still a priority?",
+    "What are the post-beta prices, and how do x402 revenues compare with subscription API revenue?",
+    "Which facilitator settles Vybe's payments, and what is the average value per payment?"
+   ],
+   "recommendation": "watch",
+   "rescore_note": "The execution rationale no longer relies on the commit decline [c6] or the stale SDK [c7], since neither claim survived review. The PMF and narrative rationales now flag the partial claims as weak evidence. Priority questions for the founder call are x402 payment volume, the team, and the SDK's maintenance status.",
+   "draft_scores": {
+    "pmf": {
+     "score": 3,
+     "rationale": "There is real developer interest ([c2], [c13]) and named API users and self-reported traders ([c3], [c4]). There is no evidence of x402 payment volume, and Vybe is absent from the facilitator data ([c9])."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "The agent pay-per-call wedge is timely ([c8]), but it is an add-on to a Solana analytics and trading-app business ([c12]), still in beta ([c10]), with beta pricing that will change ([c11])."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "Commit volume is substantial ([c5]) but dropped sharply from the prior window ([c6]). The x402 SDK has had no pushes since May ([c7]), and contributor counts are unknown ([c1])."
+    }
+   },
+   "draft_recommendation": "watch",
+   "recommendation_stated_by_model": "watch",
+   "evidence_status": "sufficient",
+   "free_text_removed": [
+    "Where does the company see itself in 12 months: analytics app, data API, or agent data layer?",
+    "Scores are unchanged at 3/3/3, a total of 9, which is below the advance threshold of 11, so the recommendation stays watch.",
+    "The remaining evidence is thinner, but it still does not justify a 2 on any dimension.",
+    "This fits the rubric's 3 (developer adoption, no proof of payment) and does not reach 4 or 5.",
+    "Without them, steady but unverified velocity supports a 3, not a 4."
+   ]
+  },
+  "unverified": [
+   {
+    "claim": {
+     "id": "c6",
+     "section": "execution",
+     "text": "The prior 90-day window had 609 commits on the default branches of the owner's top 5 repos.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.commits_prev_90d",
+     "value": 609.0
+    },
+    "status": "number_unsupported",
+    "detail": "5 not in quote or metric"
+   },
+   {
+    "claim": {
+     "id": "c7",
+     "section": "execution",
+     "text": "The x402-client repo was created 2026-05-11 and last pushed 2026-05-13, according to the GitHub snapshot fetched 2026-11-02.",
+     "doc_id": "d_26e65d0b8d435a48",
+     "quote": "Created: 2026-05-11. Last push: 2026-05-13.",
+     "metric": null,
+     "value": null
+    },
+    "status": "number_unsupported",
+    "detail": "2 not in quote or metric"
+   }
+  ],
+  "withheld_by_critic": [],
+  "critique": {
+   "claim_labels": [
+    {
+     "claim_id": "c1",
+     "label": "partial",
+     "reason": "The metric supports the repository count but cannot establish whether the sources identify founders or contributors."
+    },
+    {
+     "claim_id": "c2",
+     "label": "entails",
+     "reason": "The receipt confirms the star and fork counts, which support developer interest without establishing paid usage."
+    },
+    {
+     "claim_id": "c3",
+     "label": "partial",
+     "reason": "The quote reports trader trust but does not establish that those traders are users or specify their relationship to x402."
+    },
+    {
+     "claim_id": "c4",
+     "label": "partial",
+     "reason": "The quote supports reported use of historical wallet and token data but contains no attribution to Superteam Canada."
+    },
+    {
+     "claim_id": "c5",
+     "label": "entails",
+     "reason": "The metric and its provided definition establish the commit count, repository scope and reporting window."
+    },
+    {
+     "claim_id": "c8",
+     "label": "partial",
+     "reason": "The quote establishes per-request USDC payments and starting pricing but does not establish agent integration or the absence of signup and API keys."
+    },
+    {
+     "claim_id": "c9",
+     "label": "partial",
+     "reason": "The quote establishes Coinbase's payment share but cannot establish Vybe's absence from the complete table or the visibility of its volume."
+    },
+    {
+     "claim_id": "c10",
+     "label": "partial",
+     "reason": "The quote establishes pre-release status but says nothing about changes to the endpoint, protocol or pricing."
+    },
+    {
+     "claim_id": "c11",
+     "label": "partial",
+     "reason": "The quote establishes a future price increase but does not establish a beta discount or how representative current unit economics are."
+    },
+    {
+     "claim_id": "c12",
+     "label": "partial",
+     "reason": "The quote supports the wallet-tracking and portfolio-analytics positioning but does not establish the relative prominence of the agent offering."
+    },
+    {
+     "claim_id": "c13",
+     "label": "entails",
+     "reason": "The metric explicitly represents the organization's aggregate stars in the current snapshot rather than historical growth."
+    }
+   ],
+   "scores": {
+    "pmf": {
+     "score": 3,
+     "rationale": "c2 provides a developer-adoption signal through forks, while c13 adds aggregate attention; neither establishes active integrations, retention or paying external users, and the supported portions of c3 and c4 do not establish x402 demand."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "The supported portions of c8 and c12 connect USDC pay-per-request access with a concrete analytics product, but do not establish differentiated agent demand or a credible expansion from this wedge into a platform."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "c5 establishes recent organization-level development activity, but does not establish sustained cadence, multiple maintainers or shipping velocity for the x402 product specifically; c10 establishes only pre-release status."
+    }
+   },
+   "recommendation": "watch",
+   "missing_risks": [
+    "Active external x402 customers, repeat usage, retention and payment revenue remain unknown.",
+    "Whether forks represent independent integrations or sustained use remains unknown.",
+    "Gross margins after data infrastructure, payment processing, transaction subsidies and support remain unknown.",
+    "Willingness to pay after beta pricing increases remains untested in the supplied evidence.",
+    "Founder identity, contributor concentration and ownership of the x402 implementation remain unknown.",
+    "Data defensibility, competitive differentiation and dependence on Solana trading activity remain unresolved.",
+    "Wallet-key handling, RPC dependence and billing for unsuccessful user requests may create adoption friction.",
+    "A facilitator market-share table does not establish demand for Vybe's API or its competitive position among data providers."
+   ],
+   "strongest_counterargument": "The evidence does not establish that agents repeatedly pay for this product or that the payment interface creates a defensible business advantage. A founder call may be premature until product-specific usage and retention evidence can distinguish a promising distribution experiment from a venture-scale opportunity.",
+   "recommendation_stated_by_model": "watch",
+   "stated_vs_policy_conflict": false
+  },
+  "doc_ids": [
+   "d_26e65d0b8d435a48",
+   "d_79209d156af52c70",
+   "d_b3e61427fd0e0e8c",
+   "d_d2e39ad11bd7a4d2"
+  ],
+  "facts": {
+   "gh.commits_90d": 89,
+   "gh.commits_prev_90d": 609,
+   "gh.commits_total": 711,
+   "gh.public_repos": 18,
+   "gh.stars_total_now": 6298,
+   "gh.first_repo_year": 2022,
+   "hn.stories": 0,
+   "hn.points_total": 0
+  },
+  "receipts": {
+   "claims_drafted": 13,
+   "raw_precision": 0.8462,
+   "verified": 11,
+   "withheld_by_verifier": 2,
+   "dropped_in_repair": 0,
+   "critic_labels": {
+    "entails": 3,
+    "partial": 8,
+    "contradicts": 0,
+    "unsupported": 0,
+    "unlabelled": 0
+   },
+   "critic_entailed_share": 0.2727,
+   "shipped": 11,
+   "shipped_partial": 8,
+   "withheld_by_critic": 0
+  },
+  "models": {
+   "drafter": "claude_cli:claude-sonnet-5-5",
+   "critic": "codex_cli:gpt-6.1-sol"
+  },
+  "committee_rank": 4,
+  "disagreements": []
+ }
+}

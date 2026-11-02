@@ -2,16 +2,16 @@
  "job": "diligence_memo",
  "agent": "AI DD (analyst)",
  "entity": "aibtc",
- "run_id": "1fa1b4f8b77b1b5b",
+ "run_id": "515abbb946fb29da",
  "as_of": "2026-11-01",
  "status": "ok",
  "inputs": {
   "doc_ids": [
    "d_4198603fbe742f78",
    "d_76ba5cffbf5b0186",
+   "d_b3e61427fd0e0e8c",
    "d_b8ac0b5cfb3102a8",
-   "d_ce78c495614d3efb",
-   "d_d654ae3bd333bd8e"
+   "d_ce78c495614d3efb"
   ],
   "facts_sha": "{\"gh.commits_90d\": 102, \"gh.commits_prev_90d\": 91, \"gh.commits_total\": 4473, \"gh.first_repo_year\": 2024, \"gh.public_repos\": 40, \"gh.stars_total_now\": 120, \"hn.points_total\": 0, \"hn.stories\": 0}",
   "stage": {
@@ -31,16 +31,16 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "77e7bb7b6bb432db163abfdd8e3407f7749d1c11f2e1f8a69d59868d26b92e97",
-   "prompt_sha256": "427b3cf5555a7f142155fccc127ac946b76aa6e74178e45545d4ec4398b4702b",
+   "cache_key": "281758ac20aa1227e12345e9a7fa5baa40d2026742f020d6d21b71d7adb65b48",
+   "prompt_sha256": "19488f983ced312087889edca9c3b8383ef68d4d4eb7968c1a3f971849b93397",
    "doc_ids": [
     "d_4198603fbe742f78",
     "d_76ba5cffbf5b0186",
+    "d_b3e61427fd0e0e8c",
     "d_b8ac0b5cfb3102a8",
-    "d_ce78c495614d3efb",
-    "d_d654ae3bd333bd8e"
+    "d_ce78c495614d3efb"
    ],
-   "output_sha256": "708cf5650c3b0154bee3d1a7016a59c5535b6f4fce58090d3d2451f8b05a24c4"
+   "output_sha256": "12a949daa058ab1aedf60d040fee4be5749453ba63ba96cf6c6f978a4d4db215"
   },
   {
    "step": "verify_receipts",
@@ -48,10 +48,10 @@
    "verified": 6,
    "failures": {
     "c3": "number_unsupported",
-    "c4": "number_unsupported",
     "c5": "number_unsupported",
+    "c7": "number_unsupported",
     "c8": "number_unsupported",
-    "c11": "metric_not_stated",
+    "c10": "number_unsupported",
     "c12": "number_unsupported"
    }
   },
@@ -60,16 +60,16 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "ab82414947d5681a0edf664c31816ebcf0c5b37da7a1c2cf3ed964b34e589ee8",
-   "prompt_sha256": "5fd85085852d796d94ee6bac1086ceeab24d6efcd9ba579372a96a174436efde",
+   "cache_key": "55a600f3225edad6a7a3f172ecae4c97555e7fa4f1c8204ddd52d2a8b7ea900c",
+   "prompt_sha256": "7b47ddad7aea34ff7f2b77ea356ca33692be94b5208eadae943ac9e6c512970b",
    "doc_ids": [
     "d_4198603fbe742f78",
     "d_76ba5cffbf5b0186",
+    "d_b3e61427fd0e0e8c",
     "d_b8ac0b5cfb3102a8",
-    "d_ce78c495614d3efb",
-    "d_d654ae3bd333bd8e"
+    "d_ce78c495614d3efb"
    ],
-   "output_sha256": "f5e08609f00b94729ad5536e79e10d4f2eca66cc8fb4dd3e0fc995cd8639176a"
+   "output_sha256": "c032094e7a7776a38b409ae06a72dba610b90e9a0f79ac156767d4d4396ceb9b"
   },
   {
    "step": "verifier_gate",
@@ -82,21 +82,21 @@
    "kind": "llm",
    "backend": "codex_cli",
    "model": "gpt-6.1-sol",
-   "cache_key": "8618c5baa99951f787204727e3b39de4db5ef42f5dbc2eda88acca04a8d1f13d",
-   "prompt_sha256": "6613ffa4f8e2af47c2c3c1f3b84a55c0f7040f624a452c1a7fe2a74777b38334",
+   "cache_key": "543c5c2d20499dc8b9bebfa66b3c866a899a01e3e54699b5288d94be0d5ea744",
+   "prompt_sha256": "10638f04bcf18e93f08dd9bd1b4ca7e2bbb9a5c0daff96644aef2cdbe1d89bba",
    "doc_ids": [
     "d_4198603fbe742f78",
     "d_76ba5cffbf5b0186",
+    "d_b3e61427fd0e0e8c",
     "d_b8ac0b5cfb3102a8",
-    "d_ce78c495614d3efb",
-    "d_d654ae3bd333bd8e"
+    "d_ce78c495614d3efb"
    ],
-   "output_sha256": "09acdead847f8b2e14d9813f05e812067387d12a27fd78cb33be4de07de59a4f"
+   "output_sha256": "0b9745213514c0a5170489c2d4d25724a93ac08f12f6ec59fc92ac50c2d3ff6b"
   },
   {
    "step": "reconcile",
-   "entails": 0,
-   "partial": 12,
+   "entails": 4,
+   "partial": 8,
    "contradicts": 0,
    "unsupported": 0,
    "unlabelled": 0
@@ -106,16 +106,16 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "d2149fbecf9268a1d0522187fa40988b7e3ba0bbb5e8355c884306d8387303d9",
-   "prompt_sha256": "8893624957e2510e546aaf70012e0dc78f3d4c717e33a18b237cd38e00b958ee",
+   "cache_key": "77d0f066853ea4c6f96a97eafd48aaa2b0790192993f6e4705b2955b722c2bde",
+   "prompt_sha256": "d5498f1ac03fbe39cfd1bbb138aba69973b5e72b0cc46fe88e5f1fe651618bfa",
    "doc_ids": [
     "d_4198603fbe742f78",
     "d_76ba5cffbf5b0186",
+    "d_b3e61427fd0e0e8c",
     "d_b8ac0b5cfb3102a8",
-    "d_ce78c495614d3efb",
-    "d_d654ae3bd333bd8e"
+    "d_ce78c495614d3efb"
    ],
-   "output_sha256": "d4597cc8d99a61de3b2a647e1286ea964d92115e2bb0e74375b49627ab651a60"
+   "output_sha256": "4bf244833c15c6f5bcf0a5e421f6a09c93a3dd883e6ae19606b9ce62c25ee920"
   },
   {
    "step": "committee",
@@ -126,7 +126,7 @@
  ],
  "outputs": {
   "memo": "results/memos/aibtc.md",
-  "artifact_version": 4,
+  "artifact_version": 5,
   "decision_card": false
  },
  "error": null,

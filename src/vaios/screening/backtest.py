@@ -22,14 +22,15 @@ SCORERS = {  # column -> (label, leakage-exposed?)
     "s_logit_full": ("Logistic, all point-in-time features (walk-forward)", False),
     "s_logit_github": ("Logistic, GitHub-only features (walk-forward; live niche score)", False),
     "s_heuristic": ("Pre-specified heuristic (no fitting)", False),
+    "s_heuristic_github": ("Heuristic, GitHub signals only (post-hoc variant, ADR 0010)", False),
     "b_random": ("Baseline: random", False),
     "b_tvl": ("Baseline: TVL size", False),
-    "b_commits": ("Baseline: commits in last 90 days", False),
+    "b_commits": ("Baseline: commits in last 90 days (live triage order, ADR 0010)", False),
     "b_newest": ("Baseline: newest listing first", False),
     "b_prior_funding": ("Baseline: raised before (most recent first)", False),
     "leaky_stars_now": ("Reference: today's GitHub stars (LEAKAGE-EXPOSED, not a fair baseline)", True),
 }
-MODELS = ["s_logit_full", "s_logit_github", "s_heuristic"]
+MODELS = ["s_logit_full", "s_logit_github", "s_heuristic", "s_heuristic_github"]
 
 
 def load() -> pd.DataFrame:
@@ -47,6 +48,7 @@ def stable_random(slug: str, t0) -> float:
 def add_scores(df: pd.DataFrame) -> tuple[pd.DataFrame, list, dict]:
     df = df.copy()
     df["s_heuristic"] = sc.heuristic(df)
+    df["s_heuristic_github"] = sc.heuristic_github(df)
     df["b_random"] = [stable_random(s, t) for s, t in zip(df["slug"], df["t0"], strict=True)]
     df["b_tvl"] = df["tvl_t0"]
     df["b_commits"] = df["commits_90d"] + 1e-6 * df["commits_before"]  # tie-break by history
@@ -129,8 +131,16 @@ def lead_time() -> dict:
     fs = months(d["first_raise_at"], first_signal).dropna()
     q = lambda x: {"n": int(len(x)), "median_months": round(float(x.median()), 1),  # noqa: E731
                    "share_signal_before_raise": round(float((x > 0).mean()), 3)}
+    top = pd.read_parquet(FROZEN / "top_repos.parquet").merge(d[["github_owner", "first_raise_at"]],
+                                                              left_on="owner", right_on="github_owner")
+    after = float((top["repo_created_at"] > top["first_raise_at"]).mean())
+    years = d["first_raise_at"].dt.year
     return {"github_first_repo": q(gh), "defillama_listing": q(dl), "earliest_public_signal": q(fs),
-            "note": "positive months = the signal came BEFORE the first raise (system could have surfaced it)"}
+            "share_of_todays_top5_repos_created_after_first_raise": round(after, 3),
+            "share_first_raises_2020_2022": round(float(years.between(2020, 2022).mean()), 3),
+            "note": "positive months = a public GitHub signal (today's repos) or listing existed BEFORE the first "
+                    "raise. Repo creation is not when a repo went public, nor when a system would have surfaced "
+                    "the company; deleted repos are invisible; about half of these first raises are 2020-22 DeFi."}
 
 
 def run(n_boot: int = 1000) -> dict:

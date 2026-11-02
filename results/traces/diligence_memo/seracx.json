@@ -2,7 +2,7 @@
  "job": "diligence_memo",
  "agent": "AI DD (analyst)",
  "entity": "seracx",
- "run_id": "5bf51c73b63f922e",
+ "run_id": "47b152fb7359e61f",
  "as_of": "2026-11-01",
  "status": "ok",
  "inputs": {
@@ -10,7 +10,7 @@
    "d_3d48a837c89cc67a",
    "d_4a064986e41fcdc9",
    "d_8bbbff9536997d14",
-   "d_d654ae3bd333bd8e"
+   "d_b3e61427fd0e0e8c"
   ],
   "facts_sha": "{\"gh.commits_90d\": 94, \"gh.commits_prev_90d\": 126, \"gh.commits_total\": 264, \"gh.first_repo_year\": 2026, \"gh.public_repos\": 9, \"gh.stars_total_now\": 131, \"hn.points_total\": 0, \"hn.stories\": 0}",
   "stage": {
@@ -30,27 +30,26 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "fdba15bd401dc35e20f5403b5470d15234baff0777a1e162cdcf53690ce592f5",
-   "prompt_sha256": "e56fb9f7966d2ce20bcb20797d29d47e68a6a05cf150eace62ef675bc3933e82",
+   "cache_key": "48d35b7c5e1c9e3104c285429031dacfce1fd5d57cd4602690e635bf71ff5e07",
+   "prompt_sha256": "ae36913f4939ecf61250fc27627ebd8a13d31a4c5dc5a889913cac22a6cfa2cc",
    "doc_ids": [
     "d_3d48a837c89cc67a",
     "d_4a064986e41fcdc9",
     "d_8bbbff9536997d14",
-    "d_d654ae3bd333bd8e"
+    "d_b3e61427fd0e0e8c"
    ],
-   "output_sha256": "14fef13bf54b7447e6aa26aada86581302ffbaf176706e7e940085dc641728f1"
+   "output_sha256": "c12b09a3bdc7ed9290ec2a55a8f729a5ce56f82d6c28aba2eead21e81bd90e7e"
   },
   {
    "step": "verify_receipts",
    "n_claims": 13,
-   "verified": 7,
+   "verified": 8,
    "failures": {
     "c2": "number_unsupported",
     "c4": "number_unsupported",
-    "c6": "number_unsupported",
-    "c7": "number_unsupported",
-    "c8": "number_unsupported",
-    "c9": "number_unsupported"
+    "c7": "metric_not_stated",
+    "c9": "number_unsupported",
+    "c10": "number_unsupported"
    }
   },
   {
@@ -58,19 +57,19 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "cd6f4c3aae49784c072d944ef3f5acedd5c0a8ecf42e66841402bdb39129f8a5",
-   "prompt_sha256": "b640d0b107ae6d0da4bd4aae261d8ebdd0d5999c4f09732658c0a4968d0039e5",
+   "cache_key": "ddc9983305b055e0471263e8738c7d8b6c47df916a127a14314c02ae41217e0f",
+   "prompt_sha256": "42b9f7dfa9cc34179a8226f235a5eff549cb4f7ab6b17562d891f044e0be2d4a",
    "doc_ids": [
     "d_3d48a837c89cc67a",
     "d_4a064986e41fcdc9",
     "d_8bbbff9536997d14",
-    "d_d654ae3bd333bd8e"
+    "d_b3e61427fd0e0e8c"
    ],
-   "output_sha256": "61f987422133562e900490775e20d940dfd8ebd2494307c436b263a05f26e09f"
+   "output_sha256": "48a7551db94025c40e4c35f4ac65f0785649b90b1735a76cafff5b0db4d3303a"
   },
   {
    "step": "verifier_gate",
-   "raw_precision": 0.5384615384615384,
+   "raw_precision": 0.6153846153846154,
    "verified": 13,
    "withheld": 0
   },
@@ -79,20 +78,20 @@
    "kind": "llm",
    "backend": "codex_cli",
    "model": "gpt-6.1-sol",
-   "cache_key": "58f25ee236e67018cf075f79e2affb52130f6cb23419fc1c76840f103634f3c2",
-   "prompt_sha256": "1e6052e36e133a6eb3baf6e9f4cbeccafedc87b0b74d58b19f280c9cec1b1c5f",
+   "cache_key": "731019a99535765306e9c7eaf572e315eb94d8724c2a211ba0bf9c658f04bd87",
+   "prompt_sha256": "0341cb42e1d359927f7908642f7956b8058be63aefe12894e82b2fbca2099fa0",
    "doc_ids": [
     "d_3d48a837c89cc67a",
     "d_4a064986e41fcdc9",
     "d_8bbbff9536997d14",
-    "d_d654ae3bd333bd8e"
+    "d_b3e61427fd0e0e8c"
    ],
-   "output_sha256": "6d5d295503206a00451224f4baf8e53f825204ea87c59d09c6365e4110505b1c"
+   "output_sha256": "31d86f089b7403953798d92936cd101032bd63d2e246042a9955fcbe34596b83"
   },
   {
    "step": "reconcile",
-   "entails": 4,
-   "partial": 9,
+   "entails": 6,
+   "partial": 7,
    "contradicts": 0,
    "unsupported": 0,
    "unlabelled": 0
@@ -102,29 +101,27 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "3dd4cd55c1f90b884ffbfab334a1352c2040ad0b553851f86c650175d3590948",
-   "prompt_sha256": "babaa3394f2221381e8269bb3cf0564192c61c8ba0a65694530a1366a7448eaa",
+   "cache_key": "465d558c2c0733f7c5ce7b7be40f47507bd9ea6a1fc07e36f37a81928bdfd5b5",
+   "prompt_sha256": "5816a287c149912c8c0d9586219fd01aece90ca8ed93776c1995e4cd514607ce",
    "doc_ids": [
     "d_3d48a837c89cc67a",
     "d_4a064986e41fcdc9",
     "d_8bbbff9536997d14",
-    "d_d654ae3bd333bd8e"
+    "d_b3e61427fd0e0e8c"
    ],
-   "output_sha256": "a70478503e6d696628a4b9fcf082170b660b3184a03094f7321fb130c80c84a7"
+   "output_sha256": "22e925c5f912f8306a5b416365499a3d95a3ca96e72ffc206d44cb5112a9dfb5"
   },
   {
    "step": "committee",
-   "rank": 8,
-   "recommendation": "pass",
-   "disagreements": [
-    "recommendation: drafter 'pass' vs critic 'watch'"
-   ]
+   "rank": 5,
+   "recommendation": "watch",
+   "disagreements": []
   }
  ],
  "outputs": {
   "memo": "results/memos/seracx.md",
-  "artifact_version": 3,
-  "decision_card": true
+  "artifact_version": 4,
+  "decision_card": false
  },
  "error": null,
  "sla_violations": []

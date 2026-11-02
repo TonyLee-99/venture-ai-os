@@ -14,7 +14,7 @@ def test_record_and_status(tmp_path, monkeypatch):
     monkeypatch.setattr(decide, "FLAG_LEDGER", tmp_path / "f.jsonl")
     before = decide.status()
     assert before["human_decisions_recorded"] == 0
-    card = next(m for m in decide.memos() if m["disagreements"])
+    card = decide.memos()[0]
     decide.record(card["entity"], "pass", "test-only row in a temp ledger", "pytest")
     row = json.loads((tmp_path / "h.jsonl").read_text())
     assert row["decision"] == "pass" and row["example"] is False

@@ -2,7 +2,7 @@
  "job": "diligence_memo",
  "agent": "AI DD (analyst)",
  "entity": "devlabgroup",
- "run_id": "0ffdfe73c7bc1fb0",
+ "run_id": "2e6ade1c96380d4c",
  "as_of": "2026-11-01",
  "status": "ok",
  "inputs": {
@@ -11,7 +11,7 @@
    "d_216e113b6b2b5219",
    "d_5eb8ec42715ebc96",
    "d_a8853fc947857823",
-   "d_d654ae3bd333bd8e"
+   "d_b3e61427fd0e0e8c"
   ],
   "facts_sha": "{\"gh.commits_90d\": 285, \"gh.commits_prev_90d\": 10, \"gh.commits_total\": 295, \"gh.first_repo_year\": 2017, \"gh.public_repos\": 15, \"gh.stars_total_now\": 169, \"hn.points_total\": 0, \"hn.stories\": 0}",
   "stage": {
@@ -31,16 +31,16 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "06dc7f56152d6d806a0ba93d24f0f3d79337902e82502868daea4817d9aa7599",
-   "prompt_sha256": "7696cdf74e62830e93f64de1c31d3e865400fa1436d635a3e64fe90ab3a70264",
+   "cache_key": "134a35a0544ef4b003ca6d2ac19f7e55785969212e40d95eae4fd32f5f1330b5",
+   "prompt_sha256": "43445845ca646b0cc658df7aaf409d180b801faeaef815a95c4b2ab9583cc021",
    "doc_ids": [
     "d_05d72a18545d2c02",
     "d_216e113b6b2b5219",
     "d_5eb8ec42715ebc96",
     "d_a8853fc947857823",
-    "d_d654ae3bd333bd8e"
+    "d_b3e61427fd0e0e8c"
    ],
-   "output_sha256": "dd031d5dd3ab1c69aaf81282792213f50d33db575a2e94555254c03f9ab8d9f5"
+   "output_sha256": "3f9a7e76270b25f0203081f81ffc5137986abfa3eaabb991695d76bf7217c961"
   },
   {
    "step": "verify_receipts",
@@ -48,10 +48,10 @@
    "verified": 8,
    "failures": {
     "c1": "number_unsupported",
-    "c2": "number_unsupported",
+    "c3": "number_unsupported",
     "c6": "number_unsupported",
-    "c9": "number_unsupported",
-    "c12": "metric_not_stated"
+    "c9": "metric_not_stated",
+    "c10": "number_unsupported"
    }
   },
   {
@@ -59,16 +59,16 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "899d42261c09dcd0c4abaf657cde105b4c6ea0b66a61aba67b4abf1112fe0e34",
-   "prompt_sha256": "1888758630d93b65414e93050aa4b5319d292c23dc41389a37117bd9cbdc89ee",
+   "cache_key": "06ba3f00365347bacafa05b6cab0c0f2e34a204d234d84fb762a89afe511f9e0",
+   "prompt_sha256": "0171dc54917ca7aa06af3df259a0dffd0680542568bc927f16a52cedd4f891e5",
    "doc_ids": [
     "d_05d72a18545d2c02",
     "d_216e113b6b2b5219",
     "d_5eb8ec42715ebc96",
     "d_a8853fc947857823",
-    "d_d654ae3bd333bd8e"
+    "d_b3e61427fd0e0e8c"
    ],
-   "output_sha256": "2ad3fa0b0a0bae64a59c36ece2f8f7f9270936630299c141f0dd2acc3cf6ae8b"
+   "output_sha256": "9878a3a186f53c7ea99f07e635e0cc0993eafa0df7ac94113c5dcfbd20d60754"
   },
   {
    "step": "verifier_gate",
@@ -81,16 +81,16 @@
    "kind": "llm",
    "backend": "codex_cli",
    "model": "gpt-6.1-sol",
-   "cache_key": "a7e619dfb007f971403cd0ddea6fb1fdce97d196851011e6ac95affb4fb9cc80",
-   "prompt_sha256": "8eedb5cde0fc449afc42ef61620ad608d0607921234dcc820ffde7d13be8f8d1",
+   "cache_key": "ed2757b8ef8d2040523cc2d311c3540286cb2418207d38736c74791b8727ed84",
+   "prompt_sha256": "1b744c3fa6ed987fb527e1b9f0cbaaa3a995e8a23fa5d1a8fcade77f677e6d33",
    "doc_ids": [
     "d_05d72a18545d2c02",
     "d_216e113b6b2b5219",
     "d_5eb8ec42715ebc96",
     "d_a8853fc947857823",
-    "d_d654ae3bd333bd8e"
+    "d_b3e61427fd0e0e8c"
    ],
-   "output_sha256": "b00332fae1e99f31723c327ef8bd05ad58e06efc31e958f0b994e6ec4cb8875f"
+   "output_sha256": "91b406efb37e6f79316d81a026e2467c38f80c165eceab1660ad0fada2fa096d"
   },
   {
    "step": "reconcile",
@@ -105,27 +105,27 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "7d25dc9156ba78f6432b0993a0e646af90b59b40614897858862af45e9cdab82",
-   "prompt_sha256": "c8cbf75a9c53cf32c73e8c91051c41f23f4b6fa0be312105cc3c57ba2a743fa5",
+   "cache_key": "59caa47ce623784e6f519b3f28d3df8c465283ba5196706d0cc09fac18e61aa5",
+   "prompt_sha256": "efea84f9a82531f7062735d9afa1b1c73c0c075fb9c7ef1a6335c6ce945bbb23",
    "doc_ids": [
     "d_05d72a18545d2c02",
     "d_216e113b6b2b5219",
     "d_5eb8ec42715ebc96",
     "d_a8853fc947857823",
-    "d_d654ae3bd333bd8e"
+    "d_b3e61427fd0e0e8c"
    ],
-   "output_sha256": "686a3189db3dea80f58edb5951dd09690800bfc87c860c5918faf73b70a431f8"
+   "output_sha256": "d58f40d9c186649d92b865e2f6441d867f8cebe787773cdbf9ade08708371370"
   },
   {
    "step": "committee",
-   "rank": 6,
-   "recommendation": "pass",
+   "rank": 7,
+   "recommendation": "watch",
    "disagreements": []
   }
  ],
  "outputs": {
   "memo": "results/memos/devlabgroup.md",
-  "artifact_version": 1,
+  "artifact_version": 2,
   "decision_card": false
  },
  "error": null,

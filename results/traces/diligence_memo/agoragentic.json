@@ -2,7 +2,7 @@
  "job": "diligence_memo",
  "agent": "AI DD (analyst)",
  "entity": "agoragentic",
- "run_id": "8e0d0922ed739bf8",
+ "run_id": "0ae1b61e3b4f3149",
  "as_of": "2026-11-01",
  "status": "ok",
  "inputs": {
@@ -11,8 +11,8 @@
    "d_56dbcafcb8f38ffa",
    "d_58548c9e5cdbdfd3",
    "d_5a4cd6a19a1a9d5f",
-   "d_b7d34711deeb9013",
-   "d_d654ae3bd333bd8e"
+   "d_b3e61427fd0e0e8c",
+   "d_b7d34711deeb9013"
   ],
   "facts_sha": "{\"gh.commits_90d\": 766, \"gh.commits_prev_90d\": 279, \"gh.commits_total\": 1176, \"gh.first_repo_year\": 2026, \"gh.public_repos\": 2, \"gh.stars_total_now\": 41, \"hn.points_total\": 0, \"hn.stories\": 0}",
   "stage": {
@@ -32,27 +32,28 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "916a8c6a0f9ed51b0eecda9e9f8d2469a65943bbc523d1d06411d7e3b5c0c6e4",
-   "prompt_sha256": "1e610854b431281ed2dc3925cfc6191e6aaa0518b7a30d32c8c226019ff56aaf",
+   "cache_key": "1e2257bef36c87b4cc9c0510dc9eda7655a32f016d041db62e8f38238a2876b0",
+   "prompt_sha256": "4714a6d72153182075af24dc41f8e8e56ab14d936b81ee0a00d8b3dde6d93c57",
    "doc_ids": [
     "d_25ae1a0ad41ac6ad",
     "d_56dbcafcb8f38ffa",
     "d_58548c9e5cdbdfd3",
     "d_5a4cd6a19a1a9d5f",
-    "d_b7d34711deeb9013",
-    "d_d654ae3bd333bd8e"
+    "d_b3e61427fd0e0e8c",
+    "d_b7d34711deeb9013"
    ],
-   "output_sha256": "19afb9dd1e358375fe468755c1ccf944f47a2b1e0def98435d49671ecf516899"
+   "output_sha256": "9a960b90ca31f755f4b4293a0a022ba3efeb7f4286b288252d66c855287b4898"
   },
   {
    "step": "verify_receipts",
    "n_claims": 13,
-   "verified": 8,
+   "verified": 7,
    "failures": {
     "c2": "number_unsupported",
     "c3": "number_unsupported",
-    "c4": "number_unsupported",
     "c7": "number_unsupported",
+    "c11": "number_unsupported",
+    "c12": "number_unsupported",
     "c13": "metric_not_stated"
    }
   },
@@ -61,21 +62,21 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "967aedf2230be287b5b84724710a8fe98666d3f0e65010d6ea5aac64692999e2",
-   "prompt_sha256": "24ba577956eceb145d85355b82bf88130cb7b2d38410374737d4868ed8648850",
+   "cache_key": "2fed5f10c538f26d40af9e0040fc3bd625daac9a4a7f5b2ac04e373757c72c81",
+   "prompt_sha256": "5cb81fb039619834c0d3e12ea255e9ebbd8fefbc1b610e4caefa4ae0c4e34399",
    "doc_ids": [
     "d_25ae1a0ad41ac6ad",
     "d_56dbcafcb8f38ffa",
     "d_58548c9e5cdbdfd3",
     "d_5a4cd6a19a1a9d5f",
-    "d_b7d34711deeb9013",
-    "d_d654ae3bd333bd8e"
+    "d_b3e61427fd0e0e8c",
+    "d_b7d34711deeb9013"
    ],
-   "output_sha256": "5b3f65298f35605bfb297c8fb8ec027663df756ac121012a716cf5a02fb77638"
+   "output_sha256": "46474fb73687e8cb21da195b3f9262e05126c40b6d832b9120627492fa61faa5"
   },
   {
    "step": "verifier_gate",
-   "raw_precision": 0.6153846153846154,
+   "raw_precision": 0.5384615384615384,
    "verified": 13,
    "withheld": 0
   },
@@ -84,17 +85,17 @@
    "kind": "llm",
    "backend": "codex_cli",
    "model": "gpt-6.1-sol",
-   "cache_key": "0edb0e6fe85c87ad945704760fc1948254d465bf329aa4a816e60c54cec5305a",
-   "prompt_sha256": "5670838e7a0472161e7e8a986d5b5e7a496b61c5b1d639c5cddbf0139037ef05",
+   "cache_key": "ea56b70ca4877dc7f2139a7dead7fe0daf3a1fb0a3644c51c6dd0b99071b3ca7",
+   "prompt_sha256": "b9407cb8227f5d55a87583fd4abdf831a86d2a8abb4aef2ef2368382f95ffef3",
    "doc_ids": [
     "d_25ae1a0ad41ac6ad",
     "d_56dbcafcb8f38ffa",
     "d_58548c9e5cdbdfd3",
     "d_5a4cd6a19a1a9d5f",
-    "d_b7d34711deeb9013",
-    "d_d654ae3bd333bd8e"
+    "d_b3e61427fd0e0e8c",
+    "d_b7d34711deeb9013"
    ],
-   "output_sha256": "915de7cd191979b9a95087642d223bdd8f6e8031498a6181ffa0f3fb7fbdcf56"
+   "output_sha256": "7fab712e7b2198362a909107a8f4e1ac9accc7c0c30832be9ebd4f5e598d0438"
   },
   {
    "step": "reconcile",
@@ -109,31 +110,29 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "6cbe2a78e48cb9841f93ba7a6ffb827946e2a303dfffba188cb18366916bb03f",
-   "prompt_sha256": "806b52d0698890ab68513e9c360cb7efb9f1c29323aefe2ee08b7bdf4e71e5e2",
+   "cache_key": "1f55e9edcbf44590b9219cde86dc1e0a5f66a359c08a411004231e225ae50b98",
+   "prompt_sha256": "5c39c469fd5b95f162c90be7a4b4ce08587e02414fffa46f92cad439bf64c5a6",
    "doc_ids": [
     "d_25ae1a0ad41ac6ad",
     "d_56dbcafcb8f38ffa",
     "d_58548c9e5cdbdfd3",
     "d_5a4cd6a19a1a9d5f",
-    "d_b7d34711deeb9013",
-    "d_d654ae3bd333bd8e"
+    "d_b3e61427fd0e0e8c",
+    "d_b7d34711deeb9013"
    ],
-   "output_sha256": "13acc2a18c7673b80952f63b5bf622ba43066f97c7821972231484035bac49b4"
+   "output_sha256": "7c9b63e77f427378efe100be78a2571add9312edc0abae392fbed31b901d2bec"
   },
   {
    "step": "committee",
-   "rank": 2,
+   "rank": 6,
    "recommendation": "watch",
-   "disagreements": [
-    "recommendation: drafter 'watch' vs critic 'pass'"
-   ]
+   "disagreements": []
   }
  ],
  "outputs": {
   "memo": "results/memos/agoragentic.md",
-  "artifact_version": 4,
-  "decision_card": true
+  "artifact_version": 5,
+  "decision_card": false
  },
  "error": null,
  "sla_violations": []

@@ -17,8 +17,8 @@
    "top_repo": "faremeter/faremeter",
    "domain": "faremeter.xyz",
    "facilitator": null,
-   "rank": 4,
-   "screen_score": 0.10854394369982702,
+   "rank": 5,
+   "screen_score": 1180.003635,
    "sources": "github_search",
    "stage": {
     "stage": "unknown (no funding evidence found)",
@@ -33,7 +33,7 @@
    "doc_ids": [
     "d_2bf293576b4555c8",
     "d_748e85e901fac822",
-    "d_d654ae3bd333bd8e",
+    "d_b3e61427fd0e0e8c",
     "d_d7f80babf38c9414"
    ]
   },
@@ -44,8 +44,8 @@
    "top_repo": "Agoragentic/agoragentic-integrations",
    "domain": "agoragentic.com",
    "facilitator": null,
-   "rank": 16,
-   "screen_score": 0.06644020124977658,
+   "rank": 7,
+   "screen_score": 766.001176,
    "sources": "github_search",
    "stage": {
     "stage": "unknown (no funding evidence found)",
@@ -62,8 +62,8 @@
     "d_56dbcafcb8f38ffa",
     "d_58548c9e5cdbdfd3",
     "d_5a4cd6a19a1a9d5f",
-    "d_b7d34711deeb9013",
-    "d_d654ae3bd333bd8e"
+    "d_b3e61427fd0e0e8c",
+    "d_b7d34711deeb9013"
    ]
   },
   {
@@ -73,8 +73,8 @@
    "top_repo": "codespar/mcp-dev-latam",
    "domain": "codespar.dev",
    "facilitator": null,
-   "rank": 17,
-   "screen_score": 0.06291166659742103,
+   "rank": 14,
+   "screen_score": 380.001096,
    "sources": "github_search",
    "stage": {
     "stage": "unknown (no funding evidence found)",
@@ -91,127 +91,8 @@
     "d_0d1fe91274ca5559",
     "d_14a53ac7a2c7cac2",
     "d_67cfafef4570ce46",
-    "d_d654ae3bd333bd8e",
+    "d_b3e61427fd0e0e8c",
     "d_d9bf981ecb401c3d"
-   ]
-  },
-  {
-   "entity": "vybe",
-   "name": "vybenetwork",
-   "github_owner": "vybenetwork",
-   "top_repo": "vybenetwork/x402-client",
-   "domain": "vybenetwork.com",
-   "facilitator": null,
-   "rank": 18,
-   "screen_score": 0.05709792322622885,
-   "sources": "github_search",
-   "stage": {
-    "stage": "unknown (no funding evidence found)",
-    "seed_eligible": true,
-    "ineligible_reasons": [],
-    "yc_batch": null,
-    "token": null,
-    "prior_raises_defillama": [],
-    "round_evidence": [],
-    "doc_ids": []
-   },
-   "doc_ids": [
-    "d_26e65d0b8d435a48",
-    "d_79209d156af52c70",
-    "d_d2e39ad11bd7a4d2",
-    "d_d654ae3bd333bd8e"
-   ]
-  },
-  {
-   "entity": "seracx",
-   "name": "sera-cx",
-   "github_owner": "sera-cx",
-   "top_repo": "sera-cx/sera-mcp",
-   "domain": "",
-   "facilitator": null,
-   "rank": 20,
-   "screen_score": 0.055517565949843306,
-   "sources": "github_search",
-   "stage": {
-    "stage": "unknown (no funding evidence found)",
-    "seed_eligible": true,
-    "ineligible_reasons": [],
-    "yc_batch": null,
-    "token": null,
-    "prior_raises_defillama": [],
-    "round_evidence": [],
-    "doc_ids": []
-   },
-   "doc_ids": [
-    "d_3d48a837c89cc67a",
-    "d_4a064986e41fcdc9",
-    "d_8bbbff9536997d14",
-    "d_d654ae3bd333bd8e"
-   ]
-  },
-  {
-   "entity": "aibtc",
-   "name": "aibtcdev",
-   "github_owner": "aibtcdev",
-   "top_repo": "aibtcdev/ai-agent-crew",
-   "domain": "aibtc.com",
-   "facilitator": null,
-   "rank": 24,
-   "screen_score": 0.041232231520419736,
-   "sources": "github_search",
-   "stage": {
-    "stage": "unknown (no funding evidence found)",
-    "seed_eligible": true,
-    "ineligible_reasons": [],
-    "yc_batch": null,
-    "token": null,
-    "prior_raises_defillama": [],
-    "round_evidence": [],
-    "doc_ids": []
-   },
-   "doc_ids": [
-    "d_4198603fbe742f78",
-    "d_76ba5cffbf5b0186",
-    "d_b8ac0b5cfb3102a8",
-    "d_ce78c495614d3efb",
-    "d_d654ae3bd333bd8e"
-   ]
-  },
-  {
-   "entity": "payai",
-   "name": "PayAI Network",
-   "github_owner": "payainetwork",
-   "top_repo": "PayAINetwork/x402-solana",
-   "domain": "payai.network",
-   "facilitator": "payAI",
-   "rank": 26,
-   "screen_score": 0.03625651734891599,
-   "sources": "coingecko,github_search,x402scan",
-   "stage": {
-    "stage": "unknown (no funding evidence found)",
-    "seed_eligible": true,
-    "ineligible_reasons": [],
-    "yc_batch": null,
-    "token": {
-     "ticker": "PAYAI",
-     "coingecko_id": "payai-network-2",
-     "fdv_usd": 7073540,
-     "market_cap_usd": 7073540,
-     "source": "https://www.coingecko.com/en/coins/payai-network-2"
-    },
-    "prior_raises_defillama": [],
-    "round_evidence": [],
-    "doc_ids": []
-   },
-   "doc_ids": [
-    "d_1d9989bd19a2b6ca",
-    "d_50189362d7ac28de",
-    "d_95b38e673e4b0e38",
-    "d_97739bfb70f0047f",
-    "d_bf4860a8b3f2429b",
-    "d_d654ae3bd333bd8e",
-    "d_e25335e7a14a4218",
-    "d_f07008e5d5f69b82"
    ]
   },
   {
@@ -221,8 +102,8 @@
    "top_repo": "devlab-group/agent-commerce",
    "domain": "devlab.group",
    "facilitator": null,
-   "rank": 28,
-   "screen_score": 0.03473848305496962,
+   "rank": 15,
+   "screen_score": 285.000295,
    "sources": "github_search",
    "stage": {
     "stage": "unknown (no funding evidence found)",
@@ -239,7 +120,117 @@
     "d_216e113b6b2b5219",
     "d_5eb8ec42715ebc96",
     "d_a8853fc947857823",
-    "d_d654ae3bd333bd8e"
+    "d_b3e61427fd0e0e8c"
+   ]
+  },
+  {
+   "entity": "aibtc",
+   "name": "aibtcdev",
+   "github_owner": "aibtcdev",
+   "top_repo": "aibtcdev/ai-agent-crew",
+   "domain": "aibtc.com",
+   "facilitator": null,
+   "rank": 23,
+   "screen_score": 102.004473,
+   "sources": "github_search",
+   "stage": {
+    "stage": "unknown (no funding evidence found)",
+    "seed_eligible": true,
+    "ineligible_reasons": [],
+    "yc_batch": null,
+    "token": null,
+    "prior_raises_defillama": [],
+    "round_evidence": [],
+    "doc_ids": []
+   },
+   "doc_ids": [
+    "d_4198603fbe742f78",
+    "d_76ba5cffbf5b0186",
+    "d_b3e61427fd0e0e8c",
+    "d_b8ac0b5cfb3102a8",
+    "d_ce78c495614d3efb"
+   ]
+  },
+  {
+   "entity": "seracx",
+   "name": "sera-cx",
+   "github_owner": "sera-cx",
+   "top_repo": "sera-cx/sera-mcp",
+   "domain": "",
+   "facilitator": null,
+   "rank": 24,
+   "screen_score": 94.000264,
+   "sources": "github_search",
+   "stage": {
+    "stage": "unknown (no funding evidence found)",
+    "seed_eligible": true,
+    "ineligible_reasons": [],
+    "yc_batch": null,
+    "token": null,
+    "prior_raises_defillama": [],
+    "round_evidence": [],
+    "doc_ids": []
+   },
+   "doc_ids": [
+    "d_3d48a837c89cc67a",
+    "d_4a064986e41fcdc9",
+    "d_8bbbff9536997d14",
+    "d_b3e61427fd0e0e8c"
+   ]
+  },
+  {
+   "entity": "vybe",
+   "name": "vybenetwork",
+   "github_owner": "vybenetwork",
+   "top_repo": "vybenetwork/x402-client",
+   "domain": "vybenetwork.com",
+   "facilitator": null,
+   "rank": 25,
+   "screen_score": 89.000711,
+   "sources": "github_search",
+   "stage": {
+    "stage": "unknown (no funding evidence found)",
+    "seed_eligible": true,
+    "ineligible_reasons": [],
+    "yc_batch": null,
+    "token": null,
+    "prior_raises_defillama": [],
+    "round_evidence": [],
+    "doc_ids": []
+   },
+   "doc_ids": [
+    "d_26e65d0b8d435a48",
+    "d_79209d156af52c70",
+    "d_b3e61427fd0e0e8c",
+    "d_d2e39ad11bd7a4d2"
+   ]
+  },
+  {
+   "entity": "ausca",
+   "name": "auscahq",
+   "github_owner": "auscahq",
+   "top_repo": "auscahq/ausca",
+   "domain": "ausca.com",
+   "facilitator": null,
+   "rank": 26,
+   "screen_score": 73.000073,
+   "sources": "github_search",
+   "stage": {
+    "stage": "unknown (no funding evidence found)",
+    "seed_eligible": true,
+    "ineligible_reasons": [],
+    "yc_batch": null,
+    "token": null,
+    "prior_raises_defillama": [],
+    "round_evidence": [],
+    "doc_ids": []
+   },
+   "doc_ids": [
+    "d_0c8cc36797b12828",
+    "d_1887cd9fe2e6615f",
+    "d_3af8c54623d0adf4",
+    "d_b0a251ae90d75dd1",
+    "d_b3e61427fd0e0e8c"
    ]
   }
  ]

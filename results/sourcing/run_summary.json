@@ -2,64 +2,64 @@
  "as_of": "2026-11-01",
  "n_memos": 8,
  "failed": [],
- "claims_drafted": 103,
- "claims_verified_first_pass": 59,
- "raw_citation_precision": 0.5728,
- "claims_verified_after_repair": 103,
- "verifier_pass_after_repair_over_drafted": 1.0,
+ "claims_drafted": 102,
+ "claims_verified_first_pass": 62,
+ "raw_citation_precision": 0.6078,
+ "claims_verified_after_repair": 100,
+ "verifier_pass_after_repair_over_drafted": 0.9804,
  "critic_labels": {
-  "entails": 32,
+  "entails": 30,
   "partial": 68,
-  "contradicts": 1,
+  "contradicts": 0,
   "unsupported": 2,
   "unlabelled": 0
  },
- "critic_entailed_over_verified": 0.3107,
- "critic_entailed_over_drafted": 0.3107,
- "claims_shipped": 100,
+ "critic_entailed_over_verified": 0.3,
+ "critic_entailed_over_drafted": 0.2941,
+ "claims_shipped": 98,
  "claims_shipped_partial_tagged": 68,
- "claims_withheld_by_critic": 3,
- "claims_withheld_by_verifier": 0,
+ "claims_withheld_by_critic": 2,
+ "claims_withheld_by_verifier": 2,
  "recommendations": {
+  "advance": 0,
+  "watch": 7,
+  "pass": 1
+ },
+ "first_draft_recommendations": {
   "advance": 0,
   "watch": 6,
   "pass": 2
  },
- "first_draft_recommendations": {
-  "advance": 1,
-  "watch": 5,
-  "pass": 2
- },
  "critic_recommendations": {
   "advance": 0,
-  "watch": 5,
-  "pass": 3
+  "watch": 7,
+  "pass": 1
  },
- "recommendation_agreement": 5,
- "memos_with_decision_card": 3,
+ "recommendation_agreement": 8,
+ "memos_with_decision_card": 0,
  "human_decisions": "pending: recorded by the owner with `python -m vaios.decide record` (none yet)",
  "memos": [
   {
-   "entity": "vybe",
-   "name": "vybenetwork",
+   "entity": "codespar",
+   "name": "codespar",
    "committee_rank": 1,
    "stage": "unknown (no funding evidence found)",
    "drafter": "watch",
    "drafter_first_draft": "watch",
    "critic": "watch",
    "claims_drafted": 13,
-   "raw_precision": 0.6154,
+   "raw_precision": 0.4615,
    "verified": 13,
    "withheld_by_verifier": 0,
    "dropped_in_repair": 0,
-   "critic_entailed_share": 0.2308,
+   "critic_entailed_share": 0.3846,
    "shipped": 12,
-   "shipped_partial": 9,
+   "shipped_partial": 7,
    "withheld_by_critic": 1,
    "scores_drafter": {
-    "pmf": 3,
-    "narrative": 3,
-    "execution": 3
+    "pmf": 2,
+    "narrative": 4,
+    "execution": 4
    },
    "scores_critic": {
     "pmf": 3,
@@ -69,15 +69,15 @@
    "disagreements": []
   },
   {
-   "entity": "agoragentic",
-   "name": "agoragentic",
+   "entity": "faremeter",
+   "name": "faremeter",
    "committee_rank": 2,
    "stage": "unknown (no funding evidence found)",
    "drafter": "watch",
    "drafter_first_draft": "watch",
-   "critic": "pass",
+   "critic": "watch",
    "claims_drafted": 13,
-   "raw_precision": 0.6154,
+   "raw_precision": 0.6923,
    "verified": 13,
    "withheld_by_verifier": 0,
    "dropped_in_repair": 0,
@@ -87,17 +87,15 @@
    "withheld_by_critic": 0,
    "scores_drafter": {
     "pmf": 2,
-    "narrative": 3,
-    "execution": 3
+    "narrative": 4,
+    "execution": 4
    },
    "scores_critic": {
     "pmf": 3,
     "narrative": 3,
-    "execution": 4
+    "execution": 3
    },
-   "disagreements": [
-    "recommendation: drafter 'watch' vs critic 'pass'"
-   ]
+   "disagreements": []
   },
   {
    "entity": "aibtc",
@@ -112,130 +110,41 @@
    "verified": 12,
    "withheld_by_verifier": 0,
    "dropped_in_repair": 0,
-   "critic_entailed_share": 0.0,
+   "critic_entailed_share": 0.3333,
    "shipped": 12,
-   "shipped_partial": 12,
-   "withheld_by_critic": 0,
-   "scores_drafter": {
-    "pmf": 2,
-    "narrative": 4,
-    "execution": 3
-   },
-   "scores_critic": {
-    "pmf": 3,
-    "narrative": 3,
-    "execution": 3
-   },
-   "disagreements": []
-  },
-  {
-   "entity": "codespar",
-   "name": "codespar",
-   "committee_rank": 4,
-   "stage": "unknown (no funding evidence found)",
-   "drafter": "watch",
-   "drafter_first_draft": "watch",
-   "critic": "pass",
-   "claims_drafted": 13,
-   "raw_precision": 0.6923,
-   "verified": 13,
-   "withheld_by_verifier": 0,
-   "dropped_in_repair": 0,
-   "critic_entailed_share": 0.3846,
-   "shipped": 13,
    "shipped_partial": 8,
    "withheld_by_critic": 0,
    "scores_drafter": {
     "pmf": 2,
-    "narrative": 4,
-    "execution": 3
+    "narrative": 3,
+    "execution": 4
    },
    "scores_critic": {
     "pmf": 3,
     "narrative": 3,
     "execution": 3
    },
-   "disagreements": [
-    "recommendation: drafter 'watch' vs critic 'pass'"
-   ]
+   "disagreements": []
   },
   {
-   "entity": "payai",
-   "name": "PayAI Network",
-   "committee_rank": 5,
+   "entity": "vybe",
+   "name": "vybenetwork",
+   "committee_rank": 4,
    "stage": "unknown (no funding evidence found)",
    "drafter": "watch",
    "drafter_first_draft": "watch",
    "critic": "watch",
-   "claims_drafted": 14,
-   "raw_precision": 0.3571,
-   "verified": 14,
-   "withheld_by_verifier": 0,
+   "claims_drafted": 13,
+   "raw_precision": 0.8462,
+   "verified": 11,
+   "withheld_by_verifier": 2,
    "dropped_in_repair": 0,
-   "critic_entailed_share": 0.5714,
-   "shipped": 14,
-   "shipped_partial": 6,
+   "critic_entailed_share": 0.2727,
+   "shipped": 11,
+   "shipped_partial": 8,
    "withheld_by_critic": 0,
    "scores_drafter": {
-    "pmf": 2,
-    "narrative": 3,
-    "execution": 3
-   },
-   "scores_critic": {
     "pmf": 3,
-    "narrative": 4,
-    "execution": 3
-   },
-   "disagreements": []
-  },
-  {
-   "entity": "devlabgroup",
-   "name": "devlab-group",
-   "committee_rank": 6,
-   "stage": "unknown (no funding evidence found)",
-   "drafter": "pass",
-   "drafter_first_draft": "pass",
-   "critic": "pass",
-   "claims_drafted": 13,
-   "raw_precision": 0.6154,
-   "verified": 13,
-   "withheld_by_verifier": 0,
-   "dropped_in_repair": 0,
-   "critic_entailed_share": 0.2308,
-   "shipped": 12,
-   "shipped_partial": 9,
-   "withheld_by_critic": 1,
-   "scores_drafter": {
-    "pmf": 2,
-    "narrative": 3,
-    "execution": 3
-   },
-   "scores_critic": {
-    "pmf": 2,
-    "narrative": 4,
-    "execution": 3
-   },
-   "disagreements": []
-  },
-  {
-   "entity": "faremeter",
-   "name": "faremeter",
-   "committee_rank": 7,
-   "stage": "unknown (no funding evidence found)",
-   "drafter": "watch",
-   "drafter_first_draft": "advance",
-   "critic": "watch",
-   "claims_drafted": 12,
-   "raw_precision": 0.6667,
-   "verified": 12,
-   "withheld_by_verifier": 0,
-   "dropped_in_repair": 0,
-   "critic_entailed_share": 0.4167,
-   "shipped": 11,
-   "shipped_partial": 6,
-   "withheld_by_critic": 1,
-   "scores_drafter": {
-    "pmf": 2,
     "narrative": 3,
     "execution": 3
    },
@@ -249,9 +158,38 @@
   {
    "entity": "seracx",
    "name": "sera-cx",
-   "committee_rank": 8,
+   "committee_rank": 5,
    "stage": "unknown (no funding evidence found)",
-   "drafter": "pass",
+   "drafter": "watch",
+   "drafter_first_draft": "watch",
+   "critic": "watch",
+   "claims_drafted": 13,
+   "raw_precision": 0.6154,
+   "verified": 13,
+   "withheld_by_verifier": 0,
+   "dropped_in_repair": 0,
+   "critic_entailed_share": 0.4615,
+   "shipped": 13,
+   "shipped_partial": 7,
+   "withheld_by_critic": 0,
+   "scores_drafter": {
+    "pmf": 2,
+    "narrative": 3,
+    "execution": 3
+   },
+   "scores_critic": {
+    "pmf": 3,
+    "narrative": 3,
+    "execution": 3
+   },
+   "disagreements": []
+  },
+  {
+   "entity": "agoragentic",
+   "name": "agoragentic",
+   "committee_rank": 6,
+   "stage": "unknown (no funding evidence found)",
+   "drafter": "watch",
    "drafter_first_draft": "pass",
    "critic": "watch",
    "claims_drafted": 13,
@@ -266,16 +204,72 @@
    "scores_drafter": {
     "pmf": 2,
     "narrative": 3,
-    "execution": 3
+    "execution": 4
    },
    "scores_critic": {
-    "pmf": 3,
+    "pmf": 2,
     "narrative": 3,
     "execution": 3
    },
-   "disagreements": [
-    "recommendation: drafter 'pass' vs critic 'watch'"
-   ]
+   "disagreements": []
+  },
+  {
+   "entity": "devlabgroup",
+   "name": "devlab-group",
+   "committee_rank": 7,
+   "stage": "unknown (no funding evidence found)",
+   "drafter": "watch",
+   "drafter_first_draft": "watch",
+   "critic": "watch",
+   "claims_drafted": 13,
+   "raw_precision": 0.6154,
+   "verified": 13,
+   "withheld_by_verifier": 0,
+   "dropped_in_repair": 0,
+   "critic_entailed_share": 0.2308,
+   "shipped": 12,
+   "shipped_partial": 9,
+   "withheld_by_critic": 1,
+   "scores_drafter": {
+    "pmf": 2,
+    "narrative": 3,
+    "execution": 4
+   },
+   "scores_critic": {
+    "pmf": 2,
+    "narrative": 3,
+    "execution": 3
+   },
+   "disagreements": []
+  },
+  {
+   "entity": "ausca",
+   "name": "auscahq",
+   "committee_rank": 8,
+   "stage": "unknown (no funding evidence found)",
+   "drafter": "pass",
+   "drafter_first_draft": "pass",
+   "critic": "pass",
+   "claims_drafted": 12,
+   "raw_precision": 0.5833,
+   "verified": 12,
+   "withheld_by_verifier": 0,
+   "dropped_in_repair": 0,
+   "critic_entailed_share": 0.0833,
+   "shipped": 12,
+   "shipped_partial": 11,
+   "withheld_by_critic": 0,
+   "scores_drafter": {
+    "pmf": 1,
+    "narrative": 3,
+    "execution": 3
+   },
+   "scores_critic": {
+    "pmf": 1,
+    "narrative": 3,
+    "execution": 3
+   },
+   "disagreements": []
   }
  ]
 }

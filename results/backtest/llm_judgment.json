@@ -142,16 +142,19 @@
    "claude-sonnet-5-5": true,
    "gpt-6.1-sol": true
   },
+  "post_cutoff_status": "assumed, with supporting evidence: the latest correctly dated event is a lower bound on each model's cutoff (cutoff_probe.json); not proven",
+  "missing_predictions_reported_per_scorer": true,
   "raise_mentions_in_current_description": {
-   "rule": "\\braised\\b|\\braises\\b|\\bfunding round\\b|\\b(pre-)?seed round\\b|\\bseries [a-d]\\b|\\bbacked by\\b|\\bled by\\b.*\\b(ventures|capital|labs)\\b|\\bstrategic (round|investment)\\b",
-   "positives": 1,
+   "rule": "\\braised\\s+\\$|\\braises\\s+\\$|\\bfunding round\\b|\\b(pre-)?seed round\\b|\\bseries [a-d] (round|funding)\\b|\\bbacked by\\b[^.]{0,40}\\b(ventures|capital|labs|vc|investors|partners|a16z|paradigm|sequoia|polychain|pantera|multicoin)\\b|\\bled by\\b[^.]{0,40}\\b(ventures|capital|labs|vc|investors|partners|a16z|paradigm|sequoia|polychain|pantera|multicoin)\\b|\\bstrategic (round|investment)\\b",
+   "counted_within": "the first 300 characters (what the named arm saw)",
+   "positives": 0,
    "positives_total": 8,
-   "negatives": 2,
+   "negatives": 0,
    "negatives_total": 112,
+   "positives_full_description": 1,
+   "negatives_full_description": 0,
    "matched_descriptions": {
-    "lara-protocol": "Lara Protocol is the native Liquid Staking solution for Taraxa.Stake your tokens with Lara, and we'll take care of the rest. You'll instantly receive stTARA tokens, which, although tied to your staking rewards, can be used in other DeFi pro",
-    "kton": "KTON is a next-generation liquid staking protocol for the TON ecosystem, designed to unlock liquidity for both institutional and retail users. With its liquid staking token $KTON, users earn staking rewards while accessing TON\u2019s expanding D",
-    "infinifi": "infiniFi is building the future of decentralized finance by recreating modern banking infrastructure\u2014on-chain. By merging liquid and illiquid assets into a capital-efficient system with transparent fractional reserves, infiniFi delivers sup"
+    "infinifi": "infiniFi is building the future of decentralized finance by recreating modern banking infrastructure\u2014on-chain. By merging liquid and illiquid assets into a capital-efficient system with transparent fractional reserves, infiniFi delivers superior yields to depositors without increasing systemic risk. Founded in 2024, infiniFi is backed by top Web3 investors and is integrated with major protocols li"
    }
   },
   "results": {

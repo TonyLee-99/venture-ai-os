@@ -608,5 +608,10 @@
     "message": "Remove unused example servers and evals"
    }
   ]
+ },
+ "payai_30d_window_fix": {
+  "fixed_window_txs": 441602,
+  "round1_window_txs": 462019,
+  "round1_window_days": 32
  }
 }

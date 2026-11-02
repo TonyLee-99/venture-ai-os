@@ -1,0 +1,9 @@
+GitHub owner: auscahq
+Source: GitHub REST/GraphQL API, fetched 2026-11-02.
+Account type: Organization. Account created: 2026-09-02. Public non-fork repositories: 5.0.
+
+Repository auscahq/ausca
+Description: Pay-per-call APIs and MCP services for AI agents: document OCR, document analysis, media transcription, browser sessions, and agent inboxes. USDC on Base over x402, no API keys, receipt-backed results.
+Stars: 39. Forks: 0. Language: TypeScript.
+Created: 2026-09-03. Last push: 2026-10-25.
+Topics: ai-agents,base,browser-automation,document-analysis,email,mcp,mcp-server,ocr,payments,python,sdk,transcription,typescript,usdc,x402

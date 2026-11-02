@@ -32,6 +32,7 @@ def headline_numbers() -> dict[str, str]:
         "auc_nr_heuristic": f"{snr['s_heuristic']['auc']:.3f}",
         "auc_nr_heuristic_ci": f"{snr['s_heuristic']['auc_ci95'][0]:.2f}-{snr['s_heuristic']['auc_ci95'][1]:.2f}",
         "auc_nr_commits": f"{snr['b_commits']['auc']:.3f}", "auc_nr_random": f"{snr['b_random']['auc']:.3f}",
+        "auc_nr_heur_gh": f"{snr['s_heuristic_github']['auc']:.3f}",
         "auc_nr_best_base": f"{base_nr['auc']:.3f}",
         "auc_nr_heur_diff_ci": f"{pair_nr['s_heuristic']['ci95'][0]:+.3f} to {pair_nr['s_heuristic']['ci95'][1]:+.3f}",
         # full population
@@ -51,6 +52,8 @@ def headline_numbers() -> dict[str, str]:
         "lead_gh_share": f"{lt['github_first_repo']['share_signal_before_raise']:.0%}",
         "lead_dl_median": f"{lt['defillama_listing']['median_months']:.1f}",
         "lead_dl_share": f"{lt['defillama_listing']['share_signal_before_raise']:.0%}",
+        "lead_after_share": f"{lt['share_of_todays_top5_repos_created_after_first_raise']:.0%}",
+        "lead_2020_22": f"{lt['share_first_raises_2020_2022']:.0%}",
         # sourcing + memos
         "n_entities": f"{_j('sourcing/shortlist.json')['n_candidates']:,}",
         "memos": f"{rs['n_memos']}", "claims_drafted": f"{rs['claims_drafted']}",
@@ -75,7 +78,12 @@ def headline_numbers() -> dict[str, str]:
         n["ce_orig"], n["ce_pert"] = f"{c['n_original_pairs']}", f"{c['n_perturbed_pairs']}"
         n["ce_critic_flag_orig"] = f"{c['originals']['critic_flag_rate_upper_bound_on_false_positives']:.0%}"
         for k, v in c["recall_by_perturbation"].items():
-            n[f"ce_ver|{k}"], n[f"ce_cri|{k}"] = f"{v['verifier_recall']:.0%}", f"{v['critic_recall']:.0%}"
+            n[f"ce_ver|{k}"], n[f"ce_cri|{k}"] = f"{v['verifier_recall']:.0%}", f"{v['critic_recall_lenient']:.0%}"
+            n[f"ce_cri_strict|{k}"] = f"{v['critic_recall_strict']:.0%}"
+            cond = v["critic_recall_lenient_conditional"]
+            n[f"ce_cri_cond|{k}"] = f"{cond:.0%}" if cond is not None else "n/a"
+            n[f"ce_cond_n|{k}"] = f"{v['n_conditional_on_original_entails']}"
+        n["ce_strict_entity"] = n.get("ce_cri_strict|wrong_entity", "n/a")
     lj = RESULTS / "backtest" / "llm_judgment.json"
     if lj.exists():
         d = json.loads(lj.read_text())
@@ -105,6 +113,8 @@ def headline_numbers() -> dict[str, str]:
         v2 = g["event_list_v2_with_token_launches"]
         n["v2_events"], n["v2_hit"], n["v2_null"], n["v2_p"] = (f"{v2['n_events']}", f"{v2['hit_rate']:.0%}",
                                                                f"{v2['null_mean']:.0%}", f"{v2['p_value']:.2f}")
+        n["payai_fixed"] = f"{g['payai_30d_window_fix']['fixed_window_txs']:,}"
+        n["payai_old"] = f"{g['payai_30d_window_fix']['round1_window_txs']:,}"
         mc = g["matched_count_vs_zscore"]
         n["mc_k"], n["mc_pelt_fa"], n["mc_z_fa"] = (f"{mc['k']}", f"{mc['pelt']['false_alarm_rate']:.0%}",
                                                     f"{mc['zscore_top_k']['false_alarm_rate']:.0%}")

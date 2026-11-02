@@ -25,7 +25,7 @@
   {
    "step": "screen",
    "relevant": 711,
-   "relevant_investable": 372,
+   "relevant_investable": 371,
    "already_in_crm": 2,
    "stage_checked": 40,
    "stage_ineligible": [
@@ -38,11 +38,11 @@
     "faremeter",
     "agoragentic",
     "codespar",
-    "vybe",
-    "seracx",
+    "devlabgroup",
     "aibtc",
-    "payai",
-    "devlabgroup"
+    "seracx",
+    "vybe",
+    "ausca"
    ]
   }
  ],
@@ -52,11 +52,11 @@
    "faremeter",
    "agoragentic",
    "codespar",
-   "vybe",
-   "seracx",
+   "devlabgroup",
    "aibtc",
-   "payai",
-   "devlabgroup"
+   "seracx",
+   "vybe",
+   "ausca"
   ]
  },
  "error": null,

@@ -171,9 +171,7 @@ def facts_sheet(con, cand: dict, n_candidates: int) -> dict:
         desc["gh.first_repo_year"] = "year the owner's oldest public repo was created"
     # The screening rank is a triage signal, not evidence: it is shown in the memo header but never offered as a
     # fact a claim could cite (the GitHub-only score is near chance on never-raised protocols, see backtest.json).
-    x = con.execute("""SELECT SUM(txs), SUM(volume_usd), MAX(buyers) FROM stg_x402_facilitator_daily
-                       WHERE facilitator = ? AND day >= ?::TIMESTAMP - INTERVAL 30 DAY""",
-                    [cand.get("facilitator") or "", str(AS_OF)]).fetchone()
+    x = facilitator_window(con, cand.get("facilitator") or "")
     if x and x[0]:
         f["x402.txs_30d"], f["x402.volume_usd_30d"], f["x402.peak_daily_buyers_30d"] = int(x[0]), round(x[1], 2), int(x[2])
         desc["x402.txs_30d"] = "x402 transactions settled by this facilitator in the 30 days to the as-of date"
@@ -182,10 +180,7 @@ def facts_sheet(con, cand: dict, n_candidates: int) -> dict:
         f["x402.txs_per_peak_daily_buyer_30d"] = round(x[0] / max(x[2], 1), 1)
         desc["x402.usd_per_tx_30d"] = "average USD value per x402 payment, last 30 days"
         desc["x402.txs_per_peak_daily_buyer_30d"] = "30-day payments divided by the peak daily count of distinct buyers"
-        share = con.execute("""WITH t AS (SELECT facilitator, SUM(txs) txs FROM stg_x402_facilitator_daily
-                                          WHERE day >= ?::TIMESTAMP - INTERVAL 30 DAY GROUP BY 1)
-                               SELECT txs / (SELECT SUM(txs) FROM t) FROM t WHERE facilitator = ?""",
-                            [str(AS_OF), cand.get("facilitator")]).fetchone()
+        share = facilitator_shares(con).get(cand.get("facilitator"))
         if share:
             f["x402.share_of_all_txs_30d"] = round(float(share[0]), 4)
             desc["x402.share_of_all_txs_30d"] = "this facilitator's share of all x402 payments, last 30 days"
@@ -212,12 +207,29 @@ def monitor_findings(cand: dict) -> str | None:
     return "\n".join(lines)
 
 
+# The 30 days TO the as-of date: [AS_OF - 30 days, AS_OF). Round 1 had no upper bound, so data fetched on
+# 2026-11-02 leaked Nov 1-2 into "the last 30 days" (32 days). tests/test_windows.py pins the boundaries.
+WINDOW = "day >= ?::TIMESTAMP - INTERVAL 30 DAY AND day < ?::TIMESTAMP"
+
+
+def facilitator_window(con, facilitator: str, as_of=AS_OF):
+    return con.execute(f"""SELECT SUM(txs), SUM(volume_usd), MAX(buyers) FROM stg_x402_facilitator_daily
+                           WHERE facilitator = ? AND {WINDOW}""", [facilitator, str(as_of), str(as_of)]).fetchone()
+
+
+def facilitator_shares(con, as_of=AS_OF) -> dict:
+    """facilitator -> (share of payments, share of volume, payments, volume) over the 30-day window."""
+    rows = con.execute(f"""WITH t AS (SELECT facilitator, SUM(txs) txs, SUM(volume_usd) vol
+                                      FROM stg_x402_facilitator_daily WHERE {WINDOW} GROUP BY 1)
+                           SELECT facilitator, txs / SUM(txs) OVER (), vol / SUM(vol) OVER (), txs, vol FROM t""",
+                       [str(as_of), str(as_of)]).fetchall()
+    return {f: (ts, vs, t, v) for f, ts, vs, t, v in rows}
+
+
 def market_structure(con) -> str:
     """Competitive map from the warehouse: x402 facilitator shares (the comparable set for any facilitator)."""
-    rows = con.execute("""WITH t AS (SELECT facilitator, SUM(txs) txs, SUM(volume_usd) vol FROM stg_x402_facilitator_daily
-                                     WHERE day >= ?::TIMESTAMP - INTERVAL 30 DAY GROUP BY 1)
-                          SELECT facilitator, txs, vol, txs / SUM(txs) OVER (), vol / SUM(vol) OVER ()
-                          FROM t WHERE txs > 0 ORDER BY txs DESC LIMIT 12""", [str(AS_OF)]).fetchall()
+    rows = sorted(((f, t, v, ts, vs) for f, (ts, vs, t, v) in facilitator_shares(con).items() if t > 0),
+                  key=lambda r: -r[1])[:12]
     lines = [f"x402 facilitator market share, 30 days to {AS_OF} (x402scan public data, fetched {FETCHED}):"]
     lines += [f"{f}: {int(t):,} payments ({ts:.1%} of payments), {v:,.0f} USD ({vs:.1%} of volume)"
               for f, t, v, ts, vs in rows]

@@ -45,6 +45,18 @@ def heuristic(df: pd.DataFrame) -> pd.Series:
     return ranks.mean(axis=1)
 
 
+GITHUB_HEURISTIC_SIGNALS = ["commits_90d", "commit_growth", "gh_newness"]
+
+
+def heuristic_github(df: pd.DataFrame, group: str | None = "t0") -> pd.Series:
+    """The pre-specified heuristic restricted to signals a GitHub-only candidate has (ADR 0010): recent commits,
+    commit growth, and newness (minus the age of the owner's oldest repo instead of DefiLlama listing age).
+    For non-DefiLlama candidates the TVL terms of the full heuristic are constant and would drop out anyway."""
+    sig = df.assign(gh_newness=-df["gh_age_days"])[GITHUB_HEURISTIC_SIGNALS]
+    ranks = sig.groupby(df[group]).rank(pct=True) if group else sig.rank(pct=True)
+    return ranks.mean(axis=1)
+
+
 def fit_logit(train: pd.DataFrame, features: list[str]):
     model = make_pipeline(StandardScaler(), LogisticRegression(C=0.5, max_iter=2000))
     model.fit(model_matrix(train)[features], train["raised"].astype(int))

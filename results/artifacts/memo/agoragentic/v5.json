@@ -1,0 +1,401 @@
+{
+ "kind": "memo",
+ "entity": "agoragentic",
+ "version": 5,
+ "parent_version": 4,
+ "as_of": "2026-11-01",
+ "content_sha256": "6ab8a7e9b092371a904afdda7d47cb56134ab29399abb7e44d60bb095120bfbb",
+ "provenance": {
+  "run_id": "0ae1b61e3b4f3149",
+  "job": "diligence_memo",
+  "doc_ids": [
+   "d_25ae1a0ad41ac6ad",
+   "d_56dbcafcb8f38ffa",
+   "d_58548c9e5cdbdfd3",
+   "d_5a4cd6a19a1a9d5f",
+   "d_b3e61427fd0e0e8c",
+   "d_b7d34711deeb9013"
+  ],
+  "cache_keys": [
+   "1e2257bef36c87b4cc9c0510dc9eda7655a32f016d041db62e8f38238a2876b0",
+   "2fed5f10c538f26d40af9e0040fc3bd625daac9a4a7f5b2ac04e373757c72c81",
+   "ea56b70ca4877dc7f2139a7dead7fe0daf3a1fb0a3644c51c6dd0b99071b3ca7",
+   "1f55e9edcbf44590b9219cde86dc1e0a5f66a359c08a411004231e225ae50b98"
+  ],
+  "metrics": [
+   "gh.commits_90d",
+   "gh.commits_prev_90d",
+   "gh.commits_total",
+   "gh.first_repo_year",
+   "gh.public_repos",
+   "gh.stars_total_now",
+   "hn.points_total",
+   "hn.stories"
+  ]
+ },
+ "content": {
+  "entity": "agoragentic",
+  "name": "agoragentic",
+  "as_of": "2026-11-01",
+  "stage": {
+   "stage": "unknown (no funding evidence found)",
+   "seed_eligible": true,
+   "ineligible_reasons": [],
+   "yc_batch": null,
+   "token": null,
+   "prior_raises_defillama": [],
+   "round_evidence": [],
+   "doc_ids": []
+  },
+  "triage": {
+   "rank": 7,
+   "screen_score": 766.001176,
+   "note": "triage signal only, not evidence (near chance on never-raised protocols)"
+  },
+  "memo": {
+   "company": "agoragentic",
+   "one_liner": "Agoragentic sells Triptych OS (Agent OS), a governed runtime giving autonomous agents mandates, wallet budgets, approvals and receipts, plus an open-source integration/governance layer and a Router/Marketplace for agent-to-agent purchases, aimed at developers and platform teams that already run AI agents.",
+   "thesis_fit": "Adjacent to the agents x payments thesis: the pitch is governance, evidence and receipts for agents, with x402 monetization and a marketplace as optional layers. However paid purchasing is currently frozen and no real transaction volume is shown, so the commerce side is unproven.",
+   "claims": [
+    {
+     "id": "c1",
+     "section": "team",
+     "text": "The company names a single founder, Jeremy Borden.",
+     "doc_id": "d_25ae1a0ad41ac6ad",
+     "quote": "Jeremy Borden",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote establishes Jeremy Borden's name but neither his founder role nor that he is the sole named founder."
+    },
+    {
+     "id": "c2",
+     "section": "team",
+     "text": "A second human contributor, jmborden1112-beep, has 34 commits in the main integrations repo.",
+     "doc_id": "d_b7d34711deeb9013",
+     "quote": "jmborden1112-beep (User): 34 commits",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The receipt supports the account's commit count, but a GitHub User account does not establish a distinct second human."
+    },
+    {
+     "id": "c3",
+     "section": "execution",
+     "text": "The owner's top repos show 766 commits in the latest 90-day window.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.commits_90d",
+     "value": 766.0,
+     "support": "entails",
+     "support_note": "The cited metric reports the stated commit count for the owner's top repositories in the latest specified window."
+    },
+    {
+     "id": "c4",
+     "section": "execution",
+     "text": "The prior-90-day commit count was 279, showing the acceleration is from a lower base.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.commits_prev_90d",
+     "value": 279.0,
+     "support": "partial",
+     "support_note": "The metric establishes the prior period's count, but acceleration requires comparison with another receipt."
+    },
+    {
+     "id": "c5",
+     "section": "execution",
+     "text": "The integrations repo was last pushed on 2026-10-28, days before the snapshot, and the org has 2 public non-fork repos.",
+     "doc_id": "d_5a4cd6a19a1a9d5f",
+     "quote": "Created: 2026-02-27. Last push: 2026-10-28.",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports the last-push date but contains neither the snapshot date nor the organization's repository count."
+    },
+    {
+     "id": "c6",
+     "section": "pmf",
+     "text": "Outside developer interest is modest: 41 stars and 10 forks on the integrations repo.",
+     "doc_id": "d_5a4cd6a19a1a9d5f",
+     "quote": "Stars: 41. Forks: 10.",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports the star and fork counts but does not establish that they represent outside developers."
+    },
+    {
+     "id": "c7",
+     "section": "pmf",
+     "text": "The site reports 1,463 successful public listing calls across browse-visible listings.",
+     "doc_id": "d_58548c9e5cdbdfd3",
+     "quote": "1,463\nsuccessful public listing calls are counted from browse-visible listings.",
+     "metric": null,
+     "value": null,
+     "support": "entails",
+     "support_note": "The quote directly supports the site's reported successful public listing-call count and its stated scope."
+    },
+    {
+     "id": "c8",
+     "section": "risk",
+     "text": "Paid purchasing on the marketplace is currently unavailable because platform custody policy is frozen.",
+     "doc_id": "d_58548c9e5cdbdfd3",
+     "quote": "Purchasing is currently unavailable while the platform custody policy is frozen.",
+     "metric": null,
+     "value": null,
+     "support": "entails",
+     "support_note": "The quote explicitly states that purchasing is unavailable while the platform custody policy is frozen."
+    },
+    {
+     "id": "c9",
+     "section": "narrative",
+     "text": "The story has broadened to many surfaces: the repo catalog lists 112 integration surfaces and many product layers (Agent OS, Router/Marketplace, Interchange, Harness Core, ECF, Risk Fork), which dilutes the wedge.",
+     "doc_id": "d_56dbcafcb8f38ffa",
+     "quote": "contains **112** surfaces",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports the surface count but neither the named product layers nor historical broadening or wedge dilution."
+    },
+    {
+     "id": "c10",
+     "section": "why_now",
+     "text": "The product is built on agent protocols now emerging: it connects via MCP, A2A, x402 or direct REST.",
+     "doc_id": "d_25ae1a0ad41ac6ad",
+     "quote": "Connect via MCP, A2A, x402, or direct REST API.",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports the listed connection options but does not establish that these protocols are now emerging."
+    },
+    {
+     "id": "c11",
+     "section": "competition",
+     "text": "In the x402scan facilitator data, Coinbase handles 68.2% of payments; Agoragentic is not among the listed facilitators, so it has no visible share of x402 settlement.",
+     "doc_id": "d_b3e61427fd0e0e8c",
+     "quote": "coinbase: 2,342,973 payments (68.2% of payments)",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports Coinbase's payment share but cannot establish Agoragentic's absence or its settlement share."
+    },
+    {
+     "id": "c12",
+     "section": "risk",
+     "text": "The GitHub organization account was created 2026-10-23, so its public track record is very short.",
+     "doc_id": "d_5a4cd6a19a1a9d5f",
+     "quote": "Account created: 2026-10-23.",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote establishes the organization account's creation date but does not establish the age of the company's public work."
+    },
+    {
+     "id": "c13",
+     "section": "pmf",
+     "text": "Hacker News shows 0 stories with the company name in the title.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "hn.stories",
+     "value": 0.0,
+     "support": "entails",
+     "support_note": "The metric directly supports the absence of Hacker News stories with the company name in the title."
+    }
+   ],
+   "scores": {
+    "pmf": {
+     "score": 2,
+     "rationale": "Evidence of real usage is thin. The 1,463 successful public listing calls [c7] are free or browse-level calls, not paid volume, and paid purchasing is currently unavailable because custody policy is frozen [c8]. Outside developer interest is modest at 41 stars and 10 forks [c6], and there is no Hacker News traction [c13]."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "The space is timely: the product connects via MCP, A2A, x402 or REST [c10]. But the story has spread across many product layers and 112 integration surfaces [c9], which dilutes the wedge. There is no visible x402 settlement share against Coinbase's 68.2% [c11]. The GitHub org is also very new [c12]."
+    },
+    "execution": {
+     "score": 4,
+     "rationale": "Commit volume was 766 in the latest 90 days versus 279 in the prior 90 [c3][c4], and the integrations repo was pushed days before the snapshot [c5]. Against that, the work looks concentrated in a single named founder [c1] with one other visible contributor at 34 commits [c2], and the org is new [c12]."
+    }
+   },
+   "risks": [
+    "Marketplace commerce is the thesis-relevant part, yet paid purchasing is frozen and priced usage is tiny, so the agent-payments wedge is unproven.",
+    "Scope sprawl across Agent OS, Marketplace, Interchange, Harness, ECF and Risk Fork may mean no product reaches depth; high commit counts may reflect generated or churned code.",
+    "Call counts on listings may be team-seeded (free echo/demo tools), so they may not indicate organic demand."
+   ],
+   "open_questions": [
+    "Why is paid purchasing frozen, what is the platform custody issue, and when does it reopen?",
+    "Who are the paying or transacting users outside the team, and what is real USDC settlement volume to date?",
+    "Which single product (Agent OS, Harness Core, or Marketplace) is the wedge, and how do you monetize it?",
+    "How are rhein1 and jmborden1112-beep related to the founder, and who else is on the team?",
+    "What share of the 1,463 listing calls came from the team or its own agents?",
+    "How do you differentiate from existing x402 facilitators and agent governance tooling?"
+   ],
+   "recommendation": "watch",
+   "rescore_note": "Dropping the withheld claims changed nothing because none were withheld, and the partial claims were treated as weak evidence. I added [c12] and [c13] to the rationales as further caution on track record and outside traction. Recommendation stays pass; shipping velocity is strong, so re-checking if paid purchasing reopens and non-team paid usage appears would be reasonable.",
+   "draft_scores": {
+    "pmf": {
+     "score": 2,
+     "rationale": "Usage is mostly free calls to a few listings and the only priced featured listing has 55 calls [c7]; paid purchasing is frozen [c8]; developer adoption is small [c6]. No evidence of paying customers or non-team transacting volume."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "Governance, budgets and receipts for agents is timely and in the thesis space [c10], but the story sprawls across many products and 112 surfaces [c9], and the commerce layer shows no visible x402 share [c11]."
+    },
+    "execution": {
+     "score": 4,
+     "rationale": "Commit velocity nearly tripled quarter over quarter and pushes are recent [c3][c4][c5], but the work is concentrated in one main contributor [c2] and one named founder [c1]."
+    }
+   },
+   "draft_recommendation": "pass",
+   "recommendation_stated_by_model": "pass",
+   "evidence_status": "sufficient",
+   "free_text_removed": [
+    "Heavy single-contributor concentration (rhein1 with 967 of ~1,019 human commits) and one named founder create key-person risk.",
+    "Scores unchanged from the first draft (PMF 2, Narrative 3, Execution 4; total 9).",
+    "The total is below 11 and PMF is below 3, so the advance rule is not met.",
+    "Nothing shows paying customers or transacting volume from non-team users, so this is below the 3 anchor (developer adoption without payment proof).",
+    "Generic positioning in a crowded space with no clear stated edge fits a 3.",
+    "Sustained recent shipping is clear, but the small team and short track record keep it from a 5.",
+    "I keep 4, treating the partial-support claims as weak but consistent evidence."
+   ]
+  },
+  "unverified": [],
+  "withheld_by_critic": [],
+  "critique": {
+   "claim_labels": [
+    {
+     "claim_id": "c1",
+     "label": "partial",
+     "reason": "The quote establishes Jeremy Borden's name but neither his founder role nor that he is the sole named founder."
+    },
+    {
+     "claim_id": "c2",
+     "label": "partial",
+     "reason": "The receipt supports the account's commit count, but a GitHub User account does not establish a distinct second human."
+    },
+    {
+     "claim_id": "c3",
+     "label": "entails",
+     "reason": "The cited metric reports the stated commit count for the owner's top repositories in the latest specified window."
+    },
+    {
+     "claim_id": "c4",
+     "label": "partial",
+     "reason": "The metric establishes the prior period's count, but acceleration requires comparison with another receipt."
+    },
+    {
+     "claim_id": "c5",
+     "label": "partial",
+     "reason": "The quote supports the last-push date but contains neither the snapshot date nor the organization's repository count."
+    },
+    {
+     "claim_id": "c6",
+     "label": "partial",
+     "reason": "The quote supports the star and fork counts but does not establish that they represent outside developers."
+    },
+    {
+     "claim_id": "c7",
+     "label": "entails",
+     "reason": "The quote directly supports the site's reported successful public listing-call count and its stated scope."
+    },
+    {
+     "claim_id": "c8",
+     "label": "entails",
+     "reason": "The quote explicitly states that purchasing is unavailable while the platform custody policy is frozen."
+    },
+    {
+     "claim_id": "c9",
+     "label": "partial",
+     "reason": "The quote supports the surface count but neither the named product layers nor historical broadening or wedge dilution."
+    },
+    {
+     "claim_id": "c10",
+     "label": "partial",
+     "reason": "The quote supports the listed connection options but does not establish that these protocols are now emerging."
+    },
+    {
+     "claim_id": "c11",
+     "label": "partial",
+     "reason": "The quote supports Coinbase's payment share but cannot establish Agoragentic's absence or its settlement share."
+    },
+    {
+     "claim_id": "c12",
+     "label": "partial",
+     "reason": "The quote establishes the organization account's creation date but does not establish the age of the company's public work."
+    },
+    {
+     "claim_id": "c13",
+     "label": "entails",
+     "reason": "The metric directly supports the absence of Hacker News stories with the company name in the title."
+    }
+   ],
+   "scores": {
+    "pmf": {
+     "score": 2,
+     "rationale": "The counts supported within c6 suggest limited developer interest, and c7 establishes reported calls, but neither identifies independent users, retention, growth or payment; c8 establishes that current paid purchasing is unavailable."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "The protocol connectivity supported within c10 and marketplace activity in c7 establish thesis relevance, but the entailed evidence does not establish a differentiated buyer wedge or credible platform expansion path."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "c3 and the prior-period count supported within c4 indicate substantial ongoing repository activity, while c5 supports recent pushing; commit counts and the account-level contribution evidence in c2 do not establish sustained shipping by distinct people or responsiveness to standards changes."
+    }
+   },
+   "recommendation": "watch",
+   "missing_risks": [
+    "Independent customer identities, repeat usage, retention and willingness to pay remain unknown.",
+    "Reported listing calls lack a time window, growth series and separation of internal, test and external activity.",
+    "The conditions and timeline for restoring paid purchasing remain unknown.",
+    "Governance enforcement coverage and independent verification of consequential outcomes remain unproven by the claims.",
+    "Distinct maintainer identities, ownership concentration and continuity beyond the primary contributor remain unknown.",
+    "Pricing power, acquisition costs, operating costs and defensibility against existing agent platforms remain unknown.",
+    "Facilitator market share may be an inappropriate competitive benchmark for a runtime or marketplace using third-party settlement."
+   ],
+   "strongest_counterargument": "The evidence does not establish a specific independent customer repeatedly obtaining enough value to pay, and current paid purchasing is unavailable. High repository activity and a broad catalog do not resolve that demand gap, so a founder call has limited expected value before customer and transaction evidence is available.",
+   "recommendation_stated_by_model": "pass",
+   "stated_vs_policy_conflict": true
+  },
+  "doc_ids": [
+   "d_25ae1a0ad41ac6ad",
+   "d_56dbcafcb8f38ffa",
+   "d_58548c9e5cdbdfd3",
+   "d_5a4cd6a19a1a9d5f",
+   "d_b3e61427fd0e0e8c",
+   "d_b7d34711deeb9013"
+  ],
+  "facts": {
+   "gh.commits_90d": 766,
+   "gh.commits_prev_90d": 279,
+   "gh.commits_total": 1176,
+   "gh.public_repos": 2,
+   "gh.stars_total_now": 41,
+   "gh.first_repo_year": 2026,
+   "hn.stories": 0,
+   "hn.points_total": 0
+  },
+  "receipts": {
+   "claims_drafted": 13,
+   "raw_precision": 0.5385,
+   "verified": 13,
+   "withheld_by_verifier": 0,
+   "dropped_in_repair": 0,
+   "critic_labels": {
+    "entails": 4,
+    "partial": 9,
+    "contradicts": 0,
+    "unsupported": 0,
+    "unlabelled": 0
+   },
+   "critic_entailed_share": 0.3077,
+   "shipped": 13,
+   "shipped_partial": 9,
+   "withheld_by_critic": 0
+  },
+  "models": {
+   "drafter": "claude_cli:claude-sonnet-5-5",
+   "critic": "codex_cli:gpt-6.1-sol"
+  },
+  "committee_rank": 6,
+  "disagreements": []
+ }
+}

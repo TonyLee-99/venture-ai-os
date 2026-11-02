@@ -35,6 +35,7 @@ def run() -> None:
         "commits_weekly": "SELECT * FROM commits_weekly ORDER BY repo, week",
         "hn_stories": "SELECT objectID, title, url, points, num_comments, created_at, query FROM stg_hn ORDER BY created_at",
         "raises": "SELECT slug, raise_date, round, amount_musd, lead_investors, other_investors FROM raises ORDER BY slug, raise_date",
+        "top_repos": "SELECT DISTINCT owner, repo, repo_created_at FROM stg_gh_windows ORDER BY owner, repo",
         # first public signals per protocol, for the lead-time analysis (repo dates reflect TODAY's repos)
         "protocol_dates": """SELECT p.slug, p.name, p.github_owner, p.listed_at_eff,
                                     (SELECT MIN(repo_created_at) FROM stg_gh_repos r WHERE r.owner = p.github_owner) AS first_repo_at,

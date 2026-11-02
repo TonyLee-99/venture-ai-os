@@ -5,6 +5,7 @@
 from __future__ import annotations
 
 import json
+import re
 
 from vaios.agents import schemas, skills
 from vaios.agents.evidence import load_facts
@@ -13,7 +14,7 @@ from vaios.config import RESULTS
 from vaios.dakr import artifacts
 from vaios.dakr.docstore import DocStore
 from vaios.gateway import Gateway
-from vaios.receipts.verify import check_all, precision
+from vaios.receipts.verify import _matches, check_all, numbers_in, precision, written_numbers
 
 MEMOS = RESULTS / "memos"
 CARDS = RESULTS / "decision_cards"
@@ -65,7 +66,8 @@ def stage_header(cand: dict) -> str:
 
 
 def reconcile(claims: list[dict], labels: list[dict]) -> tuple[list[dict], list[dict], dict]:
-    """entails -> ship; partial -> ship with a visible tag; contradicts/unsupported -> withhold."""
+    """entails -> ship; partial -> ship with a visible tag; contradicts/unsupported -> withhold.
+    A claim the critic did not label fails closed: withheld, never shipped unreviewed."""
     by_id = {x["claim_id"]: x for x in labels}
     shipped, withheld, counts = [], [], {"entails": 0, "partial": 0, "contradicts": 0, "unsupported": 0,
                                          "unlabelled": 0}
@@ -73,8 +75,9 @@ def reconcile(claims: list[dict], labels: list[dict]) -> tuple[list[dict], list[
         lab = by_id.get(c["id"])
         kind = lab["label"] if lab else "unlabelled"
         counts[kind] += 1
-        if kind in ("contradicts", "unsupported"):
-            withheld.append({"claim": c, "critic_label": kind, "reason": lab["reason"]})
+        if kind in ("contradicts", "unsupported", "unlabelled"):
+            withheld.append({"claim": c, "critic_label": kind,
+                             "reason": lab["reason"] if lab else "no critic label: withheld (fail closed)"})
         else:
             shipped.append({**c, "support": kind, "support_note": lab["reason"] if lab else "critic gave no label"})
     return shipped, withheld, counts
@@ -180,23 +183,40 @@ def run_one(gw: Gateway, store: DocStore, cand: dict, doc_ids: list[str]) -> dic
 ADVANCE_BUDGET = 2  # at most 2 of 8 memos may recommend "advance": forces a ranking, like a partner meeting
 
 
-def policy(scores: dict, rec: str) -> str:
+EVIDENCE_MIN_ENTAILED = 0.25  # below this share of fully entailed claims the memo is "evidence insufficient"
+
+
+def policy(scores: dict, rec: str | None = None) -> str:
+    """The written policy (skills/diligence-memo): the call is a function of the three scores ONLY.
+    total >= 11 and every dimension >= 3 -> advance; total <= 7 or any dimension = 1 -> pass; else watch.
+    `rec` (the model's own stated call) is ignored on purpose: same scores, same call."""
     total = sum(scores[d]["score"] for d in ("pmf", "narrative", "execution"))
     low = min(scores[d]["score"] for d in ("pmf", "narrative", "execution"))
     if total <= 7 or low == 1:
         return "pass"
-    if rec == "advance" and (total < 11 or low < 3):
-        return "watch"
-    return rec
+    if total >= 11 and low >= 3:
+        return "advance"
+    return "watch"
 
 
 def committee(outs: list[dict]) -> None:
-    """Apply the written score policy, then the advance budget (ranked by drafter+critic totals)."""
+    """Score policy for drafter AND critic, evidence gate, then the advance budget. Tie-break for the budget:
+    higher drafter+critic total first, then higher share of entailed claims, then entity name."""
     tot = lambda o, k: sum(o[k]["scores"][d]["score"] for d in ("pmf", "narrative", "execution"))  # noqa: E731
     for o in outs:
-        o["memo"]["recommendation_before_committee"] = o["memo"]["recommendation"]
-        o["memo"]["recommendation"] = policy(o["memo"]["scores"], o["memo"]["recommendation"])
-    ranked = sorted(outs, key=lambda o: (-(tot(o, "memo") + tot(o, "critique")), o["entity"]))
+        m, c = o["memo"], o["critique"]
+        m["recommendation_stated_by_model"] = m["recommendation"]
+        m["recommendation"] = policy(m["scores"])
+        c["recommendation_stated_by_model"] = c["recommendation"]
+        c["recommendation"] = policy(c["scores"])  # resolves stated-verdict vs score conflicts the same way
+        c["stated_vs_policy_conflict"] = c["recommendation"] != c["recommendation_stated_by_model"]
+        share = o["receipts"]["critic_entailed_share"] or 0.0
+        m["evidence_status"] = "sufficient" if share >= EVIDENCE_MIN_ENTAILED else "evidence insufficient"
+        if m["evidence_status"] != "sufficient" and m["recommendation"] == "advance":
+            m["recommendation"] = "watch"
+            m["committee_note"] = "advance blocked: evidence insufficient"
+    ranked = sorted(outs, key=lambda o: (-(tot(o, "memo") + tot(o, "critique")),
+                                         -(o["receipts"]["critic_entailed_share"] or 0), o["entity"]))
     kept = 0
     for i, o in enumerate(ranked, 1):
         o["committee_rank"] = i
@@ -207,6 +227,44 @@ def committee(outs: list[dict]) -> None:
                 o["memo"]["committee_note"] = f"downgraded: advance budget of {ADVANCE_BUDGET} already used"
     for o in outs:
         o["disagreements"] = disagreement(o["memo"], o["critique"])
+        scrub_free_text(o)
+
+
+def scrub_free_text(o: dict) -> None:
+    """Free text (one-liner, thesis, risks, founder questions, score rationales) carries no receipt, so any
+    number in it must equal a number in a shipped claim or the facts sheet; otherwise the item is removed (lists)
+    or the sentence is removed (prose). References to withheld claim ids are removed from rationales."""
+    m = o["memo"]
+    allowed = [n for c in m["claims"] for n in numbers_in(c["text"] + " " + (c.get("quote") or ""))]
+    allowed += [float(v) for v in o["facts"].values() if isinstance(v, int | float)]
+    withheld_ids = {w["claim"]["id"] for w in o["withheld_by_critic"]}
+    removed = []
+
+    def ok(text: str) -> bool:  # same precision rule as the verifier: "56.6 million" covers 56,580,000
+        return all(any(_matches(w, a) for a in allowed) for w in written_numbers(text))
+
+    def clean_prose(text: str) -> str:
+        keep = []
+        for sent in re.split(r"(?<=[.!?])\s+", text):
+            if ok(sent):
+                keep.append(sent)
+            else:
+                removed.append(sent)
+        return " ".join(keep)
+
+    for key in ("risks", "open_questions"):
+        kept = [x for x in m[key] if ok(x)]
+        removed += [x for x in m[key] if not ok(x)]
+        m[key] = kept
+    for key in ("one_liner", "thesis_fit", "rescore_note"):
+        if m.get(key):
+            m[key] = clean_prose(m[key])
+    for d in ("pmf", "narrative", "execution"):
+        r = m["scores"][d]["rationale"]
+        for cid in withheld_ids:
+            r = r.replace(f"[{cid}]", "")
+        m["scores"][d]["rationale"] = clean_prose(r)
+    m["free_text_removed"] = removed
 
 
 def finalize(out: dict, store: DocStore) -> None:
@@ -231,7 +289,7 @@ def write_outputs(out: dict, store: DocStore, sheet: dict) -> None:
         (CARDS / f"{out['entity']}.md").write_text(render_card(out))
 
 
-SECTIONS = ("team", "why_now", "market", "competition", "pmf", "narrative", "execution", "risk")
+SECTIONS = ("team", "why_now", "market", "competition", "pmf", "narrative", "execution", "inflection", "risk")
 
 
 def render_memo_md(out: dict, store: DocStore) -> str:
@@ -243,8 +301,9 @@ def render_memo_md(out: dict, store: DocStore) -> str:
              f"{tok['ticker'] + ' (FDV $' + format((tok.get('fdv_usd') or 0) / 1e6, ',.1f') + 'M)' if tok else 'none found'} | "
              f"{st.get('yc_batch') or 'none'} | {out['triage']['rank']} (triage only, not evidence) |", "",
              f"**{m['one_liner']}**", "", f"Thesis fit: {m['thesis_fit']}", "",
-             f"Recommendation after critique and committee: **{m['recommendation']}** "
-             f"(first draft: {m['draft_recommendation']}; critic: {out['critique']['recommendation']})  ",
+             f"Recommendation (score policy + committee): **{m['recommendation']}**; evidence status: "
+             f"**{m.get('evidence_status', 'n/a')}** (first draft: {m['draft_recommendation']}; critic by policy: "
+             f"{out['critique']['recommendation']}, critic stated: {out['critique'].get('recommendation_stated_by_model')})  ",
              f"Receipts: {r['claims_drafted']} claims drafted, {r['raw_precision']:.0%} passed the verifier on the "
              f"first pass, {r['verified']} verified after one repair; the critic labelled {r['critic_labels']['entails']} "
              f"as entailed, {r['shipped_partial']} as partial (tagged below) and withheld {r['withheld_by_critic']}.", "",
@@ -267,6 +326,9 @@ def render_memo_md(out: dict, store: DocStore) -> str:
         lines += ["", f"Committee: {m['committee_note']}"]
     lines += ["", "## Risks", ""] + [f"- {x}" for x in m["risks"]]
     lines += ["", "## Questions for the founder call", ""] + [f"- {x}" for x in m["open_questions"]]
+    if m.get("free_text_removed"):
+        lines += ["", f"_{len(m['free_text_removed'])} free-text item(s) removed because they stated a number that no "
+                  "shipped claim or warehouse fact supports._"]
     if out["withheld_by_critic"]:
         lines += ["", "## Withheld: real quote, but the critic says it does not support the claim", ""]
         lines += [f"- ~~{w['claim']['text']}~~ ({w['critic_label']}: {w['reason']})" for w in out["withheld_by_critic"]]

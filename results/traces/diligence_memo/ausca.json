@@ -1,0 +1,133 @@
+{
+ "job": "diligence_memo",
+ "agent": "AI DD (analyst)",
+ "entity": "ausca",
+ "run_id": "2156722b374c3fb6",
+ "as_of": "2026-11-01",
+ "status": "ok",
+ "inputs": {
+  "doc_ids": [
+   "d_0c8cc36797b12828",
+   "d_1887cd9fe2e6615f",
+   "d_3af8c54623d0adf4",
+   "d_b0a251ae90d75dd1",
+   "d_b3e61427fd0e0e8c"
+  ],
+  "facts_sha": "{\"gh.commits_90d\": 73, \"gh.commits_prev_90d\": 0, \"gh.commits_total\": 73, \"gh.first_repo_year\": 2026, \"gh.public_repos\": 5, \"gh.stars_total_now\": 39, \"hn.points_total\": 0, \"hn.stories\": 0}",
+  "stage": {
+   "stage": "unknown (no funding evidence found)",
+   "seed_eligible": true,
+   "ineligible_reasons": [],
+   "yc_batch": null,
+   "token": null,
+   "prior_raises_defillama": [],
+   "round_evidence": [],
+   "doc_ids": []
+  }
+ },
+ "steps": [
+  {
+   "step": "draft_memo",
+   "kind": "llm",
+   "backend": "claude_cli",
+   "model": "claude-sonnet-5-5",
+   "cache_key": "a17de09452a642497dd277d3cf1c6696c3e13399df8247cb04d5e9d79443f9dc",
+   "prompt_sha256": "f961264d8b8261d08bcefe0a86acea4c6f6163ab9bb2e7cb8e6d30e78b399abe",
+   "doc_ids": [
+    "d_0c8cc36797b12828",
+    "d_1887cd9fe2e6615f",
+    "d_3af8c54623d0adf4",
+    "d_b0a251ae90d75dd1",
+    "d_b3e61427fd0e0e8c"
+   ],
+   "output_sha256": "3a80658333139de7317028ca2fc797b32b0b25186048f3828393dd5248943418"
+  },
+  {
+   "step": "verify_receipts",
+   "n_claims": 12,
+   "verified": 7,
+   "failures": {
+    "c2": "number_unsupported",
+    "c3": "number_unsupported",
+    "c8": "number_unsupported",
+    "c9": "number_unsupported",
+    "c10": "number_unsupported"
+   }
+  },
+  {
+   "step": "repair_claims",
+   "kind": "llm",
+   "backend": "claude_cli",
+   "model": "claude-sonnet-5-5",
+   "cache_key": "a47a1c9d3d43ec2f1fb531524c98897b6649061f0f396cbdc7c908bca2494fbc",
+   "prompt_sha256": "0b94596360cebf88aa8c68e1825578cc9953b38c675394e36791d8e5fd88f725",
+   "doc_ids": [
+    "d_0c8cc36797b12828",
+    "d_1887cd9fe2e6615f",
+    "d_3af8c54623d0adf4",
+    "d_b0a251ae90d75dd1",
+    "d_b3e61427fd0e0e8c"
+   ],
+   "output_sha256": "84669e28cb8a952c698e6eb798e28603ad9505d617ed4c87f6e101a745b224a9"
+  },
+  {
+   "step": "verifier_gate",
+   "raw_precision": 0.5833333333333334,
+   "verified": 12,
+   "withheld": 0
+  },
+  {
+   "step": "critique",
+   "kind": "llm",
+   "backend": "codex_cli",
+   "model": "gpt-6.1-sol",
+   "cache_key": "bd2cfb1b72f4669bbe74c904b806a79b0d9ec0bf9050b883bcd4522bb66ff012",
+   "prompt_sha256": "c0e0f8493d5fb186e3c167930cca9baccd2bc6b161fc874f64c69a1163e020fe",
+   "doc_ids": [
+    "d_0c8cc36797b12828",
+    "d_1887cd9fe2e6615f",
+    "d_3af8c54623d0adf4",
+    "d_b0a251ae90d75dd1",
+    "d_b3e61427fd0e0e8c"
+   ],
+   "output_sha256": "aa9455be38e54d0420949dcf90bf659866ee1b4154aba446561555ae6bf57d34"
+  },
+  {
+   "step": "reconcile",
+   "entails": 1,
+   "partial": 11,
+   "contradicts": 0,
+   "unsupported": 0,
+   "unlabelled": 0
+  },
+  {
+   "step": "rescore",
+   "kind": "llm",
+   "backend": "claude_cli",
+   "model": "claude-sonnet-5-5",
+   "cache_key": "563ab72ed8f6813a5cd4567c3f12f2f5ddb7b41e396561415a1f9a377fef8294",
+   "prompt_sha256": "51201216df61d038faafe7ed8b089667e2316da3d07a49e5eb37049a256a9df4",
+   "doc_ids": [
+    "d_0c8cc36797b12828",
+    "d_1887cd9fe2e6615f",
+    "d_3af8c54623d0adf4",
+    "d_b0a251ae90d75dd1",
+    "d_b3e61427fd0e0e8c"
+   ],
+   "output_sha256": "7d7da5ba2bb5bbdd0fc9d608697b25a19c04f58cfc78c87e2ad21bdd5db12da1"
+  },
+  {
+   "step": "committee",
+   "rank": 8,
+   "recommendation": "pass",
+   "disagreements": []
+  }
+ ],
+ "outputs": {
+  "memo": "results/memos/ausca.md",
+  "artifact_version": 1,
+  "decision_card": false
+ },
+ "error": null,
+ "sla_violations": []
+}
