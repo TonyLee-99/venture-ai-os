@@ -18,3 +18,9 @@ def test_makefile_targets():
     for t in ("check:", "verify:", "reproduce:", "sourcing-run:", "replay:", "init:"):
         assert t in mk
     assert (ROOT / "Dockerfile").exists() and (ROOT / "uv.lock").exists()
+
+
+def test_live_mode_documented_and_replay_described_truthfully():
+    n = (ROOT / ".github" / "workflows" / "nightly.yml").read_text()
+    assert "NOT live sourcing" in n
+    assert "live-run:" in (ROOT / "Makefile").read_text()

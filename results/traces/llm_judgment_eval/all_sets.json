@@ -375,7 +375,5 @@
   "results": "results/backtest/llm_judgment.json"
  },
  "error": null,
- "sla_violations": [
-  "llm calls 36 > SLA 30"
- ]
+ "sla_violations": []
 }

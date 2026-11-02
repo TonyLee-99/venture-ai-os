@@ -1,7 +1,7 @@
 """`make backtest`: walk-forward, point-in-time evaluation of the screening score against revealed VC decisions.
 
 Input: results/frozen/backtest_table.parquet (features as of each T0 + the raise outcome in [T0, T0+12m)).
-Output: results/backtest/backtest.json (+ per-T0 CSV). Pre-registration: docs/decisions/0004.
+Output: results/backtest/backtest.json (+ per-T0 CSV). Spec: docs/decisions/0004.
 """
 
 from __future__ import annotations
@@ -21,7 +21,7 @@ OUT = RESULTS / "backtest"
 SCORERS = {  # column -> (label, leakage-exposed?)
     "s_logit_full": ("Logistic, all point-in-time features (walk-forward)", False),
     "s_logit_github": ("Logistic, GitHub-only features (walk-forward; live niche score)", False),
-    "s_heuristic": ("Pre-registered heuristic (no fitting)", False),
+    "s_heuristic": ("Pre-specified heuristic (no fitting)", False),
     "b_random": ("Baseline: random", False),
     "b_tvl": ("Baseline: TVL size", False),
     "b_commits": ("Baseline: commits in last 90 days", False),

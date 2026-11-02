@@ -1,7 +1,7 @@
 """Screening scores. All inputs are point-in-time features; nothing here may read an outcome or today's stars.
 
 Three scorers, all deterministic:
-- `heuristic`: PRE-REGISTERED (written before the first backtest run, ADR 0004): mean within-T0 percentile
+- `heuristic`: PRE-SPECIFIED (written before the first backtest run, ADR 0004): mean within-T0 percentile
   rank of five traction signals. No fitting, so it cannot overfit the backtest.
 - `logit_full`: L2 logistic regression on all point-in-time features, trained walk-forward.
 - `logit_github`: the same on GitHub-only features. This is the score used live on niche candidates, most of

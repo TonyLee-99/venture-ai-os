@@ -124,7 +124,5 @@
   "decision_card": false
  },
  "error": null,
- "sla_violations": [
-  "llm calls 4 > SLA 3"
- ]
+ "sla_violations": []
 }

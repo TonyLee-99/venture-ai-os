@@ -1,6 +1,8 @@
-# 0005. Changepoint method and the dated-event rule (fixed before computing any hit rate)
+# 0005. Changepoint method and the dated-event rule: spec committed before computing any hit rate
 
-Status: accepted 2026-11-02, committed before the first event-validation run.
+Status: accepted 2026-11-02. Committed before the first event-validation run, but after the series had been
+pulled and PELT had been tried on the daily series (the weekly choice below was made with that knowledge), so
+it is a committed spec, not a pre-registration.
 
 ## Series
 x402 market traction from x402scan (all chains, Base, Solana): weekly transactions, weekly volume (USD),

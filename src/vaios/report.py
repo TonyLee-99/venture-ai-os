@@ -42,6 +42,7 @@ def headline_numbers() -> dict[str, str]:
         "auc_full": f"{s['s_logit_full']['auc']:.3f}",
         "auc_full_ci": f"{s['s_logit_full']['auc_ci95'][0]:.3f}-{s['s_logit_full']['auc_ci95'][1]:.3f}",
         "auc_full_pooled": f"{s['s_logit_full']['pooled_auc']:.3f}",
+        "auc_heuristic": f"{s['s_heuristic']['auc']:.3f}", "auc_github": f"{s['s_logit_github']['auc']:.3f}",
         "auc_best_base": f"{base['auc']:.3f}", "auc_diff": f"{pair['auc_diff']:+.3f}",
         "auc_diff_ci": f"{pair['ci95'][0]:+.3f} to {pair['ci95'][1]:+.3f}",
         "lift50_full": f"{s['s_logit_full']['lift@50']:.1f}x", "lift50_base": f"{base['lift@50']:.1f}x",

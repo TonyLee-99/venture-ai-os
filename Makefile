@@ -5,7 +5,7 @@ UV ?= uv
 PY = $(UV) run python
 CLI = $(PY) -m vaios.cli
 
-.PHONY: init lint test check verify verifier-eval export-skills ingest warehouse freeze backtest llm-eval sourcing-run memos \
+.PHONY: init lint test check verify verifier-eval export-skills live-run claim-eval monitor-diagnostics company-brief readme ingest warehouse freeze backtest llm-eval sourcing-run memos \
         monitor brief dashboard screenshots extracts replay reproduce clean
 
 init:           ## fresh clone -> ready (deps + headless browser for screenshots)
@@ -40,8 +40,27 @@ backtest:       ## point-in-time screening backtest (deterministic; from frozen 
 llm-eval:       ## LLM screening judgment on post-cutoff outcomes only (gateway, cached)
 	$(CLI) llm-eval
 
-sourcing-run:   ## nightly pre-investment job: source -> screen -> memo -> critique -> decision cards
+sourcing-run:   ## pre-investment job: source -> stage check -> memo -> critique -> committee -> decision cards
 	$(CLI) sourcing-run
+
+live-run:       ## LOCAL live mode: fresh pulls + warehouse, then a new shortlist with budgeted, cached LLM calls
+	$(CLI) ingest
+	$(CLI) warehouse
+	$(CLI) freeze
+	rm -f results/sourcing/shortlist.json
+	VAIOS_MAX_CALLS=$${VAIOS_MAX_CALLS:-400} $(CLI) sourcing-run
+
+claim-eval:     ## verifier + critic on real memo claims and labelled perturbations
+	$(CLI) claim-eval
+
+monitor-diagnostics: ## exploratory monitoring diagnostics (ADR 0009)
+	$(CLI) monitor-diagnostics
+
+company-brief:  ## KPI brief for one named comparable (Daydreams)
+	$(CLI) company-brief
+
+readme:         ## re-render anchored numbers in README.md from results/
+	$(PY) -m vaios.report render
 
 monitor:        ## post-investment job: series -> changepoints -> event validation
 	$(CLI) monitor
@@ -68,9 +87,11 @@ replay:         ## re-run every LLM job in strict replay (no model calls) and di
 	VAIOS_STRICT_REPLAY=1 $(CLI) sourcing-run
 	VAIOS_STRICT_REPLAY=1 $(CLI) llm-eval
 	VAIOS_STRICT_REPLAY=1 $(CLI) brief
+	VAIOS_STRICT_REPLAY=1 $(CLI) company-brief
+	VAIOS_STRICT_REPLAY=1 $(CLI) claim-eval
 	git diff --stat --exit-code -- results
 
-reproduce: ingest warehouse freeze backtest llm-eval sourcing-run monitor brief verifier-eval extracts dashboard screenshots verify
+reproduce: ingest warehouse freeze backtest llm-eval monitor monitor-diagnostics sourcing-run brief company-brief claim-eval verifier-eval extracts dashboard screenshots readme verify
 
 clean:          ## delete the rebuilt warehouse (NOT raw pulls, NOT cassettes)
 	rm -f data/warehouse.duckdb

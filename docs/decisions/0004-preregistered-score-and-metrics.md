@@ -1,9 +1,11 @@
-# 0004. Pre-registered screening score, baselines and metrics (fixed before the first backtest run)
+# 0004. Screening score, baselines and metrics: spec committed before the first backtest run
 
-Status: accepted 2026-11-02, committed before `make backtest` was ever run (see git log order).
+Status: accepted 2026-11-02. Committed before `make backtest` was first run (git log order), but AFTER the raw
+data had been pulled and its shape inspected, so this is a committed spec, not a pre-registration in the
+clinical-trial sense. Amended later (see "Amendment" below).
 
 ## Scores (all deterministic, point-in-time)
-1. `heuristic` (no fitting): mean within-T0 percentile rank of commits in the last 90 days, commit growth
+1. `heuristic` (no fitting, specified before any result was seen): mean within-T0 percentile rank of commits in the last 90 days, commit growth
    (last 90 vs prior 90 days, log ratio), TVL growth over 90 days, TVL at T0, and newness (minus listing age).
 2. `logit_full`: L2 logistic regression (C=0.5, standardised) on all point-in-time features, walk-forward.
 3. `logit_github`: the same on the five GitHub features only (the live niche score).
@@ -22,3 +24,11 @@ is the paired bootstrap CI of (score AUC minus best non-leaky baseline AUC).
 ## What would count as failure
 If the paired CI of the AUC difference includes zero, the README says the score is not distinguishable from
 the best naive baseline. No re-weighting of the heuristic after seeing results.
+
+## Amendment (2026-11-02)
+- Headline population changed to protocols that had **never raised before T0** (the seed-relevant case); on the
+  full population, "raised before" dominates. Both are reported; no model is picked as headline because it won:
+  all three scores and all baselines are shown side by side.
+- Units: "80 positive protocol x T0 rows from 44 protocols (58 distinct raises)"; AUC and lift are means of
+  per-T0 values, pooled AUC is reported next to them. CIs: protocol-clustered, with an owner-clustered
+  sensitivity check; predictions are held fixed inside the bootstrap.

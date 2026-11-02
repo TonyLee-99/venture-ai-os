@@ -17,7 +17,7 @@ from vaios.config import FROZEN, RESULTS, ROOT
 
 OUT = ROOT / "dashboard" / "index.html"
 SHORT = {"s_logit_full": "Logistic, all PIT features", "s_logit_github": "Logistic, GitHub-only (live score)",
-         "s_heuristic": "Pre-registered heuristic", "b_random": "Random", "b_tvl": "TVL size",
+         "s_heuristic": "Pre-specified heuristic", "b_random": "Random", "b_tvl": "TVL size",
          "b_commits": "Commits, last 90 days", "b_newest": "Newest listing first",
          "b_prior_funding": "Raised before (most recent first)", "leaky_stars_now": "Today's stars (leakage-exposed)"}
 BLUE, ORANGE, GRAY, INK, MUTED, GRID = "#2a78d6", "#eb6834", "#a3a29c", "#0b0b0b", "#52514e", "#e6e5e0"
@@ -34,7 +34,7 @@ def load() -> dict:
     for opt in ("backtest/llm_judgment.json",):
         p = RESULTS / opt
         d[opt.split("/")[-1].split(".")[0]] = json.loads(p.read_text()) if p.exists() else None
-    briefs = sorted((RESULTS / "briefs").glob("*.json"))
+    briefs = sorted((RESULTS / "briefs").glob("20*.json"))
     d["brief"] = json.loads(briefs[-1].read_text()) if briefs else None
     ledger = RESULTS / "llm_ledger.jsonl"
     d["llm_calls"] = len(ledger.read_text().splitlines()) if ledger.exists() else 0
@@ -115,21 +115,29 @@ def run() -> None:
     full, pair = bt["scores"]["s_logit_full"], bt["paired_vs_best_baseline"]["s_logit_full"]
     base = bt["scores"][pair["best_baseline"]]
     h = cp["headline"]
+    nr = bt["populations"]["never_raised"]
+    nrs = nr["scores"]
     kpis = [
-        kpi("Screening AUC (walk-forward)", f"{full['auc']:.2f}",
-            f"95% CI {full['auc_ci95'][0]:.2f}-{full['auc_ci95'][1]:.2f}; best naive baseline {base['auc']:.2f}"),
-        kpi("Precision@50 lift", f"{full['lift@50']:.1f}x", f"vs {bt['base_rate_test']:.1%} base rate of raising within 12 months"),
-        kpi("Memo citation precision", f"{rs['raw_citation_precision']:.0%} -> {rs['post_repair_citation_precision']:.0%}",
-            f"first draft -> after one repair round; {rs['claims_shipped']} claims shipped"),
+        kpi("Seed case: never-raised protocols", f"AUC {nrs['s_heuristic']['auc']:.2f}",
+            f"best of our scores (heuristic, CI {nrs['s_heuristic']['auc_ci95'][0]:.2f}-{nrs['s_heuristic']['auc_ci95'][1]:.2f}); "
+            f"logistic {nrs['s_logit_full']['auc']:.2f}; newest-listing baseline {nrs['b_newest']['auc']:.2f}; "
+            f"{nr['n_positive_rows']} positive rows"),
+        kpi("All protocols (incl. already funded)", f"AUC {full['auc']:.2f}",
+            f"'raised before' baseline {base['auc']:.2f}: gain not significant"),
+        kpi("Memo claims fully entailed", f"{rs['critic_entailed_over_verified']:.0%}",
+            f"per the other model family; {rs['claims_shipped_partial_tagged']} tagged partial, "
+            f"{rs['claims_withheld_by_critic']} withheld; verifier first pass {rs['raw_citation_precision']:.0%}"),
         kpi("Inflection hit rate", f"{h['event_hit_rate']:.0%}",
             f"vs {h['null_mean_hit_rate']:.0%} by chance (p={h['p_value']:.2f}); not significant"),
-        kpi("LLM calls (ledger)", f"{d['llm_calls']}", "all cached; CI replays with zero calls"),
+        kpi("Human decisions", "pending", f"{rs['memos_with_decision_card']} decision cards await the owner; "
+            f"{d['llm_calls']} LLM calls, CI replays with zero"),
     ]
     memo_rows = "".join(
         f"<tr><td><a href='../results/memos/{esc(m['entity'])}.md'>{esc(m['name'])}</a></td>"
         f"<td>{m['scores_drafter']['pmf']}/{m['scores_drafter']['narrative']}/{m['scores_drafter']['execution']}</td>"
         f"<td>{m['scores_critic']['pmf']}/{m['scores_critic']['narrative']}/{m['scores_critic']['execution']}</td>"
-        f"<td>{esc(m['drafter'])}</td><td>{esc(m['critic'])}</td><td>{m['shipped']}/{m['claims_drafted']}</td>"
+        f"<td>{esc(m['drafter'])}</td><td>{esc(m['critic'])}</td>"
+        f"<td>{m['critic_entailed_share']:.0%} / {m['shipped_partial']} / {m['withheld_by_critic']}</td>"
         f"<td>{'<a href=../results/decision_cards/' + esc(m['entity']) + '.md>card</a>' if m['disagreements'] else ''}</td></tr>"
         for m in rs["memos"])
     brief_rows = ""
@@ -140,7 +148,9 @@ def run() -> None:
     llm = d.get("llm_judgment")
     llm_rows = "".join(f"<tr><td>{esc(k.replace('|', ' / '))}</td><td>{v['auc']:.2f}</td><td>{v['auc_ci95'][0]:.2f}-{v['auc_ci95'][1]:.2f}</td>"
                        f"<td>{'yes' if v['leakage_exposed'] else 'no'}</td></tr>"
-                       for k, v in (llm["results"].items() if llm else []))
+                       for k, v in ({**{"walk-forward / " + a: b for a, b in llm["walk_forward_anonymized"]["all"].items()},
+                                    **{"post-cutoff / " + a: b for a, b in llm["post_cutoff"]["results"].items()}}.items()
+                                 if llm else []))
     page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><title>venture-ai-os dashboard</title>
 <style>
 body{{font:14px/1.45 -apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:{INK};background:#fcfcfb;margin:0;padding:28px 36px;max-width:1180px}}
@@ -156,20 +166,20 @@ th{{color:{MUTED};font-weight:500}} .note{{color:{MUTED};font-size:12px}} .legen
 <div class="sub">A mini AI OS for a venture fund, built only from public data pulled 2026-11-02. Every number below is read from <code>results/</code>; hover any mark for its value.</div>
 <div class="kpis">{''.join(kpis)}</div>
 <div class="grid2">
-<div><h2>Pre-investment: does the screening score anticipate VC raises? (held-out T0s {bt['test_t0s'][0]} to {bt['test_t0s'][-1]})</h2>
+<div><h2>Pre-investment triage: never-raised protocols, first raise within 12 months (held-out T0s {bt['test_t0s'][0]} to {bt['test_t0s'][-1]})</h2>
 <div class="legend note"><span><i class="sw" style="background:{BLUE}"></i>our scores</span><span><i class="sw" style="background:{ORANGE}"></i>best naive baseline</span><span><i class="sw" style="background:{GRAY}"></i>other baselines (dashed = leakage-exposed)</span></div>
-{auc_chart(bt)}
-<div class="note">{bt['n_rows_test']:,} protocol x T0 rows, {bt['n_positives_test']} raises. Paired AUC gain over the best baseline: {pair['auc_diff']:+.3f} (95% CI {pair['ci95'][0]:+.3f} to {pair['ci95'][1]:+.3f}), so not distinguishable from it.</div></div>
+{auc_chart({**bt, "scores": nrs, "paired_vs_best_baseline": nr["paired_vs_best_baseline"]})}
+<div class="note">{nr['n_rows']:,} protocol x T0 rows, {nr['n_positive_rows']} positive rows from {nr['n_positive_protocols']} protocols. Near chance with wide intervals: the score is a triage aid, not a predictor. Retrospective reconstruction (today's repos and owners).</div></div>
 <div><h2>Post-investment: weekly x402 transactions, detected changepoints, dated events</h2>
 <div class="legend note"><span><i class="sw" style="background:{BLUE}"></i>weekly transactions (log)</span><span><i class="sw" style="background:{GRAY}"></i>PELT changepoint</span><span><i class="sw" style="background:{ORANGE}"></i>dated public event</span></div>
 {series_chart(cp)}
-<div class="note">{h['n_changepoints']} changepoints, {h['n_events']} events in range. Hit rate {h['event_hit_rate']:.0%} vs {h['null_mean_hit_rate']:.0%} expected by chance; false alarms {h['false_alarm_rate']:.0%}. Most inflections are not explained by announcements, which is why the brief flags them for a human.</div></div>
+<div class="note">{h['n_changepoints']} changepoints, {h['n_events']} events in range. Hit rate {h['event_hit_rate']:.0%} vs {h['null_mean_hit_rate']:.0%} expected by chance; false alarms {h['false_alarm_rate']:.0%}. Most inflections have no matching dated event; the brief flags them for a human.</div></div>
 </div>
-<h2>Diligence memos (drafter: Claude; critic: GPT; PMF / Narrative / Execution)</h2>
-<table><tr><th>Company</th><th>Drafter P/N/E</th><th>Critic P/N/E</th><th>Drafter rec.</th><th>Critic rec.</th><th>Claims shipped / drafted</th><th>Decision card</th></tr>{memo_rows}</table>
+<h2>Diligence memos, seed-eligible companies only (drafter: Claude; blind critic: GPT; PMF / Narrative / Execution; at most 2 advance)</h2>
+<table><tr><th>Company</th><th>Drafter P/N/E</th><th>Critic P/N/E</th><th>Final rec.</th><th>Critic rec.</th><th>Entailed / partial / withheld</th><th>Decision card</th></tr>{memo_rows}</table>
 <h2>Weekly brief: recent inflections</h2>
 <table><tr><th>Week</th><th>Series</th><th>Headline</th><th>Confidence</th></tr>{brief_rows}</table>
-<h2>LLM screening judgment, outcomes after the model cutoff only</h2>
+<h2>LLM screening judgment: anonymized walk-forward set (no memorisation channel) and post-cutoff set (cutoffs probed)</h2>
 <table><tr><th>Scorer</th><th>AUC</th><th>95% CI</th><th>Leakage-exposed input</th></tr>{llm_rows}</table>
 <p class="note">Sources: GitHub API, DefiLlama, x402scan, CoinGecko, HN Algolia, arXiv, YC directory, x402 Foundation feed. The fund CRM used for de-duplication is SYNTHETIC. No affiliation with any fund.</p>
 </body></html>"""

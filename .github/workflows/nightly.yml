@@ -1,7 +1,8 @@
-# Nightly sourcing run ("AI Sourcing" overnight leads). In this public repo it runs from the committed
-# cassettes and snapshots (safe offline). In production: drop VAIOS_STRICT_REPLAY, add `make ingest warehouse`
-# before it, and give the runner model credentials through the gateway.
-name: nightly-sourcing
+# Scheduled REPLAY of the sourcing job from committed cassettes and snapshots: it proves the job still runs
+# end to end with zero model calls. It is NOT live sourcing (it sees no new data). Live mode is local:
+# `make live-run` (fresh pulls -> warehouse -> sourcing with budgeted, cached LLM calls). In production the
+# runner would get model credentials through the gateway and run `make live-run` instead.
+name: scheduled-replay
 on:
   schedule:
     - cron: "0 7 * * *"   # 07:00 UTC = 01:00 / 02:00 Chicago

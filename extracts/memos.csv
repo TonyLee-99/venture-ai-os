@@ -1,9 +1,9 @@
-entity,name,drafter,critic,claims_drafted,raw_precision,post_repair_precision,shipped,withheld,dropped_in_repair,drafter_pmf,drafter_narrative,drafter_execution,critic_pmf,critic_narrative,critic_execution
-faremeter,faremeter,advance,watch,12,0.9167,1.0,12,0,0,3,4,4,2,4,3
-meritsystems,merit-systems,advance,watch,14,0.8571,1.0,14,0,0,3,4,4,3,3,4
-agoragentic,agoragentic,watch,watch,14,0.8571,1.0,14,0,0,2,3,4,2,3,3
-codespar,codespar,advance,watch,14,1.0,1.0,14,0,0,3,4,4,3,4,3
-vybe,vybenetwork,advance,watch,13,0.8462,1.0,13,0,0,3,4,3,3,4,3
-seracx,sera-cx,advance,watch,13,0.8462,1.0,13,0,0,2,3,3,2,3,3
-aibtc,aibtcdev,advance,watch,12,0.75,1.0,12,0,0,3,4,4,2,3,3
-payai,PayAI Network,advance,watch,14,1.0,1.0,14,0,0,3,4,3,3,4,3
+entity,name,committee_rank,stage,drafter,drafter_first_draft,critic,claims_drafted,raw_precision,verified,withheld_by_verifier,dropped_in_repair,critic_entailed_share,shipped,shipped_partial,withheld_by_critic,drafter_pmf,drafter_narrative,drafter_execution,critic_pmf,critic_narrative,critic_execution
+vybe,vybenetwork,1,unknown (no funding evidence found),watch,watch,watch,13,0.6154,13,0,0,0.2308,12,9,1,3,3,3,3,4,3
+agoragentic,agoragentic,2,unknown (no funding evidence found),watch,watch,pass,13,0.6154,13,0,0,0.3077,13,9,0,2,3,3,3,3,4
+aibtc,aibtcdev,3,unknown (no funding evidence found),watch,watch,watch,12,0.5,12,0,0,0.0,12,12,0,2,4,3,3,3,3
+codespar,codespar,4,unknown (no funding evidence found),watch,watch,pass,13,0.6923,13,0,0,0.3846,13,8,0,2,4,3,3,3,3
+payai,PayAI Network,5,unknown (no funding evidence found),watch,watch,watch,14,0.3571,14,0,0,0.5714,14,6,0,2,3,3,3,4,3
+devlabgroup,devlab-group,6,unknown (no funding evidence found),pass,pass,pass,13,0.6154,13,0,0,0.2308,12,9,1,2,3,3,2,4,3
+faremeter,faremeter,7,unknown (no funding evidence found),watch,advance,watch,12,0.6667,12,0,0,0.4167,11,6,1,2,3,3,3,3,3
+seracx,sera-cx,8,unknown (no funding evidence found),pass,pass,watch,13,0.5385,13,0,0,0.3077,13,9,0,2,3,3,3,3,3

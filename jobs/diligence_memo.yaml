@@ -4,6 +4,6 @@ skill: diligence-memo
 purpose: Baseline first-pass memo with receipts on every claim.
 inputs: [store/snapshots (per company), results/facts/<entity>.json]
 output: vaios.agents.schemas.Memo -> results/memos/<entity>.json + .md (artifact kind=memo)
-sla: {max_minutes: 10, max_llm_calls: 3}
+sla: {max_minutes: 10, max_llm_calls: 5}  # draft, repair, blind critique, re-score (+1 schema repair)
 eval: "claim-level citation precision (receipts verifier); shipped memo contains only verified claims"
 failure: invalid JSON after one repair round -> memo marked failed, pipeline continues with the next company

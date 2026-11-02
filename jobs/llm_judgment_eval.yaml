@@ -2,8 +2,8 @@ job: llm_judgment_eval
 agent: Eval harness
 skill: screening-judgment
 purpose: Held-out check of LLM screening judgment on outcomes after the model knowledge cutoff.
-inputs: [results/frozen/backtest_table.parquet (t0 = 2026-06-30)]
+inputs: [results/frozen/backtest_table.parquet (walk-forward test T0s and t0 = 2026-06-30), results/monitoring/events.csv (cutoff probe)]
 output: results/backtest/llm_judgment.json
-sla: {max_minutes: 30, max_llm_calls: 30}
+sla: {max_minutes: 30, max_llm_calls: 40}  # 2 probes + 20 walk-forward + 16 post-cutoff batches
 eval: "AUC vs deterministic score on the same items; only post-cutoff outcomes"
 failure: a failed batch is retried once, then reported as missing (never imputed)

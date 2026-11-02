@@ -76,7 +76,7 @@
       ]
     },
     "s_heuristic": {
-      "label": "Pre-registered heuristic (no fitting)",
+      "label": "Pre-specified heuristic (no fitting)",
       "leakage_exposed": false,
       "pooled_auc": 0.7897,
       "auc": 0.7893,
@@ -337,7 +337,7 @@
           ]
         },
         "s_heuristic": {
-          "label": "Pre-registered heuristic (no fitting)",
+          "label": "Pre-specified heuristic (no fitting)",
           "leakage_exposed": false,
           "pooled_auc": 0.7093,
           "auc": 0.6877,
@@ -598,7 +598,7 @@
           ]
         },
         "s_heuristic": {
-          "label": "Pre-registered heuristic (no fitting)",
+          "label": "Pre-specified heuristic (no fitting)",
           "leakage_exposed": false,
           "pooled_auc": 0.7897,
           "auc": 0.7893,
@@ -859,7 +859,7 @@
           ]
         },
         "s_heuristic": {
-          "label": "Pre-registered heuristic (no fitting)",
+          "label": "Pre-specified heuristic (no fitting)",
           "leakage_exposed": false,
           "pooled_auc": 0.7897,
           "auc": 0.7893,
@@ -1120,7 +1120,7 @@
           ]
         },
         "s_heuristic": {
-          "label": "Pre-registered heuristic (no fitting)",
+          "label": "Pre-specified heuristic (no fitting)",
           "leakage_exposed": false,
           "pooled_auc": 0.7093,
           "auc": 0.6877,
@@ -1381,7 +1381,7 @@
           ]
         },
         "s_heuristic": {
-          "label": "Pre-registered heuristic (no fitting)",
+          "label": "Pre-specified heuristic (no fitting)",
           "leakage_exposed": false,
           "pooled_auc": 0.7951,
           "auc": 0.796,
@@ -1642,7 +1642,7 @@
           ]
         },
         "s_heuristic": {
-          "label": "Pre-registered heuristic (no fitting)",
+          "label": "Pre-specified heuristic (no fitting)",
           "leakage_exposed": false,
           "pooled_auc": 0.7157,
           "auc": 0.7016,

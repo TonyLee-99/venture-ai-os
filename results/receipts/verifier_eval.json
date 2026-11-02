@@ -1,15 +1,15 @@
 {
- "gold_spans": 266,
+ "gold_spans": 402,
  "false_rejects": 0,
- "corruptions": 500,
- "caught": 500,
+ "corruptions": 783,
+ "caught": 783,
  "catch_rate": 1.0,
  "by_kind": {
-  "fabricated_quote": 133,
-  "wrong_source": 131,
-  "unknown_doc": 133,
-  "inflated_number": 50,
-  "paraphrase": 51,
+  "fabricated_quote": 201,
+  "wrong_source": 198,
+  "unknown_doc": 201,
+  "paraphrase": 85,
+  "inflated_number": 96,
   "metric_mismatch": 1,
   "metric_unknown": 1
  },

@@ -20,6 +20,10 @@ def run() -> None:
     rows = [{"scorer": k, "label": v["label"], "leakage_exposed": v["leakage_exposed"], **p}
             for k, v in bt["scores"].items() for p in bt["per_t0"][k]]
     pd.DataFrame(rows).to_csv(OUT / "backtest_by_t0.csv", index=False)
+    pops = [{"population": pop, "scorer": k, **{m: v[m] for m in ("auc", "pooled_auc", "p@20", "p@50", "lift@50")},
+             "auc_lo": v["auc_ci95"][0], "auc_hi": v["auc_ci95"][1]}
+            for pop, b in bt["populations"].items() for k, v in b["scores"].items()]
+    pd.DataFrame(pops).to_csv(OUT / "backtest_by_population.csv", index=False)
     pd.read_csv(RESULTS / "backtest" / "scores_test.csv").to_csv(OUT / "backtest_scores_by_protocol.csv", index=False)
 
     x = pd.read_parquet(FROZEN / "x402_daily.parquet")

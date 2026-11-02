@@ -26,3 +26,11 @@ closed windows.
 - Survivorship: DefiLlama keeps dead protocols with zero TVL, which limits but does not remove this bias.
 - The top-5 repos per owner are chosen by today's stars (residual selection leakage). Commit counts inside
   them are still timestamped, and repos created after T0 contribute zero commits before T0.
+
+## Amendment: label and sensitivity
+This backtest is a **retrospective reconstruction**: universe membership, GitHub owner and the top-5 repos are
+today's, and an owner that no longer resolves contributes zero commits. Owners resolve for 96% of positive
+rows vs 90% of negative rows, so deleted/renamed repos make negatives look less active (bias in the model's
+favour). `backtest.json` reports the never-raised and full populations again with unresolved owners dropped
+(`*_gh_found_only`). Lead-time analysis: DefiLlama listing comes AFTER the first raise for most protocols, so
+the listed universe is post-raise by construction; first public GitHub repos usually come before it.

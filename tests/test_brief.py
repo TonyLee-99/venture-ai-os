@@ -8,7 +8,7 @@ from vaios.config import RESULTS
 from vaios.dakr.docstore import DocStore
 from vaios.receipts.verify import check_claim
 
-BRIEFS = sorted((RESULTS / "briefs").glob("*.json"))
+BRIEFS = sorted((RESULTS / "briefs").glob("20*.json"))
 
 
 @pytest.mark.skipif(not BRIEFS, reason="no brief yet")

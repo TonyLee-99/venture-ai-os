@@ -1,24 +1,33 @@
 # venture-ai-os
 
 **A mini AI operating system for an early-stage AI x digital-assets fund**: a knowledge layer with receipts,
-a skills library, an LLM gateway, and two agent jobs that own real investment workflows. Niche:
-**agentic payments / agent commerce** (x402, agent wallets, MCP monetisation). Public data only, pulled 2026-11-02.
+a skills library, an LLM gateway, and two agent jobs (pre-investment triage-to-memo, post-investment
+monitoring-to-brief) in one niche, **agentic payments / agent commerce** (x402, agent wallets, MCP
+monetisation). Public data only, pulled 2026-11-02.
 
-**Headline.** On held-out dates, a point-in-time screening score ranks the crypto protocols that go on to
-announce a VC raise within 12 months at **AUC 0.810** (95% CI 0.725-0.886), with precision@50 at **9.0x** the
-1.7% base rate. But the simplest investor heuristic, "already raised before", gets AUC 0.773 and 8.6x, and the
-paired gain of +0.036 (95% CI -0.022 to +0.100) is **not distinguishable from zero**. Diligence memos ship only
-machine-verified claims (first-draft citation precision 88.7%, 100.0% after one repair round), and a second model
-family still flags 32 of 106 shipped claims as overreaching. Detected inflection points in x402 traction line up
-with public announcements no better than chance (42% vs 36%, p = 0.44), so the weekly brief sends them to a human.
+**What it is good for, and what it is not.**
+- **Triage, not prediction.** On protocols that had never raised (the seed case), the screening scores
+  are close to chance. The best one, a pre-specified heuristic, reaches AUC <!--n:auc_nr_heuristic-->?<!--/n--> (95% CI <!--n:auc_nr_heuristic_ci-->?<!--/n-->).
+  The logistic model gets <!--n:auc_nr_full-->?<!--/n-->, and the naive "newest listing first" baseline gets <!--n:auc_nr_best_base-->?<!--/n-->.
+  This rests on <!--n:nr_pos-->?<!--/n--> positive rows from <!--n:nr_pos_protocols-->?<!--/n--> protocols, behind <!--n:nr_raises-->?<!--/n--> first raises, of which <!--n:nr_seed-->?<!--/n--> were
+  seed, pre-seed or angel rounds. Across all protocols the model reaches <!--n:auc_full-->?<!--/n-->, but "raised before" alone gets
+  <!--n:auc_best_base-->?<!--/n-->. So the score orders a long list for a human; it is not evidence and memos never cite it.
+- **Receipts that a second model can attack.** Of <!--n:claims_drafted-->?<!--/n--> memo claims, <!--n:raw_precision-->?<!--/n--> passed the deterministic
+  verifier on the first draft and all passed after one repair. A blind critic from another model family then
+  rated only <!--n:critic_entailed-->?<!--/n--> as fully entailed by their quote. It tagged <!--n:claims_partial-->?<!--/n--> as partial (shown tagged in
+  the memo) and withheld <!--n:claims_withheld_critic-->?<!--/n-->. Whether the critic is right is a **human** call, and that call is pending (see "What the owner must do").
+- **Monitoring that admits what it cannot explain.** Detected inflections in x402 traction match dated events
+  no better than chance: <!--n:cp_hit-->?<!--/n--> vs <!--n:cp_null-->?<!--/n--> (p = <!--n:cp_p-->?<!--/n-->). The test only had power to detect strong effects:
+  <!--n:pw_needed-->?<!--/n--> of 12 events would have had to match. The largest break (October 2025, <!--n:cp_oct_ratio-->?<!--/n--> in weekly
+  median payments) has no dated catalyst in our sources, so the weekly brief flags such breaks for a human.
 
 ![dashboard](docs/img/dashboard_top.png)
 
 | Problem | What I built | Key results (all from `results/`) |
 |---|---|---|
-| Sourcing and first-pass diligence on a fast-moving niche take analyst days, and LLM memos invent facts | Nightly job: 6 public sources -> entity resolution -> CRM dedupe -> backtested score -> memo by Claude with enforced receipts -> critique by GPT -> decision card for the human | 1,398 entities sourced, 8 memos, 106 claims drafted, 88.7% verified on first pass, 100.0% after repair, 32 flagged by the critic, 8 decision cards |
-| Is a screening score any better than what an investor would do anyway? | Walk-forward point-in-time backtest against revealed VC decisions (DefiLlama raises), naive baselines, protocol-clustered bootstrap | 4,655 protocol x date rows, 80 raises, AUC 0.810 vs best baseline 0.773; gain +0.036 not significant |
-| Post-investment: spot inflection points in comparables before the quarterly update | PELT changepoints on x402 traction (x402scan) validated against a pre-registered list of dated events, plus a weekly brief with receipts | 12 changepoints, 12 events, hit rate 42% vs 36% chance, false alarms 67% (z-score baseline 57%) |
+| Overnight sourcing in a fast niche, with no time to read every repo | 6 sources -> entity resolution -> CRM dedupe (SYNTHETIC CRM) -> stage check from sourced evidence -> memo queue of seed-eligible companies | <!--n:n_entities-->?<!--/n--> entities; <!--n:stage_checked-->?<!--/n--> stage-checked, <!--n:stage_excluded-->?<!--/n--> excluded as past entry stage (Tempo: incubated by Stripe and Paradigm; Merit Systems: $10M seed led by a16z; Kite: tier-1 backers on homepage) |
+| LLM memos invent or overstate facts | Claude drafts with receipts -> deterministic verifier -> blind GPT critic labels every claim -> withheld / tagged -> drafter re-scores -> committee with an advance budget -> decision cards | <!--n:memos-->?<!--/n--> memos: <!--n:recs-->?<!--/n-->; model agreement <!--n:rec_agreement-->?<!--/n-->; <!--n:cards-->?<!--/n--> decision cards; human verdicts pending |
+| Does a public-data score anticipate VC decisions? | Walk-forward point-in-time backtest vs revealed raises (DefiLlama), naive baselines, clustered bootstrap, lead-time analysis | Never-raised: near chance (above). Lead time: the first public GitHub repo predates the first raise in <!--n:lead_gh_share-->?<!--/n--> of cases (median <!--n:lead_gh_median-->?<!--/n--> months), but DefiLlama listing does so in only <!--n:lead_dl_share-->?<!--/n--> |
 
 ---
 
@@ -27,7 +36,7 @@ with public announcements no better than chance (42% vs 36%, p = 0.44), so the w
 ```mermaid
 flowchart LR
   subgraph Sources[Public sources, keyless]
-    GH[GitHub REST + GraphQL]; DL[DefiLlama]; XS[x402scan]; CG[CoinGecko]; HN[HN Algolia]; AX[arXiv]; YC[YC directory]; XF[x402 Foundation feed]
+    GH[GitHub REST + GraphQL]; DL[DefiLlama]; XS[x402scan]; CG[CoinGecko + GeckoTerminal]; HN[HN Algolia]; AX[arXiv]; YC[YC directory]; XF[x402 Foundation feed]
   end
   Sources -->|ingest + manifest sha256| RAW[(data/raw)]
   RAW -->|staging + SQL models| WH[(DuckDB warehouse)]
@@ -37,93 +46,91 @@ flowchart LR
   SK[skills/*/SKILL.md] --> GW
   GW[LLM gateway: routes, cassettes cache, ledger, strict replay] --> C[claude -p]
   GW --> X[codex exec -s read-only]
-  WH --> SRC[AI Sourcing] --> SCR[Screening score] --> DD[AI DD memo] --> RV{Receipts verifier} --> CR[Critic, other model family] --> CARD[Decision card + human ledger]
-  WH --> MON[Changepoints] --> VAL{Event validation} --> BR[Weekly brief] --> RV
-  DD & CR & BR --- GW
-  DD & BR --- DS
+  WH --> SRC[AI Sourcing] --> STG[Stage check] --> DD[AI DD memo] --> RV{Verifier} --> CR[Blind critic: per-claim entailment] --> RS[Re-score + committee] --> CARD[Decision card -> owner verdict]
+  WH --> MON[Changepoints] --> VAL{Event validation} --> BR[Weekly briefs] --> RV
+  MON -->|monitor findings| DD
 ```
 
-Every agent owns a job with a spec in `jobs/*.yaml` (inputs, output schema, SLA, eval, failure policy) and
-writes a replayable trace (`results/traces/`): inputs, each step, model, cache key, prompt and output hashes,
-cited doc_ids. Reruns are idempotent: artifacts get a new version only when content changes.
-
-## The two jobs
-
-**Pre-investment (`make sourcing-run`, nightly cron in `.github/workflows/nightly.yml`).**
-1. *Sourcing*: GitHub niche search (14 queries), DefiLlama niche categories, YC directory, x402scan facilitators,
-   HN Show/Launch HN, CoinGecko "x402 Ecosystem" -> union-find entity resolution on name, GitHub owner and
-   domain -> relevance (niche keyword score) and investability filters (incumbents, standards bodies, personal
-   accounts out) -> dedupe against the fund CRM (`synthetic/crm_pipeline.csv`, **SYNTHETIC**).
-2. *Screening*: the GitHub-only backtested model, because most niche startups are not on DefiLlama.
-3. *Memo* (`skills/diligence-memo`): Claude drafts 8-14 claims, each with a receipt (snapshot quote or warehouse
-   metric). The verifier rejects any claim whose quote is not in the snapshot or whose numbers do not match;
-   the drafter gets one repair round; still-failing claims are withheld.
-4. *Critique* (`skills/memo-critic`): GPT re-scores PMF / Narrative / Execution, flags claims whose quote does not
-   support the text, lists missing risks. Any disagreement produces a decision card (`results/decision_cards/`);
-   the human verdict goes to `ledger/human_feedback.jsonl` (schema ready; the two seed rows are marked EXAMPLE).
-
-**Post-investment (`make monitor brief`).** Weekly x402 transactions, volume and buyers by chain and by
-facilitator (the comparable companies: Coinbase CDP, PayAI, Dexter, Daydreams, Heurist, Figment) -> PELT -> the
-brief explains each recent inflection with receipts and marks unexplained ones `needs human`.
+Each agent owns a job with a spec in `jobs/*.yaml` (inputs, output schema, SLA, eval, failure policy) and
+writes a replayable trace in `results/traces/`. Reruns are idempotent: artifacts get a new version only when
+their content changes. The two jobs share knowledge: the memo for a facilitator cites what the monitor measured.
+For example, the PayAI memo reports the September 2026 drop of about 99% in weekly payments, and its USD value per payment (inorganic-traffic risk).
 
 ## Results
 
-### 1. Screening backtest (`make backtest` -> `results/backtest/backtest.json`)
-Universe: DefiLlama protocols with a GitHub owner, visible before each T0 (ADR 0003). Outcome: any raise in
-DefiLlama's per-protocol `raises` within 12 months of T0, i.e. a revealed investor decision. Test T0s:
-2023-07-01 to 2025-07-01 every six months; models train only on windows already closed at T0.
-Sample: 4,655 rows, 1,180 protocols, 80 raises (base rate 1.7%). Score definitions were pre-registered (ADR 0004).
+### 1. Screening: a retrospective, point-in-time backtest (`make backtest` -> `results/backtest/backtest.json`)
+Universe: DefiLlama protocols with a GitHub owner, visible before each T0 (ADR 0003). This is a retrospective
+reconstruction: today's owners and top repos are used. Outcome: a raise within 12 months, a revealed investor
+decision. Test T0s run every six months from 2023-07-01 to 2025-07-01, and models train only on windows already closed.
+Metrics are the mean of per-T0 values, with 95% CIs from 1,000 resamples clustered by protocol. Owner-clustered and "unresolved owners dropped" versions are in the JSON.
+The scores, baselines and metrics were committed (ADR 0004) before the first backtest run, after the data had been pulled.
 
-| Scorer | AUC (95% CI) | Lift@50 |
+| Population | Rows / positive rows / protocols | Logistic (all features) | Pre-specified heuristic | GitHub-only (live score) | Best naive baseline |
+|---|---|---|---|---|---|
+| Never raised before T0 (seed case) | <!--n:nr_rows-->?<!--/n--> / <!--n:nr_pos-->?<!--/n--> / <!--n:nr_pos_protocols-->?<!--/n--> | <!--n:auc_nr_full-->?<!--/n--> (<!--n:auc_nr_full_ci-->?<!--/n-->) | <!--n:auc_nr_heuristic-->?<!--/n--> | <!--n:auc_nr_github-->?<!--/n--> | newest listing <!--n:auc_nr_best_base-->?<!--/n--> |
+| All protocols | <!--n:bt_rows-->?<!--/n--> / <!--n:bt_pos-->?<!--/n--> / <!--n:bt_pos_protocols-->?<!--/n--> | <!--n:auc_full-->?<!--/n--> (<!--n:auc_full_ci-->?<!--/n-->); pooled <!--n:auc_full_pooled-->?<!--/n--> | <!--n:auc_heuristic-->?<!--/n--> | <!--n:auc_github-->?<!--/n--> | raised before <!--n:auc_best_base-->?<!--/n--> |
+
+All protocols: the <!--n:bt_pos-->?<!--/n--> positive rows come from <!--n:bt_pos_protocols-->?<!--/n--> protocols and <!--n:bt_raises-->?<!--/n--> distinct raises. Only <!--n:bt_seed-->?<!--/n--> of those raises were seed,
+pre-seed or angel rounds; the rest are strategic rounds, token sales and later rounds, because the 12-month windows overlap on a 6-month grid.
+Logistic minus best baseline: <!--n:auc_diff-->?<!--/n--> (CI <!--n:auc_diff_ci-->?<!--/n-->). The precision@50 lift of <!--n:lift50_full-->?<!--/n--> is the mean of per-T0 lifts, the same
+size as the baseline's <!--n:lift50_base-->?<!--/n-->, and precision@50 is <!--n:p50_full-->?<!--/n-->. Never-raised, heuristic minus best baseline: CI <!--n:auc_nr_heur_diff_ci-->?<!--/n-->.
+For comparison, a random score gets <!--n:auc_nr_random-->?<!--/n--> and commits in the last 90 days get <!--n:auc_nr_commits-->?<!--/n-->.
+**Lead time:** for protocols with a recorded first raise, the first public GitHub repo came before the raise in
+<!--n:lead_gh_share-->?<!--/n--> of cases (median lead <!--n:lead_gh_median-->?<!--/n--> months). The DefiLlama listing came before the raise in only <!--n:lead_dl_share-->?<!--/n--> (median
+<!--n:lead_dl_median-->?<!--/n--> months). Sourcing for seed deals has to watch GitHub and launches; a TVL list sees companies after they raise.
+
+### 2. LLM screening judgment where the model cannot know the answer (`make llm-eval`, ADR 0007)
+- **Walk-forward set, anonymized** (opaque ids plus point-in-time features only, so no memorisation channel): <!--n:wf_items-->?<!--/n--> items, all
+  <!--n:wf_pos-->?<!--/n--> positive rows plus random negatives (case-control). AUC: Claude <!--n:wf_auc|anonymized|claude-sonnet-5-5-->?<!--/n-->, GPT <!--n:wf_auc|anonymized|gpt-6.1-sol-->?<!--/n-->;
+  the deterministic logistic model on the same items gets <!--n:wf_auc|deterministic|s_logit_full-->?<!--/n-->. On never-raised items: Claude <!--n:wf_nr_auc|anonymized|claude-sonnet-5-5-->?<!--/n-->, GPT
+  <!--n:wf_nr_auc|anonymized|gpt-6.1-sol-->?<!--/n-->, heuristic <!--n:wf_nr_auc|deterministic|s_heuristic-->?<!--/n-->.
+- **Post-cutoff set**: features as of 2026-06-30, raises up to 2026-11-01 (4 months, right-censored), <!--n:pc_items-->?<!--/n--> items with <!--n:pc_pos-->?<!--/n--> raises.
+  Cutoffs were **probed**, not assumed: the latest event each model dated correctly was <!--n:probe|claude-sonnet-5-5-->?<!--/n--> for Claude and
+  <!--n:probe|gpt-6.1-sol-->?<!--/n--> for GPT; neither knew any 2026 event. Anonymized AUC: Claude <!--n:pc_auc|anonymized|claude-sonnet-5-5-->?<!--/n-->,
+  GPT <!--n:pc_auc|anonymized|gpt-6.1-sol-->?<!--/n-->; deterministic <!--n:pc_auc|deterministic|logit_full-->?<!--/n-->. Named (leakage-exposed) arm: Claude <!--n:pc_auc|named|claude-sonnet-5-5-->?<!--/n-->, GPT <!--n:pc_auc|named|gpt-6.1-sol-->?<!--/n-->.
+  An explicit rule finds a raise mentioned in today's description for <!--n:pc_mention_pos-->?<!--/n--> positives and <!--n:pc_mention_neg-->?<!--/n--> negatives,
+  and the matched texts are printed for review. With so few positives, read this as a harness check.
+
+### 3. Receipts (`results/sourcing/run_summary.json`, `make claim-eval`, ADR 0006)
+Memos: <!--n:claims_drafted-->?<!--/n--> claims; <!--n:raw_precision-->?<!--/n--> passed the verifier on the first draft, and all passed after one repair.
+That "after repair" figure is close to tautological, because failing claims are fixed or dropped. The meaningful number is the critic's:
+<!--n:critic_entailed-->?<!--/n--> of claims fully entailed, <!--n:claims_partial-->?<!--/n--> tagged partial, <!--n:claims_withheld_critic-->?<!--/n--> withheld.
+Claim-level eval on <!--n:ce_orig-->?<!--/n--> real memo claims and <!--n:ce_pert-->?<!--/n--> labelled perturbations (recall, verifier / critic):
+
+| Perturbation | Verifier | Critic |
 |---|---|---|
-| Logistic, all point-in-time features | 0.810 (0.725-0.886) | 9.0x |
-| Pre-registered heuristic (no fitting) | 0.789 | |
-| Logistic, GitHub-only (the live niche score) | 0.736 | |
-| Best naive baseline: raised before | 0.773 | 8.6x |
-| Reference only: today's GitHub stars (leakage-exposed) | 0.726 | |
+| swapped number | <!--n:ce_ver|swapped_number-->?<!--/n--> | <!--n:ce_cri|swapped_number-->?<!--/n--> |
+| wrong date | <!--n:ce_ver|wrong_date-->?<!--/n--> | <!--n:ce_cri|wrong_date-->?<!--/n--> |
+| wrong entity | <!--n:ce_ver|wrong_entity-->?<!--/n--> | <!--n:ce_cri|wrong_entity-->?<!--/n--> |
+| unsupported qualifier | <!--n:ce_ver|added_qualifier-->?<!--/n--> | <!--n:ce_cri|added_qualifier-->?<!--/n--> |
 
-Paired AUC gain over the best baseline: +0.036 (95% CI -0.022 to +0.100). Honest reading: public traction
-features anticipate raises well, but most of the signal is "this team has raised before"; the model is not
-proven better than that heuristic. Precision@50 of the full model: 0.148.
+The verifier is blind to entity swaps and embellishment by design (it checks spans and numbers). The critic
+catches every perturbation, but it also flags <!--n:ce_critic_flag_orig-->?<!--/n--> of the unperturbed claims as not fully entailed. That rate is an upper
+bound on its false positives. Its precision is unknown until the owner labels `results/adjudication/flag_sample.csv`.
 
-### 2. LLM judgment, only where the model cannot know the answer (`make llm-eval`, ADR 0007)
-Features frozen at 2026-06-30 (assumed model cutoff), outcomes from then to 2026-11-01; 120 protocols, 8 raises.
+### 4. Inflection points (`make monitor`, `make monitor-diagnostics`, ADR 0005 / 0009)
+Weekly x402 payments, all chains: <!--n:cp_n-->?<!--/n--> changepoints against <!--n:cp_events-->?<!--/n--> dated events (the x402 Foundation feed, three verified
+launches, and HN stories with at least 15 points). Hit rate <!--n:cp_hit-->?<!--/n--> vs <!--n:cp_null-->?<!--/n--> by chance (p = <!--n:cp_p-->?<!--/n-->); false alarms <!--n:cp_fa-->?<!--/n-->. **Target missed.**
+Exploratory diagnostics, all added after the miss:
+- **Power:** <!--n:pw_needed-->?<!--/n--> of 12 events would have had to match for p < 0.05. The power at a true hit rate of 70% is <!--n:pw_07-->?<!--/n-->.
+- **Real-time replay:** on expanding windows, the median detection delay is <!--n:rt_delay-->?<!--/n--> weeks, and <!--n:rt_dropped-->?<!--/n--> alarms raised in real time later disappeared.
+- **Matched alarm counts:** at the same number of alarms (<!--n:mc_k-->?<!--/n-->), PELT's false-alarm rate is <!--n:mc_pelt_fa-->?<!--/n--> vs <!--n:mc_z_fa-->?<!--/n--> for the z-score detector.
+- **Event list v2:** adding every x402-ecosystem token's first DEX pool (GeckoTerminal) as a crypto catalyst gives <!--n:v2_events-->?<!--/n--> events, a hit rate of <!--n:v2_hit-->?<!--/n-->
+  vs <!--n:v2_null-->?<!--/n--> by chance (p = <!--n:v2_p-->?<!--/n-->). Because this list was extended after the fact, it is a hypothesis, not a validation.
+- **September 2026 drop:** the artifact check (daily shape, facilitator shares, public x402scan commits) is in the JSON.
+  No public indexer change was found in that window, and the drop is concentrated in PayAI and Solana.
+- **Portfolio-style KPI brief for one named comparable,** Daydreams: `results/briefs/company_daydreams.md`.
 
-| Scorer | AUC |
-|---|---|
-| Deterministic logistic (all features) | 0.91 |
-| Deterministic, raised before | 0.85 |
-| Deterministic, GitHub-only | 0.75 |
-| Claude, anonymized features | 0.81 |
-| GPT, anonymized features | 0.80 |
-| Claude, named + current description (leakage-exposed) | 0.91 |
-| GPT, named + current description (leakage-exposed) | 0.87 |
-
-With 8 positives every interval is wide (see the JSON). On clean inputs the LLMs do not beat the deterministic
-score; the named arm improves, but 4 of the 8 positives' current descriptions mention funding, so that gain is
-not evidence of judgment.
-
-### 3. Receipts (`results/sourcing/run_summary.json`)
-8 memos, 106 claims drafted; 88.7% verified on the first pass, 100.0% after one repair round, 106 shipped.
-The critic still flags 32 shipped claims as not supported by their quote, which is the gap a span check cannot
-close (ADR 0006). The verifier itself is tested (`make verifier-eval`): it accepts all 266 real spans in a gold
-set and rejects 500 of 500 programmatic corruptions (100.0%). Disclosure: the first run caught 498; the two
-misses were HN boilerplate lines differing only in an item id, which the fuzzy match tolerated, so fuzzy matches
-now also require every number in the quote to exist in the snapshot. The corruption set was not changed.
-The weekly brief: 81.2% of 16 claims verified on the first pass, 16 shipped. Recommendation agreement between the two model families: 1 of 8;
-all 8 memos produced a decision card.
-
-### 4. Inflection points (`make monitor` -> `results/monitoring/changepoints.json`, ADR 0005)
-On weekly x402 transactions (all chains): 12 changepoints against 12 dated events (x402 Foundation feed, three
-verified third-party launches, HN stories >= 15 points). Event hit rate 42%, versus 36% for the same number of
-changepoints placed at random (p = 0.44); false alarms 67% versus 57% for a z-score detector. **Target missed.**
-The largest moves (October 2025 up ~180x in weekly median; September 2026 down ~90%) have no matching
-announcement. That is the useful finding: x402 usage is driven by on-chain activity that press releases do not
-predict, so a monitor must surface unexplained breaks to a human rather than narrate them.
+## What the owner must do (not automated, not pre-filled)
+1. Read the decision cards in `results/decision_cards/` and record a verdict and reason for each:
+   `uv run python -m vaios.decide record <entity> --verdict advance|watch|pass --reason "..." --reviewer <name>`.
+2. Label the critic-flag sample: open `results/adjudication/flag_sample.csv`, or run `uv run python -m vaios.decide label <entity>:<claim> --label entails|partial|contradicts --reviewer <name>`.
+3. `uv run python -m vaios.decide status` then reports agreement between the human and each agent. Until then, human agreement is **pending**.
+Both ledgers (`ledger/human_feedback.jsonl`, `ledger/flag_adjudication.jsonl`) are empty on purpose. Format examples live in `ledger/human_feedback.example.jsonl`.
 
 ## Key SQL (DuckDB, `src/vaios/sql/`)
 
-Point-in-time TVL at T0 (no row on or after T0 can enter):
+Point-in-time TVL at T0 (no row dated on or after T0 can enter):
 ```sql
 SELECT u.t0, u.slug,
        arg_max(t.tvl_usd, t.day) FILTER (WHERE t.day < u.t0)                     AS tvl_t0,
@@ -131,7 +138,7 @@ SELECT u.t0, u.slug,
 FROM universe u JOIN stg_tvl_daily t ON t.slug = u.slug AND t.day < u.t0
 GROUP BY 1, 2;
 ```
-Outcome label, kept in a separate table from features:
+Outcome label, kept in a separate table from the features:
 ```sql
 SELECT f.t0, f.slug, COUNT(r.slug) > 0 AS raised, COALESCE(SUM(r.amount_musd), 0) AS amount_musd
 FROM features_pit f JOIN asof_dates a ON a.t0 = f.t0
@@ -148,60 +155,55 @@ CASE WHEN p.listed_at IS NOT NULL THEN p.listed_at
 
 | Source | What | Access / terms |
 |---|---|---|
-| [GitHub API](https://docs.github.com/en/rest) | repo search, commit history windows (GraphQL), READMEs | `gh` auth; GitHub API terms |
-| [DefiLlama API](https://defillama.com/docs/api) | protocols, TVL history, per-protocol raises | free endpoints (bulk `/raises` is paid and not used) |
+| [GitHub API](https://docs.github.com/en/rest) | repo search, commit-history windows (GraphQL), READMEs, contributors, org websites | `gh` auth; GitHub API terms |
+| [DefiLlama API](https://defillama.com/docs/api) | protocols, TVL history, per-protocol raises | free endpoints (the bulk `/raises` endpoint is paid and not used) |
 | [x402scan](https://www.x402scan.com) ([source](https://github.com/Merit-Systems/x402scan)) | daily x402 transfers by chain and facilitator | public endpoints of an open-source explorer |
-| [CoinGecko API](https://www.coingecko.com/en/api) | token markets and 365-day charts | public tier, attribution |
+| [CoinGecko API](https://www.coingecko.com/en/api) / [GeckoTerminal API](https://www.geckoterminal.com/dex-api) | token markets, FDV, 365-day charts / DEX pool creation dates | public tiers, attribution |
 | [HN Algolia](https://hn.algolia.com/api) | stories, dated | public |
 | [arXiv API](https://info.arxiv.org/help/api/) | agent-payment papers | arXiv API terms |
 | [YC directory (yc-oss mirror)](https://github.com/yc-oss/api) | companies, batches | public mirror of the YC directory |
 | [x402 Foundation feed](https://x402.org/feed/) | dated first-party announcements | public RSS |
+| Company homepages | funding sentences, investor logos, about pages (stage check) | fetched once, stored as snapshots |
 
-Raw pulls are gitignored; every file is listed with URL, fetch time and sha256 in
-`results/data_manifest_files.csv.gz`. The small point-in-time tables every number is computed from are
-committed in `results/frozen/`. Probe results, including what does not work (star timestamps, bulk raises),
-are in ADR 0001.
+Raw pulls are gitignored. Every file is listed with its URL, fetch time and sha256 in `results/data_manifest_files.csv.gz`.
+The small point-in-time tables that every number is computed from are committed in `results/frozen/`.
 
 ## How to run
 
 ```bash
 make init          # uv sync --locked + headless chromium
-make check         # offline: ruff + tests + feature regression check (about 20 s)
-make verify        # runs every feature verification, writes feature_list.json states
-make replay        # re-runs every LLM job with VAIOS_STRICT_REPLAY=1: zero model calls, identical outputs
-make reproduce     # live pulls -> warehouse -> backtest -> LLM jobs (cached) -> dashboard
+make check         # offline: ruff + tests + feature regression check
+make verify        # every feature verification; exits non-zero if any feature is open without an approved block
+make replay        # every LLM job with VAIOS_STRICT_REPLAY=1: zero model calls, identical outputs
+make live-run      # LOCAL live mode: fresh pulls -> new shortlist -> memos with budgeted, cached LLM calls
+make reproduce     # everything from live pulls (LLM calls are cached)
 ```
-Docker: `docker build -t venture-ai-os . && docker run --rm venture-ai-os` runs the offline gate.
-Tableau: `extracts/*.csv` and the workbook design in `docs/tableau.md`.
+CI (`ci.yml`) and the scheduled workflow (`nightly.yml`) run **strict replay from cassettes**. They prove that
+the jobs still run end to end with zero calls; they do not source anything new. Live sourcing is `make live-run`.
+Docker: `docker build -t venture-ai-os . && docker run --rm venture-ai-os`. Tableau: `extracts/*.csv` + `docs/tableau.md`.
 
 ## How this maps to an AI-native fund's workflow
 
 | Fund concept | Here |
 |---|---|
-| Context layer of memos, market maps, call notes | DuckDB warehouse + content-addressed snapshot store + versioned artifacts with change log |
-| Every output leaves receipts | claim-level citations checked by code; trace per run; artifact provenance (doc_ids, cache keys, metric keys) |
-| Agents own jobs, not prompts | `jobs/*.yaml` specs with SLA, output schema and eval; pydantic outputs; failure isolation per company |
-| Agents critique each other, humans in the loop | cross-family critique, decision cards, human feedback ledger |
-| Held-out evaluation for forecasting | walk-forward point-in-time backtest; LLM judgment only on post-cutoff outcomes |
+| Context layer of memos, market maps, call notes | DuckDB warehouse + content-addressed snapshot store + versioned artifacts with a change log |
+| Every output leaves receipts | claim-level citations checked by code and by a second model; a trace per run; artifact provenance |
+| Agents own jobs, not prompts | `jobs/*.yaml` specs; pydantic outputs; per-company failure isolation; a run fails if any company fails |
+| Agents critique each other, humans in the loop | blind cross-family critique, committee with an advance budget, decision cards, owner verdict ledger (pending) |
+| Held-out evaluation for forecasting | walk-forward point-in-time backtest; LLM judgment on anonymized and post-cutoff sets |
 | AI gateway | one gateway: routing, cache/replay, ledger, budget |
-| Overnight sourcing | nightly cron workflow |
 
-**Deploying to a portfolio company.** `make export-skills` writes `dist/founder-skills-bundle/`: the SKILL.md
-folders plus JSON schemas for their outputs. A founder drops `skills/` into `.claude/skills/` or references it
-from `AGENTS.md`; the receipts rule and the rubric travel with it. For example, a portfolio company in agent
-payments can point `inflection-explainer` at its own x402 facilitator series to get the same weekly brief.
+**Deploying to a portfolio company.** `make export-skills` writes `dist/founder-skills-bundle/` (SKILL.md folders plus output
+schemas). `company-brief` shows the intended use: point the KPI brief at one company's own series.
 
 ## Known limitations / what differs from production
 
-- The backtest universe is DefiLlama-listed crypto protocols, broader than the agentic-payments niche (ADR 0003);
-  raises before a protocol is listed are invisible. Top repos per owner are chosen by today's stars.
-- GitHub star history is not available, so popularity enters only as a leakage-exposed reference.
-- The live niche score is the weaker GitHub-only model (AUC 0.736 in the backtest).
-- 8 post-cutoff raises make the LLM-judgment comparison a harness check, not a verdict.
-- The verifier proves a quote exists, not that it supports the claim; the critic covers part of that gap.
-- The changepoint method missed its pre-registered target; the event list is small (12 in range).
-- Entity resolution is heuristic (e.g. a facilitator id is matched to a GitHub owner by prefix).
-- The CRM is SYNTHETIC; real deployment would read the fund's CRM and write decision-card verdicts back to it.
-- Paid data (PitchBook, Crunchbase, Messari, Dune) would plug in as one more `ingest/` module with the same
-  manifest contract.
+- The screening backtest is a retrospective reconstruction on DefiLlama-listed crypto protocols, not seed-stage AI startups
+  (ADR 0003). Unresolved owners make negatives look inactive: owners resolve for 96% of positive rows vs 90% of negative rows.
+- Funding coverage is DefiLlama's. Raises before listing are invisible, and missing raises count as negatives.
+- The stage check only knows what homepages, DefiLlama, YC and CoinGecko say. "Unknown" is not "early".
+- The critic's precision is unmeasured until the owner labels the adjudication sample, and it may over-flag.
+- The changepoint test missed and was underpowered. All monitoring diagnostics are post-hoc.
+- Hooks in `.claude/` are guardrails for Edit/Write tool calls; shell writes are not covered.
+- The CRM is SYNTHETIC. Paid data (PitchBook, Crunchbase, Messari, Dune) would plug in as one more `ingest/` module.
 - Not affiliated with any fund. Companies named here are public comparables, not recommendations.
