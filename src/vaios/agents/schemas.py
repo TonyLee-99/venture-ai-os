@@ -9,7 +9,8 @@ from pydantic import BaseModel, Field, model_validator
 
 class Claim(BaseModel):
     id: str
-    section: Literal["market", "pmf", "narrative", "execution", "risk", "inflection"]
+    section: Literal["market", "pmf", "narrative", "execution", "team", "why_now", "competition", "risk",
+                     "inflection"]
     text: str
     doc_id: str | None = None   # citation: a snapshot in the DAKR doc store
     quote: str | None = None    # exact span copied from that snapshot
@@ -56,12 +57,30 @@ class UnsupportedClaim(BaseModel):
     reason: str
 
 
+class ClaimLabel(BaseModel):
+    """Entailment judgment of one claim against its own receipt (quote or metric)."""
+    claim_id: str
+    label: Literal["entails", "partial", "contradicts", "unsupported"]
+    reason: str
+
+
 class Critique(BaseModel):
+    claim_labels: list[ClaimLabel]
     scores: Scores
     recommendation: Literal["advance", "watch", "pass"]
-    unsupported_claims: list[UnsupportedClaim]
     missing_risks: list[str]
     strongest_counterargument: str
+
+
+class Rescore(BaseModel):
+    """Drafter re-scores after the critic's withheld/partial claims are removed or tagged."""
+    scores: Scores
+    recommendation: Literal["advance", "watch", "pass"]
+    change_note: str
+
+
+class EntailmentBatch(BaseModel):
+    labels: list[ClaimLabel]
 
 
 class InflectionNote(BaseModel):

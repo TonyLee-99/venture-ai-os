@@ -42,6 +42,7 @@ def memo_prompt(name: str, sources: str, facts: str) -> str:
 
 
 def disagreement(memo: dict, crit: dict) -> list[str]:
+    """A decision card fires only on a different recommendation or a score gap of 2+ points (not on any flag)."""
     reasons = []
     for dim in ("pmf", "narrative", "execution"):
         a, b = memo["scores"][dim]["score"], crit["scores"][dim]["score"]
@@ -49,25 +50,55 @@ def disagreement(memo: dict, crit: dict) -> list[str]:
             reasons.append(f"{dim.upper()} score differs by {abs(a - b)} (drafter {a}, critic {b})")
     if memo["recommendation"] != crit["recommendation"]:
         reasons.append(f"recommendation: drafter '{memo['recommendation']}' vs critic '{crit['recommendation']}'")
-    if crit["unsupported_claims"]:
-        reasons.append(f"critic flags {len(crit['unsupported_claims'])} claim(s) as unsupported by their quote")
     return reasons
 
 
+def stage_header(cand: dict) -> str:
+    st = cand.get("stage") or {}
+    tok = st.get("token")
+    lines = ["STAGE (sourced evidence only; 'unknown' means none found):",
+             f"- stage: {st.get('stage', 'unknown')}",
+             f"- last known round: {'; '.join(st.get('round_evidence') or []) or 'unknown'}",
+             f"- token: {tok['ticker'] + ' (FDV $' + format((tok.get('fdv_usd') or 0) / 1e6, ',.1f') + 'M)' if tok else 'none found'}",
+             f"- YC batch: {st.get('yc_batch') or 'none'}"]
+    return "\n".join(lines)
+
+
+def reconcile(claims: list[dict], labels: list[dict]) -> tuple[list[dict], list[dict], dict]:
+    """entails -> ship; partial -> ship with a visible tag; contradicts/unsupported -> withhold."""
+    by_id = {x["claim_id"]: x for x in labels}
+    shipped, withheld, counts = [], [], {"entails": 0, "partial": 0, "contradicts": 0, "unsupported": 0,
+                                         "unlabelled": 0}
+    for c in claims:
+        lab = by_id.get(c["id"])
+        kind = lab["label"] if lab else "unlabelled"
+        counts[kind] += 1
+        if kind in ("contradicts", "unsupported"):
+            withheld.append({"claim": c, "critic_label": kind, "reason": lab["reason"]})
+        else:
+            shipped.append({**c, "support": kind, "support_note": lab["reason"] if lab else "critic gave no label"})
+    return shipped, withheld, counts
+
+
 def run_one(gw: Gateway, store: DocStore, cand: dict, doc_ids: list[str]) -> dict:
+    """Draft -> receipts gate (+1 repair) -> blind critique with per-claim entailment -> reconcile -> rescore.
+    The committee step (advance budget) and the writing of outputs happen in `finalize`."""
     entity, name = cand["entity"], cand["name"]
     sheet = load_facts(entity)
     facts = sheet["facts"]
-    trace = Trace("diligence_memo", entity, {"doc_ids": doc_ids, "facts_sha": json.dumps(facts, sort_keys=True)},
-                  as_of=sheet["as_of"])
+    trace = Trace("diligence_memo", entity, {"doc_ids": doc_ids, "facts_sha": json.dumps(facts, sort_keys=True),
+                                             "stage": cand.get("stage")}, as_of=sheet["as_of"])
     sources, facts_txt = render_sources(store, doc_ids), render_facts(sheet)
+    header = stage_header(cand)
     try:
         # 1. draft (model family A)
-        prompt = memo_prompt(name, sources, facts_txt)
+        prompt = (f"Company: {name}\n\n{header}\n\nSOURCES:\n{sources}\n\n{facts_txt}\n\n"
+                  f"Output JSON schema (Memo):\n{skills.schema_hint(schemas.Memo)}")
         res = gw.complete("draft", skills.system_prompt("diligence-memo"), prompt, tag=f"memo:{entity}",
                           schema=schemas.Memo)
         trace.llm("draft_memo", res, prompt, doc_ids)
         memo = res.parsed
+        draft_scores, draft_rec = memo["scores"], memo["recommendation"]
         n_drafted = len(memo["claims"])
         checks = check_all(memo["claims"], store, facts, sheet["descriptions"])
         raw_precision = precision(checks)
@@ -82,50 +113,113 @@ def run_one(gw: Gateway, store: DocStore, cand: dict, doc_ids: list[str]) -> dic
                      for cl in memo["claims"] if cl["id"] in bad]
             rp = (f"{prompt}\n\nThe receipts verifier rejected these claims of your memo:\n"
                   f"{json.dumps(items, ensure_ascii=False, indent=1)}\n\nFor each, either fix the receipt (copy the "
-                  f"quote exactly from the source, or use the exact metric value) or drop it. Return JSON: "
-                  f"{skills.schema_hint(schemas.ClaimRepair)}")
+                  f"quote exactly from the source, or use the exact metric value and state it) or drop it. Return "
+                  f"JSON: {skills.schema_hint(schemas.ClaimRepair)}")
             rr = gw.complete("draft", skills.system_prompt("receipts"), rp, tag=f"repair:{entity}",
                              schema=schemas.ClaimRepair)
             trace.llm("repair_claims", rr, rp, doc_ids)
             fixed = {c["id"]: c for c in rr.parsed["fixed"]}
             memo["claims"] = [fixed.get(c["id"], c) for c in memo["claims"] if c["id"] not in rr.parsed["dropped"]]
             checks = check_all(memo["claims"], store, facts, sheet["descriptions"])
-        post_precision = precision(checks)
-        shipped = [c for c, chk in zip(memo["claims"], checks, strict=True) if chk.ok]
+        verified = [c for c, chk in zip(memo["claims"], checks, strict=True) if chk.ok]
         unverified = [{"claim": c, "status": chk.status, "detail": chk.detail}
                       for c, chk in zip(memo["claims"], checks, strict=True) if not chk.ok]
-        trace.step("gate", raw_precision=raw_precision, post_repair_precision=post_precision,
-                   shipped=len(shipped), withheld=len(unverified))
-        memo_shipped = {**memo, "claims": shipped}
+        trace.step("verifier_gate", raw_precision=raw_precision, verified=len(verified), withheld=len(unverified))
 
-        # 3. critique (model family B), same evidence, never sees the verifier output
-        cp = (f"Company: {name}\n\nSOURCES:\n{sources}\n\n{facts_txt}\n\nDRAFTER MEMO:\n"
-              f"{json.dumps(memo_shipped, ensure_ascii=False, indent=1)}\n\nOutput JSON schema (Critique):\n"
+        # 3. blind critique (model family B): claims + one-liner only, no drafter scores/recommendation
+        blind = {"company": name, "one_liner": memo["one_liner"],
+                 "claims": [{k: c[k] for k in ("id", "section", "text", "doc_id", "quote", "metric", "value")}
+                            for c in verified]}
+        cp = (f"Company: {name}\n\n{header}\n\nSOURCES:\n{sources}\n\n{facts_txt}\n\nDRAFTER CLAIMS:\n"
+              f"{json.dumps(blind, ensure_ascii=False, indent=1)}\n\nOutput JSON schema (Critique):\n"
               f"{skills.schema_hint(schemas.Critique)}")
         cr = gw.complete("critique", skills.system_prompt("memo-critic"), cp, tag=f"critique:{entity}",
                          schema=schemas.Critique)
         trace.llm("critique", cr, cp, doc_ids)
         crit = cr.parsed
-        reasons = disagreement(memo_shipped, crit)
-        trace.step("disagreement", reasons=reasons, families=[gw.family("draft"), gw.family("critique")])
+        shipped, withheld_by_critic, label_counts = reconcile(verified, crit["claim_labels"])
+        trace.step("reconcile", **label_counts)
 
-        out = {"entity": entity, "name": name, "as_of": sheet["as_of"], "memo": memo_shipped, "unverified": unverified,
-               "critique": crit, "disagreements": reasons, "doc_ids": doc_ids, "facts": facts,
-               "receipts": {"claims_drafted": n_drafted,
-                            "raw_precision": round(raw_precision, 4), "post_repair_precision": round(post_precision, 4),
-                            "shipped": len(shipped), "withheld": len(unverified),
-                            "dropped_in_repair": n_drafted - len(memo["claims"])},
-               "models": {"drafter": f"{res.backend}:{res.model}", "critic": f"{cr.backend}:{cr.model}"}}
-        write_outputs(out, store, sheet)
-        v = artifacts.save("memo", entity, out, as_of=sheet["as_of"],
-                           provenance={"run_id": trace.run_id, "job": "diligence_memo", "doc_ids": doc_ids,
-                                       "cache_keys": trace.cache_keys, "metrics": sorted(facts)})
-        trace.save("ok", {"memo": f"results/memos/{entity}.md", "artifact_version": v["version"],
-                          "decision_card": bool(reasons)})
+        # 4. rescore: the drafter sees which claims survived and re-decides (dependent recommendations)
+        rs_prompt = (f"Company: {name}\n\n{header}\n\nYour first-draft scores and recommendation were:\n"
+                     f"{json.dumps({'scores': draft_scores, 'recommendation': draft_rec}, ensure_ascii=False)}\n\n"
+                     f"After an independent support review, these claims remain (support = entails or partial):\n"
+                     f"{json.dumps([{k: c[k] for k in ('id', 'section', 'text', 'support')} for c in shipped], ensure_ascii=False, indent=1)}\n\n"
+                     f"These were withheld as not supported by their receipts:\n"
+                     f"{json.dumps([{'id': w['claim']['id'], 'text': w['claim']['text'], 'why': w['reason']} for w in withheld_by_critic], ensure_ascii=False, indent=1)}\n\n"
+                     f"Re-score PMF / Narrative / Execution using only the remaining evidence (partial claims count "
+                     f"as weak evidence) and give a recommendation under the same rules. Return JSON: "
+                     f"{skills.schema_hint(schemas.Rescore)}")
+        rr2 = gw.complete("draft", skills.system_prompt("diligence-memo"), rs_prompt, tag=f"rescore:{entity}",
+                          schema=schemas.Rescore)
+        trace.llm("rescore", rr2, rs_prompt, doc_ids)
+        final = {**memo, "claims": shipped, "scores": rr2.parsed["scores"],
+                 "recommendation": rr2.parsed["recommendation"], "rescore_note": rr2.parsed["change_note"],
+                 "draft_scores": draft_scores, "draft_recommendation": draft_rec}
+        n_ver = len(verified)
+        out = {"entity": entity, "name": name, "as_of": sheet["as_of"], "stage": cand.get("stage"),
+               "triage": {"rank": cand.get("rank"), "screen_score": cand.get("screen_score"),
+                          "note": "triage signal only, not evidence (near chance on never-raised protocols)"},
+               "memo": final, "unverified": unverified, "withheld_by_critic": withheld_by_critic,
+               "critique": crit, "doc_ids": doc_ids, "facts": facts,
+               "receipts": {"claims_drafted": n_drafted, "raw_precision": round(raw_precision, 4),
+                            "verified": n_ver, "withheld_by_verifier": len(unverified),
+                            "dropped_in_repair": n_drafted - len(memo["claims"]),
+                            "critic_labels": label_counts,
+                            "critic_entailed_share": round(label_counts["entails"] / n_ver, 4) if n_ver else None,
+                            "shipped": len(shipped), "shipped_partial": label_counts["partial"],
+                            "withheld_by_critic": len(withheld_by_critic)},
+               "models": {"drafter": f"{res.backend}:{res.model}", "critic": f"{cr.backend}:{cr.model}"},
+               "_trace": trace}
         return out
     except Exception as e:  # one company failing must not stop the overnight run
         trace.save("failed", error=f"{type(e).__name__}: {str(e)[:500]}")
         raise
+
+
+ADVANCE_BUDGET = 2  # at most 2 of 8 memos may recommend "advance": forces a ranking, like a partner meeting
+
+
+def policy(scores: dict, rec: str) -> str:
+    total = sum(scores[d]["score"] for d in ("pmf", "narrative", "execution"))
+    low = min(scores[d]["score"] for d in ("pmf", "narrative", "execution"))
+    if total <= 7 or low == 1:
+        return "pass"
+    if rec == "advance" and (total < 11 or low < 3):
+        return "watch"
+    return rec
+
+
+def committee(outs: list[dict]) -> None:
+    """Apply the written score policy, then the advance budget (ranked by drafter+critic totals)."""
+    tot = lambda o, k: sum(o[k]["scores"][d]["score"] for d in ("pmf", "narrative", "execution"))  # noqa: E731
+    for o in outs:
+        o["memo"]["recommendation_before_committee"] = o["memo"]["recommendation"]
+        o["memo"]["recommendation"] = policy(o["memo"]["scores"], o["memo"]["recommendation"])
+    ranked = sorted(outs, key=lambda o: (-(tot(o, "memo") + tot(o, "critique")), o["entity"]))
+    kept = 0
+    for i, o in enumerate(ranked, 1):
+        o["committee_rank"] = i
+        if o["memo"]["recommendation"] == "advance":
+            kept += 1
+            if kept > ADVANCE_BUDGET:
+                o["memo"]["recommendation"] = "watch"
+                o["memo"]["committee_note"] = f"downgraded: advance budget of {ADVANCE_BUDGET} already used"
+    for o in outs:
+        o["disagreements"] = disagreement(o["memo"], o["critique"])
+
+
+def finalize(out: dict, store: DocStore) -> None:
+    trace = out.pop("_trace")
+    sheet = load_facts(out["entity"])
+    write_outputs(out, store, sheet)
+    v = artifacts.save("memo", out["entity"], out, as_of=sheet["as_of"],
+                       provenance={"run_id": trace.run_id, "job": "diligence_memo", "doc_ids": out["doc_ids"],
+                                   "cache_keys": trace.cache_keys, "metrics": sorted(out["facts"])})
+    trace.step("committee", rank=out["committee_rank"], recommendation=out["memo"]["recommendation"],
+               disagreements=out["disagreements"])
+    trace.save("ok", {"memo": f"results/memos/{out['entity']}.md", "artifact_version": v["version"],
+                      "decision_card": bool(out["disagreements"])})
 
 
 def write_outputs(out: dict, store: DocStore, sheet: dict) -> None:
@@ -137,27 +231,45 @@ def write_outputs(out: dict, store: DocStore, sheet: dict) -> None:
         (CARDS / f"{out['entity']}.md").write_text(render_card(out))
 
 
+SECTIONS = ("team", "why_now", "market", "competition", "pmf", "narrative", "execution", "risk")
+
+
 def render_memo_md(out: dict, store: DocStore) -> str:
-    m, r = out["memo"], out["receipts"]
+    m, r, st = out["memo"], out["receipts"], out.get("stage") or {}
+    tok = st.get("token")
     lines = [f"# {out['name']}: baseline diligence memo (AI first pass, not a decision)", "",
+             "| Stage | Last known round | Token | YC batch | Triage rank |", "|---|---|---|---|---|",
+             f"| {st.get('stage', 'unknown')} | {'; '.join(st.get('round_evidence') or []) or 'unknown'} | "
+             f"{tok['ticker'] + ' (FDV $' + format((tok.get('fdv_usd') or 0) / 1e6, ',.1f') + 'M)' if tok else 'none found'} | "
+             f"{st.get('yc_batch') or 'none'} | {out['triage']['rank']} (triage only, not evidence) |", "",
              f"**{m['one_liner']}**", "", f"Thesis fit: {m['thesis_fit']}", "",
-             f"Recommendation (drafter, {out['models']['drafter']}): **{m['recommendation']}**  ",
-             f"Critic ({out['models']['critic']}): **{out['critique']['recommendation']}**  ",
-             f"Receipts: {r['shipped']} claims shipped, {r['withheld']} withheld by the verifier "
-             f"(raw citation precision {r['raw_precision']:.2f}, after repair {r['post_repair_precision']:.2f})", "",
-             "| Dimension | Drafter | Critic |", "|---|---|---|"]
+             f"Recommendation after critique and committee: **{m['recommendation']}** "
+             f"(first draft: {m['draft_recommendation']}; critic: {out['critique']['recommendation']})  ",
+             f"Receipts: {r['claims_drafted']} claims drafted, {r['raw_precision']:.0%} passed the verifier on the "
+             f"first pass, {r['verified']} verified after one repair; the critic labelled {r['critic_labels']['entails']} "
+             f"as entailed, {r['shipped_partial']} as partial (tagged below) and withheld {r['withheld_by_critic']}.", "",
+             "| Dimension | Drafter (final) | Drafter (first draft) | Critic |", "|---|---|---|---|"]
     for dim in ("pmf", "narrative", "execution"):
-        lines.append(f"| {dim.upper()} | {m['scores'][dim]['score']} | {out['critique']['scores'][dim]['score']} |")
-    for sec in ("market", "pmf", "narrative", "execution", "risk"):
+        lines.append(f"| {dim.upper()} | {m['scores'][dim]['score']} | {m['draft_scores'][dim]['score']} | "
+                     f"{out['critique']['scores'][dim]['score']} |")
+    for sec in SECTIONS:
         cl = [c for c in m["claims"] if c["section"] == sec]
         if cl:
-            lines += ["", f"## {sec.upper() if sec == 'pmf' else sec.title()}"]
-            lines += [f"- {c['text']} [^{c['id']}]" for c in cl]
-    lines += ["", "## Scores", ""]
+            lines += ["", f"## {sec.replace('_', ' ').upper() if sec == 'pmf' else sec.replace('_', ' ').title()}"]
+            lines += [f"- {c['text']} [^{c['id']}]" + (f" _(partial support: {c['support_note']})_"
+                                                       if c.get("support") != "entails" else "") for c in cl]
+    lines += ["", "## Scores (final, after the support review)", ""]
     lines += [f"- **{d.upper()} {m['scores'][d]['score']}/5**: {m['scores'][d]['rationale']}" for d in
               ("pmf", "narrative", "execution")]
+    if m.get("rescore_note"):
+        lines += ["", f"Re-score note: {m['rescore_note']}"]
+    if m.get("committee_note"):
+        lines += ["", f"Committee: {m['committee_note']}"]
     lines += ["", "## Risks", ""] + [f"- {x}" for x in m["risks"]]
     lines += ["", "## Questions for the founder call", ""] + [f"- {x}" for x in m["open_questions"]]
+    if out["withheld_by_critic"]:
+        lines += ["", "## Withheld: real quote, but the critic says it does not support the claim", ""]
+        lines += [f"- ~~{w['claim']['text']}~~ ({w['critic_label']}: {w['reason']})" for w in out["withheld_by_critic"]]
     lines += ["", "## Receipts", ""]
     for c in m["claims"]:
         if c.get("doc_id"):
@@ -171,19 +283,21 @@ def render_memo_md(out: dict, store: DocStore) -> str:
 
 def render_card(out: dict) -> str:
     m, c = out["memo"], out["critique"]
-    lines = [f"# Decision card: {out['name']}", "", "The two agents disagree. A human decides; log the decision in "
-             "`ledger/human_feedback.jsonl` (schema: `vaios.agents.schemas.HumanDecision`).", "",
+    lines = [f"# Decision card: {out['name']}", "",
+             "The two agents disagree on the recommendation or by 2+ points on a dimension. A human decides and "
+             f"records it with `uv run python -m vaios.decide record {out['entity']} --verdict <advance|watch|pass> "
+             "--reason \"...\" --reviewer <name>` (appends to `ledger/human_feedback.jsonl`).", "",
              "## Where they disagree", ""] + [f"- {r}" for r in out["disagreements"]]
-    lines += ["", "| | Drafter | Critic |", "|---|---|---|",
+    lines += ["", "| | Drafter (final) | Critic |", "|---|---|---|",
               f"| Model | {out['models']['drafter']} | {out['models']['critic']} |",
               f"| Recommendation | {m['recommendation']} | {c['recommendation']} |"]
     for dim in ("pmf", "narrative", "execution"):
         lines.append(f"| {dim.upper()} | {m['scores'][dim]['score']} | {c['scores'][dim]['score']} |")
     lines += ["", "## Critic's strongest counterargument", "", c["strongest_counterargument"]]
-    if c["unsupported_claims"]:
-        lines += ["", "## Claims the critic says the quote does not support", ""]
-        lines += [f"- `{u['claim_id']}`: {u['reason']}" for u in c["unsupported_claims"]]
+    if out["withheld_by_critic"]:
+        lines += ["", "## Claims withheld by the critic", ""]
+        lines += [f"- `{w['claim']['id']}` {w['critic_label']}: {w['reason']}" for w in out["withheld_by_critic"]]
     if c["missing_risks"]:
         lines += ["", "## Risks the critic says are missing", ""] + [f"- {x}" for x in c["missing_risks"]]
-    lines += ["", "## Decision", "", "- [ ] advance  - [ ] watch  - [ ] pass   reviewer: ____   reason: ____"]
+    lines += ["", "## Human decision", "", "Pending: not yet recorded by the owner."]
     return "\n".join(lines) + "\n"

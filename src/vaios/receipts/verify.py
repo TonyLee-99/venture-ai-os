@@ -5,10 +5,13 @@ Checks per claim
 2. span: the quote occurs in that snapshot (exact after normalisation, or fuzzy partial match >= 92 for
    quotes of 15+ chars, which tolerates markdown/whitespace/quote-style differences but not invented text);
 3. numbers: a cited warehouse metric matches the facts sheet within 1%; every number written in the claim
-   text must appear in the quote, equal the cited metric value, or equal a sibling fact of the same
-   measurement (same key prefix) (catches "the README says 1,200" when it
-   says 120).
-It does NOT judge whether the quote logically supports the claim; the cross-model critic does that.
+   text (small integers included) must appear in the quote, equal the cited metric value, or equal a sibling
+   fact of the same series, and it matches only at its own displayed precision ("56.6 million" covers
+   56,580,000; "56.7 million" does not);
+4. metric receipts must be stated: a claim citing a metric must contain that metric's value in its text, so
+   a qualitative sentence cannot borrow credibility from an unrelated number.
+It does NOT judge whether the quote logically supports the claim: the cross-family critic labels every claim
+entails / partial / contradicts / unsupported, and only "entails" ships untagged (ADR 0006).
 """
 
 from __future__ import annotations
@@ -36,10 +39,17 @@ def normalize(text: str) -> str:
 
 
 def numbers_in(text: str) -> list[float]:
+    return [n for n, _ in written_numbers(text)]
+
+
+def written_numbers(text: str) -> list[tuple[float, float]]:
+    """(value, half-unit of the last displayed digit): '56.6 million' -> (56_600_000, 50_000)."""
     out = []
     for raw, unit in _NUM.findall(text):
-        v = float(raw.replace(",", ""))
-        out.append(v * _SCALE.get((unit or "").lower(), 1))
+        digits = raw.replace(",", "")
+        scale = _SCALE.get((unit or "").lower(), 1)
+        decimals = len(digits.split(".")[1]) if "." in digits else 0
+        out.append((float(digits) * scale, 0.5 * 10 ** (-decimals) * scale))
     return out
 
 
@@ -47,13 +57,16 @@ def _close(a: float, b: float, rel: float = 0.01) -> bool:
     return abs(a - b) <= rel * max(abs(a), abs(b), 1e-9)
 
 
-def _number_covered(n: float, quote_nums: list[float], metric_value: float | None,
+def _matches(written: tuple[float, float], candidate: float) -> bool:
+    """A written number covers a source value only if the value rounds to it at the written precision."""
+    n, half = written
+    return abs(n - candidate) <= max(half, 1e-9 * max(abs(n), 1.0))
+
+
+def _number_covered(written: tuple[float, float], quote_nums: list[float], metric_value: float | None,
                     context_nums: list[float]) -> bool:
-    if n < 10 and float(n).is_integer():
-        return True  # small counts ("3 risks", "Series 2") are not worth a receipt
     candidates = quote_nums + context_nums + ([metric_value] if metric_value is not None else [])
-    # the claim may round (56.58M -> "56.6 million", 2.4% -> "2%"), so allow 5% when matching text to text
-    return any(_close(n, c, 0.05) for c in candidates)
+    return any(_matches(written, c) for c in candidates)
 
 
 @dataclass
@@ -108,9 +121,13 @@ def check_claim(claim: dict, store: DocStore, facts: dict[str, float],
         if claim["metric"].count(".") >= 2:
             family = claim["metric"].rsplit(".", 1)[0] + "."
             context += [float(v) for k, v in facts.items() if k.startswith(family)]
-    for n in numbers_in(claim["text"]):
-        if not _number_covered(n, quote_nums, metric_value, context):
-            return ClaimCheck(cid, False, "number_unsupported", f"{n:g} not in quote or metric", score)
+    text_nums = written_numbers(claim["text"])
+    for w in text_nums:
+        if not _number_covered(w, quote_nums, metric_value, context):
+            return ClaimCheck(cid, False, "number_unsupported", f"{w[0]:g} not in quote or metric", score)
+    if metric_value is not None and not any(_matches(w, metric_value) for w in text_nums):
+        return ClaimCheck(cid, False, "metric_not_stated", f"cites {claim['metric']} but never states its value "
+                          f"({metric_value:g})", score)
     return ClaimCheck(cid, True, "verified", "", score or 100.0)
 
 

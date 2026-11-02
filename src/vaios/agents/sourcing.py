@@ -216,11 +216,11 @@ def run(con) -> pd.DataFrame:
 CORE_RELEVANCE = 4  # at least two strong niche terms: the memo queue is for core agentic-payments companies
 
 
-def shortlist(df: pd.DataFrame, n: int = 8) -> pd.DataFrame:
+def shortlist(df: pd.DataFrame, n: int | None = 8) -> pd.DataFrame:
     """Memo queue: core-niche, investable, NOT already in the CRM, scored, with a repo to read."""
     ok = df[df["investable"] & df["new_to_crm"] & (df["relevance"] >= CORE_RELEVANCE)
             & df["screen_score"].notna() & df["top_repo"].notna()]
-    return ok.head(n)
+    return ok if n is None else ok.head(n)
 
 
 def source_counts(df: pd.DataFrame) -> dict[str, int]:

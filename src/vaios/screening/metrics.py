@@ -24,6 +24,11 @@ def precision_at_k(y: np.ndarray, s: np.ndarray, k: int) -> float:
     return float(np.mean(y[order[:k]]))
 
 
+def pooled_auc(df: pd.DataFrame, col: str) -> float:
+    """AUC over all rows at once (mixes T0s); the headline uses the mean of per-T0 AUCs."""
+    return auc(df["raised"].to_numpy(int), df[col].to_numpy(float))
+
+
 def per_t0_metrics(y: np.ndarray, s: np.ndarray) -> dict[str, float]:
     base = float(np.mean(y))
     out = {"n": int(len(y)), "positives": int(y.sum()), "base_rate": base, "auc": auc(y, s)}
@@ -52,10 +57,12 @@ def averaged(df: pd.DataFrame, score_cols: list[str], metrics=("auc", "p@20", "p
 
 
 def cluster_bootstrap(df: pd.DataFrame, stat: Callable[[pd.DataFrame], dict[str, float]], n_boot: int = 1000,
-                      seed: int = 7) -> dict[str, tuple[float, float]]:
-    """95% CIs resampling whole protocols (all their T0 rows together): rows of one protocol are correlated."""
+                      seed: int = 7, cluster: str = "slug") -> dict[str, tuple[float, float]]:
+    """95% CIs resampling whole clusters (all T0 rows of a protocol, or of a GitHub owner, together): the
+    12-month outcome windows overlap on a 6-month grid, so rows of one protocol are correlated.
+    Scope: predictions are held fixed (no refit inside the bootstrap) and common date shocks are not resampled."""
     rng = np.random.default_rng(seed)
-    groups = df.groupby("slug").indices
+    groups = df.groupby(df[cluster].fillna(df["slug"])).indices
     slugs = np.array(list(groups))
     draws: dict[str, list[float]] = {}
     for _ in range(n_boot):

@@ -1,0 +1,21 @@
+{
+ "request": {
+  "route": "judge",
+  "backend": "claude_cli",
+  "model": "claude-sonnet-5-5",
+  "system": "You are being tested on what you know from training data. Do not guess. For each event, give the year and month it happened as YYYY-MM if you actually know it, otherwise exactly 'unknown'.",
+  "prompt": "Events:\ne00: Show HN: X402 – an open standard for internet native payments\ne01: x402: An open standard for internet-native payments\ne02: Agentic commerce is here; add shopping to your agent\ne03: The Trusted Agentic Commerce Protocol\ne04: Google announces the Agent Payments Protocol (AP2)\ne05: Google's AI Agent Payments Protocol (AP2)\ne06: Cloudflare and Coinbase announce the x402 Foundation\ne07: x402 — An open protocol for internet-native payments\ne08: OpenAI and Stripe create Agentic Commerce Protocol\ne09: Instant Checkout and the Agentic Commerce Protocol\ne10: Introducing x402 V2: Evolving the Standard for Internet-native Payments\ne11: Introducing x402 Batch Settlement: High-velocity Agentic Commerce\ne12: Visa invests in Replit to power agentic payments for developers\ne13: Cloudflare Monetization Gateway: charge for any resource via x402\ne14: Monetization Gateway: Charge for any resource behind Cloudflare via x402\ne15: X402, a static blog monetization excercise\ne16: Linux Foundation Announces Operational Launch of x402 Foundation to Standardize Internet-Native Payments for AI Agents and Applications\ne17: Linux Foundation Appoints Michael Hursta as Executive Director of the x402 Foundation\n\nReturn ONLY JSON: {\"answers\": [{\"event_id\": \"e00\", \"month\": \"YYYY-MM or unknown\"}, ...]} with one answer per event.",
+  "sample": 0,
+  "tag": "cutoff_probe:judge"
+ },
+ "result": {
+  "text": "{\"answers\":[{\"event_id\":\"e00\",\"month\":\"2025-05\"},{\"event_id\":\"e01\",\"month\":\"2025-05\"},{\"event_id\":\"e02\",\"month\":\"unknown\"},{\"event_id\":\"e03\",\"month\":\"unknown\"},{\"event_id\":\"e04\",\"month\":\"2025-09\"},{\"event_id\":\"e05\",\"month\":\"2025-09\"},{\"event_id\":\"e06\",\"month\":\"2025-09\"},{\"event_id\":\"e07\",\"month\":\"2025-05\"},{\"event_id\":\"e08\",\"month\":\"2025-09\"},{\"event_id\":\"e09\",\"month\":\"2025-09\"},{\"event_id\":\"e10\",\"month\":\"2025-12\"},{\"event_id\":\"e11\",\"month\":\"unknown\"},{\"event_id\":\"e12\",\"month\":\"unknown\"},{\"event_id\":\"e13\",\"month\":\"unknown\"},{\"event_id\":\"e14\",\"month\":\"unknown\"},{\"event_id\":\"e15\",\"month\":\"unknown\"},{\"event_id\":\"e16\",\"month\":\"unknown\"},{\"event_id\":\"e17\",\"month\":\"unknown\"}]}",
+  "backend": "claude_cli",
+  "model": "claude-sonnet-5-5",
+  "cache_key": "f5c2263bf82c5160d3fd64032baccbb623515d41b83b1985c5f048dbc50cb655",
+  "latency_s": 9.19,
+  "input_tokens": 1396,
+  "output_tokens": 739,
+  "cost_usd": 0.012969999999999999
+ }
+}

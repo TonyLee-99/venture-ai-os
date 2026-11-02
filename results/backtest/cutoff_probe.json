@@ -1,0 +1,272 @@
+{
+ "method": "Each model gets the titles (no dates) of dated public events from results/monitoring/events.csv, which all have",
+ "n_events": 18,
+ "models": {
+  "claude-sonnet-5-5": {
+   "latest_correct_event": "2025-12-11",
+   "n_correct": 8,
+   "n_unknown": 9,
+   "answers": [
+    {
+     "event_id": "e00",
+     "true_date": "2025-05-06",
+     "title": "Show HN: X402 \u2013 an open standard for internet native payments",
+     "answer": "2025-05",
+     "correct": true
+    },
+    {
+     "event_id": "e01",
+     "true_date": "2025-05-06",
+     "title": "x402: An open standard for internet-native payments",
+     "answer": "2025-05",
+     "correct": true
+    },
+    {
+     "event_id": "e02",
+     "true_date": "2025-08-05",
+     "title": "Agentic commerce is here; add shopping to your agent",
+     "answer": "unknown",
+     "correct": false
+    },
+    {
+     "event_id": "e03",
+     "true_date": "2025-08-28",
+     "title": "The Trusted Agentic Commerce Protocol",
+     "answer": "unknown",
+     "correct": false
+    },
+    {
+     "event_id": "e04",
+     "true_date": "2025-09-16",
+     "title": "Google announces the Agent Payments Protocol (AP2)",
+     "answer": "2025-09",
+     "correct": true
+    },
+    {
+     "event_id": "e05",
+     "true_date": "2025-09-16",
+     "title": "Google's AI Agent Payments Protocol (AP2)",
+     "answer": "2025-09",
+     "correct": true
+    },
+    {
+     "event_id": "e06",
+     "true_date": "2025-09-23",
+     "title": "Cloudflare and Coinbase announce the x402 Foundation",
+     "answer": "2025-09",
+     "correct": true
+    },
+    {
+     "event_id": "e07",
+     "true_date": "2025-09-23",
+     "title": "x402 \u2014 An open protocol for internet-native payments",
+     "answer": "2025-05",
+     "correct": false
+    },
+    {
+     "event_id": "e08",
+     "true_date": "2025-09-29",
+     "title": "OpenAI and Stripe create Agentic Commerce Protocol",
+     "answer": "2025-09",
+     "correct": true
+    },
+    {
+     "event_id": "e09",
+     "true_date": "2025-09-29",
+     "title": "Instant Checkout and the Agentic Commerce Protocol",
+     "answer": "2025-09",
+     "correct": true
+    },
+    {
+     "event_id": "e10",
+     "true_date": "2025-12-11",
+     "title": "Introducing x402 V2: Evolving the Standard for Internet-native Payments",
+     "answer": "2025-12",
+     "correct": true
+    },
+    {
+     "event_id": "e11",
+     "true_date": "2026-05-11",
+     "title": "Introducing x402 Batch Settlement: High-velocity Agentic Commerce",
+     "answer": "unknown",
+     "correct": false
+    },
+    {
+     "event_id": "e12",
+     "true_date": "2026-06-01",
+     "title": "Visa invests in Replit to power agentic payments for developers",
+     "answer": "unknown",
+     "correct": false
+    },
+    {
+     "event_id": "e13",
+     "true_date": "2026-07-01",
+     "title": "Cloudflare Monetization Gateway: charge for any resource via x402",
+     "answer": "unknown",
+     "correct": false
+    },
+    {
+     "event_id": "e14",
+     "true_date": "2026-07-01",
+     "title": "Monetization Gateway: Charge for any resource behind Cloudflare via x402",
+     "answer": "unknown",
+     "correct": false
+    },
+    {
+     "event_id": "e15",
+     "true_date": "2026-07-06",
+     "title": "X402, a static blog monetization excercise",
+     "answer": "unknown",
+     "correct": false
+    },
+    {
+     "event_id": "e16",
+     "true_date": "2026-07-14",
+     "title": "Linux Foundation Announces Operational Launch of x402 Foundation to Standardize Internet-Native Payments for AI Agents and Applications",
+     "answer": "unknown",
+     "correct": false
+    },
+    {
+     "event_id": "e17",
+     "true_date": "2026-10-01",
+     "title": "Linux Foundation Appoints Michael Hursta as Executive Director of the x402 Foundation",
+     "answer": "unknown",
+     "correct": false
+    }
+   ]
+  },
+  "gpt-6.1-sol": {
+   "latest_correct_event": "2025-09-29",
+   "n_correct": 7,
+   "n_unknown": 11,
+   "answers": [
+    {
+     "event_id": "e00",
+     "true_date": "2025-05-06",
+     "title": "Show HN: X402 \u2013 an open standard for internet native payments",
+     "answer": "unknown",
+     "correct": false
+    },
+    {
+     "event_id": "e01",
+     "true_date": "2025-05-06",
+     "title": "x402: An open standard for internet-native payments",
+     "answer": "2025-05",
+     "correct": true
+    },
+    {
+     "event_id": "e02",
+     "true_date": "2025-08-05",
+     "title": "Agentic commerce is here; add shopping to your agent",
+     "answer": "2025-09",
+     "correct": true
+    },
+    {
+     "event_id": "e03",
+     "true_date": "2025-08-28",
+     "title": "The Trusted Agentic Commerce Protocol",
+     "answer": "unknown",
+     "correct": false
+    },
+    {
+     "event_id": "e04",
+     "true_date": "2025-09-16",
+     "title": "Google announces the Agent Payments Protocol (AP2)",
+     "answer": "2025-09",
+     "correct": true
+    },
+    {
+     "event_id": "e05",
+     "true_date": "2025-09-16",
+     "title": "Google's AI Agent Payments Protocol (AP2)",
+     "answer": "2025-09",
+     "correct": true
+    },
+    {
+     "event_id": "e06",
+     "true_date": "2025-09-23",
+     "title": "Cloudflare and Coinbase announce the x402 Foundation",
+     "answer": "2025-09",
+     "correct": true
+    },
+    {
+     "event_id": "e07",
+     "true_date": "2025-09-23",
+     "title": "x402 \u2014 An open protocol for internet-native payments",
+     "answer": "unknown",
+     "correct": false
+    },
+    {
+     "event_id": "e08",
+     "true_date": "2025-09-29",
+     "title": "OpenAI and Stripe create Agentic Commerce Protocol",
+     "answer": "2025-09",
+     "correct": true
+    },
+    {
+     "event_id": "e09",
+     "true_date": "2025-09-29",
+     "title": "Instant Checkout and the Agentic Commerce Protocol",
+     "answer": "2025-09",
+     "correct": true
+    },
+    {
+     "event_id": "e10",
+     "true_date": "2025-12-11",
+     "title": "Introducing x402 V2: Evolving the Standard for Internet-native Payments",
+     "answer": "unknown",
+     "correct": false
+    },
+    {
+     "event_id": "e11",
+     "true_date": "2026-05-11",
+     "title": "Introducing x402 Batch Settlement: High-velocity Agentic Commerce",
+     "answer": "unknown",
+     "correct": false
+    },
+    {
+     "event_id": "e12",
+     "true_date": "2026-06-01",
+     "title": "Visa invests in Replit to power agentic payments for developers",
+     "answer": "unknown",
+     "correct": false
+    },
+    {
+     "event_id": "e13",
+     "true_date": "2026-07-01",
+     "title": "Cloudflare Monetization Gateway: charge for any resource via x402",
+     "answer": "unknown",
+     "correct": false
+    },
+    {
+     "event_id": "e14",
+     "true_date": "2026-07-01",
+     "title": "Monetization Gateway: Charge for any resource behind Cloudflare via x402",
+     "answer": "unknown",
+     "correct": false
+    },
+    {
+     "event_id": "e15",
+     "true_date": "2026-07-06",
+     "title": "X402, a static blog monetization excercise",
+     "answer": "unknown",
+     "correct": false
+    },
+    {
+     "event_id": "e16",
+     "true_date": "2026-07-14",
+     "title": "Linux Foundation Announces Operational Launch of x402 Foundation to Standardize Internet-Native Payments for AI Agents and Applications",
+     "answer": "unknown",
+     "correct": false
+    },
+    {
+     "event_id": "e17",
+     "true_date": "2026-10-01",
+     "title": "Linux Foundation Appoints Michael Hursta as Executive Director of the x402 Foundation",
+     "answer": "unknown",
+     "correct": false
+    }
+   ]
+  }
+ }
+}

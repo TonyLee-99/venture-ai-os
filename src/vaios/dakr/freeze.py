@@ -34,6 +34,12 @@ def run() -> None:
         "x402_facilitator_daily": "SELECT * FROM stg_x402_facilitator_daily WHERE txs > 0 ORDER BY facilitator, day",
         "commits_weekly": "SELECT * FROM commits_weekly ORDER BY repo, week",
         "hn_stories": "SELECT objectID, title, url, points, num_comments, created_at, query FROM stg_hn ORDER BY created_at",
+        "raises": "SELECT slug, raise_date, round, amount_musd, lead_investors, other_investors FROM raises ORDER BY slug, raise_date",
+        # first public signals per protocol, for the lead-time analysis (repo dates reflect TODAY's repos)
+        "protocol_dates": """SELECT p.slug, p.name, p.github_owner, p.listed_at_eff,
+                                    (SELECT MIN(repo_created_at) FROM stg_gh_repos r WHERE r.owner = p.github_owner) AS first_repo_at,
+                                    (SELECT MIN(raise_date) FROM raises x WHERE x.slug = p.slug) AS first_raise_at
+                             FROM protocols p WHERE p.github_owner IS NOT NULL ORDER BY p.slug""",
     }
     for name, sql in exports.items():
         out = FROZEN / f"{name}.parquet"

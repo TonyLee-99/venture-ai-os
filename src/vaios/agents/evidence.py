@@ -126,6 +126,23 @@ def gather(con, store: DocStore, cand: dict) -> list[str]:
         if site:
             ids.append(put(site, entity=entity, kind="website", url=f"https://{cand['domain']}",
                                  fetched_at=FETCHED, title=f"Homepage {cand['domain']}"))
+    if cand.get("domain"):
+        about = fetch_website(f"{cand['domain']}/about")
+        if about:
+            ids.append(put(about, entity=entity, kind="website_about", url=f"https://{cand['domain']}/about",
+                           fetched_at=FETCHED, title=f"About page {cand['domain']}"))
+    if cand.get("top_repo"):
+        team = contributors_text(cand["top_repo"])
+        if team:
+            ids.append(put(team, entity=entity, kind="github_contributors",
+                           url=f"https://github.com/{cand['top_repo']}/graphs/contributors", fetched_at=FETCHED,
+                           title=f"Contributors {cand['top_repo']}"))
+    ids.append(put(market_structure(con), entity="x402-market", kind="market_structure",
+                   url="https://www.x402scan.com/facilitators", fetched_at=FETCHED, title="x402 facilitator shares"))
+    mon = monitor_findings(cand)
+    if mon:
+        ids.append(put(mon, entity=entity, kind="monitor_findings", url="results/monitoring/changepoints.json",
+                       fetched_at=FETCHED, title=f"monitor {name}"))
     for kind, text, url in (("hn", hn_text(con, name), "https://hn.algolia.com"),
                             ("yc", yc_text(con, name), "https://www.ycombinator.com/companies"),
                             ("x402scan", x402_text(con, cand.get("facilitator") or ""), "https://www.x402scan.com")):
@@ -152,22 +169,72 @@ def facts_sheet(con, cand: dict, n_candidates: int) -> dict:
         desc["gh.stars_total_now"] = "stars today across the owner's repos (current snapshot, not point-in-time)"
         desc["gh.public_repos"] = "public non-fork repositories (first 100)"
         desc["gh.first_repo_year"] = "year the owner's oldest public repo was created"
-    f["screen.score"] = round(float(cand["screen_score"]), 4)
-    f["screen.rank"] = int(cand["rank"])
-    f["screen.n_candidates"] = int(n_candidates)
-    desc["screen.score"] = "GitHub-only screening model probability (backtested, see results/backtest)"
-    desc["screen.rank"] = "rank among all sourced candidates"
+    # The screening rank is a triage signal, not evidence: it is shown in the memo header but never offered as a
+    # fact a claim could cite (the GitHub-only score is near chance on never-raised protocols, see backtest.json).
     x = con.execute("""SELECT SUM(txs), SUM(volume_usd), MAX(buyers) FROM stg_x402_facilitator_daily
                        WHERE facilitator = ? AND day >= ?::TIMESTAMP - INTERVAL 30 DAY""",
                     [cand.get("facilitator") or "", str(AS_OF)]).fetchone()
     if x and x[0]:
         f["x402.txs_30d"], f["x402.volume_usd_30d"], f["x402.peak_daily_buyers_30d"] = int(x[0]), round(x[1], 2), int(x[2])
         desc["x402.txs_30d"] = "x402 transactions settled by this facilitator in the 30 days to the as-of date"
+        # inorganic-traffic indicators: tiny value per payment and many payments per buyer suggest bots/mints
+        f["x402.usd_per_tx_30d"] = round(x[1] / x[0], 4)
+        f["x402.txs_per_peak_daily_buyer_30d"] = round(x[0] / max(x[2], 1), 1)
+        desc["x402.usd_per_tx_30d"] = "average USD value per x402 payment, last 30 days"
+        desc["x402.txs_per_peak_daily_buyer_30d"] = "30-day payments divided by the peak daily count of distinct buyers"
+        share = con.execute("""WITH t AS (SELECT facilitator, SUM(txs) txs FROM stg_x402_facilitator_daily
+                                          WHERE day >= ?::TIMESTAMP - INTERVAL 30 DAY GROUP BY 1)
+                               SELECT txs / (SELECT SUM(txs) FROM t) FROM t WHERE facilitator = ?""",
+                            [str(AS_OF), cand.get("facilitator")]).fetchone()
+        if share:
+            f["x402.share_of_all_txs_30d"] = round(float(share[0]), 4)
+            desc["x402.share_of_all_txs_30d"] = "this facilitator's share of all x402 payments, last 30 days"
     h = con.execute("SELECT COUNT(*), COALESCE(SUM(points),0) FROM stg_hn WHERE title ILIKE ?",
                     [f"%{cand['name']}%"]).fetchone() if len(cand["name"]) >= 4 else (0, 0)
     f["hn.stories"], f["hn.points_total"] = int(h[0]), int(h[1])
     desc["hn.stories"] = "Hacker News stories with the company name in the title"
     return {"entity": cand["entity"], "as_of": str(AS_OF), "facts": f, "descriptions": desc}
+
+
+def monitor_findings(cand: dict) -> str | None:
+    """What the post-investment monitor measured for this company, so the two jobs share one view."""
+    path = RESULTS / "monitoring" / "changepoints.json"
+    fac = cand.get("facilitator")
+    if not fac or not path.exists():
+        return None
+    series = json.loads(path.read_text())["series"].get(f"facilitator_{fac}_txs")
+    if not series:
+        return None
+    lines = [f"Monitor findings for x402 facilitator '{fac}' (weekly transactions from x402scan, PELT changepoints, "
+             f"computed by this system on data fetched {FETCHED}):"]
+    lines += [f"Week of {g['date']}: weekly median transactions {g['median_before']:,.0f} -> {g['median_after']:,.0f} "
+              f"({g['direction']}, ratio {g['ratio']})" for g in series["segments"]]
+    return "\n".join(lines)
+
+
+def market_structure(con) -> str:
+    """Competitive map from the warehouse: x402 facilitator shares (the comparable set for any facilitator)."""
+    rows = con.execute("""WITH t AS (SELECT facilitator, SUM(txs) txs, SUM(volume_usd) vol FROM stg_x402_facilitator_daily
+                                     WHERE day >= ?::TIMESTAMP - INTERVAL 30 DAY GROUP BY 1)
+                          SELECT facilitator, txs, vol, txs / SUM(txs) OVER (), vol / SUM(vol) OVER ()
+                          FROM t WHERE txs > 0 ORDER BY txs DESC LIMIT 12""", [str(AS_OF)]).fetchall()
+    lines = [f"x402 facilitator market share, 30 days to {AS_OF} (x402scan public data, fetched {FETCHED}):"]
+    lines += [f"{f}: {int(t):,} payments ({ts:.1%} of payments), {v:,.0f} USD ({vs:.1%} of volume)"
+              for f, t, v, ts, vs in rows]
+    return "\n".join(lines)
+
+
+def contributors_text(top_repo: str) -> str | None:
+    """Public team signal: top contributors of the main repo (logins and commit counts only)."""
+    try:
+        data = github.gh_api(f"repos/{top_repo}/contributors?per_page=8")
+    except RuntimeError:
+        return None
+    if not isinstance(data, list) or not data:
+        return None
+    lines = [f"Top contributors to github.com/{top_repo} (GitHub API, fetched {FETCHED}):"]
+    lines += [f"{c['login']} ({c.get('type', 'User')}): {c['contributions']} commits" for c in data]
+    return "\n".join(lines)
 
 
 def save_facts(sheet: dict) -> None:

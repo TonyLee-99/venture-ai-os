@@ -11,8 +11,9 @@ from __future__ import annotations
 
 import json
 import math
+import os
 
-from vaios.agents import diligence, evidence, sourcing
+from vaios.agents import diligence, evidence, sourcing, stage
 from vaios.agents.runner import Trace
 from vaios.config import AS_OF, RESULTS, WAREHOUSE
 from vaios.dakr import artifacts
@@ -35,17 +36,28 @@ def _refresh_candidates(store: DocStore) -> list[dict]:
     counts = sourcing.source_counts(cands)
     trace.step("source_and_resolve", entities=len(cands), by_source=counts,
                multi_source=int((cands["n_sources"] > 1).sum()))
-    short = sourcing.shortlist(cands)
-    trace.step("screen", relevant=int(cands["relevant"].sum()),
-               relevant_investable=int((cands["relevant"] & cands["investable"]).sum()),
-               already_in_crm=int(cands["crm_stage"].notna().sum()), shortlisted=list(short["entity"]))
-    rows = []
-    for cand in short.to_dict("records"):
+    # stage check (sourced evidence only) walks the core-niche pool in score order until 8 seed-eligible remain
+    pool = sourcing.shortlist(cands, n=40)
+    rows, checked = [], []
+    for cand in pool.to_dict("records"):
+        if len(rows) >= 8:
+            break
         cand = {k: (None if isinstance(v, float) and math.isnan(v) else v) for k, v in cand.items()}  # NaN -> None
-        doc_ids = evidence.gather(con, store, cand)
+        st = stage_of(con, store, cand)
+        checked.append({"entity": cand["entity"], "name": cand["name"], **st})
+        if not st["seed_eligible"]:
+            continue
+        cand["stage"] = st
+        doc_ids = sorted(set(evidence.gather(con, store, cand)) | set(st["doc_ids"]))
         evidence.save_facts(evidence.facts_sheet(con, cand, len(cands)))
         rows.append({k: cand[k] for k in ("entity", "name", "github_owner", "top_repo", "domain", "facilitator",
-                                          "rank", "screen_score", "sources")} | {"doc_ids": doc_ids})
+                                          "rank", "screen_score", "sources", "stage")} | {"doc_ids": doc_ids})
+    (SRC / "stage_checks.json").write_text(json.dumps(checked, indent=1, default=str) + "\n")
+    trace.step("screen", relevant=int(cands["relevant"].sum()),
+               relevant_investable=int((cands["relevant"] & cands["investable"]).sum()),
+               already_in_crm=int(cands["crm_stage"].notna().sum()), stage_checked=len(checked),
+               stage_ineligible=[c["entity"] for c in checked if not c["seed_eligible"]],
+               shortlisted=[r["entity"] for r in rows])
     payload = {"as_of": str(AS_OF), "n_candidates": len(cands), "by_source": counts, "shortlist": rows}
     (SRC / "shortlist.json").write_text(json.dumps(payload, indent=1, default=str) + "\n")
     artifacts.save("candidates", "agentic-payments", {"by_source": counts, "shortlist": [r["entity"] for r in rows],
@@ -54,6 +66,23 @@ def _refresh_candidates(store: DocStore) -> list[dict]:
     trace.save("ok", {"candidates": "results/sourcing/candidates.csv", "shortlist": [r["entity"] for r in rows]})
     con.close()
     return rows
+
+
+def stage_of(con, store: DocStore, cand: dict) -> dict:
+    yc = con.execute("SELECT batch FROM stg_yc WHERE lower(name) = lower(?)", [cand["name"]]).fetchone()
+    prior = con.execute("""SELECT r.raise_date::DATE::VARCHAR AS date, r.round, r.amount_musd, r.lead_investors
+                           FROM raises r JOIN protocols p USING (slug) WHERE p.github_owner = ?
+                           ORDER BY r.raise_date""", [cand.get("github_owner") or ""]).df().to_dict("records")
+    sig = stage.gather(store, cand["entity"], cand.get("domain"))
+    tok = stage.token_info(con, cand["name"], cand.get("github_owner"))
+    cls = stage.classify(sig, yc[0] if yc else None, tok, prior)
+    evidence_lines = sig["quotes"][:3] + [f"DefiLlama: {p['date']} {p['round'] or 'round n/a'} "
+                                          f"{'$' + format(p['amount_musd'], 'g') + 'M' if p['amount_musd'] else ''}"
+                                          for p in prior]
+    if sig["investor_logos"]:
+        evidence_lines.append("investor logos on homepage: " + ", ".join(sig["investor_logos"]))
+    return {**cls, "yc_batch": yc[0] if yc else None, "token": tok, "prior_raises_defillama": prior,
+            "round_evidence": evidence_lines, "doc_ids": sig["doc_ids"]}
 
 
 def sourcing_run() -> dict:
@@ -72,10 +101,16 @@ def sourcing_run() -> dict:
         except Exception as e:  # noqa: BLE001 - recorded in the trace; the run continues
             failures.append({"entity": cand["entity"], "error": f"{type(e).__name__}: {str(e)[:300]}"})
             print(f"  memo {cand['entity']} FAILED: {failures[-1]['error']}")
+    diligence.committee(results)
+    for out in results:
+        diligence.finalize(out, store)
     summary = summarize(results, failures)
     (SRC / "run_summary.json").write_text(json.dumps(summary, indent=1) + "\n")
     print(json.dumps({k: v for k, v in summary.items() if k != "memos"}, indent=1))
     print(f"  gateway this run: {gw.session_calls}")
+    max_failures = int(os.environ.get("VAIOS_MAX_JOB_FAILURES", "0"))
+    if len(failures) > max_failures:  # fail closed: a partial overnight run must not look like a success
+        raise SystemExit(f"{len(failures)} company job(s) failed (allowed {max_failures}): {failures}")
     return summary
 
 

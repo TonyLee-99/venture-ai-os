@@ -1,141 +1,206 @@
-"""`make llm-eval`: does LLM screening judgment add anything, measured only where it cannot have seen the answer?
+"""`make llm-eval`: does LLM screening judgment add anything, measured where it cannot have seen the answer?
 
-Leakage handling
-- Features are frozen at T0 = 2026-06-30 (the assumed knowledge cutoff of both models, config.py), and the
-  outcome is a raise announced after that date (to 2026-11-01). A model cannot have memorised these raises
-  unless its true cutoff is later than assumed; that residual risk is stated in the README.
-- Arm "anonymized": no name, no description, only point-in-time features -> no memorisation channel at all.
-- Arm "named": name, category and today's DefiLlama description added. The description is a CURRENT snapshot
-  that can mention post-T0 news, so this arm is flagged leakage-exposed; we also count descriptions of
-  positives that mention funding.
-The deterministic scores are evaluated on exactly the same items.
+Two evaluation sets (ADR 0007)
+1. Walk-forward set, ANONYMIZED only: all 80 positive rows of the backtest test T0s plus a hash-seeded random
+   sample of 320 negative rows (case-control: AUC is unaffected by sampling within class; precision and
+   probabilities are not deployment-prevalence numbers). Items carry an opaque id and point-in-time features
+   only, so there is no memorisation channel even though the T0s predate the model cutoffs.
+2. Post-cutoff set: features at T0 = 2026-06-30, outcomes to 2026-11-01 (a 4-month, right-censored window),
+   anonymized arm plus a "named" arm (name, category, today's DefiLlama description). Whether the window is
+   really after each model's knowledge is PROBED (cutoff_probe.json), not assumed.
+Deterministic scores are evaluated on exactly the same items. Bootstraps resample within class, so no resample
+is ever dropped for lacking positives.
 """
 
 from __future__ import annotations
 
 import hashlib
 import json
+import re
 
 import numpy as np
 import pandas as pd
 
 from vaios.agents import schemas, skills
 from vaios.agents.runner import Trace
-from vaios.config import (
-    ASSUMED_MODEL_CUTOFF,
-    BACKTEST_T0S,
-    FROZEN,
-    LLM_EVAL_OUTCOME_END,
-    LLM_EVAL_T0,
-    RESULTS,
-)
+from vaios.config import BACKTEST_T0S, FROZEN, LLM_EVAL_OUTCOME_END, LLM_EVAL_T0, RESULTS
 from vaios.gateway import Gateway
+from vaios.screening import backtest
 from vaios.screening import score as sc
 from vaios.screening.metrics import auc, precision_at_k
 
 OUT = RESULTS / "backtest" / "llm_judgment.json"
+DESC_FILE = RESULTS / "backtest" / "llm_eval_descriptions.json"
 SAMPLE_SIZE = 120
+WF_NEGATIVES = 320
 BATCH = 30
+WF_BATCH = 40
 FEATURES = ["commits_90d", "commit_growth", "commits_before", "n_repos", "gh_age_days", "tvl_t0", "tvl_growth_90d",
             "listing_age_days", "prior_raises", "days_since_last_raise"]
-FUNDING_WORDS = r"rais|fund|backed|investor|seed|series a"
+# A description "mentions a raise" only with explicit fundraising language; "fund" alone also matches
+# "money market funds" / "hedge fund" products, which is what the first version got wrong.
+RAISE_RULE = re.compile(r"\braised\b|\braises\b|\bfunding round\b|\b(pre-)?seed round\b|\bseries [a-d]\b|"
+                        r"\bbacked by\b|\bled by\b.*\b(ventures|capital|labs)\b|\bstrategic (round|investment)\b", re.I)
 
 
-def item_id(slug: str) -> str:
-    return "p" + hashlib.sha256(slug.encode()).hexdigest()[:8]  # opaque id: the anonymized arm never sees names
+def item_id(key: str) -> str:
+    return "p" + hashlib.sha256(key.encode()).hexdigest()[:8]  # opaque id: the anonymized arm never sees names
 
 
-def sample() -> pd.DataFrame:
-    df = pd.read_parquet(FROZEN / "backtest_table.parquet")
-    df = df[df["t0"].dt.date == LLM_EVAL_T0].copy()
-    df["raised"] = df["raised"].astype(int)
-    pos, neg = df[df["raised"] == 1], df[df["raised"] == 0]
-    neg = neg.assign(h=neg["slug"].map(item_id)).sort_values("h").head(SAMPLE_SIZE - len(pos))  # seeded by hash
-    s = pd.concat([pos, neg.drop(columns="h")]).assign(item_id=lambda d: d["slug"].map(item_id))
-    return s.sort_values("item_id").reset_index(drop=True)
-
-
-def describe(r, named: bool, descriptions: dict) -> dict:
-    d = {"item_id": r.item_id}
-    if named:
-        d |= {"name": r.name, "category": r.category, "description": (descriptions.get(r.slug) or "")[:300]}
+def features_of(r) -> dict:
+    d = {}
     for f in FEATURES:
         v = getattr(r, f)
         d[f] = None if pd.isna(v) else (round(float(v), 3) if isinstance(v, float) else int(v))
     return d
 
 
-def judge(gw: Gateway, route: str, items: list[dict], tag: str, trace: Trace) -> dict[str, int]:
+def judge(gw: Gateway, route: str, items: list[dict], header: str, tag: str, trace: Trace, batch: int) -> dict:
     out = {}
     system = skills.system_prompt("screening-judgment")
-    for i in range(0, len(items), BATCH):
-        chunk = items[i:i + BATCH]
-        prompt = (f"Features are measured as of {LLM_EVAL_T0}. Window: {LLM_EVAL_T0} to {LLM_EVAL_OUTCOME_END}.\n"
-                  f"Items ({len(chunk)}):\n" + "\n".join(json.dumps(x) for x in chunk) +
+    for i in range(0, len(items), batch):
+        chunk = items[i:i + batch]
+        prompt = (f"{header}\nItems ({len(chunk)}):\n" + "\n".join(json.dumps(x) for x in chunk) +
                   f"\n\nOutput JSON schema:\n{skills.schema_hint(schemas.JudgmentBatch)}")
-        res = gw.complete(route, system, prompt, tag=f"{tag}:{i // BATCH}", schema=schemas.JudgmentBatch)
-        trace.llm(f"{tag}_batch{i // BATCH}", res, prompt)
+        res = gw.complete(route, system, prompt, tag=f"{tag}:{i // batch}", schema=schemas.JudgmentBatch)
+        trace.llm(f"{tag}_batch{i // batch}", res, prompt)
         out |= {x["item_id"]: x["probability"] for x in res.parsed["items"]}
     return out
 
 
-def boot_auc(y: np.ndarray, s: np.ndarray, n: int = 2000, seed: int = 3) -> list[float]:
+def strat_boot_auc(y: np.ndarray, s: np.ndarray, n: int = 2000, seed: int = 3) -> list[float]:
+    """Bootstrap that resamples positives and negatives separately: every resample has both classes."""
     rng = np.random.default_rng(seed)
-    vals = [auc(y[idx], s[idx]) for idx in (rng.integers(0, len(y), len(y)) for _ in range(n))]
-    return [round(float(x), 4) for x in np.nanpercentile(vals, [2.5, 97.5])]
+    pos, neg = np.where(y == 1)[0], np.where(y == 0)[0]
+    vals = []
+    for _ in range(n):
+        idx = np.concatenate([rng.choice(pos, len(pos)), rng.choice(neg, len(neg))])
+        vals.append(auc(y[idx], s[idx]))
+    return [round(float(x), 4) for x in np.percentile(vals, [2.5, 97.5])]
 
 
-def run() -> dict:
-    gw = Gateway()
-    s = sample()
-    import duckdb
+def summarize(y: np.ndarray, scores: dict[str, np.ndarray], leaky: set[str]) -> dict:
+    out = {}
+    for name, score in scores.items():
+        ok = ~np.isnan(score)
+        out[name] = {"auc": round(auc(y[ok], score[ok]), 4), "auc_ci95": strat_boot_auc(y[ok], score[ok]),
+                     "p@10": precision_at_k(y[ok], score[ok], 10), "missing": int((~ok).sum()),
+                     "leakage_exposed": name in leaky}
+    return out
 
+
+# ---------- set 1: walk-forward, anonymized ----------
+def walk_forward_sample() -> pd.DataFrame:
+    df, test_t0s, _ = backtest.add_scores(backtest.load())
+    test = df[df["t0"].isin(test_t0s)].copy()
+    test["key"] = test["slug"] + "|" + test["t0"].dt.date.astype(str)
+    test["item_id"] = test["key"].map(item_id)
+    pos = test[test["raised"] == 1]
+    neg = test[test["raised"] == 0].sort_values("item_id").head(WF_NEGATIVES)
+    return pd.concat([pos, neg]).sort_values("item_id").reset_index(drop=True)
+
+
+def run_walk_forward(gw: Gateway, trace: Trace) -> dict:
+    s = walk_forward_sample()
+    items = [{"item_id": r.item_id, "as_of": str(r.t0.date()), "window_months": 12, **features_of(r)}
+             for r in s.itertuples()]
+    header = "Each item has its own as_of date; the window is the 12 months after that date."
+    y = s["raised"].to_numpy(int)
+    scores = {f"deterministic|{c}": s[c].to_numpy(float) for c in ("s_logit_full", "s_heuristic", "b_prior_funding",
+                                                                   "b_newest")}
+    for route in ("judge", "judge_alt"):
+        probs = judge(gw, route, items, header, f"wf_anonymized:{route}", trace, WF_BATCH)
+        scores[f"anonymized|{gw.routes[route][1]}"] = np.array([probs.get(i, np.nan) for i in s["item_id"]], float)
+    never = (s["prior_raises"] == 0).to_numpy()
+    return {"n_items": int(len(s)), "n_positives": int(y.sum()), "n_negatives_sampled": int((y == 0).sum()),
+            "sampling": "case-control: all positive rows + hash-seeded random negatives from the walk-forward test set",
+            "all": summarize(y, scores, set()),
+            "never_raised": {"n_items": int(never.sum()), "n_positives": int(y[never].sum()),
+                             **summarize(y[never], {k: v[never] for k, v in scores.items()}, set())}}
+
+
+# ---------- set 2: post-cutoff ----------
+def post_cutoff_sample() -> pd.DataFrame:
+    df = pd.read_parquet(FROZEN / "backtest_table.parquet")
+    df = df[df["t0"].dt.date == LLM_EVAL_T0].copy()
+    df["raised"] = df["raised"].astype(int)
+    pos, neg = df[df["raised"] == 1], df[df["raised"] == 0]
+    neg = neg.assign(h=neg["slug"].map(item_id)).sort_values("h").head(SAMPLE_SIZE - len(pos))
+    s = pd.concat([pos, neg.drop(columns="h")]).assign(item_id=lambda d: d["slug"].map(item_id))
+    return s.sort_values("item_id").reset_index(drop=True)
+
+
+def load_descriptions(slugs: set[str]) -> dict:
     from vaios.config import WAREHOUSE
-    descriptions = {}
-    desc_file = RESULTS / "backtest" / "llm_eval_descriptions.json"
+
     if WAREHOUSE.exists():  # snapshot the descriptions the named arm sees, so replay is offline
+        import duckdb
+
         con = duckdb.connect(str(WAREHOUSE), read_only=True)
         rows = con.execute("SELECT slug, description FROM stg_protocols").fetchall()
-        descriptions = {k: v for k, v in rows if k in set(s["slug"])}
-        desc_file.write_text(json.dumps(dict(sorted(descriptions.items())), indent=1) + "\n")
-    else:
-        descriptions = json.loads(desc_file.read_text())
+        d = {k: v for k, v in rows if k in slugs}
+        DESC_FILE.write_text(json.dumps(dict(sorted(d.items())), indent=1) + "\n")
+        return d
+    return json.loads(DESC_FILE.read_text())
 
+
+def run_post_cutoff(gw: Gateway, trace: Trace, probe: dict) -> dict:
+    s = post_cutoff_sample()
+    desc = load_descriptions(set(s["slug"]))
     full = pd.read_parquet(FROZEN / "backtest_table.parquet")
     train = full[full["t0"].dt.date.isin(BACKTEST_T0S) & (full["outcome_end"].dt.date <= LLM_EVAL_T0)]
     train = train.assign(raised=train["raised"].astype(int))
-    det = {
-        "logit_full": sc.predict(sc.fit_logit(train, sc.FULL_FEATURES), s, sc.FULL_FEATURES),
-        "logit_github": sc.predict(sc.fit_logit(train, sc.GITHUB_FEATURES), s, sc.GITHUB_FEATURES),
-        "prior_funding": ((s["prior_raises"] > 0) + 1 / (1 + s["days_since_last_raise"].fillna(1e6) / 365)).to_numpy(),
+    scores = {
+        "deterministic|logit_full": sc.predict(sc.fit_logit(train, sc.FULL_FEATURES), s, sc.FULL_FEATURES),
+        "deterministic|logit_github": sc.predict(sc.fit_logit(train, sc.GITHUB_FEATURES), s, sc.GITHUB_FEATURES),
+        "deterministic|prior_funding": ((s["prior_raises"] > 0) + 1 / (1 + s["days_since_last_raise"].fillna(1e6) / 365)).to_numpy(),
     }
-    trace = Trace("llm_judgment_eval", "t0_" + str(LLM_EVAL_T0), {"items": list(s["item_id"])}, as_of=str(LLM_EVAL_T0))
-    arms = {}
+    header = f"Features are measured as of {LLM_EVAL_T0}. Window: {LLM_EVAL_T0} to {LLM_EVAL_OUTCOME_END}."
     for arm, named in (("anonymized", False), ("named", True)):
-        items = [describe(r, named, descriptions) for r in s.itertuples()]
+        items = []
+        for r in s.itertuples():
+            d = {"item_id": r.item_id}
+            if named:
+                d |= {"name": r.name, "category": r.category, "description": (desc.get(r.slug) or "")[:300]}
+            items.append(d | features_of(r))
         for route in ("judge", "judge_alt"):
-            probs = judge(gw, route, items, f"{arm}:{route}", trace)
-            arms[f"{arm}|{gw.routes[route][1]}"] = np.array([probs.get(i, np.nan) for i in s["item_id"]], float)
+            probs = judge(gw, route, items, header, f"{arm}:{route}", trace, BATCH)
+            scores[f"{arm}|{gw.routes[route][1]}"] = np.array([probs.get(i, np.nan) for i in s["item_id"]], float)
     y = s["raised"].to_numpy(int)
-    results = {}
-    for name, score in {**{f"deterministic|{k}": v for k, v in det.items()}, **arms}.items():
-        ok = ~np.isnan(score)
-        results[name] = {"auc": round(auc(y[ok], score[ok]), 4), "auc_ci95": boot_auc(y[ok], score[ok]),
-                         "p@10": precision_at_k(y[ok], score[ok], 10), "missing": int((~ok).sum()),
-                         "leakage_exposed": name.startswith("named")}
-    pos_desc = [descriptions.get(sl, "") or "" for sl in s.loc[s["raised"] == 1, "slug"]]
-    out = {
+    mention = s["slug"].map(lambda sl: bool(RAISE_RULE.search(desc.get(sl) or "")))
+    window_start = str(LLM_EVAL_T0)
+    after = {m: (v["latest_correct_event"] or "0000") < window_start for m, v in probe["models"].items()}
+    return {
         "t0": str(LLM_EVAL_T0), "outcome_window_end": str(LLM_EVAL_OUTCOME_END),
-        "assumed_model_cutoff": str(ASSUMED_MODEL_CUTOFF),
-        "all_outcomes_after_cutoff": True,
+        "window": "4 months, right-censored: raises announced after 2026-11-01 count as negatives",
         "n_items": int(len(s)), "n_positives": int(y.sum()),
-        "positives_with_funding_words_in_current_description": int(pd.Series(pos_desc).str.contains(
-            FUNDING_WORDS, case=False, regex=True).sum()),
-        "results": results,
-        "note": "Tiny positive count: CIs are wide; read as a sanity check of the harness, not a verdict.",
+        "sampling": "case-control: all positives + hash-seeded random negatives",
+        "probed_knowledge_ends_before_window": after,
+        "raise_mentions_in_current_description": {
+            "rule": RAISE_RULE.pattern,
+            "positives": int(mention[s["raised"] == 1].sum()), "positives_total": int(y.sum()),
+            "negatives": int(mention[s["raised"] == 0].sum()), "negatives_total": int((y == 0).sum()),
+            "matched_descriptions": {sl: (desc.get(sl) or "")[:240] for sl in s.loc[mention, "slug"]},
+        },
+        "results": summarize(y, scores, {k for k in scores if k.startswith("named")}),
     }
+
+
+def run() -> dict:
+    from vaios.screening.cutoff_probe import load_or_run
+
+    gw = Gateway()
+    probe = load_or_run(gw)
+    trace = Trace("llm_judgment_eval", "all_sets", {"wf_negatives": WF_NEGATIVES, "post_cutoff_t0": str(LLM_EVAL_T0)},
+                  as_of=str(LLM_EVAL_T0))
+    wf = run_walk_forward(gw, trace)
+    pc = run_post_cutoff(gw, trace, probe)
+    out = {"walk_forward_anonymized": wf, "post_cutoff": pc, "cutoff_probe": "results/backtest/cutoff_probe.json",
+           "note": "Post-cutoff set has 8 positives: CIs are wide; read it as a harness check, not a verdict."}
     OUT.write_text(json.dumps(out, indent=1) + "\n")
     trace.save("ok", {"results": "results/backtest/llm_judgment.json"})
-    print(json.dumps({k: (v["auc"], v["auc_ci95"]) for k, v in results.items()}, indent=1))
+    print(json.dumps({k: (v["auc"], v["auc_ci95"]) for k, v in wf["all"].items()}, indent=1))
+    print(json.dumps({k: (v["auc"], v["auc_ci95"]) for k, v in pc["results"].items()}, indent=1))
+    print("raise mentions:", {k: v for k, v in pc["raise_mentions_in_current_description"].items() if k != "matched_descriptions"})
     print(f"  gateway this run: {gw.session_calls}")
     return out

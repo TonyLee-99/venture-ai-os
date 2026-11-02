@@ -1,82 +1,232 @@
 {
- "t0": "2026-06-30",
- "outcome_window_end": "2026-11-01",
- "assumed_model_cutoff": "2026-06-30",
- "all_outcomes_after_cutoff": true,
- "n_items": 120,
- "n_positives": 8,
- "positives_with_funding_words_in_current_description": 4,
- "results": {
-  "deterministic|logit_full": {
-   "auc": 0.9129,
-   "auc_ci95": [
-    0.8205,
-    0.9843
-   ],
-   "p@10": 0.4,
-   "missing": 0,
-   "leakage_exposed": false
+ "walk_forward_anonymized": {
+  "n_items": 400,
+  "n_positives": 80,
+  "n_negatives_sampled": 320,
+  "sampling": "case-control: all positive rows + hash-seeded random negatives from the walk-forward test set",
+  "all": {
+   "deterministic|s_logit_full": {
+    "auc": 0.8094,
+    "auc_ci95": [
+     0.7423,
+     0.8679
+    ],
+    "p@10": 0.8,
+    "missing": 0,
+    "leakage_exposed": false
+   },
+   "deterministic|s_heuristic": {
+    "auc": 0.7821,
+    "auc_ci95": [
+     0.719,
+     0.8411
+    ],
+    "p@10": 0.9,
+    "missing": 0,
+    "leakage_exposed": false
+   },
+   "deterministic|b_prior_funding": {
+    "auc": 0.7639,
+    "auc_ci95": [
+     0.7042,
+     0.8235
+    ],
+    "p@10": 0.7,
+    "missing": 0,
+    "leakage_exposed": false
+   },
+   "deterministic|b_newest": {
+    "auc": 0.7047,
+    "auc_ci95": [
+     0.652,
+     0.7577
+    ],
+    "p@10": 0.4,
+    "missing": 0,
+    "leakage_exposed": false
+   },
+   "anonymized|claude-sonnet-5-5": {
+    "auc": 0.6863,
+    "auc_ci95": [
+     0.6281,
+     0.7443
+    ],
+    "p@10": 0.2,
+    "missing": 0,
+    "leakage_exposed": false
+   },
+   "anonymized|gpt-6.1-sol": {
+    "auc": 0.7232,
+    "auc_ci95": [
+     0.6647,
+     0.7776
+    ],
+    "p@10": 0.5,
+    "missing": 0,
+    "leakage_exposed": false
+   }
   },
-  "deterministic|logit_github": {
-   "auc": 0.7478,
-   "auc_ci95": [
-    0.5585,
-    0.9159
-   ],
-   "p@10": 0.2,
-   "missing": 0,
-   "leakage_exposed": false
-  },
-  "deterministic|prior_funding": {
-   "auc": 0.8504,
-   "auc_ci95": [
-    0.6626,
-    0.9948
-   ],
-   "p@10": 0.5,
-   "missing": 0,
-   "leakage_exposed": false
-  },
-  "anonymized|claude-sonnet-5-5": {
-   "auc": 0.8097,
-   "auc_ci95": [
-    0.6348,
-    0.9394
-   ],
-   "p@10": 0.2,
-   "missing": 0,
-   "leakage_exposed": false
-  },
-  "anonymized|gpt-6.1-sol": {
-   "auc": 0.7991,
-   "auc_ci95": [
-    0.5926,
-    0.9612
-   ],
-   "p@10": 0.4,
-   "missing": 0,
-   "leakage_exposed": false
-  },
-  "named|claude-sonnet-5-5": {
-   "auc": 0.9113,
-   "auc_ci95": [
-    0.8267,
-    0.971
-   ],
-   "p@10": 0.4,
-   "missing": 0,
-   "leakage_exposed": true
-  },
-  "named|gpt-6.1-sol": {
-   "auc": 0.8655,
-   "auc_ci95": [
-    0.712,
-    0.9649
-   ],
-   "p@10": 0.2,
-   "missing": 0,
-   "leakage_exposed": true
+  "never_raised": {
+   "n_items": 293,
+   "n_positives": 28,
+   "deterministic|s_logit_full": {
+    "auc": 0.6477,
+    "auc_ci95": [
+     0.5198,
+     0.7674
+    ],
+    "p@10": 0.4,
+    "missing": 0,
+    "leakage_exposed": false
+   },
+   "deterministic|s_heuristic": {
+    "auc": 0.7015,
+    "auc_ci95": [
+     0.5853,
+     0.8078
+    ],
+    "p@10": 0.5,
+    "missing": 0,
+    "leakage_exposed": false
+   },
+   "deterministic|b_prior_funding": {
+    "auc": 0.5,
+    "auc_ci95": [
+     0.5,
+     0.5
+    ],
+    "p@10": 0.0,
+    "missing": 0,
+    "leakage_exposed": false
+   },
+   "deterministic|b_newest": {
+    "auc": 0.7125,
+    "auc_ci95": [
+     0.6106,
+     0.8061
+    ],
+    "p@10": 0.3,
+    "missing": 0,
+    "leakage_exposed": false
+   },
+   "anonymized|claude-sonnet-5-5": {
+    "auc": 0.6185,
+    "auc_ci95": [
+     0.5096,
+     0.7256
+    ],
+    "p@10": 0.2,
+    "missing": 0,
+    "leakage_exposed": false
+   },
+   "anonymized|gpt-6.1-sol": {
+    "auc": 0.6133,
+    "auc_ci95": [
+     0.5186,
+     0.7096
+    ],
+    "p@10": 0.2,
+    "missing": 0,
+    "leakage_exposed": false
+   }
   }
  },
- "note": "Tiny positive count: CIs are wide; read as a sanity check of the harness, not a verdict."
+ "post_cutoff": {
+  "t0": "2026-06-30",
+  "outcome_window_end": "2026-11-01",
+  "window": "4 months, right-censored: raises announced after 2026-11-01 count as negatives",
+  "n_items": 120,
+  "n_positives": 8,
+  "sampling": "case-control: all positives + hash-seeded random negatives",
+  "probed_knowledge_ends_before_window": {
+   "claude-sonnet-5-5": true,
+   "gpt-6.1-sol": true
+  },
+  "raise_mentions_in_current_description": {
+   "rule": "\\braised\\b|\\braises\\b|\\bfunding round\\b|\\b(pre-)?seed round\\b|\\bseries [a-d]\\b|\\bbacked by\\b|\\bled by\\b.*\\b(ventures|capital|labs)\\b|\\bstrategic (round|investment)\\b",
+   "positives": 1,
+   "positives_total": 8,
+   "negatives": 2,
+   "negatives_total": 112,
+   "matched_descriptions": {
+    "lara-protocol": "Lara Protocol is the native Liquid Staking solution for Taraxa.Stake your tokens with Lara, and we'll take care of the rest. You'll instantly receive stTARA tokens, which, although tied to your staking rewards, can be used in other DeFi pro",
+    "kton": "KTON is a next-generation liquid staking protocol for the TON ecosystem, designed to unlock liquidity for both institutional and retail users. With its liquid staking token $KTON, users earn staking rewards while accessing TON\u2019s expanding D",
+    "infinifi": "infiniFi is building the future of decentralized finance by recreating modern banking infrastructure\u2014on-chain. By merging liquid and illiquid assets into a capital-efficient system with transparent fractional reserves, infiniFi delivers sup"
+   }
+  },
+  "results": {
+   "deterministic|logit_full": {
+    "auc": 0.9129,
+    "auc_ci95": [
+     0.8214,
+     0.9799
+    ],
+    "p@10": 0.4,
+    "missing": 0,
+    "leakage_exposed": false
+   },
+   "deterministic|logit_github": {
+    "auc": 0.7478,
+    "auc_ci95": [
+     0.5759,
+     0.8951
+    ],
+    "p@10": 0.2,
+    "missing": 0,
+    "leakage_exposed": false
+   },
+   "deterministic|prior_funding": {
+    "auc": 0.8504,
+    "auc_ci95": [
+     0.6718,
+     0.9911
+    ],
+    "p@10": 0.5,
+    "missing": 0,
+    "leakage_exposed": false
+   },
+   "anonymized|claude-sonnet-5-5": {
+    "auc": 0.7768,
+    "auc_ci95": [
+     0.6211,
+     0.8956
+    ],
+    "p@10": 0.2,
+    "missing": 0,
+    "leakage_exposed": false
+   },
+   "anonymized|gpt-6.1-sol": {
+    "auc": 0.885,
+    "auc_ci95": [
+     0.7656,
+     0.9699
+    ],
+    "p@10": 0.4,
+    "missing": 0,
+    "leakage_exposed": false
+   },
+   "named|claude-sonnet-5-5": {
+    "auc": 0.87,
+    "auc_ci95": [
+     0.793,
+     0.9347
+    ],
+    "p@10": 0.2,
+    "missing": 0,
+    "leakage_exposed": true
+   },
+   "named|gpt-6.1-sol": {
+    "auc": 0.8867,
+    "auc_ci95": [
+     0.7667,
+     0.9744
+    ],
+    "p@10": 0.3,
+    "missing": 0,
+    "leakage_exposed": true
+   }
+  }
+ },
+ "cutoff_probe": "results/backtest/cutoff_probe.json",
+ "note": "Post-cutoff set has 8 positives: CIs are wide; read it as a harness check, not a verdict."
 }

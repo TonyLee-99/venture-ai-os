@@ -1,6 +1,7 @@
 {
-  "description": "Walk-forward point-in-time backtest: does the screening score rank protocols that announce a VC raise within 12 months of T0 above those that do not?",
-  "outcome": "any DefiLlama raise dated in [T0, T0+12 months)",
+  "description": "Walk-forward point-in-time backtest (retrospective reconstruction, see ADR 0003): does the screening score rank protocols that announce a raise within 12 months of T0 above those that do not? Headline population: protocols that had never raised before T0.",
+  "outcome": "any DefiLlama raise dated in [T0, T0+12 months); for never-raised protocols this is their first recorded raise",
+  "metric_definitions": "auc / p@k / lift@50 = mean over test T0s of the per-T0 value; pooled_auc = one AUC over all rows; CIs: 1,000 bootstrap resamples clustered by protocol (or owner)",
   "all_t0s": [
     "2022-07-01",
     "2023-01-01",
@@ -19,14 +20,15 @@
   ],
   "n_rows_test": 4655,
   "n_positives_test": 80,
+  "n_positive_protocols_test": 44,
   "n_protocols_test": 1180,
   "base_rate_test": 0.0172,
   "n_bootstrap": 1000,
-  "bootstrap": "clustered by protocol",
   "scores": {
     "s_logit_full": {
       "label": "Logistic, all point-in-time features (walk-forward)",
       "leakage_exposed": false,
+      "pooled_auc": 0.8213,
       "auc": 0.8097,
       "auc_ci95": [
         0.7246,
@@ -51,6 +53,7 @@
     "s_logit_github": {
       "label": "Logistic, GitHub-only features (walk-forward; live niche score)",
       "leakage_exposed": false,
+      "pooled_auc": 0.7358,
       "auc": 0.7364,
       "auc_ci95": [
         0.6563,
@@ -75,6 +78,7 @@
     "s_heuristic": {
       "label": "Pre-registered heuristic (no fitting)",
       "leakage_exposed": false,
+      "pooled_auc": 0.7897,
       "auc": 0.7893,
       "auc_ci95": [
         0.7114,
@@ -99,6 +103,7 @@
     "b_random": {
       "label": "Baseline: random",
       "leakage_exposed": false,
+      "pooled_auc": 0.4669,
       "auc": 0.468,
       "auc_ci95": [
         0.4048,
@@ -123,6 +128,7 @@
     "b_tvl": {
       "label": "Baseline: TVL size",
       "leakage_exposed": false,
+      "pooled_auc": 0.7462,
       "auc": 0.7377,
       "auc_ci95": [
         0.6418,
@@ -147,6 +153,7 @@
     "b_commits": {
       "label": "Baseline: commits in last 90 days",
       "leakage_exposed": false,
+      "pooled_auc": 0.746,
       "auc": 0.7363,
       "auc_ci95": [
         0.6499,
@@ -171,6 +178,7 @@
     "b_newest": {
       "label": "Baseline: newest listing first",
       "leakage_exposed": false,
+      "pooled_auc": 0.7218,
       "auc": 0.7156,
       "auc_ci95": [
         0.639,
@@ -195,6 +203,7 @@
     "b_prior_funding": {
       "label": "Baseline: raised before (most recent first)",
       "leakage_exposed": false,
+      "pooled_auc": 0.7753,
       "auc": 0.7735,
       "auc_ci95": [
         0.6898,
@@ -219,6 +228,7 @@
     "leaky_stars_now": {
       "label": "Reference: today's GitHub stars (LEAKAGE-EXPOSED, not a fair baseline)",
       "leakage_exposed": true,
+      "pooled_auc": 0.7299,
       "auc": 0.7257,
       "auc_ci95": [
         0.6491,
@@ -266,6 +276,1104 @@
         0.1068
       ]
     }
+  },
+  "populations": {
+    "never_raised": {
+      "n_rows": 3900,
+      "n_positive_rows": 28,
+      "n_positive_protocols": 18,
+      "n_protocols": 1005,
+      "base_rate": 0.0072,
+      "cluster": "slug",
+      "scores": {
+        "s_logit_full": {
+          "label": "Logistic, all point-in-time features (walk-forward)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.6666,
+          "auc": 0.6054,
+          "auc_ci95": [
+            0.473,
+            0.7548
+          ],
+          "p@20": 0.03,
+          "p@20_ci95": [
+            0.0,
+            0.09
+          ],
+          "p@50": 0.044,
+          "p@50_ci95": [
+            0.016,
+            0.076
+          ],
+          "lift@50": 5.299,
+          "lift@50_ci95": [
+            2.3195,
+            9.1122
+          ]
+        },
+        "s_logit_github": {
+          "label": "Logistic, GitHub-only features (walk-forward; live niche score)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.6211,
+          "auc": 0.5843,
+          "auc_ci95": [
+            0.4498,
+            0.7289
+          ],
+          "p@20": 0.04,
+          "p@20_ci95": [
+            0.0,
+            0.09
+          ],
+          "p@50": 0.028,
+          "p@50_ci95": [
+            0.004,
+            0.052
+          ],
+          "lift@50": 3.0724,
+          "lift@50_ci95": [
+            0.276,
+            5.5492
+          ]
+        },
+        "s_heuristic": {
+          "label": "Pre-registered heuristic (no fitting)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7093,
+          "auc": 0.6877,
+          "auc_ci95": [
+            0.5727,
+            0.8275
+          ],
+          "p@20": 0.06,
+          "p@20_ci95": [
+            0.02,
+            0.12
+          ],
+          "p@50": 0.044,
+          "p@50_ci95": [
+            0.016,
+            0.072
+          ],
+          "lift@50": 5.299,
+          "lift@50_ci95": [
+            2.2508,
+            8.1522
+          ]
+        },
+        "b_random": {
+          "label": "Baseline: random",
+          "leakage_exposed": false,
+          "pooled_auc": 0.4998,
+          "auc": 0.497,
+          "auc_ci95": [
+            0.4118,
+            0.5982
+          ],
+          "p@20": 0.0,
+          "p@20_ci95": [
+            0.0,
+            0.0
+          ],
+          "p@50": 0.004,
+          "p@50_ci95": [
+            0.0,
+            0.016
+          ],
+          "lift@50": 0.3046,
+          "lift@50_ci95": [
+            0.0,
+            2.1231
+          ]
+        },
+        "b_tvl": {
+          "label": "Baseline: TVL size",
+          "leakage_exposed": false,
+          "pooled_auc": 0.6367,
+          "auc": 0.5828,
+          "auc_ci95": [
+            0.438,
+            0.7214
+          ],
+          "p@20": 0.01,
+          "p@20_ci95": [
+            0.0,
+            0.03
+          ],
+          "p@50": 0.016,
+          "p@50_ci95": [
+            0.0,
+            0.04
+          ],
+          "lift@50": 2.3713,
+          "lift@50_ci95": [
+            0.0,
+            5.5243
+          ]
+        },
+        "b_commits": {
+          "label": "Baseline: commits in last 90 days",
+          "leakage_exposed": false,
+          "pooled_auc": 0.6686,
+          "auc": 0.6533,
+          "auc_ci95": [
+            0.5092,
+            0.7779
+          ],
+          "p@20": 0.01,
+          "p@20_ci95": [
+            0.0,
+            0.04
+          ],
+          "p@50": 0.024,
+          "p@50_ci95": [
+            0.004,
+            0.048
+          ],
+          "lift@50": 2.623,
+          "lift@50_ci95": [
+            0.3545,
+            5.8214
+          ]
+        },
+        "b_newest": {
+          "label": "Baseline: newest listing first",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7346,
+          "auc": 0.6972,
+          "auc_ci95": [
+            0.5616,
+            0.8515
+          ],
+          "p@20": 0.05,
+          "p@20_ci95": [
+            0.01,
+            0.1
+          ],
+          "p@50": 0.032,
+          "p@50_ci95": [
+            0.012,
+            0.06
+          ],
+          "lift@50": 3.5256,
+          "lift@50_ci95": [
+            1.476,
+            7.2197
+          ]
+        },
+        "b_prior_funding": {
+          "label": "Baseline: raised before (most recent first)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.5,
+          "auc": 0.5,
+          "auc_ci95": [
+            0.5,
+            0.5
+          ],
+          "p@20": 0.01,
+          "p@20_ci95": [
+            0.0,
+            0.04
+          ],
+          "p@50": 0.012,
+          "p@50_ci95": [
+            0.0,
+            0.024
+          ],
+          "lift@50": 1.2711,
+          "lift@50_ci95": [
+            0.0,
+            3.632
+          ]
+        },
+        "leaky_stars_now": {
+          "label": "Reference: today's GitHub stars (LEAKAGE-EXPOSED, not a fair baseline)",
+          "leakage_exposed": true,
+          "pooled_auc": 0.6465,
+          "auc": 0.6433,
+          "auc_ci95": [
+            0.5186,
+            0.7635
+          ],
+          "p@20": 0.02,
+          "p@20_ci95": [
+            0.0,
+            0.06
+          ],
+          "p@50": 0.016,
+          "p@50_ci95": [
+            0.0,
+            0.04
+          ],
+          "lift@50": 1.363,
+          "lift@50_ci95": [
+            0.0,
+            3.3422
+          ]
+        }
+      },
+      "paired_vs_best_baseline": {
+        "s_logit_full": {
+          "best_baseline": "b_newest",
+          "auc_diff": -0.0918,
+          "ci95": [
+            -0.2668,
+            0.0963
+          ]
+        },
+        "s_logit_github": {
+          "best_baseline": "b_newest",
+          "auc_diff": -0.1129,
+          "ci95": [
+            -0.2769,
+            0.0674
+          ]
+        },
+        "s_heuristic": {
+          "best_baseline": "b_newest",
+          "auc_diff": -0.0096,
+          "ci95": [
+            -0.0722,
+            0.0579
+          ]
+        }
+      }
+    },
+    "all": {
+      "n_rows": 4655,
+      "n_positive_rows": 80,
+      "n_positive_protocols": 44,
+      "n_protocols": 1180,
+      "base_rate": 0.0172,
+      "cluster": "slug",
+      "scores": {
+        "s_logit_full": {
+          "label": "Logistic, all point-in-time features (walk-forward)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.8213,
+          "auc": 0.8097,
+          "auc_ci95": [
+            0.7246,
+            0.8859
+          ],
+          "p@20": 0.18,
+          "p@20_ci95": [
+            0.09,
+            0.26
+          ],
+          "p@50": 0.148,
+          "p@50_ci95": [
+            0.092,
+            0.216
+          ],
+          "lift@50": 8.96,
+          "lift@50_ci95": [
+            6.3924,
+            11.908
+          ]
+        },
+        "s_logit_github": {
+          "label": "Logistic, GitHub-only features (walk-forward; live niche score)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7358,
+          "auc": 0.7364,
+          "auc_ci95": [
+            0.6563,
+            0.8071
+          ],
+          "p@20": 0.04,
+          "p@20_ci95": [
+            0.01,
+            0.12
+          ],
+          "p@50": 0.056,
+          "p@50_ci95": [
+            0.02,
+            0.096
+          ],
+          "lift@50": 2.8358,
+          "lift@50_ci95": [
+            1.022,
+            4.6256
+          ]
+        },
+        "s_heuristic": {
+          "label": "Pre-registered heuristic (no fitting)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7897,
+          "auc": 0.7893,
+          "auc_ci95": [
+            0.7114,
+            0.8628
+          ],
+          "p@20": 0.13,
+          "p@20_ci95": [
+            0.07,
+            0.22
+          ],
+          "p@50": 0.116,
+          "p@50_ci95": [
+            0.0719,
+            0.168
+          ],
+          "lift@50": 6.2019,
+          "lift@50_ci95": [
+            4.2567,
+            8.3933
+          ]
+        },
+        "b_random": {
+          "label": "Baseline: random",
+          "leakage_exposed": false,
+          "pooled_auc": 0.4669,
+          "auc": 0.468,
+          "auc_ci95": [
+            0.4048,
+            0.5298
+          ],
+          "p@20": 0.01,
+          "p@20_ci95": [
+            0.0,
+            0.03
+          ],
+          "p@50": 0.012,
+          "p@50_ci95": [
+            0.0,
+            0.028
+          ],
+          "lift@50": 0.5617,
+          "lift@50_ci95": [
+            0.0,
+            1.3129
+          ]
+        },
+        "b_tvl": {
+          "label": "Baseline: TVL size",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7462,
+          "auc": 0.7377,
+          "auc_ci95": [
+            0.6418,
+            0.8222
+          ],
+          "p@20": 0.09,
+          "p@20_ci95": [
+            0.0398,
+            0.18
+          ],
+          "p@50": 0.076,
+          "p@50_ci95": [
+            0.036,
+            0.12
+          ],
+          "lift@50": 4.5097,
+          "lift@50_ci95": [
+            2.2021,
+            6.7063
+          ]
+        },
+        "b_commits": {
+          "label": "Baseline: commits in last 90 days",
+          "leakage_exposed": false,
+          "pooled_auc": 0.746,
+          "auc": 0.7363,
+          "auc_ci95": [
+            0.6499,
+            0.8155
+          ],
+          "p@20": 0.03,
+          "p@20_ci95": [
+            0.0,
+            0.09
+          ],
+          "p@50": 0.072,
+          "p@50_ci95": [
+            0.032,
+            0.124
+          ],
+          "lift@50": 3.6963,
+          "lift@50_ci95": [
+            1.7242,
+            6.0999
+          ]
+        },
+        "b_newest": {
+          "label": "Baseline: newest listing first",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7218,
+          "auc": 0.7156,
+          "auc_ci95": [
+            0.639,
+            0.7865
+          ],
+          "p@20": 0.08,
+          "p@20_ci95": [
+            0.03,
+            0.13
+          ],
+          "p@50": 0.048,
+          "p@50_ci95": [
+            0.0279,
+            0.076
+          ],
+          "lift@50": 2.4615,
+          "lift@50_ci95": [
+            1.3267,
+            4.1809
+          ]
+        },
+        "b_prior_funding": {
+          "label": "Baseline: raised before (most recent first)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7753,
+          "auc": 0.7735,
+          "auc_ci95": [
+            0.6898,
+            0.8482
+          ],
+          "p@20": 0.17,
+          "p@20_ci95": [
+            0.08,
+            0.25
+          ],
+          "p@50": 0.14,
+          "p@50_ci95": [
+            0.088,
+            0.204
+          ],
+          "lift@50": 8.5815,
+          "lift@50_ci95": [
+            5.7167,
+            11.4224
+          ]
+        },
+        "leaky_stars_now": {
+          "label": "Reference: today's GitHub stars (LEAKAGE-EXPOSED, not a fair baseline)",
+          "leakage_exposed": true,
+          "pooled_auc": 0.7299,
+          "auc": 0.7257,
+          "auc_ci95": [
+            0.6491,
+            0.7896
+          ],
+          "p@20": 0.06,
+          "p@20_ci95": [
+            0.0,
+            0.14
+          ],
+          "p@50": 0.04,
+          "p@50_ci95": [
+            0.008,
+            0.088
+          ],
+          "lift@50": 1.8253,
+          "lift@50_ci95": [
+            0.2931,
+            4.1487
+          ]
+        }
+      },
+      "paired_vs_best_baseline": {
+        "s_logit_full": {
+          "best_baseline": "b_prior_funding",
+          "auc_diff": 0.0363,
+          "ci95": [
+            -0.0221,
+            0.1001
+          ]
+        },
+        "s_logit_github": {
+          "best_baseline": "b_prior_funding",
+          "auc_diff": -0.0371,
+          "ci95": [
+            -0.1217,
+            0.0475
+          ]
+        },
+        "s_heuristic": {
+          "best_baseline": "b_prior_funding",
+          "auc_diff": 0.0159,
+          "ci95": [
+            -0.0691,
+            0.1068
+          ]
+        }
+      }
+    },
+    "all_owner_clustered": {
+      "n_rows": 4655,
+      "n_positive_rows": 80,
+      "n_positive_protocols": 44,
+      "n_protocols": 1180,
+      "base_rate": 0.0172,
+      "cluster": "github_owner",
+      "scores": {
+        "s_logit_full": {
+          "label": "Logistic, all point-in-time features (walk-forward)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.8213,
+          "auc": 0.8097,
+          "auc_ci95": [
+            0.7249,
+            0.8776
+          ],
+          "p@20": 0.18,
+          "p@20_ci95": [
+            0.09,
+            0.26
+          ],
+          "p@50": 0.148,
+          "p@50_ci95": [
+            0.092,
+            0.216
+          ],
+          "lift@50": 8.96,
+          "lift@50_ci95": [
+            6.5132,
+            11.6695
+          ]
+        },
+        "s_logit_github": {
+          "label": "Logistic, GitHub-only features (walk-forward; live niche score)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7358,
+          "auc": 0.7364,
+          "auc_ci95": [
+            0.6597,
+            0.8038
+          ],
+          "p@20": 0.04,
+          "p@20_ci95": [
+            0.0,
+            0.12
+          ],
+          "p@50": 0.056,
+          "p@50_ci95": [
+            0.02,
+            0.0961
+          ],
+          "lift@50": 2.8358,
+          "lift@50_ci95": [
+            0.9814,
+            4.806
+          ]
+        },
+        "s_heuristic": {
+          "label": "Pre-registered heuristic (no fitting)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7897,
+          "auc": 0.7893,
+          "auc_ci95": [
+            0.7078,
+            0.8621
+          ],
+          "p@20": 0.13,
+          "p@20_ci95": [
+            0.07,
+            0.22
+          ],
+          "p@50": 0.116,
+          "p@50_ci95": [
+            0.072,
+            0.168
+          ],
+          "lift@50": 6.2019,
+          "lift@50_ci95": [
+            4.1954,
+            8.5018
+          ]
+        },
+        "b_random": {
+          "label": "Baseline: random",
+          "leakage_exposed": false,
+          "pooled_auc": 0.4669,
+          "auc": 0.468,
+          "auc_ci95": [
+            0.409,
+            0.5298
+          ],
+          "p@20": 0.01,
+          "p@20_ci95": [
+            0.0,
+            0.03
+          ],
+          "p@50": 0.012,
+          "p@50_ci95": [
+            0.0,
+            0.028
+          ],
+          "lift@50": 0.5617,
+          "lift@50_ci95": [
+            0.0,
+            1.2643
+          ]
+        },
+        "b_tvl": {
+          "label": "Baseline: TVL size",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7462,
+          "auc": 0.7377,
+          "auc_ci95": [
+            0.638,
+            0.8223
+          ],
+          "p@20": 0.09,
+          "p@20_ci95": [
+            0.03,
+            0.19
+          ],
+          "p@50": 0.076,
+          "p@50_ci95": [
+            0.036,
+            0.12
+          ],
+          "lift@50": 4.5097,
+          "lift@50_ci95": [
+            2.3225,
+            6.8642
+          ]
+        },
+        "b_commits": {
+          "label": "Baseline: commits in last 90 days",
+          "leakage_exposed": false,
+          "pooled_auc": 0.746,
+          "auc": 0.7363,
+          "auc_ci95": [
+            0.6571,
+            0.8106
+          ],
+          "p@20": 0.03,
+          "p@20_ci95": [
+            0.0,
+            0.09
+          ],
+          "p@50": 0.072,
+          "p@50_ci95": [
+            0.032,
+            0.124
+          ],
+          "lift@50": 3.6963,
+          "lift@50_ci95": [
+            1.7127,
+            6.2704
+          ]
+        },
+        "b_newest": {
+          "label": "Baseline: newest listing first",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7218,
+          "auc": 0.7156,
+          "auc_ci95": [
+            0.641,
+            0.7861
+          ],
+          "p@20": 0.08,
+          "p@20_ci95": [
+            0.03,
+            0.14
+          ],
+          "p@50": 0.048,
+          "p@50_ci95": [
+            0.024,
+            0.0761
+          ],
+          "lift@50": 2.4615,
+          "lift@50_ci95": [
+            1.142,
+            4.0966
+          ]
+        },
+        "b_prior_funding": {
+          "label": "Baseline: raised before (most recent first)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7753,
+          "auc": 0.7735,
+          "auc_ci95": [
+            0.6955,
+            0.8475
+          ],
+          "p@20": 0.17,
+          "p@20_ci95": [
+            0.0798,
+            0.26
+          ],
+          "p@50": 0.14,
+          "p@50_ci95": [
+            0.084,
+            0.2
+          ],
+          "lift@50": 8.5815,
+          "lift@50_ci95": [
+            5.63,
+            11.5708
+          ]
+        },
+        "leaky_stars_now": {
+          "label": "Reference: today's GitHub stars (LEAKAGE-EXPOSED, not a fair baseline)",
+          "leakage_exposed": true,
+          "pooled_auc": 0.7299,
+          "auc": 0.7257,
+          "auc_ci95": [
+            0.6539,
+            0.7872
+          ],
+          "p@20": 0.06,
+          "p@20_ci95": [
+            0.0,
+            0.14
+          ],
+          "p@50": 0.04,
+          "p@50_ci95": [
+            0.008,
+            0.08
+          ],
+          "lift@50": 1.8253,
+          "lift@50_ci95": [
+            0.3484,
+            3.8765
+          ]
+        }
+      },
+      "paired_vs_best_baseline": {
+        "s_logit_full": {
+          "best_baseline": "b_prior_funding",
+          "auc_diff": 0.0363,
+          "ci95": [
+            -0.0278,
+            0.0973
+          ]
+        },
+        "s_logit_github": {
+          "best_baseline": "b_prior_funding",
+          "auc_diff": -0.0371,
+          "ci95": [
+            -0.1215,
+            0.045
+          ]
+        },
+        "s_heuristic": {
+          "best_baseline": "b_prior_funding",
+          "auc_diff": 0.0159,
+          "ci95": [
+            -0.0779,
+            0.1043
+          ]
+        }
+      }
+    },
+    "never_raised_owner_clustered": {
+      "n_rows": 3900,
+      "n_positive_rows": 28,
+      "n_positive_protocols": 18,
+      "n_protocols": 1005,
+      "base_rate": 0.0072,
+      "cluster": "github_owner",
+      "scores": {
+        "s_logit_full": {
+          "label": "Logistic, all point-in-time features (walk-forward)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.6666,
+          "auc": 0.6054,
+          "auc_ci95": [
+            0.4741,
+            0.79
+          ],
+          "p@20": 0.03,
+          "p@20_ci95": [
+            0.0,
+            0.08
+          ],
+          "p@50": 0.044,
+          "p@50_ci95": [
+            0.016,
+            0.08
+          ],
+          "lift@50": 5.299,
+          "lift@50_ci95": [
+            2.3173,
+            9.1866
+          ]
+        },
+        "s_logit_github": {
+          "label": "Logistic, GitHub-only features (walk-forward; live niche score)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.6211,
+          "auc": 0.5843,
+          "auc_ci95": [
+            0.4447,
+            0.744
+          ],
+          "p@20": 0.04,
+          "p@20_ci95": [
+            0.0,
+            0.09
+          ],
+          "p@50": 0.028,
+          "p@50_ci95": [
+            0.0039,
+            0.056
+          ],
+          "lift@50": 3.0724,
+          "lift@50_ci95": [
+            0.2141,
+            6.0841
+          ]
+        },
+        "s_heuristic": {
+          "label": "Pre-registered heuristic (no fitting)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7093,
+          "auc": 0.6877,
+          "auc_ci95": [
+            0.5633,
+            0.8272
+          ],
+          "p@20": 0.06,
+          "p@20_ci95": [
+            0.02,
+            0.1251
+          ],
+          "p@50": 0.044,
+          "p@50_ci95": [
+            0.016,
+            0.075
+          ],
+          "lift@50": 5.299,
+          "lift@50_ci95": [
+            2.0768,
+            8.4157
+          ]
+        },
+        "b_random": {
+          "label": "Baseline: random",
+          "leakage_exposed": false,
+          "pooled_auc": 0.4998,
+          "auc": 0.497,
+          "auc_ci95": [
+            0.4075,
+            0.5961
+          ],
+          "p@20": 0.0,
+          "p@20_ci95": [
+            0.0,
+            0.0
+          ],
+          "p@50": 0.004,
+          "p@50_ci95": [
+            0.0,
+            0.02
+          ],
+          "lift@50": 0.3046,
+          "lift@50_ci95": [
+            0.0,
+            2.1564
+          ]
+        },
+        "b_tvl": {
+          "label": "Baseline: TVL size",
+          "leakage_exposed": false,
+          "pooled_auc": 0.6367,
+          "auc": 0.5828,
+          "auc_ci95": [
+            0.444,
+            0.7583
+          ],
+          "p@20": 0.01,
+          "p@20_ci95": [
+            0.0,
+            0.03
+          ],
+          "p@50": 0.016,
+          "p@50_ci95": [
+            0.0,
+            0.04
+          ],
+          "lift@50": 2.3713,
+          "lift@50_ci95": [
+            0.0,
+            5.4369
+          ]
+        },
+        "b_commits": {
+          "label": "Baseline: commits in last 90 days",
+          "leakage_exposed": false,
+          "pooled_auc": 0.6686,
+          "auc": 0.6533,
+          "auc_ci95": [
+            0.5045,
+            0.7876
+          ],
+          "p@20": 0.01,
+          "p@20_ci95": [
+            0.0,
+            0.04
+          ],
+          "p@50": 0.024,
+          "p@50_ci95": [
+            0.004,
+            0.052
+          ],
+          "lift@50": 2.623,
+          "lift@50_ci95": [
+            0.2372,
+            5.9123
+          ]
+        },
+        "b_newest": {
+          "label": "Baseline: newest listing first",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7346,
+          "auc": 0.6972,
+          "auc_ci95": [
+            0.5472,
+            0.8516
+          ],
+          "p@20": 0.05,
+          "p@20_ci95": [
+            0.01,
+            0.1
+          ],
+          "p@50": 0.032,
+          "p@50_ci95": [
+            0.012,
+            0.056
+          ],
+          "lift@50": 3.5256,
+          "lift@50_ci95": [
+            1.4914,
+            7.1611
+          ]
+        },
+        "b_prior_funding": {
+          "label": "Baseline: raised before (most recent first)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.5,
+          "auc": 0.5,
+          "auc_ci95": [
+            0.5,
+            0.5
+          ],
+          "p@20": 0.01,
+          "p@20_ci95": [
+            0.0,
+            0.04
+          ],
+          "p@50": 0.012,
+          "p@50_ci95": [
+            0.0,
+            0.024
+          ],
+          "lift@50": 1.2711,
+          "lift@50_ci95": [
+            0.0,
+            3.7096
+          ]
+        },
+        "leaky_stars_now": {
+          "label": "Reference: today's GitHub stars (LEAKAGE-EXPOSED, not a fair baseline)",
+          "leakage_exposed": true,
+          "pooled_auc": 0.6465,
+          "auc": 0.6433,
+          "auc_ci95": [
+            0.5198,
+            0.76
+          ],
+          "p@20": 0.02,
+          "p@20_ci95": [
+            0.0,
+            0.06
+          ],
+          "p@50": 0.016,
+          "p@50_ci95": [
+            0.0,
+            0.04
+          ],
+          "lift@50": 1.363,
+          "lift@50_ci95": [
+            0.0,
+            3.3779
+          ]
+        }
+      },
+      "paired_vs_best_baseline": {
+        "s_logit_full": {
+          "best_baseline": "b_newest",
+          "auc_diff": -0.0918,
+          "ci95": [
+            -0.2432,
+            0.1027
+          ]
+        },
+        "s_logit_github": {
+          "best_baseline": "b_newest",
+          "auc_diff": -0.1129,
+          "ci95": [
+            -0.2798,
+            0.0646
+          ]
+        },
+        "s_heuristic": {
+          "best_baseline": "b_newest",
+          "auc_diff": -0.0096,
+          "ci95": [
+            -0.072,
+            0.0585
+          ]
+        }
+      }
+    }
+  },
+  "round_mix_all": {
+    "distinct_raises": 58,
+    "distinct_protocols": 44,
+    "seed_preseed_angel": 9,
+    "by_round": {
+      "Angel Round": 1,
+      "Pre-Seed": 1,
+      "Private": 7,
+      "Private token sale": 2,
+      "Public token sale": 11,
+      "Seed": 6,
+      "Seed+": 1,
+      "Series A": 8,
+      "Strategic": 14,
+      "unspecified": 7
+    },
+    "protocols_positive_at_2plus_t0s": 28
+  },
+  "round_mix_never_raised": {
+    "distinct_raises": 22,
+    "distinct_protocols": 18,
+    "seed_preseed_angel": 5,
+    "by_round": {
+      "Angel Round": 1,
+      "Pre-Seed": 1,
+      "Private": 4,
+      "Public token sale": 4,
+      "Seed": 3,
+      "Series A": 3,
+      "Strategic": 3,
+      "unspecified": 3
+    },
+    "protocols_positive_at_2plus_t0s": 10
+  },
+  "lead_time": {
+    "github_first_repo": {
+      "n": 236,
+      "median_months": 5.0,
+      "share_signal_before_raise": 0.729
+    },
+    "defillama_listing": {
+      "n": 230,
+      "median_months": -5.6,
+      "share_signal_before_raise": 0.239
+    },
+    "earliest_public_signal": {
+      "n": 250,
+      "median_months": 4.4,
+      "share_signal_before_raise": 0.712
+    },
+    "note": "positive months = the signal came BEFORE the first raise (system could have surfaced it)"
   },
   "per_t0": {
     "s_logit_full": [
@@ -809,6 +1917,7 @@
       "category": "Onchain Capital Allocator",
       "score": 0.2738,
       "raised_within_12m": false,
+      "prior_raises": 1,
       "leads": null
     },
     {
@@ -816,6 +1925,7 @@
       "category": "Liquid Staking",
       "score": 0.2598,
       "raised_within_12m": false,
+      "prior_raises": 3,
       "leads": null
     },
     {
@@ -823,6 +1933,7 @@
       "category": "CDP",
       "score": 0.2478,
       "raised_within_12m": false,
+      "prior_raises": 1,
       "leads": null
     },
     {
@@ -830,6 +1941,7 @@
       "category": "Restaking",
       "score": 0.2351,
       "raised_within_12m": false,
+      "prior_raises": 3,
       "leads": null
     },
     {
@@ -837,6 +1949,7 @@
       "category": "Liquid Staking",
       "score": 0.2317,
       "raised_within_12m": false,
+      "prior_raises": 3,
       "leads": null
     },
     {
@@ -844,6 +1957,7 @@
       "category": "Dexs",
       "score": 0.2194,
       "raised_within_12m": false,
+      "prior_raises": 1,
       "leads": null
     },
     {
@@ -851,6 +1965,7 @@
       "category": "Anchor BTC",
       "score": 0.2003,
       "raised_within_12m": false,
+      "prior_raises": 1,
       "leads": null
     },
     {
@@ -858,6 +1973,7 @@
       "category": "Onchain Capital Allocator",
       "score": 0.1869,
       "raised_within_12m": false,
+      "prior_raises": 1,
       "leads": null
     },
     {
@@ -865,6 +1981,7 @@
       "category": "Onchain Capital Allocator",
       "score": 0.1719,
       "raised_within_12m": true,
+      "prior_raises": 1,
       "leads": null
     },
     {
@@ -872,6 +1989,7 @@
       "category": "Yield",
       "score": 0.1719,
       "raised_within_12m": false,
+      "prior_raises": 1,
       "leads": null
     },
     {
@@ -879,6 +1997,7 @@
       "category": "Collateral Markets",
       "score": 0.1524,
       "raised_within_12m": false,
+      "prior_raises": 2,
       "leads": null
     },
     {
@@ -886,6 +2005,7 @@
       "category": "Lending",
       "score": 0.1499,
       "raised_within_12m": false,
+      "prior_raises": 1,
       "leads": null
     },
     {
@@ -893,6 +2013,7 @@
       "category": "Bridge",
       "score": 0.1431,
       "raised_within_12m": false,
+      "prior_raises": 2,
       "leads": null
     },
     {
@@ -900,6 +2021,7 @@
       "category": "Derivatives",
       "score": 0.1413,
       "raised_within_12m": false,
+      "prior_raises": 1,
       "leads": null
     },
     {
@@ -907,6 +2029,7 @@
       "category": "Onchain Capital Allocator",
       "score": 0.1373,
       "raised_within_12m": false,
+      "prior_raises": 1,
       "leads": null
     },
     {
@@ -914,6 +2037,7 @@
       "category": "Derivatives",
       "score": 0.1333,
       "raised_within_12m": false,
+      "prior_raises": 1,
       "leads": null
     },
     {
@@ -921,6 +2045,7 @@
       "category": "Yield Aggregator",
       "score": 0.1324,
       "raised_within_12m": true,
+      "prior_raises": 2,
       "leads": null
     },
     {
@@ -928,6 +2053,7 @@
       "category": "Liquid Staking",
       "score": 0.1318,
       "raised_within_12m": false,
+      "prior_raises": 2,
       "leads": null
     },
     {
@@ -935,6 +2061,7 @@
       "category": "Onchain Capital Allocator",
       "score": 0.1314,
       "raised_within_12m": false,
+      "prior_raises": 1,
       "leads": null
     },
     {
@@ -942,6 +2069,7 @@
       "category": "Derivatives",
       "score": 0.1245,
       "raised_within_12m": true,
+      "prior_raises": 1,
       "leads": "General Catalyst, Jump Trading"
     }
   ]
