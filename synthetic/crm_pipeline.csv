@@ -1,0 +1,5 @@
+company,stage,owner,last_touch,note,synthetic
+Daydreams,sourced,partner_a,2026-09-15,SYNTHETIC demo row (not a real CRM record); exists only to show CRM dedupe,true
+BlockRun,first_call,partner_b,2026-10-01,SYNTHETIC demo row (not a real CRM record); exists only to show CRM dedupe,true
+Acme Agent Wallets,passed,partner_a,2026-06-20,SYNTHETIC fictional company,true
+Nimbus Pay,sourced,partner_c,2026-10-12,SYNTHETIC fictional company,true

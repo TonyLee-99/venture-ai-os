@@ -1,0 +1,86 @@
+{
+  "n_sources": 7,
+  "n_files": 2629,
+  "sources": {
+    "arxiv": {
+      "files": 1,
+      "bytes": 153611,
+      "records": 60,
+      "first_fetch": "2026-11-02T09:38:29+00:00",
+      "last_fetch": "2026-11-02T09:38:29+00:00",
+      "example_urls": [
+        "https://export.arxiv.org/api/query?search_query=abs%3A%22agent%20payment%22%20OR%20abs%3A%22agentic%20payment%22%20OR%20abs%3A%22agentic%20commerce%22%20OR%20abs%3Ax402%20OR%20abs%3A%22agent-to-agent%20payment%22%20OR%20abs%3A%22machine-to-machine%20payment%22&start=0&max_results=200&sortBy=submittedDate&sortOrder=descending"
+      ]
+    },
+    "coingecko": {
+      "files": 8,
+      "bytes": 440402,
+      "records": 1985,
+      "first_fetch": "2026-11-02T09:39:43+00:00",
+      "last_fetch": "2026-11-02T09:40:14+00:00",
+      "example_urls": [
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&category=x402-ecosystem&per_page=100&page=1",
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&category=ai-agents&per_page=100&page=1",
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&category=payment-solutions&per_page=100&page=1"
+      ]
+    },
+    "defillama": {
+      "files": 2115,
+      "bytes": 14114717,
+      "records": 1650826,
+      "first_fetch": "2026-11-02T09:39:43+00:00",
+      "last_fetch": "2026-11-02T09:44:16+00:00",
+      "example_urls": [
+        "https://api.llama.fi/protocols",
+        "https://api.llama.fi/protocol/1155tech",
+        "https://api.llama.fi/protocol/0xscans"
+      ]
+    },
+    "github": {
+      "files": 491,
+      "bytes": 13401358,
+      "records": 1400,
+      "first_fetch": "2026-11-02T09:38:34+00:00",
+      "last_fetch": "2026-11-02T09:48:20+00:00",
+      "example_urls": [
+        "https://api.github.com/search/repositories?q=x402&sort=stars&order=desc&per_page=100",
+        "https://api.github.com/search/repositories?q=x402+payments&sort=stars&order=desc&per_page=100",
+        "https://api.github.com/search/repositories?q=agentic+payments&sort=stars&order=desc&per_page=100"
+      ]
+    },
+    "hn_algolia": {
+      "files": 8,
+      "bytes": 480326,
+      "records": 1927,
+      "first_fetch": "2026-11-02T09:38:23+00:00",
+      "last_fetch": "2026-11-02T09:38:28+00:00",
+      "example_urls": [
+        "https://hn.algolia.com/api/v1/search_by_date?query=x402",
+        "https://hn.algolia.com/api/v1/search_by_date?query=agentic payments",
+        "https://hn.algolia.com/api/v1/search_by_date?query=agent payments"
+      ]
+    },
+    "x402scan": {
+      "files": 5,
+      "bytes": 3169464,
+      "records": 2049,
+      "first_fetch": "2026-11-02T09:38:19+00:00",
+      "last_fetch": "2026-11-02T09:38:20+00:00",
+      "example_urls": [
+        "https://www.x402scan.com/api/trpc/public.stats.bucketed?input=%7B%22json%22%3A%20%7B%22timeframe%22%3A%200%2C%20%22numBuckets%22%3A%201000%7D%7D",
+        "https://www.x402scan.com/api/trpc/public.stats.bucketed?input=%7B%22json%22%3A%20%7B%22timeframe%22%3A%200%2C%20%22numBuckets%22%3A%201000%2C%20%22chain%22%3A%20%22base%22%7D%7D",
+        "https://www.x402scan.com/api/trpc/public.stats.bucketed?input=%7B%22json%22%3A%20%7B%22timeframe%22%3A%200%2C%20%22numBuckets%22%3A%201000%2C%20%22chain%22%3A%20%22solana%22%7D%7D"
+      ]
+    },
+    "yc_directory": {
+      "files": 1,
+      "bytes": 2112369,
+      "records": 6362,
+      "first_fetch": "2026-11-02T09:38:30+00:00",
+      "last_fetch": "2026-11-02T09:38:30+00:00",
+      "example_urls": [
+        "https://yc-oss.github.io/api/companies/all.json"
+      ]
+    }
+  }
+}

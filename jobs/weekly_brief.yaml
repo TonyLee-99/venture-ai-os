@@ -1,0 +1,9 @@
+job: weekly_brief
+agent: AI Portfolio Monitor (writer)
+skill: inflection-explainer
+purpose: Weekly brief that explains each flagged inflection with receipts.
+inputs: [results/monitoring/changepoints.json, store/snapshots (events, HN)]
+output: vaios.agents.schemas.WeeklyBrief -> results/briefs/<week>.md
+sla: {max_minutes: 10, max_llm_calls: 3}
+eval: "100% of shipped inflection claims pass the receipts verifier"
+failure: unverified claims are removed and the inflection is marked 'needs human'

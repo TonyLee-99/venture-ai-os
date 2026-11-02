@@ -1,0 +1,8 @@
+job: sourcing
+agent: AI Sourcing
+purpose: Overnight list of new agentic-payments companies, deduplicated against the CRM.
+inputs: [warehouse.stg_gh_search, warehouse.stg_protocols, warehouse.stg_yc, warehouse.stg_x402_facilitator_daily, warehouse.stg_hn, warehouse.stg_cg_markets, synthetic/crm_pipeline.csv]
+output: results/sourcing/candidates.csv (artifact kind=candidates)
+sla: {max_minutes: 5, max_llm_calls: 0}
+eval: ">= 4 independent sources represented; entity resolution merges cross-source duplicates"
+failure: a source that fails to load is skipped and named in the trace; the job fails if fewer than 4 load

@@ -1,0 +1,8 @@
+job: monitoring
+agent: AI Portfolio Monitor
+purpose: Detect inflection points in traction series of comparable companies.
+inputs: [results/frozen/x402_daily.parquet, results/frozen/x402_facilitator_daily.parquet, results/frozen/commits_weekly.parquet]
+output: results/monitoring/changepoints.json
+sla: {max_minutes: 3, max_llm_calls: 0}
+eval: "event hit rate and false-alarm rate vs pre-registered dated events; permutation null; naive z-score baseline"
+failure: a series with < 8 weeks of data is skipped and listed

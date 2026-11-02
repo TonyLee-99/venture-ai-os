@@ -1,0 +1,8 @@
+job: screening
+agent: AI Screening
+purpose: Rank candidates with the backtested point-in-time score.
+inputs: [results/frozen/backtest_table.parquet, warehouse.stg_gh_windows]
+output: screen_score column + shortlist (top 8 relevant, investable)
+sla: {max_minutes: 2, max_llm_calls: 0}
+eval: "walk-forward backtest (results/backtest/backtest.json): AUC and precision@k vs naive baselines with clustered bootstrap CIs"
+failure: entities without a GitHub owner stay listed but unscored

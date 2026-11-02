@@ -1,0 +1,948 @@
+{
+  "description": "Walk-forward point-in-time backtest: does the screening score rank protocols that announce a VC raise within 12 months of T0 above those that do not?",
+  "outcome": "any DefiLlama raise dated in [T0, T0+12 months)",
+  "all_t0s": [
+    "2022-07-01",
+    "2023-01-01",
+    "2023-07-01",
+    "2024-01-01",
+    "2024-07-01",
+    "2025-01-01",
+    "2025-07-01"
+  ],
+  "test_t0s": [
+    "2023-07-01",
+    "2024-01-01",
+    "2024-07-01",
+    "2025-01-01",
+    "2025-07-01"
+  ],
+  "n_rows_test": 4655,
+  "n_positives_test": 80,
+  "n_protocols_test": 1180,
+  "base_rate_test": 0.0172,
+  "n_bootstrap": 30,
+  "bootstrap": "clustered by protocol",
+  "scores": {
+    "s_logit_full": {
+      "label": "Logistic, all point-in-time features (walk-forward)",
+      "leakage_exposed": false,
+      "auc": 0.8158,
+      "auc_ci95": [
+        0.7425,
+        0.8701
+      ],
+      "p@20": 0.22,
+      "p@20_ci95": [
+        0.1472,
+        0.3227
+      ],
+      "p@50": 0.148,
+      "p@50_ci95": [
+        0.1149,
+        0.2073
+      ],
+      "lift@50": 8.7802,
+      "lift@50_ci95": [
+        7.2513,
+        11.0247
+      ]
+    },
+    "s_logit_github": {
+      "label": "Logistic, GitHub-only features (walk-forward; live niche score)",
+      "leakage_exposed": false,
+      "auc": 0.6191,
+      "auc_ci95": [
+        0.5946,
+        0.663
+      ],
+      "p@20": 0.06,
+      "p@20_ci95": [
+        0.0273,
+        0.111
+      ],
+      "p@50": 0.056,
+      "p@50_ci95": [
+        0.036,
+        0.092
+      ],
+      "lift@50": 3.136,
+      "lift@50_ci95": [
+        2.0019,
+        5.1007
+      ]
+    },
+    "s_heuristic": {
+      "label": "Pre-registered heuristic (no fitting)",
+      "leakage_exposed": false,
+      "auc": 0.775,
+      "auc_ci95": [
+        0.7104,
+        0.8276
+      ],
+      "p@20": 0.14,
+      "p@20_ci95": [
+        0.0545,
+        0.1927
+      ],
+      "p@50": 0.104,
+      "p@50_ci95": [
+        0.0665,
+        0.1422
+      ],
+      "lift@50": 5.6145,
+      "lift@50_ci95": [
+        3.7612,
+        7.8245
+      ]
+    },
+    "b_random": {
+      "label": "Baseline: random",
+      "leakage_exposed": false,
+      "auc": 0.468,
+      "auc_ci95": [
+        0.4323,
+        0.5061
+      ],
+      "p@20": 0.01,
+      "p@20_ci95": [
+        0.0,
+        0.0327
+      ],
+      "p@50": 0.012,
+      "p@50_ci95": [
+        0.0,
+        0.028
+      ],
+      "lift@50": 0.5617,
+      "lift@50_ci95": [
+        0.0,
+        1.1796
+      ]
+    },
+    "b_tvl": {
+      "label": "Baseline: TVL size",
+      "leakage_exposed": false,
+      "auc": 0.7377,
+      "auc_ci95": [
+        0.6516,
+        0.7992
+      ],
+      "p@20": 0.09,
+      "p@20_ci95": [
+        0.0173,
+        0.1637
+      ],
+      "p@50": 0.076,
+      "p@50_ci95": [
+        0.0418,
+        0.1211
+      ],
+      "lift@50": 4.5097,
+      "lift@50_ci95": [
+        2.454,
+        6.2375
+      ]
+    },
+    "b_commits": {
+      "label": "Baseline: commits in last 90 days",
+      "leakage_exposed": false,
+      "auc": 0.4962,
+      "auc_ci95": [
+        0.4657,
+        0.5654
+      ],
+      "p@20": 0.05,
+      "p@20_ci95": [
+        0.02,
+        0.1282
+      ],
+      "p@50": 0.044,
+      "p@50_ci95": [
+        0.0269,
+        0.0891
+      ],
+      "lift@50": 2.2528,
+      "lift@50_ci95": [
+        1.6492,
+        4.4218
+      ]
+    },
+    "b_newest": {
+      "label": "Baseline: newest listing first",
+      "leakage_exposed": false,
+      "auc": 0.7156,
+      "auc_ci95": [
+        0.665,
+        0.7571
+      ],
+      "p@20": 0.08,
+      "p@20_ci95": [
+        0.03,
+        0.13
+      ],
+      "p@50": 0.048,
+      "p@50_ci95": [
+        0.0229,
+        0.072
+      ],
+      "lift@50": 2.4615,
+      "lift@50_ci95": [
+        1.0856,
+        3.6887
+      ]
+    },
+    "b_prior_funding": {
+      "label": "Baseline: raised before (most recent first)",
+      "leakage_exposed": false,
+      "auc": 0.7735,
+      "auc_ci95": [
+        0.7086,
+        0.8482
+      ],
+      "p@20": 0.17,
+      "p@20_ci95": [
+        0.0973,
+        0.2127
+      ],
+      "p@50": 0.14,
+      "p@50_ci95": [
+        0.1007,
+        0.1906
+      ],
+      "lift@50": 8.5815,
+      "lift@50_ci95": [
+        6.7182,
+        10.3213
+      ]
+    },
+    "leaky_stars_now": {
+      "label": "Reference: today's GitHub stars (LEAKAGE-EXPOSED, not a fair baseline)",
+      "leakage_exposed": true,
+      "auc": 0.5196,
+      "auc_ci95": [
+        0.4891,
+        0.5909
+      ],
+      "p@20": 0.05,
+      "p@20_ci95": [
+        0.0073,
+        0.0927
+      ],
+      "p@50": 0.04,
+      "p@50_ci95": [
+        0.0178,
+        0.0702
+      ],
+      "lift@50": 2.0526,
+      "lift@50_ci95": [
+        0.8582,
+        3.6653
+      ]
+    }
+  },
+  "paired_vs_best_baseline": {
+    "s_logit_full": {
+      "best_baseline": "b_prior_funding",
+      "auc_diff": 0.0423,
+      "ci95": [
+        -0.0103,
+        0.0936
+      ]
+    },
+    "s_logit_github": {
+      "best_baseline": "b_prior_funding",
+      "auc_diff": -0.1544,
+      "ci95": [
+        -0.2246,
+        -0.0832
+      ]
+    },
+    "s_heuristic": {
+      "best_baseline": "b_prior_funding",
+      "auc_diff": 0.0015,
+      "ci95": [
+        -0.061,
+        0.0638
+      ]
+    }
+  },
+  "per_t0": {
+    "s_logit_full": [
+      {
+        "t0": "2023-07-01",
+        "n": 645,
+        "positives": 19,
+        "base_rate": 0.0295,
+        "auc": 0.7915,
+        "spearman": 0.1707,
+        "p@20": 0.2,
+        "p@50": 0.14,
+        "lift@50": 4.7526
+      },
+      {
+        "t0": "2024-01-01",
+        "n": 801,
+        "positives": 16,
+        "base_rate": 0.02,
+        "auc": 0.7967,
+        "spearman": 0.1438,
+        "p@20": 0.2,
+        "p@50": 0.14,
+        "lift@50": 7.0088
+      },
+      {
+        "t0": "2024-07-01",
+        "n": 957,
+        "positives": 13,
+        "base_rate": 0.0136,
+        "auc": 0.7625,
+        "spearman": 0.1052,
+        "p@20": 0.3,
+        "p@50": 0.16,
+        "lift@50": 11.7785
+      },
+      {
+        "t0": "2025-01-01",
+        "n": 1072,
+        "positives": 19,
+        "base_rate": 0.0177,
+        "auc": 0.8663,
+        "spearman": 0.1674,
+        "p@20": 0.25,
+        "p@50": 0.2,
+        "lift@50": 11.2842
+      },
+      {
+        "t0": "2025-07-01",
+        "n": 1180,
+        "positives": 13,
+        "base_rate": 0.011,
+        "auc": 0.8619,
+        "spearman": 0.1309,
+        "p@20": 0.15,
+        "p@50": 0.1,
+        "lift@50": 9.0769
+      }
+    ],
+    "s_logit_github": [
+      {
+        "t0": "2023-07-01",
+        "n": 645,
+        "positives": 19,
+        "base_rate": 0.0295,
+        "auc": 0.6291,
+        "spearman": 0.1024,
+        "p@20": 0.1,
+        "p@50": 0.08,
+        "lift@50": 2.7158
+      },
+      {
+        "t0": "2024-01-01",
+        "n": 801,
+        "positives": 16,
+        "base_rate": 0.02,
+        "auc": 0.611,
+        "spearman": 0.0738,
+        "p@20": 0.05,
+        "p@50": 0.06,
+        "lift@50": 3.0037
+      },
+      {
+        "t0": "2024-07-01",
+        "n": 957,
+        "positives": 13,
+        "base_rate": 0.0136,
+        "auc": 0.6093,
+        "spearman": 0.0599,
+        "p@20": 0.0,
+        "p@50": 0.04,
+        "lift@50": 2.9446
+      },
+      {
+        "t0": "2025-01-01",
+        "n": 1072,
+        "positives": 19,
+        "base_rate": 0.0177,
+        "auc": 0.6139,
+        "spearman": 0.0715,
+        "p@20": 0.05,
+        "p@50": 0.06,
+        "lift@50": 3.3853
+      },
+      {
+        "t0": "2025-07-01",
+        "n": 1180,
+        "positives": 13,
+        "base_rate": 0.011,
+        "auc": 0.632,
+        "spearman": 0.0655,
+        "p@20": 0.1,
+        "p@50": 0.04,
+        "lift@50": 3.6308
+      }
+    ],
+    "s_heuristic": [
+      {
+        "t0": "2023-07-01",
+        "n": 645,
+        "positives": 19,
+        "base_rate": 0.0295,
+        "auc": 0.7812,
+        "spearman": 0.1647,
+        "p@20": 0.25,
+        "p@50": 0.16,
+        "lift@50": 5.4316
+      },
+      {
+        "t0": "2024-01-01",
+        "n": 801,
+        "positives": 16,
+        "base_rate": 0.02,
+        "auc": 0.6988,
+        "spearman": 0.0963,
+        "p@20": 0.2,
+        "p@50": 0.12,
+        "lift@50": 6.0075
+      },
+      {
+        "t0": "2024-07-01",
+        "n": 957,
+        "positives": 13,
+        "base_rate": 0.0136,
+        "auc": 0.7596,
+        "spearman": 0.1041,
+        "p@20": 0.0,
+        "p@50": 0.06,
+        "lift@50": 4.4169
+      },
+      {
+        "t0": "2025-01-01",
+        "n": 1072,
+        "positives": 19,
+        "base_rate": 0.0177,
+        "auc": 0.819,
+        "spearman": 0.1458,
+        "p@20": 0.15,
+        "p@50": 0.12,
+        "lift@50": 6.7705
+      },
+      {
+        "t0": "2025-07-01",
+        "n": 1180,
+        "positives": 13,
+        "base_rate": 0.011,
+        "auc": 0.8162,
+        "spearman": 0.1143,
+        "p@20": 0.1,
+        "p@50": 0.06,
+        "lift@50": 5.4462
+      }
+    ],
+    "b_random": [
+      {
+        "t0": "2023-07-01",
+        "n": 645,
+        "positives": 19,
+        "base_rate": 0.0295,
+        "auc": 0.5652,
+        "spearman": 0.0382,
+        "p@20": 0.0,
+        "p@50": 0.02,
+        "lift@50": 0.6789
+      },
+      {
+        "t0": "2024-01-01",
+        "n": 801,
+        "positives": 16,
+        "base_rate": 0.02,
+        "auc": 0.3779,
+        "spearman": -0.0592,
+        "p@20": 0.0,
+        "p@50": 0.02,
+        "lift@50": 1.0012
+      },
+      {
+        "t0": "2024-07-01",
+        "n": 957,
+        "positives": 13,
+        "base_rate": 0.0136,
+        "auc": 0.4098,
+        "spearman": -0.0362,
+        "p@20": 0.0,
+        "p@50": 0.0,
+        "lift@50": 0.0
+      },
+      {
+        "t0": "2025-01-01",
+        "n": 1072,
+        "positives": 19,
+        "base_rate": 0.0177,
+        "auc": 0.4187,
+        "spearman": -0.0372,
+        "p@20": 0.05,
+        "p@50": 0.02,
+        "lift@50": 1.1284
+      },
+      {
+        "t0": "2025-07-01",
+        "n": 1180,
+        "positives": 13,
+        "base_rate": 0.011,
+        "auc": 0.5684,
+        "spearman": 0.0247,
+        "p@20": 0.0,
+        "p@50": 0.0,
+        "lift@50": 0.0
+      }
+    ],
+    "b_tvl": [
+      {
+        "t0": "2023-07-01",
+        "n": 645,
+        "positives": 19,
+        "base_rate": 0.0295,
+        "auc": 0.7089,
+        "spearman": 0.1226,
+        "p@20": 0.1,
+        "p@50": 0.06,
+        "lift@50": 2.0368
+      },
+      {
+        "t0": "2024-01-01",
+        "n": 801,
+        "positives": 16,
+        "base_rate": 0.02,
+        "auc": 0.6904,
+        "spearman": 0.0925,
+        "p@20": 0.05,
+        "p@50": 0.1,
+        "lift@50": 5.0063
+      },
+      {
+        "t0": "2024-07-01",
+        "n": 957,
+        "positives": 13,
+        "base_rate": 0.0136,
+        "auc": 0.6906,
+        "spearman": 0.0766,
+        "p@20": 0.1,
+        "p@50": 0.06,
+        "lift@50": 4.4169
+      },
+      {
+        "t0": "2025-01-01",
+        "n": 1072,
+        "positives": 19,
+        "base_rate": 0.0177,
+        "auc": 0.7951,
+        "spearman": 0.1352,
+        "p@20": 0.15,
+        "p@50": 0.1,
+        "lift@50": 5.6421
+      },
+      {
+        "t0": "2025-07-01",
+        "n": 1180,
+        "positives": 13,
+        "base_rate": 0.011,
+        "auc": 0.8035,
+        "spearman": 0.1101,
+        "p@20": 0.05,
+        "p@50": 0.06,
+        "lift@50": 5.4462
+      }
+    ],
+    "b_commits": [
+      {
+        "t0": "2023-07-01",
+        "n": 645,
+        "positives": 19,
+        "base_rate": 0.0295,
+        "auc": 0.5332,
+        "spearman": 0.0263,
+        "p@20": 0.1,
+        "p@50": 0.08,
+        "lift@50": 2.7158
+      },
+      {
+        "t0": "2024-01-01",
+        "n": 801,
+        "positives": 16,
+        "base_rate": 0.02,
+        "auc": 0.4985,
+        "spearman": -0.001,
+        "p@20": 0.1,
+        "p@50": 0.06,
+        "lift@50": 3.0037
+      },
+      {
+        "t0": "2024-07-01",
+        "n": 957,
+        "positives": 13,
+        "base_rate": 0.0136,
+        "auc": 0.4728,
+        "spearman": -0.015,
+        "p@20": 0.0,
+        "p@50": 0.02,
+        "lift@50": 1.4723
+      },
+      {
+        "t0": "2025-01-01",
+        "n": 1072,
+        "positives": 19,
+        "base_rate": 0.0177,
+        "auc": 0.5011,
+        "spearman": 0.0007,
+        "p@20": 0.05,
+        "p@50": 0.04,
+        "lift@50": 2.2568
+      },
+      {
+        "t0": "2025-07-01",
+        "n": 1180,
+        "positives": 13,
+        "base_rate": 0.011,
+        "auc": 0.4756,
+        "spearman": -0.0121,
+        "p@20": 0.0,
+        "p@50": 0.02,
+        "lift@50": 1.8154
+      }
+    ],
+    "b_newest": [
+      {
+        "t0": "2023-07-01",
+        "n": 645,
+        "positives": 19,
+        "base_rate": 0.0295,
+        "auc": 0.7145,
+        "spearman": 0.1286,
+        "p@20": 0.2,
+        "p@50": 0.12,
+        "lift@50": 4.0737
+      },
+      {
+        "t0": "2024-01-01",
+        "n": 801,
+        "positives": 16,
+        "base_rate": 0.02,
+        "auc": 0.6265,
+        "spearman": 0.0621,
+        "p@20": 0.05,
+        "p@50": 0.04,
+        "lift@50": 2.0025
+      },
+      {
+        "t0": "2024-07-01",
+        "n": 957,
+        "positives": 13,
+        "base_rate": 0.0136,
+        "auc": 0.7152,
+        "spearman": 0.0869,
+        "p@20": 0.05,
+        "p@50": 0.02,
+        "lift@50": 1.4723
+      },
+      {
+        "t0": "2025-01-01",
+        "n": 1072,
+        "positives": 19,
+        "base_rate": 0.0177,
+        "auc": 0.748,
+        "spearman": 0.1139,
+        "p@20": 0.05,
+        "p@50": 0.02,
+        "lift@50": 1.1284
+      },
+      {
+        "t0": "2025-07-01",
+        "n": 1180,
+        "positives": 13,
+        "base_rate": 0.011,
+        "auc": 0.7736,
+        "spearman": 0.0993,
+        "p@20": 0.05,
+        "p@50": 0.04,
+        "lift@50": 3.6308
+      }
+    ],
+    "b_prior_funding": [
+      {
+        "t0": "2023-07-01",
+        "n": 645,
+        "positives": 19,
+        "base_rate": 0.0295,
+        "auc": 0.746,
+        "spearman": 0.2183,
+        "p@20": 0.1,
+        "p@50": 0.12,
+        "lift@50": 4.0737
+      },
+      {
+        "t0": "2024-01-01",
+        "n": 801,
+        "positives": 16,
+        "base_rate": 0.02,
+        "auc": 0.756,
+        "spearman": 0.1951,
+        "p@20": 0.2,
+        "p@50": 0.12,
+        "lift@50": 6.0075
+      },
+      {
+        "t0": "2024-07-01",
+        "n": 957,
+        "positives": 13,
+        "base_rate": 0.0136,
+        "auc": 0.842,
+        "spearman": 0.2144,
+        "p@20": 0.15,
+        "p@50": 0.16,
+        "lift@50": 11.7785
+      },
+      {
+        "t0": "2025-01-01",
+        "n": 1072,
+        "positives": 19,
+        "base_rate": 0.0177,
+        "auc": 0.7992,
+        "spearman": 0.2125,
+        "p@20": 0.2,
+        "p@50": 0.18,
+        "lift@50": 10.1558
+      },
+      {
+        "t0": "2025-07-01",
+        "n": 1180,
+        "positives": 13,
+        "base_rate": 0.011,
+        "auc": 0.7241,
+        "spearman": 0.1275,
+        "p@20": 0.2,
+        "p@50": 0.12,
+        "lift@50": 10.8923
+      }
+    ],
+    "leaky_stars_now": [
+      {
+        "t0": "2023-07-01",
+        "n": 645,
+        "positives": 19,
+        "base_rate": 0.0295,
+        "auc": 0.5439,
+        "spearman": 0.0363,
+        "p@20": 0.1,
+        "p@50": 0.08,
+        "lift@50": 2.7158
+      },
+      {
+        "t0": "2024-01-01",
+        "n": 801,
+        "positives": 16,
+        "base_rate": 0.02,
+        "auc": 0.5086,
+        "spearman": 0.0061,
+        "p@20": 0.05,
+        "p@50": 0.04,
+        "lift@50": 2.0025
+      },
+      {
+        "t0": "2024-07-01",
+        "n": 957,
+        "positives": 13,
+        "base_rate": 0.0136,
+        "auc": 0.4877,
+        "spearman": -0.0072,
+        "p@20": 0.0,
+        "p@50": 0.02,
+        "lift@50": 1.4723
+      },
+      {
+        "t0": "2025-01-01",
+        "n": 1072,
+        "positives": 19,
+        "base_rate": 0.0177,
+        "auc": 0.5228,
+        "spearman": 0.0154,
+        "p@20": 0.05,
+        "p@50": 0.04,
+        "lift@50": 2.2568
+      },
+      {
+        "t0": "2025-07-01",
+        "n": 1180,
+        "positives": 13,
+        "base_rate": 0.011,
+        "auc": 0.5353,
+        "spearman": 0.0189,
+        "p@20": 0.05,
+        "p@50": 0.02,
+        "lift@50": 1.8154
+      }
+    ]
+  },
+  "coefficients_all_t0": {
+    "logit_full": {
+      "log_commits_90d": 0.675,
+      "commit_growth": -0.333,
+      "log_commits_before": -0.95,
+      "log_n_repos": 0.378,
+      "log_gh_age": -0.233,
+      "log_tvl": 0.675,
+      "tvl_growth_90d": -0.007,
+      "log_listing_age": -0.511,
+      "has_prior_raise": 0.602,
+      "log_days_since_raise": -0.124
+    },
+    "logit_github": {
+      "log_commits_90d": 0.881,
+      "commit_growth": -0.374,
+      "log_commits_before": -1.052,
+      "log_n_repos": 0.44,
+      "log_gh_age": -0.378
+    }
+  },
+  "top20_last_test_t0": [
+    {
+      "name": "BurrBear",
+      "category": "Dexs",
+      "score": 0.3696,
+      "raised_within_12m": false,
+      "leads": NaN
+    },
+    {
+      "name": "infiniFi",
+      "category": "Yield",
+      "score": 0.2617,
+      "raised_within_12m": false,
+      "leads": NaN
+    },
+    {
+      "name": "Turtle Club",
+      "category": "Onchain Capital Allocator",
+      "score": 0.2556,
+      "raised_within_12m": true,
+      "leads": NaN
+    },
+    {
+      "name": "Yala",
+      "category": "CDP",
+      "score": 0.2462,
+      "raised_within_12m": false,
+      "leads": NaN
+    },
+    {
+      "name": "Ostium",
+      "category": "Derivatives",
+      "score": 0.2216,
+      "raised_within_12m": true,
+      "leads": "General Catalyst, Jump Trading"
+    },
+    {
+      "name": "Veda",
+      "category": "Onchain Capital Allocator",
+      "score": 0.1968,
+      "raised_within_12m": false,
+      "leads": NaN
+    },
+    {
+      "name": "Aztec Connect",
+      "category": "Privacy",
+      "score": 0.1848,
+      "raised_within_12m": false,
+      "leads": NaN
+    },
+    {
+      "name": "Infrared Finance",
+      "category": "Liquid Staking",
+      "score": 0.1691,
+      "raised_within_12m": false,
+      "leads": NaN
+    },
+    {
+      "name": "Ambient",
+      "category": "Dexs",
+      "score": 0.1681,
+      "raised_within_12m": false,
+      "leads": NaN
+    },
+    {
+      "name": "Intuition",
+      "category": "Developer Tools",
+      "score": 0.1613,
+      "raised_within_12m": true,
+      "leads": NaN
+    },
+    {
+      "name": "SatLayer",
+      "category": "Anchor BTC",
+      "score": 0.152,
+      "raised_within_12m": false,
+      "leads": NaN
+    },
+    {
+      "name": "Mirage Protocol",
+      "category": "Derivatives",
+      "score": 0.1295,
+      "raised_within_12m": false,
+      "leads": NaN
+    },
+    {
+      "name": "Symbiotic",
+      "category": "Collateral Markets",
+      "score": 0.1202,
+      "raised_within_12m": false,
+      "leads": NaN
+    },
+    {
+      "name": "Sonex",
+      "category": "Dexs",
+      "score": 0.1184,
+      "raised_within_12m": false,
+      "leads": NaN
+    },
+    {
+      "name": "PumpBTC",
+      "category": "Bridge",
+      "score": 0.1125,
+      "raised_within_12m": false,
+      "leads": NaN
+    },
+    {
+      "name": "Veranta",
+      "category": "Derivatives",
+      "score": 0.1109,
+      "raised_within_12m": false,
+      "leads": NaN
+    },
+    {
+      "name": "EigenCloud",
+      "category": "Restaking",
+      "score": 0.109,
+      "raised_within_12m": false,
+      "leads": NaN
+    },
+    {
+      "name": "Neutral Trade",
+      "category": "Onchain Capital Allocator",
+      "score": 0.1044,
+      "raised_within_12m": false,
+      "leads": NaN
+    },
+    {
+      "name": "Renzo",
+      "category": "Liquid Restaking",
+      "score": 0.1034,
+      "raised_within_12m": false,
+      "leads": NaN
+    },
+    {
+      "name": "YieldNest",
+      "category": "Onchain Capital Allocator",
+      "score": 0.1003,
+      "raised_within_12m": false,
+      "leads": NaN
+    }
+  ]
+}

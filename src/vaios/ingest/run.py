@@ -30,6 +30,7 @@ def niche_owners(min_stars: int = 20) -> list[str]:
 def run(only: str | None = None) -> None:
     stages = {
         "x402scan": sources.pull_x402scan,
+        "x402_feed": sources.pull_x402_feed,
         "coingecko": sources.pull_coingecko,
         "hn": sources.pull_hn,
         "arxiv": sources.pull_arxiv,

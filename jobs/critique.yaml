@@ -1,0 +1,9 @@
+job: critique
+agent: Critic (different model family)
+skill: memo-critic
+purpose: RLEN-style cross-critique against the PMF / Narrative / Execution rubric.
+inputs: [results/memos/<entity>.json, same snapshots and facts as the drafter]
+output: vaios.agents.schemas.Critique -> decision card when the models disagree
+sla: {max_minutes: 10, max_llm_calls: 2}
+eval: "coverage 100%; disagreement rate; unsupported-claim flags per memo"
+failure: critic failure leaves the memo flagged 'uncritiqued' (never silently shipped as reviewed)

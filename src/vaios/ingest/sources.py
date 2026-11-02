@@ -98,6 +98,16 @@ def pull_arxiv() -> None:
     record("arxiv", url, path, xml.count("<entry>"))
 
 
+# ---------- x402 Foundation announcements feed (first-party dated events) ----------
+def pull_x402_feed() -> None:
+    url = "https://x402.org/feed/"
+    xml = get_text(url)
+    path = RAW / "x402org" / "feed.xml"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(xml)
+    record("x402_foundation_feed", url, path, xml.count("<item>"))
+
+
 # ---------- YC company directory (yc-oss mirror of the public YC directory) ----------
 def pull_yc() -> None:
     url = "https://yc-oss.github.io/api/companies/all.json"
