@@ -1,0 +1,4 @@
+GeckoTerminal pools for Praxis (PRXS), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-08-14
+eth PRXS / WETH: created 2025-08-14T06:21:23Z
+eth PRXS / WETH 1%: created 2025-10-25T12:28:23Z

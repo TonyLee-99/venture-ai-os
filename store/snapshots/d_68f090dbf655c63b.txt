@@ -1,0 +1,12 @@
+GeckoTerminal pools for x402 Singularity Layer (SGL), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2026-02-03
+solana SGL / SOL: created 2026-02-03T07:42:53Z
+solana SGL / PARANOID: created 2026-10-27T12:04:34Z
+solana SGL / SQUIRE: created 2026-05-22T11:05:26Z
+solana AGENTLAYER / SGL: created 2026-06-08T20:27:04Z
+solana Dulus / SGL: created 2026-08-05T03:39:37Z
+solana SGL / MAXIS: created 2026-08-25T03:14:51Z
+solana SGL / ZENO: created 2026-10-20T02:11:02Z
+solana NULL / SGL: created 2026-06-01T17:02:28Z
+solana AFTERHOURS / SGL: created 2026-09-25T02:40:45Z
+solana SGL / SOL: created 2026-07-07T04:44:32Z

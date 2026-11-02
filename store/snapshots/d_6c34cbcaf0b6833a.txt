@@ -1,0 +1,12 @@
+GeckoTerminal pools for vAPI Network (VAPI), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2026-08-31
+base vAPI / ETH: created 2026-08-31T05:15:29Z
+base vAPI / mmETH: created 2026-09-14T21:48:07Z
+base vAPI / USDC 55.001%: created 2026-08-31T06:03:15Z
+base vAPI / USDC 35.001%: created 2026-08-31T06:17:23Z
+base vAPI / USDC 25%: created 2026-08-31T06:19:19Z
+base vAPI / USDC 89%: created 2026-08-31T06:03:15Z
+base vAPI / WETH 1%: created 2026-10-15T20:43:13Z
+base vAPI / USDC 10.999%: created 2026-08-31T07:35:31Z
+base vAPI / USDC 8%: created 2026-09-01T19:03:37Z
+base vAPI / ETH 10%: created 2026-08-31T16:13:25Z

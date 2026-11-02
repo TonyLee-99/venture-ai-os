@@ -1,0 +1,12 @@
+GeckoTerminal pools for AgentHub (DIRA), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-05-14
+solana DIRA / SOL: created 2025-05-14T13:39:52Z
+solana PAYAI / DIRA: created 2025-10-27T13:34:12Z
+solana PAYAI / DIRA: created 2025-10-27T13:39:59Z
+solana PAYAI / DIRA: created 2025-10-26T14:56:50Z
+solana DIRA / SOL: created 2025-10-26T16:07:09Z
+solana DIRA / SOL: created 2025-05-14T13:47:44Z
+solana DIRA / SOL: created 2025-10-04T15:02:28Z
+solana DIRA / SOL: created 2025-05-14T13:52:04Z
+solana DIRA / SOL: created 2025-10-27T09:44:00Z
+solana DIRA / SOL: created 2025-05-14T13:56:02Z

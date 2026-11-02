@@ -1,0 +1,12 @@
+GeckoTerminal pools for PRXVT by Virtuals (PRXVT), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2026-01-06
+base PRXVT / VIRTUAL: created 2026-01-06T05:20:29Z
+base 🌙8 / PRXVT 1%: created 2026-10-10T12:36:33Z
+base PRXVT / USDC 0.3%: created 2026-01-07T06:00:27Z
+base PRXVT / VIRTUAL 0.263%: created 2026-10-19T22:47:25Z
+base PRXVT / USDC 66%: created 2026-01-07T07:48:49Z
+base PRXVT / ETH 79%: created 2026-01-07T08:20:41Z
+base PRXVT / ETH 35%: created 2026-01-07T07:12:13Z
+base PRXVT / USDC 88%: created 2026-01-07T06:43:03Z
+base PRXVT / USDC 56%: created 2026-06-06T20:34:09Z
+base PRXVT / WETH 0.25%: created 2026-01-13T03:17:33Z

@@ -1,0 +1,12 @@
+GeckoTerminal pools for peaq (PEAQ), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-07-11
+solana PEAQ / SOL: created 2026-09-09T14:17:33Z
+solana PEAQ / USDC: created 2026-09-08T13:28:20Z
+solana PEAQ / USDC: created 2026-09-08T15:01:33Z
+solana PEAQ / PeaqX: created 2026-09-30T02:15:58Z
+solana peek / PEAQ: created 2026-11-01T22:09:56Z
+solana PEAQ / SOL: created 2026-09-25T14:39:25Z
+solana RIZZBOT / PEAQ: created 2026-09-08T17:35:38Z
+solana BUYTHIS / PEAQ: created 2026-09-08T17:22:14Z
+solana PEAQCAT / PEAQ: created 2026-09-23T12:55:38Z
+solana PEAQ / SOL: created 2026-09-08T15:02:06Z

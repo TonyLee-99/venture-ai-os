@@ -1,0 +1,12 @@
+GeckoTerminal pools for Otonix (OTX), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2026-02-23
+base OTX / WETH: created 2026-02-23T17:37:57Z
+base OTX / ETH 13%: created 2026-02-23T18:21:51Z
+base OTX / USDC 44%: created 2026-02-23T17:45:35Z
+base OTX / ETH 2%: created 2026-02-24T04:44:27Z
+base OTX / ETH 35%: created 2026-02-23T18:22:03Z
+base OTX / USDC 8%: created 2026-02-23T21:42:53Z
+base OTX / USDC 51.1%: created 2026-02-23T19:13:45Z
+base OTX / USDC 7.5%: created 2026-03-07T12:10:43Z
+base OTX / ETH 10%: created 2026-02-24T05:04:31Z
+base OTX / ETH 40%: created 2026-02-23T18:55:37Z

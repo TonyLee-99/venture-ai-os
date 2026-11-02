@@ -1,0 +1,12 @@
+GeckoTerminal pools for Foundry (FDRY), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-06-02
+solana FDRY / SOL: created 2025-06-02T10:49:07Z
+solana INFRA / FDRY: created 2025-12-30T15:30:03Z
+solana FDRY / SOL: created 2025-10-04T04:15:14Z
+solana FDRY / USDC: created 2026-01-07T01:53:07Z
+solana FDRY / USDC: created 2025-06-02T12:12:00Z
+solana FDRY / USDC: created 2026-01-06T17:25:01Z
+solana FDRY / SOL: created 2025-06-02T10:45:25Z
+solana FDRY / SOL: created 2025-06-02T11:45:43Z
+solana FDRY / USDT: created 2026-01-08T00:33:45Z
+solana FDRY / SOL: created 2025-06-02T11:48:00Z

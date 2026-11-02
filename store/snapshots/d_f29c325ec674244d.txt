@@ -1,0 +1,12 @@
+GeckoTerminal pools for Avo (AVO), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-05-29
+solana AVO / SOL: created 2025-05-29T00:16:54Z
+solana AVO / SOL: created 2025-05-30T05:54:01Z
+solana AVO / SOL: created 2025-07-27T04:49:47Z
+solana AVO / SOL: created 2025-05-29T00:16:47Z
+solana AVO / SOL: created 2025-05-29T00:28:40Z
+solana AVO / MASK: created 2025-06-24T03:51:01Z
+solana AVO / SOL: created 2025-05-29T02:39:09Z
+solana OVSM / AVO: created 2025-11-13T23:27:45Z
+solana AVO / SOL: created 2025-05-29T09:22:39Z
+solana ACE / AVO: created 2025-11-10T22:05:16Z

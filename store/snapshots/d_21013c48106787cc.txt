@@ -1,0 +1,10 @@
+GeckoTerminal pools for Anyspend (ANY), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-10-10
+base ANY / WETH 0.05%: created 2025-10-10T05:02:19Z
+base ANY / ETH 49%: created 2025-11-02T07:39:29Z
+base ANY / USDC 85%: created 2025-12-15T11:53:57Z
+base B3 / ANY: created 2026-01-07T03:28:43Z
+base ANY / USDC 88%: created 2025-11-16T13:39:09Z
+base ANY / WETH: created 2026-01-01T18:20:26Z
+base ANY / ETH 0.045%: created 2025-11-18T23:01:27Z
+base ANY / USDC 0.05%: created 2025-11-18T22:47:05Z

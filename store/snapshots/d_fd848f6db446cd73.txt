@@ -1,0 +1,5 @@
+GeckoTerminal pools for Homebrew Robotics (BREW), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2026-04-11
+solana BREW / SOL: created 2026-04-11T01:29:10Z
+solana KOKO / BREW: created 2026-10-18T10:12:32Z
+solana BREW / SOL: created 2026-04-11T01:29:10Z

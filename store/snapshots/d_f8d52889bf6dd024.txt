@@ -1,0 +1,12 @@
+GeckoTerminal pools for Otto AI (OTTO), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-10-09
+base OTTO / VIRTUAL: created 2025-10-09T12:26:19Z
+base OTTO / WETH 0.05%: created 2025-12-11T16:53:53Z
+base OTTO / ETH 10%: created 2025-10-16T11:36:09Z
+base OTTO / USDC 0.3%: created 2026-01-07T07:29:21Z
+base OTTO / WETH 1%: created 2025-10-25T14:08:47Z
+base OTTO / ETH 25%: created 2025-10-16T11:28:45Z
+base OTTO / USDC 2%: created 2026-01-29T17:46:49Z
+base OTTO / ETH 35%: created 2025-10-16T11:36:15Z
+base OTTO / ETH 60%: created 2025-10-16T11:27:57Z
+base OTTO / USDC 1%: created 2025-10-27T06:38:55Z

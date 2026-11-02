@@ -1,0 +1,12 @@
+GeckoTerminal pools for Jatevo (JTVO), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-06-01
+solana JTVO / SOL: created 2025-06-01T17:58:10Z
+solana JTVO / SOL: created 2025-06-01T18:16:02Z
+solana PTF / JTVO: created 2025-06-12T06:34:02Z
+solana JTVO / SOL: created 2025-06-01T17:57:36Z
+solana JTVO / OPAN: created 2026-03-12T12:50:30Z
+solana JTVO / USDC: created 2026-05-31T17:36:20Z
+solana JTVO / USDC: created 2026-06-22T21:46:00Z
+solana JTVO / NEST: created 2026-07-01T17:47:42Z
+solana JTVO / USDT: created 2025-06-13T06:30:00Z
+solana JTVO / SOL: created 2025-06-01T18:40:03Z

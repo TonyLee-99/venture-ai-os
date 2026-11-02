@@ -1,0 +1,12 @@
+GeckoTerminal pools for Regent (REGENT), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-11-06
+base mmETH / REGENT: created 2026-09-14T21:41:51Z
+base REGENT / WETH: created 2025-11-06T16:01:07Z
+base REGENT / ETH 7%: created 2026-05-18T17:22:25Z
+base Art and Life / REGENT 1%: created 2025-11-17T09:40:37Z
+base REGENT / ETH 1%: created 2025-11-06T16:13:11Z
+base REGENT / USDC 8%: created 2025-11-07T13:01:01Z
+base REGENT / ETH 20%: created 2025-11-06T16:08:49Z
+base REGENT / ETH 15%: created 2025-11-13T23:00:45Z
+base REGENT / WETH 0.05%: created 2025-11-24T16:09:05Z
+base REGENT / USDC 15%: created 2025-11-06T16:04:31Z

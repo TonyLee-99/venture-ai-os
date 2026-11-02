@@ -1,0 +1,12 @@
+GeckoTerminal pools for Elsa (ELSA), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2026-01-20
+base ELSA / USDC 0.01%: created 2026-01-20T08:59:59Z
+base ELSA / USDC 1%: created 2026-01-20T07:56:43Z
+base ELSA / USDC 4.8%: created 2026-07-11T11:30:55Z
+base ELSA / USDC: created 2026-10-22T02:50:49Z
+base ELSA / USDC 0.9%: created 2026-01-22T05:44:45Z
+base ELSA / USDC 2.9%: created 2026-01-23T06:08:45Z
+base ELSA / ETH 1%: created 2026-01-20T13:00:29Z
+base ELSA / FLOCK: created 2026-02-03T03:30:20Z
+base ELSA / USDC 0.98%: created 2026-01-22T05:51:21Z
+base ELSA / USDC 0.96%: created 2026-01-20T09:37:07Z

@@ -65,6 +65,7 @@ def headline_numbers() -> dict[str, str]:
         "cp_fa": f"{h['false_alarm_rate']:.0%}", "cp_n": f"{h['n_changepoints']}", "cp_events": f"{h['n_events']}",
         "cp_oct_ratio": f"~{round(next(g['ratio'] for g in cp['series'][cp['headline_series']]['segments'] if g['date'] == '2025-10-20')):,}x",
     }
+    n["llm_calls"] = f"{len((RESULTS / 'llm_ledger.jsonl').read_text().splitlines())}"
     stage_checks = _j_list("sourcing/stage_checks.json")
     n["stage_checked"] = f"{len(stage_checks)}"
     n["stage_excluded"] = f"{sum(not c['seed_eligible'] for c in stage_checks)}"

@@ -1,0 +1,10 @@
+GeckoTerminal pools for Brickken (BKN), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2026-06-25
+eth bkn / USDT 1%: created 2026-06-25T16:17:23Z
+eth bkn / USDT 4%: created 2026-11-01T03:51:23Z
+eth bkn / USDT 3.7%: created 2026-09-25T17:42:23Z
+eth bkn / USDT 4%: created 2026-07-26T09:59:35Z
+eth bkn / USDT 1.9%: created 2026-09-19T08:49:23Z
+eth bkn / USDT 50%: created 2026-06-25T17:05:23Z
+eth bkn / USDC 50%: created 2026-06-25T17:05:59Z
+eth bkn / USDT 2.556%: created 2026-10-12T07:19:47Z

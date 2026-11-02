@@ -1,0 +1,12 @@
+GeckoTerminal pools for Magic Hash (MHA), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2026-09-20
+bsc mha / USDT 0.358%: created 2026-09-23T07:03:33Z
+bsc mha / USDT 0.218%: created 2026-09-26T14:11:23Z
+bsc mha / USDT 0.204%: created 2026-10-08T17:38:12Z
+bsc mha / USDT 0.324%: created 2026-10-18T07:30:27Z
+bsc mha / USDT 89.996%: created 2026-10-17T09:22:31Z
+bsc mha / USDT 0.204%: created 2026-09-28T14:08:03Z
+bsc mha / USDT 0.019%: created 2026-10-11T07:06:29Z
+bsc mha / USDT 90%: created 2026-09-20T09:15:50Z
+bsc mha / USDT 89.997%: created 2026-10-10T09:12:31Z
+bsc mha / USDT 89.998%: created 2026-10-03T10:51:58Z

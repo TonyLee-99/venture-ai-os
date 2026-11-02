@@ -1,0 +1,3 @@
+GeckoTerminal pools for Agent Virtual Machine (AVM), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-06-09
+eth AVM / WETH: created 2025-06-09T14:32:59Z

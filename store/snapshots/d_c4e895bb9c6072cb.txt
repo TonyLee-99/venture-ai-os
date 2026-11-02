@@ -1,0 +1,12 @@
+GeckoTerminal pools for StarkBot (STARKBOT), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2026-01-28
+base STARKBOT / WETH: created 2026-01-28T18:30:55Z
+base STARKBOT / ETH 10%: created 2026-01-28T18:42:23Z
+base STARKBOT / USDT 88%: created 2026-01-30T09:59:49Z
+base STARKBOT / USDC 4.998%: created 2026-02-03T07:23:47Z
+base STARKBOT / ETH 35%: created 2026-01-31T19:29:25Z
+base US HTC / STARKBOT 1%: created 2026-02-13T14:25:49Z
+base STARKBOT / ETH 2%: created 2026-02-03T08:36:17Z
+base STARKBOT / USDC 49%: created 2026-01-28T19:15:35Z
+base STARKBOT / ETH 5%: created 2026-01-28T23:42:17Z
+base STARKBOT / ETH 95%: created 2026-02-05T07:20:45Z

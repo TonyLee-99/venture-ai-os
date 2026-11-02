@@ -1,0 +1,12 @@
+GeckoTerminal pools for WURK (WURK), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-09-26
+solana WURK / SOL: created 2025-09-26T20:16:17Z
+solana WURK / USDC: created 2026-07-22T19:42:04Z
+solana WURK / VCF: created 2025-09-27T14:49:23Z
+solana WURK / SHRUB: created 2026-09-10T07:10:46Z
+solana WURK / SOL: created 2025-10-25T16:13:20Z
+solana WURK / SOL: created 2026-07-08T02:12:00Z
+solana WURK / USDC: created 2026-04-04T14:39:33Z
+solana WURK / SOL: created 2025-09-27T01:01:59Z
+solana WURK / SOL: created 2025-11-12T03:16:00Z
+solana WURK / USDC: created 2026-04-04T14:27:32Z

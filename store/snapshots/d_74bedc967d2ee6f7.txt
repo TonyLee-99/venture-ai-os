@@ -1,0 +1,9 @@
+GeckoTerminal pools for TRANSLATE (TRANSLATE), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-05-29
+base TRANSLATE / WETH 1%: created 2025-05-29T16:59:29Z
+base TRANSLATE / USDC 3%: created 2025-10-24T05:57:39Z
+base TRANSLATE / USDC 1%: created 2025-10-24T05:43:05Z
+base TRANSLATE / ETH 1%: created 2025-10-24T06:26:11Z
+base TRANSLATE / USDC 2.89%: created 2025-10-24T10:06:59Z
+base TRANSLATE / USDC 2.8%: created 2025-10-24T10:04:31Z
+base TRANSLATE / USDC 1%: created 2025-10-24T14:58:35Z

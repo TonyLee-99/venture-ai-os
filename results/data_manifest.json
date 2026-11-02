@@ -1,6 +1,6 @@
 {
-  "n_sources": 8,
-  "n_files": 4031,
+  "n_sources": 9,
+  "n_files": 4131,
   "sources": {
     "arxiv": {
       "files": 1,
@@ -36,12 +36,24 @@
         "https://api.llama.fi/protocol/0xscans"
       ]
     },
+    "geckoterminal": {
+      "files": 99,
+      "bytes": 506995,
+      "records": 1626,
+      "first_fetch": "2026-11-02T11:29:15+00:00",
+      "last_fetch": "2026-11-02T15:47:53+00:00",
+      "example_urls": [
+        "https://api.geckoterminal.com/api/v2/networks/*/tokens/*/pools (chainlink)",
+        "https://api.geckoterminal.com/api/v2/networks/*/tokens/*/pools (unibase)",
+        "https://api.geckoterminal.com/api/v2/networks/*/tokens/*/pools (eigenlayer)"
+      ]
+    },
     "github": {
-      "files": 1892,
-      "bytes": 14786047,
-      "records": 14185,
+      "files": 1893,
+      "bytes": 14786375,
+      "records": 14189,
       "first_fetch": "2026-11-02T09:38:34+00:00",
-      "last_fetch": "2026-11-02T10:01:42+00:00",
+      "last_fetch": "2026-11-02T15:49:54+00:00",
       "example_urls": [
         "https://api.github.com/search/repositories?q=x402&sort=stars&order=desc&per_page=100",
         "https://api.github.com/search/repositories?q=x402+payments&sort=stars&order=desc&per_page=100",

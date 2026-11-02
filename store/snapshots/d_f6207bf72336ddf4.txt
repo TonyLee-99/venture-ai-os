@@ -1,0 +1,12 @@
+GeckoTerminal pools for Dexter AI (DEXTER), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-10-16
+solana DEXTER / SOL: created 2025-10-16T23:48:11Z
+solana VERAVONMON / DEXTER: created 2026-09-21T17:51:18Z
+solana DEXTER / SOL: created 2025-10-24T15:28:11Z
+solana DEXTER / SOL: created 2026-05-14T11:00:30Z
+solana DEXTER / SOL: created 2026-05-18T06:47:57Z
+solana DEXTER / SOL: created 2025-10-24T16:24:50Z
+solana DEXTER / SOL: created 2026-05-13T12:47:05Z
+solana LPPP / DEXTER: created 2025-10-27T22:50:45Z
+solana DEXTER / SOL: created 2025-11-16T13:26:41Z
+solana DEXTER / SYRA: created 2025-12-28T13:58:46Z

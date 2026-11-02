@@ -1,0 +1,12 @@
+GeckoTerminal pools for Meridian (MRDN), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-09-16
+base MRDN / USDC 1%: created 2025-09-16T19:33:31Z
+base MRDN / USDC 0.05%: created 2025-09-29T17:13:33Z
+base MRDN / USDC 4%: created 2025-09-17T19:50:49Z
+base MRDN / ETH 2%: created 2025-09-23T14:18:05Z
+base MRDN / ETH 5%: created 2025-09-16T19:50:35Z
+base MRDN / USDC 8%: created 2025-11-18T19:50:35Z
+base HYDX / MRDN 5%: created 2025-11-05T11:48:15Z
+base MRDN / USDC 0.002%: created 2026-10-22T08:40:11Z
+base MRDN / ETH 3%: created 2025-09-16T20:08:41Z
+base MRDN / USDC 80%: created 2025-10-08T03:25:33Z

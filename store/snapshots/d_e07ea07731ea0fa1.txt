@@ -1,0 +1,12 @@
+GeckoTerminal pools for NodeOps (NODE), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-06-30
+eth NODE / USDC 99.04%: created 2026-03-19T22:11:23Z
+eth NODE / ETH 80%: created 2025-07-15T14:07:23Z
+eth NODE / ETH 50%: created 2025-08-27T05:01:11Z
+eth NODE / USDT 70.01%: created 2026-01-09T04:41:59Z
+eth NODE / ETH 80%: created 2025-07-16T23:58:35Z
+eth NODE / ETH 44%: created 2025-08-27T20:37:59Z
+eth NODE / USDT 70.02%: created 2026-08-27T15:23:47Z
+eth NODE / USDT 99.86%: created 2026-01-26T18:11:23Z
+eth NODE / USDT 70%: created 2025-08-17T05:25:47Z
+eth NODE / USDT 19%: created 2025-08-28T11:33:23Z

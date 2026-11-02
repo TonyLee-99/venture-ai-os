@@ -1,0 +1,12 @@
+GeckoTerminal pools for VPay (VPAY), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-07-19
+base VPAY / VIRTUAL: created 2025-07-19T14:01:13Z
+base VPAY / WETH: created 2025-09-15T14:49:15Z
+base VPAY / WETH 1%: created 2025-08-28T17:22:39Z
+base KOKOA / VPAY 2%: created 2025-12-06T07:25:49Z
+base VPAY / ETH 0.263%: created 2025-11-01T04:25:55Z
+base VPAY / USDC 1%: created 2025-10-15T00:15:47Z
+base VPAY / USDC 82%: created 2026-03-19T00:07:37Z
+base VPAY / VIRTUAL 0.05%: created 2025-10-28T04:04:21Z
+base VPAY / USDC 0.25%: created 2025-10-28T04:05:33Z
+base VPAY / BLKH: created 2025-12-03T15:21:13Z

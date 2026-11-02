@@ -1,0 +1,4 @@
+GeckoTerminal pools for Karum (KARUM), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-07-31
+base KARUM / WETH: created 2025-07-31T14:00:15Z
+base GMI / KARUM 0.3%: created 2026-08-03T10:24:29Z

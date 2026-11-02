@@ -1,0 +1,12 @@
+GeckoTerminal pools for Capminal (CAP), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-05-23
+base CAP / VIRTUAL: created 2025-05-23T16:01:03Z
+base CAPU / CAP: created 2026-06-03T14:41:07Z
+base CAP / WETH 0.3%: created 2026-08-05T16:21:19Z
+base CAP / WETH 1%: created 2025-09-13T11:49:25Z
+base CAP / BTCBR: created 2025-05-23T22:06:33Z
+base CAP / BTCBR: created 2025-05-23T21:48:01Z
+base JESUS / CAP: created 2025-05-23T21:33:39Z
+base CAP / USDC: created 2026-06-07T08:33:13Z
+base JESUS / CAP: created 2025-05-23T21:38:17Z
+base CAP / WETH: created 2025-05-23T16:16:51Z

@@ -1,0 +1,6 @@
+GeckoTerminal pools for XONA AGENT (XONA), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2026-01-14
+solana XONA / SOL: created 2026-01-23T10:06:32Z
+solana XONA / SOL: created 2026-06-14T01:28:31Z
+solana XONA / SOL: created 2026-01-14T15:05:59Z
+solana XONA / SOL: created 2026-01-14T14:09:42Z

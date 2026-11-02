@@ -1,0 +1,12 @@
+GeckoTerminal pools for Arbus (ARBUS), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-05-18
+base ARBUS / VIRTUAL: created 2025-05-18T11:12:05Z
+base ARBUS / USDC 80%: created 2026-04-07T21:29:31Z
+base ARBUS / USDC 1%: created 2025-09-01T20:10:07Z
+base ARBUS / WETH 1%: created 2025-05-18T16:07:53Z
+base VADER / ARBUS: created 2025-06-07T09:09:07Z
+base ARBUS / VIRTUAL 0.05%: created 2025-06-02T08:52:41Z
+base ARBUS / BEAVIS 1%: created 2025-09-04T23:12:55Z
+base ARBUS / WETH 0.01%: created 2025-05-18T16:51:11Z
+base BIOS / ARBUS: created 2025-06-01T09:26:23Z
+base ARBUS / CRBXB: created 2025-05-18T13:29:09Z

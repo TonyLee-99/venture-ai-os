@@ -1,0 +1,12 @@
+GeckoTerminal pools for Zauthx402 (ZAUTH), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-12-09
+solana ZAUTH / SOL: created 2025-12-09T17:05:09Z
+solana SQUIGGLE / ZAUTH: created 2026-10-28T23:30:08Z
+solana QED / ZAUTH: created 2026-09-17T06:53:01Z
+solana ZAUTH / USDC: created 2026-10-24T03:02:06Z
+solana ZAUTH / SOL: created 2026-10-04T17:51:21Z
+solana ZAUTH / SOL: created 2026-01-18T14:53:17Z
+solana ZAUTH / USDC: created 2026-01-09T12:29:01Z
+solana ZAUTH / SOL: created 2025-12-20T01:46:00Z
+solana ZAUTH / SOL: created 2026-02-10T17:04:00Z
+solana ZAUTH / SOL: created 2025-12-23T19:12:23Z

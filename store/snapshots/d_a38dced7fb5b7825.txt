@@ -1,0 +1,8 @@
+GeckoTerminal pools for Amiko (AMIKO), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-05-19
+solana Amiko / SOL: created 2025-05-19T22:59:05Z
+solana Amiko / SOL: created 2026-06-17T02:52:57Z
+solana Amiko / SOL: created 2025-05-19T23:30:00Z
+solana Amiko / USDC: created 2026-05-29T10:51:14Z
+solana Amiko / SOL: created 2025-05-22T01:26:00Z
+solana Amiko / SOL: created 2025-10-29T06:06:33Z

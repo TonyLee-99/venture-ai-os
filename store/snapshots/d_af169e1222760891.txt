@@ -1,0 +1,12 @@
+GeckoTerminal pools for ROBA (ROBA), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-10-09
+base ROBA / ETH 0.9%: created 2026-10-09T22:17:53Z
+base ROBA / USDC 0.3%: created 2025-10-09T15:41:58Z
+base ROBA / USDC 5%: created 2026-05-18T04:04:27Z
+base ROBA / ETH 88%: created 2025-10-09T17:43:03Z
+base NEMESIS / ROBA 15%: created 2025-12-04T10:47:01Z
+base LOOP / ROBA 15%: created 2025-12-04T10:23:59Z
+base HYDX / ROBA 5%: created 2025-11-05T11:38:11Z
+base ROBA / ETH 61%: created 2025-11-02T01:20:53Z
+base ROBA / USDC 4.988%: created 2026-06-14T20:01:55Z
+base ROBA / USDC 50%: created 2025-10-10T12:57:37Z

@@ -1,0 +1,4 @@
+GeckoTerminal pools for Slinky Layer (SLINKY), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2026-08-18
+base SLINKY / USDC: created 2026-10-26T08:08:21Z
+base SLINKY / USDC: created 2026-08-18T10:34:53Z

@@ -1,0 +1,12 @@
+GeckoTerminal pools for NOD (NOD), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2026-02-11
+base NOD / VIRTUAL: created 2026-02-11T17:44:35Z
+base NOD / USDC 33%: created 2026-02-16T11:16:29Z
+base NOD / ETH 43%: created 2026-02-16T11:16:07Z
+base NOD / USDC 34%: created 2026-02-16T11:08:05Z
+base NOD / ETH 30%: created 2026-02-16T11:44:19Z
+base NOD / USDC 7%: created 2026-02-16T13:14:29Z
+base NOD / VIRTUAL 35%: created 2026-02-16T11:05:51Z
+base NOD / USDC 30%: created 2026-02-16T11:42:19Z
+base NOD / USDC 40%: created 2026-02-16T11:03:15Z
+base NOD / VIRTUAL: created 2026-02-11T17:44:35Z

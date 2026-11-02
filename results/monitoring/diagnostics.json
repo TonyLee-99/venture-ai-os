@@ -1,0 +1,612 @@
+{
+ "status": "exploratory diagnostics written after the pre-specified test (ADR 0005) missed; ADR 0009",
+ "power_preregistered_test": {
+  "events": 12,
+  "hits_needed_for_p_lt_0.05": 8,
+  "power_at_true_hit_rate": {
+   "0.5": 0.194,
+   "0.6": 0.438,
+   "0.7": 0.724,
+   "0.8": 0.927
+  }
+ },
+ "realtime_replay_headline_series": {
+  "final_changepoints": 12,
+  "detected_in_real_time": 12,
+  "median_detection_delay_weeks": 1.0,
+  "detection_delays_weeks": [
+   1,
+   1,
+   1,
+   11,
+   1,
+   2,
+   1,
+   0
+  ],
+  "revisions_of_settled_alarms": 9,
+  "real_time_alarms_later_dropped": 3,
+  "min_weeks_before_first_run": 20
+ },
+ "matched_count_vs_zscore": {
+  "k": 12,
+  "pelt": {
+   "hit_rate": 0.4166666666666667,
+   "false_alarm_rate": 0.6666666666666666
+  },
+  "zscore_top_k": {
+   "hit_rate": 0.4166666666666667,
+   "false_alarm_rate": 0.75
+  }
+ },
+ "event_leads_window_3d_before_14d_after": {
+  "hit_rate": 0.5833,
+  "null_mean": 0.435,
+  "p_value": 0.2364,
+  "false_alarm_rate": 0.6667
+ },
+ "event_list_v2_with_token_launches": {
+  "n_token_launch_events": 51,
+  "n_events": 52,
+  "hit_rate": 0.4423,
+  "null_mean": 0.3179,
+  "p_value": 0.0258,
+  "false_alarm_rate": 0.0,
+  "token_events": [
+   {
+    "date": "2025-12-24",
+    "title": "Ace Data Cloud (ACE) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_a27e4ec6f32ae2ce"
+   },
+   {
+    "date": "2026-01-18",
+    "title": "Acurast (ACU) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/eth/tokens/0x216b3643ff8b7bb30d8a48e9f1bd550126202add/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_2526768e55d3fbb9"
+   },
+   {
+    "date": "2025-06-09",
+    "title": "Agent Virtual Machine (AVM) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/eth/tokens/0xf5f52266a57e6d7312da39bd7ab9527b9e975c40/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_a2c8d222889d7b10"
+   },
+   {
+    "date": "2025-05-14",
+    "title": "AgentHub (DIRA) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/CuXmQvh4DVTdWBdC2d3pNq8UXqbKJ3w9RPBTAALcKcTb/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_8829eb9924d382d9"
+   },
+   {
+    "date": "2025-05-26",
+    "title": "AInalyst (AIN) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0xe47dd5197c5b5194cbe10b0333ed45570fb63eb0/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_cecd6d690076e39d"
+   },
+   {
+    "date": "2025-05-19",
+    "title": "Amiko (AMIKO) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/AY1Ww6MxwC3cCiyrandHqLrp4FXvzgcwQTZpJ2FEpump/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_a38dced7fb5b7825"
+   },
+   {
+    "date": "2025-10-10",
+    "title": "Anyspend (ANY) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0xc17dda248e2d50fc006d8febb5a406dd31972712/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_21013c48106787cc"
+   },
+   {
+    "date": "2025-08-09",
+    "title": "ArAIstotle (FACY) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0xfac77f01957ed1b3dd1cbea992199b8f85b6e886/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_0618db30015f2884"
+   },
+   {
+    "date": "2025-05-18",
+    "title": "Arbus (ARBUS) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0xbdc27118ca76b375c6887b0ff068afb03dfc21a0/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_32e657d57883e431"
+   },
+   {
+    "date": "2025-08-27",
+    "title": "Aubrai by Bio (AUBRAI) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0x9d56c29e820dd13b0580b185d0e0dc301d27581d/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_932c6904d8444e42"
+   },
+   {
+    "date": "2025-05-29",
+    "title": "Avo (AVO) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/GdZ9rwHyKcriLdbSzhtEFLe5MLs7Vk6AY1aE5ei7nsmP/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_f29c325ec674244d"
+   },
+   {
+    "date": "2026-06-25",
+    "title": "Brickken (BKN) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/eth/tokens/0xfc209eeba3d744aa741cc5c2a73ebf9c977b5f82/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_ca8e045cc96f11f4"
+   },
+   {
+    "date": "2025-05-23",
+    "title": "Capminal (CAP) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0xbfa733702305280f066d470afdfa784fa70e2649/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_a5333c2f311e0807"
+   },
+   {
+    "date": "2025-10-16",
+    "title": "Dexter AI (DEXTER) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/EfPoo4wWgxKVToit7yX5VtXXBrhao4G8L7vrbKy6pump/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_f6207bf72336ddf4"
+   },
+   {
+    "date": "2026-01-20",
+    "title": "Elsa (ELSA) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0x29cc30f9d113b356ce408667aa6433589cecbdca/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_8f94c611d7acbffd"
+   },
+   {
+    "date": "2025-06-02",
+    "title": "Foundry (FDRY) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/2ZiSPGncrkwWa6GBZB4EDtsfq7HEWwkwsPFzEXieXjNL/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_46011fd49828f3ab"
+   },
+   {
+    "date": "2026-05-26",
+    "title": "Halo (HALO) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0x0a56431ecc9d0b39be0b1e27e795f4c4f19d0ba3/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_bf4c3debd85e9751"
+   },
+   {
+    "date": "2026-04-11",
+    "title": "Homebrew Robotics (BREW) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/2xpoapWZuP4sRHnAxtXHibe57RhKDLVo7a3a3MEqpump/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_fd848f6db446cd73"
+   },
+   {
+    "date": "2025-06-01",
+    "title": "Jatevo (JTVO) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/9VY2rDbtsBmTsBxoRF8hWSEUKGqnoQoe9V6W3JnjNgfm/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_90b577f2b3e0c894"
+   },
+   {
+    "date": "2025-07-31",
+    "title": "Karum (KARUM) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0xf3280115245a7470e7bbdd35e2b4f4094f511443/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_4f09b49fbacb2e05"
+   },
+   {
+    "date": "2026-09-20",
+    "title": "Magic Hash (MHA) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/bsc/tokens/0x37c563cdf4606d4302abb395cdb94e79d31233ed/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_8f87001faa2dbc67"
+   },
+   {
+    "date": "2025-09-16",
+    "title": "Meridian (MRDN) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0xe57e601c06689d3e2bf7db7bebb14b4ff28400c6/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_7eb08325eae6c7ce"
+   },
+   {
+    "date": "2025-10-30",
+    "title": "MIO (MIO) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0xe19e7429ab6c1f9dd391faa88fbb940c7d22f18f/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_54193fda28d2ca83"
+   },
+   {
+    "date": "2026-03-24",
+    "title": "MiroShark (MIROSHARK) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0xd7bc6a05a56655fb2052f742b012d1dfd66e1ba3/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_0dd83275723eded3"
+   },
+   {
+    "date": "2026-02-11",
+    "title": "NOD (NOD) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0xdfb51ec9941cc684b72dc2b0f532d74a244e4ccf/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_ca71c1740d18c192"
+   },
+   {
+    "date": "2025-06-30",
+    "title": "NodeOps (NODE) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/eth/tokens/0x2f714d7b9a035d4ce24af8d9b6091c07e37f43fb/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_e07ea07731ea0fa1"
+   },
+   {
+    "date": "2025-10-26",
+    "title": "OOPS (OOPS) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/2VRC6F23CjLv3nBHnNw41ua21jACWKcFmbWH4KohNKWU/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_a7e7f96a1b6d7a1b"
+   },
+   {
+    "date": "2026-01-20",
+    "title": "Opus Genesis (OPUS) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/Dxg9cLvssqb1WEMpyynjf17kGRc4UTNyUqjzNj99opus/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_5a9cebf449fbbc58"
+   },
+   {
+    "date": "2026-02-23",
+    "title": "Otonix (OTX) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0xf7e2a6226ffe0693dd85406ac3a8917cbea5dc40/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_b7228afd5442e077"
+   },
+   {
+    "date": "2025-10-09",
+    "title": "Otto AI (OTTO) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0x380337d0180db7d0df76ac4faae2fcea908ee1fc/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_f8d52889bf6dd024"
+   },
+   {
+    "date": "2025-11-18",
+    "title": "PayAI Network (PAYAI) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/PAYmo6moDF3Ro3X6bU2jwe2UdBnBhv8YjLgL1j4DxGu/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_3d3cbdd33b8c9402"
+   },
+   {
+    "date": "2025-07-11",
+    "title": "peaq (PEAQ) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/PEAQjk7SRS6rXHVFFmpRr7zrC4g5ZuEebpwTxvaLr3b/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_a9fd7ffe69dc61e1"
+   },
+   {
+    "date": "2025-10-22",
+    "title": "Ping (PING) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0xd85c31854c2b0fb40aaa9e2fc4da23c21f829d46/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_bd771fcee815b051"
+   },
+   {
+    "date": "2025-08-14",
+    "title": "Praxis (PRXS) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/eth/tokens/0x9f49034409ae6813d2c70ae5117fd23cdff2d190/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_eee500c2857f837f"
+   },
+   {
+    "date": "2026-01-06",
+    "title": "PRXVT by Virtuals (PRXVT) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0x4b5d32a07b8d3ec5d6928caa30196f8dd6a7c5a9/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_b40658c34353518c"
+   },
+   {
+    "date": "2025-11-06",
+    "title": "Regent (REGENT) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0x6f89bca4ea5931edfcb09786267b251dee752b07/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_959ef62d62bf49fe"
+   },
+   {
+    "date": "2025-10-09",
+    "title": "ROBA (ROBA) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0xe88419a3fc78364cfe3de88080ee4853fab754c6/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_af169e1222760891"
+   },
+   {
+    "date": "2026-08-18",
+    "title": "Slinky Layer (SLINKY) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0xbb3d6c47379abb4713acffffa27483b726ee67db/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_ae3ecec0b116c0d4"
+   },
+   {
+    "date": "2026-01-28",
+    "title": "StarkBot (STARKBOT) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0x587cd533f418825521f3a1daa7ccd1e7339a1b07/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_c4e895bb9c6072cb"
+   },
+   {
+    "date": "2026-01-22",
+    "title": "SVM Claw (SVM) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/AoQGnPGXWHo9FfSVhPTmhJGvGXisEDwfaRPnDHHRpump/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_fa4e41f31d339133"
+   },
+   {
+    "date": "2025-11-07",
+    "title": "Syra Agent (SYRA) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/8a3sEw2kizHxVnT9oLEVLADx8fTMPkjbEGSraqNWpump/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_37efc7132569b398"
+   },
+   {
+    "date": "2025-05-29",
+    "title": "TRANSLATE (TRANSLATE) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0x5cd9166494673c15cbdfe8750def8bbab80a5b07/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_74bedc967d2ee6f7"
+   },
+   {
+    "date": "2025-09-10",
+    "title": "Unibase (UB) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/bsc/tokens/0x40b8129b786d766267a7a118cf8c07e31cdb6fde/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_13b4f846be93a789"
+   },
+   {
+    "date": "2026-08-31",
+    "title": "vAPI Network (VAPI) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0x1ea8deb921aa6015f4938010c848140b98108dd2/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_6c34cbcaf0b6833a"
+   },
+   {
+    "date": "2025-07-19",
+    "title": "VPay (VPAY) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0x98ac5b33a4ef1151f138941c979211599c2ff953/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_2ffcdeebdd660db5"
+   },
+   {
+    "date": "2025-06-25",
+    "title": "WachAI (WACH) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0xcc9ad02796dec5f4f0710df80c1f011af85eb9e1/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_176ac9d93dab0d82"
+   },
+   {
+    "date": "2025-09-26",
+    "title": "WURK (WURK) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/ALR5X2H6THn2VDPoMtkVwxVktcN1kQGvxCwLfejzpump/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_f46b2d66e4e33c94"
+   },
+   {
+    "date": "2026-02-03",
+    "title": "x402 Singularity Layer (SGL) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/5c4HyD2rSShqnTsf5z3SaoD2H3GE452u2CUuYjviBAGS/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_68f090dbf655c63b"
+   },
+   {
+    "date": "2025-10-23",
+    "title": "x420 (X420) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/base/tokens/0x68e284f21d04d4d62398c290ec3ef41c97f80b07/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_6fc329d0b30a259d"
+   },
+   {
+    "date": "2026-01-14",
+    "title": "XONA AGENT (XONA) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/Ckit5s1Cpc3RdMh1HrhfW2nAy4PnkkgjXgXMeykbpump/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_4aa0e991b047132c"
+   },
+   {
+    "date": "2025-12-09",
+    "title": "Zauthx402 (ZAUTH) first DEX pool",
+    "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/DNhQZ1CE9qZ2FNrVhsCXwQJ2vZG8ufZkcYakTS5Jpump/pools?page=1",
+    "source": "token_launch",
+    "doc_id": "d_26f1e09e63dd620b"
+   }
+  ]
+ },
+ "september_2026_drop_artifact_check": {
+  "daily_txs_by_chain_2026-08-31_to_09-27": {
+   "2026-08-31": {
+    "all": 1335838,
+    "base": 86850,
+    "solana": 1248988
+   },
+   "2026-09-01": {
+    "all": 1903355,
+    "base": 85703,
+    "solana": 1817652
+   },
+   "2026-09-02": {
+    "all": 1853479,
+    "base": 186740,
+    "solana": 1666739
+   },
+   "2026-09-03": {
+    "all": 1842941,
+    "base": 92932,
+    "solana": 1750009
+   },
+   "2026-09-04": {
+    "all": 1333276,
+    "base": 55932,
+    "solana": 1277344
+   },
+   "2026-09-05": {
+    "all": 1062509,
+    "base": 59851,
+    "solana": 1002658
+   },
+   "2026-09-06": {
+    "all": 1084855,
+    "base": 58833,
+    "solana": 1026022
+   },
+   "2026-09-07": {
+    "all": 1802392,
+    "base": 56634,
+    "solana": 1745758
+   },
+   "2026-09-08": {
+    "all": 249707,
+    "base": 54449,
+    "solana": 195258
+   },
+   "2026-09-09": {
+    "all": 73789,
+    "base": 56880,
+    "solana": 16909
+   },
+   "2026-09-10": {
+    "all": 68248,
+    "base": 52259,
+    "solana": 15989
+   },
+   "2026-09-11": {
+    "all": 92230,
+    "base": 54240,
+    "solana": 37990
+   },
+   "2026-09-12": {
+    "all": 60405,
+    "base": 41919,
+    "solana": 18486
+   },
+   "2026-09-13": {
+    "all": 90921,
+    "base": 67035,
+    "solana": 23886
+   },
+   "2026-09-14": {
+    "all": 69496,
+    "base": 52941,
+    "solana": 16555
+   },
+   "2026-09-15": {
+    "all": 57761,
+    "base": 44471,
+    "solana": 13290
+   },
+   "2026-09-16": {
+    "all": 64053,
+    "base": 42609,
+    "solana": 21444
+   },
+   "2026-09-17": {
+    "all": 86698,
+    "base": 61184,
+    "solana": 25514
+   },
+   "2026-09-18": {
+    "all": 76409,
+    "base": 61100,
+    "solana": 15309
+   },
+   "2026-09-19": {
+    "all": 88364,
+    "base": 72110,
+    "solana": 16254
+   },
+   "2026-09-20": {
+    "all": 95820,
+    "base": 79040,
+    "solana": 16780
+   },
+   "2026-09-21": {
+    "all": 62868,
+    "base": 46785,
+    "solana": 16083
+   },
+   "2026-09-22": {
+    "all": 97057,
+    "base": 85158,
+    "solana": 11899
+   },
+   "2026-09-23": {
+    "all": 264564,
+    "base": 250176,
+    "solana": 14388
+   },
+   "2026-09-24": {
+    "all": 76543,
+    "base": 63860,
+    "solana": 12683
+   },
+   "2026-09-25": {
+    "all": 67254,
+    "base": 53697,
+    "solana": 13557
+   },
+   "2026-09-26": {
+    "all": 80787,
+    "base": 71607,
+    "solana": 9180
+   },
+   "2026-09-27": {
+    "all": 110382,
+    "base": 101671,
+    "solana": 8711
+   }
+  },
+  "top_facilitators_4w_before_vs_after_2026-09-14": {
+   "payAI": {
+    "4w_before": 16386365,
+    "4w_after": 210946
+   },
+   "figment-facilitator": {
+    "4w_before": 6050371,
+    "4w_after": 102991
+   },
+   "coinbase": {
+    "4w_before": 5371968,
+    "4w_after": 1972460
+   },
+   "fluxa": {
+    "4w_before": 384756,
+    "4w_after": 136936
+   },
+   "dexter": {
+    "4w_before": 49100,
+    "4w_after": 28037
+   },
+   "mrdn": {
+    "4w_before": 10452,
+    "4w_after": 3188
+   },
+   "polymer": {
+    "4w_before": 5304,
+    "4w_after": 4181
+   },
+   "primer": {
+    "4w_before": 5054,
+    "4w_after": 5451
+   }
+  },
+  "zero_txs_days_since_2025-06": 0,
+  "x402scan_commits_2026-09-01_to_09-21": [
+   {
+    "date": "2026-09-16T17:52:16Z",
+    "message": "rm cal link"
+   },
+   {
+    "date": "2026-09-16T16:44:23Z",
+    "message": "better warnings"
+   },
+   {
+    "date": "2026-09-01T19:55:12Z",
+    "message": "Merge pull request #1130 from Merit-Systems/json/remove-example-servers-and-evals"
+   },
+   {
+    "date": "2026-09-01T19:11:18Z",
+    "message": "Remove unused example servers and evals"
+   }
+  ]
+ }
+}

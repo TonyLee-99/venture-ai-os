@@ -1,0 +1,12 @@
+GeckoTerminal pools for Acurast (ACU), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2026-01-18
+eth ACU / USDT 0.3%: created 2026-01-30T15:21:35Z
+eth ACU / USDT 13.999%: created 2026-01-24T01:10:23Z
+eth ACU / USDT 7.999%: created 2026-01-22T00:15:23Z
+eth ACU / USDT 2%: created 2026-02-11T00:42:35Z
+eth ACU / USDT 19.999%: created 2026-01-23T14:48:11Z
+eth ACU / USDT 8.999%: created 2026-01-21T14:10:23Z
+eth ACU / ETH 88%: created 2026-01-20T12:43:47Z
+eth ACU / USDT 4%: created 2026-01-27T13:56:59Z
+eth ACU / USDC 8.898%: created 2026-01-21T16:55:23Z
+eth ACU / USDC 79%: created 2026-01-22T03:50:35Z

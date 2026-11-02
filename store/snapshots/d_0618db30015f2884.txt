@@ -1,0 +1,12 @@
+GeckoTerminal pools for ArAIstotle (FACY), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-08-09
+base FACY / VIRTUAL: created 2025-08-09T00:10:05Z
+base FACY / USDC: created 2026-01-09T08:45:37Z
+base FACY / WETH 0.05%: created 2025-10-06T18:35:44Z
+base FACY / WETH 0.25%: created 2025-09-02T03:49:25Z
+base FACY / WETH: created 2025-09-03T17:05:27Z
+base FACY / WETH 1%: created 2025-09-02T05:50:27Z
+base FACY / WETH 1%: created 2025-11-05T03:33:39Z
+base FACY / USDC 0.297%: created 2026-01-08T12:12:49Z
+base FACY / USDC: created 2026-05-13T15:12:51Z
+base FACY / cbBTC 1%: created 2025-09-25T19:34:42Z

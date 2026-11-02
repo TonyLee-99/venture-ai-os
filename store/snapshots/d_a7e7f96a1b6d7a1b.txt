@@ -1,0 +1,12 @@
+GeckoTerminal pools for OOPS (OOPS), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-10-26
+solana OOPS / USDC: created 2025-10-26T17:57:49Z
+solana OOPS / SOL: created 2025-10-27T12:12:43Z
+solana OOPS / LINDY: created 2025-10-28T11:29:24Z
+solana OOPS / SOL: created 2025-10-26T17:57:53Z
+solana OOPS / MET: created 2025-11-03T09:07:23Z
+solana OOPS / MET: created 2025-11-03T09:04:08Z
+solana OOPS / Circuit: created 2025-10-26T19:02:14Z
+solana OOPS / USDC: created 2025-10-26T18:05:25Z
+solana OOPS / SOL: created 2025-10-26T18:17:06Z
+solana OOPS / SOL: created 2025-10-26T17:19:00Z

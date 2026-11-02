@@ -1,0 +1,12 @@
+GeckoTerminal pools for x420 (X420), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-10-23
+base x420 / USDC 1%: created 2025-10-24T06:00:25Z
+base x420 / WETH 1%: created 2025-10-24T02:13:39Z
+base x420 / WETH: created 2025-10-23T18:12:59Z
+base x420 / USDC 57%: created 2025-10-24T02:51:33Z
+base x420 / ETH 9%: created 2025-10-24T02:39:33Z
+base x420 / ETH 8.8%: created 2025-10-24T05:43:39Z
+base x420 / ETH 35%: created 2025-10-24T04:50:59Z
+base x420 / USDC 5%: created 2025-10-24T16:22:53Z
+base x420 / USDC 6%: created 2025-10-24T05:13:03Z
+base x420 / USDC 1%: created 2025-10-24T14:23:51Z

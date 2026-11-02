@@ -1,0 +1,12 @@
+GeckoTerminal pools for Unibase (UB), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-09-10
+bsc UB / USDC 0.01%: created 2025-09-10T10:19:46Z
+bsc UB / LUCKY 1%: created 2026-07-27T00:11:12Z
+bsc UB / EV 1%: created 2026-08-10T00:00:24Z
+bsc UB / USDT 1%: created 2025-09-12T06:14:34Z
+bsc UB / WBNB 1%: created 2026-05-31T16:17:47Z
+bsc UB / COSA: created 2026-08-07T17:33:16Z
+bsc UB / USDT 0.05%: created 2026-05-26T21:44:50Z
+bsc UB / BPay 0.01%: created 2025-10-31T18:32:35Z
+bsc UB / USDT 0.3%: created 2025-09-12T08:02:27Z
+bsc UB / $FREN: created 2026-04-22T14:17:09Z

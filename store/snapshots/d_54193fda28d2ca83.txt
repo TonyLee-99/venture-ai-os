@@ -1,0 +1,12 @@
+GeckoTerminal pools for MIO (MIO), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-10-30
+base GENERIC / USDC 40%: created 2025-10-30T20:26:09Z
+base GENERIC / USDC 70%: created 2025-10-30T15:52:01Z
+base GENERIC / ETH 50%: created 2025-10-30T19:05:13Z
+base GENERIC / ETH 20%: created 2025-10-31T00:35:37Z
+base GENERIC / ETH 15%: created 2025-10-31T14:53:03Z
+base GENERIC / USDC 69%: created 2025-10-30T15:54:11Z
+base GENERIC / USDC 43%: created 2025-10-30T20:59:53Z
+base GENERIC / ETH 25%: created 2025-10-30T23:41:11Z
+base GENERIC / USDC 55%: created 2025-11-17T17:17:03Z
+base GENERIC / USDC 50%: created 2025-10-30T18:25:17Z

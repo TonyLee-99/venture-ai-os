@@ -1,0 +1,12 @@
+GeckoTerminal pools for Ace Data Cloud (ACE), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-12-24
+solana ACE / SOL: created 2025-12-24T05:07:51Z
+solana ACE / SOL: created 2026-06-27T09:33:32Z
+solana ACE / Kurumi: created 2026-01-01T05:37:38Z
+solana ACE / Samara: created 2026-01-14T06:49:19Z
+solana SCAM / ACE: created 2026-04-27T17:50:19Z
+solana Spawn / ACE: created 2026-03-15T18:57:10Z
+solana ACE / SOL: created 2026-01-15T10:14:34Z
+solana ACE / ZAUTH: created 2026-01-11T18:22:23Z
+solana ACE / VINE: created 2025-12-24T09:20:42Z
+solana ACE / DEXTER: created 2026-01-11T19:11:11Z

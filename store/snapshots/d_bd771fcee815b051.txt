@@ -1,0 +1,12 @@
+GeckoTerminal pools for Ping (PING), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-10-22
+base PING / USDC 1%: created 2025-10-22T15:35:17Z
+base PING / USDC 0.3%: created 2025-10-23T17:50:37Z
+base MOONBASE / PING 1%: created 2025-12-11T11:17:15Z
+base PING / USDC 0.5%: created 2025-10-24T09:13:47Z
+base PING / WETH 0.45%: created 2025-11-05T02:57:57Z
+base PING / ETH 8%: created 2025-10-22T13:01:23Z
+base PING / USDC 2%: created 2025-10-24T03:59:27Z
+base PING / ETH 6%: created 2025-10-22T14:27:19Z
+base PING / ETH 4%: created 2025-10-22T16:52:33Z
+base PING / USDC 0.8%: created 2025-10-24T13:18:47Z

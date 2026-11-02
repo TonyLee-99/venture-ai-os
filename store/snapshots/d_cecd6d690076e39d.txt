@@ -1,0 +1,10 @@
+GeckoTerminal pools for AInalyst (AIN), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-05-26
+base AIN / VIRTUAL: created 2025-05-26T08:01:43Z
+base SkiBonk+ / ARVOS / AIN 4%: created 2025-10-31T03:35:22Z
+base AIN / WETH 1%: created 2025-11-08T08:45:59Z
+base AIN / USDC: created 2026-05-31T13:53:37Z
+base AIN / WETH: created 2025-10-25T16:18:03Z
+base FUEGO / AIN: created 2025-05-27T19:56:13Z
+base TFA / AIN 0.3%: created 2025-10-27T23:40:01Z
+base AIN / ETH 0.073%: created 2026-03-20T05:05:41Z

@@ -1,0 +1,12 @@
+GeckoTerminal pools for Halo (HALO), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2026-05-26
+base HALO / WETH: created 2026-05-26T20:24:15Z
+base HALO / USDC 10%: created 2026-05-26T22:04:13Z
+base HALO / USDC 55%: created 2026-05-26T20:32:21Z
+base HALO / WETH 1%: created 2026-05-29T13:28:33Z
+base HALO / USDC 40%: created 2026-05-26T20:56:57Z
+base HALO / USDC 77.045%: created 2026-05-26T21:06:17Z
+base HALO / USDC 15%: created 2026-05-27T00:21:05Z
+base HALO / USDC 30.9%: created 2026-05-26T21:25:37Z
+base HALO / USDC 61%: created 2026-06-06T05:35:13Z
+base HALO / ETH 35%: created 2026-05-26T21:00:59Z

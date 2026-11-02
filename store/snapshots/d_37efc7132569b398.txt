@@ -1,0 +1,12 @@
+GeckoTerminal pools for Syra Agent (SYRA), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-11-07
+solana SYRA / SOL: created 2025-11-07T11:02:25Z
+solana SYRA / SOL: created 2026-04-19T14:36:00Z
+solana SYRA / BONDUM: created 2026-03-01T11:30:39Z
+solana SYRA / SOL: created 2026-06-16T05:51:28Z
+solana DEXTER / SYRA: created 2025-12-28T13:58:46Z
+solana SYRA / VINE: created 2025-12-24T00:24:16Z
+solana SYRA / SOL: created 2026-05-19T12:02:14Z
+solana SYRA / SOL: created 2025-11-20T13:41:49Z
+solana SYRA / AVO: created 2025-12-27T08:00:30Z
+solana SYRA / DEXTER: created 2026-01-21T03:53:46Z

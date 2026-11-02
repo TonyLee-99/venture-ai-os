@@ -1,0 +1,11 @@
+GeckoTerminal pools for WachAI (WACH), a token in CoinGecko's 'x402 Ecosystem' category (fetched 2026-11-02).
+Earliest pool created: 2025-06-25
+base WACH / VIRTUAL: created 2025-06-25T13:33:09Z
+base SkiBonk+ / FYNI / SPLOOT / WETH / AXR / ROOM / WACH 4%: created 2025-10-17T08:28:56Z
+base SkiBonk+ / WACH 5%: created 2025-11-02T05:19:21Z
+base WACH / USDC 60%: created 2026-04-26T10:05:57Z
+base WACH / VIRTUAL 0.3%: created 2025-06-25T13:46:15Z
+base SkiBonk+ / WACH: created 2025-08-26T22:24:25Z
+base WACH / VIRTUAL 0.05%: created 2025-06-26T05:25:03Z
+base WACH / WETH 1%: created 2025-10-30T19:51:59Z
+base WACH / VIRTUAL 0.3%: created 2025-06-25T14:33:35Z
