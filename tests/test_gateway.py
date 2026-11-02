@@ -10,6 +10,12 @@ from vaios.gateway.backends import BackendError, RawResult
 from vaios.gateway.gateway import ROUTES, BudgetExceeded, Gateway, ReplayMiss, extract_json
 
 
+@pytest.fixture(autouse=True)
+def _live_mode(monkeypatch):
+    # these tests exercise live-call logic against fakes; CI exports VAIOS_STRICT_REPLAY=1 globally
+    monkeypatch.delenv("VAIOS_STRICT_REPLAY", raising=False)
+
+
 class Fake:
     def __init__(self, name, family, replies):
         self.name, self.family, self.replies, self.calls = name, family, list(replies), 0
