@@ -1,0 +1,373 @@
+{
+ "kind": "memo",
+ "entity": "faremeter",
+ "version": 4,
+ "parent_version": 3,
+ "as_of": "2026-11-01",
+ "content_sha256": "266ee20526a9ebfb8d49772a2fb4b55d6ddeaa23bd4ad1df8635b85a775aed21",
+ "provenance": {
+  "run_id": "98ddd9e6f9c34a59",
+  "job": "diligence_memo",
+  "doc_ids": [
+   "d_2bf293576b4555c8",
+   "d_748e85e901fac822",
+   "d_d654ae3bd333bd8e",
+   "d_d7f80babf38c9414"
+  ],
+  "cache_keys": [
+   "f648b7c96e31bc0032b3b6fe55274c618d649e3700307e1a9b52a5e8edba4a0d",
+   "b0233d03d660f8a3fce5b28dabbe4bcf4fe90e4be5e34ed34dc5f673e89a8da0",
+   "2bd9e12f0c347671a294ce5b13e0d61b2def8e901122a765399bfaf69de3f1c6",
+   "ce42f717db813da1bd14a1f0a321395b4788daee7caf411a9868b8a209d91021"
+  ],
+  "metrics": [
+   "gh.commits_90d",
+   "gh.commits_prev_90d",
+   "gh.commits_total",
+   "gh.first_repo_year",
+   "gh.public_repos",
+   "gh.stars_total_now",
+   "hn.points_total",
+   "hn.stories"
+  ]
+ },
+ "content": {
+  "entity": "faremeter",
+  "name": "faremeter",
+  "as_of": "2026-11-01",
+  "stage": {
+   "stage": "unknown (no funding evidence found)",
+   "seed_eligible": true,
+   "ineligible_reasons": [],
+   "yc_batch": null,
+   "token": null,
+   "prior_raises_defillama": [],
+   "round_evidence": [],
+   "doc_ids": []
+  },
+  "triage": {
+   "rank": 4,
+   "screen_score": 0.10854394369982702,
+   "note": "triage signal only, not evidence (near chance on never-raised protocols)"
+  },
+  "memo": {
+   "company": "faremeter",
+   "one_liner": "Open-source TypeScript framework (client library, middleware, facilitator, gateway, wallet integrations) that lets agents and existing APIs make and accept HTTP 402 machine payments over x402 and MPP on Solana and EVM chains. Built by ABK Labs.",
+   "thesis_fit": "Direct fit: it is infrastructure for agents paying per API call, and it spans both the x402 and MPP standards. It sits at the developer-tooling layer rather than the facilitator layer, so the open question is how it captures value beyond being open-source plumbing.",
+   "claims": [
+    {
+     "id": "c1",
+     "section": "team",
+     "text": "Development is concentrated in one engineer: alexanderguy has 550 commits, far ahead of the other listed contributors.",
+     "doc_id": "d_2bf293576b4555c8",
+     "quote": "alexanderguy (User): 550 commits",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote establishes alexanderguy's commit count but contains no other contributors' counts to establish concentration or the comparison."
+    },
+    {
+     "id": "c2",
+     "section": "team",
+     "text": "Faremeter is sponsored and built by the engineers at ABK Labs, plus open-source contributors. The founders are not named in the sources.",
+     "doc_id": "d_d7f80babf38c9414",
+     "quote": "Faremeter is sponsored and built by the engineers at [ABK Labs](https://abklabs.com) along with other open-source contributors.",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports ABK Labs sponsorship and engineering participation but does not establish that founders are unnamed throughout the sources."
+    },
+    {
+     "id": "c3",
+     "section": "why_now",
+     "text": "The README says it supports both v1 and v2 of Coinbase's x402, negotiated automatically, so it has tracked the standard's upgrade.",
+     "doc_id": "d_d7f80babf38c9414",
+     "quote": "both v1 and v2 of the protocol, negotiated automatically.",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports automatic negotiation between protocol versions but does not itself identify Coinbase's x402 or establish the history of upgrade implementation."
+    },
+    {
+     "id": "c4",
+     "section": "why_now",
+     "text": "It also ships the `charge` intent of the emerging MPP (Machine Payments Protocol) on Solana, while noting that the spec is still evolving. This hedges across competing agent-payment standards.",
+     "doc_id": "d_d7f80babf38c9414",
+     "quote": "the spec is still evolving; we currently ship the `charge` intent on Solana.",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports shipping the charge intent on Solana under an evolving specification, but neither identifies MPP nor establishes a hedge across competing standards."
+    },
+    {
+     "id": "c6",
+     "section": "competition",
+     "text": "Fluxa carries 56.2% of x402 dollar volume on only 9.4% of payments, which shows value is concentrated in a few facilitators.",
+     "doc_id": "d_d654ae3bd333bd8e",
+     "quote": "fluxa: 353,469 payments (9.4% of payments), 846,830 USD (56.2% of volume)",
+     "metric": null,
+     "value": null,
+     "support": "entails",
+     "support_note": "The receipt gives both stated shares and establishes that a single facilitator accounts for a majority of dollar volume."
+    },
+    {
+     "id": "c7",
+     "section": "pmf",
+     "text": "The main repo has 70 stars and 25 forks. This is real but modest developer interest, and it is not proof of payments.",
+     "doc_id": "d_748e85e901fac822",
+     "quote": "Stars: 70. Forks: 25. Language: TypeScript.",
+     "metric": null,
+     "value": null,
+     "support": "entails",
+     "support_note": "The receipt establishes the stated stars and forks, supporting a modest developer-interest interpretation without demonstrating payment usage."
+    },
+    {
+     "id": "c8",
+     "section": "pmf",
+     "text": "There is no Hacker News traction: 0 points across stories with the company name in the title.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "hn.points_total",
+     "value": 0.0,
+     "support": "partial",
+     "support_note": "The metric establishes zero points for the specified title-based search, which does not establish an absence of all Hacker News traction."
+    },
+    {
+     "id": "c9",
+     "section": "execution",
+     "text": "There were 1,180 commits across the owner's top 5 repos in the last 90 days.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.commits_90d",
+     "value": 1180.0,
+     "support": "entails",
+     "support_note": "The metric and its supplied definition establish the stated commit count, repository scope and reporting window."
+    },
+    {
+     "id": "c10",
+     "section": "execution",
+     "text": "The warehouse shows 1156 commits in the earlier of the two most recent 90-day windows.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.commits_prev_90d",
+     "value": 1156.0,
+     "support": "entails",
+     "support_note": "The metric and its supplied definition establish the stated count for the preceding reporting window."
+    },
+    {
+     "id": "c11",
+     "section": "execution",
+     "text": "The README lists broad network coverage for EVM payments, including Base, Polygon, Monad and Skale.",
+     "doc_id": "d_d7f80babf38c9414",
+     "quote": "network coverage including Base, Polygon, Monad, and Skale (mainnet and testnets)",
+     "metric": null,
+     "value": null,
+     "support": "entails",
+     "support_note": "The quote explicitly lists all the named networks as included in network coverage."
+    },
+    {
+     "id": "c12",
+     "section": "risk",
+     "text": "The GitHub profile shows the main repo's last push as 2026-07-06, about four months before the fetch date. That sits oddly with the recent commit counts, which may come from other repos or default branches.",
+     "doc_id": "d_748e85e901fac822",
+     "quote": "Created: 2025-06-11. Last push: 2026-07-06.",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote establishes the last-push date but contains neither the fetch date nor recent commit counts needed to support the comparison or proposed explanation."
+    }
+   ],
+   "scores": {
+    "pmf": {
+     "score": 2,
+     "rationale": "Evidence is limited to modest developer interest: 70 stars and 25 forks [c7]. There is no evidence of payments, customers or on-chain volume attributable to Faremeter, and no Hacker News traction [c8]. The withheld c5 offered nothing on Faremeter's own share, so market-structure context [c6] does not help it. The 25 forks are weak evidence of real adoption, and the earlier claim of outside contributors [c1] is only partial and actually shows concentration in one engineer. This sits between the 1 level (repo with no outside usage evidence) and the 3 level (real developer adoption), so 2."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "The wedge, standard-agnostic agent payment middleware supporting x402 v1/v2 and MPP, is timely [c3][c4], and the broad network coverage [c11] suggests a plausible platform path. However, c3 and c4 are only partial support. The market is concentrated in a few facilitators [c6], no founders or monetization edge are named [c2], and no funding or stage evidence exists. This reads as in the right space with a decent but unproven edge, so 3."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "Commit counts are high: 1,180 commits across the owner's top 5 repos in 90 days [c9], and 1156 in the prior window [c10], which indicates sustained activity. However, development is concentrated in one engineer with 550 commits [c1], the team is not named [c2], and the main repo's last push is dated about four months before the fetch date, which conflicts with the recent commit figures [c12]. The commit counts are across multiple repos, not the main one. Steady but single-maintainer-heavy, so 3."
+    }
+   },
+   "risks": [
+    "No evidence of paid usage: Faremeter does not appear among the measured x402 facilitators, and no customer or volume data is provided. The framework could be widely forked without producing revenue.",
+    "Open-source infrastructure with an unclear business model. It is sponsored by ABK Labs, an engineering services shop, and it is unclear whether Faremeter is the company or a side project.",
+    "Key-person concentration: one contributor accounts for about 83% of the roughly 660 commits among the top four contributors.",
+    "x402 volume is concentrated in Coinbase and Fluxa, and standards (x402, MPP, AP2, L402) are still shifting, so a framework layer can be commoditized or bypassed.",
+    "Data inconsistency between the main repo's last push in July 2026 and the 90-day commit activity. The activity may come from other repos, so shipping on the core product is unverified."
+   ],
+   "open_questions": [
+    "What is the entity and ownership structure: is Faremeter a standalone company or an ABK Labs project, and who are the founders? Is there any funding?",
+    "What is the monetization plan (hosted facilitator, gateway, enterprise support), and are there paying or pilot customers today?",
+    "How much real x402 or MPP traffic flows through Faremeter-based deployments, and what is the average dollar value per payment (x402 usd_per_tx_30d was not provided)?",
+    "Why does the main repo show a last push of 2026-07-06 while 90-day commits are high? Where is the current work happening?",
+    "How do you plan to stay differentiated if Coinbase's SDKs and facilitators absorb middleware features, and how do you decide between x402 and MPP?",
+    "What is the plan to reduce dependence on one lead engineer?"
+   ],
+   "recommendation": "watch",
+   "rescore_note": "Lowered PMF from 3 to 2 (only stars/forks; no payment or customer evidence; contributor claim c1 shows concentration, not outside adoption), Narrative from 4 to 3 (c3/c4 only partial, no named founders or monetization edge, crowded market), and Execution from 4 to 3 (single-engineer concentration [c1], multi-repo commit counts, and the unexplained stale push on the main repo [c12]). The total is now 8, below the advance threshold of 11, and PMF is below 3, so the recommendation moves from advance to watch. Re-check in a quarter for payment evidence or named founders.",
+   "draft_scores": {
+    "pmf": {
+     "score": 3,
+     "rationale": "There is developer adoption: 25 forks [c7] and outside contributors [c1]. There is no evidence of payments, customers or on-chain volume attributable to Faremeter [c5], and there is no HN traction [c8]. This is the 3 level on the rubric."
+    },
+    "narrative": {
+     "score": 4,
+     "rationale": "The wedge is clear and timely: standard-agnostic agent payment middleware that is already on x402 v2 and MPP [c3][c4]. The path to a platform is plausible through facilitator, gateway and wallet integrations [c11]. The risk is a crowded market dominated by Coinbase and Fluxa [c5][c6], with no stated monetization edge."
+    },
+    "execution": {
+     "score": 4,
+     "rationale": "Commit velocity is high and sustained [c9][c10], several people contribute [c1], and standards changes were followed quickly [c3][c4]. One engineer dominates the commits [c1], and the stale-looking last push on the main repo needs explaining [c12]."
+    }
+   },
+   "draft_recommendation": "advance",
+   "recommendation_before_committee": "watch"
+  },
+  "unverified": [],
+  "withheld_by_critic": [
+   {
+    "claim": {
+     "id": "c5",
+     "section": "competition",
+     "text": "x402 facilitator volume is dominated by Coinbase, which has 69.7% of payments. Faremeter does not appear by name among the listed facilitators, so its own facilitator share is unknown or negligible.",
+     "doc_id": "d_d654ae3bd333bd8e",
+     "quote": "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)",
+     "metric": null,
+     "value": null
+    },
+    "critic_label": "contradicts",
+    "reason": "The receipt distinguishes Coinbase's majority payment count from its minority dollar-volume share and provides no evidence about Faremeter's absence or share."
+   }
+  ],
+  "critique": {
+   "claim_labels": [
+    {
+     "claim_id": "c1",
+     "label": "partial",
+     "reason": "The quote establishes alexanderguy's commit count but contains no other contributors' counts to establish concentration or the comparison."
+    },
+    {
+     "claim_id": "c2",
+     "label": "partial",
+     "reason": "The quote supports ABK Labs sponsorship and engineering participation but does not establish that founders are unnamed throughout the sources."
+    },
+    {
+     "claim_id": "c3",
+     "label": "partial",
+     "reason": "The quote supports automatic negotiation between protocol versions but does not itself identify Coinbase's x402 or establish the history of upgrade implementation."
+    },
+    {
+     "claim_id": "c4",
+     "label": "partial",
+     "reason": "The quote supports shipping the charge intent on Solana under an evolving specification, but neither identifies MPP nor establishes a hedge across competing standards."
+    },
+    {
+     "claim_id": "c5",
+     "label": "contradicts",
+     "reason": "The receipt distinguishes Coinbase's majority payment count from its minority dollar-volume share and provides no evidence about Faremeter's absence or share."
+    },
+    {
+     "claim_id": "c6",
+     "label": "entails",
+     "reason": "The receipt gives both stated shares and establishes that a single facilitator accounts for a majority of dollar volume."
+    },
+    {
+     "claim_id": "c7",
+     "label": "entails",
+     "reason": "The receipt establishes the stated stars and forks, supporting a modest developer-interest interpretation without demonstrating payment usage."
+    },
+    {
+     "claim_id": "c8",
+     "label": "partial",
+     "reason": "The metric establishes zero points for the specified title-based search, which does not establish an absence of all Hacker News traction."
+    },
+    {
+     "claim_id": "c9",
+     "label": "entails",
+     "reason": "The metric and its supplied definition establish the stated commit count, repository scope and reporting window."
+    },
+    {
+     "claim_id": "c10",
+     "label": "entails",
+     "reason": "The metric and its supplied definition establish the stated count for the preceding reporting window."
+    },
+    {
+     "claim_id": "c11",
+     "label": "entails",
+     "reason": "The quote explicitly lists all the named networks as included in network coverage."
+    },
+    {
+     "claim_id": "c12",
+     "label": "partial",
+     "reason": "The quote establishes the last-push date but contains neither the fetch date nor recent commit counts needed to support the comparison or proposed explanation."
+    }
+   ],
+   "scores": {
+    "pmf": {
+     "score": 3,
+     "rationale": "c7 supplies fork activity consistent with early developer adoption, but does not identify independent production users, paying customers or attributable transactions; this is a weak adoption signal at the rubric's developer tier."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "The supported portions of c3 and c4 describe protocol compatibility, and c11 supports network breadth, giving a coherent machine-payments infrastructure story; a differentiated customer wedge and credible commercial path to a platform remain unproven."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "c9 and c10 establish sustained organization-level commit activity, while c11 supports implementation breadth; c1's receipt cannot establish contributor breadth, and c12's last-push date leaves the main product's recent shipping cadence unresolved."
+    }
+   },
+   "recommendation": "watch",
+   "missing_risks": [
+    "The identity, use case and retention of independent production users are unknown; forks may represent evaluation rather than deployment.",
+    "The business model, willingness to pay and ability to capture value from an open-source framework are unproven.",
+    "Differentiation and distribution advantages relative to protocol-native tooling and other payment infrastructure are unclear.",
+    "Security review, wallet authorization controls, payment failure handling and operational reliability are not established.",
+    "Repository-level activity, releases and contributor affiliation need reconciliation before organization-wide commits can establish product execution.",
+    "Founder identity, team commitment, ABK Labs ownership arrangements and whether there is a separately investable company are unknown."
+   ],
+   "strongest_counterargument": "The evidence supports an actively developed infrastructure project, but does not establish a customer problem urgent enough to produce retained usage or revenue. Without a clear commercial owner and defensible route to capturing payment economics, a founder call may yield little beyond a technical project overview."
+  },
+  "doc_ids": [
+   "d_2bf293576b4555c8",
+   "d_748e85e901fac822",
+   "d_d654ae3bd333bd8e",
+   "d_d7f80babf38c9414"
+  ],
+  "facts": {
+   "gh.commits_90d": 1180,
+   "gh.commits_prev_90d": 1156,
+   "gh.commits_total": 3635,
+   "gh.public_repos": 16,
+   "gh.stars_total_now": 106,
+   "gh.first_repo_year": 2025,
+   "hn.stories": 0,
+   "hn.points_total": 0
+  },
+  "receipts": {
+   "claims_drafted": 12,
+   "raw_precision": 0.6667,
+   "verified": 12,
+   "withheld_by_verifier": 0,
+   "dropped_in_repair": 0,
+   "critic_labels": {
+    "entails": 5,
+    "partial": 6,
+    "contradicts": 1,
+    "unsupported": 0,
+    "unlabelled": 0
+   },
+   "critic_entailed_share": 0.4167,
+   "shipped": 11,
+   "shipped_partial": 6,
+   "withheld_by_critic": 1
+  },
+  "models": {
+   "drafter": "claude_cli:claude-sonnet-5-5",
+   "critic": "codex_cli:gpt-6.1-sol"
+  },
+  "committee_rank": 7,
+  "disagreements": []
+ }
+}

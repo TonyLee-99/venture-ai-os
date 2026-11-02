@@ -1,0 +1,114 @@
+Skip to main content
+code
+<spar>
+Platform
+Use cases
+Developers
+Pricing
+EN
+Talk to us
+Start building
+Company
+We build the account agents use to pay and get paid.
+Mandates, review rules and payment records for agents, on the payment methods businesses already use in Latin America.
+Talk to us
+Press
+→
+Where the money already moves
+demo
+Pix · instant · 24/7
+Brazil · the daily habit agents inherit
++R$ 389.90
+received
+Boleto · supplier invoices
+paid under a mandate, one approval above the limit
+−R$ 4,200.00
+held
+approved
+Card · virtual, per purchase
+authorized in real time
+−R$ 286.40
+paid
+USDC · x402 per call
+a research agent paid for a quote
++US$ 0.02
+settled
+One mandate, one review queue, one payment history across all of them.
+Sandbox run · demo data
+What we believe
+Three ideas behind the product.
+Agents will pay where money already moves
+Instant payment methods such as Pix made fast, programmable payments a daily habit. Agents will use them too.
+Control is the product
+Moving money is solved. Deciding whether an agent may move it, and proving what happened, is the work.
+Rules belong outside the model
+The model prepares the intent. Mandates, limits and review run on the server.
+Contact
+Where to reach us.
+Sales and partnerships
+hello@codespar.dev, or book a demo at /enterprise#demo.
+Press and brand material
+Logos and the press kit at /press.
+Security
+security@codespar.dev
+Give your agents a way to pay and get paid.
+Build is free: hosted MCP, SDK and sandbox.
+Start building
+Talk to us
+→
+Test keys are free.
+terminal · test mode
+demo
+$ claude mcp add --transport http codespar \
+https://connect.codespar.dev/mcp
+>
+"who built this?"
+Built in New York and Rio de Janeiro by the team behind Zoop
+hello@ · security@ · /enterprise#demo
+test keys are free
+Sandbox run · demo data
+code
+<spar>
+Built in Latin America
+Platform
+Overview
+Shop
+Collect
+Pay
+Gate
+Bill
+Wallet
+Spaces
+Pricing
+Use cases
+All use cases
+CFO copilot
+Personal assistants
+WhatsApp: Pix payment request in chat
+Collections agent
+Autonomous procurement
+API and compute budgets
+Business assistant for your customers
+Developers
+Docs
+Hosted MCP
+SDK & CLI
+Servers
+Open source
+Company
+About
+Blog
+Trust
+Security
+Press
+Talk to us
+Legal
+Privacy
+Terms
+DPA
+Subprocessors
+© 2026 CODESPAR TECNOLOGIA LTDA. CNPJ 68.398.673/0001-85.
+English
+/
+Português
+CodeSpar · Company

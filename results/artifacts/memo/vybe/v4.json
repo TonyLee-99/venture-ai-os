@@ -1,0 +1,389 @@
+{
+ "kind": "memo",
+ "entity": "vybe",
+ "version": 4,
+ "parent_version": 3,
+ "as_of": "2026-11-01",
+ "content_sha256": "41056ef518a78fb97fe316ca8c7c1bd5fe1de422d08ae92fecda0e5b8465b741",
+ "provenance": {
+  "run_id": "6f5e48f515c48b53",
+  "job": "diligence_memo",
+  "doc_ids": [
+   "d_26e65d0b8d435a48",
+   "d_79209d156af52c70",
+   "d_d2e39ad11bd7a4d2",
+   "d_d654ae3bd333bd8e"
+  ],
+  "cache_keys": [
+   "2ac56f07abc80ed1cd8e273acc5c3aa161d3e127cc6d9dadb3a0b551f56f5d6e",
+   "7010829e38a2562c76f2508a63c79ba1297f9168495f2b15576e8444a59051c0",
+   "a30bfae0a45f101bfc7156a64f4899be12e03400d59ee9a956eb7f53bb98c11e",
+   "15e8af8f3724f275d7e28453b3fe53607ee0d67094713a1b3750b1cd50492501"
+  ],
+  "metrics": [
+   "gh.commits_90d",
+   "gh.commits_prev_90d",
+   "gh.commits_total",
+   "gh.first_repo_year",
+   "gh.public_repos",
+   "gh.stars_total_now",
+   "hn.points_total",
+   "hn.stories"
+  ]
+ },
+ "content": {
+  "entity": "vybe",
+  "name": "vybenetwork",
+  "as_of": "2026-11-01",
+  "stage": {
+   "stage": "unknown (no funding evidence found)",
+   "seed_eligible": true,
+   "ineligible_reasons": [],
+   "yc_batch": null,
+   "token": null,
+   "prior_raises_defillama": [],
+   "round_evidence": [],
+   "doc_ids": []
+  },
+  "triage": {
+   "rank": 18,
+   "screen_score": 0.05709792322622885,
+   "note": "triage signal only, not evidence (near chance on never-raised protocols)"
+  },
+  "memo": {
+   "company": "vybenetwork",
+   "one_liner": "Vybe Network sells Solana wallet/portfolio analytics, smart-money tracking and a data API to traders and developers, and has added a pay-per-call x402 (USDC) API and SDK aimed at AI agents.",
+   "thesis_fit": "Partial fit: an established Solana data provider that has bolted on x402 pay-per-call access for agents, so the agent-payments angle is a new distribution channel rather than the core company. No evidence yet of actual x402 payment volume from Vybe.",
+   "claims": [
+    {
+     "id": "c1",
+     "section": "pmf",
+     "text": "The core product is a Solana wallet tracker and portfolio analytics app, with API access offered alongside it.",
+     "doc_id": "d_79209d156af52c70",
+     "quote": "The Ultimate Solana Wallet Tracker and Portfolio Analytics App",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote establishes the wallet tracker and portfolio analytics product but does not mention API access."
+    },
+    {
+     "id": "c2",
+     "section": "pmf",
+     "text": "The website claims 10,000+ traders use the product (self-reported, unverified).",
+     "doc_id": "d_79209d156af52c70",
+     "quote": "Trusted by 10,000+ Traders",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The website claims trader trust, but the quoted wording does not establish actual product use."
+    },
+    {
+     "id": "c3",
+     "section": "pmf",
+     "text": "The x402 API charges per call in USDC with no API keys, starting at $0.001 per call, and is described as a beta discount that will rise at general availability.",
+     "doc_id": "d_d2e39ad11bd7a4d2",
+     "quote": "Pricing is currently a beta discount.** $0.001 default",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports discounted default pricing but does not establish USDC settlement, per-call billing, keyless access or future price increases."
+    },
+    {
+     "id": "c4",
+     "section": "why_now",
+     "text": "The x402 SDK is positioned for AI agents: pay-per-call USDC over HTTP plus prepaid-credit WebSocket streaming for Solana analytics.",
+     "doc_id": "d_26e65d0b8d435a48",
+     "quote": "Pay-per-call USDC over HTTP and prepaid-credit WebSocket streaming for Vybe's Solana analytics API. Built for AI agents.",
+     "metric": null,
+     "value": null,
+     "support": "entails",
+     "support_note": "The quote explicitly describes the payment methods, streaming functionality, Solana analytics application and AI-agent positioning."
+    },
+    {
+     "id": "c5",
+     "section": "pmf",
+     "text": "The x402-client repo has 160 stars and 64 forks, suggesting developer interest, though forks are high relative to stars and there is no payment-volume evidence.",
+     "doc_id": "d_26e65d0b8d435a48",
+     "quote": "Stars: 160. Forks: 64. Language: TypeScript.",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The receipt supports the repository counts, while developer interest is an inference and the absence of payment-volume evidence is not established by this quote."
+    },
+    {
+     "id": "c6",
+     "section": "execution",
+     "text": "The x402-client repo was created 2026-05-11 and last pushed 2026-05-13.",
+     "doc_id": "d_26e65d0b8d435a48",
+     "quote": "Created: 2026-05-11. Last push: 2026-05-13.",
+     "metric": null,
+     "value": null,
+     "support": "entails",
+     "support_note": "Both repository dates match the quoted dates exactly."
+    },
+    {
+     "id": "c7",
+     "section": "execution",
+     "text": "Commits on the default branches of the owner's top repos totaled 89 in the most recent quarter-length window.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.commits_90d",
+     "value": 89.0,
+     "support": "entails",
+     "support_note": "The metric and its supplied definition support the stated commit count and observation window."
+    },
+    {
+     "id": "c8",
+     "section": "execution",
+     "text": "Prior-90-day commit count was 609, showing earlier bursts of activity.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.commits_prev_90d",
+     "value": 609.0,
+     "support": "partial",
+     "support_note": "The metric supports the prior-window commit count but does not reveal whether activity occurred in bursts."
+    },
+    {
+     "id": "c9",
+     "section": "team",
+     "text": "No named founders or team members appear in the sources; the GitHub org has existed since 2022 with 18 public non-fork repos. Team size is unknown.",
+     "doc_id": "d_26e65d0b8d435a48",
+     "quote": "Account created: 2022-01-25. Public non-fork repositories: 18.0.",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports account age and repository count but cannot establish the absence of named team members across the sources or determine team size."
+    },
+    {
+     "id": "c10",
+     "section": "competition",
+     "text": "In the x402 facilitator market over the trailing window, Coinbase holds 69.7% of payments. Vybe does not appear in the list of facilitators; it is a seller/API, so this is context rather than direct competition.",
+     "doc_id": "d_d654ae3bd333bd8e",
+     "quote": "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports Coinbase's payment share but does not establish Vybe's absence from the full list, its business role or its competitive relationship."
+    },
+    {
+     "id": "c12",
+     "section": "risk",
+     "text": "The SDK README states the service is in beta, and the API, shapes and pricing can change.",
+     "doc_id": "d_d2e39ad11bd7a4d2",
+     "quote": "**The service is in beta.**",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote establishes beta status but does not explicitly support changes to the API, response shapes or pricing."
+    },
+    {
+     "id": "c13",
+     "section": "narrative",
+     "text": "Hacker News traction is nil: the count of stories with the company name in the title is 0.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "hn.stories",
+     "value": 0.0,
+     "support": "partial",
+     "support_note": "The metric establishes no matching title stories but does not establish the absence of all Hacker News traction."
+    }
+   ],
+   "scores": {
+    "pmf": {
+     "score": 3,
+     "rationale": "Self-reported 10,000+ traders [c2] and an analytics app with API access [c1] are weak, unverified signals. The x402-client repo has 160 stars and 64 forks [c5], which is developer interest but not payment evidence. The x402 API is priced from $0.001 per call [c3], but no payment or x402 volume from Vybe is evidenced in the remaining claims. This is the top of what the evidence supports, so it holds at 3 rather than moving up."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "The agent-pays-per-call angle for Solana analytics [c4] with a low entry price [c3] is timely and fits the thesis. However, the core story is a trader-facing analytics app [c1], the x402 channel is a beta add-on whose API and pricing can change [c12], and Vybe sits as a seller next to a facilitator market dominated by Coinbase [c10]. No stated edge against other Solana data APIs, and no HN traction [c13]. Generic-to-timely, so 3."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "Commit volume dropped from 609 in the prior 90 days [c8] to 89 in the most recent window [c7], a sharp slowdown. The x402-client repo was last pushed 2026-05-13 [c6], months before today. The org has 18 public non-fork repos since 2022 [c9], but team size and named contributors are unknown. Prior velocity was strong, but the recent trend is weak. 3 is generous; a 2 is arguable if the slowdown is confirmed as a real stall and not a repo-selection artifact."
+    }
+   },
+   "risks": [
+    "Company is an established Solana analytics business, not an agent-payments company; x402 may be a side channel with little revenue, and the stage is unclear for a pre-seed/seed check.",
+    "No evidence of x402 payment volume or customers; the 64 forks and 160 stars may not translate to paying agents.",
+    "Shipping velocity dropped about 85% quarter over quarter, and the x402 SDK repo appears dormant since May 2026.",
+    "Pay-per-call prices are a beta discount ($0.001) that will rise, so unit economics and demand at GA price are untested; data-provider competition on Solana is crowded."
+   ],
+   "open_questions": [
+    "Who are the founders and how many engineers work on Vybe? Is there any funding or investors to date?",
+    "How many x402 payments and how much USD volume has the Vybe x402 API processed, and how many distinct paying wallets are outside the team?",
+    "What explains the drop in commits from 609 to 89, and is the x402 SDK still actively maintained?",
+    "What is revenue today by channel (subscriptions vs x402) and what is the plan for GA pricing?",
+    "Why would agents choose Vybe over other Solana data providers or RPC-based indexing, and what is the moat in the data?"
+   ],
+   "recommendation": "watch",
+   "rescore_note": "Scores unchanged at 3/3/3 (total 9, below the advance threshold of 11), so the recommendation stays watch. The withheld claim c11 is removed, so the draft's statement that x402 volume is unverified is now simply an absence of evidence, not a documented finding; PMF stays at 3 on developer interest alone. Several remaining claims are only partially supported, so the rationales lean on them as weak evidence. Execution is the dimension most at risk of a downgrade given the commit drop and the stale x402 repo.",
+   "draft_scores": {
+    "pmf": {
+     "score": 3,
+     "rationale": "Real developer and trader adoption claims for the core Solana data product [c1][c2] and forks on the x402 SDK [c5], but no verified payment or x402 volume [c11]; testimonials and user counts are self-reported."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "Timely angle of agents paying per call for Solana data [c4], with a cheap entry price [c3], but the company's main story is a trader-facing analytics app and the x402 channel is an add-on in a beta state [c12]; no stated edge against other Solana data APIs."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "Large commit history earlier in the year [c8] but commits fell sharply in the last 90 days [c7] and the x402 repo shows no push since May [c6]; team size unknown [c9]."
+    }
+   },
+   "draft_recommendation": "watch",
+   "recommendation_before_committee": "watch"
+  },
+  "unverified": [],
+  "withheld_by_critic": [
+   {
+    "claim": {
+     "id": "c11",
+     "section": "pmf",
+     "text": "The market-structure source shows no Vybe-specific x402 payment or revenue data, so x402 usage by Vybe is unmeasured. The warehouse facts also contain no x402.usd_per_tx_30d value, so inorganic-traffic risk cannot be assessed.",
+     "doc_id": "d_d654ae3bd333bd8e",
+     "quote": "x402 facilitator market share, 30 days to 2026-11-01",
+     "metric": null,
+     "value": null
+    },
+    "critic_label": "unsupported",
+    "reason": "The quoted heading identifies the market dataset's scope and period but does not establish missing company metrics, warehouse contents or whether inorganic traffic can be assessed."
+   }
+  ],
+  "critique": {
+   "claim_labels": [
+    {
+     "claim_id": "c1",
+     "label": "partial",
+     "reason": "The quote establishes the wallet tracker and portfolio analytics product but does not mention API access."
+    },
+    {
+     "claim_id": "c2",
+     "label": "partial",
+     "reason": "The website claims trader trust, but the quoted wording does not establish actual product use."
+    },
+    {
+     "claim_id": "c3",
+     "label": "partial",
+     "reason": "The quote supports discounted default pricing but does not establish USDC settlement, per-call billing, keyless access or future price increases."
+    },
+    {
+     "claim_id": "c4",
+     "label": "entails",
+     "reason": "The quote explicitly describes the payment methods, streaming functionality, Solana analytics application and AI-agent positioning."
+    },
+    {
+     "claim_id": "c5",
+     "label": "partial",
+     "reason": "The receipt supports the repository counts, while developer interest is an inference and the absence of payment-volume evidence is not established by this quote."
+    },
+    {
+     "claim_id": "c6",
+     "label": "entails",
+     "reason": "Both repository dates match the quoted dates exactly."
+    },
+    {
+     "claim_id": "c7",
+     "label": "entails",
+     "reason": "The metric and its supplied definition support the stated commit count and observation window."
+    },
+    {
+     "claim_id": "c8",
+     "label": "partial",
+     "reason": "The metric supports the prior-window commit count but does not reveal whether activity occurred in bursts."
+    },
+    {
+     "claim_id": "c9",
+     "label": "partial",
+     "reason": "The quote supports account age and repository count but cannot establish the absence of named team members across the sources or determine team size."
+    },
+    {
+     "claim_id": "c10",
+     "label": "partial",
+     "reason": "The quote supports Coinbase's payment share but does not establish Vybe's absence from the full list, its business role or its competitive relationship."
+    },
+    {
+     "claim_id": "c11",
+     "label": "unsupported",
+     "reason": "The quoted heading identifies the market dataset's scope and period but does not establish missing company metrics, warehouse contents or whether inorganic traffic can be assessed."
+    },
+    {
+     "claim_id": "c12",
+     "label": "partial",
+     "reason": "The quote establishes beta status but does not explicitly support changes to the API, response shapes or pricing."
+    },
+    {
+     "claim_id": "c13",
+     "label": "partial",
+     "reason": "The metric establishes no matching title stories but does not establish the absence of all Hacker News traction."
+    }
+   ],
+   "scores": {
+    "pmf": {
+     "score": 3,
+     "rationale": "The repository forks in c5 provide a developer-adoption signal, and c1 establishes a concrete product; however, c2 does not verify active customers, and no entailed claim establishes external paid usage, retention or growth."
+    },
+    "narrative": {
+     "score": 4,
+     "rationale": "c4 establishes a specific agent-commerce wedge: wallet-funded access to Solana analytics through HTTP payments and prepaid streaming; the entailed evidence does not establish differentiation or a credible expansion into a broader platform."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "c7 and the supported count in c8 establish continued organization-level development with substantially lower recent activity, while c6 shows that the relevant SDK has not received a recent push; contributor breadth and standards follow-up remain unknown."
+    }
+   },
+   "recommendation": "watch",
+   "missing_risks": [
+    "External agent customers, repeat paid usage, retention and the share of demand attributable to agents remain unknown.",
+    "Fork independence and substantive downstream integrations are unverified, limiting the adoption signal.",
+    "Mainnet payment handling and in-process signing introduce wallet-security and operational risks; controls beyond the documented budget cap require diligence.",
+    "Discounted pricing leaves sustainable margins, transaction costs, infrastructure costs and willingness to pay at general availability unknown.",
+    "Dependence on Solana RPC infrastructure may add integration friction, cost and reliability constraints.",
+    "Defensibility against competing analytics providers adding the same payment interface is unproven.",
+    "Organization-level commits may reflect unrelated products rather than continued investment in the agent-facing SDK.",
+    "Founder identities, relevant experience, ownership structure and financing needs remain unknown."
+   ],
+   "strongest_counterargument": "The evidence establishes a concrete analytics product and an agent-facing payment interface, but it does not establish recurring external agent demand or durable payment economics. Without verified customer pull, differentiation or recent SDK development, a founder call may be premature relative to opportunities with demonstrated usage."
+  },
+  "doc_ids": [
+   "d_26e65d0b8d435a48",
+   "d_79209d156af52c70",
+   "d_d2e39ad11bd7a4d2",
+   "d_d654ae3bd333bd8e"
+  ],
+  "facts": {
+   "gh.commits_90d": 89,
+   "gh.commits_prev_90d": 609,
+   "gh.commits_total": 711,
+   "gh.public_repos": 18,
+   "gh.stars_total_now": 6298,
+   "gh.first_repo_year": 2022,
+   "hn.stories": 0,
+   "hn.points_total": 0
+  },
+  "receipts": {
+   "claims_drafted": 13,
+   "raw_precision": 0.6154,
+   "verified": 13,
+   "withheld_by_verifier": 0,
+   "dropped_in_repair": 0,
+   "critic_labels": {
+    "entails": 3,
+    "partial": 9,
+    "contradicts": 0,
+    "unsupported": 1,
+    "unlabelled": 0
+   },
+   "critic_entailed_share": 0.2308,
+   "shipped": 12,
+   "shipped_partial": 9,
+   "withheld_by_critic": 1
+  },
+  "models": {
+   "drafter": "claude_cli:claude-sonnet-5-5",
+   "critic": "codex_cli:gpt-6.1-sol"
+  },
+  "committee_rank": 1,
+  "disagreements": []
+ }
+}

@@ -1,0 +1,83 @@
+About PayAI | PayAI
+Home
+Ecosystem
+Blog
+Docs
+Pricing
+Socials
+Sign in
+Start free
+About PayAI
+PayAI builds payment infrastructure for software that transacts without a human in the loop.
+What we build
+PayAI operates a production facilitator for the
+x402 protocol
+. A server answers an unpaid request with
+402
+and machine-readable terms, the client signs a stablecoin payment, and a facilitator verifies and settles the selected payment operation. Wallet funding, authentication, channel setup and recovery depend on the integration; the full workflow is not always two HTTP round trips.
+The facilitator is the part that touches the chain. PayAI verifies signed payment payloads, broadcasts settlements, sponsors gas where the chain allows it, screens for compliance, and returns a structured result — so a merchant integrates payments as middleware rather than as a blockchain project.
+Why this matters
+Agents and applications may need to buy a single API response, inference request or unit of compute at runtime. x402 makes the payment terms machine-readable and links payment to the resource request. Other payment systems can also support automation; the integration and economic tradeoffs differ.
+PayAI supports that payment flow so a service can price per request. Confirmation time, fees and operational limits depend on the network and payment scheme; verification alone is not payment settlement.
+How we are different
+Solana and EVM support.
+Check
+GET https://facilitator.payai.network/supported
+for the currently advertised network, scheme and protocol-version combinations.
+Sponsored payment flows.
+Supported Solana flows can cover the payer's transaction fee. This does not eliminate every setup or service cost.
+Buyer and merchant credentials are different.
+A buyer can pay without a PayAI merchant account, and a merchant can start without one: ordinary exact payments and public batch settlement need no API key within the 1,000 free credits. A resource provider can impose its own access requirements.
+Inspectable integration guidance.
+SDKs, integrations and examples are available at
+https://github.com/PayAINetwork
+; check each repository's license. Core API operations are described at
+https://payai.network/openapi.json
+, with scheme-specific guides in the docs.
+Who it is for
+Merchants selling API calls, MCP tools, inference, data, or compute to software buyers. Agent developers whose agents need to pay for things at runtime. Platforms that want usage-based pricing without building settlement infrastructure.
+The company
+PayAI Network, LLC is registered in Delaware, United States. The team works remotely. Reach us at
+https://payai.network/contact
+.
+More from PayAI
+Documentation:
+https://docs.payai.network
+OpenAPI description:
+https://payai.network/openapi.json
+Facilitator API:
+https://facilitator.payai.network
+Agent guide:
+https://payai.network/llms.txt
+Blog:
+https://blog.payai.network
+GitHub:
+https://github.com/PayAINetwork
+Support:
+info@payai.network
+Stay Up to Date with PayAI
+Get the latest product updates, ecosystem news, and insights on real-time AI payments delivered to your inbox.
+Subscribe Now
+COMPANY
+About
+Careers
+Sales
+SUPPORT
+Blog
+Discord
+Documentation
+Github
+DEVELOPERS
+Developer Portal
+Anthropic Commerce Checkout
+API Reference
+Agent Guide (llms.txt)
+Facilitator API
+Ecosystem
+Contact
+LEGAL
+Privacy Policy
+Terms
+Integration support
+© 2026
+PayAI Network, LLC

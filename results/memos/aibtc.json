@@ -2,197 +2,303 @@
  "entity": "aibtc",
  "name": "aibtcdev",
  "as_of": "2026-11-01",
+ "stage": {
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ "triage": {
+  "rank": 24,
+  "screen_score": 0.041232231520419736,
+  "note": "triage signal only, not evidence (near chance on never-raised protocols)"
+ },
  "memo": {
   "company": "aibtcdev",
-  "one_liner": "Open-source tooling that gives AI agents Bitcoin/Stacks wallets and payment capabilities, now centered on a Bitcoin-native MCP server for agents (BTC/STX wallets, DeFi yield, sBTC peg, NFTs, x402 payments), aimed at developers building agents.",
-  "thesis_fit": "Direct fit with AI agents x payments: the current flagship repo targets agent wallets and x402 payments on Bitcoin/Stacks via MCP. Evidence of paying users or transacting volume is absent from the sources, so fit is on narrative and shipping, not demonstrated demand.",
+  "one_liner": "AIBTC runs an agent network on Bitcoin/Stacks where operators register AI agents with wallets, identity and paid x402 messaging to earn BTC rewards, plus an MCP server giving agents BTC/STX wallets, DeFi, and x402 payments.",
+  "thesis_fit": "Direct fit with AI agents x payments: agents hold Bitcoin wallets and pay each other via x402 (100 sats per message). However, the evidence shows registrations rather than paying usage, and x402 market data shows no facilitator attributable to AIBTC.",
   "claims": [
    {
     "id": "c1",
-    "section": "narrative",
-    "text": "The aibtc-mcp-server repo describes itself as a Bitcoin-native MCP server for AI agents covering BTC/STX wallets, DeFi yield, sBTC peg, NFTs, and x402 payments.",
-    "doc_id": "d_b8ac0b5cfb3102a8",
-    "quote": "Bitcoin-native MCP server for AI agents: BTC/STX wallets, DeFi yield, sBTC peg, NFTs, and x402 payments.",
+    "section": "pmf",
+    "text": "AIBTC's website reports 1,361 registered agents on its network.",
+    "doc_id": "d_76ba5cffbf5b0186",
+    "quote": "1,361",
     "metric": null,
-    "value": null
+    "value": null,
+    "support": "partial",
+    "support_note": "The quote supplies the number but does not identify it as registered agents and falls below the required minimum quote length."
    },
    {
     "id": "c2",
-    "section": "execution",
-    "text": "The MCP server repo was created 2026-01-09 and last pushed 2026-11-01, one day before the fetch date.",
-    "doc_id": "d_b8ac0b5cfb3102a8",
-    "quote": "Created: 2026-01-09. Last push: 2026-11-01.",
+    "section": "pmf",
+    "text": "Agents can send paid messages to any other agent for 100 sats via x402, but no payment volume or transaction counts are given in the sources.",
+    "doc_id": "d_76ba5cffbf5b0186",
+    "quote": "Send messages to any agent for 100 sats via x402",
     "metric": null,
-    "value": null
+    "value": null,
+    "support": "partial",
+    "support_note": "The quote supports the messaging capability and price but cannot establish that payment volume and transaction counts are absent from all sources."
    },
    {
     "id": "c3",
-    "section": "execution",
-    "text": "Commits on default branches of the top 5 repos reached 102 in the last 90 days.",
-    "doc_id": null,
-    "quote": null,
-    "metric": "gh.commits_90d",
-    "value": 102.0
+    "section": "team",
+    "text": "whoabuddy is the top contributor to the legacy ai-agent-crew repo, with 262 commits.",
+    "doc_id": "d_ce78c495614d3efb",
+    "quote": "whoabuddy (User): 262 commits",
+    "metric": null,
+    "value": null,
+    "support": "partial",
+    "support_note": "The quote supports the contributor's identity and commit count but does not establish contributor ranking, repository identity or legacy status."
    },
    {
     "id": "c4",
-    "section": "execution",
-    "text": "The previous quarter had 91 commits on default branches of the owner's top repos.",
-    "doc_id": null,
-    "quote": null,
-    "metric": "gh.commits_prev_90d",
-    "value": 91.0
+    "section": "team",
+    "text": "human058382928 is the second-listed contributor to ai-agent-crew, with 30 commits.",
+    "doc_id": "d_ce78c495614d3efb",
+    "quote": "human058382928 (User): 30 commits",
+    "metric": null,
+    "value": null,
+    "support": "partial",
+    "support_note": "The quote supports the contributor's identity and commit count but does not establish listing position or repository identity."
    },
    {
     "id": "c5",
     "section": "execution",
-    "text": "The org has 4473 total commits on those branches, showing a long working history.",
+    "text": "Commits across the owner's top repos totaled 102 in the latest window, which indicates ongoing shipping.",
     "doc_id": null,
     "quote": null,
-    "metric": "gh.commits_total",
-    "value": 4473.0
+    "metric": "gh.commits_90d",
+    "value": 102.0,
+    "support": "partial",
+    "support_note": "The metric supports the commit count within its defined repository scope, while interpreting commits as shipping requires additional evidence."
    },
    {
     "id": "c6",
-    "section": "pmf",
-    "text": "The aibtc-mcp-server repo has 49 forks, more than its 12 stars, which suggests developers are copying or building on it.",
+    "section": "execution",
+    "text": "The aibtc-mcp-server repo was created 2026-01-09 and last pushed 2026-11-01, indicating active recent work on the x402-capable product.",
     "doc_id": "d_b8ac0b5cfb3102a8",
-    "quote": "Stars: 12. Forks: 49. Language: TypeScript.",
+    "quote": "Created: 2026-01-09. Last push: 2026-11-01.",
     "metric": null,
-    "value": null
+    "value": null,
+    "support": "partial",
+    "support_note": "The quote supports the dates but does not identify the repository, establish x402 capability or demonstrate substantive product work."
    },
    {
     "id": "c7",
     "section": "pmf",
-    "text": "Total stars across the org's repos are 120, a small audience.",
-    "doc_id": null,
-    "quote": null,
-    "metric": "gh.stars_total_now",
-    "value": 120.0
+    "text": "The aibtc-mcp-server has 49 forks against 12 stars, a fork-heavy ratio that suggests developer experimentation (or copying for agent setups) rather than broad interest.",
+    "doc_id": "d_b8ac0b5cfb3102a8",
+    "quote": "Stars: 12. Forks: 49. Language: TypeScript.",
+    "metric": null,
+    "value": null,
+    "support": "partial",
+    "support_note": "The quote supports the star and fork counts but does not identify the repository or establish why developers forked it or how broad interest is."
    },
    {
     "id": "c8",
-    "section": "execution",
-    "text": "The earlier ai-agent-crew repo is deprecated in favor of a Next.js front-end and a CrewAI Python back-end, showing the team has pivoted product direction at least once.",
+    "section": "risk",
+    "text": "The original ai-agent-crew product is deprecated in favor of a new frontend and backend, so the company has pivoted at least once.",
     "doc_id": "d_4198603fbe742f78",
     "quote": "This repo is now deprecated in favor of:",
     "metric": null,
-    "value": null
+    "value": null,
+    "support": "partial",
+    "support_note": "The quote establishes repository deprecation but neither identifies its replacements nor demonstrates a company pivot."
    },
    {
     "id": "c9",
-    "section": "risk",
-    "text": "The original crew product was labeled an early experiment where agents act automatically and run at the user's own risk.",
-    "doc_id": "d_4198603fbe742f78",
-    "quote": "This is an early experiment, agents do automatic things, here be dragons, run at your own risk.",
+    "section": "competition",
+    "text": "The x402 facilitator market is concentrated: Coinbase handles 69.7% of payments, and AIBTC does not appear among the listed facilitators.",
+    "doc_id": "d_d654ae3bd333bd8e",
+    "quote": "coinbase: 2,610,865 payments (69.7% of payments)",
     "metric": null,
-    "value": null
+    "value": null,
+    "support": "partial",
+    "support_note": "The quote supports Coinbase's payment share but cannot establish AIBTC's absence from the facilitator list or concentration across the remaining market."
    },
    {
     "id": "c10",
-    "section": "market",
-    "text": "The org maintains 40 public non-fork repositories, a broad surface for a pre-seed team.",
-    "doc_id": null,
-    "quote": null,
-    "metric": "gh.public_repos",
-    "value": 40.0
+    "section": "why_now",
+    "text": "The MCP server targets Claude Code and x402 payments, positioning around agents with their own wallets paying for services on Bitcoin.",
+    "doc_id": "d_b8ac0b5cfb3102a8",
+    "quote": "Bitcoin-native MCP server for AI agents: BTC/STX wallets, DeFi yield, sBTC peg, NFTs, and x402 payments.",
+    "metric": null,
+    "value": null,
+    "support": "partial",
+    "support_note": "The quote supports Bitcoin-native agent wallets and x402 payments but does not mention Claude Code or demonstrate agents paying for services."
    },
    {
     "id": "c11",
-    "section": "market",
-    "text": "The original ai-agent-crew repo had 47 stars and 17 forks.",
-    "doc_id": "d_b8ac0b5cfb3102a8",
-    "quote": "Stars: 47. Forks: 17. Language: Python.",
-    "metric": null,
-    "value": null
+    "section": "risk",
+    "text": "There is no outside attention signal on Hacker News: 0 stories mention the company name in the title.",
+    "doc_id": null,
+    "quote": null,
+    "metric": "hn.stories",
+    "value": 0.0,
+    "support": "partial",
+    "support_note": "The metric establishes no matching title stories within the dataset but does not rule out other Hacker News attention."
    },
    {
     "id": "c12",
-    "section": "narrative",
-    "text": "The org ranks 24th among sourced candidates on a GitHub-only screening model.",
+    "section": "execution",
+    "text": "The owner has 4473 total commits across its top repos, which shows long-running sustained output.",
     "doc_id": null,
     "quote": null,
-    "metric": "screen.rank",
-    "value": 24.0
+    "metric": "gh.commits_total",
+    "value": 4473.0,
+    "support": "partial",
+    "support_note": "The metric supports the cumulative commit count within its defined scope but does not establish sustained output over time."
    }
   ],
-  "scores": {
-   "pmf": {
-    "score": 3,
-    "rationale": "Developer adoption signals exist, notably 49 forks on the MCP server [c6], but total stars are small [c7] and nothing in the sources shows payments, transacting agents, or paying customers. That matches the rubric's 3 band at most."
-   },
-   "narrative": {
-    "score": 4,
-    "rationale": "The story is timely and specific: an MCP server giving agents Bitcoin wallets and x402 payments [c1]. It is held back from 5 by the earlier product pivot [c8], a broad feature list (DeFi, NFTs, sBTC) rather than a single wedge [c1], and no stated competitive edge."
-   },
-   "execution": {
-    "score": 4,
-    "rationale": "Shipping is recent and rising [c2][c3][c4], with a deep commit history [c5]. The sources don't show how many people contribute, and the team has already deprecated one product [c8], so I stop short of 5."
-   }
-  },
-  "risks": [
-   "No evidence of paid or transacting usage: the sources show forks and commits but no agent payment volume, customers or revenue.",
-   "Narrow ecosystem dependence: the product is built around Bitcoin/Stacks, so growth depends on that ecosystem's agent and x402 adoption, which the sources do not evidence.",
-   "Focus risk: 40 public repos, a prior deprecated product, and a wide feature list (wallets, DeFi, NFTs, sBTC, x402) suggest scope sprawl for a small team.",
-   "Commodity risk: wallet and payment MCP servers can be replicated by larger agent-infra and wallet providers, and the sources name no competitors or moat."
-  ],
-  "open_questions": [
-   "Who actually uses the MCP server, and how many agents or wallets transact through it per week? Is there any x402 payment volume?",
-   "How is the 49-fork count distributed: real integrations, hackathon copies, or internal use?",
-   "What is the business model (token, hosted service, fees, grants), and how does the company capture value from open-source tooling?",
-   "How many people contribute to the 102 recent commits, and who are the core maintainers?",
-   "Why was the earlier CrewAI product deprecated, and what did the team learn that shaped the MCP server?",
-   "Which competitors (EVM-based x402 stacks, other wallet MCPs) do customers compare against, and why choose a Bitcoin-native option?"
-  ],
-  "recommendation": "advance"
- },
- "unverified": [],
- "critique": {
   "scores": {
    "pmf": {
     "score": 2,
-    "rationale": "The fork count is a preliminary interest signal [c6], but the sources do not establish independent users, working integrations, outside contributors, or payment activity. I would not award the rubric's developer-adoption band without validating who forked the repository and what they use."
+    "rationale": "Only weak evidence of outside interest: 1,361 registered agents [c1] and 49 forks against 12 stars [c7]. Both claims are only partially supported, and registrations may be incentive-driven. The paid-message feature via x402 is described, but the sources give no payment volume, transaction counts or paying customers [c2], and no x402 usd_per_tx figure is available. There is no proof of transacting usage, so this stays below 3."
    },
    "narrative": {
-    "score": 3,
-    "rationale": "The repository description clearly connects agent wallets and payments to the thesis [c1; d_b8ac0b5cfb3102a8]. However, a feature list does not establish a compelling initial customer problem, differentiated wedge, or credible platform expansion; repository replacement also does not establish a product pivot [c8]."
+    "score": 4,
+    "rationale": "The story is clear and timely: agents with their own Bitcoin wallets that pay and get paid via x402, delivered through MCP tooling for Claude Code [c2][c10]. A path from wallet tooling to an agent network is plausible. Held back by a pivot history [c8], the niche Bitcoin/Stacks ecosystem, Coinbase's 69.7% share of x402 facilitator payments with AIBTC not listed [c9], and no outside attention on Hacker News [c11]. Both [c9] and [c10] are partially supported, so 4 is held with less confidence."
    },
    "execution": {
     "score": 3,
-    "rationale": "Recent repository activity and consecutive periods of commits support continued development [c2-c4]. Aggregate commit counts do not establish meaningful releases, production reliability, multiple maintainers, or responsiveness to standards changes, and historical commit volume alone does not resolve those gaps [c5]."
+    "rationale": "Commit activity is ongoing, with 102 commits in the latest window [c5], a recent push on the MCP server [c6], and 4473 cumulative commits across top repos [c12]. Contributor evidence is concentrated: whoabuddy has 262 commits on the legacy repo against 30 for the second contributor [c3][c4]. Contributor data for the current repos is missing, so the team size behind recent shipping is unclear. Claims are partial, so 3 is a ceiling rather than a floor."
    }
   },
+  "risks": [
+   "No evidence of real paid usage: registered agents are a vanity metric if the 100-sat messages and rewards are mostly self-funded or incentive-driven.",
+   "Key-person risk: a single contributor accounts for the large majority of commits on the legacy repo, and the current team is not documented.",
+   "Pivot history (CrewAI Streamlit app to frontend/backend to agent network/MCP) suggests the focus may shift again.",
+   "Ecosystem risk: x402 volume is concentrated in Coinbase and other EVM/Solana-centric facilitators, while AIBTC bets on Bitcoin/Stacks, a small base of agent developers and services."
+  ],
+  "open_questions": [
+   "How many x402 payments settle on the AIBTC network per week, at what average value, and what share is between agents not controlled by the team?",
+   "How much of the 1,361 registrations are active (heartbeat, transactions) and how many are driven by BTC reward incentives?",
+   "Who funds the BTC rewards and bounties, and what is the long-term revenue model (fees, sponsor relay, services)?",
+   "Who is on the full-time team now, and what is the legal and funding structure (stage and prior raises are unknown)?",
+   "Why Bitcoin/Stacks rather than building on EVM/Solana where x402 volume is concentrated, and does AIBTC plan to run a facilitator?"
+  ],
   "recommendation": "watch",
-  "unsupported_claims": [
+  "rescore_note": "Scores are unchanged from the first draft: PMF 2, Narrative 4, Execution 3, total 9. All 12 remaining claims are partially supported, so I treated them as weak evidence and added caveats to the rationales. Narrative confidence is lower and Execution is capped at 3 because current-repo contributors are unknown. The recommendation stays watch: the total is below 11 and PMF is below 3, so advance is ruled out. Pass is not warranted given the clear, timely narrative and active shipping. Re-check when payment volume or transaction data appears.",
+  "draft_scores": {
+   "pmf": {
+    "score": 2,
+    "rationale": "1,361 registered agents [c1] and 49 forks [c7] show developer and operator interest, but there is no evidence of payment volume, paying customers or transactions [c2]; registrations may also be incentive-driven by BTC rewards. No x402 usd_per_tx figure is available, so organic traffic cannot be assessed."
+   },
+   "narrative": {
+    "score": 4,
+    "rationale": "Clear and timely story: agents with Bitcoin wallets that get paid and pay via x402 [c2][c10], with a plausible platform path from wallet and MCP tooling to a network with identity and reputation. Held back by a pivot history [c8], a niche Bitcoin/Stacks ecosystem, and a market dominated by Coinbase [c9]."
+   },
+   "execution": {
+    "score": 3,
+    "rationale": "Steady and slightly rising commit velocity [c5], active recent pushes [c6], and long-run output [c12]. But the visible contributor base is concentrated in one person on the legacy repo [c3][c4], and current-repo contributor data is missing."
+   }
+  },
+  "draft_recommendation": "watch",
+  "recommendation_before_committee": "watch"
+ },
+ "unverified": [],
+ "withheld_by_critic": [],
+ "critique": {
+  "claim_labels": [
+   {
+    "claim_id": "c1",
+    "label": "partial",
+    "reason": "The quote supplies the number but does not identify it as registered agents and falls below the required minimum quote length."
+   },
+   {
+    "claim_id": "c2",
+    "label": "partial",
+    "reason": "The quote supports the messaging capability and price but cannot establish that payment volume and transaction counts are absent from all sources."
+   },
+   {
+    "claim_id": "c3",
+    "label": "partial",
+    "reason": "The quote supports the contributor's identity and commit count but does not establish contributor ranking, repository identity or legacy status."
+   },
+   {
+    "claim_id": "c4",
+    "label": "partial",
+    "reason": "The quote supports the contributor's identity and commit count but does not establish listing position or repository identity."
+   },
+   {
+    "claim_id": "c5",
+    "label": "partial",
+    "reason": "The metric supports the commit count within its defined repository scope, while interpreting commits as shipping requires additional evidence."
+   },
    {
     "claim_id": "c6",
-    "reason": "The quote supports the fork and star counts, but not the inference that independent developers are building on the software. Fork ownership, activity, and integration evidence are unknown."
+    "label": "partial",
+    "reason": "The quote supports the dates but does not identify the repository, establish x402 capability or demonstrate substantive product work."
+   },
+   {
+    "claim_id": "c7",
+    "label": "partial",
+    "reason": "The quote supports the star and fork counts but does not identify the repository or establish why developers forked it or how broad interest is."
    },
    {
     "claim_id": "c8",
-    "reason": "The quoted span establishes deprecation only; it does not identify the replacement architectures. The surrounding source supplies those architectures, but replacing a repository with separate frontend and backend repositories does not establish a change in product direction."
+    "label": "partial",
+    "reason": "The quote establishes repository deprecation but neither identifies its replacements nor demonstrates a company pivot."
+   },
+   {
+    "claim_id": "c9",
+    "label": "partial",
+    "reason": "The quote supports Coinbase's payment share but cannot establish AIBTC's absence from the facilitator list or concentration across the remaining market."
    },
    {
     "claim_id": "c10",
-    "reason": "The metric establishes the number of public non-fork repositories, not that they are actively maintained. The characterization as a pre-seed team is also unverified."
+    "label": "partial",
+    "reason": "The quote supports Bitcoin-native agent wallets and x402 payments but does not mention Claude Code or demonstrate agents paying for services."
+   },
+   {
+    "claim_id": "c11",
+    "label": "partial",
+    "reason": "The metric establishes no matching title stories within the dataset but does not rule out other Hacker News attention."
+   },
+   {
+    "claim_id": "c12",
+    "label": "partial",
+    "reason": "The metric supports the cumulative commit count within its defined scope but does not establish sustained output over time."
    }
   ],
+  "scores": {
+   "pmf": {
+    "score": 3,
+    "rationale": "The fork count supported by c7 provides a developer adoption signal, while c2 establishes a paid capability rather than actual payment activity; independent users, retention and willingness to pay remain unverified."
+   },
+   "narrative": {
+    "score": 3,
+    "rationale": "The supported portions of c2 and c10 give a concrete agent-wallet and paid-messaging wedge, but do not establish differentiated demand or a credible path to a defensible platform."
+   },
+   "execution": {
+    "score": 3,
+    "rationale": "The commit activity in c5 and recent push date in c6 support ongoing development, and c3-c4 establish historical contributor activity, but current multi-person shipping and responsiveness to standards changes are unverified."
+   }
+  },
+  "recommendation": "watch",
   "missing_risks": [
-   "Custody and transaction-authorization risk: require evidence of key isolation, spending limits, approval controls, and recovery procedures before treating agent wallet capabilities as production-ready.",
-   "Security assurance is unknown: request audits, transaction-failure handling, and defenses against prompt injection or malicious tool instructions.",
-   "Evidence continuity risk: the detailed README concerns a deprecated repository, while the MCP server is represented only by profile metadata; current functionality and operational maturity remain unverified.",
-   "Maintainer concentration and project ownership are unknown; establish contributor independence, succession coverage, and which legal entity controls the code and any commercial offering.",
-   "Screening-selection risk: a GitHub-only rank should not substitute for independent evidence of customer demand or investment quality [c12]."
+   "Registered agents may include team-operated, duplicate or inactive accounts; independent operator counts and retention are unknown.",
+   "Rewards may attract subsidized activity rather than durable demand; reward funding and unsubsidized usage are unknown.",
+   "Revenue, repeat paying users, payment volume and unit economics are unknown.",
+   "Autonomous wallet security, key recovery and controls on unintended transactions are unverified.",
+   "Current contributor concentration, maintainer continuity and release quality are unknown.",
+   "The investable entity, ownership of the network and mechanism for capturing economic value are unclear.",
+   "Dependence on Bitcoin and Stacks infrastructure, interoperability and differentiation from alternative agent payment tools are untested.",
+   "Facilitator market share may be a poor competitive comparison for an agent network that uses payment infrastructure."
   ],
-  "strongest_counterargument": "Against advancing, the memo treats unvalidated forks and aggregate commit activity as stronger evidence of adoption and shipping quality than the supplied sources establish [c3-c6]. I recommend watch until independent integrations, meaningful releases, and safe transaction execution can be verified."
+  "strongest_counterargument": "The evidence establishes developer activity and payment functionality, but does not establish independent customers repeatedly paying for useful work. A founder call may be premature until retained usage, unsubsidized transactions and a clear business model distinguish this network from a rewards-driven developer experiment."
  },
- "disagreements": [
-  "recommendation: drafter 'advance' vs critic 'watch'",
-  "critic flags 3 claim(s) as unsupported by their quote"
- ],
  "doc_ids": [
   "d_4198603fbe742f78",
-  "d_b8ac0b5cfb3102a8"
+  "d_76ba5cffbf5b0186",
+  "d_b8ac0b5cfb3102a8",
+  "d_ce78c495614d3efb",
+  "d_d654ae3bd333bd8e"
  ],
  "facts": {
   "gh.commits_90d": 102,
@@ -201,22 +307,31 @@
   "gh.public_repos": 40,
   "gh.stars_total_now": 120,
   "gh.first_repo_year": 2024,
-  "screen.score": 0.0412,
-  "screen.rank": 24,
-  "screen.n_candidates": 1398,
   "hn.stories": 0,
   "hn.points_total": 0
  },
  "receipts": {
   "claims_drafted": 12,
-  "raw_precision": 0.75,
-  "post_repair_precision": 1.0,
+  "raw_precision": 0.5,
+  "verified": 12,
+  "withheld_by_verifier": 0,
+  "dropped_in_repair": 0,
+  "critic_labels": {
+   "entails": 0,
+   "partial": 12,
+   "contradicts": 0,
+   "unsupported": 0,
+   "unlabelled": 0
+  },
+  "critic_entailed_share": 0.0,
   "shipped": 12,
-  "withheld": 0,
-  "dropped_in_repair": 0
+  "shipped_partial": 12,
+  "withheld_by_critic": 0
  },
  "models": {
   "drafter": "claude_cli:claude-sonnet-5-5",
   "critic": "codex_cli:gpt-6.1-sol"
- }
+ },
+ "committee_rank": 3,
+ "disagreements": []
 }

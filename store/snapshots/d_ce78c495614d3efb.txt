@@ -1,0 +1,6 @@
+Top contributors to github.com/aibtcdev/ai-agent-crew (GitHub API, fetched 2026-11-02):
+whoabuddy (User): 262 commits
+human058382928 (User): 30 commits
+biwasxyz (User): 11 commits
+Hasnain01-hub (User): 8 commits
+markeljan (User): 2 commits

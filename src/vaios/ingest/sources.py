@@ -114,3 +114,43 @@ def pull_yc() -> None:
     data = get_json(url, timeout=120)
     path = write_json(RAW / "yc" / "companies.json", data, compress=True)
     record("yc_directory", url, path, len(data))
+
+
+# ---------- token launches in the x402 ecosystem (crypto-native catalysts for the event list) ----------
+GT = "https://api.geckoterminal.com/api/v2"
+GT_NETWORKS = {"base": "base", "solana": "solana", "binance-smart-chain": "bsc", "ethereum": "eth"}
+
+
+def pull_token_launches() -> None:
+    """CoinGecko 'x402 Ecosystem' tokens -> contract addresses -> GeckoTerminal earliest DEX pool creation date."""
+    out = RAW / "token_launches"
+    out.mkdir(parents=True, exist_ok=True)
+    markets = json.loads((RAW / "coingecko" / "markets_x402-ecosystem.json").read_text())
+    for m in markets:
+        path = out / f"{m['id']}.json"
+        if path.exists():
+            continue
+        url = f"{CG}/coins/{m['id']}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false"
+        try:
+            coin = get_json(url)
+        except RuntimeError as e:
+            print(f"  skip {m['id']}: {e}")
+            continue
+        time.sleep(2.5)
+        pools = []
+        for platform, addr in (coin.get("platforms") or {}).items():
+            net = GT_NETWORKS.get(platform)
+            if not net or not addr:
+                continue
+            gurl = f"{GT}/networks/{net}/tokens/{addr}/pools?page=1"
+            try:
+                data = get_json(gurl)
+            except RuntimeError:
+                continue
+            time.sleep(2.2)  # GeckoTerminal public limit is ~30 calls/min
+            pools += [{"network": net, "pool": p["id"], "pool_created_at": p["attributes"].get("pool_created_at"),
+                       "name": p["attributes"].get("name"), "source": gurl} for p in data.get("data", [])]
+        rec = {"id": m["id"], "symbol": m["symbol"], "name": m["name"], "genesis_date": coin.get("genesis_date"),
+               "platforms": coin.get("platforms"), "pools": pools, "coingecko_url": url}
+        write_json(path, rec)
+        record("geckoterminal", f"{GT}/networks/*/tokens/*/pools ({m['id']})", path, len(pools))

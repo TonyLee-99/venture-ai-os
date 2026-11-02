@@ -1,81 +1,83 @@
 # agoragentic: baseline diligence memo (AI first pass, not a decision)
 
-**Agoragentic sells Triptych OS (Agent OS), a governance and evidence layer for deployed AI agents (policy, approvals, budgets, receipts), with open-source local controls for existing frameworks plus an optional hosted Router/Marketplace and Interchange for agent commerce.**
+| Stage | Last known round | Token | YC batch | Triage rank |
+|---|---|---|---|---|
+| unknown (no funding evidence found) | unknown | none found | none | 16 (triage only, not evidence) |
 
-Thesis fit: Adjacent to AI agents x payments: the receipts, mandates and budgets layer is relevant to agent commerce, and the repo is tagged x402/USDC. But the stated core is governance, and paid purchasing is currently frozen, so the payments wedge is not live.
+**Agoragentic sells Triptych OS (Agent OS), a governed runtime with mandates, wallet budgets, approvals and receipts for deployed autonomous agents, plus a Router/Marketplace for agents to buy and sell work (optionally via x402), to developers and platform teams with existing agents.**
 
-Recommendation (drafter, claude_cli:claude-sonnet-5-5): **watch**  
-Critic (codex_cli:gpt-6.1-sol): **watch**  
-Receipts: 14 claims shipped, 0 withheld by the verifier (raw citation precision 0.86, after repair 1.00)
+Thesis fit: Adjacent fit: the agent commerce marketplace with x402 and USDC on Base is on-thesis, but the current pitch leads with governance and control, and paid purchasing is currently frozen, so there is no evidence of agents paying for services yet.
 
-| Dimension | Drafter | Critic |
-|---|---|---|
-| PMF | 2 | 2 |
-| NARRATIVE | 3 | 3 |
-| EXECUTION | 4 | 3 |
+Recommendation after critique and committee: **watch** (first draft: watch; critic: pass)  
+Receipts: 13 claims drafted, 62% passed the verifier on the first pass, 13 verified after one repair; the critic labelled 4 as entailed, 9 as partial (tagged below) and withheld 0.
 
-## Market
-- The product is positioned as a control-and-proof layer for autonomous agents, not an orchestration framework requiring a rewrite. [^c1]
-- The marketplace has 79 public live services browse-visible in the curated catalog. [^c6]
+| Dimension | Drafter (final) | Drafter (first draft) | Critic |
+|---|---|---|---|
+| PMF | 2 | 2 | 3 |
+| NARRATIVE | 3 | 3 | 3 |
+| EXECUTION | 3 | 4 | 4 |
+
+## Team
+- The founder is Jeremy Borden, and the about page names no other team members. [^c1] _(partial support: The quote names Jeremy Borden but establishes neither his founder role nor the absence of other team members.)_
+- In the main integrations repo, the account rhein1 has 967 commits, the largest share of contributions. [^c2] _(partial support: The quote supports rhein1's commit count but does not establish its rank relative to other contributors.)_
+
+## Why Now
+- The product supports MCP, A2A, x402 and REST, positioned for agents that transact autonomously. [^c11] _(partial support: The quote supports the listed connection protocols but does not establish the autonomous-transaction positioning.)_
+
+## Competition
+- The x402 facilitator market is concentrated: Coinbase holds 69.7% of payments, and Agoragentic does not appear among the listed facilitators. [^c10] _(partial support: The quote supports Coinbase's payment share but cannot establish Agoragentic's absence from the facilitator list.)_
 
 ## PMF
-- The largest featured listing, Agent Echo, is priced free per call and has 1,094 successful calls. [^c3]
-- Only one featured listing shows a non-zero price (Text Summarizer, 0.01 USDC per call, 55 successful calls), so paid usage evidence is thin. [^c4]
-
-## Narrative
-- The company describes Agent OS as a runtime with mandates, budgets, approvals and stop controls, which ties to agent spending authority. [^c2]
-- The company separates the hosted Router/Marketplace and Interchange from the governed runtime, giving a stated path from local governance to commerce. [^c13]
+- Developer adoption is modest: 41 stars and 10 forks on the integrations repo. [^c6]
+- The site reports 1,463 successful public listing calls across browse-visible listings. [^c7] _(partial support: The quoted numeral matches the claimed count but is below the minimum quote length and does not identify what was counted.)_
+- Paid purchasing is currently unavailable on the platform because the custody policy is frozen. [^c8]
+- The marketplace catalog is small: 79 public live services are browse-visible. [^c9] _(partial support: The quoted numeral matches the claimed count but is below the minimum quote length and does not establish that it measures browse-visible services.)_
 
 ## Execution
-- Commits on the owner's top repos totaled 766 in the last 90 days before 2026-11-01. [^c7]
-- The prior-90-day commit count was 279, so recent activity is roughly 2.7x higher. [^c8]
-- The integrations repo has 41 stars and 10 forks, which is modest outside interest. [^c9]
-- Live in-path enforcement exists only for Claude Code (a PreToolUse hook); OpenCode is experimental and other frameworks are mapping examples only. [^c10]
-- The integration catalog lists 112 surfaces, but the README warns a catalog entry does not imply live enforcement or payment readiness. [^c11]
+- The owner's top repos had 766 commits on default branches in the 90 days before 2026-11-01. [^c3]
+- The GitHub organization was created on 2026-10-23 and has 2 public non-fork repos. [^c4]
+- The integrations manifest lists 112 surfaces, and the README states that a catalog entry does not imply live enforcement or payment readiness. [^c5] _(partial support: The quote supports the manifest's surface count but contains no qualification concerning live enforcement or payment readiness.)_
 
 ## Risk
-- Paid purchasing is currently unavailable because the platform custody policy is frozen. [^c5]
-- The GitHub organization was created on 2026-10-23, with only 2 public non-fork repositories. [^c12]
-- The company has no Hacker News presence (0 stories), so there is no external community validation from that channel. [^c14]
+- Positioning is broad and shifting across several layers: a governance harness, Agent OS runtime, Router/Marketplace and Interchange. The README says live enforcement is available only for hosts like Claude Code, with others at mapping-example level. [^c12] _(partial support: The receipt supports the distinction between example support and in-path enforcement but establishes neither positioning changes nor host-specific enforcement availability.)_
+- There is no external validation on Hacker News: 0 stories carry the company name in the title. [^c13] _(partial support: The metric establishes the absence of company-name title matches, not the absence of all external validation on Hacker News.)_
 
-## Scores
+## Scores (final, after the support review)
 
-- **PMF 2/5**: There is some outside developer interest (41 stars, 10 forks [c9]) and 1,463 marketplace calls [c3], but most of the volume is a free listing, paid evidence is thin [c4], and paid purchasing is frozen [c5]. No customer or revenue proof.
-- **NARRATIVE 3/5**: The governance, receipts and mandates framing is timely for agent spending [c2] and has a stated path to commerce [c13]. But the story is broad: many product layers, a 112-surface catalog [c11], and a frozen payments leg [c5] dilute the wedge.
-- **EXECUTION 4/5**: Commit velocity is strong and accelerating [c7][c8], with SDKs, a hook for Claude Code and a large catalog. Held back by enforcement being real for only one host [c10], an unclear team size, and commit counts that may include automated or generated work.
+- **PMF 2/5**: Developer interest is modest (41 stars, 10 forks [c6]). The 1,463 public listing calls are partial evidence and are mostly free browse-visible usage [c7], with only 79 live services [c9]. Paid purchasing is frozen [c8], so there is no evidence of payments or outside paying customers. Hacker News shows no external validation [c13].
+- **NARRATIVE 3/5**: Governance, receipts and budgets for agents handling money is timely, and the product spans MCP, A2A, x402 and REST [c11]. But positioning is spread across several layers (harness, Agent OS, Router/Marketplace, Interchange), and live enforcement exists only for hosts like Claude Code [c12]. The x402 market is concentrated and Agoragentic is not a listed facilitator [c10]. There is no crisp wedge.
+- **EXECUTION 3/5**: Commit volume is high (766 in 90 days [c3]) and the integration surface is broad (112 manifest entries [c5]). However, this is a one-primary-committer project (967 commits from rhein1 [c2]) with a single named founder [c1]. The org was created only on 2026-10-23 [c4], so the 90-day commit figure likely includes work from before the org existed or from personal repos. The README states a catalog entry does not imply live enforcement or payment readiness [c5], so breadth overstates shipped capability. With partial support on several of these claims, I lower execution from 4 to 3.
+
+Re-score note: Execution lowered from 4 to 3: the velocity evidence is strong on volume [c3], but the team claims are only partial [c1, c2], it rests on a single maintainer, the org is very new [c4], and the README caveats that catalog breadth does not imply live capability [c5]. PMF stays at 2 and Narrative at 3. Total is 8, below the 11 threshold, and PMF is below 3, so advance is not allowed. Watch remains right rather than pass because there is real shipping activity and a timely governance theme. Re-check once paid purchasing is unfrozen and outside payment evidence exists.
 
 ## Risks
 
-- Payments leg is frozen: paid purchasing is unavailable under a platform custody freeze, so the agent-commerce thesis is unproven in production [c5].
-- Marketplace traffic is dominated by a free listing (Agent Echo), so the usage numbers may reflect self-generated or test traffic rather than real buyers [c3][c4].
-- Scope sprawl: Agent OS, Router, Interchange, Harness, ECF, Risk Fork and 112 catalog surfaces for what looks like a small team; the README itself repeatedly disclaims enforcement and readiness [c10][c11].
-- Governance layers are likely to be absorbed by agent framework vendors and platform hosts, and real enforcement exists for only one host today [c10].
-- Very young public footprint (org created 2026-10-23) and no external press or community signals [c12][c14]; the high commit count may include bulk or generated commits.
+- Traffic is likely inorganic or self-generated: top listings are free, and there is no paid transaction evidence while paid purchasing is frozen.
+- Key-person dependency: one account made nearly all commits and one named founder, with no visible team.
+- Scope sprawl across governance harness, runtime, marketplace and interchange, with enforcement limited to a few hosts, may dilute focus and delay a clear wedge.
+- Weak position in x402 flows: Agoragentic is absent from the facilitator market-share data, and Coinbase dominates payment volume.
 
 ## Questions for the founder call
 
-- Who is on the team, and who authors the commits? How much of the 766 recent commits is human versus agent-generated?
-- Why is the custody policy frozen, what is the timeline to unfreeze paid purchasing, and is the custody model non-custodial in the future?
-- How much of the 1,463 marketplace calls come from outside buyers versus the team's own tests? Is there any revenue or paying customer today?
-- Which design partners or teams run Harness Core or Agent OS in production, and which host integrations do they use?
-- Is the wedge governance for coding agents, or agent commerce via x402/USDC? Which one is the first product to focus on?
-- What is the funding history, and what does the org created in 2026-10-23 mean for earlier repos or prior entities (the repo itself dates from 2026-02-27)?
+- Why is paid purchasing frozen under the custody policy, what is the timeline to unfreeze, and what changes?
+- Who are the real users of the marketplace and Agent OS outside the team, and how much of the 1,463 calls came from non-team accounts?
+- What is the relationship between rhein1 and Jeremy Borden, and who else works on the company full time?
+- Which single wedge do you lead with: governance for existing agents, or the agent commerce marketplace, and how do you monetize it (the 97% seller share)?
+- What is the actual paid volume in USDC or x402 to date, and is it routed through any facilitator?
+- What is the funding history and runway, given no round has been found?
 
 ## Receipts
 
-[^c1]: "Agoragentic is not another orchestration framework that requires a rewrite." (github_readme, https://github.com/Agoragentic/agoragentic-integrations, snapshot `d_56dbcafcb8f38ffa`, fetched 2026-11-02)
-[^c2]: "Mandates, budgets, approvals, stop controls, runtime state, receipts, and reconciliation" (github_readme, https://github.com/Agoragentic/agoragentic-integrations, snapshot `d_56dbcafcb8f38ffa`, fetched 2026-11-02)
-[^c3]: "Configured price: free (per call), verified, 1,094 successful calls." (website, https://agoragentic.com, snapshot `d_58548c9e5cdbdfd3`, fetched 2026-11-02)
-[^c4]: "Text Summarizer
-- devtools. Configured price: 0.01 USDC (per call), verified, 55 successful calls." (website, https://agoragentic.com, snapshot `d_58548c9e5cdbdfd3`, fetched 2026-11-02)
-[^c5]: "Purchasing is currently unavailable while the platform custody policy is frozen." (website, https://agoragentic.com, snapshot `d_58548c9e5cdbdfd3`, fetched 2026-11-02)
-[^c6]: "79
-public live services are browse-visible in the curated catalog." (website, https://agoragentic.com, snapshot `d_58548c9e5cdbdfd3`, fetched 2026-11-02)
-[^c7]: warehouse metric `gh.commits_90d` = 766.0 (as of 2026-11-01)
-[^c8]: warehouse metric `gh.commits_prev_90d` = 279.0 (as of 2026-11-01)
-[^c9]: "Stars: 41. Forks: 10." (github_profile, https://github.com/agoragentic, snapshot `d_5a4cd6a19a1a9d5f`, fetched 2026-11-02)
-[^c10]: "Mapping or example support is not the same as in-path enforcement." (github_readme, https://github.com/Agoragentic/agoragentic-integrations, snapshot `d_56dbcafcb8f38ffa`, fetched 2026-11-02)
-[^c11]: "contains **112** surfaces." (github_readme, https://github.com/Agoragentic/agoragentic-integrations, snapshot `d_56dbcafcb8f38ffa`, fetched 2026-11-02)
-[^c12]: "Account created: 2026-10-23. Public non-fork repositories: 2.0." (github_profile, https://github.com/agoragentic, snapshot `d_5a4cd6a19a1a9d5f`, fetched 2026-11-02)
-[^c13]: "Router / Marketplace and Agoragentic Interchange are transaction and discovery" (website, https://agoragentic.com, snapshot `d_58548c9e5cdbdfd3`, fetched 2026-11-02)
-[^c14]: warehouse metric `hn.stories` = 0.0 (as of 2026-11-01)
+[^c1]: "Jeremy Borden" (website_about, https://agoragentic.com/about, snapshot `d_25ae1a0ad41ac6ad`, fetched 2026-11-02)
+[^c2]: "rhein1 (User): 967 commits" (github_contributors, https://github.com/Agoragentic/agoragentic-integrations/graphs/contributors, snapshot `d_b7d34711deeb9013`, fetched 2026-11-02)
+[^c3]: warehouse metric `gh.commits_90d` = 766.0 (as of 2026-11-01)
+[^c4]: "Account created: 2026-10-23. Public non-fork repositories: 2.0." (github_profile, https://github.com/agoragentic, snapshot `d_5a4cd6a19a1a9d5f`, fetched 2026-11-02)
+[^c5]: "the canonical `integrations.json` manifest contains **112** surfaces" (github_readme, https://github.com/Agoragentic/agoragentic-integrations, snapshot `d_56dbcafcb8f38ffa`, fetched 2026-11-02)
+[^c6]: "Stars: 41. Forks: 10." (github_profile, https://github.com/agoragentic, snapshot `d_5a4cd6a19a1a9d5f`, fetched 2026-11-02)
+[^c7]: "1,463" (website, https://agoragentic.com, snapshot `d_58548c9e5cdbdfd3`, fetched 2026-11-02)
+[^c8]: "Purchasing is currently unavailable while the platform custody policy is frozen." (website, https://agoragentic.com, snapshot `d_58548c9e5cdbdfd3`, fetched 2026-11-02)
+[^c9]: "79" (website, https://agoragentic.com, snapshot `d_58548c9e5cdbdfd3`, fetched 2026-11-02)
+[^c10]: "coinbase: 2,610,865 payments (69.7% of payments)" (market_structure, https://www.x402scan.com/facilitators, snapshot `d_d654ae3bd333bd8e`, fetched 2026-11-02)
+[^c11]: "Connect via MCP, A2A, x402, or direct REST API." (website_about, https://agoragentic.com/about, snapshot `d_25ae1a0ad41ac6ad`, fetched 2026-11-02)
+[^c12]: "Mapping or example support is not the same as in-path enforcement." (github_readme, https://github.com/Agoragentic/agoragentic-integrations, snapshot `d_56dbcafcb8f38ffa`, fetched 2026-11-02)
+[^c13]: warehouse metric `hn.stories` = 0.0 (as of 2026-11-01)

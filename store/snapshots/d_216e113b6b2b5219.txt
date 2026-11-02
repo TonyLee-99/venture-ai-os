@@ -1,0 +1,9 @@
+GitHub owner: devlab-group
+Source: GitHub REST/GraphQL API, fetched 2026-11-02.
+Account type: Organization. Account created: 2017-10-03. Public non-fork repositories: 15.0.
+
+Repository devlab-group/agent-commerce
+Description: Self-hosted, non-custodial gateway between the API you already run and the protocols AI agents use to discover, call and pay for it
+Stars: 69. Forks: 4. Language: TypeScript.
+Created: 2026-08-20. Last push: 2026-10-29.
+Topics: a2a,a2a-protocol,acp,agent-commerce,agent-commerce-protocol,agent-payments-protocol,agent-to-agent,ai-agents,ap2,ap2-mandates,api-gateway,eip-3009,machine-payments-protocol,mcp,micropayments,model-context-protocol,mpp,non-custodial,self-hosted,x402

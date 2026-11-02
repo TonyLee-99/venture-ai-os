@@ -27,15 +27,22 @@
    "relevant": 711,
    "relevant_investable": 372,
    "already_in_crm": 2,
+   "stage_checked": 40,
+   "stage_ineligible": [
+    "tempo",
+    "meritsystems",
+    "gokite",
+    "quiknode"
+   ],
    "shortlisted": [
     "faremeter",
-    "meritsystems",
     "agoragentic",
     "codespar",
     "vybe",
     "seracx",
     "aibtc",
-    "payai"
+    "payai",
+    "devlabgroup"
    ]
   }
  ],
@@ -43,13 +50,13 @@
   "candidates": "results/sourcing/candidates.csv",
   "shortlist": [
    "faremeter",
-   "meritsystems",
    "agoragentic",
    "codespar",
    "vybe",
    "seracx",
    "aibtc",
-   "payai"
+   "payai",
+   "devlabgroup"
   ]
  },
  "error": null,

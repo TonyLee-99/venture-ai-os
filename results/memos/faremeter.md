@@ -1,74 +1,84 @@
 # faremeter: baseline diligence memo (AI first pass, not a decision)
 
-**Open-source TypeScript framework (client library, middleware, facilitator, gateway, wallet integrations) that lets AI agents and other software make blockchain payments over HTTP 402, supporting x402 and MPP on Solana and EVM, sponsored by ABK Labs.**
+| Stage | Last known round | Token | YC batch | Triage rank |
+|---|---|---|---|---|
+| unknown (no funding evidence found) | unknown | none found | none | 4 (triage only, not evidence) |
 
-Thesis fit: Direct fit: it is infrastructure for agents paying per request over HTTP 402 (x402 v1/v2, MPP), with wallet and chain-agnostic plugins on both Solana and EVM. The sources show developer adoption signals but no evidence of paid or transacting usage.
+**Open-source TypeScript framework (client library, middleware, facilitator, gateway, wallet integrations) that lets agents and existing APIs make and accept HTTP 402 machine payments over x402 and MPP on Solana and EVM chains. Built by ABK Labs.**
 
-Recommendation (drafter, claude_cli:claude-sonnet-5-5): **advance**  
-Critic (codex_cli:gpt-6.1-sol): **watch**  
-Receipts: 12 claims shipped, 0 withheld by the verifier (raw citation precision 0.92, after repair 1.00)
+Thesis fit: Direct fit: it is infrastructure for agents paying per API call, and it spans both the x402 and MPP standards. It sits at the developer-tooling layer rather than the facilitator layer, so the open question is how it captures value beyond being open-source plumbing.
 
-| Dimension | Drafter | Critic |
-|---|---|---|
-| PMF | 3 | 2 |
-| NARRATIVE | 4 | 4 |
-| EXECUTION | 4 | 3 |
+Recommendation after critique and committee: **watch** (first draft: advance; critic: watch)  
+Receipts: 12 claims drafted, 67% passed the verifier on the first pass, 12 verified after one repair; the critic labelled 5 as entailed, 6 as partial (tagged below) and withheld 1.
 
-## Market
-- Faremeter describes itself as a framework for agents and other utilities to transparently make machine payments using web infrastructure. [^c1]
-- AP2, Cloudflare Pay-Per-Crawl and L402 are tracked for future support but not yet shipped. [^c5]
-- Faremeter ranks 4 among all sourced candidates in the GitHub-only screening model. [^c11]
+| Dimension | Drafter (final) | Drafter (first draft) | Critic |
+|---|---|---|---|
+| PMF | 2 | 3 | 3 |
+| NARRATIVE | 3 | 4 | 3 |
+| EXECUTION | 3 | 4 | 3 |
+
+## Team
+- Development is concentrated in one engineer: alexanderguy has 550 commits, far ahead of the other listed contributors. [^c1] _(partial support: The quote establishes alexanderguy's commit count but contains no other contributors' counts to establish concentration or the comparison.)_
+- Faremeter is sponsored and built by the engineers at ABK Labs, plus open-source contributors. The founders are not named in the sources. [^c2] _(partial support: The quote supports ABK Labs sponsorship and engineering participation but does not establish that founders are unnamed throughout the sources.)_
+
+## Why Now
+- The README says it supports both v1 and v2 of Coinbase's x402, negotiated automatically, so it has tracked the standard's upgrade. [^c3] _(partial support: The quote supports automatic negotiation between protocol versions but does not itself identify Coinbase's x402 or establish the history of upgrade implementation.)_
+- It also ships the `charge` intent of the emerging MPP (Machine Payments Protocol) on Solana, while noting that the spec is still evolving. This hedges across competing agent-payment standards. [^c4] _(partial support: The quote supports shipping the charge intent on Solana under an evolving specification, but neither identifies MPP nor establishes a hedge across competing standards.)_
+
+## Competition
+- Fluxa carries 56.2% of x402 dollar volume on only 9.4% of payments, which shows value is concentrated in a few facilitators. [^c6]
 
 ## PMF
-- The main repo has 25 forks, a sign of developer interest but not of payment volume. [^c7]
-
-## Narrative
-- The approach is built on HTTP 402 Payment Required with a standard-, wallet- and blockchain-agnostic plugin system. [^c2]
-- The project is sponsored and built by ABK Labs engineers along with open-source contributors. [^c10]
+- The main repo has 70 stars and 25 forks. This is real but modest developer interest, and it is not proof of payments. [^c7]
+- There is no Hacker News traction: 0 points across stories with the company name in the title. [^c8] _(partial support: The metric establishes zero points for the specified title-based search, which does not establish an absence of all Hacker News traction.)_
 
 ## Execution
-- It supports both v1 and v2 of Coinbase's x402, negotiated automatically. [^c3]
-- It ships the MPP charge intent on Solana, while noting the MPP spec is still evolving. [^c4]
-- EVM support covers gasless USDC via EIP-3009 on networks including Base, Polygon, Monad and Skale. [^c6]
-- Commits across the owner's top 5 repos were 1180 in the last 90 days, versus 1156 in the prior 90 days, so velocity is sustained and flat. [^c8]
-- Total commits across those repos stand at 3635 since the org was created in 2025. [^c9]
+- There were 1,180 commits across the owner's top 5 repos in the last 90 days. [^c9]
+- The warehouse shows 1156 commits in the earlier of the two most recent 90-day windows. [^c10]
+- The README lists broad network coverage for EVM payments, including Base, Polygon, Monad and Skale. [^c11]
 
 ## Risk
-- There is no Hacker News presence: 0 stories with the company name in the title. [^c12]
+- The GitHub profile shows the main repo's last push as 2026-07-06, about four months before the fetch date. That sits oddly with the recent commit counts, which may come from other repos or default branches. [^c12] _(partial support: The quote establishes the last-push date but contains neither the fetch date nor recent commit counts needed to support the comparison or proposed explanation.)_
 
-## Scores
+## Scores (final, after the support review)
 
-- **PMF 3/5**: Forks and stars [c7] show real developer interest, and the framework covers wallets, chains and standards, but the sources show no customers, transaction volume or pricing evidence. That puts it at the developer-adoption tier, not the paying tier.
-- **NARRATIVE 4/5**: The story is a clear wedge on HTTP 402 and x402/MPP [c2][c3][c4], with a path to a platform via the facilitator, gateway and wallet plugins. Standards are still moving [c4][c5], and the sources do not state a commercial model or an edge over Coinbase's own x402 tooling. ABK Labs sponsorship [c10] leaves the company/product relationship unclear.
-- **EXECUTION 4/5**: Commit velocity is high and steady [c8][c9], and the team has shipped x402 v2, MPP charge and multiple EVM chains [c3][c4][c6]. The sources do not show contributor counts, so the multi-person claim is unverified, and the commit totals cover the top 5 repos, not only the main framework.
+- **PMF 2/5**: Evidence is limited to modest developer interest: 70 stars and 25 forks [c7]. There is no evidence of payments, customers or on-chain volume attributable to Faremeter, and no Hacker News traction [c8]. The withheld c5 offered nothing on Faremeter's own share, so market-structure context [c6] does not help it. The 25 forks are weak evidence of real adoption, and the earlier claim of outside contributors [c1] is only partial and actually shows concentration in one engineer. This sits between the 1 level (repo with no outside usage evidence) and the 3 level (real developer adoption), so 2.
+- **NARRATIVE 3/5**: The wedge, standard-agnostic agent payment middleware supporting x402 v1/v2 and MPP, is timely [c3][c4], and the broad network coverage [c11] suggests a plausible platform path. However, c3 and c4 are only partial support. The market is concentrated in a few facilitators [c6], no founders or monetization edge are named [c2], and no funding or stage evidence exists. This reads as in the right space with a decent but unproven edge, so 3.
+- **EXECUTION 3/5**: Commit counts are high: 1,180 commits across the owner's top 5 repos in 90 days [c9], and 1156 in the prior window [c10], which indicates sustained activity. However, development is concentrated in one engineer with 550 commits [c1], the team is not named [c2], and the main repo's last push is dated about four months before the fetch date, which conflicts with the recent commit figures [c12]. The commit counts are across multiple repos, not the main one. Steady but single-maintainer-heavy, so 3.
+
+Re-score note: Lowered PMF from 3 to 2 (only stars/forks; no payment or customer evidence; contributor claim c1 shows concentration, not outside adoption), Narrative from 4 to 3 (c3/c4 only partial, no named founders or monetization edge, crowded market), and Execution from 4 to 3 (single-engineer concentration [c1], multi-repo commit counts, and the unexplained stale push on the main repo [c12]). The total is now 8, below the advance threshold of 11, and PMF is below 3, so the recommendation moves from advance to watch. Re-check in a quarter for payment evidence or named founders.
 
 ## Risks
 
-- Commercial model unclear: it is an open-source sponsored project of ABK Labs, with no pricing, customers or revenue shown, so a venture-scale business is unproven.
-- Standards risk: MPP is still evolving and x402 is controlled by Coinbase, which could absorb or commoditize the facilitator, middleware and client layers.
-- No evidence of transacting usage: forks and stars are the only adoption signals, with no volume, customers or production deployments cited.
-- Entity and dependency risk: the project is built by ABK Labs engineers, so it is unclear whether Faremeter is a separate fundable entity, who owns the IP, and how much team time is dedicated to it.
+- No evidence of paid usage: Faremeter does not appear among the measured x402 facilitators, and no customer or volume data is provided. The framework could be widely forked without producing revenue.
+- Open-source infrastructure with an unclear business model. It is sponsored by ABK Labs, an engineering services shop, and it is unclear whether Faremeter is the company or a side project.
+- Key-person concentration: one contributor accounts for about 83% of the roughly 660 commits among the top four contributors.
+- x402 volume is concentrated in Coinbase and Fluxa, and standards (x402, MPP, AP2, L402) are still shifting, so a framework layer can be commoditized or bypassed.
+- Data inconsistency between the main repo's last push in July 2026 and the 90-day commit activity. The activity may come from other repos, so shipping on the core product is unverified.
 
 ## Questions for the founder call
 
-- Is Faremeter a standalone company or an ABK Labs project, and who owns the IP and would take the investment?
-- Who is using it in production, and what are the transaction counts or volume through Faremeter facilitators or gateways?
-- What is the business model: hosted facilitator fees, managed gateway, enterprise support, or something else?
-- How many distinct people commit regularly, and how many are not ABK Labs employees?
-- How does Faremeter differentiate from Coinbase's x402 reference SDKs and other facilitators, and what happens if MPP and x402 converge?
-- Which of the 1180 recent commits are in the core framework versus the other 15 repos?
+- What is the entity and ownership structure: is Faremeter a standalone company or an ABK Labs project, and who are the founders? Is there any funding?
+- What is the monetization plan (hosted facilitator, gateway, enterprise support), and are there paying or pilot customers today?
+- How much real x402 or MPP traffic flows through Faremeter-based deployments, and what is the average dollar value per payment (x402 usd_per_tx_30d was not provided)?
+- Why does the main repo show a last push of 2026-07-06 while 90-day commits are high? Where is the current work happening?
+- How do you plan to stay differentiated if Coinbase's SDKs and facilitators absorb middleware features, and how do you decide between x402 and MPP?
+- What is the plan to reduce dependence on one lead engineer?
+
+## Withheld: real quote, but the critic says it does not support the claim
+
+- ~~x402 facilitator volume is dominated by Coinbase, which has 69.7% of payments. Faremeter does not appear by name among the listed facilitators, so its own facilitator share is unknown or negligible.~~ (contradicts: The receipt distinguishes Coinbase's majority payment count from its minority dollar-volume share and provides no evidence about Faremeter's absence or share.)
 
 ## Receipts
 
-[^c1]: "A universal framework designed to allow agents and other utilities to transparently make machine payments using web infrastructure." (github_profile, https://github.com/faremeter, snapshot `d_748e85e901fac822`, fetched 2026-11-02)
-[^c2]: "Using HTTP and the existing `402 Payment Required` concepts." (github_readme, https://github.com/faremeter/faremeter, snapshot `d_d7f80babf38c9414`, fetched 2026-11-02)
+[^c1]: "alexanderguy (User): 550 commits" (github_contributors, https://github.com/faremeter/faremeter/graphs/contributors, snapshot `d_2bf293576b4555c8`, fetched 2026-11-02)
+[^c2]: "Faremeter is sponsored and built by the engineers at [ABK Labs](https://abklabs.com) along with other open-source contributors." (github_readme, https://github.com/faremeter/faremeter, snapshot `d_d7f80babf38c9414`, fetched 2026-11-02)
 [^c3]: "both v1 and v2 of the protocol, negotiated automatically." (github_readme, https://github.com/faremeter/faremeter, snapshot `d_d7f80babf38c9414`, fetched 2026-11-02)
 [^c4]: "the spec is still evolving; we currently ship the `charge` intent on Solana." (github_readme, https://github.com/faremeter/faremeter, snapshot `d_d7f80babf38c9414`, fetched 2026-11-02)
-[^c5]: "We're tracking these for future support:" (github_readme, https://github.com/faremeter/faremeter, snapshot `d_d7f80babf38c9414`, fetched 2026-11-02)
-[^c6]: "EVM `exact` over EIP-3009 gasless USDC in [@faremeter/payment-evm](./packages/payment-evm), with network coverage including Base, Polygon, Monad, and Skale" (github_readme, https://github.com/faremeter/faremeter, snapshot `d_d7f80babf38c9414`, fetched 2026-11-02)
-[^c7]: "Stars: 70. Forks: 25." (github_profile, https://github.com/faremeter, snapshot `d_748e85e901fac822`, fetched 2026-11-02)
-[^c8]: warehouse metric `gh.commits_90d` = 1180.0 (as of 2026-11-01)
-[^c9]: warehouse metric `gh.commits_total` = 3635.0 (as of 2026-11-01)
-[^c10]: "Faremeter is sponsored and built by the engineers at [ABK Labs](https://abklabs.com) along with other open-source contributors." (github_readme, https://github.com/faremeter/faremeter, snapshot `d_d7f80babf38c9414`, fetched 2026-11-02)
-[^c11]: warehouse metric `screen.rank` = 4.0 (as of 2026-11-01)
-[^c12]: warehouse metric `hn.stories` = 0.0 (as of 2026-11-01)
+[^c6]: "fluxa: 353,469 payments (9.4% of payments), 846,830 USD (56.2% of volume)" (market_structure, https://www.x402scan.com/facilitators, snapshot `d_d654ae3bd333bd8e`, fetched 2026-11-02)
+[^c7]: "Stars: 70. Forks: 25. Language: TypeScript." (github_profile, https://github.com/faremeter, snapshot `d_748e85e901fac822`, fetched 2026-11-02)
+[^c8]: warehouse metric `hn.points_total` = 0.0 (as of 2026-11-01)
+[^c9]: warehouse metric `gh.commits_90d` = 1180.0 (as of 2026-11-01)
+[^c10]: warehouse metric `gh.commits_prev_90d` = 1156.0 (as of 2026-11-01)
+[^c11]: "network coverage including Base, Polygon, Monad, and Skale (mainnet and testnets)" (github_readme, https://github.com/faremeter/faremeter, snapshot `d_d7f80babf38c9414`, fetched 2026-11-02)
+[^c12]: "Created: 2025-06-11. Last push: 2026-07-06." (github_profile, https://github.com/faremeter, snapshot `d_748e85e901fac822`, fetched 2026-11-02)

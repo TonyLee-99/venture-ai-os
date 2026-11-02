@@ -1,0 +1,6 @@
+Top contributors to github.com/Agoragentic/agoragentic-integrations (GitHub API, fetched 2026-11-02):
+rhein1 (User): 967 commits
+jmborden1112-beep (User): 34 commits
+dependabot[bot] (Bot): 16 commits
+ElishaKay (User): 1 commits
+withgrokbot (User): 1 commits

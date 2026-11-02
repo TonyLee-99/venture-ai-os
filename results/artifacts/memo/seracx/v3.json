@@ -1,0 +1,389 @@
+{
+ "kind": "memo",
+ "entity": "seracx",
+ "version": 3,
+ "parent_version": 2,
+ "as_of": "2026-11-01",
+ "content_sha256": "ec55fff2b88f8568920de85daaa706c40c34a2c7109f5ba686d75cd9f2942fb4",
+ "provenance": {
+  "run_id": "5bf51c73b63f922e",
+  "job": "diligence_memo",
+  "doc_ids": [
+   "d_3d48a837c89cc67a",
+   "d_4a064986e41fcdc9",
+   "d_8bbbff9536997d14",
+   "d_d654ae3bd333bd8e"
+  ],
+  "cache_keys": [
+   "fdba15bd401dc35e20f5403b5470d15234baff0777a1e162cdcf53690ce592f5",
+   "cd6f4c3aae49784c072d944ef3f5acedd5c0a8ecf42e66841402bdb39129f8a5",
+   "58f25ee236e67018cf075f79e2affb52130f6cb23419fc1c76840f103634f3c2",
+   "3dd4cd55c1f90b884ffbfab334a1352c2040ad0b553851f86c650175d3590948"
+  ],
+  "metrics": [
+   "gh.commits_90d",
+   "gh.commits_prev_90d",
+   "gh.commits_total",
+   "gh.first_repo_year",
+   "gh.public_repos",
+   "gh.stars_total_now",
+   "hn.points_total",
+   "hn.stories"
+  ]
+ },
+ "content": {
+  "entity": "seracx",
+  "name": "sera-cx",
+  "as_of": "2026-11-01",
+  "stage": {
+   "stage": "unknown (no funding evidence found)",
+   "seed_eligible": true,
+   "ineligible_reasons": [],
+   "yc_batch": null,
+   "token": null,
+   "prior_raises_defillama": [],
+   "round_evidence": [],
+   "doc_ids": []
+  },
+  "triage": {
+   "rank": 20,
+   "screen_score": 0.055517565949843306,
+   "note": "triage signal only, not evidence (near chance on never-raised protocols)"
+  },
+  "memo": {
+   "company": "sera-cx",
+   "one_liner": "Open-source MCP server that exposes Sera Protocol's stablecoin FX settlement (quote, route, swap, treasury, maker tools) to AI agents, aimed at agent builders and ops engineers who need multi-currency payments.",
+   "thesis_fit": "Direct fit with agents x payments: a tool layer that lets agents quote and settle non-USD stablecoin FX (XSGD, JPYC, EURC, etc.). It is a wedge on cross-currency agent commerce, but the evidence shows developer interest only, not paid usage, and it depends on Sera Protocol's own liquidity.",
+   "claims": [
+    {
+     "id": "c1",
+     "section": "pmf",
+     "text": "The README describes a product exposing 56 tools across 11 categories for stablecoin FX settlement to MCP-compatible agent hosts.",
+     "doc_id": "d_3d48a837c89cc67a",
+     "quote": "**56 tools across 11 categories**",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports the tool and category counts but does not establish stablecoin FX functionality or compatibility with agent hosts."
+    },
+    {
+     "id": "c2",
+     "section": "pmf",
+     "text": "The GitHub repository description for sera-mcp says it has 32 tools.",
+     "doc_id": "d_4a064986e41fcdc9",
+     "quote": "Multi-currency settlement MCP for AI agents. 32 tools over Sera Protocol's stablecoin FX rails. Open source.",
+     "metric": null,
+     "value": null,
+     "support": "entails",
+     "support_note": "The quoted repository description explicitly states that the product has 32 tools."
+    },
+    {
+     "id": "c3",
+     "section": "pmf",
+     "text": "sera-mcp has 22 stars and 34 forks; forks exceeding stars suggests some hands-on developer experimentation, though no payment or customer usage is evidenced.",
+     "doc_id": "d_4a064986e41fcdc9",
+     "quote": "Stars: 22. Forks: 34. Language: TypeScript.",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote establishes the stars and forks counts, but experimentation and the absence of customer or payment evidence are not established by those counts."
+    },
+    {
+     "id": "c4",
+     "section": "team",
+     "text": "Josh-sera is the top contributor to sera-mcp with 11 commits.",
+     "doc_id": "d_8bbbff9536997d14",
+     "quote": "Josh-sera (User): 11 commits",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote establishes Josh-sera's commit count but does not establish their ranking among contributors."
+    },
+    {
+     "id": "c5",
+     "section": "team",
+     "text": "Outside contributors appear, e.g. mashharuki with 5 commits, suggesting some non-team code contributions. Founder identities and backgrounds are not in the sources.",
+     "doc_id": "d_8bbbff9536997d14",
+     "quote": "mashharuki (User): 5 commits",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote establishes mashharuki's contributions but neither their independence from the team nor the absence of founder information."
+    },
+    {
+     "id": "c6",
+     "section": "why_now",
+     "text": "Coinbase's x402 facilitator processed 2,610,865 payments in the latest reported window, showing agent-payment rails are live.",
+     "doc_id": "d_d654ae3bd333bd8e",
+     "quote": "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports Coinbase's payment count but does not identify the reporting window or establish that agents initiated those payments."
+    },
+    {
+     "id": "c7",
+     "section": "competition",
+     "text": "The x402 facilitator market is concentrated: Coinbase has 69.7% of payments.",
+     "doc_id": "d_d654ae3bd333bd8e",
+     "quote": "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)",
+     "metric": null,
+     "value": null,
+     "support": "entails",
+     "support_note": "The quoted payment share supports both Coinbase's stated share and the characterization of concentration by payment count."
+    },
+    {
+     "id": "c8",
+     "section": "execution",
+     "text": "Commits across the owner's top repos totaled 94 in the most recent three-month window.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.commits_90d",
+     "value": 94.0,
+     "support": "entails",
+     "support_note": "The metric reports the stated recent commit count across the owner's top repositories over the defined recent reporting window."
+    },
+    {
+     "id": "c9",
+     "section": "execution",
+     "text": "The org has 264 total commits on its top repos.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "gh.commits_total",
+     "value": 264.0,
+     "support": "entails",
+     "support_note": "The metric supports the stated total commit count on the owner's tracked top repositories."
+    },
+    {
+     "id": "c10",
+     "section": "execution",
+     "text": "The last push to sera-mcp was 2026-09-01, about two months before the fetch date, and the repo was created 2026-05-13.",
+     "doc_id": "d_4a064986e41fcdc9",
+     "quote": "Created: 2026-05-13. Last push: 2026-09-01.",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports both repository dates but does not include the fetch date needed to establish the elapsed time."
+    },
+    {
+     "id": "c11",
+     "section": "risk",
+     "text": "Streamable HTTP transport has no built-in authentication; anyone who can reach the port can call every registered tool.",
+     "doc_id": "d_3d48a837c89cc67a",
+     "quote": "Anyone who can reach the bound port can call every registered Sera tool.",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote establishes that reachable callers can invoke every registered tool but does not itself identify the transport or explicitly state the absence of built-in authentication."
+    },
+    {
+     "id": "c12",
+     "section": "narrative",
+     "text": "The README ties the product to a companion repo of templates, examples and x402 services, which points to an intended path from tool layer to agent-commerce platform.",
+     "doc_id": "d_3d48a837c89cc67a",
+     "quote": "templates, examples, x402 services, and host integrations built on top of this MCP",
+     "metric": null,
+     "value": null,
+     "support": "partial",
+     "support_note": "The quote supports the listed extensions built on the MCP but does not establish a companion repository relationship or an intended platform strategy."
+    },
+    {
+     "id": "c13",
+     "section": "pmf",
+     "text": "There is no Hacker News presence (0 points), and no x402 usage metrics (such as usd_per_tx_30d) were provided for sera-cx.",
+     "doc_id": null,
+     "quote": null,
+     "metric": "hn.points_total",
+     "value": 0.0,
+     "support": "partial",
+     "support_note": "Zero recorded Hacker News points does not establish no presence, and the metric says nothing about whether company-specific x402 usage metrics were provided."
+    }
+   ],
+   "scores": {
+    "pmf": {
+     "score": 2,
+     "rationale": "Evidence is limited to developer interest: 22 stars and 34 forks, plus an outside contributor with 5 commits [c3][c5]. Both claims are only partially supported. There is no payment, volume or customer evidence, and no x402 usage metrics were provided [c13]. Tool counts are inconsistent between the README (56) and the repo description (32) [c1][c2], so the product's actual scope is unclear. This is below the level for real adoption such as integrations or paying users."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "The wedge is stablecoin FX settlement for MCP-compatible agents, with a stated path to templates and x402 services [c1][c12]. Agent payment rails are live [c6], though Coinbase holds 69.7% of x402 payments, so the market is concentrated [c7]. The story is in the right space but generic. Scope claims are inconsistent [c1][c2], demand for non-USD agent settlement is unproven, and the unauthenticated HTTP transport is a credibility gap for a payments product [c11]."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "There is meaningful output: 264 total commits across top repos and 94 commits in the latest three-month window [c9][c8], with a contributor base that includes at least one outsider [c5]. Against that, the core work is concentrated in one top committer [c4], and the last push to sera-mcp was 2026-09-01, about two months before the fetch date [c10]. Steady but not sustained or fast-following."
+    }
+   },
+   "risks": [
+    "No evidence of paid or transacting usage; demand for agent-driven non-USD stablecoin FX is unproven and may be a small niche relative to USD x402 flows.",
+    "Dependency on Sera Protocol (API, liquidity, FX depth); unclear whether sera-cx is the protocol team or a thin integration layer, and what the business model is.",
+    "Slowing velocity: commits fell from 126 to 94 and the last push was 2026-09-01, with a single core committer.",
+    "Security surface: execution and signing tools in an MCP, with an unauthenticated HTTP transport, create fund-loss risk if misdeployed, which can chill adoption."
+   ],
+   "open_questions": [
+    "Who are the founders, and what is the relationship between sera-cx and Sera Protocol (same team, token, funding)?",
+    "How many agents or developers actually run sera-mcp in production, and what swap volume has flowed through it?",
+    "Where does revenue come from: protocol fees, x402 services, or SaaS? Is there a token?",
+    "Why did commit velocity drop and why was there no push since 2026-09-01? What is the roadmap?",
+    "What real use cases need agents to hold or convert non-USD stablecoins, and who are the first customers?",
+    "Which is correct: 32 or 56 tools, and what is the real maturity of the maker and withdraw tooling?"
+   ],
+   "recommendation": "pass",
+   "rescore_note": "Scores are unchanged (PMF 2, Narrative 3, Execution 3; total 8). The remaining claims are mostly partial, so they count as weak evidence, which does not justify raising any dimension. PMF stays below 3 because no payment, volume or customer usage is evidenced. The total is under the advance threshold of 11, and PMF is below the minimum of 3, so the recommendation remains pass. I dropped the draft's reference to a roughly 25% drop in 90-day commits because no remaining claim supports it; the execution rationale now relies on the 94-commit window [c8]. I also added the inconsistent tool counts [c1][c2] and the unauthenticated transport [c11] as caveats.",
+   "draft_scores": {
+    "pmf": {
+     "score": 2,
+     "rationale": "Some developer interest (34 forks, 22 stars, outside contributors) [c3][c5], but no payment, volume or customer evidence and no x402 share [c7][c13]. Below the 3 level, which requires real adoption such as integrations."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "Clear wedge in multi-currency stablecoin FX for agents, with a path toward templates and x402 services [c1][c12], and agent payments are a live shift [c6]. But it relies on Sera Protocol liquidity, scope claims are inconsistent [c2], and demand for non-USD agent settlement is unproven."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "Meaningful output (264 commits, 7 contributors, a broad tool surface) [c1][c4][c9], but one core committer, a roughly 25% drop in 90-day commits [c8], and a last push two months ago [c10]."
+    }
+   },
+   "draft_recommendation": "pass",
+   "recommendation_before_committee": "pass"
+  },
+  "unverified": [],
+  "withheld_by_critic": [],
+  "critique": {
+   "claim_labels": [
+    {
+     "claim_id": "c1",
+     "label": "partial",
+     "reason": "The quote supports the tool and category counts but does not establish stablecoin FX functionality or compatibility with agent hosts."
+    },
+    {
+     "claim_id": "c2",
+     "label": "entails",
+     "reason": "The quoted repository description explicitly states that the product has 32 tools."
+    },
+    {
+     "claim_id": "c3",
+     "label": "partial",
+     "reason": "The quote establishes the stars and forks counts, but experimentation and the absence of customer or payment evidence are not established by those counts."
+    },
+    {
+     "claim_id": "c4",
+     "label": "partial",
+     "reason": "The quote establishes Josh-sera's commit count but does not establish their ranking among contributors."
+    },
+    {
+     "claim_id": "c5",
+     "label": "partial",
+     "reason": "The quote establishes mashharuki's contributions but neither their independence from the team nor the absence of founder information."
+    },
+    {
+     "claim_id": "c6",
+     "label": "partial",
+     "reason": "The quote supports Coinbase's payment count but does not identify the reporting window or establish that agents initiated those payments."
+    },
+    {
+     "claim_id": "c7",
+     "label": "entails",
+     "reason": "The quoted payment share supports both Coinbase's stated share and the characterization of concentration by payment count."
+    },
+    {
+     "claim_id": "c8",
+     "label": "entails",
+     "reason": "The metric reports the stated recent commit count across the owner's top repositories over the defined recent reporting window."
+    },
+    {
+     "claim_id": "c9",
+     "label": "entails",
+     "reason": "The metric supports the stated total commit count on the owner's tracked top repositories."
+    },
+    {
+     "claim_id": "c10",
+     "label": "partial",
+     "reason": "The quote supports both repository dates but does not include the fetch date needed to establish the elapsed time."
+    },
+    {
+     "claim_id": "c11",
+     "label": "partial",
+     "reason": "The quote establishes that reachable callers can invoke every registered tool but does not itself identify the transport or explicitly state the absence of built-in authentication."
+    },
+    {
+     "claim_id": "c12",
+     "label": "partial",
+     "reason": "The quote supports the listed extensions built on the MCP but does not establish a companion repository relationship or an intended platform strategy."
+    },
+    {
+     "claim_id": "c13",
+     "label": "partial",
+     "reason": "Zero recorded Hacker News points does not establish no presence, and the metric says nothing about whether company-specific x402 usage metrics were provided."
+    }
+   ],
+   "scores": {
+    "pmf": {
+     "score": 3,
+     "rationale": "The fork count supported by c3 provides a limited developer-adoption signal consistent with the rubric, but contributor independence, active integrations, retention and paying usage remain unverified."
+    },
+    "narrative": {
+     "score": 3,
+     "rationale": "c2 establishes a specific multi-currency settlement tool for AI agents, and the supported portion of c12 adds adjacent services and integrations; differentiation and a credible commercial path from tooling to platform remain unproven."
+    },
+    "execution": {
+     "score": 3,
+     "rationale": "c8 and c9 establish meaningful aggregate shipping activity, while the supported portions of c4 and c5 show multiple contributors; c10 establishes the core repository's last push date, but sustained recent core-product delivery and rapid standards updates are not demonstrated."
+    }
+   },
+   "recommendation": "watch",
+   "missing_risks": [
+    "Forks may reflect copying or experimentation rather than retained users; independent production deployments remain unknown.",
+    "Commercial ownership, pricing, revenue capture and defensibility relative to the underlying protocol are unclear.",
+    "Liquidity depth, executable spreads, settlement reliability and demand for non-dollar corridors are unverified.",
+    "Signer controls and deployment safeguards lack independent security validation in the supplied evidence.",
+    "Dependence on the underlying protocol, stablecoin issuers and operational counterparties could constrain reliability and distribution.",
+    "Aggregate repository activity may obscure maintenance concentration or limited progress on the core product.",
+    "The conflicting tool counts warrant checking documentation freshness and the actual shipped interface.",
+    "Regulatory obligations and responsibility for failed or unauthorized settlements remain unclear."
+   ],
+   "strongest_counterargument": "The evidence establishes shipped tooling and a modest developer signal, but does not establish recurring customer demand, production settlement usage or a business that captures value. A founder call may be premature until independent deployment evidence shows that multi-currency agent settlement solves an urgent problem and supports a defensible commercial wedge."
+  },
+  "doc_ids": [
+   "d_3d48a837c89cc67a",
+   "d_4a064986e41fcdc9",
+   "d_8bbbff9536997d14",
+   "d_d654ae3bd333bd8e"
+  ],
+  "facts": {
+   "gh.commits_90d": 94,
+   "gh.commits_prev_90d": 126,
+   "gh.commits_total": 264,
+   "gh.public_repos": 9,
+   "gh.stars_total_now": 131,
+   "gh.first_repo_year": 2026,
+   "hn.stories": 0,
+   "hn.points_total": 0
+  },
+  "receipts": {
+   "claims_drafted": 13,
+   "raw_precision": 0.5385,
+   "verified": 13,
+   "withheld_by_verifier": 0,
+   "dropped_in_repair": 0,
+   "critic_labels": {
+    "entails": 4,
+    "partial": 9,
+    "contradicts": 0,
+    "unsupported": 0,
+    "unlabelled": 0
+   },
+   "critic_entailed_share": 0.3077,
+   "shipped": 13,
+   "shipped_partial": 9,
+   "withheld_by_critic": 0
+  },
+  "models": {
+   "drafter": "claude_cli:claude-sonnet-5-5",
+   "critic": "codex_cli:gpt-6.1-sol"
+  },
+  "committee_rank": 8,
+  "disagreements": [
+   "recommendation: drafter 'pass' vs critic 'watch'"
+  ]
+ }
+}

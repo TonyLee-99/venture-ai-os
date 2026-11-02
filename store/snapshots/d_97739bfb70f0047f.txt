@@ -1,0 +1,161 @@
+PayAI — x402 Payment Facilitator for AI Agents & Apps
+Home
+Ecosystem
+Blog
+Docs
+Pricing
+Socials
+Sign in
+Start free
+x402 Facilitator & Agent Payments SDK
+The
+x402 Facilitator
+for AI Agents and Apps
+Accept agentic payments with one integration — stablecoin payments across supported Solana and EVM networks. Start free with 1,000 credits. No credit card or API key required.
+Start free
+Read the docs
+Try x402
+Explore
+the x402 ecosystem
+and its builders
+Illustrative scenario, not a live booking interface.
+PayAI simplifies x402 payments for merchants
+PayAI is a facilitator of the x402 payment standard, supporting usage-based payments for AI Agents, SaaS, and traditional applications. It handles supported payment verification and settlement operations.
+Verify
+Check a signed payment against the selected scheme's requirements.
+Settle
+Process the payment operation and inspect its result before serving paid access.
+Pay-Per-Request Pricing
+Charge per request, action, or usage — ideal for APIs, AI agents, and real-time services.
+On-Chain Settlement
+Timing depends on the network, scheme and current load. Retain receipts and reconcile unresolved outcomes.
+Client & Agent Payments
+Enable seamless payments between clients, apps, and AI agents through web flows.
+x402 Standard Adoption
+Use compatible middleware for payment verification and settlement. Configure your pricing, access and recovery rules.
+Networks & Ecosystem
+PayAI connects with leading networks and ecosystem tools to deliver fast, reliable, and scalable micropayments across the Web3 ecosystem.
+Supported networks
+PayAI is Solana-first and settles USDC micropayments on
+Solana
+,
+Base
+,
+BNB Smart Chain
+,
+Polygon
+,
+Avalanche
+,
+Arbitrum
+,
+Sei
+,
+X Layer
+, and
+SKALE
+— on supported mainnets and testnets. Availability differs by scheme and network. Sponsored Solana flows can cover the payer's transaction fee; setup costs and facilitator fees are separate.
+BNB Smart Chain supports USDC and USDT through x402 v2 exact Permit2 payments. The initial token approval requires BNB in the buyer's wallet; PayAI covers settlement gas. For each network's supported versions and payment schemes, call
+GET /supported
+on the facilitator, or read the
+supported networks documentation
+.
+Payment tools for agents and apps
+PayAI is a facilitator for the x402 protocol, enabling merchants to accept stablecoin payments and micropayments with just a few lines of code.
+x402 Facilitator
+Live Now
+Charge for a request
+Accept stablecoin payments for APIs, digital content and agent services. Choose terms supported by your payment scheme and network, and account for facilitator fees separately from your customer price.
+Start free
+Documentation
+x402 Echo Merchant
+Live Now
+Test payments against a live merchant
+Exercise the payment flow against the x402 Echo Merchant. It advertises refunds of test payments; review the selected network, payment terms and refund behavior before using real funds. Start on a testnet.
+Get Started
+Documentation
+Payment Splitting
+Coming Soon
+Receive payments to one account, distribute to multiple.
+Payment empowers marketplaces and workflows where there are multiple final recipients.
+Get Started
+Documentation
+Token Gateway
+Coming Soon
+Cross-network payments
+Get paid no matter where your customers are. More networks, more sales.
+Get Started
+Documentation
+Open-source ecosystem contribution
+Anthropic built commerce agents. x402 completes checkout.
+A facilitator-neutral Claude Code plugin adds real USDC settlement to agents built with Anthropic Commerce Builder—without putting a payment URL or credential in the model.
+Try the $0.99 testnet demo
+View the implementation
+01
+Claude stops at the cart
+No money touches the model.
+↓
+02
+The host adds one URL
+Human wallet or autonomous agent.
+↓
+03
+x402 unlocks the order
+USDC settles on SVM or EVM.
+Ecosystem Spotlight
+Meet the projects and builders shaping the future of AI payments with x402.
+WURK.FUN
+AI Agents
+“
+x402 has been a game-changer for WURK. It gives AI agents a seamless, standardized way to pay humans for microtasks instantly on Solana and Base — no complex payment flows, just HTTP. PayAI has been key in connecting us to the broader agent ecosystem and putting WURK in front of the right projects.
+”
+WURK.FUN Team
+Predict
+AI Agents
+“
+PayAI has enabled us to list our Prediction Market agent on their platform, allowing anyone to use x402 micropayments to bring prediction agents into the Solana ecosystem and pay for their services seamlessly.
+”
+Predict Team
+Explore
+the x402 ecosystem
+and its builders
+Explore the Ecosystem
+Blog
+Stay up to date with the latest from PayAI
+Product
+x402 Batch Settlement Is Live on Solana: Pay Per Call, Settle Once
+One USDC deposit, many off-chain vouchers, periodic claims. How x402 batch settlement works on Solana, when to pick it over exact, and how to start.
+Wize
+10/22/2026
+agentic-commerce
+BlackRock Just Wrote x402 Into Its AI Thesis. Here's What It Actually Said.
+Everyone quoted the headline. We read the whitepaper: what BlackRock gets right about agents and stablecoins, the data that says it's early, and the settlement layer it skips.
+Wize
+10/2/2026
+Ecosystem
+Circle's Arc Mainnet Is Live: What It Means for x402, USDC, and Solana
+Circle went from issuing USDC to running the chain it settles on. Here's how Arc reshapes the x402 landscape, and why a multi-chain world still needs multi-network rails.
+Wize
+9/24/2026
+x402
+x402 is gaining momentum on Solana. That’s a win for the whole ecosystem
+Solana’s x402 partnerships and network upgrades are concrete developments. Here’s what the sources establish, what remains unmeasured, and why PayAI is building on Solana.
+Wize
+9/6/2026
+View All Posts
+Frequently Asked Questions
+The questions we get most often about x402, supported networks, pricing, and integration. For the full protocol reference and language-specific quickstarts, see the documentation; agents can read the same answers as Markdown at payai.network/llms.txt.
+What is x402?
+x402 is an open payment standard built on the HTTP 402 Payment Required status code. A server answers an unpaid request with 402 and machine-readable payment terms; the client signs a stablecoin payment and retries; a facilitator verifies and settles it on-chain. Buyer access requirements and merchant facilitator authentication are separate, and depend on the provider and payment scheme.
+How fast are transactions on x402?
+Timing depends on the network, payment scheme, confirmation policy and current load; there is no universal sub-second settlement guarantee. Verification does not move funds, and a transaction hash alone does not prove confirmation. A settlement_pending response is unresolved and can have an empty transaction field. For channel schemes, interpret success in the context of the specific operation, not automatically as the final merchant payout.
+Which chains does x402 support?
+PayAI supports payment kinds across Solana and EVM networks including Base, BNB Smart Chain, Polygon, Avalanche, Arbitrum, Sei, X Layer and SKALE. BSC supports v2 exact Permit2 payments in USDC and USDT; initial token approval requires payer BNB. Mainnet/testnet and scheme availability can differ. Call GET https://facilitator.payai.network/supported for the currently advertised combinations. Sponsored Solana payment flows can cover transaction fees for the payer; this does not remove every setup or service cost.
+What is the minimum payment amount?
+There is no single advertised payment range that applies to every PayAI scheme and network. Choose a customer price that satisfies the asset's precision, the advertised requirements and the selected scheme's rules. Batch deposit limits are not the price of each API request, and network costs are distinct from facilitator fees. Check current pricing and scheme guidance before choosing an amount.
+How can developers integrate x402 into their app?
+Configure compatible x402 middleware to use https://facilitator.payai.network. Merchant and client quickstarts are available at https://docs.payai.network/x402/quickstart. Buyers still need a funded wallet and secure signing; merchants configure payment terms, authentication where required, and result/recovery handling. The facilitator handles supported blockchain verification and settlement operations. Pin and test your SDK version; the core API is described at https://payai.network/openapi.json.
+Do I need an account or API key to use PayAI?
+No. You can start without an account or API key. Exact payments and batch settlement on Solana and Base work without credentials, and you start with 1,000 free credits. Sign up at https://merchant.payai.network for an API key when you need paid usage beyond the free credits, usage tracked to your account, or an enterprise lane. See https://docs.payai.network/x402/facilitators/authentication.
+What does PayAI cost?
+You start with 1,000 free credits. After that, $1 buys 1,000 credits. Each payment PayAI settles costs its network's rate in credits, usually a fract

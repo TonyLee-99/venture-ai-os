@@ -23,8 +23,8 @@ from vaios.agents.evidence import FETCHED, MAX_CHARS, html_to_text
 from vaios.config import RAW, USER_AGENT
 from vaios.dakr.docstore import DocStore
 
-FUNDING = re.compile(r"[^.\n]{0,120}(\$\s?\d+(?:\.\d+)?\s?(?:m|million|b|billion)\b[^.\n]{0,80}(?:round|raise|seed|series)|"
-                     r"\braised\b|\bseed round\b|\bpre-seed\b|\bseries [a-d]\b|\bincubated by\b|\bbacked by\b)[^.\n]{0,160}",
+FUNDING = re.compile(r"[^.]{0,120}(\$\s?\d+(?:\.\d+)?\s?(?:m|million|b|billion)\b[^.\n]{0,80}(?:round|raise|seed|series)|"
+                     r"\braised\b|\bseed round\b|\bpre-seed\b|\bseries [a-d]\b|\bincubated by\b|\bbacked by\b)[^.]{0,160}",
                      re.I)
 TIER1 = ["a16z", "andreessen", "paradigm", "sequoia", "paypal ventures", "general catalyst", "coinbase ventures",
          "pantera", "polychain", "multicoin", "dragonfly", "electric capital", "founders fund", "lightspeed",
@@ -54,16 +54,37 @@ def parse(quotes: list[str], alts: list[str]) -> dict:
             "incubated_by_incumbent": incub}
 
 
-def gather(store: DocStore, entity: str, domain: str | None) -> dict:
-    """Fetch homepage + /about, snapshot the funding evidence, return parsed signals + doc ids."""
+# Owners whose GitHub profile has no website field; each mapping was checked by fetching the page (2026-11-02).
+CURATED_DOMAINS = {"gokite-ai": "gokite.ai"}
+
+
+def org_website(owner: str | None) -> str | None:
+    """The website field of the GitHub org/user profile (the company's own homepage, e.g. merit.systems)."""
+    from vaios.agents.sourcing import domain as to_domain
+    from vaios.ingest.github import gh_api
+
+    if not owner:
+        return None
+    if owner in CURATED_DOMAINS:
+        return CURATED_DOMAINS[owner]
+    for kind in ("orgs", "users"):
+        try:
+            blog = gh_api(f"{kind}/{owner}").get("blog")
+            return to_domain(blog) or None
+        except RuntimeError:
+            continue
+    return None
+
+
+def gather(store: DocStore, entity: str, domains: list[str]) -> dict:
+    """Fetch homepage + /about of each known domain, snapshot the funding evidence, return parsed signals."""
     quotes, alts, doc_ids = [], [], []
-    for path in ("", "/about"):
-        if not domain:
-            break
+    for domain, path in [(d, p) for d in dict.fromkeys(x for x in domains if x) for p in ("", "/about")]:
         got = _fetch(f"https://{domain}{path}")
         if not got:
             continue
         text, page_alts = got
+        text = re.sub(r"\s+", " ", text)  # inline links split sentences across lines ("incubated by\nStripe")
         hits = [m.group(0).strip() for m in FUNDING.finditer(text)]
         investor_alts = [a for a in page_alts if any(t in a.lower() for t in TIER1)]
         if hits or investor_alts:

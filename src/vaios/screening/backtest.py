@@ -144,6 +144,9 @@ def run(n_boot: int = 1000) -> dict:
         "all": evaluate_block(test, n_boot),
         "all_owner_clustered": evaluate_block(test, n_boot, cluster="github_owner"),
         "never_raised_owner_clustered": evaluate_block(never, n_boot, cluster="github_owner"),
+        # selection sensitivity: rows whose GitHub owner no longer resolves (deleted/renamed) look inactive
+        "all_gh_found_only": evaluate_block(test[test["gh_found"]].reset_index(drop=True), n_boot),
+        "never_raised_gh_found_only": evaluate_block(never[never["gh_found"]].reset_index(drop=True), n_boot),
     }
     per_t0 = {c: [] for c in cols}
     for t0, g in test.groupby("t0"):
@@ -170,6 +173,11 @@ def run(n_boot: int = 1000) -> dict:
         "populations": blocks,
         "round_mix_all": round_mix(test), "round_mix_never_raised": round_mix(never),
         "lead_time": lead_time(),
+        "selection": {
+            "note": "retrospective reconstruction: universe membership, GitHub owner and top-5 repos are TODAY's; "
+                    "owners that no longer resolve contribute zero commits (ADR 0003)",
+            "gh_found_rate_positives": round(float(test.loc[test["raised"] == 1, "gh_found"].mean()), 4),
+            "gh_found_rate_negatives": round(float(test.loc[test["raised"] == 0, "gh_found"].mean()), 4)},
         "per_t0": per_t0, "coefficients_all_t0": coefs,
         "top20_last_test_t0": [{"name": r.name, "category": r.category, "score": round(r.s_logit_full, 4),
                                 "raised_within_12m": bool(r.raised), "prior_raises": int(r.prior_raises),

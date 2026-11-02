@@ -89,8 +89,8 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "acae3b7b20096cc90176917214f2da8f5f36663acaa22b36701da18c6a822ece",
-   "prompt_sha256": "c4ae2ab79b4083b6c609eec460127512bbc434def0516f84055e4fa8eb972b95",
+   "cache_key": "285505253938ea5f140006449cc78b687db9f67d9d3b3dfa7c3726f8593ad390",
+   "prompt_sha256": "d7d8112aaf58c488c0e0b65ae166aabb15c4273f9aa7aef44a40a3f71c012798",
    "doc_ids": [
     "d_097fefba8f4c898b",
     "d_290b061c2b79dee7",
@@ -101,15 +101,15 @@
     "d_e655c077722d931d",
     "d_e978af6b776284b8"
    ],
-   "output_sha256": "7dde031fef18ff34b5033b1c7dd37b45d88b54b826af913ceb999e11dd6bccaf"
+   "output_sha256": "a2a85c239f3db9f671e0fe34192a60275feee85e7cd371aa3f8796fddd02bbc4"
   },
   {
    "step": "repair_claims",
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "05a648fc7d222b3e2079061149bf0d9e37c8b832dc76809275ed5f3e792c6359",
-   "prompt_sha256": "8141e3b0b86d7346add16e104774a81f7f891f5cc52b4c069281a0d3d25fb2ad",
+   "cache_key": "677e3128a06834ef4f8e853594dcbe96cef20794ffba29b28875a3a3db65c8ef",
+   "prompt_sha256": "bc27eb5ca64a192b48d0c215c4c1dee35154f906160e5f1703f2fdc5333fce24",
    "doc_ids": [
     "d_097fefba8f4c898b",
     "d_290b061c2b79dee7",
@@ -120,12 +120,12 @@
     "d_e655c077722d931d",
     "d_e978af6b776284b8"
    ],
-   "output_sha256": "2b939795a9ee4135c2065a4ed4943e924b1fce9f850b82ab7c6a9b6c16272cab"
+   "output_sha256": "733cf0831711d1e5d78483002a095b85d68468259bec6fbcb65bec7128e82936"
   },
   {
    "step": "verify_receipts",
    "claims_drafted": 16,
-   "raw_precision": 0.8125,
+   "raw_precision": 0.75,
    "post_repair_precision": 1.0,
    "shipped": 16,
    "withheld": 0,

@@ -1,76 +1,85 @@
 # sera-cx: baseline diligence memo (AI first pass, not a decision)
 
-**Open-source MCP server (TypeScript) that lets AI agents discover currencies, quote, route and execute stablecoin FX swaps on Sera Protocol, aimed at agent builders and ops engineers.**
+| Stage | Last known round | Token | YC batch | Triage rank |
+|---|---|---|---|---|
+| unknown (no funding evidence found) | unknown | none found | none | 20 (triage only, not evidence) |
 
-Thesis fit: Direct fit with agents x payments: a standard tool layer for multi-currency stablecoin settlement, with x402 services mentioned in the companion repo. The sources show no evidence yet of paying or transacting usage.
+**Open-source MCP server that exposes Sera Protocol's stablecoin FX settlement (quote, route, swap, treasury, maker tools) to AI agents, aimed at agent builders and ops engineers who need multi-currency payments.**
 
-Recommendation (drafter, claude_cli:claude-sonnet-5-5): **advance**  
-Critic (codex_cli:gpt-6.1-sol): **watch**  
-Receipts: 13 claims shipped, 0 withheld by the verifier (raw citation precision 0.85, after repair 1.00)
+Thesis fit: Direct fit with agents x payments: a tool layer that lets agents quote and settle non-USD stablecoin FX (XSGD, JPYC, EURC, etc.). It is a wedge on cross-currency agent commerce, but the evidence shows developer interest only, not paid usage, and it depends on Sera Protocol's own liquidity.
 
-| Dimension | Drafter | Critic |
-|---|---|---|
-| PMF | 2 | 2 |
-| NARRATIVE | 3 | 3 |
-| EXECUTION | 3 | 3 |
+Recommendation after critique and committee: **pass** (first draft: pass; critic: watch)  
+Receipts: 13 claims drafted, 54% passed the verifier on the first pass, 13 verified after one repair; the critic labelled 4 as entailed, 9 as partial (tagged below) and withheld 0.
 
-## Market
-- The product exposes Sera Protocol's stablecoin FX settlement to agents as one standard tool layer. [^c1]
-- The recommended 'standard' policy preset covers USDC, USDT, XSGD, JPYC, MYRT, TGBP and EURC, with a $5,000 per-transaction cap, a $50,000 daily cap and 10 bps slippage, which indicates a non-USD, Asia-heavy stablecoin focus. [^c10]
+| Dimension | Drafter (final) | Drafter (first draft) | Critic |
+|---|---|---|---|
+| PMF | 2 | 2 | 3 |
+| NARRATIVE | 3 | 3 | 3 |
+| EXECUTION | 3 | 3 | 3 |
+
+## Team
+- Josh-sera is the top contributor to sera-mcp with 11 commits. [^c4] _(partial support: The quote establishes Josh-sera's commit count but does not establish their ranking among contributors.)_
+- Outside contributors appear, e.g. mashharuki with 5 commits, suggesting some non-team code contributions. Founder identities and backgrounds are not in the sources. [^c5] _(partial support: The quote establishes mashharuki's contributions but neither their independence from the team nor the absence of founder information.)_
+
+## Why Now
+- Coinbase's x402 facilitator processed 2,610,865 payments in the latest reported window, showing agent-payment rails are live. [^c6] _(partial support: The quote supports Coinbase's payment count but does not identify the reporting window or establish that agents initiated those payments.)_
+
+## Competition
+- The x402 facilitator market is concentrated: Coinbase has 69.7% of payments. [^c7]
 
 ## PMF
-- The sera-mcp repo has 22 stars and 34 forks, a sign of some developer interest but not of payment or transaction usage. [^c4]
+- The README describes a product exposing 56 tools across 11 categories for stablecoin FX settlement to MCP-compatible agent hosts. [^c1] _(partial support: The quote supports the tool and category counts but does not establish stablecoin FX functionality or compatibility with agent hosts.)_
+- The GitHub repository description for sera-mcp says it has 32 tools. [^c2]
+- sera-mcp has 22 stars and 34 forks; forks exceeding stars suggests some hands-on developer experimentation, though no payment or customer usage is evidenced. [^c3] _(partial support: The quote establishes the stars and forks counts, but experimentation and the absence of customer or payment evidence are not established by those counts.)_
+- There is no Hacker News presence (0 points), and no x402 usage metrics (such as usd_per_tx_30d) were provided for sera-cx. [^c13] _(partial support: Zero recorded Hacker News points does not establish no presence, and the metric says nothing about whether company-specific x402 usage metrics were provided.)_
 
 ## Narrative
-- The README advertises compatibility with several agent hosts (Claude Code, Claude Desktop, Cursor, OpenAI Agents SDK, OpenClaw, Hermes, NanoClaw). [^c8]
-- A companion repo is described as holding templates, examples, x402 services and host integrations built on the MCP, pointing toward an agent-commerce platform path. [^c9]
+- The README ties the product to a companion repo of templates, examples and x402 services, which points to an intended path from tool layer to agent-commerce platform. [^c12] _(partial support: The quote supports the listed extensions built on the MCP but does not establish a companion repository relationship or an intended platform strategy.)_
 
 ## Execution
-- The README states the server ships 56 tools across 11 categories, covering discovery, pricing, quoting, treasury, execution and maker order tools. [^c2]
-- The owner's top repos had 94 commits on default branches in the most recent quarter. [^c5]
-- In the preceding quarter the same repos had 126 commits, so commit velocity has fallen. [^c6]
-- sera-mcp was created 2026-05-13 and last pushed 2026-09-01. [^c7]
-- The GitHub organization was created 2025-12-15, so the team is young. [^c12]
+- Commits across the owner's top repos totaled 94 in the most recent three-month window. [^c8]
+- The org has 264 total commits on its top repos. [^c9]
+- The last push to sera-mcp was 2026-09-01, about two months before the fetch date, and the repo was created 2026-05-13. [^c10] _(partial support: The quote supports both repository dates but does not include the fetch date needed to establish the elapsed time.)_
 
 ## Risk
-- The GitHub repo description lists 32 tools for sera-mcp. [^c3]
-- The streamable HTTP transport has no built-in authentication, so any party that can reach the port can call every registered tool, including execution tools if enabled. [^c11]
+- Streamable HTTP transport has no built-in authentication; anyone who can reach the port can call every registered tool. [^c11] _(partial support: The quote establishes that reachable callers can invoke every registered tool but does not itself identify the transport or explicitly state the absence of built-in authentication.)_
 
-## Scores
+## Scores (final, after the support review)
 
-- **PMF 2/5**: There is some developer interest (22 stars and 34 forks, [c4]) and a broad host-compatibility list [c8]. Nothing in the sources shows payments, volume, customers or named outside users. The forks may be mostly installs by people trying the tool, since contributor identity is unknown. There is no on-chain or revenue evidence.
-- **NARRATIVE 3/5**: The wedge is clear: give agents multi-currency stablecoin FX through MCP [c1], with x402 services as an expansion path [c9] and a differentiated non-USD currency set [c10]. It depends heavily on Sera Protocol, and the relationship between sera-cx and the protocol is not stated. Demand for agent FX is asserted, not evidenced.
-- **EXECUTION 3/5**: The team shipped a large tool surface [c2] and made 94 commits in the latest quarter [c5], but that is down from 126 in the prior quarter [c6]. The last push was 2026-09-01 [c7]. The README and repo description disagree on tool count [c3]. The sources do not show how many people are shipping.
+- **PMF 2/5**: Evidence is limited to developer interest: 22 stars and 34 forks, plus an outside contributor with 5 commits [c3][c5]. Both claims are only partially supported. There is no payment, volume or customer evidence, and no x402 usage metrics were provided [c13]. Tool counts are inconsistent between the README (56) and the repo description (32) [c1][c2], so the product's actual scope is unclear. This is below the level for real adoption such as integrations or paying users.
+- **NARRATIVE 3/5**: The wedge is stablecoin FX settlement for MCP-compatible agents, with a stated path to templates and x402 services [c1][c12]. Agent payment rails are live [c6], though Coinbase holds 69.7% of x402 payments, so the market is concentrated [c7]. The story is in the right space but generic. Scope claims are inconsistent [c1][c2], demand for non-USD agent settlement is unproven, and the unauthenticated HTTP transport is a credibility gap for a payments product [c11].
+- **EXECUTION 3/5**: There is meaningful output: 264 total commits across top repos and 94 commits in the latest three-month window [c9][c8], with a contributor base that includes at least one outsider [c5]. Against that, the core work is concentrated in one top committer [c4], and the last push to sera-mcp was 2026-09-01, about two months before the fetch date [c10]. Steady but not sustained or fast-following.
+
+Re-score note: Scores are unchanged (PMF 2, Narrative 3, Execution 3; total 8). The remaining claims are mostly partial, so they count as weak evidence, which does not justify raising any dimension. PMF stays below 3 because no payment, volume or customer usage is evidenced. The total is under the advance threshold of 11, and PMF is below the minimum of 3, so the recommendation remains pass. I dropped the draft's reference to a roughly 25% drop in 90-day commits because no remaining claim supports it; the execution rationale now relies on the 94-commit window [c8]. I also added the inconsistent tool counts [c1][c2] and the unauthenticated transport [c11] as caveats.
 
 ## Risks
 
-- Dependence on Sera Protocol liquidity and a single settlement venue: the sources give no evidence of FX volume or depth, and the stablecoin FX niche may stay small.
-- No evidence of paying or transacting users; stars and forks [c4] may reflect curiosity rather than usage.
-- Commit velocity is declining [c5][c6] and the last push was two months before the fetch [c7], with possible bus-factor risk.
-- Security posture for agent-controlled funds: no built-in auth on HTTP transport [c11], plus a local-signer mode that holds private keys. A single incident could damage trust.
-- Documentation inconsistency (32 vs 56 tools) [c3] suggests fast, loosely maintained releases.
+- No evidence of paid or transacting usage; demand for agent-driven non-USD stablecoin FX is unproven and may be a small niche relative to USD x402 flows.
+- Dependency on Sera Protocol (API, liquidity, FX depth); unclear whether sera-cx is the protocol team or a thin integration layer, and what the business model is.
+- Slowing velocity: commits fell from 126 to 94 and the last push was 2026-09-01, with a single core committer.
+- Security surface: execution and signing tools in an MCP, with an unauthenticated HTTP transport, create fund-loss risk if misdeployed, which can chill adoption.
 
 ## Questions for the founder call
 
-- What is the relationship between sera-cx and Sera Protocol (same team, a partner, or a third-party wrapper), and who captures the revenue?
-- Is there any real transaction volume via the MCP or x402 services today? Who are the first users, and are any of them outside the team?
-- Who are the 34 forkers and any outside contributors, and what are they building?
-- What is the business model (fees on swaps, SaaS, protocol incentives), and what is the path from the MCP wedge to a platform?
-- Why did commit velocity drop, and how many engineers work on this full-time?
-- How deep is liquidity in the non-USD pairs (XSGD, JPYC, MYRT, TGBP, EURC) for realistic agent-sized trades?
+- Who are the founders, and what is the relationship between sera-cx and Sera Protocol (same team, token, funding)?
+- How many agents or developers actually run sera-mcp in production, and what swap volume has flowed through it?
+- Where does revenue come from: protocol fees, x402 services, or SaaS? Is there a token?
+- Why did commit velocity drop and why was there no push since 2026-09-01? What is the roadmap?
+- What real use cases need agents to hold or convert non-USD stablecoins, and who are the first customers?
+- Which is correct: 32 or 56 tools, and what is the real maturity of the maker and withdraw tooling?
 
 ## Receipts
 
-[^c1]: "Turns any agent into a multi-currency agent by exposing [Sera Protocol](https://docs.sera.cx) — stablecoin FX settlement — as one standard tool layer." (github_readme, https://github.com/sera-cx/sera-mcp, snapshot `d_3d48a837c89cc67a`, fetched 2026-11-02)
-[^c2]: "56 tools across 11 categories" (github_readme, https://github.com/sera-cx/sera-mcp, snapshot `d_3d48a837c89cc67a`, fetched 2026-11-02)
-[^c3]: "Multi-currency settlement MCP for AI agents. 32 tools over Sera Protocol's stablecoin FX rails." (github_profile, https://github.com/sera-cx, snapshot `d_4a064986e41fcdc9`, fetched 2026-11-02)
-[^c4]: "Stars: 22. Forks: 34. Language: TypeScript." (github_profile, https://github.com/sera-cx, snapshot `d_4a064986e41fcdc9`, fetched 2026-11-02)
-[^c5]: warehouse metric `gh.commits_90d` = 94.0 (as of 2026-11-01)
-[^c6]: warehouse metric `gh.commits_prev_90d` = 126.0 (as of 2026-11-01)
-[^c7]: "Created: 2026-05-13. Last push: 2026-09-01." (github_profile, https://github.com/sera-cx, snapshot `d_4a064986e41fcdc9`, fetched 2026-11-02)
-[^c8]: "Works with Claude Code, Claude Desktop, Cursor, OpenAI Agents SDK, **OpenClaw**, **Hermes**, **NanoClaw**, and any other MCP-compatible host." (github_readme, https://github.com/sera-cx/sera-mcp, snapshot `d_3d48a837c89cc67a`, fetched 2026-11-02)
-[^c9]: "templates, examples, x402 services, and host integrations built on top of this MCP" (github_readme, https://github.com/sera-cx/sera-mcp, snapshot `d_3d48a837c89cc67a`, fetched 2026-11-02)
-[^c10]: "| `standard` (recommended) | USDC, USDT, XSGD, JPYC, MYRT, TGBP, EURC | $5,000 | $50,000 | 10 bps |" (github_readme, https://github.com/sera-cx/sera-mcp, snapshot `d_3d48a837c89cc67a`, fetched 2026-11-02)
+[^c1]: "**56 tools across 11 categories**" (github_readme, https://github.com/sera-cx/sera-mcp, snapshot `d_3d48a837c89cc67a`, fetched 2026-11-02)
+[^c2]: "Multi-currency settlement MCP for AI agents. 32 tools over Sera Protocol's stablecoin FX rails. Open source." (github_profile, https://github.com/sera-cx, snapshot `d_4a064986e41fcdc9`, fetched 2026-11-02)
+[^c3]: "Stars: 22. Forks: 34. Language: TypeScript." (github_profile, https://github.com/sera-cx, snapshot `d_4a064986e41fcdc9`, fetched 2026-11-02)
+[^c4]: "Josh-sera (User): 11 commits" (github_contributors, https://github.com/sera-cx/sera-mcp/graphs/contributors, snapshot `d_8bbbff9536997d14`, fetched 2026-11-02)
+[^c5]: "mashharuki (User): 5 commits" (github_contributors, https://github.com/sera-cx/sera-mcp/graphs/contributors, snapshot `d_8bbbff9536997d14`, fetched 2026-11-02)
+[^c6]: "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)" (market_structure, https://www.x402scan.com/facilitators, snapshot `d_d654ae3bd333bd8e`, fetched 2026-11-02)
+[^c7]: "coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)" (market_structure, https://www.x402scan.com/facilitators, snapshot `d_d654ae3bd333bd8e`, fetched 2026-11-02)
+[^c8]: warehouse metric `gh.commits_90d` = 94.0 (as of 2026-11-01)
+[^c9]: warehouse metric `gh.commits_total` = 264.0 (as of 2026-11-01)
+[^c10]: "Created: 2026-05-13. Last push: 2026-09-01." (github_profile, https://github.com/sera-cx, snapshot `d_4a064986e41fcdc9`, fetched 2026-11-02)
 [^c11]: "Anyone who can reach the bound port can call every registered Sera tool." (github_readme, https://github.com/sera-cx/sera-mcp, snapshot `d_3d48a837c89cc67a`, fetched 2026-11-02)
-[^c12]: "Account created: 2025-12-15." (github_profile, https://github.com/sera-cx, snapshot `d_4a064986e41fcdc9`, fetched 2026-11-02)
-[^c13]: warehouse metric `screen.rank` = 20.0 (as of 2026-11-01)
+[^c12]: "templates, examples, x402 services, and host integrations built on top of this MCP" (github_readme, https://github.com/sera-cx/sera-mcp, snapshot `d_3d48a837c89cc67a`, fetched 2026-11-02)
+[^c13]: warehouse metric `hn.points_total` = 0.0 (as of 2026-11-01)

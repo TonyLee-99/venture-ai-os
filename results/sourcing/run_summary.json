@@ -2,214 +2,183 @@
  "as_of": "2026-11-01",
  "n_memos": 8,
  "failed": [],
- "claims_drafted": 106,
- "claims_verified_first_pass": 94,
- "raw_citation_precision": 0.8868,
- "post_repair_citation_precision": 1.0,
- "claims_shipped": 106,
- "claims_withheld": 0,
- "shipped_over_drafted": 1.0,
- "claims_dropped_in_repair": 0,
- "critic_unsupported_flags": 32,
- "critic_support_rate": 0.6981,
- "memos_with_disagreement": 8,
- "recommendation_agreement": 1,
+ "claims_drafted": 103,
+ "claims_verified_first_pass": 59,
+ "raw_citation_precision": 0.5728,
+ "claims_verified_after_repair": 103,
+ "verifier_pass_after_repair_over_drafted": 1.0,
+ "critic_labels": {
+  "entails": 32,
+  "partial": 68,
+  "contradicts": 1,
+  "unsupported": 2,
+  "unlabelled": 0
+ },
+ "critic_entailed_over_verified": 0.3107,
+ "critic_entailed_over_drafted": 0.3107,
+ "claims_shipped": 100,
+ "claims_shipped_partial_tagged": 68,
+ "claims_withheld_by_critic": 3,
+ "claims_withheld_by_verifier": 0,
+ "recommendations": {
+  "advance": 0,
+  "watch": 6,
+  "pass": 2
+ },
+ "first_draft_recommendations": {
+  "advance": 1,
+  "watch": 5,
+  "pass": 2
+ },
+ "critic_recommendations": {
+  "advance": 0,
+  "watch": 5,
+  "pass": 3
+ },
+ "recommendation_agreement": 5,
+ "memos_with_decision_card": 3,
+ "human_decisions": "pending: recorded by the owner with `python -m vaios.decide record` (none yet)",
  "memos": [
   {
-   "entity": "faremeter",
-   "name": "faremeter",
-   "drafter": "advance",
+   "entity": "vybe",
+   "name": "vybenetwork",
+   "committee_rank": 1,
+   "stage": "unknown (no funding evidence found)",
+   "drafter": "watch",
+   "drafter_first_draft": "watch",
    "critic": "watch",
-   "claims_drafted": 12,
-   "raw_precision": 0.9167,
-   "post_repair_precision": 1.0,
-   "shipped": 12,
-   "withheld": 0,
+   "claims_drafted": 13,
+   "raw_precision": 0.6154,
+   "verified": 13,
+   "withheld_by_verifier": 0,
    "dropped_in_repair": 0,
+   "critic_entailed_share": 0.2308,
+   "shipped": 12,
+   "shipped_partial": 9,
+   "withheld_by_critic": 1,
    "scores_drafter": {
     "pmf": 3,
-    "narrative": 4,
-    "execution": 4
+    "narrative": 3,
+    "execution": 3
    },
    "scores_critic": {
-    "pmf": 2,
+    "pmf": 3,
     "narrative": 4,
     "execution": 3
    },
-   "disagreements": [
-    "recommendation: drafter 'advance' vs critic 'watch'",
-    "critic flags 5 claim(s) as unsupported by their quote"
-   ]
-  },
-  {
-   "entity": "meritsystems",
-   "name": "merit-systems",
-   "drafter": "advance",
-   "critic": "watch",
-   "claims_drafted": 14,
-   "raw_precision": 0.8571,
-   "post_repair_precision": 1.0,
-   "shipped": 14,
-   "withheld": 0,
-   "dropped_in_repair": 0,
-   "scores_drafter": {
-    "pmf": 3,
-    "narrative": 4,
-    "execution": 4
-   },
-   "scores_critic": {
-    "pmf": 3,
-    "narrative": 3,
-    "execution": 4
-   },
-   "disagreements": [
-    "recommendation: drafter 'advance' vs critic 'watch'",
-    "critic flags 2 claim(s) as unsupported by their quote"
-   ]
+   "disagreements": []
   },
   {
    "entity": "agoragentic",
    "name": "agoragentic",
+   "committee_rank": 2,
+   "stage": "unknown (no funding evidence found)",
    "drafter": "watch",
-   "critic": "watch",
-   "claims_drafted": 14,
-   "raw_precision": 0.8571,
-   "post_repair_precision": 1.0,
-   "shipped": 14,
-   "withheld": 0,
+   "drafter_first_draft": "watch",
+   "critic": "pass",
+   "claims_drafted": 13,
+   "raw_precision": 0.6154,
+   "verified": 13,
+   "withheld_by_verifier": 0,
    "dropped_in_repair": 0,
+   "critic_entailed_share": 0.3077,
+   "shipped": 13,
+   "shipped_partial": 9,
+   "withheld_by_critic": 0,
    "scores_drafter": {
     "pmf": 2,
+    "narrative": 3,
+    "execution": 3
+   },
+   "scores_critic": {
+    "pmf": 3,
     "narrative": 3,
     "execution": 4
    },
-   "scores_critic": {
-    "pmf": 2,
-    "narrative": 3,
-    "execution": 3
-   },
    "disagreements": [
-    "critic flags 8 claim(s) as unsupported by their quote"
-   ]
-  },
-  {
-   "entity": "codespar",
-   "name": "codespar",
-   "drafter": "advance",
-   "critic": "watch",
-   "claims_drafted": 14,
-   "raw_precision": 1.0,
-   "post_repair_precision": 1.0,
-   "shipped": 14,
-   "withheld": 0,
-   "dropped_in_repair": 0,
-   "scores_drafter": {
-    "pmf": 3,
-    "narrative": 4,
-    "execution": 4
-   },
-   "scores_critic": {
-    "pmf": 3,
-    "narrative": 4,
-    "execution": 3
-   },
-   "disagreements": [
-    "recommendation: drafter 'advance' vs critic 'watch'",
-    "critic flags 4 claim(s) as unsupported by their quote"
-   ]
-  },
-  {
-   "entity": "vybe",
-   "name": "vybenetwork",
-   "drafter": "advance",
-   "critic": "watch",
-   "claims_drafted": 13,
-   "raw_precision": 0.8462,
-   "post_repair_precision": 1.0,
-   "shipped": 13,
-   "withheld": 0,
-   "dropped_in_repair": 0,
-   "scores_drafter": {
-    "pmf": 3,
-    "narrative": 4,
-    "execution": 3
-   },
-   "scores_critic": {
-    "pmf": 3,
-    "narrative": 4,
-    "execution": 3
-   },
-   "disagreements": [
-    "recommendation: drafter 'advance' vs critic 'watch'",
-    "critic flags 2 claim(s) as unsupported by their quote"
-   ]
-  },
-  {
-   "entity": "seracx",
-   "name": "sera-cx",
-   "drafter": "advance",
-   "critic": "watch",
-   "claims_drafted": 13,
-   "raw_precision": 0.8462,
-   "post_repair_precision": 1.0,
-   "shipped": 13,
-   "withheld": 0,
-   "dropped_in_repair": 0,
-   "scores_drafter": {
-    "pmf": 2,
-    "narrative": 3,
-    "execution": 3
-   },
-   "scores_critic": {
-    "pmf": 2,
-    "narrative": 3,
-    "execution": 3
-   },
-   "disagreements": [
-    "recommendation: drafter 'advance' vs critic 'watch'",
-    "critic flags 3 claim(s) as unsupported by their quote"
+    "recommendation: drafter 'watch' vs critic 'pass'"
    ]
   },
   {
    "entity": "aibtc",
    "name": "aibtcdev",
-   "drafter": "advance",
+   "committee_rank": 3,
+   "stage": "unknown (no funding evidence found)",
+   "drafter": "watch",
+   "drafter_first_draft": "watch",
    "critic": "watch",
    "claims_drafted": 12,
-   "raw_precision": 0.75,
-   "post_repair_precision": 1.0,
-   "shipped": 12,
-   "withheld": 0,
+   "raw_precision": 0.5,
+   "verified": 12,
+   "withheld_by_verifier": 0,
    "dropped_in_repair": 0,
+   "critic_entailed_share": 0.0,
+   "shipped": 12,
+   "shipped_partial": 12,
+   "withheld_by_critic": 0,
    "scores_drafter": {
-    "pmf": 3,
+    "pmf": 2,
     "narrative": 4,
-    "execution": 4
+    "execution": 3
    },
    "scores_critic": {
+    "pmf": 3,
+    "narrative": 3,
+    "execution": 3
+   },
+   "disagreements": []
+  },
+  {
+   "entity": "codespar",
+   "name": "codespar",
+   "committee_rank": 4,
+   "stage": "unknown (no funding evidence found)",
+   "drafter": "watch",
+   "drafter_first_draft": "watch",
+   "critic": "pass",
+   "claims_drafted": 13,
+   "raw_precision": 0.6923,
+   "verified": 13,
+   "withheld_by_verifier": 0,
+   "dropped_in_repair": 0,
+   "critic_entailed_share": 0.3846,
+   "shipped": 13,
+   "shipped_partial": 8,
+   "withheld_by_critic": 0,
+   "scores_drafter": {
     "pmf": 2,
+    "narrative": 4,
+    "execution": 3
+   },
+   "scores_critic": {
+    "pmf": 3,
     "narrative": 3,
     "execution": 3
    },
    "disagreements": [
-    "recommendation: drafter 'advance' vs critic 'watch'",
-    "critic flags 3 claim(s) as unsupported by their quote"
+    "recommendation: drafter 'watch' vs critic 'pass'"
    ]
   },
   {
    "entity": "payai",
    "name": "PayAI Network",
-   "drafter": "advance",
+   "committee_rank": 5,
+   "stage": "unknown (no funding evidence found)",
+   "drafter": "watch",
+   "drafter_first_draft": "watch",
    "critic": "watch",
    "claims_drafted": 14,
-   "raw_precision": 1.0,
-   "post_repair_precision": 1.0,
-   "shipped": 14,
-   "withheld": 0,
+   "raw_precision": 0.3571,
+   "verified": 14,
+   "withheld_by_verifier": 0,
    "dropped_in_repair": 0,
+   "critic_entailed_share": 0.5714,
+   "shipped": 14,
+   "shipped_partial": 6,
+   "withheld_by_critic": 0,
    "scores_drafter": {
-    "pmf": 3,
-    "narrative": 4,
+    "pmf": 2,
+    "narrative": 3,
     "execution": 3
    },
    "scores_critic": {
@@ -217,9 +186,95 @@
     "narrative": 4,
     "execution": 3
    },
+   "disagreements": []
+  },
+  {
+   "entity": "devlabgroup",
+   "name": "devlab-group",
+   "committee_rank": 6,
+   "stage": "unknown (no funding evidence found)",
+   "drafter": "pass",
+   "drafter_first_draft": "pass",
+   "critic": "pass",
+   "claims_drafted": 13,
+   "raw_precision": 0.6154,
+   "verified": 13,
+   "withheld_by_verifier": 0,
+   "dropped_in_repair": 0,
+   "critic_entailed_share": 0.2308,
+   "shipped": 12,
+   "shipped_partial": 9,
+   "withheld_by_critic": 1,
+   "scores_drafter": {
+    "pmf": 2,
+    "narrative": 3,
+    "execution": 3
+   },
+   "scores_critic": {
+    "pmf": 2,
+    "narrative": 4,
+    "execution": 3
+   },
+   "disagreements": []
+  },
+  {
+   "entity": "faremeter",
+   "name": "faremeter",
+   "committee_rank": 7,
+   "stage": "unknown (no funding evidence found)",
+   "drafter": "watch",
+   "drafter_first_draft": "advance",
+   "critic": "watch",
+   "claims_drafted": 12,
+   "raw_precision": 0.6667,
+   "verified": 12,
+   "withheld_by_verifier": 0,
+   "dropped_in_repair": 0,
+   "critic_entailed_share": 0.4167,
+   "shipped": 11,
+   "shipped_partial": 6,
+   "withheld_by_critic": 1,
+   "scores_drafter": {
+    "pmf": 2,
+    "narrative": 3,
+    "execution": 3
+   },
+   "scores_critic": {
+    "pmf": 3,
+    "narrative": 3,
+    "execution": 3
+   },
+   "disagreements": []
+  },
+  {
+   "entity": "seracx",
+   "name": "sera-cx",
+   "committee_rank": 8,
+   "stage": "unknown (no funding evidence found)",
+   "drafter": "pass",
+   "drafter_first_draft": "pass",
+   "critic": "watch",
+   "claims_drafted": 13,
+   "raw_precision": 0.5385,
+   "verified": 13,
+   "withheld_by_verifier": 0,
+   "dropped_in_repair": 0,
+   "critic_entailed_share": 0.3077,
+   "shipped": 13,
+   "shipped_partial": 9,
+   "withheld_by_critic": 0,
+   "scores_drafter": {
+    "pmf": 2,
+    "narrative": 3,
+    "execution": 3
+   },
+   "scores_critic": {
+    "pmf": 3,
+    "narrative": 3,
+    "execution": 3
+   },
    "disagreements": [
-    "recommendation: drafter 'advance' vs critic 'watch'",
-    "critic flags 5 claim(s) as unsupported by their quote"
+    "recommendation: drafter 'pass' vs critic 'watch'"
    ]
   }
  ]

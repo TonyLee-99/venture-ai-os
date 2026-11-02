@@ -1,0 +1,624 @@
+[
+ {
+  "entity": "tempo",
+  "name": "tempoxyz",
+  "relevance": 2,
+  "screen_rank": 1,
+  "stage": "past entry stage",
+  "seed_eligible": false,
+  "ineligible_reasons": [
+   "incubated by stripe",
+   "institutional backers on homepage: paradigm"
+  ],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [
+   "Tempo is incubated by Stripe and Paradigm , combining deep experience in global payments with leading crypto and blockchain engineering",
+   "in Focus Stablecoin payments: cross-border transfers, global payouts, embedded finance, and machine-to-machine payments Incubated by Stripe and Paradigm Designed with Category-defining fintechs, banks, and commerce platforms serving billions worldwide Settlement Near-instant settlement, with"
+  ],
+  "doc_ids": [
+   "d_585a89bfcbd619b6"
+  ]
+ },
+ {
+  "entity": "faremeter",
+  "name": "faremeter",
+  "relevance": 5,
+  "screen_rank": 4,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "vellarwallet",
+  "name": "vellar-wallet",
+  "relevance": 3,
+  "screen_rank": 5,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "lilly",
+  "name": "lilly-protocol",
+  "relevance": 3,
+  "screen_rank": 6,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "meritsystems",
+  "name": "merit-systems",
+  "relevance": 8,
+  "screen_rank": 7,
+  "stage": "past entry stage",
+  "seed_eligible": false,
+  "ineligible_reasons": [
+   "stated raise of $10M",
+   "institutional backers on homepage: a16z"
+  ],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [
+   "Merit Systems | Agentic Commerce Product House Products We are an agentic commerce product house $10M seed round led by a16z \u00b7 Read on CNBC \u2197 Developers Contact Terms Privacy Blog Built in Williamsburg, NY"
+  ],
+  "doc_ids": [
+   "d_0ac7a52137e34a0b"
+  ]
+ },
+ {
+  "entity": "libert",
+  "name": "libertai",
+  "relevance": 2,
+  "screen_rank": 8,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "accensa",
+  "name": "accensa",
+  "relevance": 3,
+  "screen_rank": 9,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "bof",
+  "name": "bofai",
+  "relevance": 2,
+  "screen_rank": 10,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "qntx",
+  "name": "qntx-labs",
+  "relevance": 3,
+  "screen_rank": 11,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "openbyte",
+  "name": "openbyteinc",
+  "relevance": 2,
+  "screen_rank": 12,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [
+   "From open-source security to compliance governance, every engineering claim is backed by public evidence"
+  ],
+  "doc_ids": [
+   "d_903b21f201da2da1"
+  ]
+ },
+ {
+  "entity": "bitrouter",
+  "name": "bitrouter",
+  "relevance": 2,
+  "screen_rank": 13,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "bitterbot",
+  "name": "bitterbot-ai",
+  "relevance": 2,
+  "screen_rank": 14,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "mark3",
+  "name": "mark3labs",
+  "relevance": 2,
+  "screen_rank": 15,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "agoragentic",
+  "name": "agoragentic",
+  "relevance": 6,
+  "screen_rank": 16,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "codespar",
+  "name": "codespar",
+  "relevance": 10,
+  "screen_rank": 17,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "vybe",
+  "name": "vybenetwork",
+  "relevance": 8,
+  "screen_rank": 18,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "magebitcom",
+  "name": "magebitcom",
+  "relevance": 2,
+  "screen_rank": 19,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "seracx",
+  "name": "sera-cx",
+  "relevance": 4,
+  "screen_rank": 20,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "payram",
+  "name": "payram",
+  "relevance": 3,
+  "screen_rank": 21,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "oro",
+  "name": "ORO AI",
+  "relevance": 2,
+  "screen_rank": 22,
+  "stage": "YC Fall 2026 (pre-seed/seed)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": "Fall 2026",
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [
+   "Request a sample Backed by Blog Privacy Terms \u00a9 2026 ORO AI"
+  ],
+  "doc_ids": [
+   "d_b17141572fef464f"
+  ]
+ },
+ {
+  "entity": "wiener",
+  "name": "wienerlabs",
+  "relevance": 3,
+  "screen_rank": 23,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "aibtc",
+  "name": "aibtcdev",
+  "relevance": 4,
+  "screen_rank": 24,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "crosshatch",
+  "name": "crosshatch",
+  "relevance": 2,
+  "screen_rank": 25,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "payai",
+  "name": "PayAI Network",
+  "relevance": 5,
+  "screen_rank": 26,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": {
+   "ticker": "PAYAI",
+   "coingecko_id": "payai-network-2",
+   "fdv_usd": 7073540,
+   "market_cap_usd": 7073540,
+   "source": "https://www.coingecko.com/en/coins/payai-network-2"
+  },
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "vergexperps",
+  "name": "Vergex Perps",
+  "relevance": 2,
+  "screen_rank": 27,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "devlabgroup",
+  "name": "devlab-group",
+  "relevance": 6,
+  "screen_rank": 28,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "gokite",
+  "name": "gokite-ai",
+  "relevance": 3,
+  "screen_rank": 29,
+  "stage": "past entry stage",
+  "seed_eligible": false,
+  "ineligible_reasons": [
+   "institutional backers on homepage: coinbase ventures, general catalyst, paypal ventures"
+  ],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [
+   "compatibility Low transaction fee Dedicated agent pay lanes to minimize network congestion Native cross chain messaging Backed by Ecosystem Partner Highlights Build Agent Passport About Company Community Events Job Blog Whitepaper Whitepaper(Korean) MiCAR Whitepaper Podcast Media BrandKit",
+   "investor logos on homepage: Coinbase Ventures, GENERAL CATALYST, PayPal Ventures"
+  ],
+  "doc_ids": [
+   "d_06e634366601f9c7"
+  ]
+ },
+ {
+  "entity": "xpaysh",
+  "name": "xpaysh",
+  "relevance": 10,
+  "screen_rank": 30,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "vaaya",
+  "name": "vaaya-ai",
+  "relevance": 6,
+  "screen_rank": 31,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "t54",
+  "name": "t54-labs",
+  "relevance": 2,
+  "screen_rank": 32,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "quiknode",
+  "name": "quiknode-labs",
+  "relevance": 2,
+  "screen_rank": 33,
+  "stage": "past entry stage",
+  "seed_eligible": false,
+  "ineligible_reasons": [
+   "stated Series A or later",
+   "stated raise of $60M",
+   "institutional backers on homepage: benchmark"
+  ],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [
+   "// 2021 \u2014 Seed Round Seed round, led by 776 and SoftBank Kickstarted Quicknode's infrastructure development and early team growth",
+   "// 2022 \u2014 Series A $35M raised, led by Tiger Global Quicknode's Series A fueled growth across supported blockchains, developer tooling, and network performance",
+   "// 2023 \u2014 Series B $60M raised, led by 50T Expanded Quicknode's global footprint, empowering developers and enterprises worldwide with enhanced infrastructure and reliability",
+   "investor logos on homepage: Benchmark-menu (2)"
+  ],
+  "doc_ids": [
+   "d_0c3ffad342e5019d",
+   "d_27c0b57ba98a9163"
+  ]
+ },
+ {
+  "entity": "ausca",
+  "name": "auscahq",
+  "relevance": 6,
+  "screen_rank": 34,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "tlay",
+  "name": "tlay-io",
+  "relevance": 4,
+  "screen_rank": 35,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "agentcommercekit",
+  "name": "agentcommercekit",
+  "relevance": 2,
+  "screen_rank": 36,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "finaegis",
+  "name": "finaegis",
+  "relevance": 7,
+  "screen_rank": 38,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "0xgasless",
+  "name": "0xGasless",
+  "relevance": 3,
+  "screen_rank": 39,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": {
+   "ticker": "0XGAS",
+   "coingecko_id": "0xgasless-2",
+   "fdv_usd": 255909,
+   "market_cap_usd": 255909,
+   "source": "https://www.coingecko.com/en/coins/0xgasless-2"
+  },
+  "prior_raises_defillama": [],
+  "round_evidence": [
+   "Start Building \u2014 Free Book a Demo 0xGasless gives every AI agent an identity, a gasless wallet, and a payment layer Backed by WHY 0xgasless EXISTS AI Agents Are Ready"
+  ],
+  "doc_ids": [
+   "d_93316dfc27c5f30e"
+  ]
+ },
+ {
+  "entity": "orcaqubits",
+  "name": "orcaqubits",
+  "relevance": 7,
+  "screen_rank": 40,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [
+   "egration Transform your store into an AI-ready endpoint using UCP\u2014the open standard co-developed by Google and Shopify, backed by Walmart, Target, Visa, and 20+ partners"
+  ],
+  "doc_ids": [
+   "d_2310b5252b6cd34d"
+  ]
+ },
+ {
+  "entity": "usehelix",
+  "name": "usehelix",
+  "relevance": 3,
+  "screen_rank": 41,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "mention",
+  "name": "mentionnetwork",
+  "relevance": 2,
+  "screen_rank": 42,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ },
+ {
+  "entity": "internetcourt",
+  "name": "internet-court",
+  "relevance": 5,
+  "screen_rank": 43,
+  "stage": "unknown (no funding evidence found)",
+  "seed_eligible": true,
+  "ineligible_reasons": [],
+  "yc_batch": null,
+  "token": null,
+  "prior_raises_defillama": [],
+  "round_evidence": [],
+  "doc_ids": []
+ }
+]

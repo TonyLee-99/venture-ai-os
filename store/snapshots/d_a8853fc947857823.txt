@@ -1,0 +1,393 @@
+DevLab | Protocol and infrastructure engineering
+Work
+Services
+How We Work
+GitHub
+Contact Us
+→
+ENGINEERING SYSTEMS · SINCE 2018
+We turn product goals
+into reliable systems
+Protocol and infrastructure engineering
+from architecture through production
+Discuss a project
+→
+See our work
+→
+TRACK RECORD
+2018 → NOW
+Multiple market cycles
+20+ PROJECTS
+Protocol & infrastructure
+PUBLIC CODE
+Repositories on GitHub
+ARCHITECTURE FIRST
+Risks mapped before implementation
+WHAT WE HELP YOU BUILD
+Start with what the business
+needs to achieve
+Founders and product teams bring us in
+to own the engineering. The product goal
+drives the architecture and delivery plan.
+01
+PRODUCT DELIVERY
+Build for production
+We take a defined product goal through architecture, implementation, and production.
+02
+FINANCIAL INFRASTRUCTURE
+Build financial infrastructure
+Payments, tokenization, settlement, wallets, and protocol logic built around operational and security constraints.
+03
+TAKEOVER & RESCUE
+Bring a project back on track
+We assess the codebase, keep what is sound, fix the risky parts, and put delivery back on a clear plan.
+04
+TECHNICAL PARTNERSHIP
+Extend your engineering team
+We take ownership of a defined workstream and work directly with your product and engineering team.
+05
+ARCHITECTURE & DISCOVERY
+Design the right architecture
+Before implementation, we map the system, dependencies, risks, and delivery plan.
+06
+SECURITY & REMEDIATION
+Strengthen security before launch
+We review contracts and infrastructure, fix critical findings, harden permissions, and prepare the system for production.
+See the full engineering scope.
+From protocol logic and financial infrastructure to wallets, backend systems, security, and production operations.
+Explore all services
+→
+SELECTED WORK  ·  20+ PROJECTS
+Systems built
+for our clients
+Protocol, financial, and infrastructure projects. Each case explains the scope of our work, the technical
+decisions, and how the system handles its core operations.
+DeFi  ·  Prediction markets
+ThermoMarket
+ThermoMarket needed order processing and live market data to handle concentrated activity around breaking news. We separated off-chain matching from on-chain settlement, gave each market a single sequenced writer, recorded accepted orders in a durable command journal and moved live prices onto a dedicated WebSocket fleet. Users keep their own keys, and Signal Orders can trigger a trade from another market.
+Read the case study
+→
+Ticketing  ·  Smart accounts
+VeloPass Labs
+Ticketing that connects official resale to organizer royalty accounting, ownership changes and entry-credential revocation.
+Read the case study
+→
+Compliance  ·  Zero-knowledge
+zkproof.space
+Zero-knowledge proofs that let a protocol verify a user's eligibility without seeing or publishing the identity evidence.
+Read the case study
+→
+Need something similar — or something we haven't built before? Start with the outcome. We'll work
+backwards from there.
+Send a project brief
+→
+Explore all work
+→
+HOW WE WORK
+Clarity before code.
+Structure before scale.
+01
+Understand the outcome
+We start with the product goal, business constraints, and success criteria before defining the technical path.
+GOALS · CONSTRAINTS · SUCCESS CRITERIA · SYSTEM BOUNDARIES
+02
+Design the system
+We define interfaces, dependencies, permissions, failure modes, and technical risks before development begins.
+ARCHITECTURE · INTERFACES · DEPENDENCIES · FAILURE MODES
+03
+Commit to the plan
+We agree the scope, milestones, ownership, and delivery expectations before implementation starts.
+SCOPE · MILESTONES · OWNERSHIP · DELIVERY PLAN
+04
+Build in stages
+We keep progress visible, document technical decisions, and update the plan when scope changes.
+IMPLEMENTATION · REVIEW · VALIDATION · HANDOFF
+See the full development process.
+From discovery and architecture through implementation, validation, deployment, and support.
+See how we work
+→
+TESTIMONIALS
+WHAT
+CLIENTS
+VALUE IN
+THE WORK
+Start with a focused architecture engagement,
+a defined delivery scope, or an ongoing
+technical partnership.
+For
+our
+decentralized
+real
+estate
+tokenization
+platform,
+DevLab
+delivered
+secure
+blockchain
+technology
+and
+an
+intuitive
+website.
+The
+team
+handled
+every
+request
+with
+care,
+kept
+communication
+clear,
+and
+built
+a
+product
+that
+exceeded
+our
+expectations.
+Before
+suggesting
+a
+solution,
+they
+took
+time
+to
+understand
+our
+business
+needs.
+Their
+recommendations
+were
+practical
+and
+cost-effective,
+and
+they
+stayed
+punctual
+and
+responsive
+as
+our
+product,
+budget,
+and
+timeline
+changed.
+We
+would
+gladly
+work
+with
+the
+team
+again.
+Across
+several
+Web3
+engagements,
+Dmitry
+and
+his
+team
+took
+ownership
+of
+architecture,
+integrations,
+and
+production
+delivery.
+That
+let
+us
+focus
+on
+strategy
+and
+growth
+instead
+of
+rebuilding
+the
+technical
+stack
+for
+every
+client.
+You
+can
+trust
+the
+DevLab
+team
+to
+deliver
+what
+you
+want
+to
+build
+or
+design.
+Their
+experience
+is
+broad,
+and
+the
+quality
+of
+their
+work
+has
+always
+exceeded
+our
+expectations.
+Once
+you
+work
+with
+them,
+you
+don't
+need
+to
+look
+further.
+Thank
+you
+for
+your
+job.
+Souhayl Maronesy
+·
+RentChain
+01
+02
+03
+04
+05
+SPECIALISMS
+Where we have the
+most depth
+Most of our work is in financial systems,
+protocol infrastructure, wallets, and
+tokenized assets.
+01
+RWA & Tokenization
+Tokenization systems for issuance, ownership, compliance, servicing, redemption, and controlled asset lifecycle.
+Explore RWA engineering
+→
+02
+Payments & Stablecoins
+Payment flows, treasury logic, settlement rails, stablecoin operations, and programmable movement of value.
+Explore payment systems
+→
+03
+Smart Accounts & Wallets
+Smart accounts, session keys, delegated execution, recovery flows, and wallet logic built for real user journeys.
+Explore wallet infrastructure
+→
+04
+Protocol & DeFi Systems
+Protocol architecture, liquidity mechanics, oracle flows, governance, incentives, and security-critical on-chain logic.
+Explore protocol engineering
+→
+Architecture makes
+delivery easier to predict.
+How we approach architecture before development
+→
+OPEN ENGINEERING
+Built in-house.
+Public work from DevLab
+Self-Hosted RWA
+Tokenization Platform
+Permissioned RWA issuance, controlled transfers, auditor-attested supply changes, and on-chain redemption.
+Agent Commerce
+Gateway
+A self-hosted gateway connecting existing APIs to AI agents for discovery, execution, and x402 payments without taking custody of funds or keys.
+Immutable Audit
+Process execution captured with eBPF. Events are hash-chained, collected remotely, and can be verified independently.
+MCP Scanner
+Security scanner for MCP servers, source trees, and packages, with evidence-backed findings and coverage reporting.
+Postflight
+A zero-dependency Linux server audit for security and health checks, with actionable fixes and machine-readable output.
+ERC-8409
+Draft ERC for provider-signed EVM payment quotes, separating commercial terms from payment authorization and settlement.
+RepoLore
+An official ChatGPT Store plugin for tracing public code history across commits, pull requests, issues, and regressions.
+See our GitHub
+→
+START A PROJECT
+Ready to move the
+project forward?
+Tell us what you are building and what you
+need help with. Start with a call or send the
+details in writing.
+START WITH THE CONTEXT
+Send a project brief
+Describe the project in your own words or attach an existing
+brief, architecture document, or requirements file.
+Share the brief
+→
+NO PITCH DECK NEEDED
+Schedule a call
+Book a focused 30-minute conversation about the product,
+architecture, scope, or delivery plan.
+Book a call
+→
+Email
+Projects, briefs, and technical questions
+[email protected]
+→
+LinkedIn
+Direct contact
+Dmitry Sergeev
+→
+START WITH THE CONTEXT
+Send a project brief
+Describe the project in your own words or attach an existing
+brief, architecture document, or requirements file.
+←
+Back to options
+Name
+Email
+What do you need?
+Development
+Consultation
+Partnership
+Message
+Send the brief
+→
+Prefer your own email? Write to
+[email protected]
+DevLab designs and builds protocol and DeFi products, tokenized real-world assets, and payment systems. Our work also covers smart accounts, wallets, identity and access, and the infrastructure that connects them. We take projects from architecture and smart contracts through integrations, security, deployment, and production operations.
+Explore
+Services
+Selected work
+How we work
+Specialisms
+RWA & tokenization
+Payments & stablecoins
+Smart accounts & wallets
+Protocol & DeFi systems
+Open engineering
+RWA tokenization platform
+Agent Commerce Gateway
+MCP Scanner
+Postflight
+Connect
+[email protected]
+LinkedIn
+GitHub
+Protocol and infrastructure engineering.
+©
+2026
+DevLab

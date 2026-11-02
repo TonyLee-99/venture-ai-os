@@ -1,0 +1,13 @@
+x402 facilitator market share, 30 days to 2026-11-01 (x402scan public data, fetched 2026-11-02):
+coinbase: 2,610,865 payments (69.7% of payments), 534,034 USD (35.4% of volume)
+payAI: 462,019 payments (12.3% of payments), 16,089 USD (1.1% of volume)
+fluxa: 353,469 payments (9.4% of payments), 846,830 USD (56.2% of volume)
+figment-facilitator: 256,797 payments (6.9% of payments), 675 USD (0.0% of volume)
+ultravioletadao: 22,698 payments (0.6% of payments), 5,333 USD (0.4% of volume)
+dexter: 21,115 payments (0.6% of payments), 1,976 USD (0.1% of volume)
+three-ws: 9,134 payments (0.2% of payments), 2,101 USD (0.1% of volume)
+mrdn: 3,559 payments (0.1% of payments), 96,563 USD (6.4% of volume)
+primer: 3,340 payments (0.1% of payments), 899 USD (0.1% of volume)
+openfacilitator: 2,259 payments (0.1% of payments), 19 USD (0.0% of volume)
+openx402: 1,320 payments (0.0% of payments), 1,173 USD (0.1% of volume)
+polymer: 802 payments (0.0% of payments), 480 USD (0.0% of volume)

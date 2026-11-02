@@ -1,0 +1,8 @@
+Top contributors to github.com/codespar/mcp-dev-latam (GitHub API, fetched 2026-11-02):
+fabianocruz (User): 244 commits
+rapguit (User): 7 commits
+dangazineu (User): 6 commits
+AndreLFSMartins (User): 1 commits
+CalmEsSimple (User): 1 commits
+dennisqq (User): 1 commits
+palandri (User): 1 commits

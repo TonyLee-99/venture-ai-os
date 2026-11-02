@@ -1,0 +1,135 @@
+{
+ "job": "diligence_memo",
+ "agent": "AI DD (analyst)",
+ "entity": "devlabgroup",
+ "run_id": "0ffdfe73c7bc1fb0",
+ "as_of": "2026-11-01",
+ "status": "ok",
+ "inputs": {
+  "doc_ids": [
+   "d_05d72a18545d2c02",
+   "d_216e113b6b2b5219",
+   "d_5eb8ec42715ebc96",
+   "d_a8853fc947857823",
+   "d_d654ae3bd333bd8e"
+  ],
+  "facts_sha": "{\"gh.commits_90d\": 285, \"gh.commits_prev_90d\": 10, \"gh.commits_total\": 295, \"gh.first_repo_year\": 2017, \"gh.public_repos\": 15, \"gh.stars_total_now\": 169, \"hn.points_total\": 0, \"hn.stories\": 0}",
+  "stage": {
+   "stage": "unknown (no funding evidence found)",
+   "seed_eligible": true,
+   "ineligible_reasons": [],
+   "yc_batch": null,
+   "token": null,
+   "prior_raises_defillama": [],
+   "round_evidence": [],
+   "doc_ids": []
+  }
+ },
+ "steps": [
+  {
+   "step": "draft_memo",
+   "kind": "llm",
+   "backend": "claude_cli",
+   "model": "claude-sonnet-5-5",
+   "cache_key": "06dc7f56152d6d806a0ba93d24f0f3d79337902e82502868daea4817d9aa7599",
+   "prompt_sha256": "7696cdf74e62830e93f64de1c31d3e865400fa1436d635a3e64fe90ab3a70264",
+   "doc_ids": [
+    "d_05d72a18545d2c02",
+    "d_216e113b6b2b5219",
+    "d_5eb8ec42715ebc96",
+    "d_a8853fc947857823",
+    "d_d654ae3bd333bd8e"
+   ],
+   "output_sha256": "dd031d5dd3ab1c69aaf81282792213f50d33db575a2e94555254c03f9ab8d9f5"
+  },
+  {
+   "step": "verify_receipts",
+   "n_claims": 13,
+   "verified": 8,
+   "failures": {
+    "c1": "number_unsupported",
+    "c2": "number_unsupported",
+    "c6": "number_unsupported",
+    "c9": "number_unsupported",
+    "c12": "metric_not_stated"
+   }
+  },
+  {
+   "step": "repair_claims",
+   "kind": "llm",
+   "backend": "claude_cli",
+   "model": "claude-sonnet-5-5",
+   "cache_key": "899d42261c09dcd0c4abaf657cde105b4c6ea0b66a61aba67b4abf1112fe0e34",
+   "prompt_sha256": "1888758630d93b65414e93050aa4b5319d292c23dc41389a37117bd9cbdc89ee",
+   "doc_ids": [
+    "d_05d72a18545d2c02",
+    "d_216e113b6b2b5219",
+    "d_5eb8ec42715ebc96",
+    "d_a8853fc947857823",
+    "d_d654ae3bd333bd8e"
+   ],
+   "output_sha256": "2ad3fa0b0a0bae64a59c36ece2f8f7f9270936630299c141f0dd2acc3cf6ae8b"
+  },
+  {
+   "step": "verifier_gate",
+   "raw_precision": 0.6153846153846154,
+   "verified": 13,
+   "withheld": 0
+  },
+  {
+   "step": "critique",
+   "kind": "llm",
+   "backend": "codex_cli",
+   "model": "gpt-6.1-sol",
+   "cache_key": "a7e619dfb007f971403cd0ddea6fb1fdce97d196851011e6ac95affb4fb9cc80",
+   "prompt_sha256": "8eedb5cde0fc449afc42ef61620ad608d0607921234dcc820ffde7d13be8f8d1",
+   "doc_ids": [
+    "d_05d72a18545d2c02",
+    "d_216e113b6b2b5219",
+    "d_5eb8ec42715ebc96",
+    "d_a8853fc947857823",
+    "d_d654ae3bd333bd8e"
+   ],
+   "output_sha256": "b00332fae1e99f31723c327ef8bd05ad58e06efc31e958f0b994e6ec4cb8875f"
+  },
+  {
+   "step": "reconcile",
+   "entails": 3,
+   "partial": 9,
+   "contradicts": 0,
+   "unsupported": 1,
+   "unlabelled": 0
+  },
+  {
+   "step": "rescore",
+   "kind": "llm",
+   "backend": "claude_cli",
+   "model": "claude-sonnet-5-5",
+   "cache_key": "7d25dc9156ba78f6432b0993a0e646af90b59b40614897858862af45e9cdab82",
+   "prompt_sha256": "c8cbf75a9c53cf32c73e8c91051c41f23f4b6fa0be312105cc3c57ba2a743fa5",
+   "doc_ids": [
+    "d_05d72a18545d2c02",
+    "d_216e113b6b2b5219",
+    "d_5eb8ec42715ebc96",
+    "d_a8853fc947857823",
+    "d_d654ae3bd333bd8e"
+   ],
+   "output_sha256": "686a3189db3dea80f58edb5951dd09690800bfc87c860c5918faf73b70a431f8"
+  },
+  {
+   "step": "committee",
+   "rank": 6,
+   "recommendation": "pass",
+   "disagreements": []
+  }
+ ],
+ "outputs": {
+  "memo": "results/memos/devlabgroup.md",
+  "artifact_version": 1,
+  "decision_card": false
+ },
+ "error": null,
+ "sla_violations": [
+  "llm calls 4 > SLA 3"
+ ]
+}

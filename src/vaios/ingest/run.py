@@ -38,6 +38,7 @@ def run(only: str | None = None) -> None:
         "defillama": defillama.run,
         "github_search": github.search_niche,
         "github_activity": lambda: github.pull_many_orgs(defillama_github_owners() + niche_owners()),
+        "token_launches": sources.pull_token_launches,
         "github_commits": lambda: [github.pull_commit_timestamps(r) for r in MONITORED_REPOS],
     }
     for name, fn in stages.items():

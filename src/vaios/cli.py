@@ -20,6 +20,10 @@ COMMANDS = {
     "manifest": "vaios.dakr.freeze:summarize_manifest",
     "export-skills": "vaios.agents.skills:export_bundle",
     "verifier-eval": "vaios.receipts.evaluate:run",
+    "claim-eval": "vaios.receipts.claim_eval:run",
+    "monitor-diagnostics": "vaios.monitoring.diagnostics:run",
+    "readme": "vaios.report:render_readme",
+    "company-brief": "vaios.agents.company_brief:run",
 }
 
 

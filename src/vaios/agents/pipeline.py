@@ -36,22 +36,27 @@ def _refresh_candidates(store: DocStore) -> list[dict]:
     counts = sourcing.source_counts(cands)
     trace.step("source_and_resolve", entities=len(cands), by_source=counts,
                multi_source=int((cands["n_sources"] > 1).sum()))
-    # stage check (sourced evidence only) walks the core-niche pool in score order until 8 seed-eligible remain
-    pool = sourcing.shortlist(cands, n=40)
+    # stage check (sourced evidence only) on the top-scored relevant candidates; the memo queue is the first 8
+    # that are core-niche (relevance >= 4) and seed-eligible
+    pool = cands[cands["relevant"] & cands["investable"] & cands["screen_score"].notna() & cands["top_repo"].notna()
+                 & cands["new_to_crm"]].head(40)
     rows, checked = [], []
     for cand in pool.to_dict("records"):
-        if len(rows) >= 8:
-            break
         cand = {k: (None if isinstance(v, float) and math.isnan(v) else v) for k, v in cand.items()}  # NaN -> None
         st = stage_of(con, store, cand)
-        checked.append({"entity": cand["entity"], "name": cand["name"], **st})
-        if not st["seed_eligible"]:
+        checked.append({"entity": cand["entity"], "name": cand["name"], "relevance": cand["relevance"],
+                        "screen_rank": cand["rank"], **st})
+        if not st["seed_eligible"] or cand["relevance"] < sourcing.CORE_RELEVANCE or len(rows) >= 8:
             continue
         cand["stage"] = st
         doc_ids = sorted(set(evidence.gather(con, store, cand)) | set(st["doc_ids"]))
         evidence.save_facts(evidence.facts_sheet(con, cand, len(cands)))
         rows.append({k: cand[k] for k in ("entity", "name", "github_owner", "top_repo", "domain", "facilitator",
                                           "rank", "screen_score", "sources", "stage")} | {"doc_ids": doc_ids})
+    chk = {c["entity"]: c for c in checked}
+    cands["stage"] = cands["entity"].map(lambda e: chk[e]["stage"] if e in chk else "not checked")
+    cands["seed_eligible"] = cands["entity"].map(lambda e: chk[e]["seed_eligible"] if e in chk else None)
+    cands[cols + ["stage", "seed_eligible"]].to_csv(SRC / "candidates.csv", index=False)
     (SRC / "stage_checks.json").write_text(json.dumps(checked, indent=1, default=str) + "\n")
     trace.step("screen", relevant=int(cands["relevant"].sum()),
                relevant_investable=int((cands["relevant"] & cands["investable"]).sum()),
@@ -73,7 +78,10 @@ def stage_of(con, store: DocStore, cand: dict) -> dict:
     prior = con.execute("""SELECT r.raise_date::DATE::VARCHAR AS date, r.round, r.amount_musd, r.lead_investors
                            FROM raises r JOIN protocols p USING (slug) WHERE p.github_owner = ?
                            ORDER BY r.raise_date""", [cand.get("github_owner") or ""]).df().to_dict("records")
-    sig = stage.gather(store, cand["entity"], cand.get("domain"))
+    site = stage.org_website(cand.get("github_owner"))
+    if site:
+        cand["domain"] = site  # the company's own homepage beats a repo's homepage link (x402scan.com for Merit)
+    sig = stage.gather(store, cand["entity"], [cand.get("domain")])
     tok = stage.token_info(con, cand["name"], cand.get("github_owner"))
     cls = stage.classify(sig, yc[0] if yc else None, tok, prior)
     evidence_lines = sig["quotes"][:3] + [f"DefiLlama: {p['date']} {p['round'] or 'round n/a'} "
@@ -115,28 +123,39 @@ def sourcing_run() -> dict:
 
 
 def summarize(results: list[dict], failures: list[dict]) -> dict:
-    drafted = sum(r["receipts"]["claims_drafted"] for r in results)
+    R = lambda k: sum(r["receipts"][k] for r in results)  # noqa: E731
+    drafted, verified = R("claims_drafted"), R("verified")
     raw_ok = sum(round(r["receipts"]["raw_precision"] * r["receipts"]["claims_drafted"]) for r in results)
-    shipped = sum(r["receipts"]["shipped"] for r in results)
-    withheld = sum(r["receipts"]["withheld"] for r in results)
-    flagged = sum(len(r["critique"]["unsupported_claims"]) for r in results)
+    labels = {k: sum(r["receipts"]["critic_labels"][k] for r in results)
+              for k in ("entails", "partial", "contradicts", "unsupported", "unlabelled")}
+    recs = [r["memo"]["recommendation"] for r in results]
     return {
         "as_of": str(AS_OF), "n_memos": len(results), "failed": failures,
         "claims_drafted": drafted, "claims_verified_first_pass": raw_ok,
         "raw_citation_precision": round(raw_ok / drafted, 4) if drafted else None,
-        "post_repair_citation_precision": round(shipped / (shipped + withheld), 4) if shipped + withheld else None,
-        "claims_shipped": shipped, "claims_withheld": withheld,
-        "shipped_over_drafted": round(shipped / drafted, 4) if drafted else None,
-        "claims_dropped_in_repair": sum(r["receipts"]["dropped_in_repair"] for r in results),
-        "critic_unsupported_flags": flagged,
-        "critic_support_rate": round(1 - flagged / shipped, 4) if shipped else None,
-        "memos_with_disagreement": sum(bool(r["disagreements"]) for r in results),
+        "claims_verified_after_repair": verified,
+        "verifier_pass_after_repair_over_drafted": round(verified / drafted, 4) if drafted else None,
+        "critic_labels": labels,
+        # headline support rate: claims a different model family says are fully entailed by their receipt
+        "critic_entailed_over_verified": round(labels["entails"] / verified, 4) if verified else None,
+        "critic_entailed_over_drafted": round(labels["entails"] / drafted, 4) if drafted else None,
+        "claims_shipped": R("shipped"), "claims_shipped_partial_tagged": R("shipped_partial"),
+        "claims_withheld_by_critic": R("withheld_by_critic"), "claims_withheld_by_verifier": R("withheld_by_verifier"),
+        "recommendations": {k: recs.count(k) for k in ("advance", "watch", "pass")},
+        "first_draft_recommendations": {k: [r["memo"]["draft_recommendation"] for r in results].count(k)
+                                        for k in ("advance", "watch", "pass")},
+        "critic_recommendations": {k: [r["critique"]["recommendation"] for r in results].count(k)
+                                   for k in ("advance", "watch", "pass")},
         "recommendation_agreement": sum(r["memo"]["recommendation"] == r["critique"]["recommendation"] for r in results),
-        "memos": [{"entity": r["entity"], "name": r["name"], "drafter": r["memo"]["recommendation"],
-                   "critic": r["critique"]["recommendation"], **r["receipts"],
+        "memos_with_decision_card": sum(bool(r["disagreements"]) for r in results),
+        "human_decisions": "pending: recorded by the owner with `python -m vaios.decide record` (none yet)",
+        "memos": [{"entity": r["entity"], "name": r["name"], "committee_rank": r["committee_rank"],
+                   "stage": (r.get("stage") or {}).get("stage"), "drafter": r["memo"]["recommendation"],
+                   "drafter_first_draft": r["memo"]["draft_recommendation"], "critic": r["critique"]["recommendation"],
+                   **{k: v for k, v in r["receipts"].items() if k != "critic_labels"},
                    "scores_drafter": {d: r["memo"]["scores"][d]["score"] for d in ("pmf", "narrative", "execution")},
                    "scores_critic": {d: r["critique"]["scores"][d]["score"] for d in ("pmf", "narrative", "execution")},
-                   "disagreements": r["disagreements"]} for r in results],
+                   "disagreements": r["disagreements"]} for r in sorted(results, key=lambda r: r["committee_rank"])],
     }
 
 

@@ -8,9 +8,6 @@
   "gh.public_repos": 2,
   "gh.stars_total_now": 41,
   "gh.first_repo_year": 2026,
-  "screen.score": 0.0664,
-  "screen.rank": 16,
-  "screen.n_candidates": 1398,
   "hn.stories": 0,
   "hn.points_total": 0
  },
@@ -21,8 +18,6 @@
   "gh.stars_total_now": "stars today across the owner's repos (current snapshot, not point-in-time)",
   "gh.public_repos": "public non-fork repositories (first 100)",
   "gh.first_repo_year": "year the owner's oldest public repo was created",
-  "screen.score": "GitHub-only screening model probability (backtested, see results/backtest)",
-  "screen.rank": "rank among all sourced candidates",
   "hn.stories": "Hacker News stories with the company name in the title"
  }
 }

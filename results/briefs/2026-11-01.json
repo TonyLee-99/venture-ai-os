@@ -2,15 +2,15 @@
  "week_of": "2026-11-01",
  "brief": {
   "week_of": "2026-11-01",
-  "summary": "Eight inflections were detected across x402 payment series. In the week of 2026-08-24, Coinbase, Dexter and Base transactions fell roughly 80% while the Figment facilitator jumped about 303x. In the week of 2026-09-14, Figment reversed (-98%), PayAI fell about 99%, and Solana and total x402 transactions dropped sharply. None of the provided HN stories plausibly explain these shifts, and the pattern (volume moving between facilitators, then collapsing) suggests a measurement or traffic-attribution artifact, so a human should review before anyone draws business conclusions.",
+  "summary": "In the week of 2026-08-24, Coinbase, Dexter and Base-chain x402 transactions each fell roughly 78-81% while the Figment facilitator jumped about 303x. In the week of 2026-09-14, Figment reversed (-98%) and PayAI and Solana x402 volume collapsed, taking total x402 transactions down about 90%. None of the provided Hacker News stories explains these shifts, so all eight are low confidence and need a human look, possibly at data quality, bot or spam traffic, or facilitator attribution changes.",
   "inflections": [
    {
     "series": "facilitator_coinbase_txs",
     "date": "2026-08-24",
-    "headline": "Coinbase facilitator weekly median txs fall ~79%; no evidence explains it",
+    "headline": "Coinbase facilitator weekly transactions fall ~79% with no identified public trigger",
     "claims": [
      {
-      "id": "c1a",
+      "id": "c1",
       "section": "inflection",
       "text": "Coinbase facilitator weekly median transactions fell from 2304730.0 to 480568.5 (ratio 0.209).",
       "doc_id": null,
@@ -19,9 +19,9 @@
       "value": 0.209
      },
      {
-      "id": "c1b",
+      "id": "c2",
       "section": "inflection",
-      "text": "An HN launch about AI agents paying for data via x402 is among the evidence documents, but nothing in it explains the drop. The cause is unknown.",
+      "text": "The nearest HN story is a small Show HN about agents paying for data via x402. It coincides in time, but nothing in it explains a drop of this size. Cause is unknown.",
       "doc_id": "d_097fefba8f4c898b",
       "quote": "Show HN: I built an M2M payment loop where AI Agents pay for data via x402",
       "metric": null,
@@ -35,10 +35,10 @@
    {
     "series": "facilitator_dexter_txs",
     "date": "2026-08-24",
-    "headline": "Dexter facilitator weekly median txs fall ~81%; unexplained",
+    "headline": "Dexter facilitator transactions drop ~81% in same week as Coinbase; no explanation found",
     "claims": [
      {
-      "id": "c2a",
+      "id": "c3",
       "section": "inflection",
       "text": "Dexter facilitator weekly median transactions fell from 26664.0 to 5177.5 (ratio 0.194).",
       "doc_id": null,
@@ -47,13 +47,13 @@
       "value": 0.194
      },
      {
-      "id": "c2b",
+      "id": "c4",
       "section": "inflection",
-      "text": "The drop coincides in timing with the Coinbase and Base declines and the Figment surge, but no provided document explains it.",
+      "text": "The weekly median after the shift was 5177.5, versus 26664.0 before. The same week saw simultaneous declines in Coinbase and Base series, suggesting a common driver, but none is identified in the sources.",
       "doc_id": null,
       "quote": null,
-      "metric": "facilitator_dexter_txs.2026-08-24.median_before",
-      "value": 26664.0
+      "metric": "facilitator_dexter_txs.2026-08-24.median_after",
+      "value": 5177.5
      }
     ],
     "confidence": "low",
@@ -63,10 +63,10 @@
    {
     "series": "facilitator_figment-facilitator_txs",
     "date": "2026-08-24",
-    "headline": "Figment facilitator jumps ~303x from a tiny base; unexplained",
+    "headline": "Figment facilitator surges ~303x from a tiny base, unexplained",
     "claims": [
      {
-      "id": "c3a",
+      "id": "c5",
       "section": "inflection",
       "text": "Figment facilitator weekly median transactions rose from 4862.0 to 1473925.0 (ratio 303.152).",
       "doc_id": null,
@@ -75,9 +75,9 @@
       "value": 303.152
      },
      {
-      "id": "c3b",
+      "id": "c6",
       "section": "inflection",
-      "text": "The jump coincides in timing with declines at Coinbase and Dexter, which may indicate volume reattribution between facilitators, but this is a hypothesis and no source confirms it.",
+      "text": "The surge to a weekly median of 1473925 coincides with Coinbase and Base declines the same week, which may indicate traffic being re-attributed or shifted between facilitators. This is a hypothesis, not supported by any source.",
       "doc_id": null,
       "quote": null,
       "metric": "facilitator_figment-facilitator_txs.2026-08-24.median_after",
@@ -91,10 +91,10 @@
    {
     "series": "x402_base_txs",
     "date": "2026-08-24",
-    "headline": "x402 on Base weekly median txs fall ~78%; unexplained",
+    "headline": "x402 Base-chain transactions fall ~78%, unexplained by available evidence",
     "claims": [
      {
-      "id": "c4a",
+      "id": "c7",
       "section": "inflection",
       "text": "x402 Base weekly median transactions fell from 2412757.0 to 522340.5 (ratio 0.216).",
       "doc_id": null,
@@ -103,9 +103,9 @@
       "value": 0.216
      },
      {
-      "id": "c4b",
+      "id": "c8",
       "section": "inflection",
-      "text": "Nearby HN launches such as Orthogonal are agent-payment products, but no source links them to Base volume.",
+      "text": "A Show HN for an agent API discovery and payment tool falls near the window but gives no evidence tying it to the Base decline.",
       "doc_id": "d_b3765a6c28d9dc22",
       "quote": "Show HN: Orthogonal – One integration for agents to discover and pay for APIs",
       "metric": null,
@@ -119,21 +119,21 @@
    {
     "series": "facilitator_figment-facilitator_txs",
     "date": "2026-09-14",
-    "headline": "Figment facilitator collapses ~98% after its August surge; unexplained",
+    "headline": "Figment facilitator surge unwinds, down ~98% three weeks after it began",
     "claims": [
      {
-      "id": "c5a",
+      "id": "c9",
       "section": "inflection",
-      "text": "The Figment facilitator's weekly median transactions after the week of 2026-09-14 were a ratio of 0.019 of the prior median.",
+      "text": "Figment facilitator weekly median transactions fell from 1473925.0 to 28503.0 (ratio 0.019).",
       "doc_id": null,
       "quote": null,
       "metric": "facilitator_figment-facilitator_txs.2026-09-14.ratio",
       "value": 0.019
      },
      {
-      "id": "c5b",
+      "id": "c10",
       "section": "inflection",
-      "text": "The HN stories in the window (e.g. Skillsync, Foremerge) concern coding-agent tooling and are not about x402 facilitators; they do not explain the drop.",
+      "text": "The nearby HN stories concern coding-agent tooling and chat portability, not x402 payments; nothing explains the reversal.",
       "doc_id": "d_93a6b4278913aa8c",
       "quote": "Launch HN: Skillsync (YC W26) – AI chat sessions made portable across agents",
       "metric": null,
@@ -147,10 +147,10 @@
    {
     "series": "facilitator_payAI_txs",
     "date": "2026-09-14",
-    "headline": "PayAI facilitator weekly median txs fall ~99%; unexplained",
+    "headline": "PayAI facilitator transactions collapse ~99% with no identified trigger",
     "claims": [
      {
-      "id": "c6a",
+      "id": "c11",
       "section": "inflection",
       "text": "PayAI facilitator weekly median transactions fell from 4485090.0 to 49368.5 (ratio 0.011).",
       "doc_id": null,
@@ -159,13 +159,13 @@
       "value": 0.011
      },
      {
-      "id": "c6b",
+      "id": "c12",
       "section": "inflection",
-      "text": "No provided document references PayAI or explains the drop.",
-      "doc_id": null,
-      "quote": null,
-      "metric": "facilitator_payAI_txs.2026-09-14.median_before",
-      "value": 4485090.0
+      "text": "The window's HN stories are about coding agents and are unrelated to x402 facilitators. Cause is unknown and warrants manual review.",
+      "doc_id": "d_290b061c2b79dee7",
+      "quote": "Show HN: Foremerge – Catch intent conflicts between parallel coding agents",
+      "metric": null,
+      "value": null
      }
     ],
     "confidence": "low",
@@ -175,10 +175,10 @@
    {
     "series": "x402_all_txs",
     "date": "2026-09-14",
-    "headline": "Total x402 weekly median txs fall ~90%; unexplained",
+    "headline": "Total x402 transactions fall ~90%, driven by PayAI and Solana declines",
     "claims": [
      {
-      "id": "c7a",
+      "id": "c13",
       "section": "inflection",
       "text": "Total x402 weekly median transactions fell from 7708357.5 to 759455.0 (ratio 0.099).",
       "doc_id": null,
@@ -187,9 +187,9 @@
       "value": 0.099
      },
      {
-      "id": "c7b",
+      "id": "c14",
       "section": "inflection",
-      "text": "The drop coincides in timing with the PayAI and Solana declines, but no provided source explains it.",
+      "text": "The drop to a weekly median of 759455 coincides with the PayAI and Solana declines in the same week. No dated public event in the sources explains it.",
       "doc_id": null,
       "quote": null,
       "metric": "x402_all_txs.2026-09-14.median_after",
@@ -203,10 +203,10 @@
    {
     "series": "x402_solana_txs",
     "date": "2026-09-14",
-    "headline": "x402 on Solana weekly median txs fall ~97.5%; unexplained",
+    "headline": "x402 Solana transactions fall ~97.5%, unexplained",
     "claims": [
      {
-      "id": "c8a",
+      "id": "c15",
       "section": "inflection",
       "text": "x402 Solana weekly median transactions fell from 5324299.5 to 130906.0 (ratio 0.025).",
       "doc_id": null,
@@ -215,13 +215,13 @@
       "value": 0.025
      },
      {
-      "id": "c8b",
+      "id": "c16",
       "section": "inflection",
-      "text": "The Solana decline coincides in timing with the PayAI decline, but no provided source links them or explains either.",
+      "text": "The Solana decline coincides with the PayAI decline in the same week (PayAI median after: 49368.5), consistent with PayAI driving much of Solana volume. This is an inference, not sourced.",
       "doc_id": null,
       "quote": null,
-      "metric": "x402_solana_txs.2026-09-14.median_before",
-      "value": 5324299.5
+      "metric": "facilitator_payAI_txs.2026-09-14.median_after",
+      "value": 49368.5
      }
     ],
     "confidence": "low",
@@ -230,15 +230,15 @@
    }
   ],
   "watchlist": [
-   "facilitator_figment-facilitator_txs: surged then collapsed within three weeks; check whether the volume is real usage or spam/test traffic.",
-   "facilitator_payAI_txs and x402_solana_txs: both fell 97%+ in the week of 2026-09-14; check for data-pipeline or indexing changes and whether volume recovers.",
-   "x402_all_txs: down ~90%; confirm whether the new baseline holds or the earlier level was inflated by a few high-volume facilitators.",
-   "facilitator_coinbase_txs, facilitator_dexter_txs and x402_base_txs: re-check whether the late-August decline persists."
+   "facilitator_figment-facilitator_txs: surged then reversed within three weeks; check for spam or test traffic or attribution changes.",
+   "facilitator_payAI_txs and x402_solana_txs: ~99% and ~97.5% drops; confirm whether this is real demand loss or an indexing or data issue.",
+   "x402_all_txs: confirm whether the ~90% decline persists or rebounds.",
+   "facilitator_coinbase_txs and x402_base_txs: check whether the lower level since 2026-08-24 is stable."
   ]
  },
  "receipts": {
   "claims_drafted": 16,
-  "raw_precision": 0.8125,
+  "raw_precision": 0.75,
   "post_repair_precision": 1.0,
   "shipped": 16,
   "withheld": 0,

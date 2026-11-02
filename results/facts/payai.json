@@ -8,12 +8,12 @@
   "gh.public_repos": 29,
   "gh.stars_total_now": 99,
   "gh.first_repo_year": 2025,
-  "screen.score": 0.0363,
-  "screen.rank": 26,
-  "screen.n_candidates": 1398,
   "x402.txs_30d": 462019,
   "x402.volume_usd_30d": 16088.59,
   "x402.peak_daily_buyers_30d": 136,
+  "x402.usd_per_tx_30d": 0.0348,
+  "x402.txs_per_peak_daily_buyer_30d": 3397.2,
+  "x402.share_of_all_txs_30d": 0.1233,
   "hn.stories": 0,
   "hn.points_total": 0
  },
@@ -24,9 +24,10 @@
   "gh.stars_total_now": "stars today across the owner's repos (current snapshot, not point-in-time)",
   "gh.public_repos": "public non-fork repositories (first 100)",
   "gh.first_repo_year": "year the owner's oldest public repo was created",
-  "screen.score": "GitHub-only screening model probability (backtested, see results/backtest)",
-  "screen.rank": "rank among all sourced candidates",
   "x402.txs_30d": "x402 transactions settled by this facilitator in the 30 days to the as-of date",
+  "x402.usd_per_tx_30d": "average USD value per x402 payment, last 30 days",
+  "x402.txs_per_peak_daily_buyer_30d": "30-day payments divided by the peak daily count of distinct buyers",
+  "x402.share_of_all_txs_30d": "this facilitator's share of all x402 payments, last 30 days",
   "hn.stories": "Hacker News stories with the company name in the title"
  }
 }

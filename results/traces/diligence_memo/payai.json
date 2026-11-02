@@ -2,16 +2,37 @@
  "job": "diligence_memo",
  "agent": "AI DD (analyst)",
  "entity": "payai",
- "run_id": "5a3a01af9c248f55",
+ "run_id": "02ef211a40969e37",
  "as_of": "2026-11-01",
  "status": "ok",
  "inputs": {
   "doc_ids": [
+   "d_1d9989bd19a2b6ca",
    "d_50189362d7ac28de",
+   "d_95b38e673e4b0e38",
+   "d_97739bfb70f0047f",
+   "d_bf4860a8b3f2429b",
+   "d_d654ae3bd333bd8e",
    "d_e25335e7a14a4218",
    "d_f07008e5d5f69b82"
   ],
-  "facts_sha": "{\"gh.commits_90d\": 29, \"gh.commits_prev_90d\": 56, \"gh.commits_total\": 600, \"gh.first_repo_year\": 2025, \"gh.public_repos\": 29, \"gh.stars_total_now\": 99, \"hn.points_total\": 0, \"hn.stories\": 0, \"screen.n_candidates\": 1398, \"screen.rank\": 26, \"screen.score\": 0.0363, \"x402.peak_daily_buyers_30d\": 136, \"x402.txs_30d\": 462019, \"x402.volume_usd_30d\": 16088.59}"
+  "facts_sha": "{\"gh.commits_90d\": 29, \"gh.commits_prev_90d\": 56, \"gh.commits_total\": 600, \"gh.first_repo_year\": 2025, \"gh.public_repos\": 29, \"gh.stars_total_now\": 99, \"hn.points_total\": 0, \"hn.stories\": 0, \"x402.peak_daily_buyers_30d\": 136, \"x402.share_of_all_txs_30d\": 0.1233, \"x402.txs_30d\": 462019, \"x402.txs_per_peak_daily_buyer_30d\": 3397.2, \"x402.usd_per_tx_30d\": 0.0348, \"x402.volume_usd_30d\": 16088.59}",
+  "stage": {
+   "stage": "unknown (no funding evidence found)",
+   "seed_eligible": true,
+   "ineligible_reasons": [],
+   "yc_batch": null,
+   "token": {
+    "ticker": "PAYAI",
+    "coingecko_id": "payai-network-2",
+    "fdv_usd": 7073540,
+    "market_cap_usd": 7073540,
+    "source": "https://www.coingecko.com/en/coins/payai-network-2"
+   },
+   "prior_raises_defillama": [],
+   "round_evidence": [],
+   "doc_ids": []
+  }
  },
  "steps": [
   {
@@ -19,26 +40,59 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "8f5fe7ffa9fb31e49ccf1cff1256899cc2d7feb2989cd86a12e3eaf771f95c4b",
-   "prompt_sha256": "e3c5adab716068840e8ebcb81987f0d494deb1b0880df8f3828a66d1816d39d7",
+   "cache_key": "f5976feae16740e79fbec7f9bf2314eb26877a7b2985aebbf08220a09de08551",
+   "prompt_sha256": "d94bc0a49944b1a6f44263c1ac52e2e8f06e56a404282aadba0b06a6860ac3a7",
    "doc_ids": [
+    "d_1d9989bd19a2b6ca",
     "d_50189362d7ac28de",
+    "d_95b38e673e4b0e38",
+    "d_97739bfb70f0047f",
+    "d_bf4860a8b3f2429b",
+    "d_d654ae3bd333bd8e",
     "d_e25335e7a14a4218",
     "d_f07008e5d5f69b82"
    ],
-   "output_sha256": "1beaa591594d50d60f154a992b4ce1549efecf5d9abc14d491db9ac99fa40570"
+   "output_sha256": "27de8f37c9ca9020eabe19bf9617bd22386e1fb8af89cd59a0c93ec1b2774e6b"
   },
   {
    "step": "verify_receipts",
    "n_claims": 14,
-   "verified": 14,
-   "failures": {}
+   "verified": 5,
+   "failures": {
+    "c1": "number_unsupported",
+    "c2": "number_unsupported",
+    "c5": "number_unsupported",
+    "c6": "number_unsupported",
+    "c7": "number_unsupported",
+    "c8": "number_unsupported",
+    "c9": "number_unsupported",
+    "c10": "number_unsupported",
+    "c12": "number_unsupported"
+   }
   },
   {
-   "step": "gate",
-   "raw_precision": 1.0,
-   "post_repair_precision": 1.0,
-   "shipped": 14,
+   "step": "repair_claims",
+   "kind": "llm",
+   "backend": "claude_cli",
+   "model": "claude-sonnet-5-5",
+   "cache_key": "e880afb15d36702280d7320beaf121c91f518b5b95c9548ed912ba2c668d49d5",
+   "prompt_sha256": "7f4df6b61bc40e031274b44581ac788656b992871a67ebcfca6275f51974454e",
+   "doc_ids": [
+    "d_1d9989bd19a2b6ca",
+    "d_50189362d7ac28de",
+    "d_95b38e673e4b0e38",
+    "d_97739bfb70f0047f",
+    "d_bf4860a8b3f2429b",
+    "d_d654ae3bd333bd8e",
+    "d_e25335e7a14a4218",
+    "d_f07008e5d5f69b82"
+   ],
+   "output_sha256": "1a654b81fa07a84d7c5b641ebbe145282f0eb015c5e4260058fb1722dad93974"
+  },
+  {
+   "step": "verifier_gate",
+   "raw_precision": 0.35714285714285715,
+   "verified": 14,
    "withheld": 0
   },
   {
@@ -46,32 +100,61 @@
    "kind": "llm",
    "backend": "codex_cli",
    "model": "gpt-6.1-sol",
-   "cache_key": "c4cf27b2c00edca5192b43836cdbc8ba828a05068f9bcaf71bb43518f8d4ffa0",
-   "prompt_sha256": "9a206338a6d232db4e2fb6d6d6a91a766382476f3476652bb1138cb03873fc01",
+   "cache_key": "6bf375dd5d29dbc63ec87e31795afe75507dab3bf0cce40d918d17fe47990aca",
+   "prompt_sha256": "47f158f0d29ee463c0295554da9cf1bb62c33774143d7c4a4798c944cd40f153",
    "doc_ids": [
+    "d_1d9989bd19a2b6ca",
     "d_50189362d7ac28de",
+    "d_95b38e673e4b0e38",
+    "d_97739bfb70f0047f",
+    "d_bf4860a8b3f2429b",
+    "d_d654ae3bd333bd8e",
     "d_e25335e7a14a4218",
     "d_f07008e5d5f69b82"
    ],
-   "output_sha256": "bc33e777f0d100ec6d908e7dd01fb4e3eb37e5492520a1deea273c9c5a55b838"
+   "output_sha256": "fba64f0d966c4dd2d3782d8857e03f7fd67cf80049cc17b687e9321528bcbb18"
   },
   {
-   "step": "disagreement",
-   "reasons": [
-    "recommendation: drafter 'advance' vs critic 'watch'",
-    "critic flags 5 claim(s) as unsupported by their quote"
+   "step": "reconcile",
+   "entails": 8,
+   "partial": 6,
+   "contradicts": 0,
+   "unsupported": 0,
+   "unlabelled": 0
+  },
+  {
+   "step": "rescore",
+   "kind": "llm",
+   "backend": "claude_cli",
+   "model": "claude-sonnet-5-5",
+   "cache_key": "7da288710d4eee49c2d6f6cbdcad58140ec8ee23e66255fd08543e851e0f994f",
+   "prompt_sha256": "7e447ec4ab06e842a0314f51b1078b60166a13db79e84fdf79993e9748a2cfca",
+   "doc_ids": [
+    "d_1d9989bd19a2b6ca",
+    "d_50189362d7ac28de",
+    "d_95b38e673e4b0e38",
+    "d_97739bfb70f0047f",
+    "d_bf4860a8b3f2429b",
+    "d_d654ae3bd333bd8e",
+    "d_e25335e7a14a4218",
+    "d_f07008e5d5f69b82"
    ],
-   "families": [
-    "anthropic",
-    "openai"
-   ]
+   "output_sha256": "51e1af2909eb319e611b055e8c39f473e360d7a5ec61f067666f155fe5232fed"
+  },
+  {
+   "step": "committee",
+   "rank": 5,
+   "recommendation": "watch",
+   "disagreements": []
   }
  ],
  "outputs": {
   "memo": "results/memos/payai.md",
-  "artifact_version": 2,
-  "decision_card": true
+  "artifact_version": 3,
+  "decision_card": false
  },
  "error": null,
- "sla_violations": []
+ "sla_violations": [
+  "llm calls 4 > SLA 3"
+ ]
 }

@@ -2,15 +2,27 @@
  "job": "diligence_memo",
  "agent": "AI DD (analyst)",
  "entity": "faremeter",
- "run_id": "02bdcfe00038036f",
+ "run_id": "98ddd9e6f9c34a59",
  "as_of": "2026-11-01",
  "status": "ok",
  "inputs": {
   "doc_ids": [
+   "d_2bf293576b4555c8",
    "d_748e85e901fac822",
+   "d_d654ae3bd333bd8e",
    "d_d7f80babf38c9414"
   ],
-  "facts_sha": "{\"gh.commits_90d\": 1180, \"gh.commits_prev_90d\": 1156, \"gh.commits_total\": 3635, \"gh.first_repo_year\": 2025, \"gh.public_repos\": 16, \"gh.stars_total_now\": 106, \"hn.points_total\": 0, \"hn.stories\": 0, \"screen.n_candidates\": 1398, \"screen.rank\": 4, \"screen.score\": 0.1085}"
+  "facts_sha": "{\"gh.commits_90d\": 1180, \"gh.commits_prev_90d\": 1156, \"gh.commits_total\": 3635, \"gh.first_repo_year\": 2025, \"gh.public_repos\": 16, \"gh.stars_total_now\": 106, \"hn.points_total\": 0, \"hn.stories\": 0}",
+  "stage": {
+   "stage": "unknown (no funding evidence found)",
+   "seed_eligible": true,
+   "ineligible_reasons": [],
+   "yc_batch": null,
+   "token": null,
+   "prior_raises_defillama": [],
+   "round_evidence": [],
+   "doc_ids": []
+  }
  },
  "steps": [
   {
@@ -18,20 +30,25 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "ec20198725c6b44b62b0f4beffbaa935ea29f14b2761e05e311c65cbf2c82ece",
-   "prompt_sha256": "e405fc3742a1b34ec971c417582bd9b37db13db654d60cce137b9fa9b5561289",
+   "cache_key": "f648b7c96e31bc0032b3b6fe55274c618d649e3700307e1a9b52a5e8edba4a0d",
+   "prompt_sha256": "e9e8cd33b89b17136d509c9b1a9a569cf8027c3576a56befda43c4356ee6eed0",
    "doc_ids": [
+    "d_2bf293576b4555c8",
     "d_748e85e901fac822",
+    "d_d654ae3bd333bd8e",
     "d_d7f80babf38c9414"
    ],
-   "output_sha256": "0ab7a4463789dfbe62c3bd9f473c27ae1a2be0688f2e5e8d69192a765d8e9bb5"
+   "output_sha256": "e497ee81d79df6f4e0ffdc07b5f0bb4fc4adfdf24361dd92622d2290556a11c6"
   },
   {
    "step": "verify_receipts",
    "n_claims": 12,
-   "verified": 11,
+   "verified": 8,
    "failures": {
-    "c11": "number_unsupported"
+    "c1": "number_unsupported",
+    "c5": "number_unsupported",
+    "c10": "number_unsupported",
+    "c12": "number_unsupported"
    }
   },
   {
@@ -39,19 +56,20 @@
    "kind": "llm",
    "backend": "claude_cli",
    "model": "claude-sonnet-5-5",
-   "cache_key": "8446269c539b895d5ab9d12cc2c9735b54b1c3fe49999fe6bd22453b98274890",
-   "prompt_sha256": "2a413807f5b6f2c4e4bd10c55bfb7966a61ad7edd348064fc9d55dbe368aa9fe",
+   "cache_key": "b0233d03d660f8a3fce5b28dabbe4bcf4fe90e4be5e34ed34dc5f673e89a8da0",
+   "prompt_sha256": "71bbadedbe9b4f66469748f0acf5772e2c220bc2d0ad7cd24a811e89eea689be",
    "doc_ids": [
+    "d_2bf293576b4555c8",
     "d_748e85e901fac822",
+    "d_d654ae3bd333bd8e",
     "d_d7f80babf38c9414"
    ],
-   "output_sha256": "ea983acd41749696421098bcc8e2acec6eb4a5504f511ac18ee3d6e5fd014f42"
+   "output_sha256": "76dfc9942647df46b77496c904feb4a52a04d0d1bc077c5bda8d7f772b9db9b3"
   },
   {
-   "step": "gate",
-   "raw_precision": 0.9166666666666666,
-   "post_repair_precision": 1.0,
-   "shipped": 12,
+   "step": "verifier_gate",
+   "raw_precision": 0.6666666666666666,
+   "verified": 12,
    "withheld": 0
   },
   {
@@ -59,31 +77,53 @@
    "kind": "llm",
    "backend": "codex_cli",
    "model": "gpt-6.1-sol",
-   "cache_key": "e7a46626cb00466c1061d120fe562cd2ff02bd6faa28b0abc41a2942ec27d33a",
-   "prompt_sha256": "5b98efdbe922218150c7716cdb08c8213a20267d8233b22405d59b02b954eb39",
+   "cache_key": "2bd9e12f0c347671a294ce5b13e0d61b2def8e901122a765399bfaf69de3f1c6",
+   "prompt_sha256": "4233b1d65cfdd9299d5c06ba5efcf9a4bd05254387085c553c373347b73f61b2",
    "doc_ids": [
+    "d_2bf293576b4555c8",
     "d_748e85e901fac822",
+    "d_d654ae3bd333bd8e",
     "d_d7f80babf38c9414"
    ],
-   "output_sha256": "53b1ed99f0fd73deca5e49d4eb9f099ba0de8d2558c4ac5b839be2818dec358f"
+   "output_sha256": "156ddfdac1701ec02c1adbf05b7974acd3d47e67bd045c4aa774bf909263927d"
   },
   {
-   "step": "disagreement",
-   "reasons": [
-    "recommendation: drafter 'advance' vs critic 'watch'",
-    "critic flags 5 claim(s) as unsupported by their quote"
+   "step": "reconcile",
+   "entails": 5,
+   "partial": 6,
+   "contradicts": 1,
+   "unsupported": 0,
+   "unlabelled": 0
+  },
+  {
+   "step": "rescore",
+   "kind": "llm",
+   "backend": "claude_cli",
+   "model": "claude-sonnet-5-5",
+   "cache_key": "ce42f717db813da1bd14a1f0a321395b4788daee7caf411a9868b8a209d91021",
+   "prompt_sha256": "99f1488b6d7c08089f1df82d5df5b19d4d9d3fd018d17809d0d6fa309cf5ac2b",
+   "doc_ids": [
+    "d_2bf293576b4555c8",
+    "d_748e85e901fac822",
+    "d_d654ae3bd333bd8e",
+    "d_d7f80babf38c9414"
    ],
-   "families": [
-    "anthropic",
-    "openai"
-   ]
+   "output_sha256": "0d48caadd7968ed3ea4296a2ecc281575e8b83bfac5f936e80243e6736bd6779"
+  },
+  {
+   "step": "committee",
+   "rank": 7,
+   "recommendation": "watch",
+   "disagreements": []
   }
  ],
  "outputs": {
   "memo": "results/memos/faremeter.md",
-  "artifact_version": 3,
-  "decision_card": true
+  "artifact_version": 4,
+  "decision_card": false
  },
  "error": null,
- "sla_violations": []
+ "sla_violations": [
+  "llm calls 4 > SLA 3"
+ ]
 }

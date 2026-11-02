@@ -4,8 +4,9 @@ one of them appears verbatim in README.md, so README and results/ can never drif
 from __future__ import annotations
 
 import json
+import re
 
-from vaios.config import RESULTS
+from vaios.config import RESULTS, ROOT
 
 
 def _j(path: str) -> dict:
@@ -65,6 +66,37 @@ def headline_numbers() -> dict[str, str]:
     return n
 
 
+
+
+# ---------- anchored README numbers ----------
+# Every headline number in README.md is written as <!--n:key-->value<!--/n-->. `make readme` re-renders the
+# values from results/; the test fails if any anchored value differs from results/ or a required key is missing.
+TOKEN = re.compile(r"<!--n:([\w|.\-]+)-->(.*?)<!--/n-->")
+
+
+def render_readme(path=None) -> int:
+    path = path or ROOT / "README.md"
+    nums = headline_numbers()
+    text = path.read_text()
+    new = TOKEN.sub(lambda m: f"<!--n:{m.group(1)}-->{nums[m.group(1)]}<!--/n-->", text)
+    path.write_text(new)
+    return len(TOKEN.findall(new))
+
+
+def check_readme(text: str, required: set[str] | None = None) -> list[str]:
+    nums = headline_numbers()
+    problems = [f"{k}: README says {v!r}, results say {nums.get(k)!r}" for k, v in TOKEN.findall(text)
+                if nums.get(k) != v]
+    present = {k for k, _ in TOKEN.findall(text)}
+    problems += [f"{k}: required number not anchored in README" for k in (required or set()) - present]
+    return problems
+
+
 if __name__ == "__main__":
-    for k, v in headline_numbers().items():
-        print(f"{k:<40} {v}")
+    import sys
+
+    if sys.argv[1:] == ["render"]:
+        print(f"rendered {render_readme()} anchored numbers into README.md")
+    else:
+        for k, v in headline_numbers().items():
+            print(f"{k:<40} {v}")

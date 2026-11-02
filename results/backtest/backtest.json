@@ -1321,6 +1321,528 @@
           ]
         }
       }
+    },
+    "all_gh_found_only": {
+      "n_rows": 4204,
+      "n_positive_rows": 77,
+      "n_positive_protocols": 42,
+      "n_protocols": 1061,
+      "base_rate": 0.0183,
+      "cluster": "slug",
+      "scores": {
+        "s_logit_full": {
+          "label": "Logistic, all point-in-time features (walk-forward)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.826,
+          "auc": 0.8142,
+          "auc_ci95": [
+            0.7261,
+            0.8834
+          ],
+          "p@20": 0.18,
+          "p@20_ci95": [
+            0.09,
+            0.27
+          ],
+          "p@50": 0.152,
+          "p@50_ci95": [
+            0.088,
+            0.216
+          ],
+          "lift@50": 8.6545,
+          "lift@50_ci95": [
+            6.0653,
+            11.1307
+          ]
+        },
+        "s_logit_github": {
+          "label": "Logistic, GitHub-only features (walk-forward; live niche score)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7483,
+          "auc": 0.7463,
+          "auc_ci95": [
+            0.6741,
+            0.8095
+          ],
+          "p@20": 0.04,
+          "p@20_ci95": [
+            0.01,
+            0.12
+          ],
+          "p@50": 0.056,
+          "p@50_ci95": [
+            0.02,
+            0.0961
+          ],
+          "lift@50": 2.6381,
+          "lift@50_ci95": [
+            0.9979,
+            4.4993
+          ]
+        },
+        "s_heuristic": {
+          "label": "Pre-registered heuristic (no fitting)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7951,
+          "auc": 0.796,
+          "auc_ci95": [
+            0.7186,
+            0.8665
+          ],
+          "p@20": 0.13,
+          "p@20_ci95": [
+            0.07,
+            0.21
+          ],
+          "p@50": 0.116,
+          "p@50_ci95": [
+            0.068,
+            0.1641
+          ],
+          "lift@50": 5.8046,
+          "lift@50_ci95": [
+            3.9243,
+            7.8389
+          ]
+        },
+        "b_random": {
+          "label": "Baseline: random",
+          "leakage_exposed": false,
+          "pooled_auc": 0.4669,
+          "auc": 0.4705,
+          "auc_ci95": [
+            0.4076,
+            0.5356
+          ],
+          "p@20": 0.01,
+          "p@20_ci95": [
+            0.0,
+            0.03
+          ],
+          "p@50": 0.012,
+          "p@50_ci95": [
+            0.0,
+            0.028
+          ],
+          "lift@50": 0.5268,
+          "lift@50_ci95": [
+            0.0,
+            1.3462
+          ]
+        },
+        "b_tvl": {
+          "label": "Baseline: TVL size",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7348,
+          "auc": 0.728,
+          "auc_ci95": [
+            0.6245,
+            0.8086
+          ],
+          "p@20": 0.11,
+          "p@20_ci95": [
+            0.04,
+            0.19
+          ],
+          "p@50": 0.076,
+          "p@50_ci95": [
+            0.036,
+            0.12
+          ],
+          "lift@50": 4.2283,
+          "lift@50_ci95": [
+            2.0989,
+            6.3002
+          ]
+        },
+        "b_commits": {
+          "label": "Baseline: commits in last 90 days",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7504,
+          "auc": 0.7383,
+          "auc_ci95": [
+            0.6504,
+            0.8141
+          ],
+          "p@20": 0.03,
+          "p@20_ci95": [
+            0.0,
+            0.1
+          ],
+          "p@50": 0.072,
+          "p@50_ci95": [
+            0.032,
+            0.124
+          ],
+          "lift@50": 3.4323,
+          "lift@50_ci95": [
+            1.4994,
+            5.879
+          ]
+        },
+        "b_newest": {
+          "label": "Baseline: newest listing first",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7308,
+          "auc": 0.7242,
+          "auc_ci95": [
+            0.6425,
+            0.7958
+          ],
+          "p@20": 0.08,
+          "p@20_ci95": [
+            0.04,
+            0.14
+          ],
+          "p@50": 0.052,
+          "p@50_ci95": [
+            0.028,
+            0.084
+          ],
+          "lift@50": 2.5526,
+          "lift@50_ci95": [
+            1.3849,
+            4.2913
+          ]
+        },
+        "b_prior_funding": {
+          "label": "Baseline: raised before (most recent first)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7804,
+          "auc": 0.7791,
+          "auc_ci95": [
+            0.6947,
+            0.8569
+          ],
+          "p@20": 0.17,
+          "p@20_ci95": [
+            0.08,
+            0.26
+          ],
+          "p@50": 0.148,
+          "p@50_ci95": [
+            0.084,
+            0.2041
+          ],
+          "lift@50": 8.4964,
+          "lift@50_ci95": [
+            5.5637,
+            11.0156
+          ]
+        },
+        "leaky_stars_now": {
+          "label": "Reference: today's GitHub stars (LEAKAGE-EXPOSED, not a fair baseline)",
+          "leakage_exposed": true,
+          "pooled_auc": 0.7276,
+          "auc": 0.7211,
+          "auc_ci95": [
+            0.6544,
+            0.7897
+          ],
+          "p@20": 0.06,
+          "p@20_ci95": [
+            0.0,
+            0.14
+          ],
+          "p@50": 0.04,
+          "p@50_ci95": [
+            0.008,
+            0.08
+          ],
+          "lift@50": 1.7137,
+          "lift@50_ci95": [
+            0.382,
+            3.8311
+          ]
+        }
+      },
+      "paired_vs_best_baseline": {
+        "s_logit_full": {
+          "best_baseline": "b_prior_funding",
+          "auc_diff": 0.0352,
+          "ci95": [
+            -0.0236,
+            0.102
+          ]
+        },
+        "s_logit_github": {
+          "best_baseline": "b_prior_funding",
+          "auc_diff": -0.0328,
+          "ci95": [
+            -0.1073,
+            0.0559
+          ]
+        },
+        "s_heuristic": {
+          "best_baseline": "b_prior_funding",
+          "auc_diff": 0.0169,
+          "ci95": [
+            -0.0776,
+            0.1087
+          ]
+        }
+      }
+    },
+    "never_raised_gh_found_only": {
+      "n_rows": 3512,
+      "n_positive_rows": 26,
+      "n_positive_protocols": 17,
+      "n_protocols": 900,
+      "base_rate": 0.0074,
+      "cluster": "slug",
+      "scores": {
+        "s_logit_full": {
+          "label": "Logistic, all point-in-time features (walk-forward)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.6621,
+          "auc": 0.602,
+          "auc_ci95": [
+            0.4526,
+            0.7615
+          ],
+          "p@20": 0.03,
+          "p@20_ci95": [
+            0.0,
+            0.09
+          ],
+          "p@50": 0.048,
+          "p@50_ci95": [
+            0.016,
+            0.08
+          ],
+          "lift@50": 5.7536,
+          "lift@50_ci95": [
+            2.2274,
+            8.8291
+          ]
+        },
+        "s_logit_github": {
+          "label": "Logistic, GitHub-only features (walk-forward; live niche score)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.6236,
+          "auc": 0.5924,
+          "auc_ci95": [
+            0.4435,
+            0.748
+          ],
+          "p@20": 0.04,
+          "p@20_ci95": [
+            0.0,
+            0.09
+          ],
+          "p@50": 0.028,
+          "p@50_ci95": [
+            0.004,
+            0.056
+          ],
+          "lift@50": 3.0043,
+          "lift@50_ci95": [
+            0.3258,
+            5.5798
+          ]
+        },
+        "s_heuristic": {
+          "label": "Pre-registered heuristic (no fitting)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7157,
+          "auc": 0.7016,
+          "auc_ci95": [
+            0.5865,
+            0.8618
+          ],
+          "p@20": 0.06,
+          "p@20_ci95": [
+            0.01,
+            0.12
+          ],
+          "p@50": 0.044,
+          "p@50_ci95": [
+            0.016,
+            0.072
+          ],
+          "lift@50": 5.3483,
+          "lift@50_ci95": [
+            1.8873,
+            8.324
+          ]
+        },
+        "b_random": {
+          "label": "Baseline: random",
+          "leakage_exposed": false,
+          "pooled_auc": 0.508,
+          "auc": 0.508,
+          "auc_ci95": [
+            0.4059,
+            0.6075
+          ],
+          "p@20": 0.0,
+          "p@20_ci95": [
+            0.0,
+            0.0
+          ],
+          "p@50": 0.004,
+          "p@50_ci95": [
+            0.0,
+            0.02
+          ],
+          "lift@50": 0.28,
+          "lift@50_ci95": [
+            0.0,
+            2.4838
+          ]
+        },
+        "b_tvl": {
+          "label": "Baseline: TVL size",
+          "leakage_exposed": false,
+          "pooled_auc": 0.6043,
+          "auc": 0.5531,
+          "auc_ci95": [
+            0.3816,
+            0.7182
+          ],
+          "p@20": 0.01,
+          "p@20_ci95": [
+            0.0,
+            0.03
+          ],
+          "p@50": 0.008,
+          "p@50_ci95": [
+            0.0,
+            0.024
+          ],
+          "lift@50": 1.1157,
+          "lift@50_ci95": [
+            0.0,
+            3.9574
+          ]
+        },
+        "b_commits": {
+          "label": "Baseline: commits in last 90 days",
+          "leakage_exposed": false,
+          "pooled_auc": 0.6885,
+          "auc": 0.6721,
+          "auc_ci95": [
+            0.5523,
+            0.7836
+          ],
+          "p@20": 0.01,
+          "p@20_ci95": [
+            0.0,
+            0.04
+          ],
+          "p@50": 0.024,
+          "p@50_ci95": [
+            0.004,
+            0.052
+          ],
+          "lift@50": 2.5989,
+          "lift@50_ci95": [
+            0.3153,
+            5.5541
+          ]
+        },
+        "b_newest": {
+          "label": "Baseline: newest listing first",
+          "leakage_exposed": false,
+          "pooled_auc": 0.7535,
+          "auc": 0.7194,
+          "auc_ci95": [
+            0.5961,
+            0.8759
+          ],
+          "p@20": 0.05,
+          "p@20_ci95": [
+            0.01,
+            0.1
+          ],
+          "p@50": 0.036,
+          "p@50_ci95": [
+            0.0149,
+            0.064
+          ],
+          "lift@50": 4.4848,
+          "lift@50_ci95": [
+            1.7464,
+            8.0307
+          ]
+        },
+        "b_prior_funding": {
+          "label": "Baseline: raised before (most recent first)",
+          "leakage_exposed": false,
+          "pooled_auc": 0.5,
+          "auc": 0.5,
+          "auc_ci95": [
+            0.5,
+            0.5
+          ],
+          "p@20": 0.01,
+          "p@20_ci95": [
+            0.0,
+            0.04
+          ],
+          "p@50": 0.012,
+          "p@50_ci95": [
+            0.0,
+            0.0251
+          ],
+          "lift@50": 1.2704,
+          "lift@50_ci95": [
+            0.0,
+            3.6642
+          ]
+        },
+        "leaky_stars_now": {
+          "label": "Reference: today's GitHub stars (LEAKAGE-EXPOSED, not a fair baseline)",
+          "leakage_exposed": true,
+          "pooled_auc": 0.6513,
+          "auc": 0.6382,
+          "auc_ci95": [
+            0.5162,
+            0.7552
+          ],
+          "p@20": 0.02,
+          "p@20_ci95": [
+            0.0,
+            0.06
+          ],
+          "p@50": 0.016,
+          "p@50_ci95": [
+            0.0,
+            0.04
+          ],
+          "lift@50": 1.2453,
+          "lift@50_ci95": [
+            0.0,
+            2.9276
+          ]
+        }
+      },
+      "paired_vs_best_baseline": {
+        "s_logit_full": {
+          "best_baseline": "b_newest",
+          "auc_diff": -0.1175,
+          "ci95": [
+            -0.2895,
+            0.0697
+          ]
+        },
+        "s_logit_github": {
+          "best_baseline": "b_newest",
+          "auc_diff": -0.127,
+          "ci95": [
+            -0.2964,
+            0.055
+          ]
+        },
+        "s_heuristic": {
+          "best_baseline": "b_newest",
+          "auc_diff": -0.0178,
+          "ci95": [
+            -0.0896,
+            0.0564
+          ]
+        }
+      }
     }
   },
   "round_mix_all": {
@@ -1374,6 +1896,11 @@
       "share_signal_before_raise": 0.712
     },
     "note": "positive months = the signal came BEFORE the first raise (system could have surfaced it)"
+  },
+  "selection": {
+    "note": "retrospective reconstruction: universe membership, GitHub owner and top-5 repos are TODAY's; owners that no longer resolve contribute zero commits (ADR 0003)",
+    "gh_found_rate_positives": 0.9625,
+    "gh_found_rate_negatives": 0.9021
   },
   "per_t0": {
     "s_logit_full": [

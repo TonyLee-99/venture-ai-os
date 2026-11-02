@@ -1,0 +1,237 @@
+{
+ "company": "Daydreams",
+ "week_of": "2026-11-01",
+ "kpis": {
+  "2026-08-10": {
+   "txs": 163.0,
+   "volume_usd": 393.60300099999995,
+   "peak_daily_buyers": 8.0,
+   "commits": 0.0,
+   "usd_per_tx": 2.4147,
+   "share_of_x402_txs": 0.0001
+  },
+  "2026-08-17": {
+   "txs": 176.0,
+   "volume_usd": 276.71,
+   "peak_daily_buyers": 7.0,
+   "commits": 0.0,
+   "usd_per_tx": 1.5722,
+   "share_of_x402_txs": 0.0
+  },
+  "2026-08-24": {
+   "txs": 276.0,
+   "volume_usd": 83.42534399999998,
+   "peak_daily_buyers": 12.0,
+   "commits": 0.0,
+   "usd_per_tx": 0.3023,
+   "share_of_x402_txs": 0.0
+  },
+  "2026-08-31": {
+   "txs": 84.0,
+   "volume_usd": 11.087,
+   "peak_daily_buyers": 5.0,
+   "commits": 0.0,
+   "usd_per_tx": 0.132,
+   "share_of_x402_txs": 0.0
+  },
+  "2026-09-07": {
+   "txs": 135.0,
+   "volume_usd": 38.757999999999996,
+   "peak_daily_buyers": 5.0,
+   "commits": 0.0,
+   "usd_per_tx": 0.2871,
+   "share_of_x402_txs": 0.0001
+  },
+  "2026-09-14": {
+   "txs": 77.0,
+   "volume_usd": 237.13800000000003,
+   "peak_daily_buyers": 6.0,
+   "commits": 0.0,
+   "usd_per_tx": 3.0797,
+   "share_of_x402_txs": 0.0001
+  },
+  "2026-09-21": {
+   "txs": 67.0,
+   "volume_usd": 343.31744100000003,
+   "peak_daily_buyers": 5.0,
+   "commits": 0.0,
+   "usd_per_tx": 5.1241,
+   "share_of_x402_txs": 0.0001
+  },
+  "2026-09-28": {
+   "txs": 155.0,
+   "volume_usd": 73.98700000000001,
+   "peak_daily_buyers": 33.0,
+   "commits": 0.0,
+   "usd_per_tx": 0.4773,
+   "share_of_x402_txs": 0.0003
+  },
+  "2026-10-05": {
+   "txs": 191.0,
+   "volume_usd": 126.848,
+   "peak_daily_buyers": 5.0,
+   "commits": 2.0,
+   "usd_per_tx": 0.6641,
+   "share_of_x402_txs": 0.0003
+  },
+  "2026-10-12": {
+   "txs": 76.0,
+   "volume_usd": 66.856,
+   "peak_daily_buyers": 8.0,
+   "commits": 0.0,
+   "usd_per_tx": 0.8797,
+   "share_of_x402_txs": 0.0001
+  },
+  "2026-10-19": {
+   "txs": 99.0,
+   "volume_usd": 28.188000000000002,
+   "peak_daily_buyers": 8.0,
+   "commits": 0.0,
+   "usd_per_tx": 0.2847,
+   "share_of_x402_txs": 0.0001
+  },
+  "2026-10-26": {
+   "txs": 343.0,
+   "volume_usd": 623.0600000000001,
+   "peak_daily_buyers": 53.0,
+   "commits": 0.0,
+   "usd_per_tx": 1.8165,
+   "share_of_x402_txs": 0.0003
+  }
+ },
+ "brief": {
+  "week_of": "2026-11-01",
+  "summary": "Daydreams' latest week (starting 2026-10-26) was its biggest in the recent window: 343 transactions, $623.06 volume and 53 peak daily buyers, versus 99 transactions and $28.188 the prior week. The buyer spike looks like a one-off, similar to the 33-buyer spike in the week of 2026-09-28, and no source documents were provided, so none of these moves can be tied to a public event. The long-run changepoints in the series swing across several orders of magnitude, and the unit of that series is not stated in the facts, so they should be read with caution.",
+  "inflections": [
+   {
+    "series": "daydreams.volume_usd",
+    "date": "2026-10-26",
+    "headline": "Weekly volume jumps to $623 from $28 with no explanation in evidence",
+    "claims": [
+     {
+      "id": "c1",
+      "section": "inflection",
+      "text": "Weekly volume was 623.06 USD in the week of 2026-10-26.",
+      "doc_id": null,
+      "quote": null,
+      "metric": "daydreams.2026-10-26.volume_usd",
+      "value": 623.06
+     }
+    ],
+    "confidence": "low",
+    "withheld": [
+     {
+      "id": "c2",
+      "status": "number_unsupported"
+     },
+     {
+      "id": "c3",
+      "status": "number_unsupported"
+     }
+    ],
+    "needs_human": true
+   },
+   {
+    "series": "daydreams.peak_daily_buyers",
+    "date": "2026-10-26",
+    "headline": "Peak daily buyers hit 53, the highest in the window, from 8",
+    "claims": [
+     {
+      "id": "c4",
+      "section": "inflection",
+      "text": "Peak daily buyers reached 53 in the week of 2026-10-26.",
+      "doc_id": null,
+      "quote": null,
+      "metric": "daydreams.2026-10-26.peak_daily_buyers",
+      "value": 53.0
+     },
+     {
+      "id": "c5",
+      "section": "inflection",
+      "text": "The prior week's peak was 8 buyers.",
+      "doc_id": null,
+      "quote": null,
+      "metric": "daydreams.2026-10-19.peak_daily_buyers",
+      "value": 8.0
+     }
+    ],
+    "confidence": "low",
+    "withheld": [
+     {
+      "id": "c6",
+      "status": "number_unsupported"
+     }
+    ],
+    "needs_human": true
+   },
+   {
+    "series": "daydreams.txs",
+    "date": "2026-10-26",
+    "headline": "Transactions rise to 343 from 99, a window high",
+    "claims": [
+     {
+      "id": "c7",
+      "section": "inflection",
+      "text": "Weekly transactions were 343 in the week of 2026-10-26.",
+      "doc_id": null,
+      "quote": null,
+      "metric": "daydreams.2026-10-26.txs",
+      "value": 343.0
+     },
+     {
+      "id": "c8",
+      "section": "inflection",
+      "text": "Transactions were 99 the week before.",
+      "doc_id": null,
+      "quote": null,
+      "metric": "daydreams.2026-10-19.txs",
+      "value": 99.0
+     }
+    ],
+    "confidence": "low",
+    "withheld": [],
+    "needs_human": true
+   },
+   {
+    "series": "daydreams.changepoint",
+    "date": "2026-06-01",
+    "headline": "Latest detected changepoint: median level rose about 21x from 7 to 149",
+    "claims": [
+     {
+      "id": "c9",
+      "section": "inflection",
+      "text": "The median level shifted from 7 before to 149 after, a ratio of 21.286.",
+      "doc_id": null,
+      "quote": null,
+      "metric": "daydreams.changepoint.2026-06-01.ratio",
+      "value": 21.286
+     },
+     {
+      "id": "c10",
+      "section": "inflection",
+      "text": "The median level after the shift was 149.",
+      "doc_id": null,
+      "quote": null,
+      "metric": "daydreams.changepoint.2026-06-01.median_after",
+      "value": 149.0
+     }
+    ],
+    "confidence": "low",
+    "withheld": [],
+    "needs_human": true
+   }
+  ],
+  "watchlist": [
+   "daydreams.peak_daily_buyers: check whether the 53-buyer spike persists or reverts to about 5 to 8 as the 33-buyer spike did.",
+   "daydreams.volume_usd: check whether weekly volume stays above the recent range after 623.06 USD, or falls back toward the 28 to 127 USD range of recent weeks.",
+   "daydreams.commits: commit activity is near zero in nearly every week of the window, so check whether development activity resumes and whether it matters for usage.",
+   "daydreams.share_of_x402_txs: it stays near 0.0001 to 0.0003, so confirm whether the latest week's 0.0003 holds."
+  ]
+ },
+ "receipts": {
+  "claims_drafted": 10,
+  "verified_share": 0.7,
+  "shipped": 7
+ },
+ "model": "claude_cli:claude-sonnet-5-5"
+}

@@ -1,0 +1,9 @@
+Top contributors to github.com/Merit-Systems/x402scan (GitHub API, fetched 2026-11-02):
+jasonhedman (User): 1316 commits
+shafu0x (User): 718 commits
+fmhall (User): 370 commits
+onchainlu (User): 344 commits
+zdql (User): 197 commits
+rsproule (User): 174 commits
+sragss (User): 164 commits
+alvaroechevarriacuesta (User): 113 commits

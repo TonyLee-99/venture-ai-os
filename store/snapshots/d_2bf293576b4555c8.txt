@@ -1,0 +1,9 @@
+Top contributors to github.com/faremeter/faremeter (GitHub API, fetched 2026-11-02):
+alexanderguy (User): 550 commits
+FarinM (User): 43 commits
+bwachman (User): 34 commits
+monological (User): 25 commits
+TheGreatAxios (User): 3 commits
+alberto-crossmint (User): 1 commits
+manuelbarbas (User): 1 commits
+pvams (User): 1 commits
