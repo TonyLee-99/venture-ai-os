@@ -31,7 +31,7 @@
       "pooled_auc": 0.8213,
       "auc": 0.8097,
       "auc_ci95": [
-        0.7246,
+        0.7244,
         0.8859
       ],
       "p@20": 0.18,
@@ -39,25 +39,25 @@
         0.09,
         0.26
       ],
-      "p@50": 0.148,
+      "p@50": 0.152,
       "p@50_ci95": [
         0.092,
         0.216
       ],
-      "lift@50": 8.96,
+      "lift@50": 9.1857,
       "lift@50_ci95": [
-        6.3924,
-        11.908
+        6.3902,
+        11.9243
       ]
     },
     "s_logit_github": {
       "label": "Logistic, GitHub-only features (walk-forward; live niche score)",
       "leakage_exposed": false,
-      "pooled_auc": 0.7358,
-      "auc": 0.7364,
+      "pooled_auc": 0.7364,
+      "auc": 0.7371,
       "auc_ci95": [
-        0.6563,
-        0.8071
+        0.6578,
+        0.8067
       ],
       "p@20": 0.04,
       "p@20_ci95": [
@@ -72,7 +72,7 @@
       "lift@50": 2.8358,
       "lift@50_ci95": [
         1.022,
-        4.6256
+        4.6449
       ]
     },
     "s_heuristic": {
@@ -279,18 +279,18 @@
   "paired_vs_best_baseline": {
     "s_logit_full": {
       "best_baseline": "b_prior_funding",
-      "auc_diff": 0.0363,
+      "auc_diff": 0.0362,
       "ci95": [
-        -0.0221,
-        0.1001
+        -0.0224,
+        0.0999
       ]
     },
     "s_logit_github": {
       "best_baseline": "b_prior_funding",
-      "auc_diff": -0.0371,
+      "auc_diff": -0.0364,
       "ci95": [
-        -0.1217,
-        0.0475
+        -0.1194,
+        0.0482
       ]
     },
     "s_heuristic": {
@@ -322,11 +322,11 @@
         "s_logit_full": {
           "label": "Logistic, all point-in-time features (walk-forward)",
           "leakage_exposed": false,
-          "pooled_auc": 0.6666,
-          "auc": 0.6054,
+          "pooled_auc": 0.6663,
+          "auc": 0.6048,
           "auc_ci95": [
-            0.473,
-            0.7548
+            0.4706,
+            0.754
           ],
           "p@20": 0.03,
           "p@20_ci95": [
@@ -340,18 +340,18 @@
           ],
           "lift@50": 5.299,
           "lift@50_ci95": [
-            2.3195,
+            2.292,
             9.1122
           ]
         },
         "s_logit_github": {
           "label": "Logistic, GitHub-only features (walk-forward; live niche score)",
           "leakage_exposed": false,
-          "pooled_auc": 0.6211,
-          "auc": 0.5843,
+          "pooled_auc": 0.6203,
+          "auc": 0.5838,
           "auc_ci95": [
-            0.4498,
-            0.7289
+            0.4497,
+            0.7283
           ],
           "p@20": 0.04,
           "p@20_ci95": [
@@ -573,18 +573,18 @@
       "paired_vs_best_baseline": {
         "s_logit_full": {
           "best_baseline": "b_newest",
-          "auc_diff": -0.0918,
+          "auc_diff": -0.0924,
           "ci95": [
-            -0.2668,
-            0.0963
+            -0.2673,
+            0.0955
           ]
         },
         "s_logit_github": {
           "best_baseline": "b_newest",
-          "auc_diff": -0.1129,
+          "auc_diff": -0.1134,
           "ci95": [
-            -0.2769,
-            0.0674
+            -0.2776,
+            0.0672
           ]
         },
         "s_heuristic": {
@@ -619,7 +619,7 @@
           "pooled_auc": 0.8213,
           "auc": 0.8097,
           "auc_ci95": [
-            0.7246,
+            0.7244,
             0.8859
           ],
           "p@20": 0.18,
@@ -627,25 +627,25 @@
             0.09,
             0.26
           ],
-          "p@50": 0.148,
+          "p@50": 0.152,
           "p@50_ci95": [
             0.092,
             0.216
           ],
-          "lift@50": 8.96,
+          "lift@50": 9.1857,
           "lift@50_ci95": [
-            6.3924,
-            11.908
+            6.3902,
+            11.9243
           ]
         },
         "s_logit_github": {
           "label": "Logistic, GitHub-only features (walk-forward; live niche score)",
           "leakage_exposed": false,
-          "pooled_auc": 0.7358,
-          "auc": 0.7364,
+          "pooled_auc": 0.7364,
+          "auc": 0.7371,
           "auc_ci95": [
-            0.6563,
-            0.8071
+            0.6578,
+            0.8067
           ],
           "p@20": 0.04,
           "p@20_ci95": [
@@ -660,7 +660,7 @@
           "lift@50": 2.8358,
           "lift@50_ci95": [
             1.022,
-            4.6256
+            4.6449
           ]
         },
         "s_heuristic": {
@@ -867,18 +867,18 @@
       "paired_vs_best_baseline": {
         "s_logit_full": {
           "best_baseline": "b_prior_funding",
-          "auc_diff": 0.0363,
+          "auc_diff": 0.0362,
           "ci95": [
-            -0.0221,
-            0.1001
+            -0.0224,
+            0.0999
           ]
         },
         "s_logit_github": {
           "best_baseline": "b_prior_funding",
-          "auc_diff": -0.0371,
+          "auc_diff": -0.0364,
           "ci95": [
-            -0.1217,
-            0.0475
+            -0.1194,
+            0.0482
           ]
         },
         "s_heuristic": {
@@ -913,32 +913,32 @@
           "pooled_auc": 0.8213,
           "auc": 0.8097,
           "auc_ci95": [
-            0.7249,
-            0.8776
+            0.7244,
+            0.8777
           ],
           "p@20": 0.18,
           "p@20_ci95": [
             0.09,
             0.26
           ],
-          "p@50": 0.148,
+          "p@50": 0.152,
           "p@50_ci95": [
             0.092,
-            0.216
+            0.2161
           ],
-          "lift@50": 8.96,
+          "lift@50": 9.1857,
           "lift@50_ci95": [
-            6.5132,
-            11.6695
+            6.5996,
+            11.6998
           ]
         },
         "s_logit_github": {
           "label": "Logistic, GitHub-only features (walk-forward; live niche score)",
           "leakage_exposed": false,
-          "pooled_auc": 0.7358,
-          "auc": 0.7364,
+          "pooled_auc": 0.7364,
+          "auc": 0.7371,
           "auc_ci95": [
-            0.6597,
+            0.6594,
             0.8038
           ],
           "p@20": 0.04,
@@ -949,11 +949,11 @@
           "p@50": 0.056,
           "p@50_ci95": [
             0.02,
-            0.0961
+            0.1
           ],
           "lift@50": 2.8358,
           "lift@50_ci95": [
-            0.9814,
+            0.9997,
             4.806
           ]
         },
@@ -1161,18 +1161,18 @@
       "paired_vs_best_baseline": {
         "s_logit_full": {
           "best_baseline": "b_prior_funding",
-          "auc_diff": 0.0363,
+          "auc_diff": 0.0362,
           "ci95": [
-            -0.0278,
-            0.0973
+            -0.028,
+            0.0971
           ]
         },
         "s_logit_github": {
           "best_baseline": "b_prior_funding",
-          "auc_diff": -0.0371,
+          "auc_diff": -0.0364,
           "ci95": [
-            -0.1215,
-            0.045
+            -0.1199,
+            0.0451
           ]
         },
         "s_heuristic": {
@@ -1204,11 +1204,11 @@
         "s_logit_full": {
           "label": "Logistic, all point-in-time features (walk-forward)",
           "leakage_exposed": false,
-          "pooled_auc": 0.6666,
-          "auc": 0.6054,
+          "pooled_auc": 0.6663,
+          "auc": 0.6048,
           "auc_ci95": [
-            0.4741,
-            0.79
+            0.4727,
+            0.7897
           ],
           "p@20": 0.03,
           "p@20_ci95": [
@@ -1218,7 +1218,7 @@
           "p@50": 0.044,
           "p@50_ci95": [
             0.016,
-            0.08
+            0.076
           ],
           "lift@50": 5.299,
           "lift@50_ci95": [
@@ -1229,11 +1229,11 @@
         "s_logit_github": {
           "label": "Logistic, GitHub-only features (walk-forward; live niche score)",
           "leakage_exposed": false,
-          "pooled_auc": 0.6211,
-          "auc": 0.5843,
+          "pooled_auc": 0.6203,
+          "auc": 0.5838,
           "auc_ci95": [
-            0.4447,
-            0.744
+            0.4445,
+            0.7439
           ],
           "p@20": 0.04,
           "p@20_ci95": [
@@ -1455,18 +1455,18 @@
       "paired_vs_best_baseline": {
         "s_logit_full": {
           "best_baseline": "b_newest",
-          "auc_diff": -0.0918,
+          "auc_diff": -0.0924,
           "ci95": [
-            -0.2432,
-            0.1027
+            -0.245,
+            0.1031
           ]
         },
         "s_logit_github": {
           "best_baseline": "b_newest",
-          "auc_diff": -0.1129,
+          "auc_diff": -0.1134,
           "ci95": [
-            -0.2798,
-            0.0646
+            -0.2804,
+            0.0649
           ]
         },
         "s_heuristic": {
@@ -1501,23 +1501,23 @@
           "pooled_auc": 0.826,
           "auc": 0.8142,
           "auc_ci95": [
-            0.7261,
-            0.8834
+            0.7257,
+            0.8838
           ],
           "p@20": 0.18,
           "p@20_ci95": [
             0.09,
             0.27
           ],
-          "p@50": 0.152,
+          "p@50": 0.156,
           "p@50_ci95": [
             0.088,
             0.216
           ],
-          "lift@50": 8.6545,
+          "lift@50": 8.869,
           "lift@50_ci95": [
-            6.0653,
-            11.1307
+            6.2224,
+            11.2092
           ]
         },
         "s_logit_github": {
@@ -1526,8 +1526,8 @@
           "pooled_auc": 0.7483,
           "auc": 0.7463,
           "auc_ci95": [
-            0.6741,
-            0.8095
+            0.6743,
+            0.8092
           ],
           "p@20": 0.04,
           "p@20_ci95": [
@@ -1537,12 +1537,12 @@
           "p@50": 0.056,
           "p@50_ci95": [
             0.02,
-            0.0961
+            0.1
           ],
           "lift@50": 2.6381,
           "lift@50_ci95": [
-            0.9979,
-            4.4993
+            0.999,
+            4.5001
           ]
         },
         "s_heuristic": {
@@ -1749,10 +1749,10 @@
       "paired_vs_best_baseline": {
         "s_logit_full": {
           "best_baseline": "b_prior_funding",
-          "auc_diff": 0.0352,
+          "auc_diff": 0.0351,
           "ci95": [
-            -0.0236,
-            0.102
+            -0.0239,
+            0.1019
           ]
         },
         "s_logit_github": {
@@ -1760,7 +1760,7 @@
           "auc_diff": -0.0328,
           "ci95": [
             -0.1073,
-            0.0559
+            0.0558
           ]
         },
         "s_heuristic": {
@@ -1792,11 +1792,11 @@
         "s_logit_full": {
           "label": "Logistic, all point-in-time features (walk-forward)",
           "leakage_exposed": false,
-          "pooled_auc": 0.6621,
-          "auc": 0.602,
+          "pooled_auc": 0.6618,
+          "auc": 0.6012,
           "auc_ci95": [
-            0.4526,
-            0.7615
+            0.4502,
+            0.7609
           ],
           "p@20": 0.03,
           "p@20_ci95": [
@@ -1806,7 +1806,7 @@
           "p@50": 0.048,
           "p@50_ci95": [
             0.016,
-            0.08
+            0.0761
           ],
           "lift@50": 5.7536,
           "lift@50_ci95": [
@@ -1817,11 +1817,11 @@
         "s_logit_github": {
           "label": "Logistic, GitHub-only features (walk-forward; live niche score)",
           "leakage_exposed": false,
-          "pooled_auc": 0.6236,
-          "auc": 0.5924,
+          "pooled_auc": 0.6226,
+          "auc": 0.5913,
           "auc_ci95": [
-            0.4435,
-            0.748
+            0.4415,
+            0.7475
           ],
           "p@20": 0.04,
           "p@20_ci95": [
@@ -2043,18 +2043,18 @@
       "paired_vs_best_baseline": {
         "s_logit_full": {
           "best_baseline": "b_newest",
-          "auc_diff": -0.1175,
+          "auc_diff": -0.1182,
           "ci95": [
-            -0.2895,
-            0.0697
+            -0.292,
+            0.069
           ]
         },
         "s_logit_github": {
           "best_baseline": "b_newest",
-          "auc_diff": -0.127,
+          "auc_diff": -0.1281,
           "ci95": [
-            -0.2964,
-            0.055
+            -0.2976,
+            0.0542
           ]
         },
         "s_heuristic": {
@@ -2142,8 +2142,8 @@
         "n": 645,
         "positives": 19,
         "base_rate": 0.0295,
-        "auc": 0.7558,
-        "spearman": 0.1499,
+        "auc": 0.7562,
+        "spearman": 0.1501,
         "p@20": 0.15,
         "p@50": 0.1,
         "lift@50": 3.3947
@@ -2153,7 +2153,7 @@
         "n": 801,
         "positives": 16,
         "base_rate": 0.02,
-        "auc": 0.804,
+        "auc": 0.8038,
         "spearman": 0.1473,
         "p@20": 0.2,
         "p@50": 0.14,
@@ -2164,7 +2164,7 @@
         "n": 957,
         "positives": 13,
         "base_rate": 0.0136,
-        "auc": 0.7524,
+        "auc": 0.7523,
         "spearman": 0.1012,
         "p@20": 0.2,
         "p@50": 0.16,
@@ -2175,18 +2175,18 @@
         "n": 1072,
         "positives": 19,
         "base_rate": 0.0177,
-        "auc": 0.8703,
-        "spearman": 0.1693,
+        "auc": 0.8702,
+        "spearman": 0.1692,
         "p@20": 0.2,
-        "p@50": 0.24,
-        "lift@50": 13.5411
+        "p@50": 0.26,
+        "lift@50": 14.6695
       },
       {
         "t0": "2025-07-01",
         "n": 1180,
         "positives": 13,
         "base_rate": 0.011,
-        "auc": 0.866,
+        "auc": 0.8659,
         "spearman": 0.1323,
         "p@20": 0.15,
         "p@50": 0.1,
@@ -2199,8 +2199,8 @@
         "n": 645,
         "positives": 19,
         "base_rate": 0.0295,
-        "auc": 0.6349,
-        "spearman": 0.079,
+        "auc": 0.6347,
+        "spearman": 0.0789,
         "p@20": 0.1,
         "p@50": 0.08,
         "lift@50": 2.7158
@@ -2210,8 +2210,8 @@
         "n": 801,
         "positives": 16,
         "base_rate": 0.02,
-        "auc": 0.7431,
-        "spearman": 0.1179,
+        "auc": 0.7496,
+        "spearman": 0.121,
         "p@20": 0.05,
         "p@50": 0.08,
         "lift@50": 4.005
@@ -2221,8 +2221,8 @@
         "n": 957,
         "positives": 13,
         "base_rate": 0.0136,
-        "auc": 0.7013,
-        "spearman": 0.0808,
+        "auc": 0.7006,
+        "spearman": 0.0805,
         "p@20": 0.0,
         "p@50": 0.04,
         "lift@50": 2.9446
@@ -2232,8 +2232,8 @@
         "n": 1072,
         "positives": 19,
         "base_rate": 0.0177,
-        "auc": 0.8116,
-        "spearman": 0.1425,
+        "auc": 0.8119,
+        "spearman": 0.1426,
         "p@20": 0.05,
         "p@50": 0.08,
         "lift@50": 4.5137
@@ -2243,8 +2243,8 @@
         "n": 1180,
         "positives": 13,
         "base_rate": 0.011,
-        "auc": 0.7911,
-        "spearman": 0.1053,
+        "auc": 0.7885,
+        "spearman": 0.1044,
         "p@20": 0.0,
         "p@50": 0.0,
         "lift@50": 0.0
@@ -2709,30 +2709,30 @@
   },
   "coefficients_all_t0": {
     "logit_full": {
-      "log_commits_90d": 0.544,
-      "commit_growth": -0.183,
-      "log_commits_before": -0.34,
-      "log_n_repos": 0.223,
-      "log_gh_age": -0.164,
-      "log_tvl": 0.544,
-      "tvl_growth_90d": 0.004,
-      "log_listing_age": -0.444,
-      "has_prior_raise": 0.571,
+      "log_commits_90d": 0.551,
+      "commit_growth": -0.185,
+      "log_commits_before": -0.349,
+      "log_n_repos": 0.222,
+      "log_gh_age": -0.162,
+      "log_tvl": 0.548,
+      "tvl_growth_90d": 0.01,
+      "log_listing_age": -0.439,
+      "has_prior_raise": 0.573,
       "log_days_since_raise": -0.111
     },
     "logit_github": {
-      "log_commits_90d": 0.92,
-      "commit_growth": -0.21,
-      "log_commits_before": -0.38,
-      "log_n_repos": 0.259,
-      "log_gh_age": -0.312
+      "log_commits_90d": 0.923,
+      "commit_growth": -0.211,
+      "log_commits_before": -0.382,
+      "log_n_repos": 0.256,
+      "log_gh_age": -0.308
     }
   },
   "top20_last_test_t0": [
     {
       "name": "Veda",
       "category": "Onchain Capital Allocator",
-      "score": 0.2738,
+      "score": 0.2742,
       "raised_within_12m": false,
       "prior_raises": 1,
       "leads": null
@@ -2748,7 +2748,7 @@
     {
       "name": "Yala",
       "category": "CDP",
-      "score": 0.2478,
+      "score": 0.2483,
       "raised_within_12m": false,
       "prior_raises": 1,
       "leads": null
@@ -2756,7 +2756,7 @@
     {
       "name": "EigenCloud",
       "category": "Restaking",
-      "score": 0.2351,
+      "score": 0.2362,
       "raised_within_12m": false,
       "prior_raises": 3,
       "leads": null
@@ -2764,7 +2764,7 @@
     {
       "name": "Lido",
       "category": "Liquid Staking",
-      "score": 0.2317,
+      "score": 0.2321,
       "raised_within_12m": false,
       "prior_raises": 3,
       "leads": null
@@ -2772,7 +2772,7 @@
     {
       "name": "BurrBear",
       "category": "Dexs",
-      "score": 0.2194,
+      "score": 0.2195,
       "raised_within_12m": false,
       "prior_raises": 1,
       "leads": null
@@ -2780,7 +2780,7 @@
     {
       "name": "SatLayer",
       "category": "Anchor BTC",
-      "score": 0.2003,
+      "score": 0.2001,
       "raised_within_12m": false,
       "prior_raises": 1,
       "leads": null
@@ -2788,7 +2788,15 @@
     {
       "name": "YieldNest",
       "category": "Onchain Capital Allocator",
-      "score": 0.1869,
+      "score": 0.1868,
+      "raised_within_12m": false,
+      "prior_raises": 1,
+      "leads": null
+    },
+    {
+      "name": "infiniFi",
+      "category": "Yield",
+      "score": 0.1724,
       "raised_within_12m": false,
       "prior_raises": 1,
       "leads": null
@@ -2796,23 +2804,15 @@
     {
       "name": "Turtle Club",
       "category": "Onchain Capital Allocator",
-      "score": 0.1719,
+      "score": 0.1721,
       "raised_within_12m": true,
-      "prior_raises": 1,
-      "leads": null
-    },
-    {
-      "name": "infiniFi",
-      "category": "Yield",
-      "score": 0.1719,
-      "raised_within_12m": false,
       "prior_raises": 1,
       "leads": null
     },
     {
       "name": "Symbiotic",
       "category": "Collateral Markets",
-      "score": 0.1524,
+      "score": 0.1525,
       "raised_within_12m": false,
       "prior_raises": 2,
       "leads": null
@@ -2820,7 +2820,7 @@
     {
       "name": "TermMax",
       "category": "Lending",
-      "score": 0.1499,
+      "score": 0.1495,
       "raised_within_12m": false,
       "prior_raises": 1,
       "leads": null
@@ -2828,7 +2828,7 @@
     {
       "name": "Portal",
       "category": "Bridge",
-      "score": 0.1431,
+      "score": 0.1432,
       "raised_within_12m": false,
       "prior_raises": 2,
       "leads": null
@@ -2836,7 +2836,7 @@
     {
       "name": "Mirage Protocol",
       "category": "Derivatives",
-      "score": 0.1413,
+      "score": 0.1415,
       "raised_within_12m": false,
       "prior_raises": 1,
       "leads": null
@@ -2852,7 +2852,7 @@
     {
       "name": "Plaza Finance",
       "category": "Derivatives",
-      "score": 0.1333,
+      "score": 0.1335,
       "raised_within_12m": false,
       "prior_raises": 1,
       "leads": null
@@ -2868,7 +2868,7 @@
     {
       "name": "Rocket Pool",
       "category": "Liquid Staking",
-      "score": 0.1318,
+      "score": 0.1317,
       "raised_within_12m": false,
       "prior_raises": 2,
       "leads": null
@@ -2876,7 +2876,7 @@
     {
       "name": "Mitosis",
       "category": "Onchain Capital Allocator",
-      "score": 0.1314,
+      "score": 0.1313,
       "raised_within_12m": false,
       "prior_raises": 1,
       "leads": null
@@ -2884,7 +2884,7 @@
     {
       "name": "Ostium",
       "category": "Derivatives",
-      "score": 0.1245,
+      "score": 0.1243,
       "raised_within_12m": true,
       "prior_raises": 1,
       "leads": "General Catalyst, Jump Trading"

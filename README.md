@@ -74,12 +74,12 @@ The scores, baselines and metrics were committed (ADR 0004) before the first bac
 | Population | Rows / positive rows / protocols | Logistic (all features) | Pre-specified heuristic | GitHub-only logistic | Best naive baseline |
 |---|---|---|---|---|---|
 | Never raised before T0 (seed case) | <!--n:nr_rows-->3,900<!--/n--> / <!--n:nr_pos-->28<!--/n--> / <!--n:nr_pos_protocols-->18<!--/n--> | <!--n:auc_nr_full-->0.605<!--/n--> (<!--n:auc_nr_full_ci-->0.47-0.75<!--/n-->) | <!--n:auc_nr_heuristic-->0.688<!--/n--> | <!--n:auc_nr_github-->0.584<!--/n--> | newest listing <!--n:auc_nr_best_base-->0.697<!--/n--> |
-| All protocols | <!--n:bt_rows-->4,655<!--/n--> / <!--n:bt_pos-->80<!--/n--> / <!--n:bt_pos_protocols-->44<!--/n--> | <!--n:auc_full-->0.810<!--/n--> (<!--n:auc_full_ci-->0.725-0.886<!--/n-->); pooled <!--n:auc_full_pooled-->0.821<!--/n--> | <!--n:auc_heuristic-->0.789<!--/n--> | <!--n:auc_github-->0.736<!--/n--> | raised before <!--n:auc_best_base-->0.773<!--/n--> |
+| All protocols | <!--n:bt_rows-->4,655<!--/n--> / <!--n:bt_pos-->80<!--/n--> / <!--n:bt_pos_protocols-->44<!--/n--> | <!--n:auc_full-->0.810<!--/n--> (<!--n:auc_full_ci-->0.724-0.886<!--/n-->); pooled <!--n:auc_full_pooled-->0.821<!--/n--> | <!--n:auc_heuristic-->0.789<!--/n--> | <!--n:auc_github-->0.737<!--/n--> | raised before <!--n:auc_best_base-->0.773<!--/n--> |
 
 All protocols: the <!--n:bt_pos-->80<!--/n--> positive rows come from <!--n:bt_pos_protocols-->44<!--/n--> protocols and <!--n:bt_raises-->58<!--/n--> distinct raises. Only <!--n:bt_seed-->9<!--/n--> of those raises were seed,
 pre-seed or angel rounds; the rest are strategic rounds, token sales and later rounds, because the 12-month windows overlap on a 6-month grid.
-Logistic minus best baseline: <!--n:auc_diff-->+0.036<!--/n--> (CI <!--n:auc_diff_ci-->-0.022 to +0.100<!--/n-->). The precision@50 lift of <!--n:lift50_full-->9.0x<!--/n--> is the mean of per-T0 lifts, the same
-size as the baseline's <!--n:lift50_base-->8.6x<!--/n-->, and precision@50 is <!--n:p50_full-->0.148<!--/n-->. Never-raised, heuristic minus best baseline: CI <!--n:auc_nr_heur_diff_ci-->-0.072 to +0.058<!--/n-->.
+Logistic minus best baseline: <!--n:auc_diff-->+0.036<!--/n--> (CI <!--n:auc_diff_ci-->-0.022 to +0.100<!--/n-->). The precision@50 lift of <!--n:lift50_full-->9.2x<!--/n--> is the mean of per-T0 lifts, the same
+size as the baseline's <!--n:lift50_base-->8.6x<!--/n-->, and precision@50 is <!--n:p50_full-->0.152<!--/n-->. Never-raised, heuristic minus best baseline: CI <!--n:auc_nr_heur_diff_ci-->-0.072 to +0.058<!--/n-->.
 For comparison, on never-raised protocols a random score gets <!--n:auc_nr_random-->0.497<!--/n-->, commits in the last 90 days (the live triage order) get <!--n:auc_nr_commits-->0.653<!--/n-->,
 and a post-hoc GitHub-signal version of the heuristic gets <!--n:auc_nr_heur_gh-->0.551<!--/n-->.
 **Outcome definition:** "raised" means any raise DefiLlama records (seed, strategic, token sale...). It is not

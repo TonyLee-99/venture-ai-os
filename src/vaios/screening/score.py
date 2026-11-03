@@ -58,7 +58,7 @@ def heuristic_github(df: pd.DataFrame, group: str | None = "t0") -> pd.Series:
 
 
 def fit_logit(train: pd.DataFrame, features: list[str]):
-    model = make_pipeline(StandardScaler(), LogisticRegression(C=0.5, max_iter=2000))
+    model = make_pipeline(StandardScaler(), LogisticRegression(C=0.5, tol=1e-10, max_iter=10000))
     model.fit(model_matrix(train)[features], train["raised"].astype(int))
     return model
 

@@ -6,10 +6,10 @@
   "sampling": "case-control: all positive rows + hash-seeded random negatives from the walk-forward test set",
   "all": {
    "deterministic|s_logit_full": {
-    "auc": 0.8094,
+    "auc": 0.8095,
     "auc_ci95": [
-     0.7423,
-     0.8679
+     0.7429,
+     0.8681
     ],
     "p@10": 0.8,
     "missing": 0,
@@ -72,8 +72,8 @@
    "deterministic|s_logit_full": {
     "auc": 0.6477,
     "auc_ci95": [
-     0.5198,
-     0.7674
+     0.5191,
+     0.767
     ],
     "p@10": 0.4,
     "missing": 0,
@@ -171,8 +171,8 @@
    "deterministic|logit_github": {
     "auc": 0.7478,
     "auc_ci95": [
-     0.5759,
-     0.8951
+     0.5747,
+     0.8962
     ],
     "p@10": 0.2,
     "missing": 0,
