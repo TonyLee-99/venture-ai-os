@@ -1,4 +1,4 @@
-"""F03: every raw pull has provenance (url, fetched_at, sha256, bytes); >= 6 live sources."""
+"""Every raw pull has provenance (url, fetched_at, sha256, bytes); >= 6 live sources."""
 
 import json
 import re

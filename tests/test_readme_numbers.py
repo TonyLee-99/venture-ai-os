@@ -1,4 +1,4 @@
-"""F17: README headline numbers are anchored tokens rendered from results/; any drift fails."""
+"""README headline numbers are anchored tokens rendered from results/; any drift fails."""
 
 from vaios.config import ROOT
 from vaios.report import TOKEN, check_readme, headline_numbers

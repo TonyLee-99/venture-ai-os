@@ -1,4 +1,4 @@
-"""Item 5 (round 2): "the 30 days to AS_OF" is [AS_OF - 30 days, AS_OF): exactly 30 daily rows, no later days."""
+"""The 30 days to AS_OF are [AS_OF - 30 days, AS_OF): exactly 30 daily rows, no later days."""
 
 import duckdb
 import pandas as pd

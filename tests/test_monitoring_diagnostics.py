@@ -1,4 +1,4 @@
-"""F24: monitoring diagnostics exist, are labelled exploratory, and recompute offline; company KPI brief verifies."""
+"""Monitoring diagnostics exist, are labelled exploratory, and recompute offline; company KPI brief verifies."""
 
 import json
 

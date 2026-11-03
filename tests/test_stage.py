@@ -1,4 +1,4 @@
-"""F19: seed-stage eligibility comes only from sourced evidence, and every memo carries the stage header."""
+"""Seed-stage eligibility comes only from sourced evidence, and every memo carries the stage header."""
 
 import json
 

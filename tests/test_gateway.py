@@ -1,4 +1,4 @@
-"""F02: gateway routing, cache, ledger, retries, strict replay, schema repair -- with fake backends (offline)."""
+"""Gateway routing, cache, ledger, retries, strict replay, schema repair -- with fake backends (offline)."""
 
 import json
 

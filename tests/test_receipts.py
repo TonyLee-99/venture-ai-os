@@ -1,4 +1,4 @@
-"""F09: the receipts verifier accepts true spans, rejects corruptions, and every shipped memo claim verifies."""
+"""The receipts verifier accepts true spans, rejects corruptions, and every shipped memo claim verifies."""
 
 import json
 

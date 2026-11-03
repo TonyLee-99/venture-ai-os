@@ -208,7 +208,7 @@ def run() -> dict:
     wf = run_walk_forward(gw, trace)
     pc = run_post_cutoff(gw, trace, probe)
     out = {"walk_forward_anonymized": wf, "post_cutoff": pc, "cutoff_probe": "results/backtest/cutoff_probe.json",
-           "note": "Post-cutoff set has 8 positives: CIs are wide; read it as a harness check, not a verdict."}
+           "note": "Post-cutoff set has 8 positives: CIs are wide; read it as a pipeline check, not a verdict."}
     OUT.write_text(json.dumps(out, indent=1) + "\n")
     trace.save("ok", {"results": "results/backtest/llm_judgment.json"})
     print(json.dumps({k: (v["auc"], v["auc_ci95"]) for k, v in wf["all"].items()}, indent=1))

@@ -27,7 +27,7 @@ closed windows.
 - The top-5 repos per owner are chosen by today's stars (residual selection leakage). Commit counts inside
   them are still timestamped, and repos created after T0 contribute zero commits before T0.
 
-## Amendment: label and sensitivity
+## Amendment (round 1): label and sensitivity
 This backtest is a **retrospective reconstruction**: universe membership, GitHub owner and the top-5 repos are
 today's, and an owner that no longer resolves contributes zero commits. Owners resolve for 96% of positive
 rows vs 90% of negative rows, so deleted/renamed repos make negatives look less active (bias in the model's

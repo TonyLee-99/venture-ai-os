@@ -16,7 +16,7 @@ monetisation). Public data only, pulled 2026-11-02.
 - **Receipts that a second model can attack.** Of <!--n:claims_drafted-->102<!--/n--> memo claims, <!--n:raw_precision-->60.8%<!--/n--> passed the deterministic
   verifier on the first draft and all passed after one repair. A blind critic from another model family then
   rated only <!--n:critic_entailed-->30.0%<!--/n--> as fully entailed by their quote. It tagged <!--n:claims_partial-->68<!--/n--> as partial (shown tagged in
-  the memo) and withheld <!--n:claims_withheld_critic-->2<!--/n-->. Whether the critic is right is a **human** call, and that call is pending (see "What the owner must do").
+  the memo) and withheld <!--n:claims_withheld_critic-->2<!--/n-->. Whether the critic is right is a **human** call, and that call is pending (see "Human review steps").
 - **Monitoring that admits what it cannot explain.** Detected inflections in x402 traction match dated events
   no better than chance: <!--n:cp_hit-->42%<!--/n--> vs <!--n:cp_null-->36%<!--/n--> (p = <!--n:cp_p-->0.44<!--/n-->). The test only had power to detect strong effects:
   <!--n:pw_needed-->8<!--/n--> of 12 events would have had to match. The largest break (October 2025, <!--n:cp_oct_ratio-->~181x<!--/n--> in weekly
@@ -49,7 +49,7 @@ flowchart LR
   SK[skills/*/SKILL.md] --> GW
   GW[LLM gateway: routes, cassettes cache, ledger, strict replay] --> C[claude -p]
   GW --> X[codex exec -s read-only]
-  WH --> SRC[AI Sourcing] --> STG[Stage check] --> DD[AI DD memo] --> RV{Verifier} --> CR[Blind critic: per-claim entailment] --> RS[Re-score + committee] --> CARD[Decision card -> owner verdict]
+  WH --> SRC[AI Sourcing] --> STG[Stage check] --> DD[AI DD memo] --> RV{Verifier} --> CR[Blind critic: per-claim entailment] --> RS[Re-score + committee] --> CARD[Decision card -> human verdict]
   WH --> MON[Changepoints] --> VAL{Event validation} --> BR[Weekly briefs] --> RV
   MON -->|monitor findings| DD
 ```
@@ -104,7 +104,7 @@ sees most companies only after they raise.
   Counting only the 300 description characters the named arm actually saw, an explicit raise rule matches
   <!--n:pc_mention_pos-->0 of 8<!--/n--> positives and <!--n:pc_mention_neg-->0 of 112<!--/n--> negatives. Effective description leakage is about zero. The one real investor
   phrase in a positive's description sits beyond character 300, and earlier versions of the rule matched "fund" and
-  "backed by" false positives. With so few positives, read this as a harness check.
+  "backed by" false positives. With so few positives, read this as a pipeline check.
 
 ### 3. Receipts (`results/sourcing/run_summary.json`, `make claim-eval`, ADR 0006)
 Memos: <!--n:claims_drafted-->102<!--/n--> claims; <!--n:raw_precision-->60.8%<!--/n--> passed the verifier on the first draft, and all passed after one repair.
@@ -129,7 +129,7 @@ counts any label other than "entails"; strict counts only labels that withhold t
 The verifier is blind to entity swaps and embellishment by design (it checks spans and numbers). A perturbation the
 critic labels "partial" still ships, with a tag; that is why strict recall matters. No inter-rater agreement is
 reported, because the critic was not re-run on the same pairs. The critic also flags <!--n:ce_critic_flag_orig-->83%<!--/n--> of the unperturbed claims as not fully entailed. That rate is an upper
-bound on its false positives. Its precision is unknown until the owner labels `results/adjudication/flag_sample.csv`.
+bound on its false positives. Its precision is unknown until a human labels `results/adjudication/flag_sample.csv`.
 
 ### 4. Inflection points (`make monitor`, `make monitor-diagnostics`, ADR 0005 / 0009)
 Weekly x402 payments, all chains: <!--n:cp_n-->12<!--/n--> changepoints against <!--n:cp_events-->12<!--/n--> dated events (the x402 Foundation feed, three verified
@@ -147,7 +147,7 @@ Exploratory diagnostics, all added after the miss:
   "indexing changed" cannot be told apart, so the brief marks it as needing a human.
 - **Portfolio-style KPI brief for one named comparable,** Daydreams: `results/briefs/company_daydreams.md`.
 
-## What the owner must do (not automated, not pre-filled)
+## Human review steps (not automated, not pre-filled)
 1. Read each memo in `results/memos/` (and any decision card in `results/decision_cards/`) and record a verdict and reason:
    `uv run python -m vaios.decide record <entity> --verdict advance|watch|pass --reason "..." --reviewer <name>`.
 2. Label the critic-flag sample: open `results/adjudication/flag_sample.csv`, or run `uv run python -m vaios.decide label <entity>:<claim> --label entails|partial|contradicts --reviewer <name>`.
@@ -198,9 +198,8 @@ The small point-in-time tables that every number is computed from are committed 
 
 ```bash
 make init          # uv sync --locked + headless chromium
-make check         # offline: ruff + tests + feature regression check
-make verify        # every feature verification; exits non-zero if any feature is open without an approved block;
-                   # evidence SHAs are written only when a state changes, so a clean HEAD stays clean
+make check         # offline: ruff + tests + `make acceptance`
+make acceptance    # backtest, verifier eval and sourcing run (strict replay) must regenerate the committed results
 make replay        # every LLM job with VAIOS_STRICT_REPLAY=1: zero model calls, identical outputs
 make live-run      # LOCAL: pulls only what is missing, rebuilds warehouse + shortlist, budgeted cached LLM calls
 make reproduce     # everything from live pulls (LLM calls are cached)
@@ -219,7 +218,7 @@ Docker: `docker build -t venture-ai-os . && docker run --rm venture-ai-os`. Tabl
 | Context layer of memos, market maps, call notes | DuckDB warehouse + content-addressed snapshot store + versioned artifacts with a change log |
 | Every output leaves receipts | claim-level citations checked by code and by a second model; a trace per run; artifact provenance |
 | Agents own jobs, not prompts | `jobs/*.yaml` specs; pydantic outputs; per-company failure isolation; a run fails if any company fails |
-| Agents critique each other, humans in the loop | blind cross-family critique, committee with an advance budget, decision cards, owner verdict ledger (pending) |
+| Agents critique each other, humans in the loop | blind cross-family critique, committee with an advance budget, decision cards, human verdict ledger (pending) |
 | Held-out evaluation for forecasting | walk-forward point-in-time backtest; LLM judgment on anonymized and post-cutoff sets |
 | AI gateway | one gateway: routing, cache/replay, ledger, budget |
 
@@ -232,8 +231,7 @@ schemas). `company-brief` shows the intended use: point the KPI brief at one com
   (ADR 0003). Unresolved owners make negatives look inactive: owners resolve for 96% of positive rows vs 90% of negative rows.
 - Funding coverage is DefiLlama's. Raises before listing are invisible, and missing raises count as negatives.
 - The stage check only knows what homepages, DefiLlama, YC and CoinGecko say. "Unknown" is not "early".
-- The critic's precision is unmeasured until the owner labels the adjudication sample, and it may over-flag.
+- The critic's precision is unmeasured until a human labels the adjudication sample, and it may over-flag.
 - The changepoint test missed and was underpowered. All monitoring diagnostics are post-hoc.
-- Hooks in `.claude/` are guardrails for Edit/Write tool calls; shell writes are not covered.
 - The CRM is SYNTHETIC. Paid data (PitchBook, Crunchbase, Messari, Dune) would plug in as one more `ingest/` module.
 - Not affiliated with any fund. Companies named here are public comparables, not recommendations.

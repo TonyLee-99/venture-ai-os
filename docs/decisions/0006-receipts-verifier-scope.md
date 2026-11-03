@@ -18,7 +18,7 @@ reported next to the verifier's precision. The verifier itself is tested against
 (must accept all) and programmatic corruptions (fabricated quotes, wrong source, unknown doc, paraphrase,
 inflated numbers, wrong metric values; must catch >= 95%).
 
-## Amendment v2
+## Amendment v2 (round 1)
 - Closed loopholes: integers under 10 are no longer exempt; a written number matches a source value only at
   its displayed precision (no 5% slack); a claim citing a metric must state that metric's value.
 - The critic now labels EVERY claim entails / partial / contradicts / unsupported against its own receipt,
@@ -27,6 +27,6 @@ inflated numbers, wrong metric values; must catch >= 95%).
 - Evaluation rebuilt on real memo claims (`make claim-eval`): perturbations with labels known by construction
   (swapped number, wrong entity, wrong date, added qualifier). The deterministic verifier catches number and
   date changes but not entity swaps or qualifiers; the critic catches all four but also flags most unperturbed
-  claims as not fully entailed, so its precision is unknown until the owner labels the adjudication sample.
+  claims as not fully entailed, so its precision is unknown until a human labels the adjudication sample.
 - The old 500-corruption self-test (`make verifier-eval`) only exercises citation mechanics (its claim text is
   a placeholder) and is no longer a headline number.

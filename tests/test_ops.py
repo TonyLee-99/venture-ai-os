@@ -1,4 +1,4 @@
-"""F14: nightly entrypoint + CI workflow exist and are offline-safe."""
+"""Nightly entrypoint + CI workflow exist and are offline-safe."""
 
 from vaios.config import ROOT
 
@@ -15,7 +15,7 @@ def test_nightly_cron_runs_sourcing_from_cache():
 
 def test_makefile_targets():
     mk = (ROOT / "Makefile").read_text()
-    for t in ("check:", "verify:", "reproduce:", "sourcing-run:", "replay:", "init:"):
+    for t in ("check:", "acceptance:", "reproduce:", "sourcing-run:", "replay:", "init:"):
         assert t in mk
     assert (ROOT / "Dockerfile").exists() and (ROOT / "uv.lock").exists()
 

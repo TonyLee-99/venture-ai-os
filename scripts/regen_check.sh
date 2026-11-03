@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Regeneration check used by feature verifications: run a command and fail if it changes the given files.
+# Regeneration check used by `make acceptance`: run a command and fail if it changes the given files.
 # Works on uncommitted trees (compares against a temp copy, not git), so `make check` stays usable mid-work.
 set -euo pipefail
 cmd="$1"; shift

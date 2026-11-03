@@ -1,4 +1,4 @@
-"""F05: sourcing draws on >= 4 independent sources, resolves entities across them, and dedupes vs the CRM."""
+"""Sourcing draws on >= 4 independent sources, resolves entities across them, and dedupes vs the CRM."""
 
 import json
 

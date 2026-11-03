@@ -1,4 +1,4 @@
-"""F12: the weekly brief's shipped inflection claims all pass the receipts verifier offline."""
+"""The weekly brief's shipped inflection claims all pass the receipts verifier offline."""
 
 import json
 

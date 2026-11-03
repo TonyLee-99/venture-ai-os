@@ -1,4 +1,4 @@
-"""F23: the decision and flag-adjudication tools record only what a human passes in."""
+"""The decision and flag-adjudication tools record only what a human passes in."""
 
 import json
 

@@ -1,4 +1,4 @@
-"""Monitoring diagnostics added later (written after the pre-specified test missed; all
+"""Monitoring diagnostics (written after the pre-specified test missed; all
 EXPLORATORY except the power analysis, which only re-describes the pre-specified test).
 
 1. power: how many of the 12 events would have to be hit for p < 0.05, and the power at plausible true rates;

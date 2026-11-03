@@ -9,7 +9,7 @@ known by construction:
 Each pair goes through the deterministic verifier and through the cross-family critic (entailment label against
 the quote). We report recall per perturbation type for each check and for both combined. Precision on the
 unperturbed claims needs human labels: their flag rate is reported as an upper bound and a sample is exported
-for the owner to label (python -m vaios.decide flags). Nothing here fabricates a human label.
+for a human to label (python -m vaios.decide flags). Nothing here fabricates a human label.
 """
 
 from __future__ import annotations

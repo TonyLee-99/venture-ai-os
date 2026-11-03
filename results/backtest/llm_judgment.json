@@ -231,5 +231,5 @@
   }
  },
  "cutoff_probe": "results/backtest/cutoff_probe.json",
- "note": "Post-cutoff set has 8 positives: CIs are wide; read it as a harness check, not a verdict."
+ "note": "Post-cutoff set has 8 positives: CIs are wide; read it as a pipeline check, not a verdict."
 }

@@ -1,5 +1,5 @@
 job: llm_judgment_eval
-agent: Eval harness
+agent: Eval runner
 skill: screening-judgment
 purpose: Held-out check of LLM screening judgment on outcomes after the model knowledge cutoff.
 inputs: [results/frozen/backtest_table.parquet (walk-forward test T0s and t0 = 2026-06-30), results/monitoring/events.csv (cutoff probe)]

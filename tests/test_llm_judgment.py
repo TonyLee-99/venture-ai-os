@@ -1,4 +1,4 @@
-"""F08/F22: LLM judgment is evaluated where it cannot know the answer (anonymized walk-forward set; post-cutoff set
+"""LLM judgment is evaluated where it cannot know the answer (anonymized walk-forward set; post-cutoff set
 with probed cutoffs), leakage-exposed arms are flagged, and the eval replays offline with identical results."""
 
 import json

@@ -1,4 +1,4 @@
-"""F16: skills are valid SKILL.md folders, are the prompt source for agents, and export as a founder bundle."""
+"""Skills are valid SKILL.md folders, are the prompt source for agents, and export as a founder bundle."""
 
 import json
 

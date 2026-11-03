@@ -1,4 +1,4 @@
-# Offline gate: lint + tests + feature regression check, replaying recorded LLM calls (no keys, no network LLM).
+# Offline gate: lint + tests + regeneration checks, replaying recorded LLM calls (no keys, no network LLM).
 name: ci
 on:
   push:

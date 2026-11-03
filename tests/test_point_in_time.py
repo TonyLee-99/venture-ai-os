@@ -1,4 +1,4 @@
-"""F06: features as of T0 ignore every row timestamped at or after T0 (poisoned-future-rows test)."""
+"""Features as of T0 ignore every row timestamped at or after T0 (poisoned-future-rows test)."""
 
 import pandas as pd
 from sql_fixture import T0, build

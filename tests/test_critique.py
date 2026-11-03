@@ -1,4 +1,4 @@
-"""F10/F20: blind cross-family critique with per-claim entailment; flagged claims withheld or tagged; scores
+"""Blind cross-family critique with per-claim entailment; flagged claims withheld or tagged; scores
 re-derived; advance budget; decision cards only on real disagreement; human verdicts never pre-filled."""
 
 import json

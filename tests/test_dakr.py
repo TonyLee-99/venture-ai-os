@@ -1,4 +1,4 @@
-"""F04: warehouse SQL builds the marts, the doc store is content-addressed, artifacts are versioned + idempotent."""
+"""Warehouse SQL builds the marts, the doc store is content-addressed, artifacts are versioned + idempotent."""
 
 import json
 

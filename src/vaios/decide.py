@@ -1,4 +1,4 @@
-"""Human-in-the-loop tooling. The OWNER records decisions; nothing here ever writes a verdict by itself.
+"""Human-in-the-loop tooling. A human records decisions; nothing here ever writes a verdict by itself.
 
   uv run python -m vaios.decide status
   uv run python -m vaios.decide record <entity> --verdict watch --reason "..." --reviewer tony

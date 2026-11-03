@@ -1,6 +1,6 @@
 {
  "job": "llm_judgment_eval",
- "agent": "Eval harness",
+ "agent": "Eval runner",
  "entity": "all_sets",
  "run_id": "1334803924285a40",
  "as_of": "2026-06-30",

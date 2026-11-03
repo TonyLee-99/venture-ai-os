@@ -2,7 +2,7 @@
 
 Status: accepted 2026-11-02. Committed before `make backtest` was first run (git log order), but AFTER the raw
 data had been pulled and its shape inspected, so this is a committed spec, not a pre-registration in the
-clinical-trial sense. Amended later (see "Amendment" below).
+clinical-trial sense. Amended in round 1 (see "Amendment" below).
 
 ## Scores (all deterministic, point-in-time)
 1. `heuristic` (no fitting, specified before any result was seen): mean within-T0 percentile rank of commits in the last 90 days, commit growth
@@ -25,7 +25,7 @@ is the paired bootstrap CI of (score AUC minus best non-leaky baseline AUC).
 If the paired CI of the AUC difference includes zero, the README says the score is not distinguishable from
 the best naive baseline. No re-weighting of the heuristic after seeing results.
 
-## Amendment (2026-11-02)
+## Amendment (round 1, 2026-11-02)
 - Headline population changed to protocols that had **never raised before T0** (the seed-relevant case); on the
   full population, "raised before" dominates. Both are reported; no model is picked as headline because it won:
   all three scores and all baselines are shown side by side.

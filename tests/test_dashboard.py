@@ -1,4 +1,4 @@
-"""F15: dashboard is built from committed results, screenshot exists, Tableau extracts + doc exist."""
+"""Dashboard is built from committed results, screenshot exists, Tableau extracts + doc exist."""
 
 import pandas as pd
 

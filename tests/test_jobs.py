@@ -1,4 +1,4 @@
-"""F13: job specs are complete; traces point at recorded LLM calls; strict replay reproduces committed memos."""
+"""Job specs are complete; traces point at recorded LLM calls; strict replay reproduces committed memos."""
 
 import json
 

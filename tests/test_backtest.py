@@ -1,4 +1,4 @@
-"""F07: the committed backtest numbers recompute exactly from the frozen table, and the walk-forward split
+"""The committed backtest numbers recompute exactly from the frozen table, and the walk-forward split
 never trains on an outcome window that was still open at the test date."""
 
 import json

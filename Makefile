@@ -1,11 +1,11 @@
 # venture-ai-os: one-command targets.
-# Offline targets (check, verify, replay, sourcing-run, dashboard) run from committed caches/cassettes.
+# Offline targets (check, acceptance, replay, sourcing-run, dashboard) run from committed caches/cassettes.
 # Network targets (ingest, reproduce) pull live public data and may call the LLMs (cached).
 UV ?= uv
 PY = $(UV) run python
 CLI = $(PY) -m vaios.cli
 
-.PHONY: init lint test check verify verifier-eval export-skills live-run claim-eval monitor-diagnostics company-brief readme ingest warehouse freeze backtest llm-eval sourcing-run memos \
+.PHONY: init lint test check acceptance verifier-eval export-skills live-run claim-eval monitor-diagnostics company-brief readme ingest warehouse freeze backtest llm-eval sourcing-run memos \
         monitor brief dashboard screenshots extracts replay reproduce clean
 
 init:           ## fresh clone -> ready (deps + headless browser for screenshots)
@@ -17,11 +17,12 @@ lint:
 test:
 	$(UV) run pytest -q
 
-check: lint test ## fast, offline: lint + tests + feature verification (fails only on regressions)
-	$(PY) scripts/verify_features.py --check
+check: lint test acceptance ## fast, offline: lint + tests + regeneration checks
 
-verify:         ## run every feature verification and write state/evidence into feature_list.json
-	$(PY) scripts/verify_features.py
+acceptance:     ## committed results must recompute unchanged from frozen tables and cassettes (strict replay)
+	bash scripts/regen_check.sh "$(CLI) backtest" results/backtest/backtest.json
+	bash scripts/regen_check.sh "$(CLI) verifier-eval" results/receipts/verifier_eval.json
+	bash scripts/regen_check.sh "VAIOS_STRICT_REPLAY=1 $(CLI) sourcing-run" results/memos results/sourcing
 
 # ---------- network: live public data ----------
 ingest:         ## pull raw data from all sources into data/raw (+ manifest)
@@ -91,7 +92,7 @@ replay:         ## re-run every LLM job in strict replay (no model calls) and di
 	VAIOS_STRICT_REPLAY=1 $(CLI) claim-eval
 	git diff --stat --exit-code -- results
 
-reproduce: ingest warehouse freeze backtest llm-eval monitor monitor-diagnostics sourcing-run brief company-brief claim-eval verifier-eval extracts dashboard screenshots readme verify
+reproduce: ingest warehouse freeze backtest llm-eval monitor monitor-diagnostics sourcing-run brief company-brief claim-eval verifier-eval extracts dashboard screenshots readme check
 
 clean:          ## delete the rebuilt warehouse (NOT raw pulls, NOT cassettes)
 	rm -f data/warehouse.duckdb

@@ -1,4 +1,4 @@
-"""F11: PELT finds planted shifts, the event matching is correct, and the committed validation recomputes."""
+"""PELT finds planted shifts, the event matching is correct, and the committed validation recomputes."""
 
 import json
 
